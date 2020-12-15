@@ -13,7 +13,7 @@ const StorageAllProducts = (props) => {
     }
 
     return (
-    <Container> {/*container changed to div */}
+    <Container>
         <div className='product-list-wrapper'>
         <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
         <div className='product-list-label'>{props.organisersProductListLabel}</div>
