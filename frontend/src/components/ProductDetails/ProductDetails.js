@@ -203,7 +203,7 @@ const ProductDetails = (props) => {
             }} />
             </div>
             </Col>
-            <Col lg={6} className='product-det'> {/* cls name added and xs=6 is changed to lg-6*/}
+            <Col lg={6} className='product-det'>
                 <div className='products-details-head'>{product.group}</div>
                 <div className='products-details-label'> {product.productName}{product.price ? <div className='products-details-price'><span className='strike-price'>&#x20B9; {product.mrpPrice}</span>  <span className='nstrike-price'>&#x20B9;{product.price}</span></div> : <div className='products-details-price'>&#x20B9; {product.mrpPrice}</div>}
             </div>

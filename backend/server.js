@@ -2,6 +2,7 @@ const express = require('express');
 const HomeScreenBagsProducts = require('./data/HomeScreenBagsProducts');
 const HomeScreenHomeProducts = require('./data/HomeScreenHomeProducts');
 const HomeScreenStorageProducts = require('./data/HomeScreenStorageProducts');
+const MasterProducts = require('./data/MasterProducts');
 
 const app = express();
 
@@ -36,6 +37,16 @@ app.get('/api/home_screen_storage_products', (req, res) => {
 app.get('/api/home_screen_storage_products/:id', (req, res) => {
     const HomeScreenStorageProduct = HomeScreenStorageProducts.find(p => p.productId === req.params.id)
     res.json(HomeScreenStorageProduct);
+})
+
+//Master Product test fetch
+app.get('/api/products', (req, res) => {
+    res.json(MasterProducts);
+})
+
+app.get('/api/products/:id', (req, res) => {
+    const product = MasterProducts.find(p => p.productId === req.params.id)
+    res.json(product);
 })
 
 app.listen(5000, console.log('Server running on port 5000'));
