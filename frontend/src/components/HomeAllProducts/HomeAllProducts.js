@@ -27,11 +27,11 @@ const HomeAllProducts = (props) => {
                         <div className='product-list-image'>
                             <div>
                             <img id={product.productId} src={product.heroImage} alt='home_1'/>
-                            {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                            {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                            {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                            {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                             </div>
                             <div className='product-list-card-title'>{product.productName}</div>
-                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div>
+                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
                         </div>
                     </div>
                     </Link>
@@ -46,11 +46,11 @@ const HomeAllProducts = (props) => {
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <Link to={`/product/${product.productId}`}><div className='product-list-image'>
                             <img id={product.productId} src={product.heroImage} alt='home_1'/>
-                            {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                            {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                            {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                            {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                         </div>
                         <div className='product-list-card-title'>{product.productName}</div>
-                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div></Link>
+                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
                     </div>
                 ))}
             </Row>
@@ -63,11 +63,11 @@ const HomeAllProducts = (props) => {
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <Link to={`/product/${product.productId}`}><div className='product-list-image'>
                             <img id={product.productId} src={product.heroImage} alt='home_1'/>
-                            {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                            {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                            {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                            {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                         </div>
                         <div className='product-list-card-title'>{product.productName}</div>
-                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div></Link>
+                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
                     </div>
                 ))}
             </Row>
@@ -81,11 +81,11 @@ const HomeAllProducts = (props) => {
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <div className='product-list-image'>
                             <img src={product.heroImage} alt='home_1'/>
-                            {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                            {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                            {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                            {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                         </div>
                         <div className='product-list-card-title'>{product.productName}</div>
-                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div>
+                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
                     </div>
                     </Link>
                 ))}

@@ -132,7 +132,7 @@ const ProductDetails = (props) => {
                     </ul>
                 </div>
 
-                <span className='modal-price'><span className='target-bold'>Price:</span> &#x20B9;{product.price !== undefined ? product.price * itemQuantity : product.mrpPrice * itemQuantity}</span>
+                <span className='modal-price'><span className='target-bold'>Price:</span> &#x20B9;{product.price ? product.price * itemQuantity : product.mrpPrice * itemQuantity}</span>
                 <button className='modal-check-button' onClick={handleSubmit}>CHECK OUT</button>
                 </Col>
             </Row>
@@ -205,7 +205,7 @@ const ProductDetails = (props) => {
             </Col>
             <Col lg={6} className='product-det'> {/* cls name added and xs=6 is changed to lg-6*/}
                 <div className='products-details-head'>{product.group}</div>
-                <div className='products-details-label'> {product.productName}{product.price !== undefined ? <div className='products-details-price'><span className='strike-price'>&#x20B9; {product.mrpPrice}</span>  <span className='nstrike-price'>&#x20B9;{product.price}</span></div> : <div className='products-details-price'>&#x20B9; {product.mrpPrice}</div>}
+                <div className='products-details-label'> {product.productName}{product.price ? <div className='products-details-price'><span className='strike-price'>&#x20B9; {product.mrpPrice}</span>  <span className='nstrike-price'>&#x20B9;{product.price}</span></div> : <div className='products-details-price'>&#x20B9; {product.mrpPrice}</div>}
             </div>
             <Row className='cart-det'>
             <Col className='material-det'>
@@ -288,7 +288,7 @@ const ProductDetails = (props) => {
             />
         </Row>
         
-            {/* {product.addOn !== undefined ? 
+            {/* {product.addOn ? 
         <Row className=''> 
             <Col sm={3}>
                 <div className='addon-img-container'>
@@ -315,7 +315,7 @@ const ProductDetails = (props) => {
             </Col>
         </Row>
         : null} */}
-        { product.similarProducts !== undefined ?
+        { product.similarProducts ?
         <div>
             <div className='similar-products-head'>You may also like</div>
          <Row className='similar-products-wrapper'> 
@@ -326,11 +326,11 @@ const ProductDetails = (props) => {
                             <Col lg={2.4} >
                                 <div>
                                     <div className='similar-products-image'><img src={prod.heroImage} alt={prod.productId}></img>
-                                    {prod.bestSeller !== undefined ? <span className='label-best'>{prod.bestSeller}</span> : null}
-                                    {prod.quickView !== undefined ? <span className='label-view'>{prod.quickView}</span> : null}
+                                    {prod.bestSeller ? <span className='label-best'>{prod.bestSeller}</span> : null}
+                                    {prod.quickView ? <span className='label-view'>{prod.quickView}</span> : null}
                                     </div>
                                     <div className='similar-products-title'>{prod.productName}</div>
-                                    <div className='similar-products-text'> View Details - &#x20B9;{prod.price !== undefined ? prod.price : prod.mrpPrice}</div>
+                                    <div className='similar-products-text'> View Details - &#x20B9;{prod.price ? prod.price : prod.mrpPrice}</div>
                                 </div>
                             </Col>
                         </Link>

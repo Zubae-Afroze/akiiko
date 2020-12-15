@@ -39,11 +39,11 @@ const HomeScreenBags = () => {
                     <div className='women-card-image'>
                         <div className='women-img-wrap'>
                         <img id={product.productId} src={product.heroImage} alt='women_1'/>
-                        {product.bestSeller !== undefined ? <span className='label-best'>{product.bestSeller}</span> : null}
-                        {product.quickView !== undefined ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                        {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                        {product.quickView ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                         </div>
                         <div className='women-card-title'>{product.productName}</div>
-                        <div className='women-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div>
+                        <div className='women-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
                     </div>
                     </div>
                     </Col>

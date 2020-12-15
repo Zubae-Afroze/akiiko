@@ -17,11 +17,11 @@ const GiftAllProducts = (props) => {
                         <Link to={`/product/${product.productId}`}><div className='product-list-image'>
                             <div>
                             <img src={product.heroImage} alt='home_1'/>
-                            {product.bestSeller !== undefined ? <span className='label-best'>{product.bestSeller}</span> : null}
-                            {product.quickView !== undefined ? <span className='label-view'>{product.quickView}</span> : null}
+                            {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                            {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
                             </div>
                             <div className='product-list-card-title'>{product.productName}</div>
-                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div>
+                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
                         </div></Link>
                     </div>
                 ))}
@@ -35,11 +35,11 @@ const GiftAllProducts = (props) => {
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <Link to={`/product/${product.productId}`}><div className='product-list-image'>
                             <img src={product.heroImage} alt='home_1'/>
-                            {product.bestSeller !== undefined ? <span className='label-best'>{product.bestSeller}</span> : null}
-                            {product.quickView !== undefined ? <span className='label-view'>{product.quickView}</span> : null}
+                            {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                            {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
                         </div>
                         <div className='product-list-card-title'>{product.productName}</div>
-                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div></Link>
+                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
                     </div>
                 ))}
             </Row>
@@ -52,11 +52,11 @@ const GiftAllProducts = (props) => {
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <Link to={`/product/${product.productId}`}><div className='product-list-image'>
                             <img src={product.heroImage} alt='home_1'/>
-                            {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                            {product.quickView !== undefined ? <span className='pl-label-view'>{product.quickView}</span> : null}
+                            {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                            {product.quickView ? <span className='pl-label-view'>{product.quickView}</span> : null}
                         </div>
                         <div className='product-list-card-title'>{product.productName}</div>
-                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div></Link>
+                        <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
                     </div>
                 ))}
             </Row>

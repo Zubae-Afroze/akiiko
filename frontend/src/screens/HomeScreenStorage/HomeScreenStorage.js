@@ -41,11 +41,11 @@ const HomeScreenWorkout = () => {
                                 <Link to={`/product/${product.productId}`}><div>
                                     <div className='women-img-wrap'>
                                     <img id={product.productId} className='home-card-image' src={product.heroImage} alt='home_1'/>
-                                    {product.bestSeller !== undefined ? <span className='label-best label-best-workout'>{product.bestSeller}</span> : null}
-                                    {product.quickView !== undefined ? <span className='label-view label-view-workout' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                                    {product.bestSeller ? <span className='label-best label-best-workout'>{product.bestSeller}</span> : null}
+                                    {product.quickView ? <span className='label-view label-view-workout' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                                     </div>
                                     <div className='home-card-title'>{product.productName}</div>
-                                <div className='home-card-text'>View Details - &#x20B9;{product.price !== undefined ? product.price : product.mrpPrice}</div>
+                                <div className='home-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
                                 </div></Link>
                             </Col>
                         ))}
