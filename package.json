@@ -1,0 +1,23 @@
+{
+  "name": "akiiko-ver-1.05-fullstack",
+  "version": "1.0.5",
+  "description": "akiiko backend with NodeJs, Express, MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zubae-Afroze/akiiko-ver-1.05-fullstack.git"
+  },
+  "author": "Zubae",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Zubae-Afroze/akiiko-ver-1.05-fullstack/issues"
+  },
+  "homepage": "https://github.com/Zubae-Afroze/akiiko-ver-1.05-fullstack#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

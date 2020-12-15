@@ -75,4 +75,4 @@ const HomeScreenHomeProducts = [
     },
 ]
 
-export default HomeScreenHomeProducts
+module.exports = HomeScreenHomeProducts 

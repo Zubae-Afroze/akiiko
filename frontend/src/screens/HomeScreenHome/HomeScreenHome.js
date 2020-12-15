@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
-import HomeScreenHomeProducts from '../../assets/products/HomeScreenHomeProducts';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 import './HomeScreenHome.css';
+
+
+//import HomeScreenHomeProducts from '../../assets/products/HomeScreenHomeProducts';
 
 const HomeScreenHome = () => {
 
@@ -36,9 +39,16 @@ const HomeScreenHome = () => {
         document.getElementById(product.productId).src=product.images[0];
     }
 
-    useEffect(() => {
+    const [HomeScreenHomeProducts, setHomeScreenHomeProducts] = useState([]);
 
-    })
+    useEffect(() => {
+        const fetchHomeScreenHomeProducts = async() => {
+            const { data } = await axios.get('/api/home_screen_home_products')
+
+            setHomeScreenHomeProducts(data)
+        }
+        fetchHomeScreenHomeProducts();
+    }, [])
 
     return (
         <div className='home-screen-component'>

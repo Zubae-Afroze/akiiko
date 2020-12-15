@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {  Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-import HomeScreenWorkoutProducts from '../../assets/products/HomeScreenStorageProducts';
+//import HomeScreenStorageProducts from '../../assets/products/HomeScreenStorageProducts';
 import './HomeScreenStorage.css';
 
 const HomeScreenWorkout = () => {
@@ -14,6 +15,18 @@ const HomeScreenWorkout = () => {
     const handleMouseOut = (product) => {
         document.getElementById(product.productId).src=product.images[0];
     }
+
+    const [HomeScreenStorageProducts, setHomeScreenStorageProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchHomeScreenStorageProducts = async() => {
+            const { data } = await axios.get('/api/home_screen_storage_products');
+
+            setHomeScreenStorageProducts(data)
+        }
+
+        fetchHomeScreenStorageProducts();
+    }, [])
 
     return (
         <div className='home-screen-component'>
@@ -36,7 +49,7 @@ const HomeScreenWorkout = () => {
                 </Col>
                 <Col sm={7} className='workout-container'>
                     <Row className='workout-card-wrapper'>
-                        {HomeScreenWorkoutProducts.map(product => (
+                        {HomeScreenStorageProducts.map(product => (
                             <Col className='home-card-items ' key={product.productId}>
                                 <Link to={`/product/${product.productId}`}><div>
                                     <div className='women-img-wrap'>

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import axios from 'axios';
 
-import HomeScreenBagsProducts from '../../assets/products/HomeScreenBagsProducts';
+
+//import HomeScreenBagsProducts from '../../assets/products/HomeScreenBagsProducts';
 import './HomeScreenBags.css';
 
 const HomeScreenBags = () => {
@@ -14,6 +16,18 @@ const HomeScreenBags = () => {
     const handleMouseOut = (product) => {
         document.getElementById(product.productId).src=product.images[0];
     }
+
+    const [HomeScreenBagsProducts, setHomeScreenBagsProducts] = useState([]);
+
+    useEffect(() => {
+        const fetchHomeScreenBagsProducts = async() => {
+            const { data } = await axios.get('/api/home_screen_bags_products')
+
+            setHomeScreenBagsProducts(data)
+        }
+
+        fetchHomeScreenBagsProducts();
+    }, [])
 
     return (
         <div> 
