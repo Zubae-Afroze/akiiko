@@ -49,7 +49,7 @@ const AccessoriesWalletProducts = [
     // },
     {
         productId: 'MW004',
-        productName: 'Passport Holder (Pack of 2)',
+        productName: 'Passport Holder \u00A0 (Pack of 2)',
         heroImage:'/images/p_images/Accessories/Wallet/MW004/hero.jpg',
         images: 
             ['/images/p_images/Accessories/Wallet/MW004/hero.jpg',],
