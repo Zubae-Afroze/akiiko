@@ -1,0 +1,130 @@
+/* Font Imports */
+@font-face {
+  font-family: 'rutan';
+  src: url('./assets/fonts/rutan/rutan.ttf') format('truetype'),
+    url('./assets//fonts/rutan/rutan.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rutanMedium';
+  src: url('./assets/fonts/rutan/rutan-medium.ttf') format('truetype'),
+    url('./assets/fonts/rutan/rutan-medium.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rutanLight';
+  src: url('./assets/fonts/rutan/rutan-light.ttf') format('truetype'),
+    url('./assets/fonts/rutan/rutan-light.ttf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rutanThin';
+  src: url('./assets/fonts/rutan/rutan-thin.ttf') format('truetype'),
+    url('./assets/fonts/rutan/rutan-thin.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rutanBold';
+  src: url('./assets/fonts/rutan/rutan-bold.ttf') format('truetype'),
+    url('./assets/fonts/rutan/rutan-bold.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rutanDemibold';
+  src: url('./assets/fonts/rutan/rutan-demibold.ttf') format('truetype'),
+    url('./assets/fonts/rutan/rutan-demibold.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'rutanBlack';
+  src: url('./assets/fonts/rutan/rutan-black.ttf') format('truetype'),
+    url('./assets/fonts/rutan/rutan-black.otf') format('otf');
+  font-weight: normal;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: 'dekiru';
+  src: url('./assets/fonts/dekiru/dekiru.ttf') format('truetype'),
+    url('./assets/fonts/dekiru/dekiru.otf') format('otf');
+  font-weight: normal;
+  font-size: normal;
+}
+
+@font-face {
+  font-family: 'caudex';
+  src: url('./assets/fonts/caudex/caudexRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-size: normal;
+}
+
+/* Global settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: #fff;
+  color: #3e3331 !important;
+  font-family: 'rutanMedium';
+  font-weight: normal;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1366px;
+  padding: 0 50px;
+}
+
+body::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+body::-webkit-scrollbar:vertical {
+  width: 0.25rem;
+}
+
+body::-webkit-scrollbar-track {
+  display: block;
+  background-color: #e1d5bf;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #2e2614;
+}
+
+body {
+  user-select: none;
+}
+
+@media (max-width: 1266px) {
+  .container {
+    padding: 0px 15px;
+  }
+}
+
+a {
+  color: #3e3331;
+}
+
+a:hover {
+  color: #3e3331;
+  text-decoration: none;
+}

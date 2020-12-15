@@ -1,0 +1,222 @@
+/* .home-button {
+  margin-right: 65px;
+  margin-top: 120px;
+  padding: 18px 75px;
+  width: 240px;
+  background-color: #6e4e37;
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid #6e4e37;
+}
+
+.home-wrapper {
+  text-align: right;
+  margin-bottom: 50px;
+}
+
+.home-title {
+  font-family: 'rutanLight';
+  color: #3a2f2d;
+  font-size: 82px;
+  letter-spacing: 13px;
+}
+
+.home-hero-image img {
+  width: 480px;
+  height: 750px;
+}
+
+.home-card-head {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+
+.home-card-items {
+  flex-basis: 230px;
+  justify-content: space-between;
+}
+
+.home-card-wrapper {
+  margin-left: 0px;
+}
+
+.home-card-image {
+  height: 230px;
+  width: 230px;
+  border: 1px solid #36353541;
+}
+
+.home-card-text {
+  white-space: nowrap;
+  width: 230px;
+  text-align: left;
+  padding: 15px;
+  font-size: 15px;
+  background-color: #f6f1ea;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+}
+
+.home-card-title {
+  width: 230px;
+  background-color: #fefaef;
+  text-transform: uppercase;
+  font-family: 'rutan';
+  font-size: 16px;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+} */
+.home-screen-component {
+  margin-top: 5%;
+}
+
+.home-button {
+  margin-right: 65px;
+  margin-top: 90px;
+  padding: 18px 75px;
+  width: 240px;
+  background-color: #6e4e37;
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid #6e4e37;
+}
+.home-text {
+  font-family: 'rutanLight';
+  padding-left: 35px;
+}
+.home-wrapper {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.home-img-wrap {
+  position: relative;
+}
+
+.label-best {
+  position: absolute;
+  top: 0;
+  font-family: 'rutan';
+  right: 2%;
+  font-size: 12px;
+  margin-top: 6px;
+  margin-right: 2px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1px 15px;
+  align-self: center;
+  text-align: center;
+  letter-spacing: 1.92px;
+}
+
+.label-view {
+  position: absolute;
+  right: 50%;
+  text-transform: uppercase;
+  transform: translate(50%);
+  font-family: 'rutan';
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 230px;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1.92px;
+  padding: 3px 0;
+}
+
+.home-title {
+  font-family: 'rutanLight';
+  color: #3a2f2d;
+  font-size: 82px;
+  letter-spacing: 13px;
+  height: 80px;
+  margin-bottom: 27px;
+  left: 0;
+  margin-left: -7px;
+  margin-right: -14px;
+}
+
+.home-hero-image img {
+  width: 480px;
+  height: 750px;
+}
+
+.home-card-head {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+
+.home-card-items {
+  flex-basis: 230px;
+  justify-content: space-between;
+  max-width: 260px;
+}
+
+.women-shop-bag-container {
+  margin-bottom: 1%;
+}
+
+.home-card-wrapper {
+  margin-left: 0px;
+}
+
+.home-card-image {
+  height: 230px;
+  width: 230px;
+}
+
+.home-card-text {
+  white-space: nowrap;
+  width: 230px;
+  text-align: left;
+  padding: 10px;
+  padding-left: 6px;
+  font-size: 14px;
+  background-color: #f6f1ea;
+  text-transform: uppercase;
+  margin-bottom: 45px;
+  font-family: 'rutanMedium';
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-card-title {
+  width: 230px;
+  background-color: #fefaef;
+  text-transform: uppercase;
+  font-family: 'rutan';
+  font-size: 14px;
+  text-align: left;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-card-items a {
+  color: #3a2f2d;
+}
+
+.home-card-items a:hover {
+  text-decoration: none;
+}
+
+
+@media (max-width: 683px) {
+  .hero-image-workout {
+    display: none;
+  }
+}
+@media (max-width: 320px) {
+  .women-card-text {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}

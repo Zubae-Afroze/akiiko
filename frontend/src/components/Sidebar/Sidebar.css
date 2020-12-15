@@ -1,0 +1,41 @@
+.sidebar-wrapper {
+  position: relative;
+  z-index: 5000;
+}
+
+.sidebar-main ul {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  list-style: none;
+  background-color: rgba(255, 255, 255, 0.8);
+  height: 500px;
+  width: 140px;
+  left: 0;
+  top: 10px;
+  animation: justin 450ms;
+  box-shadow: 3px 3px 10px #c5c5c58a;
+}
+
+.sidebar-main li {
+  margin-left: 20px;
+  text-transform: uppercase;
+}
+
+.sidebar-main ul li a {
+  color: #3e3331 !important;
+}
+
+.sidebar-main ul li a:hover {
+  text-decoration: none;
+}
+
+@keyframes justin {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 140px;
+  }
+}

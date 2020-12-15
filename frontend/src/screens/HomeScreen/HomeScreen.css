@@ -1,0 +1,398 @@
+/* .hero-logo {
+  text-align: right;
+  font-family: 'dekiru';
+  font-size: 82px;
+  margin-top: 100px;
+  color: #3a3a3a;
+}
+
+.hero-text {
+  text-align: right;
+  text-transform: uppercase;
+  color: #3e3331;
+  font-size: 35px;
+  font-family: 'dekiru';
+  margin-bottom: 10px;
+}
+
+.hero-sub-text {
+  text-align: right;
+  text-transform: uppercase;
+  color: #3e3331;
+  font-size: 20px;
+  font-family: 'rutan';
+  letter-spacing: 3.2px;
+}
+
+.hero-button {
+  text-align: right;
+  margin-top: 60px;
+  margin-bottom: 170px;
+}
+
+.hero-button button {
+  text-align: center;
+  width: 224px;
+  height: 54px;
+  text-transform: uppercase;
+  border: 2px solid #6e4e37;
+  background-color: #6e4e37;
+  color: #fff;
+  font-size: 20px;
+}
+
+.carousel-slide-1 {
+  text-transform: uppercase;
+  color: #000;
+  font-size: 22px;
+  letter-spacing: 2.4px;
+  font-family: 'rutanLight';
+}
+
+.carousel-slide-2 {
+  color: #000;
+}
+
+.carousel-slide-3 {
+  color: #000;
+}
+
+.carousel-slide-4 {
+  font-size: 20px;
+  color: #000;
+  text-align: right;
+  letter-spacing: 3.2px;
+  font-family: 'rutanLight';
+  top: 40%;
+}
+
+.carousel-slide-4 h3 {
+  font-family: 'dekiru';
+  font-size: 120px;
+  color: #000;
+}
+
+.empty-div {
+  width: 100%;
+} */
+.hero-logo {
+  text-align: right;
+  font-family: 'dekiru';
+  font-size: 82px;
+  margin-top: 132px;
+  color: #3a3a3a;
+}
+
+.hero-text {
+  text-align: right;
+  color: #3e3331;
+  font-size: 35px;
+  font-family: 'caudex';
+  margin-bottom: 10px;
+}
+
+.hero-sub-text {
+  text-align: right;
+  color: #3e3331;
+  font-size: 35px;
+  font-family: 'caudex';
+  letter-spacing: 3.2px;
+}
+
+.hero-button {
+  text-align: right;
+  margin-top: 60px;
+  margin-bottom: 170px;
+}
+
+.hero-button button {
+  text-align: center;
+  width: 240px;
+  height: 63px;
+  text-transform: uppercase;
+  border: 2px solid #6e4e37;
+  background-color: #6e4e37;
+  color: #fff;
+  font-size: 20px;
+}
+
+.carousel-slide-1 {
+  text-transform: uppercase;
+  color: #000;
+  font-size: 22px;
+  letter-spacing: 2.4px;
+  font-family: 'rutanLight';
+}
+
+.carousel-slide-2 {
+  color: #000;
+}
+
+.carousel-slide-3 {
+  color: #000;
+}
+
+.carousel-slide-4 {
+  font-size: 20px;
+  color: #000;
+  text-align: right;
+  letter-spacing: 3.2px;
+  font-family: 'rutanLight';
+  top: 40%;
+}
+
+.carousel-slide-4 h3 {
+  font-family: 'dekiru';
+  font-size: 120px;
+  color: #000;
+}
+
+.w-100 {
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.form-inline {
+  justify-content: flex-end;
+  margin-right: 15px;
+}
+
+/* ------------------TAB 600PX TO 1024PX---------------- */
+@media (max-width: 1024px) {
+  .w-100 {
+    height: 600px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-logo {
+    margin-top: 30%;
+  }
+  .hero-logo {
+    font-size: 400%;
+  }
+  .hero-text {
+    font-size: 224%;
+    margin-bottom: 3%;
+  }
+  .hero-button {
+    margin-top: 5%;
+  }
+  .hero-button button {
+    width: 190px;
+    font-size: 17px;
+  }
+}
+@media (max-width: 815px) {
+  .hero-logo {
+    margin-top: 17%;
+    font-size: 350%;
+  }
+  .hero-text {
+    font-size: 27px;
+  }
+}
+
+@media (max-width: 769px) {
+}
+.carousel-slide-4 h3 {
+  font-size: 90px;
+}
+@media (max-width: 768px) {
+  .hero-logo {
+    font-size: 4.5em;
+  }
+  .hero-text {
+    font-size: 24px;
+  }
+  .hero-button button {
+    width: 81%;
+    height: 55px;
+    font-size: 87%;
+  }
+  .hero-button {
+    margin: 10px 0px 20px 0px;
+  }
+  .carousel-slide-1 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 720px) {
+  .hero-sub-text {
+    font-size: 18px;
+  }
+  .hero-button button {
+    width: 80%;
+    font: 14px;
+  }
+  .hero-text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 689px) {
+  .carousel-slide-4 h3 {
+    font-size: 75px;
+  }
+}
+@media (max-width: 610px) {
+  .hero-logo {
+    font-size: 50px;
+  }
+  .hero-text {
+    font-size: 22px;
+  }
+  .hero-sub-text {
+    font-size: 14px;
+  }
+  .hero-button button {
+    width: 78%;
+    font-size: 14px;
+    height: 40px;
+  }
+}
+/* ------------------MOBILE 320PX TO 586PX---------------- */
+
+@media (max-width: 576px) {
+  .hero-logo {
+    font-size: 45px;
+  }
+  .hero-text {
+    font-size: 20px;
+  }
+  .hero-sub-text {
+    font-size: 14px;
+  }
+  .hero-button button {
+    width: 78%;
+    font-size: 14px;
+    height: 40px;
+  }
+}
+@media (max-width: 576px) {
+  .carousel-slide-4 h3 {
+    font-size: 55px;
+  }
+}
+@media (max-width: 575px) {
+  .footer-image-row {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  .hero-logo {
+    font-size: 6em;
+  }
+  .hero-text {
+    font-size: 2.5em;
+  }
+  .hero-sub-text {
+    font-size: 1.6em;
+  }
+  .hero-button button {
+    width: 37%;
+    height: 3.7em;
+  }
+}
+@media (max-width: 540px) {
+  .carousel-slide-2 {
+    display: none;
+  }
+  .carousel-slide-3 {
+    display: none;
+  }
+}
+@media (max-width: 460px) {
+  .hero-logo {
+    font-size: 3.5em !important;
+  }
+  .hero-text {
+    font-size: 24px;
+  }
+  .hero-button button {
+    width: 34%;
+    height: 40px;
+    font-size: 87%;
+  }
+  .hero-button {
+    margin: 10px 0px 20px 0px;
+  }
+  .carousel-slide-1 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 425px) {
+  .hero-logo {
+    display: none;
+  }
+  .hero-text {
+    font-size: 35px;
+    text-align: center;
+    margin-top: -50px;
+    font-weight: 500;
+  }
+  .hero-button {
+    text-align: center;
+  }
+  .hero-button button {
+    width: 60% !important;
+    height: 55px;
+    font-size: 87%;
+    text-align: center;
+  }
+  .hero-button {
+    margin: 1 0px 0px 20px 0px;
+  }
+  .carousel-slide-1 {
+    font-size: 15px;
+  }
+  .hero-sub-text {
+    font-size: 20px;
+    text-align: center;
+  }
+  .home-screen-container {
+    flex-wrap: wrap-reverse;
+  }
+}
+@media (max-width: 375px) {
+  .hero-logo {
+    font-size: 4.5em;
+  }
+  .hero-text {
+    font-size: 24px;
+  }
+  .hero-button button {
+    width: 35%;
+    height: 50px;
+    font-size: 87%;
+  }
+  .hero-button {
+    margin: 10px 0px 20px 0px;
+  }
+  .carousel-slide-1 {
+    font-size: 15px;
+  }
+}
+@media (max-width: 320px) {
+  .carousel-slide-4 h3 {
+    font-size: 40px;
+  }
+}
+@media (max-width: 320px) {
+  .hero-logo {
+    font-size: 3.5em !important;
+  }
+  .hero-text {
+    font-size: 24px !important;
+  }
+  .hero-button button {
+    width: 34%;
+    height: 45px;
+    font-size: 87%;
+  }
+  .hero-button {
+    margin: 10px 0px 20px 0px;
+  }
+  .carousel-slide-1 {
+    font-size: 15px;
+  }
+}

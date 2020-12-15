@@ -1,0 +1,581 @@
+.women-wrapper {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.women-wrap {
+  padding: 0;
+}
+
+.women-title {
+  font-family: 'rutanLight';
+  color: #3a2f2d;
+  text-align: left;
+  font-size: 82px;
+  letter-spacing: 13px;
+  padding-left: 15px;
+}
+
+.women-title-sub {
+  font-family: 'rutanLight';
+  text-align: left;
+  font-size: 28px;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+}
+
+.women-text {
+  font-family: 'rutanLight';
+  text-align: left;
+  font-size: 16px;
+  padding-left: 15px;
+  padding-right: 4%;
+}
+
+.women-button {
+  padding: 18px 75px;
+  width: 240px;
+  background-color: #6e4e37;
+  color: #fff;
+  font-size: 17px;
+  border: 1px solid #6e4e37;
+}
+
+.women-button {
+  right: 0;
+  bottom: 72px;
+  margin-right: 0px;
+}
+
+.women-img-wrap {
+  position: relative;
+}
+
+.label-best {
+  position: absolute;
+  top: 0;
+  font-family: 'rutan';
+  right: 2%;
+  font-size: 12px;
+  margin-top: 6px;
+  margin-right: 2px;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1px 15px;
+  align-self: center;
+  text-align: center;
+  letter-spacing: 1.92px;
+}
+
+.label-view {
+  position: absolute;
+  right: 50%;
+  text-transform: uppercase;
+  transform: translate(50%);
+  font-family: 'rutan';
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  text-align: center;
+  font-size: 12px;
+  letter-spacing: 1.92px;
+  padding: 3px 0;
+}
+
+.women-card-image img {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #36353541;
+}
+
+.home-card-image {
+  border: 1px solid #36353541;
+}
+
+.women-card-title {
+  background-color: #fefaef;
+  width: 100%;
+  text-transform: uppercase;
+  font-family: 'rutan';
+  font-size: 14px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 6px;
+  text-align: left;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.women-shop-bag-container {
+  margin-bottom: 30px !important;
+}
+.women-shop-bag-container a {
+  color: #3a2f2d !important;
+}
+
+.women-shop-bag-container a:hover {
+  text-decoration: none;
+}
+
+.women-card-text {
+  text-align: left;
+  width: 100%;
+  padding: 15px;
+  padding-left: 6px;
+  font-size: 14px;
+  background-color: #f6f1ea;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.women-button-placement {
+  margin-top: 90px;
+  text-align: right;
+}
+.women-card-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 25px;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
+.womenshop-bag-container {
+  padding: 0px 6px 6px 0px;
+}
+
+.women-shop-bag-container {
+  color: #3a2f2d;
+}
+
+.women-card-wrapper a:hover {
+  text-decoration: none;
+}
+
+.women-card-image img {
+  width: 230px;
+  height: 230px;
+}
+.women-card-title {
+  width: 230px;
+}
+.women-card-text {
+  width: 230px;
+}
+
+/*responsive*/
+/* -------------------------------------------LAPTOP 1024PX AND ABOVE----------------------------------------------------------------------- */
+@media (max-width: 1366px) {
+  .women-card-wrapper {
+    justify-content: space-between;
+    padding: 0 15px;
+  }
+  .women-card-image img {
+    width: 230px;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 230px;
+  }
+  .women-card-text {
+    width: 230px;
+  }
+}
+@media (max-width: 1214px) {
+  .women-card-wrapper {
+    justify-content: space-between;
+    padding: 0px 15px;
+  }
+
+  .women-card-image img {
+    width: 200px;
+    height: 100%;
+
+  }
+  .women-card-title {
+    width: 200px;
+  }
+  .women-card-text {
+    width: 200px;
+  }
+}
+@media (max-width: 1071px) {
+  .women-card-image img {
+    width: 180px;
+    height: 180px;
+  }
+  .women-card-title {
+    width: 180px;
+    font-size: 12px;
+  }
+  .women-card-text {
+    width: 180px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .women-card-text {
+    font-size: 12px;
+  }
+}
+
+/* @media (max-width: 991px) {
+  .women-button {
+    margin-right: 30px;
+    margin-top: 128px;
+    padding: 9% 7%;
+    width: 100%;
+    background-color: #6e4e37;
+    color: #fff;
+    font-size: 14px;
+    border: 1px solid #6e4e37;
+  }
+} */
+/* -------------------------------------------TAB 768PX TO 1024PX----------------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .women-button-placement {
+    margin-top: 5px;
+  }
+  .women-wrapper {
+    margin-bottom: 25px;
+  }
+
+  .women-title {
+    font-size: 8vw;
+  }
+  .women-text {
+    font-size: 16px;
+    margin-bottom: 0px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  .women-button {
+    margin-right: 30px;
+    margin-top: 90px;
+    padding: 9% 7%;
+    width: 100%;
+    background-color: #6e4e37;
+    color: #fff;
+    border: 1px solid #6e4e37;
+  }
+}
+@media (max-width: 964px) {
+  .women-card-image img {
+    width: 140px;
+    height: 140px;
+  }
+  .women-card-title {
+    width: 140px;
+    font-size: 10px;
+    padding-left: 8px;
+  }
+  .women-card-text {
+    width: 140px;
+    font-size: 10px;
+    padding-left: 8px;
+  }
+}
+@media (max-width: 769px) {
+  .women-text {
+    margin-bottom: 20px;
+    width: 97%;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .women-button-placement {
+    padding-left: 0px;
+  }
+}
+@media (max-width: 768px) {
+  .label-view{
+    width: 140px !important;
+  }
+  .women-wrapper {
+    display: grid;
+    grid-row-end: none;
+    width: 140%;
+  }
+  .women-button {
+    margin-top: 0px !important;
+  }
+  .women-shop-bag-container {
+    margin-bottom: 35px;
+  }
+  .women-text {
+    font-size: 16px;
+    margin-right: 5px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    text-align: justify;
+  }
+  .women-title {
+    text-align: left;
+    font-size: 10vw;
+  }
+  .women-button-placement {
+    margin: 10px 0px;
+    text-align: right;
+  }
+  .women-card-title {
+    font-size: 10px;
+  }
+  .women-button {
+    margin-top: 0px !important;
+  }
+
+  .women-button-placement {
+    text-align: left;
+    width: 20%;
+  }
+}
+@media (max-width: 759px) {
+  .women-card-image img {
+    width: 120px;
+    width: 120px;
+  }
+  .women-card-title {
+    width: 120px;
+    font-size: 10px;
+    height: 45px;
+  }
+  .women-card-text {
+    width: 120px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 726px) {
+  .women-card-wrapper {
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 689px) {
+  .women-card-title {
+    font-size: 14px;
+  }
+  .women-card-text {
+    font-size: 14px;
+  }
+}
+@media (max-width: 683px) {
+  .label-view{
+    width: 100% !important;
+  }
+  .women-card-wrapper {
+    padding: 0px;
+  }
+  .women-shop-bag-container-root {
+    justify-content: space-between;
+    flex-basis: 31.2%;
+    margin: 5px;
+  }
+  .women-card-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 12px;
+  }
+  .women-card-text {
+    width: 100%;
+    height: 60px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 619px) {
+  .women-card-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 11px;
+  }
+  .women-card-text {
+    width: 100%;
+    font-size: 11px;
+    height: fit-content;
+  }
+}
+@media (max-width: 582px) {
+  .women-card-title {
+    font-size: 12px;
+  }
+  .women-card-text {
+    font-size: 12px;
+  }
+}
+/* ------------------------------MOBILE UPTO 575PX ------------------------------------------- */
+@media (max-width: 575px) {
+  .women-button-placement {
+    width: 37%;
+  }
+  .women-text {
+    width: 76%;
+  }
+}
+
+@media (max-width: 575px) {
+  .women-button-placement {
+    width: 31%;
+  }
+}
+
+
+
+@media (max-width: 529px) {
+  .women-card-title {
+    font-size: 10px;
+  }
+  .women-card-text {
+    font-size: 10px;
+  }
+}
+@media (max-width: 514px) {
+  .women-card-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 11px;
+  }
+  .women-card-text {
+    width: 100%;
+    font-size: 11px;
+    height: fit-content;
+  }
+}
+@media (max-width: 480px) {
+  .women-card-wrapper {
+    display: flex;
+  }
+  .women-card-title {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 468px) {
+  .women-shop-bag-container-root {
+    flex-basis: 31%;
+  }
+}
+@media (max-width: 449px) {
+  .women-card-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 11px;
+  }
+  .women-card-text {
+    width: 100%;
+    font-size: 11px;
+    height: fit-content;
+  }
+}
+
+@media (max-width: 439px) {
+  .women-card-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 11px;
+  }
+  .women-card-text {
+    width: 100%;
+    font-size: 11px;
+    height: fit-content;
+  }
+}
+@media (max-width: 431px) {
+  .women-shop-bag-container-root {
+    flex-basis: 46%;
+  }
+}
+@media (max-width: 425px) {
+  .women-shop-bag-container {
+    flex-basis: 50%;
+    margin-bottom: 25px !important;
+  }
+  .women-card-wrapper {
+    padding: 0px;
+    margin-bottom: 0px !important;
+  }
+  .women-card-title {
+    font-size: 13px;
+  }
+  .women-card-text {
+    font-size: 12px;
+    height: 33px;
+    padding: 10px;
+  }
+  .women-text {
+    margin-bottom: 0px;
+    font-size: 14px;
+    padding: 0px 15px;
+  }
+
+  .women-shop-bag-container-root:last-child {
+    display: none;
+  }
+}
+@media (max-width: 375px) {
+  .women-card-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 11px;
+  }
+  .women-card-text {
+    width: 100%;
+    font-size: 11px;
+    height: fit-content;
+  }
+  .women-shop-bag-container {
+    margin-bottom: 30px;
+  }
+  .women-card-image img {
+    height: 100%;
+    width: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 12px;
+  }
+  .women-card-text {
+    width: 100%;
+  }
+  .women-shop-bag-container {
+    margin-bottom: 35px;
+  }
+  .women-button {
+    font-size: 12px;
+  }
+}
+@media (max-width: 364px) {
+  .women-card-image img {
+    width: 100%;
+    height: 100%;
+  }
+  .women-card-title {
+    width: 100%;
+    font-size: 11px;
+  }
+  .women-card-text {
+    width: 100%;
+    font-size: 11px;
+    height: fit-content;
+    padding-left: 15px !important;
+  }
+}

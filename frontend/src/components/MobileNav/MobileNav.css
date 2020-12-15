@@ -1,0 +1,59 @@
+.mobile-nav-cont {
+  display: none;
+  background: #fff;
+  z-index: 90;
+}
+
+.mobile-nav-wrapper {
+  color: black;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  overflow: auto;
+  font-size: 14px;
+  width: 100%;
+  font-family: 'rutan';
+}
+
+.mobile-nav-wrapper:hover {
+  text-decoration: none;
+}
+
+.mobile-nav-test {
+  padding-bottom: 10px;
+  margin-right: 8px;
+}
+
+.mobile-nav-test:first-child {
+  margin-left: auto;
+}
+
+.mobile-nav-test:last-child {
+  margin-right: auto;
+}
+
+.mobile-nav-test a {
+  color: black;
+  margin: 0 20px;
+}
+
+.mobile-nav-test a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 550px) {
+  .mobile-nav-cont {
+    display: block;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    height: 30px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 414px) {
+  .mobile-nav-test {
+    margin-right: 14px;
+  }
+}
