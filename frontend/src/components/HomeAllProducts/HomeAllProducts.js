@@ -26,7 +26,7 @@ const HomeAllProducts = (props) => {
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <div className='product-list-image'>
                             <div>
-                            <img id={product.productId} src={product.lifestyleImage} alt='home_1'/>
+                            <img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                             {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                             </div>
@@ -45,7 +45,7 @@ const HomeAllProducts = (props) => {
                 {props.kitchenProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <Link to={`/product/${product.productId}`}><div className='product-list-image'>
-                            <img id={product.productId} src={product.lifestyleImage} alt='home_1'/>
+                            <img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                             {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                         </div>
@@ -62,7 +62,7 @@ const HomeAllProducts = (props) => {
                 {props.laundryProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <Link to={`/product/${product.productId}`}><div className='product-list-image'>
-                            <img id={product.productId} src={product.lifestyleImage} alt='home_1'/>
+                            <img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                             {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                         </div>
@@ -80,7 +80,7 @@ const HomeAllProducts = (props) => {
                     <Link to={`/product/${product.productId}`}>
                     <div className='product-list-card-wrapper' key={product.productId}>
                         <div className='product-list-image'>
-                            <img src={product.lifestyleImage} alt='home_1'/>
+                            <img src={product.heroImage} alt='home_1'/>
                             {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                             {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                         </div>
@@ -92,22 +92,6 @@ const HomeAllProducts = (props) => {
             </Row>
             
         </div>
-        {/* <Container>
-                <div className='product-list-label'>{props.similarProductListLabel}</div>
-                <div className='product-list-text'>{props.similarProductListText}</div>
-                <Container>
-                <Row className='product-list-card-wrapper'>
-                    {props.similarProductDetails.map(product => (
-                        <div className='product-list-card-wrapper' key={product._id}>
-                            <div className='product-list-image'>
-                                <img src={product.image} alt='home_1'/>
-                            </div>
-                            <div className='product-list-card-title'>{product.name}</div>
-                        </div>
-                    ))}
-                </Row>
-                </Container>
-        </Container> */}
         </div>
     </Container>
     )

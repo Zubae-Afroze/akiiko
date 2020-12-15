@@ -1,12 +1,17 @@
 import React from 'react';
 import { Container, Row, Col, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import HomeScreenWomen from '../HomeScreenWomen/HomeScreenWomen';
+
+
+import HomeScreenBags from '../HomeScreenBags/HomeScreenBags';
 import HomeScreenHome from '../HomeScreenHome/HomeScreenHome';
-import './HomeScreen.css';
-import HomeScreenWorkout from '../HomeScreenWorkout/HomeScreenWorkout';
+import HomeScreenStorage from '../HomeScreenStorage/HomeScreenStorage';
+
+
 import MyComponent from 'react-fullpage-custom-loader';
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
+
+import './HomeScreen.css';
 
 // import UseSpinner from '../../components/Spinner/UseSpinner';
 
@@ -62,7 +67,7 @@ class HomeScreen extends React.Component {
                     customLoader={<SpinnerIcon />}
                 /> : null}
             <Container>
-                <Row className='home-screen-container' > {/* class name added here */}
+                <Row className='home-screen-container'>
                     <Col sm={4}>
                         <div className='hero-container'>
                             <div className='empty-div'></div>
@@ -137,9 +142,9 @@ class HomeScreen extends React.Component {
                         </Carousel>
                     </Col>
                 </Row>
-                <HomeScreenWomen />
+                <HomeScreenBags />
                 <HomeScreenHome />
-                <HomeScreenWorkout />
+                <HomeScreenStorage />
             </Container>
         </React.Fragment>
         )

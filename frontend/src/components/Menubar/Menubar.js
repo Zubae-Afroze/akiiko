@@ -179,7 +179,6 @@ export default class Menubar extends Component {
         return (
             <>
             <Container className='navbar-wrapper'>
-                {/*<div className= 'navbar-wrapper sticky-navbar'>*/}
                 <div className={classnames("navabar-wrapper", {'sticky-navbar': !this.state.navFixed})}>
                 <Nav fill as="ul" className='navbar-ul'>
                     <Nav.Item as="li" className='nav-test'>
@@ -347,96 +346,6 @@ export default class Menubar extends Component {
                             </Collapse> : null
                         }
                     </Nav.Item>
-                    {/* <Nav.Item as="li">
-                        <Nav className='navbar-li'><a href='/' onMouseEnter={this.toggleHomeDropDiv} onClick={this.toggleHomeDropDiv}>Home</a></Nav>
-                        {
-                            this.state.dropHomeDiv ? 
-                            <Collapse in={this.toggleHomeDropDiv} onMouseLeave={this.toggleHomeDropDiv}>
-                                <Row className='navbar-dropdown'>
-                                    <Col className='navbar-drop-list' sm={8}>
-                                        <ul>
-                                            <li>
-                                                <img src='/images/nav_drop/men_drop/wallet.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>KITCHEN</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/men_drop/coat_cover.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>TABLEWARE</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/men_drop/shoe_cover.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>LAUNDRY</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/men_drop/bag.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>STORAGE</div></li>
-                                        </ul>
-                                        <a href='/' className='navbar-drop-link'>VIEW ALL PRODUCTS</a>
-                                    </Col>
-                                    <Col sm={4} className='navbar-drop-hero'><img src='/images/nav_drop/men_drop/menDropHero.png' alt='home_drop_hero'/></Col>
-                                </Row>
-                            </Collapse> : null
-                        }
-                    </Nav.Item>
-                    <Nav.Item as="li">
-                        <Nav className='navbar-li'><a href='/' onMouseEnter={this.toggleOfficeDropDiv} onClick={this.toggleOfficeDropDiv}>Office</a></Nav>
-                        {
-                            this.state.dropOfficeDiv ? 
-                            <Collapse in={this.toggleOfficeDropDiv} onMouseLeave={this.toggleOfficeDropDiv}>
-                                <Row className='navbar-dropdown'>
-                                    <Col className='navbar-drop-list' sm={8}>
-                                        <ul>
-                                            <li>
-                                                <img src='/images/nav_drop/women_drop/hand_bag.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>LAPTOP BAG</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/women_drop/wallet.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>MESSENGER</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/women_drop/shoe_cover.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>STORAGE</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/women_drop/coat_cover.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>FOLDER</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/women_drop/accessories.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>ACCESSORIES</div></li>
-                                        </ul>
-                                        <a href='/' className='navbar-drop-link'>VIEW ALL PRODUCTS</a>
-                                    </Col>
-                                    <Col sm={4} className='navbar-drop-hero'><img src='/images/nav_drop/women_drop/womenDropHero.png' alt='home_drop_hero'/></Col>
-                                </Row>
-                            </Collapse> : null
-                        }
-                    </Nav.Item>
-                    <Nav.Item as="li">
-                        <Nav className='navbar-li'><a href='/' onMouseEnter={this.toggleGiftDropDiv} onClick={this.toggleGiftDropDiv}>Gifting</a></Nav>
-                        {
-                            this.state.dropGiftDiv ? 
-                            <Collapse in={this.toggleGiftDropDiv} onMouseLeave={this.toggleGiftDropDiv}>
-                                <Row className='navbar-dropdown'>
-                                    <Col className='navbar-drop-list' sm={8}>
-                                        <ul>
-                                            <li>
-                                                <img src='/images/nav_drop/gift_drop/gift_box.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>GIFT BOX</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/gift_drop/gift_bag.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>GIFT BAG</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/gift_drop/gift_wrapper.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>GIFT WRAP</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/gift_drop/gift_wrapper.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>POUCHES</div></li>
-                                        </ul>
-                                        <a href='/' className='navbar-drop-link'>VIEW ALL PRODUCTS</a>
-                                    </Col>
-                                    <Col sm={4} className='navbar-drop-hero'><img src='/images/nav_drop/gift_drop/giftDropHero.png' alt='home_drop_hero'/></Col>
-                                </Row>
-                            </Collapse> : null
-                        }
-                    </Nav.Item>
-                    <Nav.Item as="li">
-                        <Nav className='navbar-li'>Garden</Nav>
-                    </Nav.Item> */}
                 </Nav>
                 </div>          
             </Container>  

@@ -60,7 +60,7 @@ export default class Footer extends Component {
                         <Col sm={7} className='enquire col-sm-6'> {/* enuire form class*/}
                         <div className='footer-main-label-2'>Enquire At</div>
                             <Form inline>
-                                <input type="text" placeholder="Your email Id" className='footer-main-form'/>
+                                <input type="text" placeholder="Your email ID" className='footer-main-form'/>
                                 <button className='footer-main-button'>Send</button>
                             </Form>
                         </Col>

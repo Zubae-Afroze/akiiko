@@ -25,7 +25,7 @@ const ProductList = (props) => {
                         <Link className='product-list-card-wrapper' to={`/product/${product.productId}`} key={product.productId}>
                         <div>
                             <div className='product-list-image'>
-                                <img id={product.productId} src={product.lifestyleImage} alt='home_1'/>
+                                <img id={product.productId} src={product.heroImage} alt='home_1'/>
                                 {product.bestSeller !== undefined ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                                 {product.quickView !== undefined ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
                             </div>
@@ -35,23 +35,7 @@ const ProductList = (props) => {
                         </Link>
                     ))}
                 </Row>
-            </div>
-             {/* <Container/>
-                <div className='product-list-label'>{props.similarProductListLabel}</div>
-                <div className='product-list-text'>{props.similarProductListText}</div>
-                <Container>
-                <Row className='product-list-card-wrapper'>
-                    {props.similarProductDetails.map(product => (
-                        <Link key={product._id}><div className='product-list-card-wrapper'>
-                            <div className='product-list-image'>
-                                <img src={product.image} alt='home_1'/>
-                            </div>
-                            <div className='product-list-card-title'>{product.name}</div>
-                        </div></Link>
-                    ))}
-                </Row>
-                </Container> */}
-            
+            </div>            
             </div>
         </Container>
     )

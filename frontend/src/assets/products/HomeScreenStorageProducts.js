@@ -1,4 +1,4 @@
-const StorageHomeProducts = [
+const HomeScreenStorageProducts = [
     {
         productId: 'HS001',
         productName: 'Classic Storage Tray',
@@ -13,14 +13,15 @@ const StorageHomeProducts = [
     },
     {
         productId: 'HS002',
-        productName: 'Versatile Storage Tray (Set of 3)',
+        productName: 'Versatile Storage tray',
         heroImage: '/images/p_images/Storage/Home/HS002/hero.jpg',
         images: 
             ['/images/p_images/Storage/Home/HS002/hero.jpg',],
         group: 'Storage',
         subGroup: 'Home',
+        bestSeller: 'Best Seller',
         mrpPrice: '1649',
-        price: '1499'
+        price:'1499',
     },
     {
         productId: 'HS003',
@@ -31,11 +32,11 @@ const StorageHomeProducts = [
         group: 'Storage',
         subGroup: 'Home',
         mrpPrice: '1499',
-        price: '1349'
+        price:'1349',
     },
     {
         productId: 'HS007',
-        productName: 'Broad Storage Bag',
+        productName: 'Broad Storage Bags',
         heroImage: '/images/p_images/Storage/Home/HS007/hero.jpg',
         images: 
             ['/images/p_images/Storage/Home/HS007/hero.jpg',],
@@ -45,19 +46,19 @@ const StorageHomeProducts = [
     },
     {
         productId: 'HS008',
-        productName: 'All Purpose Hanging Organiser',
+        productName: 'Hanging Organiser',
         heroImage: '/images/p_images/Storage/Home/HS008/hero.jpg',
         images: 
             ['/images/p_images/Storage/Home/HS008/hero.jpg',],
         hoverImage: '/images/hover_images/HS008/1.gif',
         group: 'Storage',
         subGroup: 'Home',
-        quickView: 'quick View',
+        quickView: 'quick view',
         mrpPrice: '849',
     },
     {
         productId: 'HS010',
-        productName: 'Original Storage Boxes (Set Of 2)',
+        productName: 'Original Storage Boxes \u00A0 (Set Of 2)',
         heroImage: '/images/p_images/Storage/Home/HS010/hero.jpg',
         images: 
             ['/images/p_images/Storage/Home/HS010/hero.jpg',],
@@ -67,4 +68,4 @@ const StorageHomeProducts = [
     },
 ]
 
-export default StorageHomeProducts
+export default HomeScreenStorageProducts
