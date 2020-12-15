@@ -26,7 +26,7 @@ export default class Footer extends Component {
                                 </button></Link>
                             </div>
                         </Col>
-                        <Col sm={7} className='font-wrapper footer-brand-section-two' >  {/* class name is given to adjust the width of the container*/}
+                        <Col sm={7} className='font-wrapper footer-brand-section-two' >
                         <Row className='footer-image-row'>
                             <Col className='footer-image-col-1 col-sm-4 footer-icons'  sm><Link smooth={true} to={'/FooterLinks#natural'}><div><img src={'/images/font_images/nature.svg'} alt='natural'/></div></Link>NATURAL</Col>
                             <Col className='footer-image-col-4 col-sm-4 footer-icons' sm><Link smooth={true} to={'/FooterLinks/#organic'}><div><img src={'/images/font_images/organic.svg'} alt='natural'/></div></Link>ORGANIC</Col>
@@ -57,7 +57,7 @@ export default class Footer extends Component {
                                 </p>
                             </div>
                         </Col>
-                        <Col sm={7} className='enquire col-sm-6'> {/* enuire form class*/}
+                        <Col sm={7} className='enquire col-sm-6'>
                         <div className='footer-main-label-2'>Enquire At</div>
                             <Form inline>
                                 <input type="text" placeholder="Your email ID" className='footer-main-form'/>
