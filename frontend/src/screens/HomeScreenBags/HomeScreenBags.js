@@ -20,7 +20,7 @@ const HomeScreenBags = () => {
     const [HomeScreenBagsProducts, setHomeScreenBagsProducts] = useState([]);
 
     useEffect(() => {
-        const fetchHomeScreenBagsProducts = async() => {
+        const fetchHomeScreenBagsProducts = async () => {
             const { data } = await axios.get('/api/home_screen_bags_products')
 
             setHomeScreenBagsProducts(data)

@@ -3,6 +3,7 @@ import { Container, Row, Col, Dropdown, Modal, Carousel} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import emailjs from 'emailjs-com';
+//import axios from 'axios';
 
 import ReactImageMagnify from 'react-image-magnify';
 
@@ -11,6 +12,62 @@ import './ProductDetails.css';
 const ProductDetails = (props) => {
 
     const product = props.productInfo.find(p => p.productId === props.match.params.id);
+
+    // const [product, setProduct] = useState([])
+
+    // function fetchProduct()  {
+    //     const { data } = axios.get(`/product/${props.match.params.id}`)
+
+    //     setProduct(data);
+
+    //     console.log(data);
+    // }
+
+    // fetchProduct();
+
+    // useEffect(() => {
+
+    // })
+
+    // const [product, setProduct] = useState([])
+
+    // useEffect(() => {
+    //     const fetchProduct = async () => {
+    //         const { data } = await axios.get(`/product/${props.match.params.id}`)
+
+    //         setProduct(data);
+    //     }
+    //     fetchProduct();
+    // },[props.match.params.id])
+
+    // const [product, setProduct] = useState([])
+
+    // const fetchProduct = async () => {
+    //     const { data } = await axios.get(`/product/${props.match.params.id}`)
+
+    //     setProduct(data);
+    // }   
+
+    // fetchProduct();
+
+    // useEffect(() => {
+
+    // })
+
+    //const product = products.find(p => p.productId === props.match.params.id)
+
+    // const [product, setProduct] = useState([])
+
+    // useEffect(() => {
+    //     const fetchProduct = async () => {
+    //         const { data } = await axios.get(`/product/${props.match.params.id}`)
+
+    //         setProduct(data)
+    //     }
+
+    //     fetchProduct();
+
+    // }, [props.match.params.id])
 
     const [bigImageSrc, setImageSrc] = useState(product.heroImage);
 

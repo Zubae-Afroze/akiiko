@@ -42,7 +42,7 @@ const HomeScreenHome = () => {
     const [HomeScreenHomeProducts, setHomeScreenHomeProducts] = useState([]);
 
     useEffect(() => {
-        const fetchHomeScreenHomeProducts = async() => {
+        const fetchHomeScreenHomeProducts = async () => {
             const { data } = await axios.get('/api/home_screen_home_products')
 
             setHomeScreenHomeProducts(data)

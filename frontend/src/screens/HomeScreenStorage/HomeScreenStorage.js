@@ -19,7 +19,7 @@ const HomeScreenWorkout = () => {
     const [HomeScreenStorageProducts, setHomeScreenStorageProducts] = useState([]);
 
     useEffect(() => {
-        const fetchHomeScreenStorageProducts = async() => {
+        const fetchHomeScreenStorageProducts = async () => {
             const { data } = await axios.get('/api/home_screen_storage_products');
 
             setHomeScreenStorageProducts(data)

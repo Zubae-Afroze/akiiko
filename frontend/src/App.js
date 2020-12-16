@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Route, Switch, HashRouter} from 'react-router-dom';
+import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
@@ -49,7 +49,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <HashRouter>
+      <Router>
           <ScrollToTop />
           <Header/>
           <Switch>
@@ -237,7 +237,7 @@ export default class App extends Component {
 
           </Switch>
           <Footer/>
-      </HashRouter>
+      </Router>
     )
   }
 }

@@ -40,11 +40,11 @@ app.get('/api/home_screen_storage_products/:id', (req, res) => {
 })
 
 //Master Product test fetch
-app.get('/api/products', (req, res) => {
+app.get('/product', (req, res) => {
     res.json(MasterProducts);
 })
 
-app.get('/api/products/:id', (req, res) => {
+app.get('/product/:id', (req, res) => {
     const product = MasterProducts.find(p => p.productId === req.params.id)
     res.json(product);
 })
