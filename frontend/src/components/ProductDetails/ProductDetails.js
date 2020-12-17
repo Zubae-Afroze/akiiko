@@ -11,34 +11,6 @@ import './ProductDetails.css';
 
 const ProductDetails = (props) => {
 
-    //const product = props.productInfo.find(p => p.productId === props.match.params.id);
-
-    // const [product, setProduct] = useState([])
-
-    // function fetchProduct()  {
-    //     const { data } = axios.get(`/product/${props.match.params.id}`)
-
-    //     setProduct(data);
-
-    //     console.log(data);
-    // }
-
-    // fetchProduct();
-
-    // useEffect(() => {
-
-    // })
-
-    // const [product, setProduct] = useState([])
-
-    // axios.get(`/product/${props.match.params.id}`).then( res => {
-    //     setProduct(res.data)
-    // })
-
-    // useEffect(() => {
-        
-    // })
-
     const [product, setProduct] = useState([])
 
     useEffect(() => {
@@ -51,41 +23,6 @@ const ProductDetails = (props) => {
 
         setImageSrc(product.heroImage)
     }, [props.match.params.id, product.heroImage])
-
-    // useEffect(() => {
-    //     axios.get(`/product/${props.match.params.id}`).then( res => {
-    //         setProduct(res.data)
-    //     })
-    // },[props.match.params.id])
-
-    // const [product, setProduct] = useState([])
-
-    // const fetchProduct = async () => {
-    //     const { data } = await axios.get(`/product/${props.match.params.id}`)
-
-    //     setProduct(data);
-    // }   
-
-    // fetchProduct();
-
-    // useEffect(() => {
-
-    // })
-
-    //const product = products.find(p => p.productId === props.match.params.id)
-
-    // const [product, setProduct] = useState([])
-
-    // useEffect(() => {
-    //     const fetchProduct = async () => {
-    //         const { data } = await axios.get(`/product/${props.match.params.id}`)
-
-    //         setProduct(data)
-    //     }
-
-    //     fetchProduct();
-
-    // }, [props.match.params.id])
 
     const [bigImageSrc, setImageSrc] = useState(product.heroImage);
 
@@ -247,7 +184,7 @@ const ProductDetails = (props) => {
                     </Carousel>
          </Col>
         <Row>
-            <Col xs={1} className='alt-img-list'> {/*hi*/}
+            <Col xs={1} className='alt-img-list'>
             <ul>
                 {product.images.map((prod, index) => (
                     <li key={index}><img onClick={() => setImageSrc(prod)} src={prod} alt='alt_image' /></li>
@@ -417,7 +354,7 @@ const ProductDetails = (props) => {
           }
         </div>
         </Container> : null}
-        </>
+    </>
     )
 }
 
