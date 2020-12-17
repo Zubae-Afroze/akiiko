@@ -211,7 +211,7 @@ export default class App extends Component {
 
               {/* Wallet */}
               <Route path='/accessories/wallet' render={(props) => (<ProductList {...props} 
-              productListLabel={'On The Go'}
+              productListLabel={'Wallet'}
               productListText={'An essential in every sense of the word, the wallet is a classic. We bring to you a collection of timeless, minimal and vegan fabric wallets that serve your purpose and look their part. '}
               productDetails={AccessoriesWalletProduct}/>)}/>
 
