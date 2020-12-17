@@ -6,8 +6,12 @@ const HomeScreenHomeProducts = require('./data/HomeScreenHomeProducts');
 const HomeScreenStorageProducts = require('./data/HomeScreenStorageProducts');
 
 //const BagWomenProducts = require('./data/Bags/Women/BagWomenProducts');
+const AccessoriesOnTheGoProducts = require('./data/Accessories/OnTheGo/AcessoriesOnTheGoProducts');
+const AccessoriesWalletProducts  = require('./data/Accessories/Wallet/AccessoriesWalletProducts');
+
 
 const MasterProducts = require('./data/MasterProducts');
+
 
 const app = express();
 
@@ -33,6 +37,15 @@ app.get('/api/home_screen_storage_products', (req, res) => {
 })
 
 //Product Listing Fetches
+//Accessories - OnTheGo
+app.get('/api/accessories/onthego', (req, res) => {
+    res.json(AccessoriesOnTheGoProducts);
+})
+
+//Accessories - Wallet
+app.get('/api/accessories/wallet', (req, res) => {
+    res.json(AccessoriesWalletProducts)
+})
 
 
 //Master Product test fetch

@@ -24,4 +24,4 @@ const AccessoriesOnTheGoProduct = [
     },
 ]
 
-export default AccessoriesOnTheGoProduct
+module.exports = AccessoriesOnTheGoProduct

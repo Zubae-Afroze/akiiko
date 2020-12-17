@@ -55,4 +55,4 @@ const AccessoriesWalletProducts = [
     },
 ]
 
-export default AccessoriesWalletProducts
+module.exports = AccessoriesWalletProducts
