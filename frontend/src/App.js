@@ -35,7 +35,7 @@ import BagAllProducts from './components/BagAllProducts/BagAllProducts';
 import HomeAllProducts from './components/HomeAllProducts/HomeAllProducts';
 import AccessoriesAllProducts from './components/AccessoriesAllProducts/AccessoriesAllProducts';
 
-import MasterProducts from './assets/products/MasterProducts';
+//import MasterProducts from './assets/products/MasterProducts';
 import GiftAllProducts from './components/GiftAllProducts/GiftAllProducts';
 import StorageAllProducts from './components/StorageAllProducts/StorageAllProducts';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
@@ -228,7 +228,7 @@ export default class App extends Component {
 
               {/* All Products */}
               <Route path='/product/:id' render={(props) => (<ProductDetails {...props} 
-              productInfo={MasterProducts}/>)}/>
+              />)}/>
 
               <Route path='/FooterLinks' render={() => (<FooterLinks/>)} />
               <Route path='/AboutUs/' render={() => (<AboutUs />) } />

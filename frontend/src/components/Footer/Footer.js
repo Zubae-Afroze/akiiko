@@ -28,14 +28,14 @@ export default class Footer extends Component {
                         </Col>
                         <Col sm={7} className='font-wrapper footer-brand-section-two' >
                         <Row className='footer-image-row'>
-                            <Col className='footer-image-col-1 col-sm-4 footer-icons'  sm><Link smooth={true} to={'/FooterLinks#natural'}><div><img src={'/images/font_images/nature.svg'} alt='natural'/></div></Link>NATURAL</Col>
-                            <Col className='footer-image-col-4 col-sm-4 footer-icons' sm><Link smooth={true} to={'/FooterLinks/#organic'}><div><img src={'/images/font_images/organic.svg'} alt='natural'/></div></Link>ORGANIC</Col>
-                            <Col className='footer-image-col-3 col-sm-4 footer-icons' sm><div><Link smooth={true} to={'/FooterLinks/#sustainable'}><img src={'/images/font_images/sustainable.svg'} alt='natural'/></Link></div>SUSTAINABLE</Col>
+                            <Col className='footer-image-col-1 col-sm-4 footer-icons'  sm><Link smooth={false} to={'/FooterLinks#natural'}><div><img src={'/images/font_images/nature.svg'} alt='natural'/></div></Link>NATURAL</Col>
+                            <Col className='footer-image-col-4 col-sm-4 footer-icons' sm><Link smooth={false} to={'/FooterLinks/#organic'}><div><img src={'/images/font_images/organic.svg'} alt='natural'/></div></Link>ORGANIC</Col>
+                            <Col className='footer-image-col-3 col-sm-4 footer-icons' sm><div><Link smooth={false} to={'/FooterLinks/#sustainable'}><img src={'/images/font_images/sustainable.svg'} alt='natural'/></Link></div>SUSTAINABLE</Col>
                         </Row >
                         <Row className='footer-image-row'>
-                            <Col className='footer-image-col-4 col-sm-4 footer-icons' sm><div><Link smooth={true} to={'/FooterLinks/#eco'}><img src={'/images/font_images/eco.svg'} alt='natural'/></Link></div>ECO FRIENDLY</Col>
-                            <Col className='footer-image-col-5 col-sm-4 footer-icons' sm><div><Link smooth={true} to={'/FooterLinks/#no_animal'}><img src={'/images/font_images/no_animal.svg'} alt='natural'/></Link></div>NO ANIMAL SKIN</Col>
-                            <Col className='footer-image-col-6 col-sm-4 footer-icons' sm><div><Link smooth={true} to={'/FooterLinks/#no_plastic'}><img src={'/images/font_images/no_plastic.svg'} alt='natural'/></Link></div>NO PLASTIC</Col>
+                            <Col className='footer-image-col-4 col-sm-4 footer-icons' sm><div><Link smooth={false} to={'/FooterLinks/#eco'}><img src={'/images/font_images/eco.svg'} alt='natural'/></Link></div>ECO FRIENDLY</Col>
+                            <Col className='footer-image-col-5 col-sm-4 footer-icons' sm><div><Link smooth={false} to={'/FooterLinks/#no_animal'}><img src={'/images/font_images/no_animal.svg'} alt='natural'/></Link></div>NO ANIMAL SKIN</Col>
+                            <Col className='footer-image-col-6 col-sm-4 footer-icons' sm><div><Link smooth={false} to={'/FooterLinks/#no_plastic'}><img src={'/images/font_images/no_plastic.svg'} alt='natural'/></Link></div>NO PLASTIC</Col>
                         </Row>
                         </Col>
                     </Row>

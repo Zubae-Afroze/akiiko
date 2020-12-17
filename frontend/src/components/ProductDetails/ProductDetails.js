@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Dropdown, Modal, Carousel} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import emailjs from 'emailjs-com';
-//import axios from 'axios';
+import axios from 'axios';
 
 import ReactImageMagnify from 'react-image-magnify';
 
@@ -11,7 +11,7 @@ import './ProductDetails.css';
 
 const ProductDetails = (props) => {
 
-    const product = props.productInfo.find(p => p.productId === props.match.params.id);
+    //const product = props.productInfo.find(p => p.productId === props.match.params.id);
 
     // const [product, setProduct] = useState([])
 
@@ -31,13 +31,31 @@ const ProductDetails = (props) => {
 
     // const [product, setProduct] = useState([])
 
-    // useEffect(() => {
-    //     const fetchProduct = async () => {
-    //         const { data } = await axios.get(`/product/${props.match.params.id}`)
+    // axios.get(`/product/${props.match.params.id}`).then( res => {
+    //     setProduct(res.data)
+    // })
 
-    //         setProduct(data);
-    //     }
-    //     fetchProduct();
+    // useEffect(() => {
+        
+    // })
+
+    const [product, setProduct] = useState([])
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            const res =  await axios.get(`/product/${props.match.params.id}`)
+            setProduct(res.data)
+        }
+
+        fetchProduct();
+
+        setImageSrc(product.heroImage)
+    }, [props.match.params.id, product.heroImage])
+
+    // useEffect(() => {
+    //     axios.get(`/product/${props.match.params.id}`).then( res => {
+    //         setProduct(res.data)
+    //     })
     // },[props.match.params.id])
 
     // const [product, setProduct] = useState([])
@@ -210,11 +228,13 @@ const ProductDetails = (props) => {
     // const [dropThickness, setDropThickness] = useState('');
 
     return (
+        <>
+        { product.productId ? 
         <Container>
         <div className='product-details-wrapper'>
         <Col sm={12} className='carousel-wrapper product-details-carousel'>
                 <Carousel controls={false}>
-                {product.images.map((prod, index) => (  <Carousel.Item interval={null} key={index}>
+                {product.images.map((prod, index) => (<Carousel.Item interval={null} key={index}>
                         <img
                         className="d-block w-100"
                         src={prod}
@@ -396,7 +416,8 @@ const ProductDetails = (props) => {
           </Row> </div>: null
           }
         </div>
-        </Container>
+        </Container> : null}
+        </>
     )
 }
 
