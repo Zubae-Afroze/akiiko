@@ -22,7 +22,7 @@ const StorageAllProducts = (props) => {
             <Row className='product-list-card-wrapper'>
                 {props.organisersProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
-                        <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                        <Link to={`/api/product/${product.productId}`}><div className='product-list-image'>
                             <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
                             {product.quickView ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
@@ -40,7 +40,7 @@ const StorageAllProducts = (props) => {
             <Row className='product-list-card-wrapper'>
                 {props.homeProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
-                        <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                        <Link to={`/api/product/${product.productId}`}><div className='product-list-image'>
                             <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
                             {product.quickView ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
