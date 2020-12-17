@@ -23,7 +23,7 @@ const BagAllProducts = (props) => {
             <Row className='product-list-card-wrapper'>
                 {props.womenProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
-                        <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                        <Link to={`/api/product/${product.productId}`}><div className='product-list-image'>
                             <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                             {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
@@ -41,7 +41,7 @@ const BagAllProducts = (props) => {
             <Row className='product-list-card-wrapper'>
                 {props.toteProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
-                        <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                        <Link to={`/api/product/${product.productId}`}><div className='product-list-image'>
                             <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                             {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}</div>
@@ -58,7 +58,7 @@ const BagAllProducts = (props) => {
             <Row className='product-list-card-wrapper'>
                 {props.officeProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
-                        <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                        <Link to={`/api/product/${product.productId}`}><div className='product-list-image'>
                             <img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
                             {product.quickView ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
@@ -75,7 +75,7 @@ const BagAllProducts = (props) => {
             <Row className='product-list-card-wrapper'>
                 {props.travelProductDetails.map(product => (
                     <div className='product-list-card-wrapper' key={product.productId}>
-                        <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                        <Link to={`/api/product/${product.productId}`}><div className='product-list-image'>
                             <img id={product.productId} src={product.heroImage} alt='home_1'/>
                             {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
                             {product.quickView ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}

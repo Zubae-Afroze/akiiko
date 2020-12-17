@@ -227,14 +227,11 @@ export default class App extends Component {
               />)}/>
 
               {/* All Products */}
-              <Route path='/product/:id' render={(props) => (<ProductDetails {...props} 
-              />)}/>
+              <Route path='/api/product/:id' render={(props) => (<ProductDetails {...props} />)}/>
 
               <Route path='/FooterLinks' render={() => (<FooterLinks/>)} />
               <Route path='/AboutUs/' render={() => (<AboutUs />) } />
               <Route path='/Careers/' render={() => (<Careers />) } />
-
-
           </Switch>
           <Footer/>
       </Router>

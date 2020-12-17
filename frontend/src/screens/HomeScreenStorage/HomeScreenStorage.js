@@ -51,7 +51,7 @@ const HomeScreenWorkout = () => {
                     <Row className='workout-card-wrapper'>
                         {HomeScreenStorageProducts.map(product => (
                             <Col className='home-card-items ' key={product.productId}>
-                                <Link to={`/product/${product.productId}`}><div>
+                                <Link to={`/api/product/${product.productId}`}><div>
                                     <div className='women-img-wrap'>
                                     <img id={product.productId} className='home-card-image' src={product.heroImage} alt='home_1'/>
                                     {product.bestSeller ? <span className='label-best label-best-workout'>{product.bestSeller}</span> : null}

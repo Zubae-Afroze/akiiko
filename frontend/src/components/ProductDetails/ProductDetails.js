@@ -15,7 +15,7 @@ const ProductDetails = (props) => {
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const res =  await axios.get(`/product/${props.match.params.id}`)
+            const res =  await axios.get(`/api/product/${props.match.params.id}`)
             setProduct(res.data)
         }
 
@@ -336,7 +336,7 @@ const ProductDetails = (props) => {
             {/* Similar Products */}
                 {product.similarProducts.map(prod => (
                     <div key={prod.productId} className='similar-products-container'>
-                        <Link to={`/product/${prod.productId}`} onClick={() => setImageSrc(prod.heroImage)}>
+                        <Link to={`/api/product/${prod.productId}`} onClick={() => setImageSrc(prod.heroImage)}>
                             <Col lg={2.4} >
                                 <div>
                                     <div className='similar-products-image'><img src={prod.heroImage} alt={prod.productId}></img>

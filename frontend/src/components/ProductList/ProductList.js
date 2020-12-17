@@ -15,14 +15,14 @@ const ProductList = (props) => {
 
     return (
         <Container>
-            <div className='product-list-wrapper'> {/* container changed as div*/}
+            <div className='product-list-wrapper'>
             <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
             <div className='product-list-label'>{props.productListLabel}</div>
             <div className='product-list-text'>{props.productListText}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
                     {props.productDetails.map(product => (
-                        <Link className='product-list-card-wrapper' to={`/product/${product.productId}`} key={product.productId}>
+                        <Link className='product-list-card-wrapper' to={`/api/product/${product.productId}`} key={product.productId}>
                         <div>
                             <div className='product-list-image'>
                                 <img id={product.productId} src={product.heroImage} alt='home_1'/>
