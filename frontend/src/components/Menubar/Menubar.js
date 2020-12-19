@@ -130,19 +130,19 @@ export default class Menubar extends Component {
                                     <Col className='navbar-drop-list' sm={6}>
                                         <ul onClick={this.toggleBagsDiv}>
                                             <li>
-                                                <Link to='/bags/women'><img src='/images/nav_drop/bags/women.jpg' alt='_img'/>
+                                                <Link to='/productlist/bags/women'><img src='/images/nav_drop/bags/women.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>WOMEN</div></Link></li>
                                             <li>
-                                                <Link to='/bags/tote'><img src='/images/nav_drop/bags/tote.jpg' alt='_img'/>
+                                                <Link to='/productlist/bags/tote'><img src='/images/nav_drop/bags/tote.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>TOTE</div></Link></li>
                                             <li>
-                                                <Link to='/bags/office'><img src='/images/nav_drop/bags/office.jpg' alt='_img'/>
+                                                <Link to='/productlist/bags/office'><img src='/images/nav_drop/bags/office.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>OFFICE</div></Link></li>
                                             <li>
-                                                <Link to='/bags/travel'><img src='/images/nav_drop/bags/travel.jpg' alt='_img'/>
+                                                <Link to='/productlist/bags/travel'><img src='/images/nav_drop/bags/travel.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>TRAVEL</div></Link></li>
                                         </ul>
-                                        <Link to='/bags/all_products' className='navbar-drop-link' onClick={this.toggleBagsDiv}>VIEW ALL PRODUCTS</Link>
+                                        <Link to='/allproducts/productlist/bags' className='navbar-drop-link' onClick={this.toggleBagsDiv}>VIEW ALL PRODUCTS</Link>
                                     </Col>
                                     <Col sm={4} className='navbar-drop-hero' onClick={this.toggleBagsDiv}><img src='/images/nav_drop/bags/bagsDropHero.jpg' alt='bagsDropHeroImg'/></Col>
                                 </Row>
@@ -161,19 +161,19 @@ export default class Menubar extends Component {
                                     <Col className='navbar-drop-list' sm={8}>
                                         <ul onClick={this.toggleHomeDiv}>
                                             <li>
-                                                <Link to='/home/tableware'><img src='/images/nav_drop/home/tableware.jpg' alt='_img'/>
+                                                <Link to='/productlist/home/tableware'><img src='/images/nav_drop/home/tableware.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>TABLEWARE</div></Link></li>
                                             <li>
-                                                <Link to='/home/kitchen'><img src='/images/nav_drop/home/kitchen.jpg' alt='_img'/>
+                                                <Link to='/productlist/home/kitchen'><img src='/images/nav_drop/home/kitchen.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>KITCHEN</div></Link></li>
                                             <li>
-                                                <Link to='/home/laundry'><img src='/images/nav_drop/home/laundry.jpg' alt='_img'/>
+                                                <Link to='/productlist/home/laundry'><img src='/images/nav_drop/home/laundry.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>LAUNDRY</div></Link></li>
                                             <li>
-                                                <Link to='/home/garden'><img src='/images/nav_drop/home/garden.jpg' alt='_img'/>
+                                                <Link to='/productlist/home/garden'><img src='/images/nav_drop/home/garden.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>GARDEN</div></Link></li>
                                         </ul>
-                                        <Link to='/home/all_products' className='navbar-drop-link' onClick={this.toggleHomeDiv}>VIEW ALL PRODUCTS</Link>
+                                        <Link to='/allproducts/productlist/home' className='navbar-drop-link' onClick={this.toggleHomeDiv}>VIEW ALL PRODUCTS</Link>
                                     </Col>
                                     <Col sm={4} className='navbar-drop-hero'><img src='/images/nav_drop/home/homeDropHero.png' alt='homeDropHeroImg'/></Col>
                                 </Row>
@@ -192,7 +192,7 @@ export default class Menubar extends Component {
                                                 <img src='/images/nav_drop/organisation_drop/wall_hanging.png' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>HEALTH & HYGIENE</div></li> */}
                                             <li>
-                                                <Link to='/lifestyle/workout' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyle.jpg' alt='_img'/>
+                                                <Link to='/productlist/lifestyle/workout' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyle.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>WORKOUT</div></Link></li>
                                             {/* <li>
                                                 <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img'/>
@@ -201,7 +201,7 @@ export default class Menubar extends Component {
                                                 <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>    </div></li> */}
                                         </ul>
-                                        <Link to='/lifestyle/workout' className='navbar-drop-link' onClick={this.toggleLifestlyeDiv}>VIEW ALL PRODUCTS</Link>
+                                        <Link to='/productlist/lifestyle/workout' className='navbar-drop-link' onClick={this.toggleLifestlyeDiv}>VIEW ALL PRODUCTS</Link>
                                     </Col>
                                     <Col sm={4} className='navbar-drop-hero' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyleDropHero.jpg' alt='lifestyleDropHeroImg'/></Col>
                                 </Row>
@@ -217,19 +217,19 @@ export default class Menubar extends Component {
                                     <Col className='navbar-drop-list' sm={8}>
                                         <ul onClick={this.toggledropGiftDiv}>
                                             <li>
-                                                <Link to='/gift/giftbox'><img src='/images/nav_drop/gift/giftbox.jpg' alt='_img'/>
+                                                <Link to='/productlist/gift/giftbox'><img src='/images/nav_drop/gift/giftbox.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>GIFT BOX</div></Link></li>
                                             <li>
-                                                <Link to='/gift/giftbag'><img src='/images/nav_drop/gift/giftbag.jpg' alt='_img'/>
+                                                <Link to='/productlist/gift/giftbag'><img src='/images/nav_drop/gift/giftbag.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>GIFT BAG</div></Link></li>
                                             {/* <li>
                                                 <img src='/images/nav_drop/gift/baskets.png' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>FLORAL</div></li> */}
                                             <li>
-                                                <Link to='/gift/accessories'><img src='/images/nav_drop/gift/accessories.jpg' alt='_img'/>
+                                                <Link to='/productlist/gift/accessories'><img src='/images/nav_drop/gift/accessories.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>ACCESSORIES</div></Link></li>
                                         </ul>
-                                        <Link to='/gift/all_products' className='navbar-drop-link' onClick={this.toggledropGiftDiv}>VIEW ALL PRODUCTS</Link>
+                                        <Link to='/allproducts/productlist/gift' className='navbar-drop-link' onClick={this.toggledropGiftDiv}>VIEW ALL PRODUCTS</Link>
                                     </Col>
                                     <Col sm={4} className='navbar-drop-hero' onClick={this.toggledropGiftDiv}><img src='/images/nav_drop/gift/giftDropHero.jpg' alt='giftDropHeroImg'/></Col>
                                 </Row>
@@ -248,13 +248,13 @@ export default class Menubar extends Component {
                                                 <img src='/images/nav_drop/storage/duffel_bag.png' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>WORK</div></li> */}
                                             <li>
-                                                <Link to='/storage/organisers'><img src='/images/nav_drop/storage/organisers.jpg' alt='laundry_img'/>
+                                                <Link to='/productlist/storage/organisers'><img src='/images/nav_drop/storage/organisers.jpg' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>ORGANISERS</div></Link></li>
                                             <li>
-                                                <Link to='/storage/home'><img src='/images/nav_drop/storage/home.jpg' alt='laundry_img'/>
+                                                <Link to='/productlist/storage/home'><img src='/images/nav_drop/storage/home.jpg' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>HOME</div></Link></li>
                                         </ul>
-                                        <Link to='/storage/all_products' className='navbar-drop-link' onClick={this.toggleStorageDiv}>VIEW ALL PRODUCTS</Link>
+                                        <Link to='/allproducts/productlist/storage' className='navbar-drop-link' onClick={this.toggleStorageDiv}>VIEW ALL PRODUCTS</Link>
                                     </Col>
                                     <Col sm={4} className='navbar-drop-hero'><img src='/images/nav_drop/storage/storageDropHero.jpg' alt='storageDropHeroImg'/></Col>
                                 </Row>
@@ -270,16 +270,16 @@ export default class Menubar extends Component {
                                     <Col className='navbar-drop-list' sm={8}>
                                         <ul onClick={this.toggleAccessoriesDiv}>
                                             <li>
-                                                <Link to='/accessories/onthego'><img src='/images/nav_drop/accessories/onthego.jpg' alt='_img'/>
+                                                <Link to='/productlist/accessories/onthego'><img src='/images/nav_drop/accessories/onthego.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>ON THE GO</div></Link></li>
                                             {/* <li>
                                                 <img src='/images/nav_drop/accessories/coat_cover.png' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>GADGET</div></li> */}
                                             <li>
-                                                <Link to='/accessories/wallet'><img src='/images/nav_drop/accessories/wallet.jpg' alt='_img'/>
+                                                <Link to='/productlist/accessories/wallet'><img src='/images/nav_drop/accessories/wallet.jpg' alt='_img'/>
                                                 <div className='navbar-drop-list-label'>WALLET</div></Link></li>
                                         </ul>
-                                        <Link to='/accessories/all_products' className='navbar-drop-link' onClick={this.toggleAccessoriesDiv}>VIEW ALL PRODUCTS</Link>
+                                        <Link to='/allproducts/productlist/accessories' className='navbar-drop-link' onClick={this.toggleAccessoriesDiv}>VIEW ALL PRODUCTS</Link>
                                     </Col>
                                     <Col sm={4} className='navbar-drop-hero' onClick={this.toggleAccessoriesDiv}><img src='/images/nav_drop/accessories/accessoriesDropHero.jpg' alt='accessoriesDropHeroImg'/></Col>
                                 </Row>

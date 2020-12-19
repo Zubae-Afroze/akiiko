@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Row, Col, Dropdown, Modal, Carousel} from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import emailjs from 'emailjs-com';
 import axios from 'axios';
@@ -9,20 +9,22 @@ import ReactImageMagnify from 'react-image-magnify';
 
 import './ProductDetails.css';
 
-const ProductDetails = (props) => {
+const ProductDetails = () => {
 
-    const [product, setProduct] = useState([])
+    const { id } = useParams()
+
+    const [product, setProduct] = useState({})
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const res =  await axios.get(`/api/product/${props.match.params.id}`)
+            const res =  await axios.get(`/api/product/${id}`)
             setProduct(res.data)
         }
 
         fetchProduct();
 
         setImageSrc(product.heroImage)
-    }, [props.match.params.id, product.heroImage])
+    }, [id, product.heroImage])
 
     const [bigImageSrc, setImageSrc] = useState(product.heroImage);
 
@@ -336,7 +338,7 @@ const ProductDetails = (props) => {
             {/* Similar Products */}
                 {product.similarProducts.map(prod => (
                     <div key={prod.productId} className='similar-products-container'>
-                        <Link to={`/api/product/${prod.productId}`} onClick={() => setImageSrc(prod.heroImage)}>
+                        <Link to={`/product/${prod.productId}`} onClick={() => setImageSrc(prod.heroImage)}>
                             <Col lg={2.4} >
                                 <div>
                                     <div className='similar-products-image'><img src={prod.heroImage} alt={prod.productId}></img>

@@ -4,12 +4,6 @@ const express = require('express');
 const HomeScreenBagsProducts = require('./data/HomeScreenBagsProducts');
 const HomeScreenHomeProducts = require('./data/HomeScreenHomeProducts');
 const HomeScreenStorageProducts = require('./data/HomeScreenStorageProducts');
-
-//const BagWomenProducts = require('./data/Bags/Women/BagWomenProducts');
-const AccessoriesOnTheGoProducts = require('./data/Accessories/OnTheGo/AcessoriesOnTheGoProducts');
-const AccessoriesWalletProducts  = require('./data/Accessories/Wallet/AccessoriesWalletProducts');
-
-
 const MasterProducts = require('./data/MasterProducts');
 
 
@@ -36,19 +30,7 @@ app.get('/api/home_screen_storage_products', (req, res) => {
     res.json(HomeScreenStorageProducts);
 })
 
-//Product Listing Fetches
-//Accessories - OnTheGo
-app.get('/api/accessories/onthego', (req, res) => {
-    res.json(AccessoriesOnTheGoProducts);
-})
-
-//Accessories - Wallet
-app.get('/api/accessories/wallet', (req, res) => {
-    res.json(AccessoriesWalletProducts)
-})
-
-
-//Master Product test fetch
+//Master Product fetch
 app.get('/api/product', (req, res) => {
     res.json(MasterProducts);
 })
@@ -57,5 +39,17 @@ app.get('/api/product/:id', (req, res) => {
     const product = MasterProducts.find(p => p.productId === req.params.id)
     res.json(product);
 })
+
+//Product Listing Fetches
+app.get('/api/productlist/:group/:subGroup', (req, res) => {
+    const productList = MasterProducts.filter(p => (p.group === req.params.group && p.subGroup === req.params.subGroup))
+    res.json(productList)
+})
+
+//All Product Listing
+// app.get('/api/allproducts/productlist/:group', (req, res) => {
+//     const allProductList = MasterProducts.filter(p => p.group === req.params.group)
+//     res.json(allProductList);
+// })
 
 app.listen(5000, console.log('Server running on port 5000'));
