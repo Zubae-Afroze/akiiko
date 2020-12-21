@@ -32,6 +32,8 @@ app.get('/api/home_screen_storage_products', (req, res) => {
 
 app.use('/api/product', masterProductRoutes)
 
+app.use('/api/productlist', masterProductRoutes)
+
 
 const PORT = process.env.PORT || 5000
 

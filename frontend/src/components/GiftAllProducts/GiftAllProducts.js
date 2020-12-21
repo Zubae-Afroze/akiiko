@@ -39,7 +39,7 @@ const GiftAllProducts = () => {
                 <Row className='product-list-card-wrapper'>
                     {giftBox.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <div>
                                 <img src={product.heroImage} alt='home_1'/>
                                 {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
@@ -63,7 +63,7 @@ const GiftAllProducts = () => {
                 <Row className='product-list-card-wrapper'>
                     {giftBag.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img src={product.heroImage} alt='home_1'/>
                                 {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
                                 {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
@@ -85,7 +85,7 @@ const GiftAllProducts = () => {
                 <Row className='product-list-card-wrapper'>
                     {accessories.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img src={product.heroImage} alt='home_1'/>
                                 {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                                 {product.quickView ? <span className='pl-label-view'>{product.quickView}</span> : null}

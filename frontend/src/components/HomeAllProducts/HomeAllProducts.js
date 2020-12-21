@@ -51,7 +51,7 @@ const HomeAllProducts = () => {
             <div>
                 <Row className='product-list-card-wrapper'>
                     {tablewareAllProducts.map(product => (
-                        <Link to={`/product/${product.productId}`} key={product.productId}>
+                        <Link to={`/product/${product._id}`} key={product.productId}>
                         <div className='product-list-card-wrapper'>
                             <div className='product-list-image'>
                                 <div>
@@ -77,7 +77,7 @@ const HomeAllProducts = () => {
                 <Row className='product-list-card-wrapper'>
                     {kitchenAllProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img id={product.productId} src={product.heroImage} alt='home_1'/>
                                 {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                                 {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
@@ -98,7 +98,7 @@ const HomeAllProducts = () => {
                 <Row className='product-list-card-wrapper'>
                     {laundryAllProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img id={product.productId} src={product.heroImage} alt='home_1'/>
                                 {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                                 {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
@@ -118,7 +118,7 @@ const HomeAllProducts = () => {
             <div>
                 <Row className='product-list-card-wrapper'>
                     {gardenAllProducts.map(product => (
-                        <Link to={`/product/${product.productId}`} key={product.productId}>
+                        <Link to={`/product/${product._id}`} key={product.productId}>
                         <div className='product-list-card-wrapper'>
                             <div className='product-list-image'>
                                 <img src={product.heroImage} alt='home_1'/>

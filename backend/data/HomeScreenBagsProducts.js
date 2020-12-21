@@ -1,5 +1,6 @@
 const HomeScreenBagsProducts = [
     {
+        _id: '5fe070082ebc3245b0e5542e',
         productId: 'SS001',
         productName: 'Original Shopping Bag',
         heroImage: '/images/p_images/Bags/Tote/SS001/hero.jpg',
@@ -11,6 +12,7 @@ const HomeScreenBagsProducts = [
         mrpPrice: '799',
     },
     {
+        _id: '5fe070082ebc3245b0e55434',
         productId: 'SS002',
         productName: 'Canvas Shopper',
         heroImage: '/images/p_images/Bags/Tote/SS002/hero.jpg',
@@ -23,6 +25,7 @@ const HomeScreenBagsProducts = [
         mrpPrice: '899',
     },
     {
+        _id: '5fe070082ebc3245b0e5543a',
         productId: 'SS003',
         productName: 'Mini Canvas Shopper',
         heroImage: '/images/p_images/Bags/Tote/SS003/hero.jpg',
@@ -33,6 +36,7 @@ const HomeScreenBagsProducts = [
         mrpPrice: '849',
     },
     {
+        _id: '5fe070082ebc3245b0e5545e',
         productId: 'BE002',
         productName: 'Summer Tote',
         heroImage: '/images/p_images/Bags/Tote/BE002/hero.jpg',
@@ -45,6 +49,7 @@ const HomeScreenBagsProducts = [
         mrpPrice: '499',
     },
     {
+        _id: '5fe070082ebc3245b0e55464',
         productId: 'BE003',
         productName: 'Conventional Handbag',
         heroImage: '/images/p_images/Bags/Tote/BE003/hero.jpg',

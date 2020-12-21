@@ -50,8 +50,8 @@ const HomeScreenWorkout = () => {
                 <Col sm={7} className='workout-container'>
                     <Row className='workout-card-wrapper'>
                         {HomeScreenStorageProducts.map(product => (
-                            <Col className='home-card-items ' key={product.productId}>
-                                <Link to={`/product/${product.productId}`}><div>
+                            <Col className='home-card-items ' key={product._id}>
+                                <Link to={`/product/${product._id}`}><div>
                                     <div className='women-img-wrap'>
                                     <img id={product.productId} className='home-card-image' src={product.heroImage} alt='home_1'/>
                                     {product.bestSeller ? <span className='label-best label-best-workout'>{product.bestSeller}</span> : null}

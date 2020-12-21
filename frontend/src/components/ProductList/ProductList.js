@@ -40,7 +40,7 @@ const ProductList = () => {
             <div>
                 <Row className='product-list-card-wrapper'>
                     {productList.map(product => (
-                        <Link className='product-list-card-wrapper' to={`/product/${product.productId}`} key={product.productId}>
+                        <Link className='product-list-card-wrapper' to={`/product/${product._id}`} key={product.productId}>
                         <div>
                             <div className='product-list-image'>
                                 <img id={product.productId} src={product.heroImage} alt='home_1'/>
