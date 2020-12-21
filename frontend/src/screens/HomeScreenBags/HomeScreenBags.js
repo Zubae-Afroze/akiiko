@@ -41,7 +41,7 @@ const HomeScreenBags = () => {
                     
                 </Col>
                 <Col sm={3} className='women-button-placement'>
-                    <Link to='/bags/all_products'><button className='women-button'>SHOP ALL</button></Link>
+                    <Link to='/allproducts/productlist/bags'><button className='women-button'>SHOP ALL</button></Link>
                 </Col>
             </Row>
             <Row className='women-card-wrapper '>
@@ -67,7 +67,7 @@ const HomeScreenBags = () => {
                     ))} 
             </Row>
                 <div className='hero-button mobile-view-button'>
-                        <Link to='/bags/all_products'><button>
+                        <Link to='/allproducts/productlist/bags'><button>
                             Shop Now
                         </button></Link>
                 </div>

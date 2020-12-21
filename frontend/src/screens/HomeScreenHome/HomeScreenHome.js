@@ -54,7 +54,7 @@ const HomeScreenHome = () => {
         <div className='home-screen-component'>
                <Row className='home-wrapper workout-cont'>
                 <Col sm={3} className='home-button-placement'>
-                    <Link to='/home/all_products'><button className='home-button'>SHOP ALL</button></Link>
+                    <Link to='/allproducts/productlist/home'><button className='home-button'>SHOP ALL</button></Link>
                 </Col>
                 <Col sm={9} className='home-wrapper'>
                     <div className='home-title'>HOME</div>

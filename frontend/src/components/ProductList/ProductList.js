@@ -8,7 +8,7 @@ import axios from 'axios';
 
 const ProductList = () => {
 
-    const { group, subGroup} = useParams();
+    const { group, subGroup } = useParams();
 
     const [productList, setProductList] = useState([]);
 
