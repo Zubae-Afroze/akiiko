@@ -68,4 +68,4 @@ const HomeScreenStorageProducts = [
     },
 ]
 
-module.exports = HomeScreenStorageProducts
+export default HomeScreenStorageProducts;

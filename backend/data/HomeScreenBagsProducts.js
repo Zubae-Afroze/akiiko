@@ -56,4 +56,6 @@ const HomeScreenBagsProducts = [
     },
 ]
 
-module.exports = HomeScreenBagsProducts;
+
+
+export default HomeScreenBagsProducts;

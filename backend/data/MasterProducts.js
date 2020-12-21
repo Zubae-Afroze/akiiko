@@ -2563,4 +2563,4 @@ const MasterProducts = [
     },
 ]
 
-module.exports = MasterProducts
+export default MasterProducts;

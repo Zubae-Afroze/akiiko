@@ -1,11 +1,17 @@
-const express = require('express');
+import express from 'express';
+import dotenv from 'dotenv';
 
+import HomeScreenBagsProducts from './data/HomeScreenBagsProducts.js';
+import HomeScreenHomeProducts from './data/HomeScreenHomeProducts.js';
+import HomeScreenStorageProducts from './data/HomeScreenStorageProducts.js';
 
-const HomeScreenBagsProducts = require('./data/HomeScreenBagsProducts');
-const HomeScreenHomeProducts = require('./data/HomeScreenHomeProducts');
-const HomeScreenStorageProducts = require('./data/HomeScreenStorageProducts');
-const MasterProducts = require('./data/MasterProducts');
+import connectDb from './config/db.js';
 
+import masterProductRoutes from './routes/masterProductRoutes.js';
+
+dotenv.config();
+
+connectDb();
 
 const app = express();
 
@@ -13,12 +19,6 @@ const app = express();
 app.get('/api/home_screen_bags_products', (req, res) => {
     res.json(HomeScreenBagsProducts);
 })
-
-// Getting Single Product from HomeScreenBagProducts
-// app.get('/api/home_screen_bags_products/:id', (req, res) => {
-//     const HomeScreenBagsProduct = HomeScreenBagsProducts.find(p => p.productId === req.params.id)
-//     res.json(HomeScreenBagsProduct)
-// })
 
 //Getting All the Data from HomeScreenHomeProducts
 app.get('/api/home_screen_home_products', (req, res) => {
@@ -30,26 +30,9 @@ app.get('/api/home_screen_storage_products', (req, res) => {
     res.json(HomeScreenStorageProducts);
 })
 
-//Master Product fetch
-app.get('/api/product', (req, res) => {
-    res.json(MasterProducts);
-})
+app.use('/api/product', masterProductRoutes)
 
-app.get('/api/product/:id', (req, res) => {
-    const product = MasterProducts.find(p => p.productId === req.params.id)
-    res.json(product);
-})
 
-//Product Listing Fetches
-app.get('/api/productlist/:group/:subGroup', (req, res) => {
-    const productList = MasterProducts.filter(p => (p.group === req.params.group && p.subGroup === req.params.subGroup))
-    res.json(productList)
-})
+const PORT = process.env.PORT || 5000
 
-//All Product Listing
-// app.get('/api/allproducts/productlist/:group', (req, res) => {
-//     const allProductList = MasterProducts.filter(p => p.group === req.params.group)
-//     res.json(allProductList);
-// })
-
-app.listen(5000, console.log('Server running on port 5000'));
+app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
