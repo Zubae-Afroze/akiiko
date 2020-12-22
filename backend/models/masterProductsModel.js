@@ -78,15 +78,7 @@ const masterProductsSchema = mongoose.Schema({
         type: String,
         default: null
     },
-    similarProducts: [
-        {
-            productId: {type: String},
-            productName: {type: String},
-            heroImage: {type: String},
-            mrpPrice: {type: String},
-            price: {type: String, default: null}
-        }
-    ],
+    similarProducts: [],
     reviews: [reviewsSchema],
     rating: {
         type: Number,
