@@ -38,6 +38,10 @@
 }
 
 .title-bar-icon {
+  display: block;
+}
+
+.title-search {
   display: none;
 }
 

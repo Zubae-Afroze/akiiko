@@ -32,7 +32,7 @@ export default class Header extends Component {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ml-auto">
-                    <Nav className='title-bar-icon'><img src={'/images/font_images/search.svg'} alt='search_icon' /></Nav>
+                    <Nav className='title-bar-icon title-search'><img src={'/images/font_images/search.svg'} alt='search_icon' /></Nav>
                     <Nav className='title-bar-icon'><img src={'/images/font_images/user.svg'} alt='user_icon' /></Nav>
                     <Nav className='title-bar-icon'><img src={'/images/font_images/cart.svg'} alt='cart_icon' /></Nav>
                     </Nav>

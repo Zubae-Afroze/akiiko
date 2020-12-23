@@ -11,6 +11,9 @@ router.get('/', asyncHandler(async(req, res) => {
     return res.json(MasterProducts);
 }))
 
+// @desc Fetch single Product by id
+// @route GET /api/product/:id
+// @access Public Route
 router.get('/:id', asyncHandler(async(req, res) => {
     const product = await masterProductsModel.findById(req.params.id)
 
@@ -23,7 +26,9 @@ router.get('/:id', asyncHandler(async(req, res) => {
     //res.json(product);
 }))
 
-//Product Listing Fetches
+// @desc Fetch Product Lists by subGroups
+// @route GET /api/product/:group/:subGroup
+// @acess Public Route
 router.get('/:group/:subGroup', asyncHandler(async (req, res) => {
     //const productList = MasterProducts.filter(p => (p.group === req.params.group && p.subGroup === req.params.subGroup))
 

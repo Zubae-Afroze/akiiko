@@ -12,7 +12,7 @@ const HomeScreenBagsProducts = [
         mrpPrice: '799',
     },
     {
-        _id: '5fe18171a384156e680756fe',
+        _id: '5fe18171a384156e68075704',
         productId: 'SS002',
         productName: 'Canvas Shopper',
         heroImage: '/images/p_images/Bags/Tote/SS002/hero.jpg',
@@ -25,7 +25,7 @@ const HomeScreenBagsProducts = [
         mrpPrice: '899',
     },
     {
-        _id: '5fe18171a384156e680756fe',
+        _id: '5fe18171a384156e6807570a',
         productId: 'SS003',
         productName: 'Mini Canvas Shopper',
         heroImage: '/images/p_images/Bags/Tote/SS003/hero.jpg',
