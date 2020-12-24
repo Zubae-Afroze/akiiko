@@ -9,6 +9,8 @@ import connectDb from './config/db.js';
 
 import masterProductRoutes from './routes/masterProductRoutes.js';
 
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
+
 dotenv.config();
 
 connectDb();
@@ -33,6 +35,10 @@ app.get('/api/home_screen_storage_products', (req, res) => {
 app.use('/api/product', masterProductRoutes)
 
 app.use('/api/productlist', masterProductRoutes)
+
+app.use(notFound)
+
+app.use(errorHandler)
 
 
 const PORT = process.env.PORT || 5000
