@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import { Container, Row, Col, Dropdown, Modal, Carousel} from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
+import { actionListProductDetails } from '../../actions/actionProductList'
+
 import emailjs from 'emailjs-com';
-import axios from 'axios';
+//import axios from 'axios';
 
 import ReactImageMagnify from 'react-image-magnify';
 
@@ -13,20 +17,31 @@ const ProductDetails = () => {
 
     const { id } = useParams()
 
-    const [product, setProduct] = useState({})
+    //const [product, setProduct] = useState({})
+
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        const fetchProduct = async () => {
-            const res =  await axios.get(`/api/product/${id}`)
-            setProduct(res.data)
-        }
+        // const fetchProduct = async () => {
+        //     const res =  await axios.get(`/api/product/${id}`)
+        //     setProduct(res.data)
+        // }
 
-        fetchProduct();
+        // fetchProduct();
 
-        setImageSrc(product.heroImage)
-    }, [id, product.heroImage])
+        dispatch(actionListProductDetails(id))
+
+    }, [dispatch, id])
+
+    const productDetails = useSelector(state => state.productDetails);
+
+    const { loading, error, product } = productDetails
 
     const [bigImageSrc, setImageSrc] = useState(product.heroImage);
+
+    useEffect(() => {
+        setImageSrc(product.heroImage)
+    }, [product.heroImage])
 
     let [itemQuantity, setItemQuantity] = useState(1);
 
@@ -168,7 +183,7 @@ const ProductDetails = () => {
 
     return (
         <>
-        { product.productId ? 
+        {loading ? <h1>Loading...</h1> : error ? <h2>{error}</h2> : product.productId ? 
         <Container>
         <div className='product-details-wrapper'>
         <Col sm={12} className='carousel-wrapper product-details-carousel'>

@@ -5,13 +5,14 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducersHomeBags } from './reducers/reducersHomeBags';
 import { reducersHomeHome } from './reducers/reducersHomeHome';
 import { reducersHomeStorage } from './reducers/reducersHomeStorage';
-import { reducersProductList } from './reducers/reducersProductList';
+import { reducersProductList, reducersProductDetails } from './reducers/reducersProductList';
 
 const reducer = combineReducers({
     homeScreenBags: reducersHomeBags,
     homeScreenHome: reducersHomeHome,
     homeScreenStorage: reducersHomeStorage,
-    productList: reducersProductList
+    productList: reducersProductList,
+    productDetails: reducersProductDetails
 })
 
 const initialState = {};
