@@ -1,25 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React, {  useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import './ProductList.css';
 
-import axios from 'axios';
+import { actionListProductList } from '../../actions/actionProductList'
+
+//import axios from 'axios';
 
 
 const ProductList = () => {
 
     const { group, subGroup } = useParams();
 
-    const [productList, setProductList] = useState([]);
+    // const [productList, setProductList] = useState([]);
+
+    const dispatch = useDispatch()
+
+    const productList = useSelector(state => state.productList);
+
+    const { loading, error, products } = productList 
 
     useEffect(() => {
-        const fetchProductLists = async () => {
-            const res = await axios.get(`/api/productlist/${group}/${subGroup}`)
-            setProductList(res.data);
-        }
+        // const fetchProductLists = async () => {
+        //     const res = await axios.get(`/api/productlist/${group}/${subGroup}`)
+        //     setProductList(res.data);
+        // }
 
-        fetchProductLists();
-    }, [group, subGroup])
+        dispatch(actionListProductList(group, subGroup))
+
+        // fetchProductLists();
+    }, [dispatch, group, subGroup])
 
     const handleMouseEnter = (product) => {
         document.getElementById(product.productId).src=product.hoverImage
@@ -31,15 +42,15 @@ const ProductList = () => {
 
     return (
         <>
-        {productList[Object.keys(productList)[0]] ? 
+        {loading ? <h1>Loading...</h1> : error ? <h1>{error}</h1> : products ?
         <Container>
             <div className='product-list-wrapper'>
             <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
-            <div className='product-list-label'>{productList[Object.keys(productList)[0]].subGroup}</div>
-            <div className='product-list-text'>{productList[Object.keys(productList)[0]].groupDescription}</div>
+            <div className='product-list-label'>{products[Object.keys(products)[0]].subGroup}</div>
+            <div className='product-list-text'>{products[Object.keys(products)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {productList.map(product => (
+                    {products.map(product => (
                         <Link className='product-list-card-wrapper' to={`/product/${product._id}`} key={product.productId}>
                         <div>
                             <div className='product-list-image'>
@@ -56,7 +67,7 @@ const ProductList = () => {
             </div>            
             </div>
         </Container>
-        :null }
+        : null}
         </>
     )
 }
