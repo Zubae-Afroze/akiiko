@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import './HomeScreenHome.css';
 
+import { actionListHomeHome } from '../../actions/actionHomeHome';
 
 //import HomeScreenHomeProducts from '../../assets/products/HomeScreenHomeProducts';
 
@@ -39,16 +40,19 @@ const HomeScreenHome = () => {
         document.getElementById(product.productId).src=product.images[0];
     }
 
-    const [HomeScreenHomeProducts, setHomeScreenHomeProducts] = useState([]);
+    //const [HomeScreenHomeProducts, setHomeScreenHomeProducts] = useState([]);
+
+    const dispatch = useDispatch()
+
+    const homeScreenHome = useSelector(state => state.homeScreenHome);
+
+    const { loading, error, products } = homeScreenHome
 
     useEffect(() => {
-        const fetchHomeScreenHomeProducts = async () => {
-            const { data } = await axios.get('/api/home_screen_home_products')
+       dispatch(actionListHomeHome())
+    }, [dispatch])
 
-            setHomeScreenHomeProducts(data)
-        }
-        fetchHomeScreenHomeProducts();
-    }, [])
+    //const HomeScreenHomeProducts = []
 
     return (
         <div className='home-screen-component'>
@@ -70,9 +74,10 @@ const HomeScreenHome = () => {
                         <img src={'/images/home_screen_images/HomeScreenHomeHero.jpg'} alt='home_hero_img'/>
                     </div>
                 </Col>
+                { loading ? <h2>Loading..</h2> : error ? <h3>{error}</h3> : 
                 <Col sm={7} className='workout-container'>
                     <Row className='workout-card-wrapper'>
-                        {HomeScreenHomeProducts.map(product => (
+                        {products.map(product => (
                             <Col className='home-card-items' key={product._id}>
                                 <Link to={`/product/${product._id}`}><div>
                                     <div className='home-img-wrap'>
@@ -86,7 +91,7 @@ const HomeScreenHome = () => {
                             </Col>
                         ))}
                     </Row>
-                </Col>
+                </Col> }
             </Row>
                 <div className='hero-button mobile-view-button'>
                     <Link to='/home/all_products'><button>

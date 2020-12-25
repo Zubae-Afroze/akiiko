@@ -2,7 +2,15 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-const reducer = combineReducers({})
+import { reducersHomeBags } from './reducers/reducersHomeBags';
+import { reducersHomeHome } from './reducers/reducersHomeHome';
+import { reducersHomeStorage } from './reducers/reducersHomeStorage';
+
+const reducer = combineReducers({
+    homeScreenBags: reducersHomeBags,
+    homeScreenHome: reducersHomeHome,
+    homeScreenStorage: reducersHomeStorage,
+})
 
 const initialState = {};
 

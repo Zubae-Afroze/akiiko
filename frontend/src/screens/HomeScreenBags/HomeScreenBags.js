@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import axios from 'axios';
+//Action
+import { actionListHomeBags } from '../../actions/actionHomeBags'
+
+//import axios from 'axios';
 
 
 //import HomeScreenBagsProducts from '../../assets/products/HomeScreenBagsProducts';
@@ -17,17 +21,19 @@ const HomeScreenBags = () => {
         document.getElementById(product.productId).src=product.images[0];
     }
 
-    const [HomeScreenBagsProducts, setHomeScreenBagsProducts] = useState([]);
+    //const [HomeScreenBagsProducts, setHomeScreenBagsProducts] = useState([]);
 
-    useEffect(() => {
-        const fetchHomeScreenBagsProducts = async () => {
-            const { data } = await axios.get('/api/home_screen_bags_products')
+    const dispatch = useDispatch()
 
-            setHomeScreenBagsProducts(data)
-        }
+    const homeScreenBags = useSelector(state => state.homeScreenBags);
 
-        fetchHomeScreenBagsProducts();
-    }, [])
+    const { loading, error, products } = homeScreenBags 
+
+    useEffect(() => {   
+        dispatch(actionListHomeBags())
+    }, [dispatch])
+
+    //const HomeScreenBagsProducts = []
 
     return (
         <div> 
@@ -44,8 +50,9 @@ const HomeScreenBags = () => {
                     <Link to='/allproducts/productlist/bags'><button className='women-button'>SHOP ALL</button></Link>
                 </Col>
             </Row>
+            { loading ? <h2>Loading...</h2> : error ? <h3>{error}</h3> : 
             <Row className='women-card-wrapper '>
-                {HomeScreenBagsProducts.map(product => (
+                {products.map(product => (
                     <div className='women-shop-bag-container-root' key={product.productId}>
                         <Link to={`/product/${product._id}`}>
                             <Col lg={2.6} className='women-shop-bag-container'>
@@ -65,7 +72,7 @@ const HomeScreenBags = () => {
                     </div>
 
                     ))} 
-            </Row>
+            </Row> }
                 <div className='hero-button mobile-view-button'>
                         <Link to='/allproducts/productlist/bags'><button>
                             Shop Now

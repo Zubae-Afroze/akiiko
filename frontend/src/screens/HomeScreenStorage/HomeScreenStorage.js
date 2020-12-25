@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {  Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+
+import { actionListHomeStorage } from '../../actions/actionHomeStorage';
 
 //import HomeScreenStorageProducts from '../../assets/products/HomeScreenStorageProducts';
 import './HomeScreenStorage.css';
+
+
 
 const HomeScreenWorkout = () => {
 
@@ -16,17 +20,19 @@ const HomeScreenWorkout = () => {
         document.getElementById(product.productId).src=product.images[0];
     }
 
-    const [HomeScreenStorageProducts, setHomeScreenStorageProducts] = useState([]);
+    //const [HomeScreenStorageProducts, setHomeScreenStorageProducts] = useState([]);
+
+    const dispatch = useDispatch()
+
+    const homeScreenStorage = useSelector(state => state.homeScreenStorage);
+
+    const { loading, error, products } = homeScreenStorage
 
     useEffect(() => {
-        const fetchHomeScreenStorageProducts = async () => {
-            const { data } = await axios.get('/api/home_screen_storage_products');
+        dispatch(actionListHomeStorage())
+    }, [dispatch])
 
-            setHomeScreenStorageProducts(data)
-        }
-
-        fetchHomeScreenStorageProducts();
-    }, [])
+    //const HomeScreenStorageProducts = []
 
     return (
         <div className='home-screen-component'>
@@ -47,9 +53,10 @@ const HomeScreenWorkout = () => {
                         <img src={'/images/home_screen_images/HomeScreenStorageHero.jpg'} alt='home_hero_img'/>
                     </div>
                 </Col>
+                { loading ? <h2>Loading...</h2> : error ? <h3>{error}</h3> : 
                 <Col sm={7} className='workout-container'>
                     <Row className='workout-card-wrapper'>
-                        {HomeScreenStorageProducts.map(product => (
+                        {products.map(product => (
                             <Col className='home-card-items ' key={product._id}>
                                 <Link to={`/product/${product._id}`}><div>
                                     <div className='women-img-wrap'>
@@ -63,7 +70,7 @@ const HomeScreenWorkout = () => {
                             </Col>
                         ))}
                     </Row>
-                </Col>
+                </Col> }
             </Row>
             <div className='hero-button mobile-view-button'>
                 <Link to='/storage/all_products'><button>
