@@ -50,6 +50,10 @@ class HomeScreen extends React.Component {
         return () => clearTimeout(timer);
     }
 
+    componentWillUnmount() {
+        this.setState({showLoader: false})
+    }
+
 
     togglePageLoader = () => {
         this.setState({showLoader: !this.state.showLoader});

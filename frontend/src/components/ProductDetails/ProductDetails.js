@@ -59,9 +59,9 @@ const ProductDetails = () => {
               </Modal.Title> */}
             </Modal.Header>
             <Modal.Body>
-              <p>
+              <div>
                 Thank you for your Purchase, our team will get in touch with you shortly.
-              </p>
+              </div>
             </Modal.Body>
             <Modal.Footer>
                 <Link to={`/product/${product.productId}`}><button className='modal-cont-button' onClick={props.onHide}>CONTINUE SHOPPING</button></Link>
@@ -136,7 +136,7 @@ const ProductDetails = () => {
             <Modal.Body>
             <Row>
                 <Col className='modal-wrapper'>
-                    <p className='modal-intro-text'>Please fill out your information, to continue with the purchase</p>
+                    <div className='modal-intro-text'>Please fill out your information, to continue with the purchase</div>
                     <form className='modal-form'>
                         <input type='text' placeholder='First Name' name='fname' autoComplete="off" className='modal-input modal-first' onChange={handleChange} required></input>
                         <input type='text' placeholder='Last Name' name='lname' autoComplete="off" className='modal-input modal-last' onChange={handleChange} required></input><br></br>
