@@ -5,7 +5,7 @@ import '../ProductList/ProductList.css';
 
 import axios from 'axios';
 
-const AccessoriesAllProducts = (props) => {
+const AccessoriesAllProducts = () => {
 
     const [onthgoAllProducts, setOnTheGoProducts] = useState({})
     const [walletAllProducts, setWalletAllProdcuts] = useState({})
