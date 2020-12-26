@@ -60,7 +60,7 @@
   font-size: 16px;
 }
 
-.footer-main-text p {
+.footer-main-text {
   font-family: 'rutanLight';
 }
 
@@ -504,7 +504,7 @@ input.footer-main-form::placeholder {
     display: none;
   }
 }
-.very-end-blyat{
+.very-end-blyat {
   font-size: 12px;
   height: 7vh;
 }

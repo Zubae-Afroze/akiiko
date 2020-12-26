@@ -47,14 +47,14 @@ export default class Footer extends Component {
                         <Col sm={5}>
                             <div className='footer-main-label'>Available At</div>
                             <div className='footer-main-text'>
-                                <p>
+
                                 <div className='footer-bind'><strong>PRECISO FASHION</strong><br/>
                                 <span className='footer-sub-sub'>Corporate Office</span></div>
                                 3A, LVR centre, <br/> 
                                 7 Seshadri Road, Alwarpet, <br/>
                                 Chennai 600018 <br/> 
                                 India.
-                                </p>
+
                             </div>
                         </Col>
                         <Col sm={7} className='enquire col-sm-6'>
