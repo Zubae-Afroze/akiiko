@@ -1,43 +1,52 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../ProductList/ProductList.css';
 
-import axios from 'axios';
+import {
+    actionListGiftBox,
+    actionListGiftBag,
+    actionListAccessories
+} from '../../actions/actionGift'
+
+//import axios from 'axios';
 
 const GiftAllProducts = () => {
 
-    const [giftBox, setGiftBox] = useState({});
-    const [giftBag, setGiftBag] = useState({});
-    const [accessories, setAccessories] = useState({});
+    // const [giftBox, setGiftBox] = useState({});
+    // const [giftBag, setGiftBag] = useState({});
+    // const [accessories, setAccessories] = useState({});
+
+    const dispatch = useDispatch()
+
+    const giftBoxList = useSelector(state => state.giftBoxList)
+    const { giftBoxLoading, giftBoxProducts, giftBoxError} = giftBoxList
+
+    const giftBagList = useSelector(state => state.giftBagList)
+    const { giftBagLoading, giftBagProducts, giftBagError } = giftBagList
+
+    const accessoriesList =  useSelector(state => state.accessoriesList)
+    const { accessoriesLoading, accessoriesProducts, accessoriesError} = accessoriesList
 
     useEffect(() => {
-        const fetchAllProductList =  async () => {
-            const resGiftbox = await axios.get(`/api/productlist/gift/giftbox`)
-            setGiftBox(resGiftbox.data);
-
-            const resGiftBag = await axios.get(`/api/productlist/gift/giftbag`)
-            setGiftBag(resGiftBag.data);
-
-            const resAccessories = await axios.get(`/api/productlist/gift/accessories`)
-            setAccessories(resAccessories.data);
-        }
-
-        fetchAllProductList();
-    }, [])
+        dispatch(actionListGiftBox())
+        dispatch(actionListGiftBag())
+        dispatch(actionListAccessories())
+    }, [dispatch])
 
     
     return (
     <Container>
         <div className='product-list-wrapper'>
-            {giftBox[Object.keys(giftBox)[0]] ? 
+            {giftBoxLoading ? <h1>Loading...</h1> : giftBoxError ? <h1>{giftBoxError}</h1> :  giftBoxProducts[Object.keys(giftBoxProducts)[0]] ? 
             <>
             <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
-            <div className='product-list-label'>{giftBox[Object.keys(giftBox)[0].subGroup]}</div>
-            <div className='product-list-text'>{giftBox[Object.keys(giftBox)[0]].groupDescription}</div>
+            <div className='product-list-label'>{giftBoxProducts[Object.keys(giftBoxProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{giftBoxProducts[Object.keys(giftBoxProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {giftBox.map(product => (
+                    {giftBoxProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <div>
@@ -55,13 +64,13 @@ const GiftAllProducts = () => {
             </>
             : null }
 
-            {giftBag[Object.keys(giftBag)[0]] ? 
+            {giftBagLoading ? <h1>Loading...</h1> : giftBagError ? <h1>{giftBagError}</h1> :  giftBagProducts[Object.keys(giftBagProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{giftBag[Object.keys(giftBag)[0]].subGroup}</div>
-            <div className='product-list-text'>{giftBag[Object.keys(giftBag)[0]].groupDescription}</div>
+            <div className='product-list-label'>{giftBagProducts[Object.keys(giftBagProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{giftBagProducts[Object.keys(giftBagProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {giftBag.map(product => (
+                    {giftBagProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img src={product.heroImage} alt='home_1'/>
@@ -77,13 +86,13 @@ const GiftAllProducts = () => {
             </>
             : null }
             
-            {accessories[Object.keys(giftBag)[0]] ? 
+            {accessoriesLoading ? <h1>Loading...</h1> : accessoriesError ? <h1>{accessoriesError}</h1> : accessoriesProducts[Object.keys(accessoriesProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{accessories[Object.keys(accessories)[0]].subGroup}</div>
-            <div className='product-list-text'>{accessories[Object.keys(accessories)[0]].groupDescription}</div>
+            <div className='product-list-label'>{accessoriesProducts[Object.keys(accessoriesProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{accessoriesProducts[Object.keys(accessoriesProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {accessories.map(product => (
+                    {accessoriesProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img src={product.heroImage} alt='home_1'/>

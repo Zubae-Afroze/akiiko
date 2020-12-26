@@ -7,12 +7,33 @@ import { reducersHomeHome } from './reducers/reducersHomeHome';
 import { reducersHomeStorage } from './reducers/reducersHomeStorage';
 import { reducersProductList, reducersProductDetails } from './reducers/reducersProductList';
 
+import { reducersWomen, reducersTote, reducersOffice, reducersTravel } from './reducers/reducersBags'
+import { reducersTableware, reducersKitchen, reducersLaundry, reducersGarden} from './reducers/reducersHome'
+import { reducersGiftBox, reducersGiftBag, reducersAccessories } from './reducers/reducersGift'
+import { reducersOrganiser, reducersHome } from './reducers/reducersStorage'
+import { reducersOnTheGo, reducersWallet } from './reducers/reducersAccessories';
+
 const reducer = combineReducers({
     homeScreenBags: reducersHomeBags,
     homeScreenHome: reducersHomeHome,
     homeScreenStorage: reducersHomeStorage,
     productList: reducersProductList,
-    productDetails: reducersProductDetails
+    productDetails: reducersProductDetails,
+    womenList: reducersWomen,
+    toteList: reducersTote,
+    officeList: reducersOffice,
+    travelList: reducersTravel,
+    tablewareList: reducersTableware,
+    kitchenList: reducersKitchen,
+    laundryList: reducersLaundry,
+    gardenList: reducersGarden,
+    giftBoxList: reducersGiftBox,
+    giftBagList: reducersGiftBag,
+    accessoriesList: reducersAccessories,
+    organiserList: reducersOrganiser,
+    homeList: reducersHome,
+    onTheGoList: reducersOnTheGo,
+    walletList: reducersWallet,
 })
 
 const initialState = {};

@@ -1,26 +1,33 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../ProductList/ProductList.css';
 
-import axios from 'axios';
+import {
+    actionListOrganiser,
+    actionListHome
+} from '../../actions/actionStorage.js'
+
+//import axios from 'axios';
 
 const StorageAllProducts = () => {
 
-    const [organisersAllProduct, setOraniserAllProduct] = useState({});
-    const [homeAllProduct, setHomeAllProduct] = useState({});
+    // const [organisersAllProduct, setOraniserAllProduct] = useState({});
+    // const [homeAllProduct, setHomeAllProduct] = useState({});
+
+    const dispatch = useDispatch()
+
+    const organiserList = useSelector(state => state.organiserList)
+    const { organiserLoading, organiserProducts, organiserError } = organiserList
+
+    const homeList = useSelector(state => state.homeList)
+    const { homeLoading, homeProducts, homeError } = homeList
 
     useEffect(() => {
-        const fetchAllProductList = async () => {
-            const resOrganisers = await axios.get(`/api/productlist/storage/organisers`)
-            setOraniserAllProduct(resOrganisers.data);
-            
-            const resHome = await axios.get(`/api/productlist/storage/home`)
-            setHomeAllProduct(resHome.data);
-        }
-
-        fetchAllProductList()
-    }, [])
+        dispatch(actionListOrganiser())
+        dispatch(actionListHome())
+    }, [dispatch])
 
     const handleMouseEnter = (product) => {
         document.getElementById(product.productId).src=product.hoverImage
@@ -34,13 +41,13 @@ const StorageAllProducts = () => {
     <Container>
         <div className='product-list-wrapper'>
         <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
-            {organisersAllProduct[Object.keys(organisersAllProduct)[0]] ? 
+            {organiserLoading ? <h1>Loading...</h1> : organiserError ? <h1>{organiserError}</h1> : organiserProducts[Object.keys(organiserProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{organisersAllProduct[Object.keys(organisersAllProduct)[0]].subGroup}</div>
-            <div className='product-list-text'>{organisersAllProduct[Object.keys(organisersAllProduct)[0]].groupDescription}</div>
+            <div className='product-list-label'>{organiserProducts[Object.keys(organiserProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{organiserProducts[Object.keys(organiserProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {organisersAllProduct.map(product => (
+                    {organiserProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
@@ -56,13 +63,13 @@ const StorageAllProducts = () => {
             </div>
             </> : null }
 
-            {homeAllProduct[Object.keys(homeAllProduct)[0]] ? 
+            { homeLoading ? <h1>Loading...</h1> : homeError ? <h1>{homeError}</h1> : homeProducts[Object.keys(homeProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{homeAllProduct[Object.keys(homeAllProduct)[0]].subGroup}</div>
-            <div className='product-list-text'>{homeAllProduct[Object.keys(homeAllProduct)[0]].groupDescription}</div>
+            <div className='product-list-label'>{homeProducts[Object.keys(homeProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{homeProducts[Object.keys(homeProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {homeAllProduct.map(product => (
+                    {homeProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <div><img id={product.productId} src={product.heroImage} alt='home_1'/>

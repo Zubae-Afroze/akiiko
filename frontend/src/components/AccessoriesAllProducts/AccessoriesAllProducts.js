@@ -1,26 +1,30 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../ProductList/ProductList.css';
 
-import axios from 'axios';
+import { actionListOnTheGo, actionListWallet } from '../../actions/actionAccessories'
+
+//import axios from 'axios';
 
 const AccessoriesAllProducts = () => {
 
-    const [onthgoAllProducts, setOnTheGoProducts] = useState({})
-    const [walletAllProducts, setWalletAllProdcuts] = useState({})
+    //const [onthgoAllProducts, setOnTheGoProducts] = useState({})
+    //const [walletAllProducts, setWalletAllProdcuts] = useState({})
+
+    const dispatch = useDispatch()
+
+    const onTheGoList = useSelector(state => state.onTheGoList)
+    const { onTheGoLoading, onTheGoProducts, onTheGoError } = onTheGoList
+
+    const walletList = useSelector(state => state.walletList)
+    const { walletLoading, walletProducts, walletError} = walletList
 
     useEffect(() => {
-        const fetchAllProductList = async () => {
-            const resOnTheGo = await axios.get(`/api/productlist/accessories/onthego`)
-            setOnTheGoProducts(resOnTheGo.data);
-
-            const resWallet = await axios.get(`/api/productlist/accessories/wallet`)
-            setWalletAllProdcuts(resWallet.data);
-        }
-
-        fetchAllProductList();
-    })
+        dispatch(actionListOnTheGo())
+        dispatch(actionListWallet())
+    }, [dispatch])
 
     const handleMouseEnter = (product) => {
         document.getElementById(product.productId).src=product.hoverImage
@@ -34,13 +38,13 @@ const AccessoriesAllProducts = () => {
     <Container>
         <div className='product-list-wrapper'>
         <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
-            {onthgoAllProducts[Object.keys(onthgoAllProducts)[0]] ? 
+            { onTheGoLoading ? <h1>Loading...</h1> : onTheGoError ? <h2>{onTheGoError}</h2> : onTheGoProducts[Object.keys(onTheGoProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{onthgoAllProducts[Object.keys(onthgoAllProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{onthgoAllProducts[Object.keys(onthgoAllProducts)[0]].groupDescription}</div>
+            <div className='product-list-label'>{onTheGoProducts[Object.keys(onTheGoProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{onTheGoProducts[Object.keys(onTheGoProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {onthgoAllProducts.map(product => (
+                    {onTheGoProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <div>
@@ -57,15 +61,15 @@ const AccessoriesAllProducts = () => {
             </div>
             </> : null }
 
-            {walletAllProducts[Object.keys(walletAllProducts)[0]] ?
+            { walletLoading ? <h1>Loading...</h1> : walletError ? <h2>{walletError}</h2> : walletProducts[Object.keys(walletProducts)[0]] ?
             <>
-            <div className='product-list-label'>{walletAllProducts[Object.keys(walletAllProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{walletAllProducts[Object.keys(walletAllProducts)[0]].groupDescription}</div>
+            <div className='product-list-label'>{walletProducts[Object.keys(walletProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{walletProducts[Object.keys(walletProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {walletAllProducts.map(product => (
+                    {walletProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product.productId}`}><div className='product-list-image'>
+                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img id={product._id} src={product.heroImage} alt='home_1'/>
                                 {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
                                 {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}

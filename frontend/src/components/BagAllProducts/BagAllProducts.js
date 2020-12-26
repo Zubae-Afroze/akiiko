@@ -1,37 +1,46 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../ProductList/ProductList.css';
 
-import axios from 'axios';
+import { 
+    actionListWomen, 
+    actionListTote, 
+    actionListOffice, 
+    actionListTravel  } from '../../actions/actionBags'
+
+// import axios from 'axios';
 
 const BagAllProducts = () => {
 
     //const [allProductList, setAllProductList] = useState({});
 
-    const [womenAllProducts, setWomenAllProducts] = useState({});
-    const [toteAllProducts, setToteAllProducts] = useState({});
-    const [officeAllProducts, setOfficeAllProducts] = useState({});
-    const [travelAllProducts, setTravelAllProducts] = useState({});
+    // const [womenAllProducts, setWomenAllProducts] = useState({});
+    // const [toteAllProducts, setToteAllProducts] = useState({});
+    // const [officeAllProducts, setOfficeAllProducts] = useState({});
+    // const [travelAllProducts, setTravelAllProducts] = useState({});
+
+    const dispatch = useDispatch()
+
+    const womenList = useSelector(state => state.womenList)
+    const { womenLoading, womenProducts, womenError } = womenList
+
+    const toteList = useSelector(state => state.toteList)
+    const { toteLoading, toteProducts, toteError } = toteList
+
+    const officeList = useSelector(state => state.officeList)
+    const { officeLoading, officeProducts, officeError } = officeList
+
+    const travelList = useSelector(state => state.travelList)
+    const { travelLoading, travelProducts, travelError } = travelList
 
     useEffect(() => {
-        const fetchAllProductList = async () => {
-            const resWomen = await axios.get(`/api/productlist/bags/women`)
-            setWomenAllProducts(resWomen.data);
-
-            const resTote = await axios.get(`/api/productlist/bags/tote`)
-            setToteAllProducts(resTote.data)
-
-            const resOffice = await axios.get(`/api/productlist/bags/office`)
-            setOfficeAllProducts(resOffice.data)
-
-            const resTravel = await axios.get(`/api/productlist/bags/travel`)
-            setTravelAllProducts(resTravel.data)
-        }
-
-        fetchAllProductList();
-
-    }, [])
+        dispatch(actionListWomen())
+        dispatch(actionListTote())
+        dispatch(actionListOffice())
+        dispatch(actionListTravel())
+    }, [dispatch])
 
     const handleMouseEnter = (product) => {
         document.getElementById(product.productId).src=product.hoverImage
@@ -47,13 +56,13 @@ const BagAllProducts = () => {
         <div className='product-list-wrapper'>
             <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
 
-            {womenAllProducts[Object.keys(womenAllProducts)[0]] ? 
+            { womenLoading ? <h1>Loading...</h1> : womenError ? <h2>{womenError}</h2> : womenProducts[Object.keys(womenProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{womenAllProducts[Object.keys(womenAllProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{womenAllProducts[Object.keys(womenAllProducts)[0]].groupDescription}</div>
+            <div className='product-list-label'>{womenProducts[Object.keys(womenProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{womenProducts[Object.keys(womenProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {womenAllProducts.map(product => (
+                    {womenProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
@@ -70,13 +79,13 @@ const BagAllProducts = () => {
             </>
             : null }
             
-            {toteAllProducts[Object.keys(toteAllProducts)[0]] ? 
+            { toteLoading ? <h1>Loading...</h1> : toteError ? <h1>{toteError}</h1> : toteProducts[Object.keys(toteProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{toteAllProducts[Object.keys(toteAllProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{toteAllProducts[Object.keys(toteAllProducts)[0]].groupDescription}</div>
+            <div className='product-list-label'>{toteProducts[Object.keys(toteProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{toteProducts[Object.keys(toteProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {toteAllProducts.map(product => (
+                    {toteProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
@@ -92,13 +101,13 @@ const BagAllProducts = () => {
             </>
             : null }
 
-            {officeAllProducts[Object.keys(officeAllProducts)[0]] ? 
+            { officeLoading ? <h1>Loading...</h1> : officeError ? <h2>{officeError}</h2> : officeProducts[Object.keys(officeProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{officeAllProducts[Object.keys(officeAllProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{officeAllProducts[Object.keys(officeAllProducts)[0]].groupDescription}</div>
+            <div className='product-list-label'>{officeProducts[Object.keys(officeProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{officeProducts[Object.keys(officeProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {officeAllProducts.map(product => (
+                    {officeProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img id={product.productId} src={product.heroImage} alt='home_1'/>
@@ -113,13 +122,13 @@ const BagAllProducts = () => {
             </div>
             </> : null }
             
-            {travelAllProducts[Object.keys(travelAllProducts)[0]] ? 
+            { travelLoading ? <h1>Loading...</h1> : travelError ? <h1>{travelError}</h1> : travelProducts[Object.keys(travelProducts)[0]] ? 
             <>
-            <div className='product-list-label'>{travelAllProducts[Object.keys(travelAllProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{travelAllProducts[Object.keys(travelAllProducts)[0]].groupDescription}</div>
+            <div className='product-list-label'>{travelProducts[Object.keys(travelProducts)[0]].subGroup}</div>
+            <div className='product-list-text'>{travelProducts[Object.keys(travelProducts)[0]].groupDescription}</div>
             <div>
                 <Row className='product-list-card-wrapper'>
-                    {travelAllProducts.map(product => (
+                    {travelProducts.map(product => (
                         <div className='product-list-card-wrapper' key={product.productId}>
                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                 <img id={product.productId} src={product.heroImage} alt='home_1'/>
