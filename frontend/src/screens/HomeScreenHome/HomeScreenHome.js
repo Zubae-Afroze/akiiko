@@ -71,7 +71,7 @@ const HomeScreenHome = () => {
             <Row>
                 <Col sm={5} className='hero-image-workout'>
                     <div className='workout-hero-image'>
-                        <img src={'/images/home_screen_images/HomeScreenHomeHero.jpg'} alt='home_hero_img'/>
+                        <img src={`/images/home_screen_images/HomeScreenHomeHero.jpg`} alt='home_hero_img'/>
                     </div>
                 </Col>
                 { loading ? <h2>Loading..</h2> : error ? <h3>{error}</h3> : 

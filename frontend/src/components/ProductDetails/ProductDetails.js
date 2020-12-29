@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+//import {createBrowserHistory}  from 'history'
+
 import { Container, Row, Col, Dropdown, Modal, Carousel} from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 import { actionListProductDetails } from '../../actions/actionProductList'
 
@@ -16,6 +18,10 @@ import './ProductDetails.css';
 const ProductDetails = () => {
 
     const { id } = useParams()
+
+    const history = useHistory();
+
+    //const { history } = useParams()
 
     //const [product, setProduct] = useState({})
 
@@ -44,6 +50,10 @@ const ProductDetails = () => {
     }, [product.heroImage])
 
     let [itemQuantity, setItemQuantity] = useState(1);
+
+    const addToCartHandler = () => {
+        history.push(`/cart/${id}?qty=${itemQuantity}`)
+    }
 
     function NextModal(props) {
         return (
@@ -285,7 +295,7 @@ const ProductDetails = () => {
                 </div>
                 </Col>
                 </Row>
-                <button className='product-purchase-button' onClick={() => setModalShow(true)}>PURCHASE</button>
+                <button className='product-purchase-button' onClick={addToCartHandler}>ADD TO CART</button>
                 
                 <div className='product-details-second-wrapper'>
                 <div className='product-description-label '>PRODUCT DESCRIPTION</div>

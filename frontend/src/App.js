@@ -3,6 +3,8 @@ import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
+import CartScreen from './screens/CartScreen/CartScreen';
+
 import './App.css';
 
 import ProductList from './components/ProductList/ProductList';
@@ -31,6 +33,7 @@ export default class App extends Component {
           <Header/>
           <Switch>
             <Route path='/' component={HomeScreen} exact/>
+            <Route path='/cart/:id?' render={()=> (<CartScreen />)}/>
             {/* Product Listing */}
             <Route path='/productlist/:group/:subGroup' render={() => (<ProductList />)}/>
 

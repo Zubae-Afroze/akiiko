@@ -13,6 +13,8 @@ import { reducersGiftBox, reducersGiftBag, reducersAccessories } from './reducer
 import { reducersOrganiser, reducersHome } from './reducers/reducersStorage'
 import { reducersOnTheGo, reducersWallet } from './reducers/reducersAccessories';
 
+import { reducersCart } from './reducers/reducersCart'
+
 const reducer = combineReducers({
     homeScreenBags: reducersHomeBags,
     homeScreenHome: reducersHomeHome,
@@ -34,9 +36,16 @@ const reducer = combineReducers({
     homeList: reducersHome,
     onTheGoList: reducersOnTheGo,
     walletList: reducersWallet,
+    cartList: reducersCart
 })
 
-const initialState = {};
+const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
+
+const initialState = {
+    cartList: {
+        cartItems: cartItemsFromStorage
+    }
+};
 
 const middleware = [thunk]
 

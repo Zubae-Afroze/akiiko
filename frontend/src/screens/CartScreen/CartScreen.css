@@ -1,0 +1,40 @@
+.cart-label {
+  font-size: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #2e2614;
+  text-transform: uppercase;
+  font-family: 'rutanLight';
+}
+
+.cart-list-image img {
+  height: 210px;
+  width: 210px;
+  border: 1px solid #36353541;
+  margin-bottom: 20px;
+}
+
+.cart-list-det {
+  margin-left: 20px;
+}
+
+.cart-list-sub {
+  font-size: 16px;
+  text-transform: uppercase;
+  font-family: 'rutan';
+  letter-spacing: 2px;
+}
+
+.cart-list-name {
+  font-size: 19px;
+  text-transform: uppercase;
+  font-family: 'rutanMedium';
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+}
+
+.cart-list-price {
+  font-size: 26px;
+  font-family: 'rutan';
+  margin-bottom: 30px;
+}
