@@ -256,7 +256,7 @@ const ProductDetails = () => {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                    <Dropdown.Item>{product.material}</Dropdown.Item>
+                    <Dropdown.Item>Cotton Canvas</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </Col>

@@ -67,7 +67,7 @@ const CartScreen = () => {
                         ))}
                         <div className='cart-total-pricing'>
                             <div className='cart-total'>
-                                Total
+                                Total Price
                             </div>
                             <div className='cart-sub-pricing'>
                                 &#x20B9;{ cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}
@@ -76,6 +76,7 @@ const CartScreen = () => {
                         <div>
                             <button className='cart-purchase-button'>PROCEED TO CHECKOUT</button>
                         </div>
+                        <Alert className='continue-shopping' variant={'secondary'}><Link to='/'>Continue Shopping</Link></Alert>
                     </div>
                     }
                 </div>

@@ -55,12 +55,29 @@
   height: 60px;
 }
 
+.modal-dialog {
+  position: fixed;
+  margin: 0 !important;
+  top: 0%;
+  right: 0;
+}
+
+.modal-content {
+  height: 100vh;
+  width: 500px;
+  border-radius: 0;
+}
+
 .cart-sidebar {
   position: absolute;
   background-color: white;
   box-shadow: 3px 3px 10px #c5c5c58a;
   width: auto;
   height: auto;
+  min-width: 300px;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
   top: 85%;
   z-index: 300;
   right: 3.6%;
@@ -179,6 +196,11 @@
   background-color: #6e4e37;
   margin-bottom: 50px;
   border: none;
+}
+
+.go-to-cart-link {
+  text-transform: capitalize;
+  font-family: 'rutanLight';
 }
 
 @media (max-width: 800px) {

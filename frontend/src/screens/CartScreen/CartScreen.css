@@ -87,6 +87,7 @@
 
 .cart-total {
   font-family: 'rutan';
+  margin-top: 50px;
   font-size: 25px;
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -110,4 +111,8 @@
   background-color: #6e4e37;
   margin-bottom: 50px;
   border: none;
+}
+
+.continue-shopping {
+  text-align: center;
 }
