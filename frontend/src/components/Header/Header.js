@@ -59,7 +59,7 @@ const Header = () => {
                     </div>
                     <div className='head-cart-bottom-wrap'>
                         <div className='head-cart-showmore'>
-                            <button><Link to='/cart'>Go To Cart Page</Link></button>
+                            <button onClick={() => setModalShow(false)}><Link to='/cart'>Go To Cart Page</Link></button>
                         </div>
                         <div className='head-cart-sub-price-wrap'>
                             <div className='head-cart-sub-price-label'>
@@ -69,10 +69,13 @@ const Header = () => {
                                 &#x20B9;{ cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}
                             </div>
                         </div>
+                        <div className='head-cart-purchase-button-wrap'>
+                            <button >PROCEED TO CHECKOUT</button>
+                        </div>
                     </div>
                     </>
                     }
-                        </>
+                    </>
                 </ModalBody>
                 </Modal>
             )
