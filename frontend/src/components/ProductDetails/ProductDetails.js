@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //import {createBrowserHistory}  from 'history'
 
-import { Container, Row, Col, Dropdown, Modal, Carousel} from 'react-bootstrap';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import { Container, Row, Col, Dropdown, Carousel} from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
 
 import { actionListProductDetails } from '../../actions/actionProductList'
+import { addToCart } from '../../actions/actionCart';
 
-import emailjs from 'emailjs-com';
+//import emailjs from 'emailjs-com';
 //import axios from 'axios';
 
 import ReactImageMagnify from 'react-image-magnify';
@@ -19,7 +20,7 @@ const ProductDetails = () => {
 
     const { id } = useParams()
 
-    const history = useHistory();
+    //const history = useHistory();
 
     //const { history } = useParams()
 
@@ -52,140 +53,142 @@ const ProductDetails = () => {
     let [itemQuantity, setItemQuantity] = useState(1);
 
     const addToCartHandler = () => {
-        history.push(`/cart/${id}?qty=${itemQuantity}`)
+        // history.push(`/cart/${id}?qty=${itemQuantity}`)
+        dispatch(addToCart(id, itemQuantity));
+
     }
 
-    function NextModal(props) {
-        return (
-          <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              {/* <Modal.Title id="contained-modal-title-vcenter">
-                Modal heading
-              </Modal.Title> */}
-            </Modal.Header>
-            <Modal.Body>
-              <div>
-                Thank you for your Purchase, our team will get in touch with you shortly.
-              </div>
-            </Modal.Body>
-            <Modal.Footer>
-                <Link to={`/product/${product.productId}`}><button className='modal-cont-button' onClick={props.onHide}>CONTINUE SHOPPING</button></Link>
-            </Modal.Footer>
-          </Modal>
-        );
-    }
+    // function NextModal(props) {
+    //     return (
+    //       <Modal
+    //         {...props}
+    //         size="lg"
+    //         aria-labelledby="contained-modal-title-vcenter"
+    //         centered
+    //       >
+    //         <Modal.Header closeButton>
+    //           {/* <Modal.Title id="contained-modal-title-vcenter">
+    //             Modal heading
+    //           </Modal.Title> */}
+    //         </Modal.Header>
+    //         <Modal.Body>
+    //           <div>
+    //             Thank you for your Purchase, our team will get in touch with you shortly.
+    //           </div>
+    //         </Modal.Body>
+    //         <Modal.Footer>
+    //             <Link to={`/product/${product.productId}`}><button className='modal-cont-button' onClick={props.onHide}>CONTINUE SHOPPING</button></Link>
+    //         </Modal.Footer>
+    //       </Modal>
+    //     );
+    // }
 
-    function MyVerticallyCenteredModal(props) {
-        const initialFormData = {
-            fname: '',
-            lname: '',
-            email: '',
-            phone: '',
-            address: ''
-        };    
+    // function MyVerticallyCenteredModal(props) {
+    //     const initialFormData = {
+    //         fname: '',
+    //         lname: '',
+    //         email: '',
+    //         phone: '',
+    //         address: ''
+    //     };    
         
-        const [formData, updateFormData] = useState(initialFormData);
+    //     const [formData, updateFormData] = useState(initialFormData);
             
-        const handleChange = (e) => {
-            updateFormData({
-                ...formData,
-                // Trimming any whitespace
-                [e.target.name]: e.target.value.trim()
-            });
-        };
+    //     const handleChange = (e) => {
+    //         updateFormData({
+    //             ...formData,
+    //             // Trimming any whitespace
+    //             [e.target.name]: e.target.value.trim()
+    //         });
+    //     };
     
-        const handleSubmit = (e) => {
-            e.preventDefault()
-            //console.log(formData);
-            // ... submit to API or something
+    //     const handleSubmit = (e) => {
+    //         e.preventDefault()
+    //         //console.log(formData);
+    //         // ... submit to API or something
 
-            let eParams = {
-                productId: product.productId,
-                productName: product.productName,
-                fname: formData.fname,
-                lname: formData.lname,
-                email: formData.email,
-                phone: formData.phone,
-                address: formData.address,
-                itemQuantity: itemQuantity
-            };
-            emailTest(eParams)
-        };
+    //         let eParams = {
+    //             productId: product.productId,
+    //             productName: product.productName,
+    //             fname: formData.fname,
+    //             lname: formData.lname,
+    //             email: formData.email,
+    //             phone: formData.phone,
+    //             address: formData.address,
+    //             itemQuantity: itemQuantity
+    //         };
+    //         emailTest(eParams)
+    //     };
 
-        const emailTest = (eParams) => {
-        //console.log(eParams)
-        emailjs.send('service_0gyrynb', 'template_1sohpy9', eParams, 'user_MWfMIz4lhzaCvONbRdLAM')
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                setNextModalShow(true); setModalShow(false);
-            }, function(error) {
-                console.log('FAILED!', error);
-            })
-        }
+    //     const emailTest = (eParams) => {
+    //     //console.log(eParams)
+    //     emailjs.send('service_0gyrynb', 'template_1sohpy9', eParams, 'user_MWfMIz4lhzaCvONbRdLAM')
+    //         .then(function(response) {
+    //             console.log('SUCCESS!', response.status, response.text);
+    //             setNextModalShow(true); setModalShow(false);
+    //         }, function(error) {
+    //             console.log('FAILED!', error);
+    //         })
+    //     }
 
-        return (
-          <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-          >
-            <Modal.Header closeButton>
-              {/* <Modal.Title id="contained-modal-title-vcenter">
-                Modal heading
-              </Modal.Title> */}
-              <Modal.Title name={product.productName}>
-                {product.productName}
-              </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-            <Row>
-                <Col className='modal-wrapper'>
-                    <div className='modal-intro-text'>Please fill out your information, to continue with the purchase</div>
-                    <form className='modal-form'>
-                        <input type='text' placeholder='First Name' name='fname' autoComplete="off" className='modal-input modal-first' onChange={handleChange} required></input>
-                        <input type='text' placeholder='Last Name' name='lname' autoComplete="off" className='modal-input modal-last' onChange={handleChange} required></input><br></br>
-                        <input type='text' placeholder='Email Address' name='email' autoComplete="off" className='modal-input modal-email' onChange={handleChange} required></input><br></br>
-                        <input type='number' placeholder='Phone Number' name='phone' autoComplete="off" className='modal-input modal-phone' onChange={handleChange} required></input><br></br>
-                        <textarea type='text' id='madd' placeholder='Address' name='address' autoComplete="off" className='modal-input modal-address' onChange={handleChange} required></textarea><br></br>
+    //     return (
+    //       <Modal
+    //         {...props}
+    //         size="lg"
+    //         aria-labelledby="contained-modal-title-vcenter"
+    //         centered
+    //       >
+    //         <Modal.Header closeButton>
+    //           {/* <Modal.Title id="contained-modal-title-vcenter">
+    //             Modal heading
+    //           </Modal.Title> */}
+    //           <Modal.Title name={product.productName}>
+    //             {product.productName}
+    //           </Modal.Title>
+    //         </Modal.Header>
+    //         <Modal.Body>
+    //         <Row>
+    //             <Col className='modal-wrapper'>
+    //                 <div className='modal-intro-text'>Please fill out your information, to continue with the purchase</div>
+    //                 <form className='modal-form'>
+    //                     <input type='text' placeholder='First Name' name='fname' autoComplete="off" className='modal-input modal-first' onChange={handleChange} required></input>
+    //                     <input type='text' placeholder='Last Name' name='lname' autoComplete="off" className='modal-input modal-last' onChange={handleChange} required></input><br></br>
+    //                     <input type='text' placeholder='Email Address' name='email' autoComplete="off" className='modal-input modal-email' onChange={handleChange} required></input><br></br>
+    //                     <input type='number' placeholder='Phone Number' name='phone' autoComplete="off" className='modal-input modal-phone' onChange={handleChange} required></input><br></br>
+    //                     <textarea type='text' id='madd' placeholder='Address' name='address' autoComplete="off" className='modal-input modal-address' onChange={handleChange} required></textarea><br></br>
 
-                        <div className='modal-prd-det'><span className='target-bold'>Product Material:</span> {product.material}</div>
-                        <div className='modal-prd-det'><span className='target-bold'>Product Thickness:</span> {product.thickness}</div>
-                        <div name={itemQuantity} className='modal-prd-det'><span className='target-bold'>Item Quantity:</span> {itemQuantity}</div>
-                    </form>
-                </Col>
-                <Col className='modal-img'>
-                    <img src={product.heroImage} alt='modal_img' style={{'marginBottom':'20px'}}/>
-                    <div>
-                    <div className='modal-det-label'>Details</div>
-                    <ul className='modal-det-text'>
-                    <li><span name={product.productId} className='target-bold'>Item Code: </span> {product.productId}</li>
-                    <li><span className='target-bold'>Size:</span> {product.measurement}</li>
-                    <li><span className='target-bold'>Material:</span> {product.material}</li>
-                    {/* <li>Care Instruction: {product.washingCare}</li> */}
-                    </ul>
-                </div>
+    //                     <div className='modal-prd-det'><span className='target-bold'>Product Material:</span> {product.material}</div>
+    //                     <div className='modal-prd-det'><span className='target-bold'>Product Thickness:</span> {product.thickness}</div>
+    //                     <div name={itemQuantity} className='modal-prd-det'><span className='target-bold'>Item Quantity:</span> {itemQuantity}</div>
+    //                 </form>
+    //             </Col>
+    //             <Col className='modal-img'>
+    //                 <img src={product.heroImage} alt='modal_img' style={{'marginBottom':'20px'}}/>
+    //                 <div>
+    //                 <div className='modal-det-label'>Details</div>
+    //                 <ul className='modal-det-text'>
+    //                 <li><span name={product.productId} className='target-bold'>Item Code: </span> {product.productId}</li>
+    //                 <li><span className='target-bold'>Size:</span> {product.measurement}</li>
+    //                 <li><span className='target-bold'>Material:</span> {product.material}</li>
+    //                 {/* <li>Care Instruction: {product.washingCare}</li> */}
+    //                 </ul>
+    //             </div>
 
-                <span className='modal-price'><span className='target-bold'>Price:</span> &#x20B9;{product.price ? product.price * itemQuantity : product.mrpPrice * itemQuantity}</span>
-                <button className='modal-check-button' onClick={handleSubmit}>CHECK OUT</button>
-                </Col>
-            </Row>
-            </Modal.Body>
-            {/* <Modal.Footer>
-              <button className='modal-close-button' onClick={props.onHide}>Close</button>
-            </Modal.Footer>  () => {setNextModalShow(true); setModalShow(false);*/}
-          </Modal>
-        );
-      }
+    //             <span className='modal-price'><span className='target-bold'>Price:</span> &#x20B9;{product.price ? product.price * itemQuantity : product.mrpPrice * itemQuantity}</span>
+    //             <button className='modal-check-button' onClick={handleSubmit}>CHECK OUT</button>
+    //             </Col>
+    //         </Row>
+    //         </Modal.Body>
+    //         {/* <Modal.Footer>
+    //           <button className='modal-close-button' onClick={props.onHide}>Close</button>
+    //         </Modal.Footer>  () => {setNextModalShow(true); setModalShow(false);*/}
+    //       </Modal>
+    //     );
+    //   }
       
-    const [modalShow, setModalShow] = useState(false);
+    // const [modalShow, setModalShow] = useState(false);
 
-    const [nextModalShow, setNextModalShow] = useState(false);
+    // const [nextModalShow, setNextModalShow] = useState(false);
 
     // const [dropMaterial, setDropMaterial] = useState('');
 
@@ -317,8 +320,8 @@ const ProductDetails = () => {
                 </div></div>
                 
             </Col>
-        
-            <MyVerticallyCenteredModal
+
+            {/* <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
@@ -326,7 +329,7 @@ const ProductDetails = () => {
             <NextModal
                 show={nextModalShow}
                 onHide={() => setNextModalShow(false)}
-            />
+            /> */}
         </Row>
         
             {/* {product.addOn ? 

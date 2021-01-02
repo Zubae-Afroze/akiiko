@@ -59,7 +59,7 @@ const CartScreen = () => {
                                         <span className='cart-quantity-increase' onClick={() => items.qty = dispatch(addToCart(items.product, items.qty + 1))}>+</span>
                                     </div>
                                     <div className='cart-trash-icon'>
-                                    <img src='/images/font_images/trash_icon.svg' alt='trash_icon' onClick={() => removeFromCartHandler(items.product)} />
+                                    <img src='/images/font_images/times.svg' alt='trash_icon' onClick={() => removeFromCartHandler(items.product)} />
                                     </div>
                                 </div>
                             </Col>

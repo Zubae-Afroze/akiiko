@@ -14,22 +14,22 @@ export default class MobileNav extends Component {
                 <div className='mobile-nav-cont'>
                     <ul className='mobile-nav-wrapper'>
                         <li className='mobile-nav-test'>
-                            <Link to='/bags/all_products'>BAGS</Link>
+                            <Link to='/allproducts/productlist/bags'>BAGS</Link>
                         </li>
                         <li className='mobile-nav-test'>
-                            <Link to='/home/all_products'>HOME</Link>
+                            <Link to='/allproducts/productlist/home'>HOME</Link>
                         </li>
                         <li className='mobile-nav-test'>
-                            <Link to='/lifestyle/workout'>LIFESTYLE</Link>
+                            <Link to='/productlist/lifestyle/workout'>LIFESTYLE</Link>
                         </li>
                         <li className='mobile-nav-test'>
-                            <Link to='/gift/all_products'>GIFT</Link>
+                            <Link to='/allproducts/productlist/gift'>GIFT</Link>
                         </li>
                         <li className='mobile-nav-test'>
-                            <Link to='/storage/all_products'>STORAGE</Link>
+                            <Link to='/allproducts/productlist/storage'>STORAGE</Link>
                         </li>
                         <li className='mobile-nav-test'>
-                            <Link to='/accessories/all_products'>ACCESSORIES</Link>
+                            <Link to='/allproducts/productlist/accessories'>ACCESSORIES</Link>
                         </li>
                     </ul>
                 </div>

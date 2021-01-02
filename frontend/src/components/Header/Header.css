@@ -40,6 +40,7 @@
 .title-bar-icon {
   display: block;
   z-index: 100;
+  cursor: pointer;
 }
 
 .title-icon-wrap {
@@ -103,7 +104,7 @@
 } */
 
 .head-cart-header img {
-  margin-left: 55%;
+  margin-left: 50%;
 }
 
 .head-cart-wrap {
@@ -227,14 +228,46 @@
   color: #fff;
 }
 
+@media (max-width: 1024px) {
+  .title-icon-wrap {
+    right: 11.8%;
+  }
+}
+
 @media (max-width: 800px) {
   .padding-class {
     height: 45px;
   }
+
+  .title-icon-wrap {
+    right: 21%;
+  }
+
+  .modal-dialog {
+    right: 65px;
+  }
 }
 
 @media (max-width: 500px) {
+  .title-icon-wrap {
+    right: 33.6%;
+  }
+
   .padding-class {
     height: 55px;
+  }
+
+  .modal-dialog {
+    right: 0;
+  }
+
+  .modal-content {
+    width: 300px;
+  }
+}
+
+@media (max-width: 340px) {
+  .modal-content {
+    width: 150px !important;
   }
 }
