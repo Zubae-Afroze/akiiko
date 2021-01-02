@@ -45,18 +45,21 @@ const CartScreen = () => {
                             <Row key={index}>
                             <Col md={2}>
                             <div className='cart-list-image'>
-                                <img id={items.productId} src={items.image} alt='home_1'/>
+                                <img id={items.productId} src={items.image} alt='home_1' className=''/>
                             </div>
                             </Col>
                             <Col md={10}>
-                                <div className='cart-list-det'>
+                                <div className='cart-list-det pl-3'>
                                     <div className='cart-list-sub'>{items.subGroup}</div>
                                     <div className='cart-list-name'>{items.productName}</div>
+
+                                    <div className='cart-price-quantity-flex'>
                                     <div className='cart-list-price'>&#x20B9;{items.price * items.qty}</div>
                                     <div className='cart-quantity-dum'>
                                         <span className='cart-quantity-decrease' onClick={() => items.qty = items.qty > 1 ? dispatch(addToCart(items.product, items.qty - 1)) : 1}>-</span>
                                         {items.qty}
                                         <span className='cart-quantity-increase' onClick={() => items.qty = dispatch(addToCart(items.product, items.qty + 1))}>+</span>
+                                    </div>
                                     </div>
                                     <div className='cart-trash-icon'>
                                     <img src='/images/font_images/times.svg' alt='trash_icon' onClick={() => removeFromCartHandler(items.product)} />
