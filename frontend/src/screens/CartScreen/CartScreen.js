@@ -43,12 +43,12 @@ const CartScreen = () => {
                     <div> 
                         {cartItems.map((items, index) => (
                             <Row key={index}>
-                            <Col md={2}>
+                            <Col md={2} xs={4}>
                             <div className='cart-list-image'>
                                 <img id={items.productId} src={items.image} alt='home_1' className=''/>
                             </div>
                             </Col>
-                            <Col md={10}>
+                            <Col md={10} xs={8}>
                                 <div className='cart-list-det pl-3'>
                                     <div className='cart-list-sub'>{items.subGroup}</div>
                                     <div className='cart-list-name'>{items.productName}</div>
