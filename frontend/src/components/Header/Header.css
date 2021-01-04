@@ -64,12 +64,12 @@
 .modal-dialog {
   position: fixed;
   margin: 0 !important;
-  top: 0%;
+  top: 0;
   right: 0;
 }
 
 .modal-content {
-  height: 100vh;
+  height: auto;
   width: 500px;
   border-radius: 0;
 }
@@ -104,7 +104,7 @@
 } */
 
 .head-cart-header img {
-  margin-left: 57%;
+  margin-left: 56%;
 }
 
 .head-cart-wrap {
