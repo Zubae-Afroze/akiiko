@@ -270,6 +270,7 @@
   }
   .modal-dialog {
     position: relative;
+    right: 10px;
   }
 
   .modal-content {
