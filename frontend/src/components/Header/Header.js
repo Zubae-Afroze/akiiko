@@ -59,7 +59,7 @@ const Header = () => {
                     </div>
                     <div className='head-cart-bottom-wrap'>
                         <div className='head-cart-showmore'>
-                            <button onClick={() => setModalShow(false)}><Link to='/cart'>Go To Cart Page</Link></button>
+                        <Link to='/cart'><button onClick={() => setModalShow(false)}>Go To Cart Page</button></Link>
                         </div>
                         <div className='head-cart-sub-price-wrap'>
                             <div className='head-cart-sub-price-label'>
