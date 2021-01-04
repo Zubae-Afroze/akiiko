@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Navbar, Nav, Modal, ModalBody } from 'react-bootstrap';
+import { Container, Navbar, Nav, Modal, ModalBody, Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Menubar  from '../Menubar/Menubar';
 import './Header.css';
@@ -92,7 +92,11 @@ const Header = () => {
                     <Nav className="ml-auto title-icon-wrap">
                     <Nav className='title-bar-icon title-search'><img src={'/images/font_images/search.svg'} alt='search_icon' /></Nav>
                     <Nav className='title-bar-icon'><img src={'/images/font_images/user.svg'} alt='user_icon' /></Nav>
-                    <Nav className='title-bar-icon'><><img src={'/images/font_images/cart.svg'} alt='cart_icon' onClick={() => setModalShow(true)}/></></Nav>
+                    <Nav className='title-bar-icon'><><img src={'/images/font_images/cart.svg'} alt='cart_icon' onClick={() => setModalShow(true)}/> 
+                    <Badge pill variant="primary">
+                        {cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}
+                    </Badge>{' '}
+                    </></Nav>
                     </Nav>
                 </Navbar.Collapse>
                 <CartModal 
