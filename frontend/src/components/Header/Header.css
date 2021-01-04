@@ -276,7 +276,7 @@
   .modal-content {
     min-width: auto;
     margin-left: 0;
-    height: auto;
+    height: 100%;
   }
 
   .head-cart-wrap {
