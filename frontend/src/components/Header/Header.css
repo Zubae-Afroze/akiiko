@@ -69,9 +69,10 @@
 }
 
 .modal-content {
-  height: auto;
+  height: 100vh;
   width: 500px;
   border-radius: 0;
+  margin-right: 10px;
 }
 
 .head-cart-header {
@@ -270,10 +271,13 @@
   .modal-dialog {
     position: relative;
   }
+
   .modal-content {
     min-width: auto;
     margin-left: 0;
+    height: auto;
   }
+
   .head-cart-wrap {
     width: 375px;
   }
