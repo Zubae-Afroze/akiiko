@@ -45,7 +45,7 @@
 }
 
 .title-icon-wrap {
-  margin-right: 38px;
+  margin-right: 125px;
   padding-right: 25px;
 }
 
@@ -240,6 +240,12 @@
   font-size: 10px;
   width: 8px;
   height: 11px;
+}
+
+@media (max-width: 1450px) {
+  .title-icon-wrap {
+    margin-right: 45px;
+  }
 }
 
 @media (max-width: 1266px) {
