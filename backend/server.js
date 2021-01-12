@@ -8,6 +8,7 @@ import HomeScreenStorageProducts from './data/HomeScreenStorageProducts.js';
 import connectDb from './config/db.js';
 
 import masterProductRoutes from './routes/masterProductRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
@@ -16,6 +17,8 @@ dotenv.config();
 connectDb();
 
 const app = express();
+
+app.use(express.json());
 
 //Getting All the Data from HomeScreenBagProducts
 app.get('/api/home_screen_bags_products', (req, res) => {
@@ -35,6 +38,8 @@ app.get('/api/home_screen_storage_products', (req, res) => {
 app.use('/api/product', masterProductRoutes)
 
 app.use('/api/productlist', masterProductRoutes)
+
+app.use('/api/users', userRoutes)
 
 app.use(notFound)
 

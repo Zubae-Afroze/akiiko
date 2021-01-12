@@ -1,40 +1,15 @@
 import express from 'express';
-import asyncHandler from 'express-async-handler';
-
-import masterProductsModel from '../models/masterProductsModel.js'
+//import asyncHandler from 'express-async-handler';
+//import masterProductsModel from '../models/masterProductsModel.js'
+import {getAllProducts, getProductsById, getProductLists} from '../controllers/masterProductController.js'
 
 const router = express.Router()
 
 //Master Product fetch
-router.get('/', asyncHandler(async(req, res) => {
-    const MasterProducts = await masterProductsModel.find({})
-    return res.json(MasterProducts);
-}))
+router.route('/').get(getAllProducts);
 
-// @desc Fetch single Product by id
-// @route GET /api/product/:id
-// @access Public Route
-router.get('/:id', asyncHandler(async(req, res) => {
-    const product = await masterProductsModel.findById(req.params.id)
+router.route('/:id').get(getProductsById)
 
-    if(product) {
-       res.json(product)
-    } else {
-        res.status(404)
-        throw new Error('Product Not Found')
-    }
-
-    //res.json(product);
-}))
-
-// @desc Fetch Product Lists by subGroups
-// @route GET /api/product/:group/:subGroup
-// @acess Public Route
-router.get('/:group/:subGroup', asyncHandler(async (req, res) => {
-    //const productList = MasterProducts.filter(p => (p.group === req.params.group && p.subGroup === req.params.subGroup))
-
-    const productList = await masterProductsModel.find({group: String(req.params.group), subGroup: String(req.params.subGroup)})
-    return res.json(productList)
-}))
+router.route('/:group/:subgroup').get(getProductLists);
 
 export default router
