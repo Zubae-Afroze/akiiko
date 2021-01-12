@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 
 //import {createBrowserHistory}  from 'history'
 
-import { Container, Row, Col, Dropdown, Carousel} from 'react-bootstrap';
+import { Container, Row, Col, Dropdown, Carousel, Modal, ModalBody } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
 import { actionListProductDetails } from '../../actions/actionProductList'
-import { addToCart } from '../../actions/actionCart';
+import { addToCart, removeFromCart } from '../../actions/actionCart';
 
 //import emailjs from 'emailjs-com';
 //import axios from 'axios';
@@ -55,6 +55,7 @@ const ProductDetails = () => {
     const addToCartHandler = () => {
         // history.push(`/cart/${id}?qty=${itemQuantity}`)
         dispatch(addToCart(id, itemQuantity));
+        setModalShow(true);
 
     }
 
@@ -193,6 +194,73 @@ const ProductDetails = () => {
     // const [dropMaterial, setDropMaterial] = useState('');
 
     // const [dropThickness, setDropThickness] = useState('');
+    const cartList = useSelector(state => state.cartList)
+
+    const { cartItems } = cartList
+
+    const [modalShow, setModalShow] = useState(false);
+
+    const removeFromCartHandler = (id) => {
+        dispatch(removeFromCart(id))
+   }
+
+    function CartModal(props) {
+        return (
+            <Modal
+                {...props}
+                animation={false}>
+            
+            <ModalBody>
+                    <div className='head-cart-header'>Shopping Cart<img src='/images/font_images/cart.svg' alt='cart-icon'/><span>{cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}</span></div>
+                    <>
+                    { cartItems.length === 0 ? <div className='head-cart-empty'>Your Cart is empty</div> :
+                    <>
+                    <div className='head-cart-scroll'>
+                    {cartItems.map((items , index) => (
+                            <div className='head-cart-wrap' key={index}>
+                                <div className='head-cart-img'>
+                                    <img src={items.image} alt='cart_1'/>
+                                </div>
+                                <div className='head-cart-details'>
+                                    <div className='head-cart-subg'>{items.subGroup}</div>
+                                    <div className='head-cart-prodn'>{items.productName}
+                                        <img src='/images/font_images/times.svg' alt='trash_icon' onClick={() => removeFromCartHandler(items.product)} />
+                                    </div>
+                                    <div className='head-cart-root'>
+                                        <div className='head-cart-qty'>
+                                            <span className='head-cart-dum' onClick={() => items.qty = items.qty > 1 ? dispatch(addToCart(items.product, items.qty - 1)) : 1}>-</span>
+                                            {items.qty}
+                                            <span className='head-cart-div' onClick={() => items.qty = dispatch(addToCart(items.product, items.qty + 1))}>+</span>
+                                        </div>
+                                        <div className='head-cart-price'>&#x20B9;{items.price * items.qty}</div>
+                                    </div>
+                                </div>
+                            </div>
+                    ))}
+                </div>
+                <div className='head-cart-bottom-wrap'>
+                    <div className='head-cart-showmore'>
+                    <Link to='/cart'><button onClick={() => setModalShow(false)}>Go To Cart Page</button></Link>
+                    </div>
+                    <div className='head-cart-sub-price-wrap'>
+                        <div className='head-cart-sub-price-label'>
+                            Subtotal Price
+                        </div>
+                        <div className='head-cart-sub-price'>
+                            &#x20B9;{ cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}
+                        </div>
+                    </div>
+                    <div className='head-cart-purchase-button-wrap'>
+                        <button >PROCEED TO CHECKOUT</button>
+                    </div>
+                </div>
+                </>
+                }
+                </>
+            </ModalBody>
+            </Modal>
+        )
+    }
 
     return (
         <>
@@ -331,6 +399,10 @@ const ProductDetails = () => {
                 onHide={() => setNextModalShow(false)}
             /> */}
         </Row>
+        <CartModal 
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+        />
         
             {/* {product.addOn ? 
         <Row className=''> 
