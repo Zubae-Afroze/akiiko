@@ -45,8 +45,8 @@
 }
 
 .title-icon-wrap {
-  margin-right: 125px;
   padding-right: 25px;
+  margin-right: 16%;
 }
 
 .title-search {
@@ -242,7 +242,7 @@
   height: 11px;
 }
 
-@media (max-width: 1450px) {
+@media (max-width: 1440px) {
   .title-icon-wrap {
     margin-right: 45px;
   }
@@ -251,7 +251,7 @@
 @media (max-width: 1266px) {
   .title-icon-wrap {
     margin-right: 0;
-    padding-right: 0px;
+    padding-right: 0;
   }
 }
 

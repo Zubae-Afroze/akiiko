@@ -24,10 +24,10 @@ const getProductsById = asyncHandler (async (req, res) => {
 })
 
 // @desc Fetch Product Lists by subGroups
-// @route GET /api/product/:group/:subGroup
+// @route GET /api/productlist/:group/:subGroup
 // @acess Public Route
 const getProductLists = asyncHandler (async (req, res) => {
-    const productList = await masterProductsModel.find({group: String(req.params.group), subGroup: String(req.params.subGroup)})
+    const productList = await masterProductsModel.find({group: req.params.group, subGroup: req.params.subgroup})
     return res.json(productList)
 })
 
