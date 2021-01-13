@@ -14,6 +14,7 @@ import { reducersOrganiser, reducersHome } from './reducers/reducersStorage'
 import { reducersOnTheGo, reducersWallet } from './reducers/reducersAccessories';
 
 import { reducersCart } from './reducers/reducersCart'
+import { userLoginReducer } from './reducers/reducersUsers'
 
 const reducer = combineReducers({
     homeScreenBags: reducersHomeBags,
@@ -36,15 +37,17 @@ const reducer = combineReducers({
     homeList: reducersHome,
     onTheGoList: reducersOnTheGo,
     walletList: reducersWallet,
-    cartList: reducersCart
+    cartList: reducersCart,
+    userLogin: userLoginReducer
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
 
+const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
+
 const initialState = {
-    cartList: {
-        cartItems: cartItemsFromStorage
-    }
+    cartList: { cartItems: cartItemsFromStorage },
+    userLogin: { userInfo: userInfoFromStorage}
 };
 
 const middleware = [thunk]
