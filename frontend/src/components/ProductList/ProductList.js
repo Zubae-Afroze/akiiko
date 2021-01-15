@@ -7,6 +7,8 @@ import './ProductList.css';
 import MyComponent from 'react-fullpage-custom-loader';
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 
+import Message from '../Message/Message';
+
 import { actionListProductList } from '../../actions/actionProductList'
 
 //import axios from 'axios';
@@ -51,7 +53,7 @@ const ProductList = () => {
                 color={'#6e4e37'}
                 loaderType={'ball-spin-clockwise'}
                 customLoader={<SpinnerIcon />}
-            /> : error ? <h1>{error}</h1> : products ?
+            /> : error ? <Message variant='dark'>{error}</Message> : products ?
                 <Container>
                     <div className='product-list-wrapper'>
                         <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
