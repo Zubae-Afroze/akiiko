@@ -27,6 +27,7 @@ const Header = () => {
 
     const logouthandler = () => {
         dispatch(logout())
+        alert('sucessfully logedout')
     }
 
     function CartModal(props) {
