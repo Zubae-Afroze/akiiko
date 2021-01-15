@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { Container, Form, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../../actions/actionUsers';
+import { register } from '../../actions/actionUsers';
 
 import MyComponent from 'react-fullpage-custom-loader';
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
@@ -10,19 +10,21 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 import Message from '../../components/Message/Message';
 
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
 
     const dispatch = useDispatch();
 
-    const userLogin = useSelector(state => state.userLogin)
-
-    const { loading, error, userInfo } = userLogin
+    const userRegister = useSelector(state => state.userRegister)
+    const { loading, error, userInfo } = userRegister
 
     const location = useLocation();
     const history = useHistory();
 
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passMessage, setPassMessage] = useState(null);
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
@@ -34,13 +36,19 @@ const LoginScreen = () => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(login(email, password))
+        //dispatch(Login(email, password))
+        if (password !== confirmPassword) {
+            setPassMessage('Password do not match, please enter again')
+        } else {
+            dispatch(register(name, email, password))
+        }
     }
 
     return (
         <Container>
-            <h1>Sign In</h1>
-            { error && <Message variant='danger'>{error}</Message>}
+            <h1>Sign Up</h1>
+            {passMessage && <Message variant='danger'>{passMessage}</Message>}
+            {error && <Message variant='dark'>{error}</Message>}
             {loading && <MyComponent
                 sentences={[]}
                 wrapperBackgroundColor={'rgba(255,255,255)'}
@@ -49,6 +57,11 @@ const LoginScreen = () => {
                 customLoader={<SpinnerIcon />}
             />}
             <Form onSubmit={submitHandler}>
+                <Form.Group controlId='name'>
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control type='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}></Form.Control>
+                </Form.Group>
+
                 <Form.Group controlId='email'>
                     <Form.Label>Email Address</Form.Label>
                     <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
@@ -59,16 +72,21 @@ const LoginScreen = () => {
                     <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
                 </Form.Group>
 
-                <button type='submit'>Sign In</button>
+                <Form.Group controlId='confirmPassword'>
+                    <Form.Label>Confirm Password</Form.Label>
+                    <Form.Control type='password' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
+                </Form.Group>
+
+                <button type='submit'>Register</button>
             </Form>
             <Row className='py-3'>
                 <Col>
-                    New to akiiko? {' '}
-                    <Link to={redirect ? `/register?redirect=${redirect}` : '/register'}>Please Register</Link>
+                    Already have an account ? {' '}
+                    <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Please Login</Link>
                 </Col>
             </Row>
         </Container>
     )
 }
 
-export default LoginScreen
+export default RegisterScreen

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Container, Navbar, Nav, Modal, ModalBody, Badge } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown, Modal, ModalBody, Badge } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import Menubar from '../Menubar/Menubar';
 import './Header.css';
 import MobileNav from '../MobileNav/MobileNav';
 
 import { addToCart, removeFromCart } from '../../actions/actionCart';
+import { logout } from '../../actions/actionUsers';
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -16,10 +18,16 @@ const Header = () => {
     }
 
     const cartList = useSelector(state => state.cartList)
-
     const { cartItems } = cartList
 
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
     const [cartModalShow, setCartModalShow] = useState(false);
+
+    const logouthandler = () => {
+        dispatch(logout())
+    }
 
     function CartModal(props) {
         return (
@@ -89,7 +97,17 @@ const Header = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="ml-auto title-icon-wrap">
                             <Nav className='title-bar-icon title-search'><img src={'/images/font_images/search.svg'} alt='search_icon' /></Nav>
-                            <Nav className='title-bar-icon'><Link to={'/login'}><img src={'/images/font_images/user.svg'} alt='user_icon' /></Link></Nav>
+                            <Nav className='title-bar-icon'>{userInfo ?
+                                <NavDropdown title={<img src={'/images/font_images/user.svg'} alt='user_icon' />}>
+                                    <NavDropdown.Item>Hello, {userInfo.name}</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <LinkContainer to='/orders'>
+                                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    </LinkContainer>
+                                    <NavDropdown.Item onClick={logouthandler}>Logout</NavDropdown.Item>
+                                </NavDropdown>
+                                : <Link to={'/login'}><img src={'/images/font_images/user.svg'} alt='user_icon' /></Link>}
+                            </Nav>
                             <Nav className='title-bar-icon'><><img src={'/images/font_images/cart.svg'} alt='cart_icon' onClick={() => setCartModalShow(true)} />
                                 <Badge pill variant="primary">
                                     {cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}

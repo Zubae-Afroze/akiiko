@@ -91,7 +91,7 @@ class HomeScreen extends React.Component {
                                 </div>
                             </div>
                         </Col>
-                        <Col sm={8} className='carousel-wrapper' style={{ 'marginBottom': '80px' }}>
+                        <Col sm={8} className='carousel-wrapper' style={{ 'marginBottom': '80px', 'z-index': '0' }}>
                             <Carousel className='carousel-fade' pause={false} controls={false}>
                                 <Carousel.Item interval={4000}>
                                     <img
