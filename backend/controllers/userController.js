@@ -11,7 +11,7 @@ const authUser = asyncHandler(async (req, res) => {
 
     const user = await User.findOne({ email })
 
-    if(user && (await user.matchPassword(password))){
+    if (user && (await user.matchPassword(password))) {
         res.json({
             _id: user._id,
             name: user.name,
@@ -21,17 +21,17 @@ const authUser = asyncHandler(async (req, res) => {
         })
     } else {
         res.status(401)
-        throw new Error('Invalid email or password') 
+        throw new Error('Invalid email or password')
     }
 })
 
 //@desc Get User profile
 //@route GET /api/users/profile
 //@acess Private
-const getUserProfile = asyncHandler(async(req, res) => {
+const getUserProfile = asyncHandler(async (req, res) => {
     const user = await User.findById(req.user._id)
 
-    if(user) {
+    if (user) {
         res.json({
             _id: user._id,
             name: user.name,
@@ -47,8 +47,8 @@ const getUserProfile = asyncHandler(async(req, res) => {
 //@desc Register a new user
 //@route POST  /api/users
 //@access Public
-const registerUser = asyncHandler(async(req, res) => {
-    const {name, email, password} = req.body
+const registerUser = asyncHandler(async (req, res) => {
+    const { name, email, password } = req.body
 
     const userExists = await User.findOne({ email })
 
@@ -63,7 +63,7 @@ const registerUser = asyncHandler(async(req, res) => {
         password
     })
 
-    if(user) {
+    if (user) {
         res.status(201).json({
             _id: user._id,
             name: user.name,
