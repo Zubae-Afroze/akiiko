@@ -4,11 +4,15 @@ import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../ProductList/ProductList.css';
 
-import { 
-    actionListWomen, 
-    actionListTote, 
-    actionListOffice, 
-    actionListTravel  } from '../../actions/actionBags'
+import MyComponent from 'react-fullpage-custom-loader';
+import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
+
+import {
+    actionListWomen,
+    actionListTote,
+    actionListOffice,
+    actionListTravel
+} from '../../actions/actionBags'
 
 // import axios from 'axios';
 
@@ -43,108 +47,132 @@ const BagAllProducts = () => {
     }, [dispatch])
 
     const handleMouseEnter = (product) => {
-        document.getElementById(product.productId).src=product.hoverImage
+        document.getElementById(product.productId).src = product.hoverImage
     }
 
     const handleMouseOut = (product) => {
-        document.getElementById(product.productId).src=product.images[0];
+        document.getElementById(product.productId).src = product.images[0];
     }
 
     return (
-    <>
-    <Container>
-        <div className='product-list-wrapper'>
-            <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
+        <>
+            <Container>
+                <div className='product-list-wrapper'>
+                    <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
 
-            { womenLoading ? <h1>Loading...</h1> : womenError ? <h2>{womenError}</h2> : womenProducts[Object.keys(womenProducts)[0]] ? 
-            <>
-            <div className='product-list-label'>{womenProducts[Object.keys(womenProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{womenProducts[Object.keys(womenProducts)[0]].groupDescription}</div>
-            <div>
-                <Row className='product-list-card-wrapper'>
-                    {womenProducts.map(product => (
-                        <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
-                                {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                                {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
-                                </div>
-                                <div className='product-list-card-title'>{product.productName}</div>
-                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
-                            </div></Link>
-                        </div>
-                    ))}
-                </Row>
-            </div>
-            </>
-            : null }
-            
-            { toteLoading ? <h1>Loading...</h1> : toteError ? <h1>{toteError}</h1> : toteProducts[Object.keys(toteProducts)[0]] ? 
-            <>
-            <div className='product-list-label'>{toteProducts[Object.keys(toteProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{toteProducts[Object.keys(toteProducts)[0]].groupDescription}</div>
-            <div>
-                <Row className='product-list-card-wrapper'>
-                    {toteProducts.map(product => (
-                        <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                <div><img id={product.productId} src={product.heroImage} alt='home_1'/>
-                                {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                                {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}</div>
+                    {womenLoading ? <MyComponent
+                        sentences={[]}
+                        wrapperBackgroundColor={'rgba(255,255,255)'}
+                        color={'#6e4e37'}
+                        loaderType={'ball-spin-clockwise'}
+                        customLoader={<SpinnerIcon />}
+                    /> : womenError ? <h2>{womenError}</h2> : womenProducts[Object.keys(womenProducts)[0]] ?
+                        <>
+                            <div className='product-list-label'>{womenProducts[Object.keys(womenProducts)[0]].subGroup}</div>
+                            <div className='product-list-text'>{womenProducts[Object.keys(womenProducts)[0]].groupDescription}</div>
+                            <div>
+                                <Row className='product-list-card-wrapper'>
+                                    {womenProducts.map(product => (
+                                        <div className='product-list-card-wrapper' key={product.productId}>
+                                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                                <div><img id={product.productId} src={product.heroImage} alt='home_1' />
+                                                    {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                                                    {product.quickView ? <span className='pl-label-view' onMouseEnter={() => { handleMouseEnter(product) }} onMouseOut={() => { handleMouseOut(product) }}>{product.quickView}</span> : null}
+                                                </div>
+                                                <div className='product-list-card-title'>{product.productName}</div>
+                                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
+                                            </div></Link>
+                                        </div>
+                                    ))}
+                                </Row>
                             </div>
-                            <div className='product-list-card-title'>{product.productName}</div>
-                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
-                        </div>
-                    ))}
-                </Row>
-            </div>
-            </>
-            : null }
+                        </>
+                        : null}
 
-            { officeLoading ? <h1>Loading...</h1> : officeError ? <h2>{officeError}</h2> : officeProducts[Object.keys(officeProducts)[0]] ? 
-            <>
-            <div className='product-list-label'>{officeProducts[Object.keys(officeProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{officeProducts[Object.keys(officeProducts)[0]].groupDescription}</div>
-            <div>
-                <Row className='product-list-card-wrapper'>
-                    {officeProducts.map(product => (
-                        <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                <img id={product.productId} src={product.heroImage} alt='home_1'/>
-                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
-                                {product.quickView ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                    {toteLoading ? <MyComponent
+                        sentences={[]}
+                        wrapperBackgroundColor={'rgba(255,255,255)'}
+                        color={'#6e4e37'}
+                        loaderType={'ball-spin-clockwise'}
+                        customLoader={<SpinnerIcon />}
+                    /> : toteError ? <h1>{toteError}</h1> : toteProducts[Object.keys(toteProducts)[0]] ?
+                        <>
+                            <div className='product-list-label'>{toteProducts[Object.keys(toteProducts)[0]].subGroup}</div>
+                            <div className='product-list-text'>{toteProducts[Object.keys(toteProducts)[0]].groupDescription}</div>
+                            <div>
+                                <Row className='product-list-card-wrapper'>
+                                    {toteProducts.map(product => (
+                                        <div className='product-list-card-wrapper' key={product.productId}>
+                                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                                <div><img id={product.productId} src={product.heroImage} alt='home_1' />
+                                                    {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                                                    {product.quickView ? <span className='pl-label-view' onMouseEnter={() => { handleMouseEnter(product) }} onMouseOut={() => { handleMouseOut(product) }}>{product.quickView}</span> : null}</div>
+                                            </div>
+                                                <div className='product-list-card-title'>{product.productName}</div>
+                                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
+                                        </div>
+                                    ))}
+                                </Row>
                             </div>
-                            <div className='product-list-card-title'>{product.productName}</div>
-                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
-                        </div>
-                    ))}
-                </Row>
-            </div>
-            </> : null }
-            
-            { travelLoading ? <h1>Loading...</h1> : travelError ? <h1>{travelError}</h1> : travelProducts[Object.keys(travelProducts)[0]] ? 
-            <>
-            <div className='product-list-label'>{travelProducts[Object.keys(travelProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{travelProducts[Object.keys(travelProducts)[0]].groupDescription}</div>
-            <div>
-                <Row className='product-list-card-wrapper'>
-                    {travelProducts.map(product => (
-                        <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                <img id={product.productId} src={product.heroImage} alt='home_1'/>
-                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
-                                {product.quickView ? <span className='label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
+                        </>
+                        : null}
+
+                    {officeLoading ? <MyComponent
+                        sentences={[]}
+                        wrapperBackgroundColor={'rgba(255,255,255)'}
+                        color={'#6e4e37'}
+                        loaderType={'ball-spin-clockwise'}
+                        customLoader={<SpinnerIcon />}
+                    /> : officeError ? <h2>{officeError}</h2> : officeProducts[Object.keys(officeProducts)[0]] ?
+                        <>
+                            <div className='product-list-label'>{officeProducts[Object.keys(officeProducts)[0]].subGroup}</div>
+                            <div className='product-list-text'>{officeProducts[Object.keys(officeProducts)[0]].groupDescription}</div>
+                            <div>
+                                <Row className='product-list-card-wrapper'>
+                                    {officeProducts.map(product => (
+                                        <div className='product-list-card-wrapper' key={product.productId}>
+                                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                                <img id={product.productId} src={product.heroImage} alt='home_1' />
+                                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                                                {product.quickView ? <span className='label-view' onMouseEnter={() => { handleMouseEnter(product) }} onMouseOut={() => { handleMouseOut(product) }}>{product.quickView}</span> : null}
+                                            </div>
+                                                <div className='product-list-card-title'>{product.productName}</div>
+                                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
+                                        </div>
+                                    ))}
+                                </Row>
                             </div>
-                            <div className='product-list-card-title'>{product.productName}</div>
-                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
-                        </div>
-                    ))}
-                </Row>
-            </div>
-            </> : null }
-        </div>
-    </Container>
-    </>
+                        </> : null}
+
+                    {travelLoading ? <MyComponent
+                        sentences={[]}
+                        wrapperBackgroundColor={'rgba(255,255,255)'}
+                        color={'#6e4e37'}
+                        loaderType={'ball-spin-clockwise'}
+                        customLoader={<SpinnerIcon />}
+                    /> : travelError ? <h1>{travelError}</h1> : travelProducts[Object.keys(travelProducts)[0]] ?
+                        <>
+                            <div className='product-list-label'>{travelProducts[Object.keys(travelProducts)[0]].subGroup}</div>
+                            <div className='product-list-text'>{travelProducts[Object.keys(travelProducts)[0]].groupDescription}</div>
+                            <div>
+                                <Row className='product-list-card-wrapper'>
+                                    {travelProducts.map(product => (
+                                        <div className='product-list-card-wrapper' key={product.productId}>
+                                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                                <img id={product.productId} src={product.heroImage} alt='home_1' />
+                                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                                                {product.quickView ? <span className='label-view' onMouseEnter={() => { handleMouseEnter(product) }} onMouseOut={() => { handleMouseOut(product) }}>{product.quickView}</span> : null}
+                                            </div>
+                                                <div className='product-list-card-title'>{product.productName}</div>
+                                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
+                                        </div>
+                                    ))}
+                                </Row>
+                            </div>
+                        </> : null}
+                </div>
+            </Container>
+        </>
     )
 }
 

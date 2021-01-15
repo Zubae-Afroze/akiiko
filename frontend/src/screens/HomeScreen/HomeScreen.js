@@ -7,7 +7,6 @@ import HomeScreenBags from '../HomeScreenBags/HomeScreenBags';
 import HomeScreenHome from '../HomeScreenHome/HomeScreenHome';
 import HomeScreenStorage from '../HomeScreenStorage/HomeScreenStorage';
 
-
 import MyComponent from 'react-fullpage-custom-loader';
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 
@@ -22,10 +21,10 @@ class HomeScreen extends React.Component {
             showLoader: true,
         }
     }
-        // componentDidMount
-        // ComponentShouldUpdate
-        // componentDidUpdate
-        // ComponentWillUnmount -- Important
+    // componentDidMount
+    // ComponentShouldUpdate
+    // componentDidUpdate
+    // ComponentWillUnmount -- Important
 
     // ifFontsLoaded = () => {
     //     document.fonts.ready.then(() => {
@@ -51,89 +50,89 @@ class HomeScreen extends React.Component {
     }
 
     componentWillUnmount() {
-        this.setState({showLoader: false})
+        this.setState({ showLoader: false })
     }
 
 
     togglePageLoader = () => {
-        this.setState({showLoader: !this.state.showLoader});
+        this.setState({ showLoader: !this.state.showLoader });
     }
 
-    render () {
+    render() {
         return (
             <React.Fragment>
                 {/* <UseSpinner loading={this.state.loading} /> */}
-                {this.state.showLoader ? <MyComponent 
+                {this.state.showLoader ? <MyComponent
                     sentences={[]}
                     wrapperBackgroundColor={'rgba(255,255,255)'}
                     color={'#6e4e37'}
                     loaderType={'ball-spin-clockwise'}
                     customLoader={<SpinnerIcon />}
                 /> : null}
-            <Container>
-                <Row className='home-screen-container'>
-                    <Col sm={4}>
-                        <div className='hero-container'>
-                            <div className='empty-div'></div>
-                            <div className='hero-logo'>
-                                akiiko
+                <Container>
+                    <Row className='home-screen-container'>
+                        <Col sm={4}>
+                            <div className='hero-container'>
+                                <div className='empty-div'></div>
+                                <div className='hero-logo'>
+                                    akiiko
                             </div>
-                            <div className='hero-text'>
-                                eco-friendly<br/>
-                                utilitarian<br/>
+                                <div className='hero-text'>
+                                    eco-friendly<br />
+                                utilitarian<br />
                                 vegan
                             </div>
-                            <div className='hero-sub-text'>
-                            </div>
-                            <div className='hero-button'>
-                            <Link to='/allproducts/productlist/bags'><button>
-                                Shop Now
+                                <div className='hero-sub-text'>
+                                </div>
+                                <div className='hero-button'>
+                                    <Link to='/allproducts/productlist/bags'><button>
+                                        Shop Now
                             </button></Link>
+                                </div>
                             </div>
-                        </div>
-                    </Col>
-                    <Col sm={8} className='carousel-wrapper' style={{'marginBottom':'80px'}}>
-                    <Carousel className='carousel-fade' pause={false} controls={false}>
-                        <Carousel.Item interval={4000}>
-                            <img
-                            className="d-block w-100"
-                            src={'/images/carousel_images/carousel_2.jpg'}
-                            alt="First slide"
-                            />
-                        </Carousel.Item>
-                        <Carousel.Item interval={4000}>
-                            <img
-                            className="d-block w-100"
-                            src={'/images/carousel_images/carousel_1.jpg'}
-                            alt="Second slide"
-                            />
-                            <Carousel.Caption className='carousel-slide-2'>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item interval={4000}>
-                            <img
-                            className="d-block w-100"
-                            src={'/images/carousel_images/carousel_3.jpg'}
-                            alt="Third slide"
-                            />
-                            <Carousel.Caption className='carousel-slide-3'>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item interval={4000}>
-                            <img
-                            className="d-block w-100"
-                            src={'/images/carousel_images/carousel_4.jpg'}
-                            alt="Fourth slide"
-                            />
-                        </Carousel.Item>
-                        </Carousel>
-                    </Col>
-                </Row>
-                <HomeScreenBags />
-                <HomeScreenHome />
-                <HomeScreenStorage />
-            </Container>
-        </React.Fragment>
+                        </Col>
+                        <Col sm={8} className='carousel-wrapper' style={{ 'marginBottom': '80px' }}>
+                            <Carousel className='carousel-fade' pause={false} controls={false}>
+                                <Carousel.Item interval={4000}>
+                                    <img
+                                        className="d-block w-100"
+                                        src={'/images/carousel_images/carousel_2.jpg'}
+                                        alt="First slide"
+                                    />
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                    <img
+                                        className="d-block w-100"
+                                        src={'/images/carousel_images/carousel_1.jpg'}
+                                        alt="Second slide"
+                                    />
+                                    <Carousel.Caption className='carousel-slide-2'>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                    <img
+                                        className="d-block w-100"
+                                        src={'/images/carousel_images/carousel_3.jpg'}
+                                        alt="Third slide"
+                                    />
+                                    <Carousel.Caption className='carousel-slide-3'>
+                                    </Carousel.Caption>
+                                </Carousel.Item>
+                                <Carousel.Item interval={4000}>
+                                    <img
+                                        className="d-block w-100"
+                                        src={'/images/carousel_images/carousel_4.jpg'}
+                                        alt="Fourth slide"
+                                    />
+                                </Carousel.Item>
+                            </Carousel>
+                        </Col>
+                    </Row>
+                    <HomeScreenBags />
+                    <HomeScreenHome />
+                    <HomeScreenStorage />
+                </Container>
+            </React.Fragment>
         )
     }
 }

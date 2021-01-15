@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import {Route, Switch, BrowserRouter as Router} from 'react-router-dom';
+import { Route, Switch, BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
 import CartScreen from './screens/CartScreen/CartScreen';
+import LoginScreen from './screens/LoginScreen/LoginScreen';
 
 import './App.css';
 
@@ -29,37 +30,40 @@ export default class App extends Component {
   render() {
     return (
       <Router>
-          <ScrollToTop />
-          <Header/>
-          <Switch>
-            <Route path='/' component={HomeScreen} exact/>
-            <Route path='/cart/:id?' render={()=> (<CartScreen />)}/>
-            {/* Product Listing */}
-            <Route path='/productlist/:group/:subGroup' render={() => (<ProductList />)}/>
+        <ScrollToTop />
+        <Header />
+        <Switch>
+          <Route path='/login' render={() => (<LoginScreen />)} />
 
-            {/* Bags View All */}
-            <Route path='/allproducts/productlist/bags' render={() => (<BagAllProducts />)}/>
+          <Route path='/cart/:id?' render={() => (<CartScreen />)} />
+          {/* Product Listing */}
+          <Route path='/productlist/:group/:subGroup' render={() => (<ProductList />)} />
 
-            {/* Home View All */}
-            <Route path='/allproducts/productlist/home' render={() => (<HomeAllProducts/>)}/>
+          {/* Bags View All */}
+          <Route path='/allproducts/productlist/bags' render={() => (<BagAllProducts />)} />
 
-            {/* Gift View All */}
-            <Route path='/allproducts/productlist/gift' render={() => (<GiftAllProducts/>)}/>
+          {/* Home View All */}
+          <Route path='/allproducts/productlist/home' render={() => (<HomeAllProducts />)} />
 
-            {/* Storage View All */}
-            <Route path='/allproducts/productlist/storage' render={() => (<StorageAllProducts/>)}/>
+          {/* Gift View All */}
+          <Route path='/allproducts/productlist/gift' render={() => (<GiftAllProducts />)} />
 
-            {/* Accessories View All */}
-            <Route path='/allproducts/productlist/accessories' render={() => (<AccessoriesAllProducts />)}/>
+          {/* Storage View All */}
+          <Route path='/allproducts/productlist/storage' render={() => (<StorageAllProducts />)} />
 
-            {/* All Products */}
-            <Route path='/product/:id' render={() => (<ProductDetails/>)}/>
+          {/* Accessories View All */}
+          <Route path='/allproducts/productlist/accessories' render={() => (<AccessoriesAllProducts />)} />
 
-            <Route path='/FooterLinks' render={() => (<FooterLinks/>)} />
-            <Route path='/AboutUs/' render={() => (<AboutUs />) } />
-            <Route path='/Careers/' render={() => (<Careers />) } />
-          </Switch>
-          <Footer/>
+          {/* All Products */}
+          <Route path='/product/:id' render={() => (<ProductDetails />)} />
+
+          <Route path='/FooterLinks' render={() => (<FooterLinks />)} />
+          <Route path='/AboutUs/' render={() => (<AboutUs />)} />
+          <Route path='/Careers/' render={() => (<Careers />)} />
+
+          <Route path='/' component={HomeScreen} exact />
+        </Switch>
+        <Footer />
       </Router>
     )
   }

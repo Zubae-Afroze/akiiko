@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-//import {createBrowserHistory}  from 'history'
-
 import { Container, Row, Col, Dropdown, Carousel, Modal, ModalBody } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
 import { actionListProductDetails } from '../../actions/actionProductList'
 import { addToCart, removeFromCart } from '../../actions/actionCart';
 
-//import emailjs from 'emailjs-com';
-//import axios from 'axios';
-
 import ReactImageMagnify from 'react-image-magnify';
+
+import MyComponent from 'react-fullpage-custom-loader';
+import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 
 import './ProductDetails.css';
 
@@ -20,22 +18,9 @@ const ProductDetails = () => {
 
     const { id } = useParams()
 
-    //const history = useHistory();
-
-    //const { history } = useParams()
-
-    //const [product, setProduct] = useState({})
-
     const dispatch = useDispatch()
 
     useEffect(() => {
-        // const fetchProduct = async () => {
-        //     const res =  await axios.get(`/api/product/${id}`)
-        //     setProduct(res.data)
-        // }
-
-        // fetchProduct();
-
         dispatch(actionListProductDetails(id))
 
     }, [dispatch, id])
@@ -59,141 +44,6 @@ const ProductDetails = () => {
 
     }
 
-    // function NextModal(props) {
-    //     return (
-    //       <Modal
-    //         {...props}
-    //         size="lg"
-    //         aria-labelledby="contained-modal-title-vcenter"
-    //         centered
-    //       >
-    //         <Modal.Header closeButton>
-    //           {/* <Modal.Title id="contained-modal-title-vcenter">
-    //             Modal heading
-    //           </Modal.Title> */}
-    //         </Modal.Header>
-    //         <Modal.Body>
-    //           <div>
-    //             Thank you for your Purchase, our team will get in touch with you shortly.
-    //           </div>
-    //         </Modal.Body>
-    //         <Modal.Footer>
-    //             <Link to={`/product/${product.productId}`}><button className='modal-cont-button' onClick={props.onHide}>CONTINUE SHOPPING</button></Link>
-    //         </Modal.Footer>
-    //       </Modal>
-    //     );
-    // }
-
-    // function MyVerticallyCenteredModal(props) {
-    //     const initialFormData = {
-    //         fname: '',
-    //         lname: '',
-    //         email: '',
-    //         phone: '',
-    //         address: ''
-    //     };    
-        
-    //     const [formData, updateFormData] = useState(initialFormData);
-            
-    //     const handleChange = (e) => {
-    //         updateFormData({
-    //             ...formData,
-    //             // Trimming any whitespace
-    //             [e.target.name]: e.target.value.trim()
-    //         });
-    //     };
-    
-    //     const handleSubmit = (e) => {
-    //         e.preventDefault()
-    //         //console.log(formData);
-    //         // ... submit to API or something
-
-    //         let eParams = {
-    //             productId: product.productId,
-    //             productName: product.productName,
-    //             fname: formData.fname,
-    //             lname: formData.lname,
-    //             email: formData.email,
-    //             phone: formData.phone,
-    //             address: formData.address,
-    //             itemQuantity: itemQuantity
-    //         };
-    //         emailTest(eParams)
-    //     };
-
-    //     const emailTest = (eParams) => {
-    //     //console.log(eParams)
-    //     emailjs.send('service_0gyrynb', 'template_1sohpy9', eParams, 'user_MWfMIz4lhzaCvONbRdLAM')
-    //         .then(function(response) {
-    //             console.log('SUCCESS!', response.status, response.text);
-    //             setNextModalShow(true); setModalShow(false);
-    //         }, function(error) {
-    //             console.log('FAILED!', error);
-    //         })
-    //     }
-
-    //     return (
-    //       <Modal
-    //         {...props}
-    //         size="lg"
-    //         aria-labelledby="contained-modal-title-vcenter"
-    //         centered
-    //       >
-    //         <Modal.Header closeButton>
-    //           {/* <Modal.Title id="contained-modal-title-vcenter">
-    //             Modal heading
-    //           </Modal.Title> */}
-    //           <Modal.Title name={product.productName}>
-    //             {product.productName}
-    //           </Modal.Title>
-    //         </Modal.Header>
-    //         <Modal.Body>
-    //         <Row>
-    //             <Col className='modal-wrapper'>
-    //                 <div className='modal-intro-text'>Please fill out your information, to continue with the purchase</div>
-    //                 <form className='modal-form'>
-    //                     <input type='text' placeholder='First Name' name='fname' autoComplete="off" className='modal-input modal-first' onChange={handleChange} required></input>
-    //                     <input type='text' placeholder='Last Name' name='lname' autoComplete="off" className='modal-input modal-last' onChange={handleChange} required></input><br></br>
-    //                     <input type='text' placeholder='Email Address' name='email' autoComplete="off" className='modal-input modal-email' onChange={handleChange} required></input><br></br>
-    //                     <input type='number' placeholder='Phone Number' name='phone' autoComplete="off" className='modal-input modal-phone' onChange={handleChange} required></input><br></br>
-    //                     <textarea type='text' id='madd' placeholder='Address' name='address' autoComplete="off" className='modal-input modal-address' onChange={handleChange} required></textarea><br></br>
-
-    //                     <div className='modal-prd-det'><span className='target-bold'>Product Material:</span> {product.material}</div>
-    //                     <div className='modal-prd-det'><span className='target-bold'>Product Thickness:</span> {product.thickness}</div>
-    //                     <div name={itemQuantity} className='modal-prd-det'><span className='target-bold'>Item Quantity:</span> {itemQuantity}</div>
-    //                 </form>
-    //             </Col>
-    //             <Col className='modal-img'>
-    //                 <img src={product.heroImage} alt='modal_img' style={{'marginBottom':'20px'}}/>
-    //                 <div>
-    //                 <div className='modal-det-label'>Details</div>
-    //                 <ul className='modal-det-text'>
-    //                 <li><span name={product.productId} className='target-bold'>Item Code: </span> {product.productId}</li>
-    //                 <li><span className='target-bold'>Size:</span> {product.measurement}</li>
-    //                 <li><span className='target-bold'>Material:</span> {product.material}</li>
-    //                 {/* <li>Care Instruction: {product.washingCare}</li> */}
-    //                 </ul>
-    //             </div>
-
-    //             <span className='modal-price'><span className='target-bold'>Price:</span> &#x20B9;{product.price ? product.price * itemQuantity : product.mrpPrice * itemQuantity}</span>
-    //             <button className='modal-check-button' onClick={handleSubmit}>CHECK OUT</button>
-    //             </Col>
-    //         </Row>
-    //         </Modal.Body>
-    //         {/* <Modal.Footer>
-    //           <button className='modal-close-button' onClick={props.onHide}>Close</button>
-    //         </Modal.Footer>  () => {setNextModalShow(true); setModalShow(false);*/}
-    //       </Modal>
-    //     );
-    //   }
-      
-    // const [modalShow, setModalShow] = useState(false);
-
-    // const [nextModalShow, setNextModalShow] = useState(false);
-
-    // const [dropMaterial, setDropMaterial] = useState('');
-
-    // const [dropThickness, setDropThickness] = useState('');
     const cartList = useSelector(state => state.cartList)
 
     const { cartItems } = cartList
@@ -202,209 +52,202 @@ const ProductDetails = () => {
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
-   }
+    }
 
     function CartModal(props) {
         return (
             <Modal
                 {...props}
                 animation={false}>
-            
-            <ModalBody>
-                    <div className='head-cart-header'>Shopping Cart<img src='/images/font_images/cart.svg' alt='cart-icon'/><span>{cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}</span></div>
+
+                <ModalBody>
+                    <div className='head-cart-header'>Shopping Cart<img src='/images/font_images/cart.svg' alt='cart-icon' /><span>{cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}</span></div>
                     <>
-                    { cartItems.length === 0 ? <div className='head-cart-empty'>Your Cart is empty</div> :
-                    <>
-                    <div className='head-cart-scroll'>
-                    {cartItems.map((items , index) => (
-                            <div className='head-cart-wrap' key={index}>
-                                <div className='head-cart-img'>
-                                    <img src={items.image} alt='cart_1'/>
-                                </div>
-                                <div className='head-cart-details'>
-                                    <div className='head-cart-subg'>{items.subGroup}</div>
-                                    <div className='head-cart-prodn'>{items.productName}
-                                        <img src='/images/font_images/times.svg' alt='trash_icon' onClick={() => removeFromCartHandler(items.product)} />
-                                    </div>
-                                    <div className='head-cart-root'>
-                                        <div className='head-cart-qty'>
-                                            <span className='head-cart-dum' onClick={() => items.qty = items.qty > 1 ? dispatch(addToCart(items.product, items.qty - 1)) : 1}>-</span>
-                                            {items.qty}
-                                            <span className='head-cart-div' onClick={() => items.qty = dispatch(addToCart(items.product, items.qty + 1))}>+</span>
+                        {cartItems.length === 0 ? <div className='head-cart-empty'>Your Cart is empty</div> :
+                            <>
+                                <div className='head-cart-scroll'>
+                                    {cartItems.map((items, index) => (
+                                        <div className='head-cart-wrap' key={index}>
+                                            <div className='head-cart-img'>
+                                                <img src={items.image} alt='cart_1' />
+                                            </div>
+                                            <div className='head-cart-details'>
+                                                <div className='head-cart-subg'>{items.subGroup}</div>
+                                                <div className='head-cart-prodn'>{items.productName}
+                                                    <img src='/images/font_images/times.svg' alt='trash_icon' onClick={() => removeFromCartHandler(items.product)} />
+                                                </div>
+                                                <div className='head-cart-root'>
+                                                    <div className='head-cart-qty'>
+                                                        <span className='head-cart-dum' onClick={() => items.qty = items.qty > 1 ? dispatch(addToCart(items.product, items.qty - 1)) : 1}>-</span>
+                                                        {items.qty}
+                                                        <span className='head-cart-div' onClick={() => items.qty = dispatch(addToCart(items.product, items.qty + 1))}>+</span>
+                                                    </div>
+                                                    <div className='head-cart-price'>&#x20B9;{items.price * items.qty}</div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className='head-cart-price'>&#x20B9;{items.price * items.qty}</div>
+                                    ))}
+                                </div>
+                                <div className='head-cart-bottom-wrap'>
+                                    <div className='head-cart-showmore'>
+                                        <Link to='/cart'><button onClick={() => setModalShow(false)}>Go To Cart Page</button></Link>
+                                    </div>
+                                    <div className='head-cart-sub-price-wrap'>
+                                        <div className='head-cart-sub-price-label'>
+                                            Subtotal Price
+                                </div>
+                                        <div className='head-cart-sub-price'>
+                                            &#x20B9;{cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}
+                                        </div>
+                                    </div>
+                                    <div className='head-cart-purchase-button-wrap'>
+                                        <button >PROCEED TO CHECKOUT</button>
                                     </div>
                                 </div>
-                            </div>
-                    ))}
-                </div>
-                <div className='head-cart-bottom-wrap'>
-                    <div className='head-cart-showmore'>
-                    <Link to='/cart'><button onClick={() => setModalShow(false)}>Go To Cart Page</button></Link>
-                    </div>
-                    <div className='head-cart-sub-price-wrap'>
-                        <div className='head-cart-sub-price-label'>
-                            Subtotal Price
-                        </div>
-                        <div className='head-cart-sub-price'>
-                            &#x20B9;{ cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}
-                        </div>
-                    </div>
-                    <div className='head-cart-purchase-button-wrap'>
-                        <button >PROCEED TO CHECKOUT</button>
-                    </div>
-                </div>
-                </>
-                }
-                </>
-            </ModalBody>
+                            </>
+                        }
+                    </>
+                </ModalBody>
             </Modal>
         )
     }
 
     return (
         <>
-        {loading ? <h1>Loading...</h1> : error ? <h2>{error}</h2> : product.productId ? 
-        <Container>
-        <div className='product-details-wrapper'>
-        <Col sm={12} className='carousel-wrapper product-details-carousel'>
-                <Carousel controls={false}>
-                {product.images.map((prod, index) => (<Carousel.Item interval={null} key={index}>
-                        <img
-                        className="d-block w-100"
-                        src={prod}
-                        alt="First slide"
-                        /> 
-                        {/* <Carousel.Caption>
-                            <h3 className='carousel-slide-1'>Introducing Akiiko</h3>
-                        </Carousel.Caption> */}
-                    </Carousel.Item>))}
-                    </Carousel>
-         </Col>
-        <Row>
-            <Col xs={1} className='alt-img-list'>
-            <ul>
-                {product.images.map((prod, index) => (
-                    <li key={index}><img onClick={() => setImageSrc(prod)} src={prod} alt='alt_image' /></li>
-                ))}
-            </ul>
-            </Col>
-            <Col xs={5} className='alt-img-hero-container'>
-            <div className='alt-img-hero'>
-            <ReactImageMagnify {...{
-                smallImage: {
-                    alt: 'big_img',
-                    src: bigImageSrc,
-                    width: 522,
-                    height: 522
-                },
-                largeImage: {
-                    src: bigImageSrc,
-                    width: 1600,
-                    height: 1600
-                },
-                className: 'test-magnify', 
-                enlargedImageContainerClassName	: 'mag-img-cont',
-                enlargedImageClassName: 'mag-img',
-                imageClassName: 'img-hero-wrap',
-                lensStyle: {
-                    background: 'hsla(0, 0%, 100%, .3)',
-                    border: '1px solid #ccc'
-                },
-                shouldUsePositiveSpaceLens: true
-            }} />
-            </div>
-            </Col>
-            <Col lg={6} className='product-det'>
-                <div className='products-details-head'>{product.group}</div>
-                <div className='products-details-label'> {product.productName}{product.price ? <div className='products-details-price'><span className='strike-price'>&#x20B9; {product.mrpPrice}</span>  <span className='nstrike-price'>&#x20B9;{product.price}</span></div> : <div className='products-details-price'>&#x20B9; {product.mrpPrice}</div>}
-            </div>
-            <Row className='cart-det'>
-            <Col className='material-det'>
-                <Dropdown>
-                    <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
-                        <div className='material-div'>MATERIAL:</div> <div className='material-dum'>Cotton Canvas <i className="lni lni-chevron-down"></i></div>
-                    </Dropdown.Toggle>
+            {loading ? <MyComponent
+                sentences={[]}
+                wrapperBackgroundColor={'rgba(255,255,255)'}
+                color={'#6e4e37'}
+                loaderType={'ball-spin-clockwise'}
+                customLoader={<SpinnerIcon />}
+            /> : error ? <h2>{error}</h2> : product.productId ?
+                <Container>
+                    <div className='product-details-wrapper'>
+                        <Col sm={12} className='carousel-wrapper product-details-carousel'>
+                            <Carousel controls={false}>
+                                {product.images.map((prod, index) => (<Carousel.Item interval={null} key={index}>
+                                    <img
+                                        className="d-block w-100"
+                                        src={prod}
+                                        alt="First slide"
+                                    />
+                                </Carousel.Item>))}
+                            </Carousel>
+                        </Col>
+                        <Row>
+                            <Col xs={1} className='alt-img-list'>
+                                <ul>
+                                    {product.images.map((prod, index) => (
+                                        <li key={index}><img onClick={() => setImageSrc(prod)} src={prod} alt='alt_image' /></li>
+                                    ))}
+                                </ul>
+                            </Col>
+                            <Col xs={5} className='alt-img-hero-container'>
+                                <div className='alt-img-hero'>
+                                    <ReactImageMagnify {...{
+                                        smallImage: {
+                                            alt: 'big_img',
+                                            src: bigImageSrc,
+                                            width: 522,
+                                            height: 522
+                                        },
+                                        largeImage: {
+                                            src: bigImageSrc,
+                                            width: 1600,
+                                            height: 1600
+                                        },
+                                        className: 'test-magnify',
+                                        enlargedImageContainerClassName: 'mag-img-cont',
+                                        enlargedImageClassName: 'mag-img',
+                                        imageClassName: 'img-hero-wrap',
+                                        lensStyle: {
+                                            background: 'hsla(0, 0%, 100%, .3)',
+                                            border: '1px solid #ccc'
+                                        },
+                                        shouldUsePositiveSpaceLens: true
+                                    }} />
+                                </div>
+                            </Col>
+                            <Col lg={6} className='product-det'>
+                                <div className='products-details-head'>{product.group}</div>
+                                <div className='products-details-label'> {product.productName}{product.price ? <div className='products-details-price'><span className='strike-price'>&#x20B9; {product.mrpPrice}</span>  <span className='nstrike-price'>&#x20B9;{product.price}</span></div> : <div className='products-details-price'>&#x20B9; {product.mrpPrice}</div>}
+                                </div>
+                                <Row className='cart-det'>
+                                    <Col className='material-det'>
+                                        <Dropdown>
+                                            <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
+                                                <div className='material-div'>MATERIAL:</div> <div className='material-dum'>Cotton Canvas <i className="lni lni-chevron-down"></i></div>
+                                            </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
-                    <Dropdown.Item>Cotton Canvas</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-            </Col>
-            <Col className='material-det'>
-            <Dropdown>
-                <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
-                    <div className='thickness-div'>THICKNESS:</div> <div className='thickness-dum'>9 Ounce <i className="lni lni-chevron-down"></i></div>
-                </Dropdown.Toggle>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item>Cotton Canvas</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </Col>
+                                    <Col className='material-det'>
+                                        <Dropdown>
+                                            <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
+                                                <div className='thickness-div'>THICKNESS:</div> <div className='thickness-dum'>9 Ounce <i className="lni lni-chevron-down"></i></div>
+                                            </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item>{product.thickness}</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
-            </Col>
-            </Row>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item>{product.thickness}</Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </Col>
+                                </Row>
 
-            <Row className='cart-det'>
-            <Col className='product-details-color'>
-            <Dropdown>
-                <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
-                    <div className='color-div'>Color:</div><div className='color-pick'><i className="lni lni-chevron-down testing"></i></div>
-                </Dropdown.Toggle>
+                                <Row className='cart-det'>
+                                    <Col className='product-details-color'>
+                                        <Dropdown>
+                                            <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
+                                                <div className='color-div'>Color:</div><div className='color-pick'><i className="lni lni-chevron-down testing"></i></div>
+                                            </Dropdown.Toggle>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item>Natural<div className='color-pick'></div></Dropdown.Item>
-                </Dropdown.Menu>
-                </Dropdown>
-            </Col>
+                                            <Dropdown.Menu>
+                                                <Dropdown.Item>Natural<div className='color-pick'></div></Dropdown.Item>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </Col>
 
-            <Col className='product-details-quantity'>
-                <div className='details-quantity'>
-                <div className='quantity-div'>Quantity:</div>
-                    <div className='quantity-dum'><span className='quantity-decrease' onClick={() => setItemQuantity(itemQuantity <= 1 ? itemQuantity = 1 : itemQuantity - 1)}>-</span>
-                        {itemQuantity}
-                    <span className='quantity-increase' onClick={() => setItemQuantity(itemQuantity + 1 )}>+</span></div>
-                </div>
-                </Col>
-                </Row>
-                <button className='product-purchase-button' onClick={addToCartHandler}>ADD TO CART</button>
-                
-                <div className='product-details-second-wrapper'>
-                <div className='product-description-label '>PRODUCT DESCRIPTION</div>
-                <div className='product-description-text'>{product.description}</div>
+                                    <Col className='product-details-quantity'>
+                                        <div className='details-quantity'>
+                                            <div className='quantity-div'>Quantity:</div>
+                                            <div className='quantity-dum'><span className='quantity-decrease' onClick={() => setItemQuantity(itemQuantity <= 1 ? itemQuantity = 1 : itemQuantity - 1)}>-</span>
+                                                {itemQuantity}
+                                                <span className='quantity-increase' onClick={() => setItemQuantity(itemQuantity + 1)}>+</span></div>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <button className='product-purchase-button' onClick={addToCartHandler}>ADD TO CART</button>
 
-                <div>
-                    <div className='product-details-label '>Details</div>
-                    <ul className='product-details-text'>
-                    <li className='product-details-texts'><span className='target-bold'>Item Code: </span> {product.productId}</li>
-                    <li className='product-details-texts'><span className='target-bold'>Size:</span> {product.measurement}</li>
-                    <li className='product-details-texts'><span className='target-bold'>Material:</span> {product.material}</li>
-                    {/* <li>Care Instruction: {product.washingCare}</li> */}
-                    </ul>
-                </div>
+                                <div className='product-details-second-wrapper'>
+                                    <div className='product-description-label '>PRODUCT DESCRIPTION</div>
+                                    <div className='product-description-text'>{product.description}</div>
 
-                <div>
-                    <div className='product-details-label '>Care Instruction</div>
-                    <div className='product-details-text'>{product.washingCare}</div>
-                </div></div>
-                
-            </Col>
+                                    <div>
+                                        <div className='product-details-label '>Details</div>
+                                        <ul className='product-details-text'>
+                                            <li className='product-details-texts'><span className='target-bold'>Item Code: </span> {product.productId}</li>
+                                            <li className='product-details-texts'><span className='target-bold'>Size:</span> {product.measurement}</li>
+                                            <li className='product-details-texts'><span className='target-bold'>Material:</span> {product.material}</li>
+                                            {/* <li>Care Instruction: {product.washingCare}</li> */}
+                                        </ul>
+                                    </div>
 
-            {/* <MyVerticallyCenteredModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+                                    <div>
+                                        <div className='product-details-label '>Care Instruction</div>
+                                        <div className='product-details-text'>{product.washingCare}</div>
+                                    </div>
+                                </div>
+                            </Col>
+                        </Row>
+                        <CartModal
+                            show={modalShow}
+                            onHide={() => setModalShow(false)}
+                        />
 
-            <NextModal
-                show={nextModalShow}
-                onHide={() => setNextModalShow(false)}
-            /> */}
-        </Row>
-        <CartModal 
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-        />
-        
-            {/* {product.addOn ? 
+                        {/* {product.addOn ? 
         <Row className=''> 
             <Col sm={3}>
                 <div className='addon-img-container'>
@@ -431,32 +274,32 @@ const ProductDetails = () => {
             </Col>
         </Row>
         : null} */}
-        { product.similarProducts ?
-        <div>
-            <div className='similar-products-head'>You may also like</div>
-         <Row className='similar-products-wrapper'> 
-            {/* Similar Products */}
-                {product.similarProducts.map(prod => (
-                    <div key={prod.productId} className='similar-products-container'>
-                        <Link to={`/product/${prod.id}`} onClick={() => setImageSrc(prod.heroImage)}>
-                            <Col lg={2.4} >
-                                <div>
-                                    <div className='similar-products-image'><img src={prod.heroImage} alt={prod.productId}></img>
-                                    {prod.bestSeller ? <span className='label-best'>{prod.bestSeller}</span> : null}
-                                    {prod.quickView ? <span className='label-view'>{prod.quickView}</span> : null}
-                                    </div>
-                                    <div className='similar-products-title'>{prod.productName}</div>
-                                    <div className='similar-products-text'> View Details - &#x20B9;{prod.price ? prod.price : prod.mrpPrice}</div>
-                                </div>
-                            </Col>
-                        </Link>
+                        {product.similarProducts ?
+                            <div>
+                                <div className='similar-products-head'>You may also like</div>
+                                <Row className='similar-products-wrapper'>
+                                    {/* Similar Products */}
+                                    {product.similarProducts.map(prod => (
+                                        <div key={prod.productId} className='similar-products-container'>
+                                            <Link to={`/product/${prod.id}`} onClick={() => setImageSrc(prod.heroImage)}>
+                                                <Col lg={2.4} >
+                                                    <div>
+                                                        <div className='similar-products-image'><img src={prod.heroImage} alt={prod.productId}></img>
+                                                            {prod.bestSeller ? <span className='label-best'>{prod.bestSeller}</span> : null}
+                                                            {prod.quickView ? <span className='label-view'>{prod.quickView}</span> : null}
+                                                        </div>
+                                                        <div className='similar-products-title'>{prod.productName}</div>
+                                                        <div className='similar-products-text'> View Details - &#x20B9;{prod.price ? prod.price : prod.mrpPrice}</div>
+                                                    </div>
+                                                </Col>
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </Row> </div> : null
+                        }
                     </div>
-                ))}            
-          </Row> </div>: null
-          }
-        </div>
-        </Container> : null}
-    </>
+                </Container> : null}
+        </>
     )
 }
 
