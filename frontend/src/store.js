@@ -8,13 +8,13 @@ import { reducersHomeStorage } from './reducers/reducersHomeStorage';
 import { reducersProductList, reducersProductDetails } from './reducers/reducersProductList';
 
 import { reducersWomen, reducersTote, reducersOffice, reducersTravel } from './reducers/reducersBags'
-import { reducersTableware, reducersKitchen, reducersLaundry, reducersGarden} from './reducers/reducersHome'
+import { reducersTableware, reducersKitchen, reducersLaundry, reducersGarden } from './reducers/reducersHome'
 import { reducersGiftBox, reducersGiftBag, reducersAccessories } from './reducers/reducersGift'
 import { reducersOrganiser, reducersHome } from './reducers/reducersStorage'
 import { reducersOnTheGo, reducersWallet } from './reducers/reducersAccessories';
 
 import { reducersCart } from './reducers/reducersCart'
-import { userLoginReducer } from './reducers/reducersUsers'
+import { userLoginReducer, userRegisterReducer } from './reducers/reducersUsers'
 
 const reducer = combineReducers({
     homeScreenBags: reducersHomeBags,
@@ -38,7 +38,8 @@ const reducer = combineReducers({
     onTheGoList: reducersOnTheGo,
     walletList: reducersWallet,
     cartList: reducersCart,
-    userLogin: userLoginReducer
+    userLogin: userLoginReducer,
+    userRegister: userRegisterReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
@@ -47,7 +48,7 @@ const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localS
 
 const initialState = {
     cartList: { cartItems: cartItemsFromStorage },
-    userLogin: { userInfo: userInfoFromStorage}
+    userLogin: { userInfo: userInfoFromStorage }
 };
 
 const middleware = [thunk]

@@ -4,6 +4,9 @@ import { Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import '../ProductList/ProductList.css';
 
+import MyComponent from 'react-fullpage-custom-loader';
+import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
+
 import { actionListOnTheGo, actionListWallet } from '../../actions/actionAccessories'
 
 //import axios from 'axios';
@@ -19,7 +22,7 @@ const AccessoriesAllProducts = () => {
     const { onTheGoLoading, onTheGoProducts, onTheGoError } = onTheGoList
 
     const walletList = useSelector(state => state.walletList)
-    const { walletLoading, walletProducts, walletError} = walletList
+    const { walletLoading, walletProducts, walletError } = walletList
 
     useEffect(() => {
         dispatch(actionListOnTheGo())
@@ -27,63 +30,75 @@ const AccessoriesAllProducts = () => {
     }, [dispatch])
 
     const handleMouseEnter = (product) => {
-        document.getElementById(product.productId).src=product.hoverImage
+        document.getElementById(product.productId).src = product.hoverImage
     }
 
     const handleMouseOut = (product) => {
-        document.getElementById(product.productId).src=product.images[0];
+        document.getElementById(product.productId).src = product.images[0];
     }
 
     return (
-    <Container>
-        <div className='product-list-wrapper'>
-        <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
-            { onTheGoLoading ? <h1>Loading...</h1> : onTheGoError ? <h2>{onTheGoError}</h2> : onTheGoProducts[Object.keys(onTheGoProducts)[0]] ? 
-            <>
-            <div className='product-list-label'>{onTheGoProducts[Object.keys(onTheGoProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{onTheGoProducts[Object.keys(onTheGoProducts)[0]].groupDescription}</div>
-            <div>
-                <Row className='product-list-card-wrapper'>
-                    {onTheGoProducts.map(product => (
-                        <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                <div>
-                                <img src={product.heroImage} alt='home_1'/>
-                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
-                                {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
-                                </div>
-                                <div className='product-list-card-title'>{product.productName}</div>
-                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
-                            </div></Link>
+        <Container>
+            <div className='product-list-wrapper'>
+                <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
+                {onTheGoLoading ? <MyComponent
+                    sentences={[]}
+                    wrapperBackgroundColor={'rgba(255,255,255)'}
+                    color={'#6e4e37'}
+                    loaderType={'ball-spin-clockwise'}
+                    customLoader={<SpinnerIcon />}
+                /> : onTheGoError ? <h2>{onTheGoError}</h2> : onTheGoProducts[Object.keys(onTheGoProducts)[0]] ?
+                    <>
+                        <div className='product-list-label'>{onTheGoProducts[Object.keys(onTheGoProducts)[0]].subGroup}</div>
+                        <div className='product-list-text'>{onTheGoProducts[Object.keys(onTheGoProducts)[0]].groupDescription}</div>
+                        <div>
+                            <Row className='product-list-card-wrapper'>
+                                {onTheGoProducts.map(product => (
+                                    <div className='product-list-card-wrapper' key={product.productId}>
+                                        <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                            <div>
+                                                <img src={product.heroImage} alt='home_1' />
+                                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                                                {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
+                                            </div>
+                                            <div className='product-list-card-title'>{product.productName}</div>
+                                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
+                                        </div></Link>
+                                    </div>
+                                ))}
+                            </Row>
                         </div>
-                    ))}
-                </Row>
-            </div>
-            </> : null }
+                    </> : null}
 
-            { walletLoading ? <h1>Loading...</h1> : walletError ? <h2>{walletError}</h2> : walletProducts[Object.keys(walletProducts)[0]] ?
-            <>
-            <div className='product-list-label'>{walletProducts[Object.keys(walletProducts)[0]].subGroup}</div>
-            <div className='product-list-text'>{walletProducts[Object.keys(walletProducts)[0]].groupDescription}</div>
-            <div>
-                <Row className='product-list-card-wrapper'>
-                    {walletProducts.map(product => (
-                        <div className='product-list-card-wrapper' key={product.productId}>
-                            <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                <img id={product._id} src={product.heroImage} alt='home_1'/>
-                                {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                                {product.quickView ? <span className='pl-label-view' onMouseEnter={() => {handleMouseEnter(product)}} onMouseOut={() => {handleMouseOut(product)}}>{product.quickView}</span> : null}
-                            </div>
-                            <div className='product-list-card-title'>{product.productName}</div>
-                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
+                {walletLoading ? <MyComponent
+                    sentences={[]}
+                    wrapperBackgroundColor={'rgba(255,255,255)'}
+                    color={'#6e4e37'}
+                    loaderType={'ball-spin-clockwise'}
+                    customLoader={<SpinnerIcon />}
+                /> : walletError ? <h2>{walletError}</h2> : walletProducts[Object.keys(walletProducts)[0]] ?
+                    <>
+                        <div className='product-list-label'>{walletProducts[Object.keys(walletProducts)[0]].subGroup}</div>
+                        <div className='product-list-text'>{walletProducts[Object.keys(walletProducts)[0]].groupDescription}</div>
+                        <div>
+                            <Row className='product-list-card-wrapper'>
+                                {walletProducts.map(product => (
+                                    <div className='product-list-card-wrapper' key={product.productId}>
+                                        <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                            <img id={product._id} src={product.heroImage} alt='home_1' />
+                                            {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
+                                            {product.quickView ? <span className='pl-label-view' onMouseEnter={() => { handleMouseEnter(product) }} onMouseOut={() => { handleMouseOut(product) }}>{product.quickView}</span> : null}
+                                        </div>
+                                            <div className='product-list-card-title'>{product.productName}</div>
+                                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
+                                    </div>
+                                ))}
+                            </Row>
                         </div>
-                    ))}
-                </Row>
-            </div>
-            </> : null }
+                    </> : null}
 
-        </div>
-    </Container>
+            </div>
+        </Container>
     )
 }
 
