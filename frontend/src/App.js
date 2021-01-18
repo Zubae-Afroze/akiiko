@@ -7,6 +7,7 @@ import CartScreen from './screens/CartScreen/CartScreen';
 import LoginScreen from './screens/LoginScreen/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
+import ShippingScreen from './screens/ShippingScreen/ShippingScreen';
 
 import './App.css';
 
@@ -36,6 +37,8 @@ export default class App extends Component {
         <Header />
         <Switch>
           <Route path='/login' render={() => (<LoginScreen />)} />
+
+          <Route path='/shipping' render={() => (<ShippingScreen />)} />
 
           <Route path='/register' render={() => (<RegisterScreen />)} />
 
