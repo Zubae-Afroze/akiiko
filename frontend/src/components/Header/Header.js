@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container, Navbar, Nav, NavDropdown, Modal, ModalBody, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Menubar from '../Menubar/Menubar';
 import './Header.css';
 import MobileNav from '../MobileNav/MobileNav';
@@ -12,6 +12,8 @@ import { logout } from '../../actions/actionUsers';
 
 const Header = () => {
     const dispatch = useDispatch();
+
+    const history = useHistory();
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
@@ -27,7 +29,12 @@ const Header = () => {
 
     const logouthandler = () => {
         dispatch(logout())
-        alert('sucessfully logedout')
+        alert('sucessfully loggedout')
+    }
+
+    const checkoutHandler = () => {
+        history.push('/login?redirect=shipping')
+        setCartModalShow(false);
     }
 
     function CartModal(props) {
@@ -77,7 +84,7 @@ const Header = () => {
                                         </div>
                                     </div>
                                     <div className='head-cart-purchase-button-wrap'>
-                                        <button >PROCEED TO CHECKOUT</button>
+                                        <button onClick={checkoutHandler}>PROCEED TO CHECKOUT</button>
                                     </div>
                                 </div>
                             </>
@@ -102,8 +109,8 @@ const Header = () => {
                                 <NavDropdown title={<img src={'/images/font_images/user.svg'} alt='user_icon' />}>
                                     <NavDropdown.Item>Hello, {userInfo.name}</NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <LinkContainer to='/orders'>
-                                        <NavDropdown.Item>Orders</NavDropdown.Item>
+                                    <LinkContainer to='/profile'>
+                                        <NavDropdown.Item>Profile</NavDropdown.Item>
                                     </LinkContainer>
                                     <NavDropdown.Item onClick={logouthandler}>Logout</NavDropdown.Item>
                                 </NavDropdown>

@@ -14,7 +14,7 @@ import { reducersOrganiser, reducersHome } from './reducers/reducersStorage'
 import { reducersOnTheGo, reducersWallet } from './reducers/reducersAccessories';
 
 import { reducersCart } from './reducers/reducersCart'
-import { userLoginReducer, userRegisterReducer } from './reducers/reducersUsers'
+import { userDetailsReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './reducers/reducersUsers'
 
 const reducer = combineReducers({
     homeScreenBags: reducersHomeBags,
@@ -40,6 +40,8 @@ const reducer = combineReducers({
     cartList: reducersCart,
     userLogin: userLoginReducer,
     userRegister: userRegisterReducer,
+    userDetails: userDetailsReducer,
+    userUpdateProfile: userUpdateProfileReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : []
