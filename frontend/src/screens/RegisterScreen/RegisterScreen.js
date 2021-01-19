@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import { Container, Form, Row, Col } from 'react-bootstrap';
+import { Card, Form, Row, Col } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../actions/actionUsers';
 
@@ -8,6 +8,8 @@ import MyComponent from 'react-fullpage-custom-loader';
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 
 import Message from '../../components/Message/Message';
+
+import './RegisterScreen.css'
 
 
 const RegisterScreen = () => {
@@ -45,10 +47,7 @@ const RegisterScreen = () => {
     }
 
     return (
-        <Container>
-            <h1>Sign Up</h1>
-            {passMessage && <Message variant='danger'>{passMessage}</Message>}
-            {error && <Message variant='dark'>{error}</Message>}
+        <div className='login-wrap'>
             {loading && <MyComponent
                 sentences={[]}
                 wrapperBackgroundColor={'rgba(255,255,255)'}
@@ -56,36 +55,43 @@ const RegisterScreen = () => {
                 loaderType={'ball-spin-clockwise'}
                 customLoader={<SpinnerIcon />}
             />}
-            <Form onSubmit={submitHandler}>
-                <Form.Group controlId='name'>
-                    <Form.Label>Name</Form.Label>
-                    <Form.Control type='name' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}></Form.Control>
-                </Form.Group>
+            <Card className='register-card'>
+                <Card.Body>
+                    {passMessage && <Message variant='danger'>{passMessage}</Message>}
+                    <h1>Sign Up</h1>
+                    {error && <Message>{error}</Message>}
+                    <Form onSubmit={submitHandler}>
+                        <Form.Group className='login-group' controlId='name'>
+                            <Form.Label className='fm-label'>Name</Form.Label>
+                            <Form.Control className='fc-label' type='text' placeholder='Enter name' value={name} onChange={(e) => setName(e.target.value)}></Form.Control><i class="far fa-user icon-email"></i>
+                        </Form.Group>
 
-                <Form.Group controlId='email'>
-                    <Form.Label>Email Address</Form.Label>
-                    <Form.Control type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control>
-                </Form.Group>
+                        <Form.Group className='login-group' controlId='email'>
+                            <Form.Label className='fm-label'>Email</Form.Label>
+                            <Form.Control className='fc-label' type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control><i className="far fa-envelope icon-email"></i>
+                        </Form.Group>
 
-                <Form.Group controlId='password'>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
-                </Form.Group>
+                        <Form.Group className='login-group' controlId='password'>
+                            <Form.Label className='fm-label'>Password</Form.Label>
+                            <Form.Control className='fc-label' type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control><i class="fas fa-lock icon-email"></i>
+                        </Form.Group>
 
-                <Form.Group controlId='confirmPassword'>
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type='password' placeholder='Confirm password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
-                </Form.Group>
+                        <Form.Group className='login-group' controlId='confirmPassword'>
+                            <Form.Label className='fm-label'>Confirm Password</Form.Label>
+                            <Form.Control className='fc-label' type='password' placeholder='Re-Enter password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control><i class="fas fa-lock icon-email"></i>
+                        </Form.Group>
 
-                <button type='submit'>Register</button>
-            </Form>
-            <Row className='py-3'>
-                <Col>
-                    Already have an account ? {' '}
-                    <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>Please Login</Link>
-                </Col>
-            </Row>
-        </Container>
+                        <div className='sign-wrap'><button className='sign-button' type='submit'>Register</button></div>
+                    </Form>
+                    <Row className='card-text-wrap'>
+                        <Col>
+                            <span className='card-text'>Already have an account? {''}</span>
+                            <Link to={redirect ? `/login?redirect=${redirect}` : '/register'}><span style={{ textDecoration: 'underline', textTransform: 'uppercase' }}>Login Here</span></Link>
+                        </Col>
+                    </Row>
+                </Card.Body>
+            </Card>
+        </div>
     )
 }
 
