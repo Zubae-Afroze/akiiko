@@ -8,6 +8,9 @@ import LoginScreen from './screens/LoginScreen/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen/RegisterScreen';
 import ProfileScreen from './screens/ProfileScreen/ProfileScreen';
 import ShippingScreen from './screens/ShippingScreen/ShippingScreen';
+import PaymentScreen from './screens/PaymentScreen/PaymentScreen';
+import OrderScreen from './screens/OrderScreen/OrderScreen';
+import OrderSummaryScreen from './screens/OrderSummaryScreen/OrderSummaryScreen';
 
 import './App.css';
 
@@ -36,9 +39,15 @@ export default class App extends Component {
         <ScrollToTop />
         <Header />
         <Switch>
+          <Route path='/orders/:orderId' render={() => (<OrderSummaryScreen />)} />
+
           <Route path='/login' render={() => (<LoginScreen />)} />
 
           <Route path='/shipping' render={() => (<ShippingScreen />)} />
+
+          <Route path='/payment' render={() => (<PaymentScreen />)} />
+
+          <Route path='/placeorder' render={() => (<OrderScreen />)} />
 
           <Route path='/register' render={() => (<RegisterScreen />)} />
 

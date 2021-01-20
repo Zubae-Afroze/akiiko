@@ -9,6 +9,7 @@ import connectDb from './config/db.js';
 
 import masterProductRoutes from './routes/masterProductRoutes.js';
 import userRoutes from './routes/userRoutes.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 
@@ -36,15 +37,12 @@ app.get('/api/home_screen_storage_products', (req, res) => {
 })
 
 app.use('/api/product', masterProductRoutes)
-
 app.use('/api/productlist', masterProductRoutes)
-
 app.use('/api/users', userRoutes)
+app.use('/api/orders', orderRoutes)
 
 app.use(notFound)
-
 app.use(errorHandler)
-
 
 const PORT = process.env.PORT || 5000
 

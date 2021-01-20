@@ -82,7 +82,7 @@ const ShippingScreen = () => {
                         </Form.Group>
 
                         <Form.Group>
-                            <button type='submit' className='shipping-button'>Continue</button>
+                            <button type='submit' className='shipping-button'>Add Address</button>
                         </Form.Group>
                     </Form>
                 </div>
@@ -96,7 +96,7 @@ const ShippingScreen = () => {
                                     <div>{shippingAddress.address},{shippingAddress.city},{shippingAddress.postalCode},</div>
                                     <div>{shippingAddress.country}.</div>
                                     <div></div>
-                                    <button type='submit' className='shipping-button my-1'>Place Order</button>
+                                    <button onClick={submitHandler} className='shipping-button my-1'>Continue</button>
 
                                 </>
                                 : <div>No current address details</div>}
