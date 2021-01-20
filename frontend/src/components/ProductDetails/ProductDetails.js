@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Container, Row, Col, Dropdown, Carousel, Modal, ModalBody } from 'react-bootstrap';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 
 import { actionListProductDetails } from '../../actions/actionProductList'
 import { addToCart, removeFromCart } from '../../actions/actionCart';
@@ -17,6 +17,8 @@ import './ProductDetails.css';
 const ProductDetails = () => {
 
     const { id } = useParams()
+
+    const history = useHistory();
 
     const dispatch = useDispatch()
 
@@ -52,6 +54,10 @@ const ProductDetails = () => {
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id))
+    }
+
+    const checkoutHandler = () => {
+        history.push('/login?redirect=shipping')
     }
 
     function CartModal(props) {
@@ -101,7 +107,7 @@ const ProductDetails = () => {
                                         </div>
                                     </div>
                                     <div className='head-cart-purchase-button-wrap'>
-                                        <button >PROCEED TO CHECKOUT</button>
+                                        <button onClick={checkoutHandler}>PROCEED TO CHECKOUT</button>
                                     </div>
                                 </div>
                             </>

@@ -1,0 +1,90 @@
+.login-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+}
+
+.card-wrap {
+  height: 500px;
+  width: 370px;
+  margin-bottom: 50px;
+}
+
+.card-body h1 {
+  text-transform: uppercase;
+  font-size: 32px;
+  font-family: 'rutanLight';
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.sign-button {
+  width: 120px;
+  padding: 5px 0px;
+  border: none;
+  background-color: #6e4e37;
+  color: #fff;
+  font-family: 'rutanLight';
+  text-transform: uppercase;
+}
+
+.sign-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.login-group {
+  position: relative;
+}
+
+.fc-label {
+  position: relative;
+  padding-left: 30px;
+  font-family: 'rutanLight';
+  font-size: 14px;
+}
+
+.icon-email {
+  position: absolute;
+  top: 42px;
+  left: 10px;
+  color: #07060556;
+}
+
+.fm-label {
+  font-family: 'rutanLight';
+  text-transform: uppercase;
+}
+
+.card-text {
+  font-family: 'rutanLight';
+}
+
+.card-text-wrap {
+  margin-top: 60px;
+  text-align: center;
+}
+.shipping-flex {
+  width: 100%;
+  display: flex;
+}
+.shipping-div {
+  width: 50%;
+}
+.shipping-button {
+  width: 150px;
+  height: 40px;
+  border: none;
+  background-color: #6e4e37;
+  color: #fff;
+}
+.shipping-col-one {
+  border: 1px solid #6e4e372d;
+  border-radius: 5px;
+  padding: 2%;
+  margin: 1%;
+}
+.shipping-div {
+  margin: 1%;
+}
