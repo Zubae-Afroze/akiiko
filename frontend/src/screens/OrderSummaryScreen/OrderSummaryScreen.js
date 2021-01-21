@@ -1,25 +1,66 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Card, Container, Image } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import Message from '../../components/Message/Message';
 
+import { PayPalButton } from 'react-paypal-button-v2';
+
+import axios from 'axios';
+
 import MyComponent from 'react-fullpage-custom-loader';
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 
-import { getOrderDetails } from '../../actions/actionOrder';
+import { getOrderDetails, payOrder } from '../../actions/actionOrder';
+import { ORDER_PAY_RESET } from '../../constants/orderConstants';
 
 const OrderSummaryScreen = () => {
     const dispatch = useDispatch();
 
     const { orderId } = useParams();
 
+    const [sdkReady, setSdkReady] = useState(false)
+
     const orderDetails = useSelector(state => state.orderDetails)
     const { orderItems, loading, error } = orderDetails
 
+    const orderPay = useSelector(state => state.orderPay)
+    const { loading: loadingPay, success: successPay } = orderPay
+
     useEffect(() => {
-        dispatch(getOrderDetails(orderId))
-    }, [dispatch, orderId])
+        const addPayPalScript = async () => {
+            const { data: clientId } = await axios.get('/api/config/paypal');
+            const script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+            script.async = true;
+            script.onload = () => {
+                setSdkReady(true)
+            }
+            document.body.appendChild(script)
+        }
+
+        if (!orderItems._id || successPay) {
+            dispatch({ type: ORDER_PAY_RESET })
+            dispatch(getOrderDetails(orderId))
+        } else if (!orderItems.isPaid) {
+            if (!window.paypal) {
+                addPayPalScript()
+            } else {
+                setSdkReady(true)
+            }
+        }
+
+    }, [dispatch, orderId, successPay, orderItems])
+
+    const successPaymentHandler = (paymentResult) => {
+        console.log(paymentResult)
+        dispatch(payOrder(orderId, paymentResult))
+    }
+
+    const finalPrice = orderItems.totalPrice / 70;
+
+    const fPrice = Math.round(finalPrice)
 
     return loading ? <MyComponent
         sentences={[]}
@@ -109,7 +150,20 @@ const OrderSummaryScreen = () => {
                                     <Col>&#x20B9;{orderItems.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-                            {error && <Message>{error}</Message>}
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>
+                                        {loadingPay && <MyComponent
+                                            sentences={[]}
+                                            wrapperBackgroundColor={'rgba(255,255,255)'}
+                                            color={'#6e4e37'}
+                                            loaderType={'ball-spin-clockwise'}
+                                            customLoader={<SpinnerIcon />} />}
+                                        {!sdkReady ? <p>loading sdk</p> :
+                                            <PayPalButton amount={fPrice} onSuccess={successPaymentHandler} />}
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
                         </Card>
                     </Col>
                 </Row>
