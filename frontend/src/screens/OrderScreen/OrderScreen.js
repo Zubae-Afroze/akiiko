@@ -124,11 +124,7 @@ const OrderScreen = () => {
                                 <Col>Total Price</Col>
                                 <Col>&#x20B9;{cart.totalPrice}</Col>
                             </Row>
-                        </ListGroup.Item>
-                        <ListGroup.Item>
                             {error && <Message>{error}</Message>}
-                        </ListGroup.Item>
-                        <ListGroup.Item>
                             <button type='button' disabled={cart.cartItems === 0} onClick={placeOrderHandler}>Place Order</button>
                         </ListGroup.Item>
                     </Card>

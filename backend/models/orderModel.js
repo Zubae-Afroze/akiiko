@@ -8,14 +8,14 @@ const orderSchema = mongoose.Schema({
     },
     orderItems: [
         {
-            name: { type: String, },
+            productName: { type: String, required: true },
             qty: { type: Number, required: true },
             image: { type: String, required: true },
             price: { type: String, required: true },
             product: {
                 type: mongoose.Schema.Types.ObjectId,
                 required: true,
-                ref: 'MasterProdcuts'
+                ref: 'MasterProducts'
             },
         }
     ],
