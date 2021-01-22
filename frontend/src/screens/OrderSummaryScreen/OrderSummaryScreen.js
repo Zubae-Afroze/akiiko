@@ -14,6 +14,10 @@ import { Razorpay } from 'razorpay'
 import { getOrderDetails, payOrder } from '../../actions/actionOrder';
 import { ORDER_PAY_RESET } from '../../constants/orderConstants';
 
+import hmac_sha256 from 'crypto-js/hmac-sha512';
+
+
+
 const OrderSummaryScreen = () => {
     const dispatch = useDispatch();
 
@@ -37,8 +41,6 @@ const OrderSummaryScreen = () => {
         const { data: dataRzr } = await axios.get(`/api/orders/${orderItems._id}/razorpay`)
         console.log(dataRzr)
 
-        addScript();
-
         var options = {
             "key": dataRzr.razor_key, // Enter the Key ID generated from the Dashboard
             "amount": dataRzr.amount_due, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -46,11 +48,27 @@ const OrderSummaryScreen = () => {
             "name": dataRzr.name,
             "description": "Test Transaction",
             "order_id": dataRzr.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+            "handler": function (response) {
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature);
+
+                const genSign = hmac_sha256(dataRzr.id + "|" + response.razorpay_payment_id, dataRzr.razor_secret)
+
+                if (genSign == response.razorpay_signature) {
+                    console.log('payment sucessfull')
+                } else {
+                    console.log('payment unsucessfull')
+                }
+            },
+
+            //pay_GSMg3WUJDav2cZ - paymentID
+            //order_GSMfqcY5cXODrR - order_id
+            //fc2a3be517771e99f1bcacdab1a5df166eee86a9e1c115ddd859d9d90b7895b8 signature
             "prefill": {
-                "name": dataRzr.name,
-                "email": dataRzr.email,
-                "contact": "9999999999"
+                "name": orderItems.user.name,
+                "email": orderItems.user.email,
+                "contact": "9791210691"
             },
             "notes": {
                 "address": "Razorpay Corporate Office"
@@ -59,16 +77,20 @@ const OrderSummaryScreen = () => {
                 "color": "#3399cc"
             }
         };
-        var rzp1 = new window.Razorpay(options);
-        document.getElementById('rzp-button1').onclick = function (e) {
-            rzp1.open();
-            e.preventDefault();
-        }
+        const rzp1 = new window.Razorpay(options);
+        // document.getElementById('rzp-button1').onclick = function (e) {
+        //     rzp1.open();
+        //     e.preventDefault();
+        // }
+
+        rzp1.open();
     }
 
     useEffect(() => {
         dispatch(getOrderDetails(orderId))
-    }, [dispatch])
+
+        addScript();
+    }, [dispatch, orderId])
 
 
     // useEffect(() => {
