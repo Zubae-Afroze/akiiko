@@ -28,11 +28,15 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: true
     },
+
+    razorpayOrderId: {
+        type: String,
+    },
+
     paymentResult: {
-        id: { type: String },
+        payment_id: { type: String },
         status: { type: String },
         update_time: { type: String },
-        email_address: { type: String }
     },
     itemsPrice: {
         type: Number,
