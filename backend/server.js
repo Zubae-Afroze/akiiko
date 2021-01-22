@@ -12,6 +12,7 @@ import userRoutes from './routes/userRoutes.js';
 import orderRoutes from './routes/orderRoutes.js';
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
+import router from './routes/masterProductRoutes.js';
 
 dotenv.config();
 
@@ -41,7 +42,7 @@ app.use('/api/productlist', masterProductRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
 
-app.get('/api/config/paypal', (req, res) => res.send(process.env.PAYPAL_CLIENT_ID))
+// app.get('/api/config/razorpay', (req, res) => res.send(process.env.RAZOR_PAY_KEY))
 
 app.use(notFound)
 app.use(errorHandler)
