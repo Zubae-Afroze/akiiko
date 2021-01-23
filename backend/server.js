@@ -15,6 +15,10 @@ import orderRoutes from './routes/orderRoutes.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import router from './routes/masterProductRoutes.js';
 
+// Git Commands
+// git push heroku master
+// git push origin master
+
 dotenv.config();
 
 connectDb();
