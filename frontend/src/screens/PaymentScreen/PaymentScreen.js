@@ -51,7 +51,7 @@ const PaymentScreen = () => {
                         label='Credit Card / Debit Card'
                         id='PayPal'
                         name='paymentMethod'
-                        value='Credit Card / Debit Card'
+                        value='Credit Card / Debit Cardgit push'
                         checked
                         onChange={(e) => setPaymentMethod(e.target.value)}>
                     </Form.Check>
