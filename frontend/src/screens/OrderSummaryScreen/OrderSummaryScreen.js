@@ -10,6 +10,7 @@ import MyComponent from 'react-fullpage-custom-loader';
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 
 import { getOrderDetails } from '../../actions/actionOrder';
+import { resetCartItems } from '../../actions/actionCart'
 import axios from 'axios';
 // import { ORDER_PAY_RESET } from '../../constants/orderConstants';
 
@@ -37,7 +38,7 @@ const OrderSummaryScreen = () => {
         }
 
         const { data: dataRazor } = await axios.get(`/api/orders/${orderItems._id}/pay`, config)
-        
+
         var options = {
             "key": dataRazor.razor_key,
             "amount": dataRazor.amount,
@@ -56,11 +57,12 @@ const OrderSummaryScreen = () => {
                         razorpay_order_id: response.razorpay_order_id,
                         signature: response.razorpay_signature
                     }, config)
-                    console.log(res)
+                    console.log(res);
+
                     //We can use res.body orderItems to overwitre the order details to store
                     dispatch(getOrderDetails(orderItems._id))
                 } catch (error) {
-                    alert(error);
+                    console.log(error);
                 }
             },
             "prefill": {
@@ -79,101 +81,12 @@ const OrderSummaryScreen = () => {
         rzp1.open();
     }
 
-    // const orderPay = useSelector(state => state.orderPay)
-    // const { loading: loadingPay, success: successPay } = orderPay
-
-    // const addScript = () => {
-    //     const script = document.createElement('script');
-    //     script.src = 'https://checkout.razorpay.com/v1/checkout.js'
-    //     document.body.appendChild(script)
-    // }
-
-    // const testHandler = async () => {
-    //     const { data: dataRzr } = await axios.get(`/api/orders/${orderItems._id}/razorpay`)
-    //     console.log(dataRzr)
-
-    //     var options = {
-    //         "key": dataRzr.razor_key, // Enter the Key ID generated from the Dashboard
-    //         "amount": dataRzr.amount_due, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    //         "currency": dataRzr.currency,
-    //         "name": dataRzr.name,
-    //         "description": "Test Transaction",
-    //         "order_id": dataRzr.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    //         "handler": function (response) {
-    //             alert(response.razorpay_payment_id);
-    //             alert(response.razorpay_order_id);
-    //             alert(response.razorpay_signature);
-
-    //             // const genSign = hmac_sha256(dataRzr.id + "|" + response.razorpay_payment_id, dataRzr.razor_secret)
-
-    //             // if (genSign == response.razorpay_signature) {
-    //             //     console.log('payment sucessfull')
-    //             // } else {
-    //             //     console.log('payment unsucessfull')
-    //             // }
-    //         },
-
-    //         //pay_GSMg3WUJDav2cZ - paymentID
-    //         //order_GSMfqcY5cXODrR - order_id
-    //         //fc2a3be517771e99f1bcacdab1a5df166eee86a9e1c115ddd859d9d90b7895b8 signature
-    //         "prefill": {
-    //             "name": orderItems.user.name,
-    //             "email": orderItems.user.email,
-    //             "contact": "9791210691"
-    //         },
-    //         "notes": {
-    //             "address": "Razorpay Corporate Office"
-    //         },
-    //         "theme": {
-    //             "color": "#3399cc"
-    //         }
-    //     };
-    //     const rzp1 = new window.Razorpay(options);
-    //     // document.getElementById('rzp-button1').onclick = function (e) {
-    //     //     rzp1.open();
-    //     //     e.preventDefault();
-    //     // }
-
-    //     rzp1.open();
-    // }
-
     useEffect(() => {
         dispatch(getOrderDetails(orderId))
+        dispatch(resetCartItems())
 
         //addScript();
     }, [dispatch, orderId])
-
-
-    // useEffect(() => {
-    //     const addPayPalScript = async () => {
-    //         const { data: dataKey } = await axios.get('/api/config/razorpay');
-    //         const script = document.createElement('script');
-    //         script.type = 'text/javascript';
-    //         script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-    //         script.async = true;
-    //         script.onload = () => {
-    //             setSdkReady(true)
-    //         }
-    //         document.body.appendChild(script)
-    //     }
-
-        // if (!orderItems._id || successPay) {
-        //     dispatch({ type: ORDER_PAY_RESET })
-        //     dispatch(getOrderDetails(orderId))
-        // } else if (!orderItems.isPaid) {
-        //     if (!window.paypal) {
-        //         addPayPalScript()
-        //     } else {
-        //         setSdkReady(true)
-        //     }
-        // }
-
-    // }, [dispatch, orderId, successPay, orderItems])
-
-    // const successPaymentHandler = (paymentResult) => {
-    //     console.log(paymentResult)
-    //     dispatch(payOrder(orderId, paymentResult))
-    // }
 
     return loading ? <MyComponent
         sentences={[]}
@@ -263,13 +176,13 @@ const OrderSummaryScreen = () => {
                                     <Col>&#x20B9;{orderItems.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
-                            <ListGroup.Item>
+                            {!orderItems.isPaid ? <ListGroup.Item>
                                 <Row>
                                     <Col>
                                         <button id="rzp-button1" onClick={payHandler}>Pay</button>
                                     </Col>
                                 </Row>
-                            </ListGroup.Item>
+                            </ListGroup.Item> : null}
                         </Card>
                     </Col>
                 </Row>

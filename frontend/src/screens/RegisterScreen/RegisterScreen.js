@@ -24,6 +24,7 @@ const RegisterScreen = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [passMessage, setPassMessage] = useState(null);
@@ -42,7 +43,7 @@ const RegisterScreen = () => {
         if (password !== confirmPassword) {
             setPassMessage('Password do not match, please enter again')
         } else {
-            dispatch(register(name, email, password))
+            dispatch(register(name, email, password, phoneNumber))
         }
     }
 
@@ -69,6 +70,11 @@ const RegisterScreen = () => {
                         <Form.Group className='login-group' controlId='email'>
                             <Form.Label className='fm-label'>Email</Form.Label>
                             <Form.Control className='fc-label' type='email' placeholder='Enter email' value={email} onChange={(e) => setEmail(e.target.value)}></Form.Control><i className="far fa-envelope icon-email"></i>
+                        </Form.Group>
+
+                        <Form.Group className='login-group' controlId='phone'>
+                            <Form.Label className='fm-label'>Phone</Form.Label>
+                            <Form.Control className='fc-label' type='text' placeholder='Enter your Phone No.' value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)}></Form.Control><i class="fas fa-phone icon-email"></i>
                         </Form.Group>
 
                         <Form.Group className='login-group' controlId='password'>

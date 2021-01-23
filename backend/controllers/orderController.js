@@ -51,7 +51,7 @@ const createRazorpayOrder = asyncHandler(async (req, res) => {
     const razorInstance = new Razorpay({
         key_id: process.env.RAZOR_PAY_KEY,
         key_secret: process.env.RAZOR_PAY_SECRET
-      })
+    })
 
     const order = await Order.findById(req.params.id).populate('user')
 
@@ -64,7 +64,7 @@ const createRazorpayOrder = asyncHandler(async (req, res) => {
     const currency = "INR"
     const amount = (order.totalPrice * 100).toString()
 
-    
+
     const razorResponse = await razorInstance.orders.create({
         amount,
         currency,
@@ -81,12 +81,12 @@ const createRazorpayOrder = asyncHandler(async (req, res) => {
     }
 
     res.json({
-    id: razorResponse.id,
-    amount: razorResponse.amount_due,
-    attempts: razorResponse.attempts,
-    currency: razorResponse.currency,
-    receipt: razorResponse.receipt,
-    razor_key: process.env.RAZOR_PAY_KEY,
+        id: razorResponse.id,
+        amount: razorResponse.amount_due,
+        attempts: razorResponse.attempts,
+        currency: razorResponse.currency,
+        receipt: razorResponse.receipt,
+        razor_key: process.env.RAZOR_PAY_KEY,
     })
 })
 
@@ -97,7 +97,7 @@ const orderPaymentComplete = asyncHandler(async (req, res) => {
 
     const { payment_id, razorpay_order_id, signature } = req.body
 
-    const order = await Order.findOne({razorpayOrderId: razorpay_order_id})
+    const order = await Order.findOne({ razorpayOrderId: razorpay_order_id })
 
     if (!order) {
         res.status(404)
@@ -131,6 +131,14 @@ const orderPaymentComplete = asyncHandler(async (req, res) => {
     }
 })
 
+//@desc Get logged in user orders
+//@route GET /api/orders/myorders
+//@access Private
+const getMyOrders = asyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id })
+
+    res.json(orders)
+})
 
 
-export { addOrderItems, getOrderById, createRazorpayOrder, orderPaymentComplete }
+export { addOrderItems, getOrderById, createRazorpayOrder, orderPaymentComplete, getMyOrders }
