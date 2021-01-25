@@ -128,3 +128,9 @@ a:hover {
   color: #3e3331;
   text-decoration: none;
 }
+
+.form-control:focus {
+  border-color: #fff;
+  box-shadow: none;
+  border: 1px solid #2e26142c;
+}

@@ -15,7 +15,7 @@ import {
     USER_UPDATE_PROFILE_FAIL
 } from "../constants/userConstants";
 
-import { ORDER_LIST_MY_RESET } from '../constants/orderConstants'
+import { ORDER_LIST_MY_RESET, ORDER_DETAILS_RESET } from '../constants/orderConstants'
 
 import axios from 'axios';
 
@@ -50,10 +50,13 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => (dispatch) => {
-    localStorage.removeItem('userInfo')
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
+    localStorage.removeItem('shippingAddress');
     dispatch({ type: USER_LOGOUT })
     dispatch({ type: USER_DETAILS_RESET })
     dispatch({ type: ORDER_LIST_MY_RESET })
+    dispatch({ type: ORDER_DETAILS_RESET })
 }
 
 export const register = (name, email, password, phoneNumber) => async (dispatch) => {
