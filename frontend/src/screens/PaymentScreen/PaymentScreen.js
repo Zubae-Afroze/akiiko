@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import '../LoginScreen/LoginScreen.css'
+
+import './PaymentScreen.css';
 
 import { savePaymentMethod } from '../../actions/actionCart'
 
@@ -19,7 +20,7 @@ const PaymentScreen = () => {
         history.push('/shipping')
     }
 
-    const [paymentMethod, setPaymentMethod] = useState('')
+    const [paymentMethod, setPaymentMethod] = useState('online')
 
     // const [address, setAddress] = useState(shippingAddress.address);
     // const [city, setCity] = useState(shippingAddress.city);
@@ -38,34 +39,38 @@ const PaymentScreen = () => {
 
     return (
         <Container>
-            <h1>Payment Method</h1>
-            <Form onSubmit={submitHandler}>
-                <Form.Group>
-                    <Form.Label as='legend'>Select Method</Form.Label>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Check
-                        type='radio'
-                        label='Credit Card / Debit Card'
-                        id='PayPal'
-                        name='paymentMethod'
-                        value='online'
-                        checked
-                        onChange={(e) => setPaymentMethod(e.target.value)}>
-                    </Form.Check>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Check
-                        type='radio'
-                        label='Cash on delivery'
-                        id='PayPal'
-                        name='paymentMethod'
-                        value='COD'
-                        onChange={(e) => setPaymentMethod(e.target.value)}>
-                    </Form.Check>
-                </Form.Group>
-                <button type='submit'>Continue</button>
-            </Form>
+            <div className='payment-wrap'>
+                <div className='payment-header'>
+                    <h1>Payment Method</h1>
+                </div>
+                <Form onSubmit={submitHandler}>
+                    <Form.Group>
+                        <Form.Label as='legend'>Select Method</Form.Label>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Check
+                            type='radio'
+                            label='Credit Card / Debit Card'
+                            id='PayPal'
+                            name='paymentMethod'
+                            value='online'
+                            checked
+                            onChange={(e) => setPaymentMethod(e.target.value)}>
+                        </Form.Check>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Check
+                            type='radio'
+                            label='Cash on delivery'
+                            id='PayPal'
+                            name='paymentMethod'
+                            value='cod'
+                            onChange={(e) => setPaymentMethod(e.target.value)}>
+                        </Form.Check>
+                    </Form.Group>
+                    <button type='submit'>Continue</button>
+                </Form>
+            </div>
         </Container>
     )
 }

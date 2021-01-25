@@ -64,7 +64,6 @@ export const orderDetailsReducer = (state = { loading: true, orderItems: [], shi
         case ORDER_DETAILS_RESET:
             return {
                 orderItems: [],
-                shippingAddress: {}
             }
 
         default:

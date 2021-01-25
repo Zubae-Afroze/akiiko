@@ -48,7 +48,7 @@ const ShippingScreen = () => {
                         {userInfo ?
                             <div class='saved-shipping-address'>
                                 <Card.Title className='shipping-card-title'>Hello, {userInfo.name}!</Card.Title>
-                                {shippingAddress.address ?
+                                {shippingAddress ?
                                     <div>
                                         <div className='shipping-edit'>
                                             <div><strong>Your Current Shipping Address</strong></div>
