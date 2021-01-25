@@ -65,26 +65,3 @@
   margin-top: 60px;
   text-align: center;
 }
-.shipping-flex {
-  width: 100%;
-  display: flex;
-}
-.shipping-div {
-  width: 50%;
-}
-.shipping-button {
-  width: 150px;
-  height: 40px;
-  border: none;
-  background-color: #6e4e37;
-  color: #fff;
-}
-.shipping-col-one {
-  border: 1px solid #6e4e372d;
-  border-radius: 5px;
-  padding: 2%;
-  margin: 1%;
-}
-.shipping-div {
-  margin: 1%;
-}

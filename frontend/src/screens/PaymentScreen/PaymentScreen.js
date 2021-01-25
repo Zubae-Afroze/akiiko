@@ -3,7 +3,6 @@ import { useHistory } from 'react-router-dom';
 import { Container, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import '../LoginScreen/LoginScreen.css'
-import CheckoutSteps from '../../components/CheckoutSteps/CheckoutSteps';
 
 import { savePaymentMethod } from '../../actions/actionCart'
 
@@ -20,7 +19,7 @@ const PaymentScreen = () => {
         history.push('/shipping')
     }
 
-    const [paymentMethod, setPaymentMethod] = useState('PayPal')
+    const [paymentMethod, setPaymentMethod] = useState('')
 
     // const [address, setAddress] = useState(shippingAddress.address);
     // const [city, setCity] = useState(shippingAddress.city);
@@ -40,7 +39,6 @@ const PaymentScreen = () => {
     return (
         <Container>
             <h1>Payment Method</h1>
-            <CheckoutSteps step1 step2 step3 />
             <Form onSubmit={submitHandler}>
                 <Form.Group>
                     <Form.Label as='legend'>Select Method</Form.Label>
@@ -51,8 +49,18 @@ const PaymentScreen = () => {
                         label='Credit Card / Debit Card'
                         id='PayPal'
                         name='paymentMethod'
-                        value='Credit Card / Debit Cardgit push'
+                        value='online'
                         checked
+                        onChange={(e) => setPaymentMethod(e.target.value)}>
+                    </Form.Check>
+                </Form.Group>
+                <Form.Group>
+                    <Form.Check
+                        type='radio'
+                        label='Cash on delivery'
+                        id='PayPal'
+                        name='paymentMethod'
+                        value='COD'
                         onChange={(e) => setPaymentMethod(e.target.value)}>
                     </Form.Check>
                 </Form.Group>

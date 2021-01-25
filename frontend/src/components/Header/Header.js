@@ -29,6 +29,7 @@ const Header = () => {
 
     const logouthandler = () => {
         dispatch(logout())
+        history.push('/')
         alert('sucessfully loggedout')
     }
 
@@ -107,7 +108,7 @@ const Header = () => {
                             <Nav className='title-bar-icon title-search'><img src={'/images/font_images/search.svg'} alt='search_icon' /></Nav>
                             <Nav className='title-bar-icon'>{userInfo ?
                                 <NavDropdown title={<img src={'/images/font_images/user.svg'} alt='user_icon' />}>
-                                    <NavDropdown.Item>Hello, {userInfo.name}</NavDropdown.Item>
+                                    <LinkContainer to='/profile'><NavDropdown.Item>Hello, {userInfo.name}</NavDropdown.Item></LinkContainer>
                                     <NavDropdown.Divider />
                                     <LinkContainer to='/profile'>
                                         <NavDropdown.Item>Profile</NavDropdown.Item>

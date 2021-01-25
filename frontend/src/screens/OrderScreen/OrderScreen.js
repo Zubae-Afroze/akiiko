@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, ListGroup, Card, Container, Image } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
 import Message from '../../components/Message/Message';
-import CheckoutSteps from '../../components/CheckoutSteps/CheckoutSteps';
 
 import { createOrder } from '../../actions/actionOrder';
 
@@ -46,8 +45,6 @@ const OrderScreen = () => {
 
     return (
         <Container>
-            <CheckoutSteps step1 step2 step3 step4 />
-
             <Row>
                 <Col>
                     <ListGroup variant='flush'>

@@ -1,0 +1,108 @@
+.shipping-wrap {
+  margin-bottom: 30px;
+}
+
+.shipping-wrap h1 {
+  margin-top: 80px;
+  text-transform: uppercase;
+  font-size: 28px;
+  font-family: 'rutanLight';
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 1.5px;
+}
+
+.shipping-card-wrap {
+  display: flex;
+  justify-content: center;
+  height: auto;
+}
+
+.shipping-card-title {
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 16px;
+  font-family: 'rutan';
+  text-transform: uppercase;
+}
+
+.no-ship-save {
+  font-family: 'rutan';
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.no-ship-from {
+  margin-top: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 500px;
+  font-size: 14px;
+  font-family: 'rutanLight';
+}
+
+.no-save-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.no-save-button {
+  background-color: #6e4e37;
+  border: 1px solid #6e4e37;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 20px;
+  padding: 7px 20px;
+}
+
+.shipping-edit {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: 'rutan';
+  font-size: 14px;
+}
+
+.continue-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.continue-button-wrap button {
+  background-color: #6e4e37;
+  border: 1px solid #6e4e37;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 20px;
+  padding: 5px 10px;
+}
+
+.shipping-address-main {
+  margin-top: 20px;
+}
+
+.edit-handler-main {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  font-family: 'rutanLight';
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.edit-shipping-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.edit-shipping-button-wrap button {
+  background-color: #6e4e37;
+  border: 1px solid #6e4e37;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 20px;
+  padding: 5px 10px;
+}
