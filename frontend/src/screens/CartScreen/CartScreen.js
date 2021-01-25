@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import './CartScreen.css';
 import { Card } from 'react-bootstrap';
 
-
-import { Container, Col, Row, Alert } from 'react-bootstrap'
+import { Container,  Alert } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation, useHistory, useParams } from 'react-router-dom';
 import { addToCart, removeFromCart } from '../../actions/actionCart';
