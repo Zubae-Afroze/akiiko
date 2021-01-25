@@ -44,7 +44,7 @@ const Header = () => {
                 animation={false}>
 
                 <ModalBody>
-                    <div className='head-cart-header'>Shopping Cart<img src='/images/font_images/cart.svg' alt='cart-icon' /><span>{cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}</span></div>
+                    <div className='head-cart-header'>Shopping Cart<img src='/images/font_images/cart.svg' alt='cart-icon' /> <img src='/images/font_images/times.svg' alt='trash_icon' className='cart-modal-close' onClick={() => setCartModalShow(false)} /><span>{cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}</span></div>
                     <>
                         {cartItems.length === 0 ? <div className='head-cart-empty'>Your Cart is empty</div> :
                             <>
