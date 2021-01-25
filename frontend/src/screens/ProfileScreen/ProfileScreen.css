@@ -1,0 +1,55 @@
+.update-button {
+    background-color: #6e4e37;
+    color: #fff;
+    width: 150px;
+    height: 35px;
+}
+
+.user-profile-container {
+    padding: 5%;
+    border: 1px solid #6e4e3736;
+    border-radius: 10px;
+}
+
+.user-profile-page {
+    margin: 1% 0;
+}
+
+.user-profile-page-title {
+    text-transform: uppercase;
+    font-family: 'rutanlight';
+}
+
+.order-table-row-data {
+    font-family: 'rutanlight';
+    font-size: 14px;
+    text-align: center;
+}
+
+.order-det-button {
+    background-color: #6e4e37;
+    color: #fff;
+    width: 70px;
+    height: 25px;
+    font-size: 13px;
+    font-family: 'rutan';
+}
+
+.user-orders-container {
+    padding-top: 5%;
+}
+
+.order-details-table {
+    border: 1px solid #6e4e3742;
+    text-align: center;
+}
+
+.order-detail-table-title {
+    font-family: 'rutan';
+}
+
+@media (max-width:1023px) {
+    .user-profile-page {
+        display: block;
+    }
+}

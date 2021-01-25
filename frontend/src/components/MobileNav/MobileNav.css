@@ -1,7 +1,7 @@
 .mobile-nav-cont {
   display: none;
   background: #fff;
-  z-index: 90;
+  z-index: 1;
 }
 
 .mobile-nav-wrapper {
