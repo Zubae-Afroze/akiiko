@@ -6,6 +6,8 @@ import Message from '../../components/Message/Message';
 
 import { createOrder } from '../../actions/actionOrder';
 
+import CheckoutSteps from '../../components/CheckoutSteps/CheckoutSteps'
+
 const OrderScreen = () => {
 
     const history = useHistory();
@@ -45,6 +47,7 @@ const OrderScreen = () => {
 
     return (
         <Container>
+            <CheckoutSteps step1 step2 step3 step4/>
             <Row>
                 <Col>
                     <ListGroup variant='flush'>

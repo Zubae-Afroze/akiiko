@@ -7,6 +7,8 @@ import './PaymentScreen.css';
 
 import { savePaymentMethod } from '../../actions/actionCart'
 
+import CheckoutSteps from '../../components/CheckoutSteps/CheckoutSteps';
+
 const PaymentScreen = () => {
 
     const history = useHistory();
@@ -40,6 +42,7 @@ const PaymentScreen = () => {
     return (
         <Container>
             <div className='payment-wrap'>
+            <CheckoutSteps step1 step2 step3 />
                 <div className='payment-header'>
                     <h1>Payment Method</h1>
                 </div>

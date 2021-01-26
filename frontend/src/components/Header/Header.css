@@ -105,7 +105,6 @@
   background-color: #2e2614;
 } */
 
-
 .head-cart-wrap {
   display: flex;
   position: relative;
@@ -261,6 +260,12 @@
   z-index: 10;
   top: 10px;
   right: 0;
+}
+
+@media (max-width: 1600px) {
+  .title-icon-wrap {
+    margin-right: 8.5%;
+  }
 }
 
 @media (max-width: 1440px) {
