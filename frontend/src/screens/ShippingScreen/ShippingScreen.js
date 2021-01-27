@@ -19,10 +19,10 @@ const ShippingScreen = () => {
     const cart = useSelector(state => state.cartList)
     const { shippingAddress } = cart
 
-    const [address, setAddress] = useState(shippingAddress.address);
-    const [city, setCity] = useState(shippingAddress.city);
-    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-    const [country, setCountry] = useState("India");
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+    const [country, setCountry] = useState('');
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -51,7 +51,7 @@ const ShippingScreen = () => {
                         {userInfo ?
                             <div class='saved-shipping-address'>
                                 <Card.Title className='shipping-card-title'>Hello, {userInfo.name}!</Card.Title>
-                                {shippingAddress ?
+                                {shippingAddress.address ?
                                     <div>
                                         <div className='shipping-edit'>
                                             <div><strong>Your Current Shipping Address</strong></div>
