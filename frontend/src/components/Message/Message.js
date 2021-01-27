@@ -3,18 +3,14 @@ import { Alert } from 'react-bootstrap';
 
 import './Message.css'
 
-const Message = ({ variant, children }) => {
+const Message = ({ children }) => {
     return (
-        <>
-            <Alert variant={variant}>
+        <div className='message-style'>  
+            <Alert>
                 {children}
             </Alert>
-        </>
+        </div>
     )
-}
-
-Message.defaultProps = {
-    variant: 'dark',
 }
 
 export default Message

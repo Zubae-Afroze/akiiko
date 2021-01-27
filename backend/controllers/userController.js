@@ -17,6 +17,7 @@ const authUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            phoneNumber: user.phoneNumber,
             token: generateToken(user._id),
         })
     } else {
@@ -36,6 +37,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
+            phoneNumber: user.phoneNumber,
             isAdmin: user.isAdmin,
         })
     } else {
@@ -64,6 +66,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
             _id: updatedUser._id,
             name: updatedUser.name,
             email: updatedUser.email,
+            phoneNumber: updateUser.phoneNumber,
             isAdmin: updatedUser.isAdmin,
             token: generateToken(updatedUser._id),
         })
@@ -100,7 +103,7 @@ const registerUser = asyncHandler(async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            phoneNumber: user.phoneNubmer,
+            phoneNumber: user.phoneNumber,
             token: generateToken(user._id),
         })
     } else {

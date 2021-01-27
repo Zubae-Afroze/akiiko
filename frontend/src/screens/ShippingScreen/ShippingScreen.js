@@ -28,7 +28,7 @@ const ShippingScreen = () => {
         e.preventDefault()
         //Save Shipping address
         dispatch(saveShippingAddress({ address, city, postalCode, country }))
-        history.push('/payment')
+        history.push('/placeorder')
     }
 
     const userLogin = useSelector(state => state.userLogin);
