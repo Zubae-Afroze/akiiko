@@ -65,7 +65,7 @@
 .cart-quantity-dum {
   font-family: 'rutan';
   position: absolute;
-  bottom: 8px;
+  bottom: 5px;
   border-bottom: 1px solid #2e26144d;
 }
 
@@ -209,7 +209,7 @@
   }
 
   .cart-list-det {
-    margin-left: 30px;
+    margin-left: 11%;
     padding-left: 0 !important;
   }
 

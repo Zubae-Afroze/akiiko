@@ -61,7 +61,7 @@
 }
 
 .pay-card {
-  width: 85%;
+  width: 100%;
   height: 140px;
   font-family: 'rutan';
 }
@@ -107,4 +107,55 @@
   font-family: 'rutan';
   text-transform: uppercase;
   border: 1px solid #6e4e37;
+}
+
+.review-order-summary-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.shipping-address-and-payment-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.shipping-and-order-wrap,
+.products-and-payment-wrap {
+  display: flex;
+  width: 100%;
+}
+
+@media (max-width:800px) {
+  .ship-head-alt {
+    height: 54px;
+  }
+}
+
+@media (max-width:700px) {
+
+  .review-order-summary-wrap,
+  .shipping-and-order-wrap,
+  .products-and-payment-wrap {
+    display: block;
+  }
+
+}
+
+@media (max-width:575px) {
+  .shipping-address-and-payment-wrap {
+    display: block;
+  }
+
+  .ship-head-alt {
+    height: fit-content;
+  }
+
+  .ship-card {
+    width: 100%;
+    padding: 1%;
+  }
+
+  .items-card {
+    width: 100%;
+  }
 }
