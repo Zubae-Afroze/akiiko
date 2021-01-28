@@ -84,7 +84,7 @@
 }
 
 .head-cart-scroll {
-  height: 60vh;
+  height: 45vh;
   overflow-y: auto;
 }
 
@@ -160,7 +160,7 @@
   width: 10px;
   cursor: pointer;
   position: absolute;
-  right: 18px;
+  right: 35px;
   top: 27px;
 }
 
@@ -206,7 +206,7 @@
 .head-cart-sub-price-wrap {
   display: flex;
   margin-top: 35px;
-  margin-right: 10px;
+  margin-right: 3%;
   justify-content: space-between;
 }
 
@@ -230,9 +230,11 @@
 .head-cart-purchase-button-wrap button {
   padding: 10px 0;
   border: none;
-  width: 100%;
+  width: 100vw;
+  margin-left: -15px;
   background-color: #563b2e;
   color: #fff;
+  cursor: pointer;
 }
 
 .badge {

@@ -47,121 +47,125 @@ const OrderScreen = () => {
             taxPrice: cart.taxPrice,
             totalPrice: cart.totalPrice
         }))
-    }
+    }   
 
     return (
         <Container>
             <CheckoutSteps step1 step2 step3 step4/>
             <Row>
-                <Col>
-                    <div className='ship-head'>Your Shipping Address</div>
-                    <div className='ship-card-wrap'>
-                        <Card className='ship-card'>
-                            <div className='add-wrap'>
-                                <div>{cart.shippingAddress.address}</div>
-                                <div>{cart.shippingAddress.city}</div>
-                                <div>{cart.shippingAddress.postalCode}</div>
-                                <div>{cart.shippingAddress.country}</div>
-                            </div>
-                            <div className='add-edit'><Link to='/shipping'><em>Edit address</em></Link></div>
-                        </Card>
-                    </div>
-                </Col>
-                <Col>
-                    <div className='pay-head'>Please select your mode of payment</div>
-                    <Form>
-                        <div className='pay-card-wrap'>
-                            <Card className='pay-card'>
-                                <Form.Group className='online-pay-card'>
-                                    <Form.Check
-                                        type='radio'
-                                        label='Credit / Debit Card'
-                                        id='razorpay'
-                                        name='paymentmethod'
-                                        value='online'
-                                        checked
-                                        onChange={(e) => setPaymentMethod(e.target.value)}
-                                    >   
-                                    </Form.Check>
-                                </Form.Group>
-                                <Form.Group className='online-pay-cod'>
-                                    <Form.Check
-                                        type='radio'
-                                        label='Cash on delivery'
-                                        id='cod'
-                                        name='paymentmethod'
-                                        value='cod'
-                                        onChange={(e) => setPaymentMethod(e.target.value)}
-                                    >   
-                                    </Form.Check>
-                                </Form.Group>
+                <div className="shipping-address-and-payment-wrap">
+                    <Col>
+                        <div className='ship-head ship-head-alt'>Your Shipping Address</div>
+                        <div className='ship-card-wrap'>
+                            <Card className='ship-card'>
+                                <div className='add-wrap'>
+                                    <div>{cart.shippingAddress.address}</div>
+                                    <div>{cart.shippingAddress.city}</div>
+                                    <div>{cart.shippingAddress.postalCode}</div>
+                                    <div>{cart.shippingAddress.country}</div>
+                                </div>
+                                <div className='add-edit'><Link to='/shipping'><em>Edit address</em></Link></div>
                             </Card>
                         </div>
-                    </Form>
-                </Col>
+                    </Col>
+                    <Col>
+                        <div className='pay-head'>Please select your mode of payment</div>
+                        <Form>
+                            <div className='pay-card-wrap'>
+                                <Card className='pay-card'>
+                                    <Form.Group className='online-pay-card'>
+                                        <Form.Check
+                                            type='radio'
+                                            label='Credit / Debit Card'
+                                            id='razorpay'
+                                            name='paymentmethod'
+                                            value='online'
+                                            checked
+                                            onChange={(e) => setPaymentMethod(e.target.value)}
+                                        >   
+                                        </Form.Check>
+                                    </Form.Group>
+                                    <Form.Group className='online-pay-cod'>
+                                        <Form.Check
+                                            type='radio'
+                                            label='Cash on delivery'
+                                            id='cod'
+                                            name='paymentmethod'
+                                            value='cod'
+                                            onChange={(e) => setPaymentMethod(e.target.value)}
+                                        >   
+                                        </Form.Check>
+                                    </Form.Group>
+                                </Card>
+                            </div>
+                        </Form>
+                    </Col>
+                </div>
             </Row>
             <Row>
-                <Col>
-                    <div className='items-head'>
-                        <div>Review Your Items</div>
-                        <div className='items-card-wrap'>
-                            <Card className='items-card'>
-                                {
-                                    cart.cartItems.length === 0 ? <Message>Your cart is empty</Message> :
-                                    (
-                                        cart.cartItems.map((item, index) => (
-                                            <div key={index}>
-                                                <Row className='items-row'>
-                                                    <Col lg={2}>
-                                                        <img src={item.image} alt={item.image} style={{hegiht: "50px", width: "50px"}}/>
-                                                    </Col>
-                                                    <Col lg={4}>
-                                                        <Link to={`/product/${item.product}`}>{item.productName}</Link>
-                                                    </Col>
-                                                    <Col lg={3}>
-                                                        <strong>Quantity:</strong> {item.qty}
-                                                    </Col>
-                                                    <Col lg={3}>
-                                                        <strong>Price:</strong> &#x20B9;{item.qty * item.price}
-                                                    </Col>
-                                                </Row>
-                                                <div className='add-edit'><em>In case of changes, please edit items in your cart</em></div>
-                                            </div>
-                                        ))
-                                    )
-                                }
+                <div className="review-order-summary-wrap">
+                    <Col>
+                        <div className='items-head'>
+                            <div>Review Your Items</div>
+                            <div className='items-card-wrap'>
+                                <Card className='items-card'>
+                                    {
+                                        cart.cartItems.length === 0 ? <Message>Your cart is empty</Message> :
+                                        (
+                                            cart.cartItems.map((item, index) => (
+                                                <div key={index}>
+                                                    <Row className='items-row'>
+                                                        <Col lg={2}>
+                                                            <img src={item.image} alt={item.image} style={{hegiht: "50px", width: "50px"}}/>
+                                                        </Col>
+                                                        <Col lg={4}>
+                                                            <Link to={`/product/${item.product}`}>{item.productName}</Link>
+                                                        </Col>
+                                                        <Col lg={3}>
+                                                            <strong>Quantity:</strong> {item.qty}
+                                                        </Col>
+                                                        <Col lg={3}>
+                                                            <strong>Price:</strong> &#x20B9;{item.qty * item.price}
+                                                        </Col>
+                                                    </Row>
+                                                    <div className='add-edit'><em>In case of changes, please edit items in your cart</em></div>
+                                                </div>
+                                            ))
+                                        )
+                                    }
+                                </Card>
+                            </div>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className='order-head'>
+                            <div>Order Summary</div>
+                        </div>
+                        <div>
+                            <Card>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Amount</Col>
+                                        <Col>&#x20B9;{cart.itemsPrice}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>iGST of 12%</Col>
+                                        <Col>&#x20B9;{cart.taxPrice}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Total</Col>
+                                        <Col>&#x20B9;{cart.totalPrice}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                {error && <Message>{error}</Message>}
                             </Card>
                         </div>
-                    </div>
-                </Col>
-                <Col>
-                    <div className='order-head'>
-                        <div>Order Summary</div>
-                    </div>
-                    <div>
-                        <Card>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Amount</Col>
-                                    <Col>&#x20B9;{cart.itemsPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>iGST of 12%</Col>
-                                    <Col>&#x20B9;{cart.taxPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Total</Col>
-                                    <Col>&#x20B9;{cart.totalPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-                            {error && <Message>{error}</Message>}
-                        </Card>
-                    </div>
-                </Col>
+                    </Col>
+                </div>
             </Row>
             <div className='place-order-button-wrap'>
                 <button type='button' disabled={cart.cartItems === 0} onClick={placeOrderHandler}>Place Order</button>
