@@ -49,9 +49,9 @@ const ShippingScreen = () => {
                 <div className='shipping-card-wrap'>
                     <Card className='shipping-card'>
                         {userInfo ?
-                            <div class='saved-shipping-address'>
+                            <div className='saved-shipping-address'>
                                 <Card.Title className='shipping-card-title'>Hello, {userInfo.name}!</Card.Title>
-                                {shippingAddress.address ?
+                                {shippingAddress ?
                                     <div>
                                         <div className='shipping-edit'>
                                             <div><strong>Your Current Shipping Address</strong></div>
@@ -60,9 +60,9 @@ const ShippingScreen = () => {
                                             <div>{shippingAddress.postalCode}</div>
                                             <div>{shippingAddress.country}</div>
                                         </div>
-                                        <div className='continue-button-wrap'>
+                                        {/* <div className='continue-button-wrap'>
                                             <button onClick={submitHandler}>Continue</button>
-                                        </div>
+                                        </div> */}
                                         <div>
                                             <div className='edit-handler-main' onClick={editAddressHandler}><em>Edit the address</em></div>
                                             {editAddress ? <div>
