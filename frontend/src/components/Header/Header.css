@@ -84,7 +84,7 @@
 }
 
 .head-cart-scroll {
-  height: 45vh;
+  height: 55vh;
   overflow-y: auto;
 }
 
@@ -230,8 +230,7 @@
 .head-cart-purchase-button-wrap button {
   padding: 10px 0;
   border: none;
-  width: 100vw;
-  margin-left: -15px;
+  width: 100%;
   background-color: #563b2e;
   color: #fff;
   cursor: pointer;
@@ -309,6 +308,10 @@
 @media (max-width: 425px) {
   .modal-body {
     width: 425px;
+  }
+
+  .head-cart-scroll {
+    height: 46vh;
   }
 
   .modal-dialog {
