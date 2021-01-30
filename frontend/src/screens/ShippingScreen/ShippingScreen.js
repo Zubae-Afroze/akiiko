@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import '../LoginScreen/LoginScreen.css'
 import { saveShippingAddress } from '../../actions/actionCart'
 
+import CheckoutSteps from '../../components/CheckoutSteps/CheckoutSteps';
+
 import './ShippingScreen.css';
 
 const ShippingScreen = () => {
@@ -26,7 +28,7 @@ const ShippingScreen = () => {
         e.preventDefault()
         //Save Shipping address
         dispatch(saveShippingAddress({ address, city, postalCode, country }))
-        history.push('/payment')
+        history.push('/placeorder')
     }
 
     const userLogin = useSelector(state => state.userLogin);
@@ -42,6 +44,7 @@ const ShippingScreen = () => {
     return (
         <Container>
             <div className='shipping-wrap'>
+            <CheckoutSteps step1 step2 />
                 <h1>Shipping Address</h1>
                 <div className='shipping-card-wrap'>
                     <Card className='shipping-card'>

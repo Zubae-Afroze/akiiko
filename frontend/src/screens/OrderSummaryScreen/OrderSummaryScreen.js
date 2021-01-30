@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, ListGroup, Card, Container, Image } from 'react-bootstrap';
+import { Row, Col, ListGroup, Card, Container } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import Message from '../../components/Message/Message';
 
@@ -68,13 +68,13 @@ const OrderSummaryScreen = () => {
             "prefill": {
                 "name": orderItems.user.name,
                 "email": orderItems.user.email,
-                "contact": "9999999999"
+                "contact": orderItems.user.phoneNumber || null
             },
             "notes": {
                 "address": "Razorpay Corporate Office"
             },
             "theme": {
-                "color": "#3399cc"
+                "color": "#6e4e37"
             }
         };
         var rzp1 = new window.Razorpay(options);
@@ -88,105 +88,128 @@ const OrderSummaryScreen = () => {
         //addScript();
     }, [dispatch, orderId])
 
-    return loading ? <MyComponent
-        sentences={[]}
-        wrapperBackgroundColor={'rgba(255,255,255)'}
-        color={'#6e4e37'}
-        loaderType={'ball-spin-clockwise'}
-        customLoader={<SpinnerIcon />}
-    /> : error ?
-            <Message>{error}</Message> :
-            <Container>
-                <Message>Order:{orderItems._id}</Message>
-                <Row>
+    return ( 
+    loading ? <MyComponent
+         sentences={[]}
+         wrapperBackgroundColor={'rgba(255,255,255)'}
+         color={'#6e4e37'}
+         loaderType={'ball-spin-clockwise'}
+         customLoader={<SpinnerIcon />}
+        /> : error ? 
+        <Message>{error}</Message> :
+        <Container>
+            <Row>
+                <div className='shipping-and-order-wrap'>
                     <Col>
-                        <ListGroup variant='flush'>
-                            <ListGroup.Item>
-                                <h2>Shipping</h2>
-                                <strong>Name: </strong>{orderItems.user.name}<br />
-                                <strong>Email: </strong><a href={`mailto:${orderItems.user.email}`}>{orderItems.user.email}</a>
-                                <p><strong>Address:</strong>
-                                    {orderItems.shippingAddress.address}, {orderItems.shippingAddress.city}
-                                    {orderItems.shippingAddress.postalCode}, {orderItems.shippingAddress.country}
-                                </p>
-                                {orderItems.isDelivered ? <Message>DeliveredOn {orderItems.deliveredAt}</Message> : <Message>Not Delivered</Message>}
-                            </ListGroup.Item>
-                        </ListGroup>
-                        <ListGroup variant='flush'>
-                            <ListGroup.Item>
-                                <h2>Payment Method</h2>
-                                <p>
-                                    <strong>Method:</strong>
-                                    {orderItems.paymentMethod}
-                                </p>
-                                {orderItems.isPaid ? <Message>PaidOn {orderItems.paidAt}</Message> : <Message>Not Paid</Message>}
-                            </ListGroup.Item>
-                        </ListGroup>
-
-                        <ListGroup variant='flush'>
-                            <ListGroup.Item>
-                                <h2>Order Items</h2>
-                                {
-                                    orderItems.orderItems.length === 0 ? <Message>Your Order is empty</Message>
-                                        : (
-                                            <ListGroup variant='flush'>
-                                                {
-                                                    orderItems.orderItems.map((item, index) => (
-                                                        <ListGroup.Item key={index}>
-                                                            <Row>
-                                                                <Col>
-                                                                    <Image src={item.image} alt={item.image} fluid rounded style={{ height: "50px", width: "50px" }} />
-                                                                </Col>
-                                                                <Col>
-                                                                    <Link to={`/product/${item.product}`}>{item.productName}</Link>
-                                                                </Col>
-                                                                <Col>
-                                                                    {item.qty} x &#x20B9;{item.price} = &#x20B9;{item.qty * item.price}
-                                                                </Col>
-                                                            </Row>
-                                                        </ListGroup.Item>
-                                                    ))
+                        <div className='ship-head'>Your Shipping Address</div>
+                        <div className='ship-card-wrap'>
+                            <Card className='ship-card'>
+                                <div className='add-wrap'>
+                                    <div>Name: {orderItems.user.name}</div>
+                                    <div>Email: {orderItems.user.email}</div>
+                                    <div>Address: {orderItems.shippingAddress.address}</div>
+                                    <div>City: {orderItems.shippingAddress.city}</div>
+                                    <div>Postal Code:{orderItems.shippingAddress.postalCode}</div>
+                                </div>
+                                {orderItems.isDelivered ? <Message>Delivered On: {orderItems.deliveredAt}</Message> : <Message>Not Delivered</Message>}
+                            </Card>
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className='pay-head'>
+                            <div>Order Summary</div>
+                        </div>
+                        <div>
+                            <Card>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Amount</Col>
+                                        <Col>&#x20B9;{orderItems.itemsPrice}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>iGST of 12%</Col>
+                                        <Col>&#x20B9;{orderItems.taxPrice}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                    <Row>
+                                        <Col>Total</Col>
+                                        <Col>&#x20B9;{orderItems.totalPrice}</Col>
+                                    </Row>
+                                </ListGroup.Item>
+                                <ListGroup.Item>
+                                            <Row>
+                                                {orderItems.paymentMethod === 'online' ? <><Col>Payment Method:</Col><Col>Online</Col></>
+                                                :
+                                                <><Col>Payment Method:</Col><Col>Cash on Delivery</Col></>
                                                 }
-                                            </ListGroup>
+                                            </Row>
+                                </ListGroup.Item>
+                                {error && <Message>{error}</Message>}
+                            </Card>
+                        </div>
+                    </Col>
+                </div>
+            </Row>
+            <Row>
+                <div className="products-and-payment-wrap">
+                    <Col>
+                    <div className='items-head'>
+                            <div>Your Products  </div>
+                            <div className='items-card-wrap'>
+                                <Card className='items-card'>
+                                    {
+                                        orderItems.orderItems.length === 0 ? <Message>Your cart is empty</Message> :
+                                        (
+                                            orderItems.orderItems.map((item, index) => (
+                                                <div key={index}>
+                                                    <Row className='items-row'>
+                                                        <Col lg={2}>
+                                                            <img src={item.image} alt={item.image} style={{hegiht: "50px", width: "50px"}}/>
+                                                        </Col>
+                                                        <Col lg={4}>
+                                                            <Link to={`/product/${item.product}`}>{item.productName}</Link>
+                                                        </Col>
+                                                        <Col lg={3}>
+                                                            <strong>Quantity:</strong> {item.qty}
+                                                        </Col>
+                                                        <Col lg={3}>
+                                                            <strong>Price:</strong> &#x20B9;{item.qty * item.price}
+                                                        </Col>
+                                                    </Row>
+                                                </div>
+                                            ))
                                         )
-                                }
-                            </ListGroup.Item>
-                        </ListGroup>
+                                    }
+                                </Card>
+                            </div>
+                        </div>
                     </Col>
                     <Col>
+                    { orderItems.paymentMethod === 'cod' ?
+                    null :
+                    orderItems.isPaid ?
+                    <Message>PaidOn {orderItems.paidAt}</Message> :
+                    <> 
+                    <div className='order-head'>
+                        <div>Complete Payment Plese</div>
+                    </div>
+                    <div>
                         <Card>
-                            <ListGroup.Item>
-                                <h2>Order Summary</h2>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Items Price</Col>
-                                    <Col>&#x20B9;{orderItems.itemsPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Tax</Col>
-                                    <Col>&#x20B9;{orderItems.taxPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-                            <ListGroup.Item>
-                                <Row>
-                                    <Col>Total Price</Col>
-                                    <Col>&#x20B9;{orderItems.totalPrice}</Col>
-                                </Row>
-                            </ListGroup.Item>
-                            {!orderItems.isPaid ? <ListGroup.Item>
-                                <Row>
-                                    <Col>
-                                        <button id="rzp-button1" onClick={payHandler}>Pay</button>
-                                    </Col>
-                                </Row>
-                            </ListGroup.Item> : null}
+                            <div className='place-order-button-wrap'>
+                                <button id="rzp-button1" onClick={payHandler}>Pay Online</button>
+                            </div>
                         </Card>
+                    </div>
+                    </>
+                    }
                     </Col>
-                </Row>
-            </Container>
+                </div>
+            </Row>
+        </Container>
+    )
 }
 
 export default OrderSummaryScreen

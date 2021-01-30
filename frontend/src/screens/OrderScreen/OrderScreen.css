@@ -1,0 +1,161 @@
+.ship-head {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'rutanLight';
+  text-transform: uppercase;
+}
+
+.pay-head {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'rutanLight';
+  text-transform: uppercase;
+}
+
+.items-head {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'rutanLight';
+  text-transform: uppercase;
+}
+
+.order-head {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 18px;
+  font-family: 'rutanLight';
+  text-transform: uppercase;
+}
+
+.ship-card-wrap {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.ship-card {
+  width: 85%;
+  min-height: 140px;
+  height: auto;
+  font-family: 'rutan';
+}
+
+.add-wrap {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.add-edit {
+  margin-top: 20px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.pay-card-wrap {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.pay-card {
+  width: 100%;
+  height: 140px;
+  font-family: 'rutan';
+}
+
+.online-pay-card {
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.online-pay-cod {
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+.items-card-wrap {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.items-card {
+  width: 85%;
+  min-height: 140px;
+  height: auto;
+  font-family: 'rutan';
+}
+
+.items-row {
+  margin-top: 10px;
+}
+
+.place-order-button-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.place-order-button-wrap button {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 5px 40px;
+  background-color: #6e4e37;
+  color: #fff;
+  font-family: 'rutan';
+  text-transform: uppercase;
+  border: 1px solid #6e4e37;
+}
+
+.review-order-summary-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.shipping-address-and-payment-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.shipping-and-order-wrap,
+.products-and-payment-wrap {
+  display: flex;
+  width: 100%;
+}
+
+@media (max-width:800px) {
+  .ship-head-alt {
+    height: 54px;
+  }
+}
+
+@media (max-width:700px) {
+
+  .review-order-summary-wrap,
+  .shipping-and-order-wrap,
+  .products-and-payment-wrap {
+    display: block;
+  }
+
+}
+
+@media (max-width:575px) {
+  .shipping-address-and-payment-wrap {
+    display: block;
+  }
+
+  .ship-head-alt {
+    height: fit-content;
+  }
+
+  .ship-card {
+    width: 100%;
+    padding: 1%;
+  }
+
+  .items-card {
+    width: 100%;
+  }
+}
