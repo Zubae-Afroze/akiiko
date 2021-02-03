@@ -60,10 +60,11 @@ const ShippingScreen = () => {
                                             <div>{shippingAddress.postalCode}</div>
                                             <div>{shippingAddress.country}</div>
                                         </div>
-                                        {/* <div className='continue-button-wrap'>
+                                        <div className='continue-button-wrap'>
                                             <button onClick={submitHandler}>Continue</button>
-                                        </div> */}
+                                        </div>
                                         <div>
+                                            <div className='shipping-edit'>Please edit the address if it's empty</div>
                                             <div className='edit-handler-main' onClick={editAddressHandler}><em>Edit the address</em></div>
                                             {editAddress ? <div>
                                                 <div className='no-ship-from'>
