@@ -88,127 +88,127 @@ const OrderSummaryScreen = () => {
         //addScript();
     }, [dispatch, orderId])
 
-    return ( 
-    loading ? <MyComponent
-         sentences={[]}
-         wrapperBackgroundColor={'rgba(255,255,255)'}
-         color={'#6e4e37'}
-         loaderType={'ball-spin-clockwise'}
-         customLoader={<SpinnerIcon />}
-        /> : error ? 
-        <Message>{error}</Message> :
-        <Container>
-            <Row>
-                <div className='shipping-and-order-wrap'>
-                    <Col>
-                        <div className='ship-head'>Your Shipping Address</div>
-                        <div className='ship-card-wrap'>
-                            <Card className='ship-card'>
-                                <div className='add-wrap'>
-                                    <div>Name: {orderItems.user.name}</div>
-                                    <div>Email: {orderItems.user.email}</div>
-                                    <div>Address: {orderItems.shippingAddress.address}</div>
-                                    <div>City: {orderItems.shippingAddress.city}</div>
-                                    <div>Postal Code:{orderItems.shippingAddress.postalCode}</div>
+    return (
+        loading ? <MyComponent
+            sentences={[]}
+            wrapperBackgroundColor={'rgba(255,255,255)'}
+            color={'#6e4e37'}
+            loaderType={'ball-spin-clockwise'}
+            customLoader={<SpinnerIcon />}
+        /> : error ?
+                <Message>{error}</Message> :
+                <Container>
+                    <Row>
+                        <div className='shipping-and-order-wrap'>
+                            <Col>
+                                <div className='ship-head'>Your Shipping Address</div>
+                                <div className='ship-card-wrap'>
+                                    <Card className='ship-card'>
+                                        <div className='add-wrap'>
+                                            <div>Name: {orderItems.user.name}</div>
+                                            <div>Email: {orderItems.user.email}</div>
+                                            <div>Address: {orderItems.shippingAddress.address}</div>
+                                            <div>City: {orderItems.shippingAddress.city}</div>
+                                            <div>Postal Code:{orderItems.shippingAddress.postalCode}</div>
+                                        </div>
+                                        {orderItems.isDelivered ? <Message>Delivered On: {orderItems.deliveredAt}</Message> : <Message>Not Delivered</Message>}
+                                    </Card>
                                 </div>
-                                {orderItems.isDelivered ? <Message>Delivered On: {orderItems.deliveredAt}</Message> : <Message>Not Delivered</Message>}
-                            </Card>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div className='pay-head'>
-                            <div>Order Summary</div>
-                        </div>
-                        <div>
-                            <Card>
-                                <ListGroup.Item>
-                                    <Row>
-                                        <Col>Amount</Col>
-                                        <Col>&#x20B9;{orderItems.itemsPrice}</Col>
-                                    </Row>
-                                </ListGroup.Item>
-                                <ListGroup.Item>
-                                    <Row>
-                                        <Col>iGST of 12%</Col>
-                                        <Col>&#x20B9;{orderItems.taxPrice}</Col>
-                                    </Row>
-                                </ListGroup.Item>
-                                <ListGroup.Item>
-                                    <Row>
-                                        <Col>Total</Col>
-                                        <Col>&#x20B9;{orderItems.totalPrice}</Col>
-                                    </Row>
-                                </ListGroup.Item>
-                                <ListGroup.Item>
+                            </Col>
+                            <Col>
+                                <div className='pay-head'>
+                                    <div>Order Summary</div>
+                                </div>
+                                <div>
+                                    <Card>
+                                        <ListGroup.Item>
+                                            <Row>
+                                                <Col>Amount</Col>
+                                                <Col>&#x20B9;{orderItems.itemsPrice}</Col>
+                                            </Row>
+                                        </ListGroup.Item>
+                                        <ListGroup.Item>
+                                            <Row>
+                                                <Col>iGST of 12%</Col>
+                                                <Col>&#x20B9;{orderItems.taxPrice}</Col>
+                                            </Row>
+                                        </ListGroup.Item>
+                                        <ListGroup.Item>
+                                            <Row>
+                                                <Col>Total</Col>
+                                                <Col>&#x20B9;{orderItems.totalPrice}</Col>
+                                            </Row>
+                                        </ListGroup.Item>
+                                        <ListGroup.Item>
                                             <Row>
                                                 {orderItems.paymentMethod === 'online' ? <><Col>Payment Method:</Col><Col>Online</Col></>
-                                                :
-                                                <><Col>Payment Method:</Col><Col>Cash on Delivery</Col></>
+                                                    :
+                                                    <><Col>Payment Method:</Col><Col>Cash on Delivery</Col></>
                                                 }
                                             </Row>
-                                </ListGroup.Item>
-                                {error && <Message>{error}</Message>}
-                            </Card>
+                                        </ListGroup.Item>
+                                        {error && <Message>{error}</Message>}
+                                    </Card>
+                                </div>
+                            </Col>
                         </div>
-                    </Col>
-                </div>
-            </Row>
-            <Row>
-                <div className="products-and-payment-wrap">
-                    <Col>
-                    <div className='items-head'>
-                            <div>Your Products  </div>
-                            <div className='items-card-wrap'>
-                                <Card className='items-card'>
-                                    {
-                                        orderItems.orderItems.length === 0 ? <Message>Your cart is empty</Message> :
-                                        (
-                                            orderItems.orderItems.map((item, index) => (
-                                                <div key={index}>
-                                                    <Row className='items-row'>
-                                                        <Col lg={2}>
-                                                            <img src={item.image} alt={item.image} style={{hegiht: "50px", width: "50px"}}/>
-                                                        </Col>
-                                                        <Col lg={4}>
-                                                            <Link to={`/product/${item.product}`}>{item.productName}</Link>
-                                                        </Col>
-                                                        <Col lg={3}>
-                                                            <strong>Quantity:</strong> {item.qty}
-                                                        </Col>
-                                                        <Col lg={3}>
-                                                            <strong>Price:</strong> &#x20B9;{item.qty * item.price}
-                                                        </Col>
-                                                    </Row>
-                                                </div>
-                                            ))
-                                        )
-                                    }
-                                </Card>
-                            </div>
+                    </Row>
+                    <Row>
+                        <div className="products-and-payment-wrap">
+                            <Col>
+                                <div className='items-head'>
+                                    <div>Your Products  </div>
+                                    <div className='items-card-wrap'>
+                                        <Card className='items-card'>
+                                            {
+                                                orderItems.orderItems.length === 0 ? <Message>Your cart is empty</Message> :
+                                                    (
+                                                        orderItems.orderItems.map((item, index) => (
+                                                            <div key={index}>
+                                                                <Row className='items-row'>
+                                                                    <Col lg={2}>
+                                                                        <img src={item.image} alt={item.image} style={{ hegiht: "50px", width: "50px" }} />
+                                                                    </Col>
+                                                                    <Col lg={4}>
+                                                                        <Link to={`/product/${item.product}`}>{item.productName}</Link>
+                                                                    </Col>
+                                                                    <Col lg={3}>
+                                                                        <strong>Quantity:</strong> {item.qty}
+                                                                    </Col>
+                                                                    <Col lg={3}>
+                                                                        <strong>Price:</strong> &#x20B9;{item.qty * item.price}
+                                                                    </Col>
+                                                                </Row>
+                                                            </div>
+                                                        ))
+                                                    )
+                                            }
+                                        </Card>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col>
+                                {orderItems.paymentMethod === 'cod' ?
+                                    null :
+                                    orderItems.isPaid ?
+                                        <Message>PaidOn {orderItems.paidAt}</Message> :
+                                        <>
+                                            <div className='order-head'>
+                                                <div>Complete Payment Plese</div>
+                                            </div>
+                                            <div>
+                                                <Card>
+                                                    <div className='place-order-button-wrap'>
+                                                        <button id="rzp-button1" onClick={payHandler}>Pay Online</button>
+                                                    </div>
+                                                </Card>
+                                            </div>
+                                        </>
+                                }
+                            </Col>
                         </div>
-                    </Col>
-                    <Col>
-                    { orderItems.paymentMethod === 'cod' ?
-                    null :
-                    orderItems.isPaid ?
-                    <Message>PaidOn {orderItems.paidAt}</Message> :
-                    <> 
-                    <div className='order-head'>
-                        <div>Complete Payment Plese</div>
-                    </div>
-                    <div>
-                        <Card>
-                            <div className='place-order-button-wrap'>
-                                <button id="rzp-button1" onClick={payHandler}>Pay Online</button>
-                            </div>
-                        </Card>
-                    </div>
-                    </>
-                    }
-                    </Col>
-                </div>
-            </Row>
-        </Container>
+                    </Row>
+                </Container>
     )
 }
 
