@@ -44,7 +44,7 @@ const OrderSummaryScreen = () => {
             "amount": dataRazor.amount,
             "currency": dataRazor.currency,
             "name": orderItems.user.name,
-            "description": "Test Transaction",
+            "description": "",
             "order_id": dataRazor.id,
             "handler": async function (response) {
                 // alert(response.razorpay_payment_id);
