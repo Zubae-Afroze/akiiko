@@ -116,7 +116,7 @@
 
 .very-end-blyat {
   border-top: 1px solid #3a2f2d;
-  height: 8vh;
+  height: 60px;
   font-family: 'rutan';
 }
 
@@ -336,7 +336,11 @@ input.footer-main-form::placeholder {
     font-size: 14px;
   }
 }
-
+@media (max-width: 614px) {
+  .very-end-blyat {
+    height: 17vh !important;
+  }
+}
 @media (max-width: 680px) {
   .footer-brand-logo {
     font-size: 75px;
@@ -503,13 +507,18 @@ input.footer-main-form::placeholder {
   .footer-brand-section-one {
     display: none;
   }
+  .very-end-blyat {
+    font-size: 12px;
+    height: 14vh !important;
+  }
 }
-.very-end-blyat {
-  font-size: 12px;
-  height: 7vh;
-}
+
 @media (max-width: 320px) {
   .very-end-blyat-list li {
     font-size: 12px;
+  }
+  .very-end-blyat {
+    font-size: 12px;
+    height: 11vh !important;
   }
 }

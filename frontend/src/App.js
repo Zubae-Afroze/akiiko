@@ -28,6 +28,9 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import AboutUs from './components/AboutUs/AboutUs';
 import Careers from './components/Careers/Careers';
 import FooterLinks from './components/FooterLinks/FooterLinks'
+import Terms from './components/Terms/Terms';
+import RefundPolicy from './components/RefundPolicy/RefundPolicy';
+import PrivacyStatement from './components/PrivacyStatement/PrivacyStatement';
 export default class App extends Component {
   // constructor(props){
   //   super(props);  
@@ -78,6 +81,10 @@ export default class App extends Component {
           <Route path='/FooterLinks' render={() => (<FooterLinks />)} />
           <Route path='/AboutUs/' render={() => (<AboutUs />)} />
           <Route path='/Careers/' render={() => (<Careers />)} />
+          <Route path='/TermsofService' render={() => (<Terms />)} />
+          <Route path='/Refund' render={() => (<RefundPolicy />)} />
+          <Route path='/PrivacyStatement' render={() => (<PrivacyStatement />)} />
+
 
           <Route path='/' component={HomeScreen} exact />
         </Switch>

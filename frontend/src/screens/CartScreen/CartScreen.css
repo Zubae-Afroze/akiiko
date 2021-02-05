@@ -65,7 +65,7 @@
 .cart-quantity-dum {
   font-family: 'rutan';
   position: absolute;
-  bottom: 5px;
+  bottom: 9px;
   border-bottom: 1px solid #2e26144d;
 }
 
@@ -190,6 +190,10 @@
 }
 
 @media (max-width: 425px) {
+  .cart-quantity-dum {
+    bottom: 5px;
+  }
+
   .cart-total {
     font-size: 18px;
   }
@@ -233,6 +237,7 @@
 
   .cart-list-price {
     font-size: 14px;
+    right: 0;
     top: 80px;
   }
 }
