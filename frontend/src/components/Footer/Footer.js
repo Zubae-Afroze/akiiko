@@ -80,7 +80,7 @@ export default class Footer extends Component {
                                 <li><Link to={'/AboutUs'} >ABOUT US</Link></li>
                                 <li><Link to={'/Careers'} >CAREERS</Link></li>
                                 <li><Link to={'/Refund'}>REFUND POLICY</Link></li>
-                                <li><Link to={'/'}>FAQs</Link></li>
+                                {/* <li><Link to={'/'}>FAQs</Link></li> */}
                                 <li><Link to={'./TermsofService'}>TERMS OF SERVICE</Link></li>
                                 <li><Link to={'./PrivacyStatement'}>PRIVACY STATEMENT</Link></li>
                             </ul>
