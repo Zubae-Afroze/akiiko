@@ -119,7 +119,9 @@ body {
     padding: 0px 15px;
   }
 }
-
+.section {
+  height: 100vh;
+}
 a {
   color: #3e3331;
 }

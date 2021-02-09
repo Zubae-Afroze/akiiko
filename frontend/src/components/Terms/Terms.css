@@ -1,0 +1,24 @@
+.terms-description {
+  text-align: justify;
+  font-size: 13px;
+  word-wrap: break-word;
+  padding-bottom: 10px;
+}
+.terms-title-head {
+  text-align: center;
+  font-size: 24px;
+  padding: 20px 0;
+}
+.terms-title {
+  text-align: justify;
+  padding: 20px 0;
+  font-size: 18px;
+  word-wrap: break-word;
+}
+.terms-description a {
+  font-size: 16px;
+  font-weight: bold;
+}
+.terms-wrap {
+  padding-bottom: 30px;
+}
