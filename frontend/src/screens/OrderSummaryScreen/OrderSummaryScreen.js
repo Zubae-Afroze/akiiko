@@ -68,7 +68,7 @@ const OrderSummaryScreen = () => {
             "prefill": {
                 "name": orderItems.user.name,
                 "email": orderItems.user.email,
-                "contact": orderItems.user.phoneNumber || null
+                "contact": userInfo.phoneNumber
             },
             "notes": {
                 "address": "Razorpay Corporate Office"

@@ -19,10 +19,10 @@ const ShippingScreen = () => {
     const cart = useSelector(state => state.cartList)
     const { shippingAddress } = cart
 
-    const [address, setAddress] = useState(shippingAddress.address);
-    const [city, setCity] = useState(shippingAddress.city);
-    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
-    const [country, setCountry] = useState("India");
+    const [address, setAddress] = useState('');
+    const [city, setCity] = useState('');
+    const [postalCode, setPostalCode] = useState('');
+    const [country, setCountry] = useState('');
 
     const submitHandler = (e) => {
         e.preventDefault()
@@ -49,7 +49,7 @@ const ShippingScreen = () => {
                 <div className='shipping-card-wrap'>
                     <Card className='shipping-card'>
                         {userInfo ?
-                            <div class='saved-shipping-address'>
+                            <div className='saved-shipping-address'>
                                 <Card.Title className='shipping-card-title'>Hello, {userInfo.name}!</Card.Title>
                                 {shippingAddress ?
                                     <div>
@@ -60,9 +60,9 @@ const ShippingScreen = () => {
                                             <div>{shippingAddress.postalCode}</div>
                                             <div>{shippingAddress.country}</div>
                                         </div>
-                                        <div className='continue-button-wrap'>
+                                        {/* <div className='continue-button-wrap'>
                                             <button onClick={submitHandler}>Continue</button>
-                                        </div>
+                                        </div> */}
                                         <div>
                                             <div className='edit-handler-main' onClick={editAddressHandler}><em>Edit the address</em></div>
                                             {editAddress ? <div>
