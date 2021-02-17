@@ -1,7 +1,7 @@
 .login-wrap {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  background-image: url(../BackgroundImage/web.png);
 }
 
 .card-wrap {
@@ -18,31 +18,8 @@
   text-align: center;
 }
 
-.sign-button {
-  width: 120px;
-  padding: 5px 0px;
-  border: none;
-  background-color: #6e4e37;
-  color: #fff;
-  font-family: 'rutanLight';
-  text-transform: uppercase;
-}
-
-.sign-wrap {
-  display: flex;
-  justify-content: center;
-  margin-top: 40px;
-}
-
 .login-group {
   position: relative;
-}
-
-.fc-label {
-  position: relative;
-  padding-left: 30px;
-  font-family: 'rutanLight';
-  font-size: 14px;
 }
 
 .icon-email {
@@ -64,4 +41,182 @@
 .card-text-wrap {
   margin-top: 60px;
   text-align: center;
+}
+.sign-in-row-one {
+  display: flex;
+  margin: 30px 0px;
+}
+.sign-in-row-two {
+  margin: 30px 0px;
+  display: flex;
+}
+.sign-in-row-three {
+  display: flex;
+  justify-content: center;
+}
+.sign-in-row-three1 {
+  display: flex;
+}
+.sign-btn-grp {
+  display: flex;
+  flex-direction: column;
+}
+.sign-in-web {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+}
+.google-sign {
+  width: 320px;
+  height: 53px;
+  border: 1px solid #707070;
+  padding: 15px 0px;
+  padding-left: 50px;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+}
+.email-ad {
+  width: 320px;
+  height: 53px;
+  border: 1px solid #707070;
+  padding: 15px 0px;
+  padding-left: 50px;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+  margin: 0px 25px;
+  background-color: transparent;
+}
+.user-reg {
+  width: 320px;
+  height: 53px;
+  border: 1px solid #707070;
+  padding: 15px 0px;
+  padding-left: 50px;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+}
+.password-box {
+  width: 320px;
+  height: 53px;
+  border: 1px solid #707070;
+  padding: 15px 0px;
+  padding-left: 50px;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+  margin: 0px 25px;
+  background-color: transparent;
+}
+.facebook-sign {
+  width: 320px;
+  height: 53px;
+  border: 1px solid #707070;
+  padding: 15px 0px;
+  padding-left: 50px;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+}
+.sign-in-button {
+  width: 320px;
+  height: 53px;
+  text-align: center;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+  padding: 15px 0px;
+  text-align: center;
+  background-color: #6b584c;
+  color: #fff;
+}
+.google {
+  padding-right: 15px;
+}
+.facebook {
+  padding-right: 15px;
+}
+.user-round {
+  padding-right: 15px;
+}
+.checkbox-and-forgot-psw {
+  font-family: 'rutan';
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+}
+.close-icons {
+  padding-right: 8px;
+}
+.sign-in-title {
+  font-size: 18px;
+  font-family: 'rutanMedium';
+}
+.check-box {
+  margin-right: 10px;
+}
+.sign-in-tab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 75vh;
+}
+.sign-in-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+}
+
+@media only screen and (max-width: 1024px) {
+  .sign-in-web {
+    display: none;
+  }
+  .sign-btn-grp {
+    margin-left: 25px;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .sign-in-tab {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 723px) {
+  .sign-in-mobile {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .sign-in-tab {
+    display: none;
+  }
+  .sign-btn-grp,
+  .password-box,
+  .email-ad {
+    margin-left: 0px;
+  }
+  .checkbox-and-forgot-psw {
+    padding-right: 10px;
+  }
+  .sign-in-mob-grp {
+    max-width: 330px;
+  }
+  .sign-in-title,
+  .google-sign,
+  .facebook-sign,
+  .email-ad,
+  .password-box,
+  .sign-in-button,
+  .user-reg {
+    margin: 10px 0px;
+  }
+  .login-wrap {
+    margin: 0px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .login-wrap {
+    background-image: url(../BackgroundImage/mb-bg.png);
+  }
 }

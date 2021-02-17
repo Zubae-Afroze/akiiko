@@ -3,3 +3,142 @@
   width: 370px;
   margin-bottom: 70px;
 }
+.reg-row-one {
+  display: flex;
+  margin: 30px 0px;
+}
+.reg-row-two {
+  display: flex;
+}
+.reg-row-three {
+  display: flex;
+  margin-top: 10px;
+}
+.reg-row-four {
+  display: flex;
+  margin-top: 10px;
+}
+.form-control {
+  border-radius: 0;
+}
+.checkbox-label {
+  width: 320px;
+  display: flex;
+  justify-content: space-between;
+  font-family: 'rutan';
+  font-size: 14px;
+}
+.c-box {
+  margin-top: 4px;
+  margin-right: 5px;
+}
+.dis {
+  text-align: justify;
+}
+.fc-label {
+  position: relative;
+  padding-left: 30px;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+  width: 320px;
+  height: 53px;
+  color: #4a4a4a !important;
+  border-radius: 0;
+  border: 1px solid #707070 !important;
+  background-color: transparent;
+}
+.middle-field {
+  margin: 0px 25px;
+}
+.close-icon {
+  padding-right: 10px;
+}
+.register-page-web {
+  display: flex;
+  height: 70vh;
+  flex-direction: column;
+  justify-content: center;
+}
+.sign-button {
+  width: 320px;
+  height: 53px;
+  border: none;
+  background-color: #6e4e37;
+  color: #fff;
+  font-family: 'rutanMedium';
+  margin-top: 15px;
+}
+.register-title {
+  letter-spacing: 0px;
+  color: #4a4a4a;
+  opacity: 1;
+  font-family: 'rutanMedium';
+  font-size: 18px;
+}
+.already-have {
+  text-decoration: underline;
+}
+.checkbox-label:checked {
+  background-color: #707070;
+}
+@media only screen and (min-width: 1024px) {
+  .register-page-tab {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  .register-page-web {
+    display: none;
+  }
+  .reg-row-one,
+  .reg-row-two,
+  .reg-row-three,
+  .reg-row-four {
+    justify-content: space-between;
+    width: 670px;
+  }
+  .middle-field {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .register-page-tab {
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .reg-row-two {
+    margin: 30px 0px;
+  }
+}
+@media only screen and (max-width: 675px) {
+  .register-page-tab {
+    display: none !important;
+  }
+  .register-page-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  .register-title {
+    margin: 50px 0px 20px 0px;
+  }
+  .fc-label {
+    margin: 15px 0px;
+  }
+  .checkbox-label {
+    margin: 15px 0px;
+  }
+  .sign-button {
+    margin-bottom: 50px;
+  }
+}
+@media only screen and (min-width: 676px) {
+  .register-page-mobile {
+    display: none;
+  }
+}
