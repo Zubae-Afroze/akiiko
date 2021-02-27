@@ -89,7 +89,7 @@ const LoginScreen = () => {
 
                         <div className='sign-in-row-two' controlId='password'>
                             <div className='facebook-sign'><img src='./images/home_screen_images/facebook.svg' alt='facebook-svg' className="facebook" />Continue with Facebook</div>
-                            <input type='text' placeholder='Password' className="password-box" value={password} onChange={(e) => setPassword(e.target.value)} />
+                            <input type='password' placeholder='Password' className="password-box" value={password} onChange={(e) => setPassword(e.target.value)} />
                         </div>
 
                         <div className='sign-in-row-three'>
