@@ -31,6 +31,7 @@ import FooterLinks from './components/FooterLinks/FooterLinks'
 import Terms from './components/Terms/Terms';
 import RefundPolicy from './components/RefundPolicy/RefundPolicy';
 import PrivacyStatement from './components/PrivacyStatement/PrivacyStatement';
+import LifestyleAllProducts from './components/LifestyleAllProducts/LifestyleAllProducts';
 export default class App extends Component {
   // constructor(props){
   //   super(props);  
@@ -68,6 +69,9 @@ export default class App extends Component {
 
           {/* Gift View All */}
           <Route path='/allproducts/productlist/gift' render={() => (<GiftAllProducts />)} />
+
+          {/* Lifestyle View All */}
+          <Route path='/allproducts/productlist/lifestyle' render={() => (<LifestyleAllProducts />)} />
 
           {/* Storage View All */}
           <Route path='/allproducts/productlist/storage' render={() => (<StorageAllProducts />)} />
