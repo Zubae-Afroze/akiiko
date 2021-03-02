@@ -5,6 +5,9 @@ import {
     WORKOUT_REQUEST,
     WORKOUT_SUCCESS,
     WORKOUT_FAIL,
+    STATIONARY_REQUEST,
+    STATIONARY_SUCCESS,
+    STATIONARY_FAIL
 } from '../constants/allProductsConstants'
 
 import axios from 'axios';
@@ -45,3 +48,20 @@ export const actionListWorkout = () => async (dispatch) => {
     }
 }
 
+export const actionListStationary = () => async (dispatch) => {
+    try {
+        dispatch({ type: STATIONARY_REQUEST })
+
+        const { data } = await axios.get('/api/productlist/lifestyle/stationery')
+
+        dispatch({
+            type: STATIONARY_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: STATIONARY_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}

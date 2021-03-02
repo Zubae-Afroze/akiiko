@@ -1,4 +1,4 @@
-import { 
+import {
     PRODUCT_LIST_REQUEST,
     PRODUCT_LIST_SUCCESS,
     PRODUCT_LIST_FAIL,
@@ -11,7 +11,7 @@ import axios from 'axios';
 
 export const actionListProductList = (group, subGroup) => async (dispatch) => {
     try {
-        dispatch({type: PRODUCT_LIST_REQUEST})
+        dispatch({ type: PRODUCT_LIST_REQUEST })
 
         const { data } = await axios.get(`/api/productlist/${group}/${subGroup}`)
 
@@ -30,7 +30,7 @@ export const actionListProductList = (group, subGroup) => async (dispatch) => {
 
 export const actionListProductDetails = (id) => async (dispatch) => {
     try {
-        dispatch({type: PRODUCT_DETAILS_REQUEST})
+        dispatch({ type: PRODUCT_DETAILS_REQUEST })
 
         const { data } = await axios.get(`/api/product/${id}`)
 

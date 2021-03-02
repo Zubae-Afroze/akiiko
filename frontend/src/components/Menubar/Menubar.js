@@ -195,11 +195,11 @@ export default class Menubar extends Component {
                                                             <Link to='/productlist/lifestyle/workout' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyle.jpg' alt='_img' />
                                                                 <div className='navbar-drop-list-label'>WORKOUT</div></Link></li>
                                                         {/* <li>
-                                                <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>HOBBY</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>    </div></li> */}
+                                                            <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img' />
+                                                            <div className='navbar-drop-list-label'>HOBBY</div></li> */}
+                                                        <li>
+                                                            <Link to='/productlist/lifestyle/stationery' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/stationery.jpg' alt='laundry_img' />
+                                                                <div className='navbar-drop-list-label'>STATIONARY</div></Link></li>
                                                     </ul>
                                                     <Link to='/allproducts/productlist/lifestyle' className='navbar-drop-link' onClick={this.toggleLifestlyeDiv}>VIEW ALL PRODUCTS</Link>
                                                 </Col>
