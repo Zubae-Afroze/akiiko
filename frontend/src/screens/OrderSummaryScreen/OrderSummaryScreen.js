@@ -194,7 +194,7 @@ const OrderSummaryScreen = () => {
                                         <Message>PaidOn {orderItems.paidAt}</Message> :
                                         <>
                                             <div className='order-head'>
-                                                <div>Complete Payment Plese</div>
+                                                <div>Complete Payment Please</div>
                                             </div>
                                             <div>
                                                 <Card>
