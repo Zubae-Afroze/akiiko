@@ -33,69 +33,71 @@ const LifestyleAllProducts = () => {
 
 
     return (
-        <Container>
-            <div className='product-list-wrapper'>
-                {hygieneLoading ?
-                    <MyComponent
+        <React.Fragment>
+            <Container>
+                <div className='product-list-wrapper'>
+                    {hygieneLoading ?
+                        <MyComponent
+                            sentences={[]}
+                            wrapperBackgroundColor={'rgba(255,255,255)'}
+                            color={'#6e4e37'}
+                            loaderType={'ball-spin-clockwise'}
+                            customLoader={<SpinnerIcon />}
+                        /> : hygieneError ? <h1>{hygieneError}</h1> : hygieneProducts[Object.keys(hygieneProducts)[0]] ?
+                            <>
+                                <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
+                                <div className='product-list-label'>{hygieneProducts[Object.keys(hygieneProducts)[0]].subGroup}</div>
+                                <div className='product-list-text'>{hygieneProducts[Object.keys(hygieneProducts)[0]].groupDescription}</div>
+                                <div>
+                                    <Row className='product-list-card-wrapper'>
+                                        {hygieneProducts.map(product => (
+                                            <div className='product-list-card-wrapper' key={product.productId}>
+                                                <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                                    <div>
+                                                        <img src={product.heroImage} alt='home_1' />
+                                                        {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                                                        {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
+                                                    </div>
+                                                    <div className='product-list-card-title'>{product.productName}</div>
+                                                    <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
+                                                </div></Link>
+                                            </div>
+                                        ))}
+                                    </Row>
+                                </div>
+                            </>
+                            : null}
+
+                    {workoutLoading ? <MyComponent
                         sentences={[]}
                         wrapperBackgroundColor={'rgba(255,255,255)'}
                         color={'#6e4e37'}
                         loaderType={'ball-spin-clockwise'}
                         customLoader={<SpinnerIcon />}
-                    /> : hygieneError ? <h1>{hygieneError}</h1> : hygieneProducts[Object.keys(hygieneProducts)[0]] ?
+                    /> : workoutError ? <h1>{workoutError}</h1> : workoutProducts[Object.keys(workoutProducts)[0]] ?
                         <>
-                            <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
-                            <div className='product-list-label'>{hygieneProducts[Object.keys(hygieneProducts)[0]].subGroup}</div>
-                            <div className='product-list-text'>{hygieneProducts[Object.keys(hygieneProducts)[0]].groupDescription}</div>
+                            <div className='product-list-label'>{workoutProducts[Object.keys(workoutProducts)[0]].subGroup}</div>
+                            <div className='product-list-text'>{workoutProducts[Object.keys(workoutProducts)[0]].groupDescription}</div>
                             <div>
                                 <Row className='product-list-card-wrapper'>
-                                    {hygieneProducts.map(product => (
+                                    {workoutProducts.map(product => (
                                         <div className='product-list-card-wrapper' key={product.productId}>
                                             <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                                <div>
-                                                    <img src={product.heroImage} alt='home_1' />
-                                                    {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
-                                                    {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
-                                                </div>
+                                                <img src={product.heroImage} alt='home_1' />
+                                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                                                {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
+                                            </div>
                                                 <div className='product-list-card-title'>{product.productName}</div>
-                                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
-                                            </div></Link>
+                                                <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
                                         </div>
                                     ))}
                                 </Row>
                             </div>
                         </>
                         : null}
-
-                {workoutLoading ? <MyComponent
-                    sentences={[]}
-                    wrapperBackgroundColor={'rgba(255,255,255)'}
-                    color={'#6e4e37'}
-                    loaderType={'ball-spin-clockwise'}
-                    customLoader={<SpinnerIcon />}
-                /> : workoutError ? <h1>{workoutError}</h1> : workoutProducts[Object.keys(workoutProducts)[0]] ?
-                    <>
-                        <div className='product-list-label'>{workoutProducts[Object.keys(workoutProducts)[0]].subGroup}</div>
-                        <div className='product-list-text'>{workoutProducts[Object.keys(workoutProducts)[0]].groupDescription}</div>
-                        <div>
-                            <Row className='product-list-card-wrapper'>
-                                {workoutProducts.map(product => (
-                                    <div className='product-list-card-wrapper' key={product.productId}>
-                                        <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                            <img src={product.heroImage} alt='home_1' />
-                                            {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
-                                            {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
-                                        </div>
-                                            <div className='product-list-card-title'>{product.productName}</div>
-                                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
-                                    </div>
-                                ))}
-                            </Row>
-                        </div>
-                    </>
-                    : null}
-            </div>
-        </Container>
+                </div>
+            </Container>
+        </React.Fragment>
     )
 }
 

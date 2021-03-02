@@ -201,7 +201,7 @@ export default class Menubar extends Component {
                                                 <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img'/>
                                                 <div className='navbar-drop-list-label'>    </div></li> */}
                                                     </ul>
-                                                    {/* <Link to='/allproducts/productlist/lifestyle' className='navbar-drop-link' onClick={this.toggleLifestlyeDiv}>VIEW ALL PRODUCTS</Link> */}
+                                                    <Link to='/allproducts/productlist/lifestyle' className='navbar-drop-link' onClick={this.toggleLifestlyeDiv}>VIEW ALL PRODUCTS</Link>
                                                 </Col>
                                                 <Col sm={4} className='navbar-drop-hero' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyleDropHero.jpg' alt='lifestyleDropHeroImg' /></Col>
                                             </Row>
