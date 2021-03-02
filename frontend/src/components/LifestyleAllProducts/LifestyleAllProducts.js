@@ -40,7 +40,7 @@ const LifestyleAllProducts = () => {
             <Container>
                 <div className='product-list-wrapper'>
 
-                    {stationaryLoading ?
+                    {/* {stationaryLoading ?
                         <MyComponent
                             sentences={[]}
                             wrapperBackgroundColor={'rgba(255,255,255)'}
@@ -69,7 +69,7 @@ const LifestyleAllProducts = () => {
                                     </Row>
                                 </div>
                             </>
-                            : null}
+                            : null} */}
 
                     {hygieneLoading ?
                         <MyComponent
