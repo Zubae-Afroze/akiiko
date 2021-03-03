@@ -5,9 +5,12 @@ import {
     WORKOUT_REQUEST,
     WORKOUT_SUCCESS,
     WORKOUT_FAIL,
-    STATIONARY_REQUEST,
-    STATIONARY_SUCCESS,
-    STATIONARY_FAIL
+    HOBBY_REQUEST,
+    HOBBY_SUCCESS,
+    HOBBY_FAIL,
+    STATIONERY_REQUEST,
+    STATIONERY_SUCCESS,
+    STATIONERY_FAIL
 } from '../constants/allProductsConstants'
 
 import axios from 'axios';
@@ -48,19 +51,38 @@ export const actionListWorkout = () => async (dispatch) => {
     }
 }
 
-export const actionListStationary = () => async (dispatch) => {
-    try {
-        dispatch({ type: STATIONARY_REQUEST })
 
-        const { data } = await axios.get('/api/productlist/lifestyle/stationery')
+export const actionListHobby = () => async (dispatch) => {
+    try {
+        dispatch({ type: HOBBY_REQUEST })
+
+        const { data } = await axios.get('/api/productlist/lifestyle/hobby')
 
         dispatch({
-            type: STATIONARY_SUCCESS,
+            type: HOBBY_SUCCESS,
             payload: data
         })
     } catch (error) {
         dispatch({
-            type: STATIONARY_FAIL,
+            type: HOBBY_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message
+        })
+    }
+}
+
+export const actionListStationery = () => async (dispatch) => {
+    try {
+        dispatch({ type: STATIONERY_REQUEST })
+
+        const { data } = await axios.get('/api/productlist/lifestyle/stationery')
+
+        dispatch({
+            type: STATIONERY_SUCCESS,
+            payload: data
+        })
+    } catch (error) {
+        dispatch({
+            type: STATIONERY_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message
         })
     }

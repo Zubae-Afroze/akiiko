@@ -5,9 +5,12 @@ import {
     WORKOUT_REQUEST,
     WORKOUT_SUCCESS,
     WORKOUT_FAIL,
-    STATIONARY_REQUEST,
-    STATIONARY_SUCCESS,
-    STATIONARY_FAIL
+    HOBBY_REQUEST,
+    HOBBY_SUCCESS,
+    HOBBY_FAIL,
+    STATIONERY_REQUEST,
+    STATIONERY_SUCCESS,
+    STATIONERY_FAIL
 } from '../constants/allProductsConstants'
 
 
@@ -37,14 +40,28 @@ export const reducersWorkout = (state = { workoutProducts: [] }, action) => {
     }
 }
 
-export const reducersStationary = (state = { StationaryProducts: [] }, action) => {
+
+export const reducersHobby = (state = { hobbyProducts: [] }, action) => {
     switch (action.type) {
-        case STATIONARY_REQUEST:
-            return { stationaryLoading: true, stationaryProducts: [] }
-        case STATIONARY_SUCCESS:
-            return { stationaryloading: false, stationaryProducts: action.payload }
-        case STATIONARY_FAIL:
-            return { stationaryLoading: false, stationaryError: [] }
+        case HOBBY_REQUEST:
+            return { hobbyLoading: true, hobbyProducts: [] }
+        case HOBBY_SUCCESS:
+            return { hobbyloading: false, hobbyProducts: action.payload }
+        case HOBBY_FAIL:
+            return { hobbyLoading: false, hobbyError: [] }
+        default:
+            return state
+    }
+}
+
+export const reducersStationery = (state = { stationeryProducts: [] }, action) => {
+    switch (action.type) {
+        case STATIONERY_REQUEST:
+            return { stationeryLoading: true, stationeryProducts: [] }
+        case STATIONERY_SUCCESS:
+            return { stationeryloading: false, stationeryProducts: action.payload }
+        case STATIONERY_FAIL:
+            return { stationeryLoading: false, stationeryError: [] }
         default:
             return state
     }

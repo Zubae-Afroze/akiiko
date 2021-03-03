@@ -10,7 +10,8 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
 import {
     actionListHygiene,
     actionListWorkout,
-    actionListStationary
+    actionListHobby,
+    actionListStationery
 } from '../../actions/actionLifestyle'
 
 //import axios from 'axios';
@@ -22,16 +23,24 @@ const LifestyleAllProducts = () => {
     const hygieneList = useSelector(state => state.hygieneList)
     const { hygieneLoading, hygieneProducts, hygieneError } = hygieneList
 
+    const hobbyList = useSelector(state => state.hobbyList)
+    const { hobbyLoading, hobbyProducts, hobbyError } = hobbyList
+
     const workoutList = useSelector(state => state.workoutList)
     const { workoutLoading, workoutProducts, workoutError } = workoutList
 
-    const stationaryList = useSelector(state => state.stationaryList)
-    const { stationaryLoading, stationaryProducts, stationaryError } = stationaryList
+    const stationeryList = useSelector(state => state.stationeryList)
+    const { stationeryLoading, stationeryProducts, stationeryError } = stationeryList
+
+
+
+
 
     useEffect(() => {
         dispatch(actionListHygiene())
         dispatch(actionListWorkout())
-        dispatch(actionListStationary())
+        dispatch(actionListHobby())
+        dispatch(actionListStationery())
     }, [dispatch])
 
 
@@ -40,20 +49,21 @@ const LifestyleAllProducts = () => {
             <Container>
                 <div className='product-list-wrapper'>
 
-                    {/* {stationaryLoading ?
+
+                    {hobbyLoading ?
                         <MyComponent
                             sentences={[]}
                             wrapperBackgroundColor={'rgba(255,255,255)'}
                             color={'#6e4e37'}
                             loaderType={'ball-spin-clockwise'}
                             customLoader={<SpinnerIcon />}
-                        /> : stationaryError ? <h1>{stationaryError}</h1> : stationaryProducts[Object.keys(stationaryProducts)[0]] ?
+                        /> : hobbyError ? <h1>{hobbyError}</h1> : hobbyProducts[Object.keys(hobbyProducts)[0]] ?
                             <>
-                                <div className='product-list-label'>{stationaryProducts[Object.keys(stationaryProducts)[0]].subGroup}</div>
-                                <div className='product-list-text'>{stationaryProducts[Object.keys(stationaryProducts)[0]].groupDescription}</div>
+                                <div className='product-list-label'>{hobbyProducts[Object.keys(hobbyProducts)[0]].subGroup}</div>
+                                <div className='product-list-text'>{hobbyProducts[Object.keys(hobbyProducts)[0]].groupDescription}</div>
                                 <div>
                                     <Row className='product-list-card-wrapper'>
-                                        {stationaryProducts.map(product => (
+                                        {hobbyProducts.map(product => (
                                             <div className='product-list-card-wrapper' key={product.productId}>
                                                 <Link to={`/product/${product._id}`}><div className='product-list-image'>
                                                     <div>
@@ -69,7 +79,38 @@ const LifestyleAllProducts = () => {
                                     </Row>
                                 </div>
                             </>
-                            : null} */}
+                            : null}
+
+                    {stationeryLoading ?
+                        <MyComponent
+                            sentences={[]}
+                            wrapperBackgroundColor={'rgba(255,255,255)'}
+                            color={'#6e4e37'}
+                            loaderType={'ball-spin-clockwise'}
+                            customLoader={<SpinnerIcon />}
+                        /> : stationeryError ? <h1>{stationeryError}</h1> : stationeryProducts[Object.keys(stationeryProducts)[0]] ?
+                            <>
+                                <div className='product-list-label'>{stationeryProducts[Object.keys(stationeryProducts)[0]].subGroup}</div>
+                                <div className='product-list-text'>{stationeryProducts[Object.keys(stationeryProducts)[0]].groupDescription}</div>
+                                <div>
+                                    <Row className='product-list-card-wrapper'>
+                                        {stationeryProducts.map(product => (
+                                            <div className='product-list-card-wrapper' key={product.productId}>
+                                                <Link to={`/product/${product._id}`}><div className='product-list-image'>
+                                                    <div>
+                                                        <img src={product.heroImage} alt='home_1' />
+                                                        {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
+                                                        {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
+                                                    </div>
+                                                    <div className='product-list-card-title'>{product.productName}</div>
+                                                    <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
+                                                </div></Link>
+                                            </div>
+                                        ))}
+                                    </Row>
+                                </div>
+                            </>
+                            : null}
 
                     {hygieneLoading ?
                         <MyComponent
