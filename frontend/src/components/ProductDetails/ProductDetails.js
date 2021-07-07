@@ -235,6 +235,8 @@ const ProductDetails = () => {
                                         <div className='product-details-label '>Details</div>
                                         <ul className='product-details-text'>
                                             <li className='product-details-texts'><span className='target-bold'>Item Code: </span> {product.productId}</li>
+
+                                            {product.content ? <li className='product-details-texts'><span className='target-bold'>Content: </span> {product.content}</li> : null}
                                             <li className='product-details-texts'><span className='target-bold'>Size:</span> {product.measurement}</li>
                                             <li className='product-details-texts'><span className='target-bold'>Material:</span> {product.material}</li>
                                             {/* <li>Care Instruction: {product.washingCare}</li> */}

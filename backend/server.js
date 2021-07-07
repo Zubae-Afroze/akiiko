@@ -16,6 +16,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import router from './routes/masterProductRoutes.js'
 
 // git commands
+// heroku git:remote -a akiiko
 // git push heroku master
 // git push origin
 // git remote add origin https://github.com/Zubae-Afroze/akiiko-ver-1.05-fullstack.git
