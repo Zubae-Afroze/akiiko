@@ -188,20 +188,20 @@ export default class Menubar extends Component {
                                             <Row className='navbar-dropdown'>
                                                 <Col className='navbar-drop-list' sm={8}>
                                                     <ul>
-                                                        {/* <li>
-                                                <img src='/images/nav_drop/organisation_drop/wall_hanging.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>HEALTH & HYGIENE</div></li> */}
+                                                        <li>
+                                                            <Link to='/productlist/lifestyle/hygiene' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/hygiene.jpg' alt='laundry_img' />
+                                                                <div className='navbar-drop-list-label'>HEALTH & HYGIENE</div></Link></li>
                                                         <li>
                                                             <Link to='/productlist/lifestyle/workout' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyle.jpg' alt='_img' />
                                                                 <div className='navbar-drop-list-label'>WORKOUT</div></Link></li>
-                                                        {/* <li>
-                                                <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>HOBBY</div></li>
-                                            <li>
-                                                <img src='/images/nav_drop/organisation_drop/baskets.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>    </div></li> */}
+                                                        <li>
+                                                            <Link to='/productlist/lifestyle/hobby' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyle.jpg' alt='laundry_img' />
+                                                                <div className='navbar-drop-list-label'>HOBBY</div></Link></li>
+                                                        <li>
+                                                            <Link to='/productlist/lifestyle/stationery' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/stationery.jpg' alt='laundry_img' />
+                                                                <div className='navbar-drop-list-label'>STATIONERY</div></Link></li>
                                                     </ul>
-                                                    <Link to='/productlist/lifestyle/workout' className='navbar-drop-link' onClick={this.toggleLifestlyeDiv}>VIEW ALL PRODUCTS</Link>
+                                                    <Link to='/allproducts/productlist/lifestyle' className='navbar-drop-link' onClick={this.toggleLifestlyeDiv}>VIEW ALL PRODUCTS</Link>
                                                 </Col>
                                                 <Col sm={4} className='navbar-drop-hero' onClick={this.toggleLifestlyeDiv}><img src='/images/nav_drop/lifestyle/lifestyleDropHero.jpg' alt='lifestyleDropHeroImg' /></Col>
                                             </Row>
