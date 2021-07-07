@@ -6,9 +6,11 @@ import MobileNav from '../../components/MobileNav/MobileNav'
 
 function CheckOut() {
   return (
+    <>
+    <Menubar />
+    <MobileNav />
+    <Container fluid className='p-0 m-0 d-flex justify-content-center' style={{width:'100%'}}>
     <div style={{ padding: 0, margin: 0, fontFamily: 'rutanLight' }}>
-      <Menubar />
-      <MobileNav />
       <Container style={{ margin: 0, padding: 0 }}>
         <Container fluid className='p-0 m-0 d-flex justify-content-center'>
           <Row style={{ width: '100%', margin: 0, padding: 0 }}>
@@ -31,6 +33,8 @@ function CheckOut() {
         </Container>
       </Container>
     </div>
+    </Container>
+    </>
   )
 }
 

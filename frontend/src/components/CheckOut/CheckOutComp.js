@@ -6,6 +6,7 @@ import PaymentForm from './PaymentForm'
 import ReviewForm from './ReviewForm'
 import { AnimatePresence } from 'framer-motion'
 import '../../screens/Chekout/style.css'
+import stepperLevel from './StepperContants'
 
 const divStyle = {
   center_ic_fa: {
@@ -36,11 +37,10 @@ function ReturnCurrentForm({ level, setFormLevel }) {
 }
 
 function navigateBack({ formLevel, setFormLevel }) {
-  console.log('on Click', formLevel)
   if (formLevel === 1) {
-    setFormLevel(0)
+    setFormLevel(stepperLevel.SHIPPING)
   } else if (formLevel === 2) {
-    setFormLevel(1)
+    setFormLevel(stepperLevel.PAYMENT)
   }
 }
 
@@ -78,7 +78,8 @@ function NavigateBackIcon({ level }) {
 }
 
 export default function CheckOutComp() {
-  const [formLevel, setFormLevel] = useState(0)
+  const [formLevel, setFormLevel] = useState(stepperLevel.SHIPPING)
+
 
   return (
     // <Container fluid className="m-0 p-xs-0 ps-sm-1 pe-sm-1 ps-md-5 pe-md-5 form-style">
@@ -88,9 +89,18 @@ export default function CheckOutComp() {
         <div className='pt-3 pb-4 mt-3 mb-4'>
           <Stepper
             steps={[
-              { title: 'Shipping' },
-              { title: 'Payment' },
-              { title: 'Review' },
+              { 
+                title: 'Shipping',
+                onClick: () => { setFormLevel(stepperLevel.SHIPPING)}
+              },
+              { 
+                title: 'Payment',
+                onClick: ()=> { setFormLevel(stepperLevel.PAYMENT) } 
+              },
+              { 
+                title: 'Review',
+                onClick: ()=> { setFormLevel(stepperLevel.REVIEW) } 
+              },
             ]}
             activeStep={formLevel}
             size={12}
