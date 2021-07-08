@@ -17,4 +17,11 @@ const paymentObject = {
     isCOD: '',
 }
 
-export { shippingObject, paymentObject }
+const toastObject = {
+    show: false,
+    title: 'Invalid',
+    message: 'Kindly Fill The Form',
+    isSuccess: false,
+}
+
+export { shippingObject, paymentObject, toastObject }

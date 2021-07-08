@@ -42,7 +42,7 @@ const hrStyle = {
     margine: 0,
   }
 }
-export default function PaymentForm({ setFormLevel }) {
+export default function PaymentForm({ setFormLevel,showToast }) {
 
   const [ paymentObjectState, setpaymentObjectState ] = useState(paymentObject);
 
@@ -50,7 +50,33 @@ export default function PaymentForm({ setFormLevel }) {
     setpaymentObjectState( {[event.target.name]: event.target.value} ) 
     
     paymentObject[event.target.name] = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
-    console.log(event.target.name +' : '+ paymentObject[event.target.name])
+  }
+
+
+  function onPaymentFormSubmit(e){
+    e.preventDefault()
+    let isValidated = true;
+    if(
+        (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '') 
+        && 
+        (paymentObject.netbankingUPI === null || paymentObject.netbankingUPI.trim() === '')
+    ){
+      showToast('Plaese Enter Your Card Number');
+      isValidated = false;
+    }
+    if(
+      (paymentObject.monthYearCVC === null || paymentObject.monthYearCVC.trim() === '')
+      &&
+      (paymentObject.netbankingUPI === null || paymentObject.netbankingUPI.trim() === '')
+    ){
+      showToast('Plaese Enter the MM/ YY/ CVC');
+      isValidated = false;
+    }
+  
+    if(isValidated){
+      console.log('Validated'+ stepperLevel.REVIEW)
+      setFormLevel(stepperLevel.REVIEW)
+    } 
   }
 
 
@@ -73,7 +99,7 @@ export default function PaymentForm({ setFormLevel }) {
           >
             <div style={{ marginRight: 7 }}>
               <Form.Group className='mb-1' controlId='formBasicCheckbox'>
-                <Form.Control size='lg' type='number' placeholder='Card Number' 
+                <Form.Control size='lg' type='text' placeholder='Card Number' 
                   style={{ padding: 25, fontSize: 16 }}
                   name='cardNumber'
                   value={paymentObjectState.cardNumber}
@@ -175,7 +201,7 @@ export default function PaymentForm({ setFormLevel }) {
                     variant='primary'
                     type='submit'
                     className='px-5 me-3 mt-3 mb-3'
-                    onClick={() => setFormLevel(stepperLevel.REVIEW)}
+                    onClick={onPaymentFormSubmit}
                   >
                     Next
                   </Button>
@@ -209,7 +235,7 @@ export default function PaymentForm({ setFormLevel }) {
               variant='primary'
               type='submit'
               className='px-5 me-3 mt-3 mb-3'
-              onClick={() => setFormLevel(stepperLevel.REVIEW)}
+              onClick={onPaymentFormSubmit}
             >
               NEXT
             </Button>

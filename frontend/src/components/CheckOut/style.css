@@ -6,6 +6,15 @@
   margin-left: 7px;
 }
 
+.order-summary-xxsm{
+  font-family: 'rutanMedium';
+}
+
+.Toastify__toast--default {
+  background-color: #6B584C;
+  color: #FFFFFF;
+}
+
 @media only screen and (max-width: 414px) {
   .zip-code {
     margin-left: 0;
@@ -15,6 +24,7 @@
 
 @media only screen and (min-width: 340px) {
   .order-summary-xxsm {
-    padding: 5px;
+    padding: 20px;
+    padding-top: 30px;
   }
 }

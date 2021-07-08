@@ -9,7 +9,7 @@ function CheckOut() {
     <>
     <Menubar />
     <MobileNav />
-    <Container fluid className='p-0 m-0 d-flex justify-content-center' style={{width:'100%'}}>
+    <Container fluid className='p-0 m-0 d-flex justify-content-center' style={{width:'100%' }}>
     <div style={{ padding: 0, margin: 0, fontFamily: 'rutanLight' }}>
       <Container style={{ margin: 0, padding: 0 }}>
         <Container fluid className='p-0 m-0 d-flex justify-content-center'>
@@ -18,7 +18,7 @@ function CheckOut() {
               sm={12}
               md={12}
               lg={8}
-              style={{ margin: 0, padding: 0 }}
+              style={{ margin: 0, padding: 0, height:684 }}
               className='align-items-center'
             >
               <div className='p-md-5'>
