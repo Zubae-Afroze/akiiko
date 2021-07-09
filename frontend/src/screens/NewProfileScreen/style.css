@@ -13,6 +13,6 @@
     font-family: 'rutan';
 }
 
-.profile-tabs li:hover {
-    font-family: 'rutanBold';
+.tabs:hover {
+    font-family: 'rutanDemibold';
 }
