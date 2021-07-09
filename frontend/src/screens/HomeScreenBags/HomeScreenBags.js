@@ -43,10 +43,11 @@ const HomeScreenBags = () => {
       .then((res) => {
         setLoading(false)
         setBags(res.data)
+        setError('')
       })
-      .catch((error) => {
+      .catch((err) => {
         setLoading(false)
-        setError(error)
+        setError(err.message)
       })
   }, [])
 
