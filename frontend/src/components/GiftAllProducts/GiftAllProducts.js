@@ -1,136 +1,267 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import '../ProductList/ProductList.css';
+import React, { useEffect, useState } from 'react'
+import { Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import '../ProductList/ProductList.css'
 
-import MyComponent from 'react-fullpage-custom-loader';
-import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
-
-import {
-    actionListGiftBox,
-    actionListGiftBag,
-    actionListAccessories
-} from '../../actions/actionGift'
+import MyComponent from 'react-fullpage-custom-loader'
+import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
+import axios from 'axios'
 
 //import axios from 'axios';
 
 const GiftAllProducts = () => {
+  //const dispatch = useDispatch()
 
-    // const [giftBox, setGiftBox] = useState({});
-    // const [giftBag, setGiftBag] = useState({});
-    // const [accessories, setAccessories] = useState({});
+  // const giftBoxList = useSelector(state => state.giftBoxList)
+  // const { giftBoxLoading, giftBoxProducts, giftBoxError } = giftBoxList
 
-    const dispatch = useDispatch()
+  // const giftBagList = useSelector(state => state.giftBagList)
+  // const { giftBagLoading, giftBagProducts, giftBagError } = giftBagList
 
-    const giftBoxList = useSelector(state => state.giftBoxList)
-    const { giftBoxLoading, giftBoxProducts, giftBoxError } = giftBoxList
+  // const accessoriesList = useSelector(state => state.accessoriesList)
+  // const { accessoriesLoading, accessoriesProducts, accessoriesError } = accessoriesList
 
-    const giftBagList = useSelector(state => state.giftBagList)
-    const { giftBagLoading, giftBagProducts, giftBagError } = giftBagList
+  const [box, setBox] = useState([])
+  const [bag, setBag] = useState([])
+  const [accessories, setAccessories] = useState([])
 
-    const accessoriesList = useSelector(state => state.accessoriesList)
-    const { accessoriesLoading, accessoriesProducts, accessoriesError } = accessoriesList
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState([])
 
-    useEffect(() => {
-        dispatch(actionListGiftBox())
-        dispatch(actionListGiftBag())
-        dispatch(actionListAccessories())
-    }, [dispatch])
+  useEffect(() => {
+    // dispatch(actionListGiftBox())
+    // dispatch(actionListGiftBag())
+    // dispatch(actionListAccessories())
 
+    const fetchBox = () => {
+      setLoading(true)
+      axios
+        .get('/api/productlist/gift/giftbox')
+        .then((res) => {
+          setLoading(false)
+          setBox(res.data)
+          setError([])
+        })
+        .catch((err) => {
+          setLoading(false)
+          setError(err.message)
+        })
+    }
 
-    return (
-        <Container>
-            <div className='product-list-wrapper'>
-                {giftBoxLoading ? <MyComponent
-                    sentences={[]}
-                    wrapperBackgroundColor={'rgba(255,255,255)'}
-                    color={'#6e4e37'}
-                    loaderType={'ball-spin-clockwise'}
-                    customLoader={<SpinnerIcon />}
-                /> : giftBoxError ? <h1>{giftBoxError}</h1> : giftBoxProducts[Object.keys(giftBoxProducts)[0]] ?
-                    <>
-                        <Link to='/' className='product-list-back-button'><img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>BACK</Link>
-                        <div className='product-list-label'>{giftBoxProducts[Object.keys(giftBoxProducts)[0]].subGroup}</div>
-                        <div className='product-list-text'>{giftBoxProducts[Object.keys(giftBoxProducts)[0]].groupDescription}</div>
+    const fetchBag = () => {
+      setLoading(true)
+      axios
+        .get('/api/productlist/gift/giftbag')
+        .then((res) => {
+          setLoading(false)
+          setBag(res.data)
+          setError([])
+        })
+        .catch((err) => {
+          setLoading(false)
+          setError(err.message)
+        })
+    }
+
+    const fetchAccessories = () => {
+      setLoading(true)
+      axios
+        .get('/api/productlist/gift/accessories')
+        .then((res) => {
+          setLoading(false)
+          setAccessories(res.data)
+          setError([])
+        })
+        .catch((err) => {
+          setLoading(false)
+          setError(err.message)
+        })
+    }
+
+    fetchBox()
+    fetchBag()
+    fetchAccessories()
+  }, [])
+
+  return (
+    <Container>
+      <div className='product-list-wrapper'>
+        <Link to='/' className='product-list-back-button'>
+          <img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>
+          BACK
+        </Link>
+        {loading && (
+          <MyComponent
+            sentences={[]}
+            wrapperBackgroundColor={'rgba(255,255,255)'}
+            color={'#6e4e37'}
+            loaderType={'ball-spin-clockwise'}
+            customLoader={<SpinnerIcon />}
+          />
+        )}{' '}
+        {error && <h1>{error}</h1>}{' '}
+        {box[Object.keys(box)[0]] && (
+          <>
+            {box[Object.keys(box)[0]] ? (
+              <>
+                <div className='product-list-label'>
+                  {box[Object.keys(box)[0]].subGroup}
+                </div>
+                <div className='product-list-text'>
+                  {box[Object.keys(box)[0]].groupDescription}
+                </div>
+              </>
+            ) : null}
+            <div>
+              <Row className='product-list-card-wrapper'>
+                {box.map((product) => (
+                  <div
+                    className='product-list-card-wrapper'
+                    key={product.productId}
+                  >
+                    <Link to={`/product/${product._id}`}>
+                      <div className='product-list-image'>
                         <div>
-                            <Row className='product-list-card-wrapper'>
-                                {giftBoxProducts.map(product => (
-                                    <div className='product-list-card-wrapper' key={product.productId}>
-                                        <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                            <div>
-                                                <img src={product.heroImage} alt='home_1' />
-                                                {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
-                                                {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
-                                            </div>
-                                            <div className='product-list-card-title'>{product.productName}</div>
-                                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div>
-                                        </div></Link>
-                                    </div>
-                                ))}
-                            </Row>
+                          <img src={product.heroImage} alt='home_1' />
+                          {product.bestSeller ? (
+                            <span className='label-best'>
+                              {product.bestSeller}
+                            </span>
+                          ) : null}
+                          {product.quickView ? (
+                            <span className='label-view'>
+                              {product.quickView}
+                            </span>
+                          ) : null}
                         </div>
-                    </>
-                    : null}
-
-                {giftBagLoading ? <MyComponent
-                    sentences={[]}
-                    wrapperBackgroundColor={'rgba(255,255,255)'}
-                    color={'#6e4e37'}
-                    loaderType={'ball-spin-clockwise'}
-                    customLoader={<SpinnerIcon />}
-                /> : giftBagError ? <h1>{giftBagError}</h1> : giftBagProducts[Object.keys(giftBagProducts)[0]] ?
-                    <>
-                        <div className='product-list-label'>{giftBagProducts[Object.keys(giftBagProducts)[0]].subGroup}</div>
-                        <div className='product-list-text'>{giftBagProducts[Object.keys(giftBagProducts)[0]].groupDescription}</div>
-                        <div>
-                            <Row className='product-list-card-wrapper'>
-                                {giftBagProducts.map(product => (
-                                    <div className='product-list-card-wrapper' key={product.productId}>
-                                        <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                            <img src={product.heroImage} alt='home_1' />
-                                            {product.bestSeller ? <span className='label-best'>{product.bestSeller}</span> : null}
-                                            {product.quickView ? <span className='label-view'>{product.quickView}</span> : null}
-                                        </div>
-                                            <div className='product-list-card-title'>{product.productName}</div>
-                                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
-                                    </div>
-                                ))}
-                            </Row>
+                        <div className='product-list-card-title'>
+                          {product.productName}
                         </div>
-                    </>
-                    : null}
-
-                {accessoriesLoading ? <MyComponent
-                    sentences={[]}
-                    wrapperBackgroundColor={'rgba(255,255,255)'}
-                    color={'#6e4e37'}
-                    loaderType={'ball-spin-clockwise'}
-                    customLoader={<SpinnerIcon />}
-                /> : accessoriesError ? <h1>{accessoriesError}</h1> : accessoriesProducts[Object.keys(accessoriesProducts)[0]] ?
-                    <>
-                        <div className='product-list-label'>{accessoriesProducts[Object.keys(accessoriesProducts)[0]].subGroup}</div>
-                        <div className='product-list-text'>{accessoriesProducts[Object.keys(accessoriesProducts)[0]].groupDescription}</div>
-                        <div>
-                            <Row className='product-list-card-wrapper'>
-                                {accessoriesProducts.map(product => (
-                                    <div className='product-list-card-wrapper' key={product.productId}>
-                                        <Link to={`/product/${product._id}`}><div className='product-list-image'>
-                                            <img src={product.heroImage} alt='home_1' />
-                                            {product.bestSeller ? <span className='pl-label-best'>{product.bestSeller}</span> : null}
-                                            {product.quickView ? <span className='pl-label-view'>{product.quickView}</span> : null}
-                                        </div>
-                                            <div className='product-list-card-title'>{product.productName}</div>
-                                            <div className='product-list-card-text'>View Details - &#x20B9;{product.price ? product.price : product.mrpPrice}</div></Link>
-                                    </div>
-                                ))}
-                            </Row>
+                        <div className='product-list-card-text'>
+                          View Details - &#x20B9;
+                          {product.price ? product.price : product.mrpPrice}
                         </div>
-                    </>
-                    : null}
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </Row>
             </div>
-        </Container>
-    )
+          </>
+        )}
+        {loading && (
+          <MyComponent
+            sentences={[]}
+            wrapperBackgroundColor={'rgba(255,255,255)'}
+            color={'#6e4e37'}
+            loaderType={'ball-spin-clockwise'}
+            customLoader={<SpinnerIcon />}
+          />
+        )}{' '}
+        {error && <h1>{error}</h1>}
+        {bag[Object.keys(bag)[0]] && (
+          <>
+            {bag[Object.keys(bag)[0]] ? (
+              <>
+                <div className='product-list-label'>
+                  {bag[Object.keys(bag)[0]].subGroup}
+                </div>
+                <div className='product-list-text'>
+                  {bag[Object.keys(bag)[0]].groupDescription}
+                </div>
+              </>
+            ) : null}
+            <div>
+              <Row className='product-list-card-wrapper'>
+                {bag.map((product) => (
+                  <div
+                    className='product-list-card-wrapper'
+                    key={product.productId}
+                  >
+                    <Link to={`/product/${product._id}`}>
+                      <div className='product-list-image'>
+                        <img src={product.heroImage} alt='home_1' />
+                        {product.bestSeller ? (
+                          <span className='label-best'>
+                            {product.bestSeller}
+                          </span>
+                        ) : null}
+                        {product.quickView ? (
+                          <span className='label-view'>
+                            {product.quickView}
+                          </span>
+                        ) : null}
+                      </div>
+                      <div className='product-list-card-title'>
+                        {product.productName}
+                      </div>
+                      <div className='product-list-card-text'>
+                        View Details - &#x20B9;
+                        {product.price ? product.price : product.mrpPrice}
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </Row>
+            </div>
+          </>
+        )}
+        {loading && (
+          <MyComponent
+            sentences={[]}
+            wrapperBackgroundColor={'rgba(255,255,255)'}
+            color={'#6e4e37'}
+            loaderType={'ball-spin-clockwise'}
+            customLoader={<SpinnerIcon />}
+          />
+        )}{' '}
+        {error && <h1>{error}</h1>}{' '}
+        {accessories[Object.keys(accessories)[0]] && (
+          <>
+            <div className='product-list-label'>
+              {accessories[Object.keys(accessories)[0]].subGroup}
+            </div>
+            <div className='product-list-text'>
+              {accessories[Object.keys(accessories)[0]].groupDescription}
+            </div>
+            <div>
+              <Row className='product-list-card-wrapper'>
+                {accessories.map((product) => (
+                  <div
+                    className='product-list-card-wrapper'
+                    key={product.productId}
+                  >
+                    <Link to={`/product/${product._id}`}>
+                      <div className='product-list-image'>
+                        <img src={product.heroImage} alt='home_1' />
+                        {product.bestSeller ? (
+                          <span className='pl-label-best'>
+                            {product.bestSeller}
+                          </span>
+                        ) : null}
+                        {product.quickView ? (
+                          <span className='pl-label-view'>
+                            {product.quickView}
+                          </span>
+                        ) : null}
+                      </div>
+                      <div className='product-list-card-title'>
+                        {product.productName}
+                      </div>
+                      <div className='product-list-card-text'>
+                        View Details - &#x20B9;
+                        {product.price ? product.price : product.mrpPrice}
+                      </div>
+                    </Link>
+                  </div>
+                ))}
+              </Row>
+            </div>
+          </>
+        )}
+      </div>
+    </Container>
+  )
 }
 
 export default GiftAllProducts
