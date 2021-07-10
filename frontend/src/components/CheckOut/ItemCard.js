@@ -1,6 +1,5 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
-import { addToCart, removeFromCart } from '../../actions/actionCart';
 
 const containerStyle = {
   width: '143px',

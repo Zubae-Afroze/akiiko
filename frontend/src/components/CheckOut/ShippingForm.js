@@ -22,47 +22,83 @@ export default function ShippingForm({ setFormLevel,showToast }) {
 
   const [ shippingObjState, setShippingObjState ] = useState(shippingObject);
 
+  const [ errorFields, setErrorFields ] = useState([false,false,false,false,false,false,false]);
+
   function handelInputeChange(event){
     setShippingObjState( {[event.target.name]: event.target.value} )
     shippingObject[event.target.name] = event.target.value;
-  }
+  } 
+
 
   function onShippingFormSubmit(e){
     e.preventDefault()
+
     let isValidated = true;
     if(shippingObject.firstname === null || shippingObject.firstname.trim() === ''){
-      showToast('Plaese Enter Your First-Name');
+      setErrorFields(prevList => {
+        let list = prevList;
+        list[0] = true;
+        console.log(list.length)
+        return ([list]);
+      })
       isValidated = false;
     }
     if(shippingObject.lastname === null || shippingObject.lastname.trim() === ''){
-      showToast('Plaese Enter Your Last-Name');
+      setErrorFields(prevList => {
+        let list = prevList;
+        list[1] = true;
+        return ([list]);
+      })
       isValidated = false;
     }
     if(shippingObject.adress === null || shippingObject.adress.trim() === ''){
-      showToast('Plaese Enter Your Correcr Address');
+      setErrorFields(prevList => {
+        let list = prevList;
+        list[2] = true;
+        return ([list]);
+      })
       isValidated = false;
     }
     if(shippingObject.aptFloorSuit === null || shippingObject.aptFloorSuit.trim() === ''){
-      showToast('Plaese Enter Your Apt / Floor / Suite');
+      setErrorFields(prevList => {
+        let list = prevList;
+        list[3] = true;
+        return ([list]);
+      })
       isValidated = false;
     }
     if(shippingObject.city === null || shippingObject.city.trim() === ''){
-      showToast('Plaese Enter Your City');
+      setErrorFields(prevList => {
+        let list = prevList;
+        list[4] = true;
+        return ([list]);
+      })
       isValidated = false;
     }
     if(shippingObject.state === null || shippingObject.state.trim() === ''){
-      showToast('Plaese Enter your State');
+      setErrorFields(prevList => {
+        let list = prevList;
+        list[5] = true;
+        return ([list]);
+      })
       isValidated = false;
     }
     if(shippingObject.zipCode === null || shippingObject.zipCode.trim() === ''){
-      showToast('Plaese Enter the Zip-Code');
+      setErrorFields(prevList => {
+        let list = prevList;
+        list[6] = true;
+        return ([list]);
+      })
       isValidated = false;
     }
-  
+
+    
     if(isValidated){
       setFormLevel(stepperLevel.PAYMENT)
     } 
   }
+  
+
 
   return (
     <motion.div variants={containerVariants} initial='hidden' animate='visible'>
@@ -87,7 +123,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='md'
                 type='text'
                 placeholder='First Name'
-                className='d-block d-sm-none'
+                className={'d-block d-sm-none ' + (errorFields[0] ? 'error-form-style' : '')}
                 name='firstname'
                 value={shippingObjState.firstname}
                 onChange={handelInputeChange}
@@ -96,7 +132,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='lg'
                 type='text'
                 placeholder='First Name'
-                className='d-none d-sm-block'
+                className={'d-none d-sm-block ' + (errorFields[0] ? 'error-form-style' : '')}
                 style={{ padding: 25, fontSize: 16 }}
                 name='firstname'
                 value={shippingObject.firstname}
@@ -123,7 +159,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
               size='md'
               type='text'
               placeholder='Last Name'
-              className='d-block d-sm-none'
+              className={'d-block d-sm-none ' + (errorFields[1] ? 'error-form-style' : '')}
               name='lastname'
               value={shippingObject.lastname}
               onChange={handelInputeChange}
@@ -131,8 +167,8 @@ export default function ShippingForm({ setFormLevel,showToast }) {
             <Form.Control
               size='lg'
               type='text'
-              placeholder='Last Name'
-              className='d-none d-sm-block'
+              placeholder='Last Name' 
+              className={'d-none d-sm-block ' + (errorFields[1] ? 'error-form-style' : '')}
               style={{ padding: 25, fontSize: 16 }}
               name='lastname'
               value={shippingObject.lastname}
@@ -154,7 +190,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='md'
                 type='text'
                 placeholder='Address'
-                className='d-block d-sm-none'
+                className={'d-block d-sm-none ' + (errorFields[2] ? 'error-form-style' : '')}
                 name='adress'
                 value={shippingObject.adress}
                 onChange={handelInputeChange}
@@ -163,7 +199,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='lg'
                 type='text'
                 placeholder='Address'
-                className='d-none d-sm-block'
+                className={'d-none d-sm-block ' + (errorFields[2] ? 'error-form-style' : '')}
                 style={{ padding: 25, fontSize: 16 }}
                 name='adress'
                 value={shippingObject.adress}
@@ -184,7 +220,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
               size='md'
               type='text'
               placeholder='Apt / Floor / Suite'
-              className='d-block d-sm-none'
+              className={'d-block d-sm-none ' + (errorFields[3] ? 'error-form-style' : '')}
               name='aptFloorSuit'
               value={shippingObject.aptFloorSuit}
               onChange={handelInputeChange}
@@ -193,7 +229,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
               size='lg'
               type='text'
               placeholder='Apt / Floor / Suite'
-              className='d-none d-sm-block'
+              className={'d-none d-sm-block ' + (errorFields[3] ? 'error-form-style' : '')}
               style={{ padding: 25, fontSize: 16 }}
               name='aptFloorSuit'
               value={shippingObject.aptFloorSuit}
@@ -214,7 +250,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='md'
                 type='text'
                 placeholder='City'
-                className='d-block d-sm-none'
+                className={'d-block d-sm-none ' + (errorFields[4] ? 'error-form-style' : '')}
                 name='city'
                 value={shippingObject.city}
                 onChange={handelInputeChange}
@@ -223,7 +259,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='lg'
                 type='text'
                 placeholder='City'
-                className='d-none d-sm-block'
+                className={'d-none d-sm-block ' + (errorFields[4] ? 'error-form-style' : '')}
                 style={{ padding: 25, fontSize: 16 }}
                 name='city'
                 value={shippingObject.city}
@@ -243,7 +279,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
               size='md'
               type='text'
               placeholder='State'
-              className='d-block d-sm-none'
+              className={'d-block d-sm-none ' + (errorFields[5] ? 'error-form-style' : '')}
               name='state'
               value={shippingObject.state}
               onChange={handelInputeChange}
@@ -252,7 +288,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
               size='lg'
               type='text'
               placeholder='State'
-              className='d-none d-sm-block'
+              className={'d-none d-sm-block ' + (errorFields[5] ? 'error-form-style' : '')}
               style={{ padding: 25, fontSize: 16 }}
               name='state'
               value={shippingObject.state}
@@ -272,7 +308,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='md'
                 type='text'
                 placeholder='Zip Code'
-                className='d-block d-sm-none'
+                className={'d-block d-sm-none ' + (errorFields[6] ? 'error-form-style' : '')}
                 name='zipCode'
                 value={shippingObject.zipCode}
                 onChange={handelInputeChange}
@@ -281,7 +317,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
                 size='lg'
                 type='text'
                 placeholder='Zip Code'
-                className='d-none d-sm-block'
+                className={'d-none d-sm-block ' + (errorFields[6] ? 'error-form-style' : '')}
                 style={{ padding: 25, fontSize: 16 }}
                 name='zipCode'
                 value={shippingObject.zipCode}
@@ -347,6 +383,7 @@ export default function ShippingForm({ setFormLevel,showToast }) {
             </Button>
           </div>
         </div>
+        
       </Form>
     </motion.div>
   )

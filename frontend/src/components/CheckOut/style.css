@@ -15,6 +15,15 @@
   color: #FFFFFF;
 }
 
+.form-control.error-form-style{
+  background-color: transparent;
+  border-color: #3e3331;
+  border-width: 2px;
+  border-radius: 5px;
+  color: #3e3331;
+}
+
+
 @media only screen and (max-width: 414px) {
   .zip-code {
     margin-left: 0;

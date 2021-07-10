@@ -1,33 +1,45 @@
 import React from 'react'
-import { Container, Form, Row, Col, Table } from 'react-bootstrap';
+import { Container, Row, Col,  } from 'react-bootstrap';
+import { motion } from 'framer-motion'
+import ProductRowComp from './productRowComp';
 import '../../screens/Chekout/style.css'
 import '../../screens/NewProfileScreen/style.css'
 
-export default function ProfileComp() {
-    return (
+const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  }
 
-        <Container className='pe-lg-5 ps-lg-0 m-0 d-flex justify-content-center'>
+
+export default function YourOrdresComp() {
+
+    
+    return (
+        <motion.div variants={containerVariants} initial='hidden' animate='visible'>
+        <Container className='pe-lg-5 ps-lg-0 m-0 d-flex justify-content-center'>  
             <Row>
 
                 <Col xs={12}>
-                    <h6 className='f-f-m'>Shipping</h6>
-                    <div style={{paddingBottom:'30px'}}></div>
-                </Col>
-                
-                <Col xs={3}>
-                    <h6>Mobile</h6>
-                </Col>
-                <Col xs={5}>
-                    <h6>+9123456789</h6>
-                </Col>
-                <Col xs={4}>
-                    <h6 className='tabs f-f-m' style={{textAlign:'end' , paddingRight:'13px'}}>Edit</h6>
-                </Col>
-                <Col xs={12}>
-                    <hr style={{marginTop:'3px', marginBottom:'25px'}}/>   
+                    <h6 className='f-f-m'>Your Orders</h6>
+                    <div style={{paddingBottom:'2px'}}></div>
                 </Col>
 
-                <Col xs={3}>
+                <Col xs={12}>
+                    <hr style={{marginBottom:'0'}}/>
+                </Col>
+                
+                <ProductRowComp/>
+
+                <ProductRowComp/>
+
+                {/* <Col xs={3}>
                     <h6>Email</h6>
                 </Col>
                 <Col xs={5}>
@@ -65,7 +77,11 @@ export default function ProfileComp() {
                                 <h6>5c, Rams Villanvfsb </h6>
                             </Col>
                             <Col xs={4}>
-                                <h6 className='tabs f-f-m' style={{textAlign:'end', paddingTop: '18px'}}>Edit</h6>
+                                <h6 className='tabs f-f-m' 
+                                    style={{textAlign:'end', paddingTop: '18px'}}
+                                >
+                                    Edit
+                                </h6>
                             </Col>
                         </Row>
                     </Container>
@@ -89,7 +105,12 @@ export default function ProfileComp() {
                                 <h6>7c, Villaims KnockL </h6>
                             </Col>
                             <Col xs={4}>
-                                <h6 className='tabs f-f-m' style={{textAlign:'end', paddingTop: '18px'}}>Edit</h6>
+                                <h6 className='tabs f-f-m' 
+                                    style={{textAlign:'end', paddingTop: '18px'}}
+                                    // onClick={() => setModalShow(true)}
+                                >
+                                    Edit
+                                </h6>
                             </Col>
                         </Row>
                     </Container>
@@ -122,10 +143,12 @@ export default function ProfileComp() {
                             </Col>
                         </Row>
                     </Container>
-                </Col>
+                </Col> */}
 
             </Row>
         </Container>
+        
+        </motion.div>
 
     )
 }
