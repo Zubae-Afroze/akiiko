@@ -7,6 +7,9 @@ import ReviewForm from './ReviewForm'
 import { AnimatePresence } from 'framer-motion'
 import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './style.css'
 
 const divStyle = {
   center_ic_fa: {
@@ -25,14 +28,14 @@ const divStyle = {
   },
 }
 
-function ReturnCurrentForm({ level, setFormLevel }) {
+function ReturnCurrentForm({ level, setFormLevel, showToast }) {
   switch (level) {
     case 1:
-      return <PaymentForm setFormLevel={setFormLevel} />
+      return <PaymentForm setFormLevel={setFormLevel} showToast={showToast}/>
     case 2:
-      return <ReviewForm setFormLevel={setFormLevel} />
+      return <ReviewForm setFormLevel={setFormLevel} showToast={showToast}/>
     default:
-      return <ShippingForm setFormLevel={setFormLevel} />
+      return <ShippingForm setFormLevel={setFormLevel} showToast={showToast}/>
   }
 }
 
@@ -80,18 +83,44 @@ function NavigateBackIcon({ level }) {
 export default function CheckOutComp() {
   const [formLevel, setFormLevel] = useState(stepperLevel.SHIPPING)
 
+  const showToast = (message) => {
+    toast.error(message, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    },
+    );
+  }
 
   return (
     // <Container fluid className="m-0 p-xs-0 ps-sm-1 pe-sm-1 ps-md-5 pe-md-5 form-style">
     //   <Container fluid className="m-1 p-xs-0 ps-sm-1 pe-sm-1 ps-md-5 pe-md-5 form-style">
     <Container fluid className='form-style'>
       <Container fluid className=''>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          toastStyle={{ backgroundColor: "#6B584C", color:'#FFFFFF' }}
+        />
         <div className='pt-3 pb-4 mt-3 mb-4'>
           <Stepper
             steps={[
               { 
                 title: 'Shipping',
-                onClick: () => { setFormLevel(stepperLevel.SHIPPING)}
+                onClick: () => { 
+                  setFormLevel(stepperLevel.SHIPPING)
+                }
               },
               { 
                 title: 'Payment',
@@ -130,7 +159,7 @@ export default function CheckOutComp() {
         <hr />
 
         <AnimatePresence>
-          <ReturnCurrentForm level={formLevel} setFormLevel={setFormLevel} />
+          <ReturnCurrentForm level={formLevel} setFormLevel={setFormLevel} showToast={showToast}/>
         </AnimatePresence>
       </Container>
 

@@ -18,14 +18,50 @@ const containerVariants = {
   },
 }
 
-export default function ShippingForm({ setFormLevel }) {
+export default function ShippingForm({ setFormLevel,showToast }) {
 
   const [ shippingObjState, setShippingObjState ] = useState(shippingObject);
 
   function handelInputeChange(event){
     setShippingObjState( {[event.target.name]: event.target.value} )
     shippingObject[event.target.name] = event.target.value;
-    console.log(shippingObject[event.target.name])
+  }
+
+  function onShippingFormSubmit(e){
+    e.preventDefault()
+    let isValidated = true;
+    if(shippingObject.firstname === null || shippingObject.firstname.trim() === ''){
+      showToast('Plaese Enter Your First-Name');
+      isValidated = false;
+    }
+    if(shippingObject.lastname === null || shippingObject.lastname.trim() === ''){
+      showToast('Plaese Enter Your Last-Name');
+      isValidated = false;
+    }
+    if(shippingObject.adress === null || shippingObject.adress.trim() === ''){
+      showToast('Plaese Enter Your Correcr Address');
+      isValidated = false;
+    }
+    if(shippingObject.aptFloorSuit === null || shippingObject.aptFloorSuit.trim() === ''){
+      showToast('Plaese Enter Your Apt / Floor / Suite');
+      isValidated = false;
+    }
+    if(shippingObject.city === null || shippingObject.city.trim() === ''){
+      showToast('Plaese Enter Your City');
+      isValidated = false;
+    }
+    if(shippingObject.state === null || shippingObject.state.trim() === ''){
+      showToast('Plaese Enter your State');
+      isValidated = false;
+    }
+    if(shippingObject.zipCode === null || shippingObject.zipCode.trim() === ''){
+      showToast('Plaese Enter the Zip-Code');
+      isValidated = false;
+    }
+  
+    if(isValidated){
+      setFormLevel(stepperLevel.PAYMENT)
+    } 
   }
 
   return (
@@ -267,10 +303,7 @@ export default function ShippingForm({ setFormLevel }) {
                     variant='primary'
                     type='submit'
                     className='px-5 me-3 mt-3 mb-3'
-                    onClick={() => {
-                      console.log(shippingObject)
-                      setFormLevel(stepperLevel.PAYMENT)
-                    }}
+                    onClick={onShippingFormSubmit}
                   >
                     Next
                   </Button>
@@ -308,7 +341,7 @@ export default function ShippingForm({ setFormLevel }) {
               variant='primary'
               type='submit'
               className='px-5 m-0 mt-3 mb-3'
-              onClick={() => setFormLevel(stepperLevel.PAYMENT)}
+              onClick={onShippingFormSubmit}
             >
               NEXT
             </Button>

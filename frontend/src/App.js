@@ -12,6 +12,7 @@ import PaymentScreen from './screens/PaymentScreen/PaymentScreen'
 import OrderScreen from './screens/OrderScreen/OrderScreen'
 import OrderSummaryScreen from './screens/OrderSummaryScreen/OrderSummaryScreen'
 import Checkout from './screens/Chekout/Checkout'
+import NewProfileScreen from './screens/NewProfileScreen/NewProfileScreen'
 
 import './App.css'
 
@@ -54,6 +55,8 @@ export default class App extends Component {
           <Route path='/shipping' render={() => <ShippingScreen />} />
 
           <Route path='/checkout' render={() => <Checkout />} />
+
+          <Route path='/newProfile' render={() => <NewProfileScreen />} />
 
           <Route path='/payment' render={() => <PaymentScreen />} />
 
