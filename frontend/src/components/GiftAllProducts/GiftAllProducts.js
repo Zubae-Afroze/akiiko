@@ -119,7 +119,7 @@ const GiftAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/product/${product.productId}`}>
                       <div className='product-list-image'>
                         <div>
                           <img src={product.heroImage} alt='home_1' />
@@ -178,7 +178,7 @@ const GiftAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/product/${product.productId}`}>
                       <div className='product-list-image'>
                         <img src={product.heroImage} alt='home_1' />
                         {product.bestSeller ? (
@@ -231,7 +231,7 @@ const GiftAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/product/${product.productId}`}>
                       <div className='product-list-image'>
                         <img src={product.heroImage} alt='home_1' />
                         {product.bestSeller ? (

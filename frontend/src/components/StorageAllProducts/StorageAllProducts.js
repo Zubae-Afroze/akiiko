@@ -113,7 +113,7 @@ const StorageAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/product/${product.productId}`}>
                       <div className='product-list-image'>
                         <div>
                           <img
@@ -185,7 +185,7 @@ const StorageAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/product/${product.productId}`}>
                       <div className='product-list-image'>
                         <div>
                           <img

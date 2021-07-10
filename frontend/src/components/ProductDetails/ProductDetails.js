@@ -436,7 +436,7 @@ const ProductDetails = () => {
                       className='similar-products-container'
                     >
                       <Link
-                        to={`/product/${prod.id}`}
+                        to={`/product/${prod.productId}`}
                         onClick={() => setImageSrc(prod.heroImage)}
                       >
                         <Col lg={2.4}>
