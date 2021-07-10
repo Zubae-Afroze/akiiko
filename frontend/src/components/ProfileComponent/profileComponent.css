@@ -1,0 +1,12 @@
+
+.form-control.edit-form-style{
+    background-color: transparent;
+    border-color: #cbc6bf;
+    color: #3e3331;
+}
+
+
+.form-control.edit-form-style:focus{
+    color: #3e3331;
+    background-color: transparent;
+}

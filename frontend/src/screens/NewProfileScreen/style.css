@@ -16,3 +16,25 @@
 .tabs:hover {
     font-family: 'rutanDemibold';
 }
+
+.edit-field-style{
+    background-color:transparent;
+    border-color: #cbc6bf;
+    border-style:solid;
+    outline-color: #cbc6bf;
+}
+
+.input.edit-field-style:focus{
+    outline:none;
+}
+/* 
+.input:active {
+    border: none;
+    outline: none !important;
+} */
+/* 
+
+//this oNe Works
+input.form-control:focus {
+    border: none;
+} */
