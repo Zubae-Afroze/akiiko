@@ -33,9 +33,9 @@ export default function ShippingForm({ setFormLevel,showToast }) {
         Where this order going ?
       </h6>
 
-      {/* <NewAddressForm setFormLevel={setFormLevel}/> */}
+      <NewAddressForm setFormLevel={setFormLevel}/>
       
-      <ExistingAddressForm setFormLevel={setFormLevel}/>
+      {/* <ExistingAddressForm setFormLevel={setFormLevel}/> */}
 
     </motion.div>
   )
@@ -270,7 +270,7 @@ function NewAddressForm({setFormLevel}){
     }
     return (
       <Form className='f-f-m'>
-          <Row className='m-0 p-0'>
+          <Row className='m-0 p-0 f-f-l'>
             <Col
               xs={6}
               sm={6}
