@@ -1,20 +1,20 @@
 
 const shippingObject = {
-    firstname: '',
-    lastname: '',
-    adress: '',
-    aptFloorSuit: '',
-    city: '',
-    state: '',
-    zipCode: ''
+    firstname: 'Sam',
+    lastname: 'Surya',
+    adress: 'No: 121, Gfswhvaq auksdkjad',
+    aptFloorSuit: 'ejhwjr',
+    city: 'Channei',
+    state: 'Tamil nadu',
+    zipCode: '600118'
 }
 
 const paymentObject = {
     cardNumber: '',
-    isCheckMeOut: '',
+    isCheckMeOut: false,
     monthYearCVC: '',
     netbankingUPI: '',
-    isCOD: '',
+    isCOD: false,
 }
 
 const toastObject = {

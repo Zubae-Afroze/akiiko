@@ -25,7 +25,9 @@ export default function YourOrdresComp() {
         <motion.div variants={containerVariants} initial='hidden' animate='visible'>
         <Container className='pe-lg-5 ps-lg-0 m-0 d-flex justify-content-center'>  
             <Row>
-
+                <Col xs={12} className='d-block d-sm-none '>
+                    <div style={{height:'30px'}}></div>
+                </Col>
                 <Col xs={12}>
                     <h6 className='f-f-m'>Your Orders</h6>
                     <div style={{paddingBottom:'2px'}}></div>

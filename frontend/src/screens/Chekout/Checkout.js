@@ -18,7 +18,7 @@ function CheckOut() {
               sm={12}
               md={12}
               lg={8}
-              style={{ margin: 0, padding: 0, height:684 }}
+              style={{ margin: 0, padding: 0, height:'auto' }} //684
               className='align-items-center'
             >
               <div className='p-md-5'>

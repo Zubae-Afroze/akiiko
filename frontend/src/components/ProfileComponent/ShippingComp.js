@@ -29,6 +29,9 @@ export default function ShippingComp() {
         <Container className='pe-lg-5 ps-lg-0 m-0 d-flex justify-content-center'>  
             <Row>
 
+                <Col xs={12} className='d-block d-sm-none '>
+                    <div style={{height:'30px'}}></div>
+                </Col>
                 <Col xs={12}>
                     <h6 className='f-f-m'>Shipping</h6>
                     <div style={{paddingBottom:'30px'}}></div>
@@ -40,7 +43,7 @@ export default function ShippingComp() {
                 <Col xs={5}>
                     {
                         editMobileFieldON 
-                        ?   <input type="text" className='edit-field-style' autofocus></input>
+                        ?   <input type="text" size="12" className='edit-field-style' autofocus></input>
                         :   <h6>+9123456789</h6>
                     }
                 </Col>
@@ -84,7 +87,7 @@ export default function ShippingComp() {
                     <div style={{height:'40px'}}></div>
                 </Col>
 
-                <Col xs={12}>
+                {/* <Col xs={12}>
                     <h6 className='f-f-m'>Your Saved Card</h6>   
                 </Col>
                 <Col xs={12}>
@@ -108,7 +111,7 @@ export default function ShippingComp() {
                             </Col>
                         </Row>
                     </Container>
-                </Col>
+                </Col> */}
 
             </Row>
         </Container>

@@ -1,7 +1,19 @@
 import React ,{useState} from 'react'
 import { Container, Form , Row, Col, Button  } from 'react-bootstrap';
+import { motion } from 'framer-motion'
 import './profileComponent.css';
 
+const containerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  }
 
 export default function AddressComp() {
 
@@ -40,6 +52,8 @@ export default function AddressComp() {
 
             {
                 editAddressFieldON ?
+                
+                <motion.div variants={containerVariants} initial='hidden' animate='visible'>
 
                 <div>
                 <Form className='f-f-m'>
@@ -290,6 +304,8 @@ export default function AddressComp() {
                     </div>
                 </Form>
                 </div>
+                </motion.div>
+
                 : null
             }
 

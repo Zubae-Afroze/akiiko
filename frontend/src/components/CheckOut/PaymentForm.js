@@ -1,6 +1,7 @@
 import React , {useState} from 'react'
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import { motion } from 'framer-motion'
+import './style.css'
 import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
 import { paymentObject } from './FormObject'
@@ -45,38 +46,50 @@ const hrStyle = {
 export default function PaymentForm({ setFormLevel,showToast }) {
 
   const [ paymentObjectState, setpaymentObjectState ] = useState(paymentObject);
+  const [ errorFields, setErrorFields ] = useState([false,false]);
 
   function handelInputeChange(event){
-    setpaymentObjectState( {[event.target.name]: event.target.value} ) 
+    setpaymentObjectState( {[event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value} ) 
     
     paymentObject[event.target.name] = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+    console.log({[event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value} )
   }
 
 
   function onPaymentFormSubmit(e){
     e.preventDefault()
     let isValidated = true;
-    if(
-        (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '') 
-        && 
+    let updatedList = [false,false];
+
+    if(!paymentObject.isCOD){
+      
+      if(
+          (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '') 
+          && 
+          (paymentObject.netbankingUPI === null || paymentObject.netbankingUPI.trim() === '')
+      ){
+        updatedList[0] = true;
+        isValidated = false;
+      }
+      if(
+        (paymentObject.monthYearCVC === null || paymentObject.monthYearCVC.trim() === '')
+        &&
         (paymentObject.netbankingUPI === null || paymentObject.netbankingUPI.trim() === '')
-    ){
-      showToast('Plaese Enter Your Card Number');
-      isValidated = false;
-    }
-    if(
-      (paymentObject.monthYearCVC === null || paymentObject.monthYearCVC.trim() === '')
-      &&
-      (paymentObject.netbankingUPI === null || paymentObject.netbankingUPI.trim() === '')
-    ){
-      showToast('Plaese Enter the MM/ YY/ CVC');
-      isValidated = false;
-    }
-  
-    if(isValidated){
-      console.log('Validated'+ stepperLevel.REVIEW)
+      ){
+        updatedList[1] = true;
+        isValidated = false;
+      }
+    
+      if(isValidated){
+        console.log('Validated'+ stepperLevel.REVIEW)
+        setFormLevel(stepperLevel.REVIEW)
+      }else{
+        setErrorFields(updatedList)
+      } 
+
+    }else{
       setFormLevel(stepperLevel.REVIEW)
-    } 
+    }
   }
 
 
@@ -99,21 +112,31 @@ export default function PaymentForm({ setFormLevel,showToast }) {
           >
             <div style={{ marginRight: 7 }}>
               <Form.Group className='mb-1' controlId='formBasicCheckbox'>
+                <Form.Control size='md' type='text' placeholder='Card Number' 
+                  style={{ padding: 15, fontSize: 16 }}
+                  name='cardNumber'
+                  value={paymentObjectState.cardNumber}
+                  onChange={handelInputeChange}
+                  className={'d-block d-sm-none ' + (errorFields[0] ? 'error-form-style' : '')}
+                />
                 <Form.Control size='lg' type='text' placeholder='Card Number' 
                   style={{ padding: 25, fontSize: 16 }}
                   name='cardNumber'
                   value={paymentObjectState.cardNumber}
                   onChange={handelInputeChange}
+                  className={'d-none d-sm-block ' + (errorFields[0] ? 'error-form-style' : '')}
                 />
                 <Form.Check
-                  style={{ color: '#787878', fontSize: '14px' }}
+                  style={{ color: '#787878', fontSize: '14px'}}
                   type='checkbox'
                   label='Check me out'
                   name='isCheckMeOut'
                   onChange={handelInputeChange}
+                  checked={paymentObjectState.isCheckMeOut}
                 />
               </Form.Group>
             </div>
+
           </Col>
           <Col
             xs={6}
@@ -123,6 +146,16 @@ export default function PaymentForm({ setFormLevel,showToast }) {
             className='p-0 m-0'
           >
             <Form.Control 
+              size='md' 
+              type='text' 
+              placeholder='MM/ YY/ CVC' 
+              style={{ padding: 15, fontSize: 16 }} 
+              name='monthYearCVC'
+              value={paymentObjectState.monthYearCVC}
+              onChange={handelInputeChange}
+              className={'d-block d-sm-none ' + (errorFields[1] ? 'error-form-style' : '')}
+            />
+            <Form.Control 
               size='lg' 
               type='text' 
               placeholder='MM/ YY/ CVC' 
@@ -130,6 +163,7 @@ export default function PaymentForm({ setFormLevel,showToast }) {
               name='monthYearCVC'
               value={paymentObjectState.monthYearCVC}
               onChange={handelInputeChange}
+              className={'d-none d-sm-block ' + (errorFields[1] ? 'error-form-style' : '')}
             />
           </Col>
 
@@ -157,6 +191,16 @@ export default function PaymentForm({ setFormLevel,showToast }) {
 
           <Col sm={12} md={12} className='m-0 mb-1 p-0 pe-1'>
             <Form.Control
+              size='md'
+              type='text'
+              placeholder='NET BANKING / UPI'
+              style={{ padding: 15, fontSize: 16 }}
+              name='netbankingUPI'
+              value={paymentObjectState.netbankingUPI}
+              onChange={handelInputeChange}
+              className={'d-block d-sm-none ' + (errorFields[0] ? 'error-form-style' : '')}
+            />
+            <Form.Control
               size='lg'
               type='text'
               placeholder='NET BANKING / UPI'
@@ -164,19 +208,16 @@ export default function PaymentForm({ setFormLevel,showToast }) {
               name='netbankingUPI'
               value={paymentObjectState.netbankingUPI}
               onChange={handelInputeChange}
+              className={'d-none d-sm-block ' + (errorFields[0] ? 'error-form-style' : '')}
             />
           </Col>
           <Col sm={12} md={12} className='m-0 mb-1 p-0 pe-1'>
             <div
               style={{
-                padding: '14px',
-                paddingLeft: '18px',
-                borderStyle: 'solid',
-                borderColor: '#cccccc', //#E3DED5
-                borderWidth: '1px',
-                marginTop: '10px',
-                marginBottom: '10px',
+                padding: '7px',
+                
               }}
+              className={'d-block d-sm-none ' + (paymentObjectState.isCOD ? 'check-box-checked' : 'check-box-unchecked')}
             >
               <Form.Check
                 style={{ color: '#4A4A4A', fontSize: '16px' }}
@@ -184,6 +225,28 @@ export default function PaymentForm({ setFormLevel,showToast }) {
                 label='COD'
                 name='isCOD'
                 onChange={handelInputeChange}
+                checked={paymentObjectState.isCOD}
+              />
+            </div>
+            <div
+              // style={{
+              //   padding: '14px',
+              //   paddingLeft: '18px',
+              //   borderStyle: 'solid',
+              //   borderColor: '#cccccc', //#E3DED5
+              //   borderWidth: '1px',
+              //   marginTop: '10px',
+              //   marginBottom: '10px',
+              // }}
+              className={'d-none d-sm-block ' + (paymentObjectState.isCOD ? 'check-box-checked' : 'check-box-unchecked')}
+            >
+              <Form.Check
+                style={{ color: '#4A4A4A', fontSize: '16px' }}
+                type='checkbox'
+                label='COD'
+                name='isCOD'
+                onChange={handelInputeChange}
+                checked={paymentObjectState.isCOD}
               />
             </div>
           </Col>

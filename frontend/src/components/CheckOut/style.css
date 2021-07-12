@@ -23,11 +23,93 @@
   color: #3e3331;
 }
 
+.existing-address-style{
+  font-family: 'rutan';
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.add-new-address-style{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 190px;
+}
+
+.add-new-address-style #child{
+  margin-top: 8px;
+  
+}
+
+.form-check-label{
+  padding-top: 2px;
+}
+
+.check-box-unchecked{
+  padding: 7px;
+  padding-left: 18px;
+  border-style: solid;
+  border-color: #ced4da; /* #3e3331 //#ced4da */
+  border-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.check-box-checked{
+  padding: 7px;
+  padding-left: 18px;
+  border-style: solid;
+  border-color: #6b584c; /* #3e3331 //#ced4da */
+  border-width: 2px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+.custom-control-input-green:focus~.custom-control-label::before { 
+  border-color: #6b584c !important;
+  box-shadow: 0 0 0 0.2rem #e3ded5 !important;
+  /* border-color: #28a745 !important;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important; */
+}
+
+.custom-control-input-green:checked~.custom-control-label::before {
+  border-color: #6b584c !important;
+  background-color: #6b584c !important;
+  /* border-color: #28a745 !important;
+  background-color: #28a745 !important; */
+}
+
+.custom-control-input-green:focus:not(:checked)~.custom-control-label::before {
+  border-color: #6b584c !important;
+  /* border-color: #5bd778 !important; */
+}
+
+.custom-control-input-green:not(:disabled):active~.custom-control-label::before {
+  background-color: #d6f5dd !important;
+  border-color: #d6f5dd !important;
+  /* background-color: #d6f5dd !important;
+  border-color: #d6f5dd !important; */
+}
+
 
 @media only screen and (max-width: 414px) {
   .zip-code {
     margin-left: 0;
     margin-right: 7px;
+  }
+
+  .existing-address-style{
+    padding:1rem;
+  }
+
+  .add-new-address-style{
+    padding:1rem;
+    height: 185px;
+  }
+
+  .add-new-address-style #child{
+    margin-top: 33px;
   }
 }
 
@@ -36,4 +118,10 @@
     padding: 20px;
     padding-top: 30px;
   }
+
+  
+
+  
+
+  
 }
