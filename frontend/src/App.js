@@ -14,8 +14,6 @@ import OrderSummaryScreen from './screens/OrderSummaryScreen/OrderSummaryScreen'
 import Checkout from './screens/Chekout/Checkout'
 import NewProfileScreen from './screens/NewProfileScreen/NewProfileScreen'
 
-import './App.css'
-
 import ProductList from './components/ProductList/ProductList'
 import ProductDetails from './components/ProductDetails/ProductDetails'
 

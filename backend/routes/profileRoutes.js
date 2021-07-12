@@ -3,6 +3,6 @@ import { getProfileByUid } from '../controllers/profileController.js'
 
 const router = express.Router()
 
-router.route('/:uid').get(getProfileByUid)
+router.route('/:uid').post(getProfileByUid)
 
 export default router
