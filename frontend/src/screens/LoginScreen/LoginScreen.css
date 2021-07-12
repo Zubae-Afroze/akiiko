@@ -75,6 +75,7 @@
   padding-left: 50px;
   font-family: 'rutanMedium';
   font-size: 16px;
+  cursor: pointer;
 }
 .email-ad {
   width: 320px;
@@ -115,6 +116,7 @@
   padding-left: 50px;
   font-family: 'rutanMedium';
   font-size: 16px;
+  cursor: pointer;
 }
 .sign-in-button {
   width: 320px;

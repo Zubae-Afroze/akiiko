@@ -91,7 +91,7 @@ const HomeScreenHome = () => {
             <Row className='workout-card-wrapper'>
               {home.map((product) => (
                 <Col className='home-card-items' key={product._id}>
-                  <Link to={`/product/${product._id}`}>
+                  <Link to={`/product/${product.productId}`}>
                     <div>
                       <div className='home-img-wrap'>
                         <img

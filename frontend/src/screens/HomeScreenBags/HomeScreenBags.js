@@ -87,7 +87,7 @@ const HomeScreenBags = () => {
               className='women-shop-bag-container-root'
               key={product.productId}
             >
-              <Link to={`/product/${product._id}`}>
+              <Link to={`/product/${product.productId}`}>
                 <Col lg={2.6} className='women-shop-bag-container'>
                   <div>
                     <div className='women-card-image'>
