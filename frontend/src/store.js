@@ -21,6 +21,8 @@ import {
   orderListMyReducer,
 } from './reducers/reducersOrder'
 
+import { firebaseReducer } from 'react-redux-firebase'
+
 const reducer = combineReducers({
   productList: reducersProductList,
   productDetails: reducersProductDetails,
@@ -33,6 +35,7 @@ const reducer = combineReducers({
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
+  firebase: firebaseReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
