@@ -585,14 +585,3 @@ function NewAddressForm({ setFormLevel }) {
     </Form>
   )
 }
-
-/* <select
-              className='form-select'
-              aria-label='Default select example'
-              style={{ width: '100%', padding: 10, paddingLeft: 10 }}
-            >
-              <option selected>Zip Code</option>
-              <option value='1'>One</option>
-              <option value='2'>Two</option>
-              <option value='3'>Three</option>
-            </select> */
