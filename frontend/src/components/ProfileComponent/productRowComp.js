@@ -78,7 +78,7 @@ export default function ProductRowComp() {
 
             {
                 showOrderDetails 
-                ? <OdrerDetails/>
+                ? <OdrerDetailsListComponent/>
                 : null
             }
 
@@ -86,65 +86,62 @@ export default function ProductRowComp() {
     )
 }
 
-function OdrerDetails(){
+function OdrerDetailsListComponent(){
     return (
         <motion.div variants={containerVariants} initial='hidden' animate='visible'>
-        <div style={{border:'1px solid #cbc6bf', marginTop:'10px', marginBottom:'10px', fontSize:'14px'}}>
-                <Row>
-                    <Col xs={4} className='p-0 m-0'>
-                        <div style={{
-                            // height:'55px',
-                            // width:'64px',
-                            margin: '10px',
-                            marginLeft: '25px',
-                            backgroundColor: 'white',
-                            color: 'black',
-                            borderColor: '#707070',
-                            borderRadius: '1px',
-                        }} className='d-flex justify-content-center'
-                        >1</div>
-                    </Col>
-                    <Col xs={8}>
-                        <div className='f-f' style={{marginTop: '10px'}}>
-                            <h6 className='f-f'>Product Title</h6>
-                            <span className='f-f' style={{opacity:'60%'}}>Quantity:</span> 
-                            <span className='f-f'> 3</span> 
-                            <span className='f-f' style={{opacity:'60%'}}> | </span> 
-                            <span className='f-f' style={{opacity:'60%'}}>Price:</span>
-                            <span> 199</span>
-                        </div>
-                    </Col>
-                </Row>
-            </div>
 
-            <div style={{border:'1px solid #cbc6bf', marginTop:'10px', marginBottom:'10px', fontSize:'14px'}}>
-                <Row>
-                    <Col xs={4}>
-                        <div style={{
-                            // height:'55px',
-                            // width:'64px',
-                            marginTop: '10px',
-                            backgroundColor: 'white',
-                            color: 'black',
-                            borderColor: '#707070',
-                            borderRadius: '1px'
-                        }} className='d-flex justify-content-center'
-                        >1</div>
-                    </Col>
-                    <Col xs={8}>
-                        <div className='f-f' style={{marginTop: '10px'}}>
-                            <h6 className='f-f'>Product Title</h6>
-                            <span className='f-f' style={{opacity:'60%'}}>Quantity:</span> 
-                            <span className='f-f'> 3</span> 
-                            <span className='f-f' style={{opacity:'60%'}}> | </span> 
-                            <span className='f-f' style={{opacity:'60%'}}>Price:</span>
-                            <span> 199</span>
-                        </div>
-                    </Col>
-                </Row>
-            </div>
+        <Row>
+
+            <Col xs={12} lg={6}>
+                <OrderListCompnent/>
+            </Col>
+
+            <Col xs={12} lg={6}>
+                <OrderListCompnent/>
+            </Col>
+
+        </Row>
+
+        
+
+            
             <div style={{height:'20px'}}/>
         </motion.div>
+    );
+}
+
+
+function OrderListCompnent(){
+    return (
+        <div style={{border:'1px solid #cbc6bf', marginTop:'10px', marginBottom:'10px', fontSize:'14px'}}>
+            <Row>
+                <Col xs={3} lg={4} className='p-0 m-0'>
+                    <div style={{
+                        height:'70px',
+                        width:'70px',
+                        margin: '10px',
+                        marginLeft: '25px',
+                        backgroundColor: 'white',
+                        color: 'black',
+                        borderColor: '#707070',
+                        borderRadius: '1px',
+                    }} className='d-flex justify-content-center'
+                    >1</div>
+                </Col>
+                <Col xs={7} lg={8}>
+                    <div className='f-f' style={{marginTop: '10px', display: 'flex', alignItems: 'center', marginLeft:'5px'}}>
+                        <div style={{marginTop:'12px'}}>
+                            <h6 className='f-f'>Product Title</h6>
+                            <span className='f-f' style={{opacity:'60%'}}>Quantity:</span> 
+                            <span className='f-f'> 3</span> 
+                            <span className='f-f' style={{opacity:'60%'}}> | </span> 
+                            <span className='f-f' style={{opacity:'60%'}}>Price:</span>
+                            <span> 199</span>
+                        </div>
+                    </div>
+                </Col>
+            </Row>
+        </div>
     );
 }
 

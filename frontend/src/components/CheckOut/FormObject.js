@@ -4,7 +4,7 @@ const shippingObject = {
     lastname: 'Surya',
     adress: 'No: 121, Gfswhvaq auksdkjad',
     aptFloorSuit: 'ejhwjr',
-    city: 'Channei',
+    city: 'Chennai',
     state: 'Tamil nadu',
     zipCode: '600118'
 }
@@ -13,7 +13,7 @@ const paymentObject = {
     cardNumber: '',
     isCheckMeOut: false,
     monthYearCVC: '',
-    netbankingUPI: '',
+    isNetbankingUPI: false,
     isCOD: false,
 }
 
