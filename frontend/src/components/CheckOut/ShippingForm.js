@@ -41,13 +41,13 @@ export default function ShippingForm({ setFormLevel,showToast }) {
 
 function ExistingAddressForm({setFormLevel}){
   return (
-    <Container fluid className='p-0 m-0'>
+    <Container fluid className='p-0 m-0 '>
       
       <Row>
 
         <AddressComponent/>
-
-        
+       
+        {/* <AddressComponentNew/> */}
 
         <Col xs={12} md={6}>
           <div style={{
@@ -67,27 +67,9 @@ function ExistingAddressForm({setFormLevel}){
         </Col>
 
         <Col xs={4} md={8} className='p-0 m-0'></Col>
-        <Col xs={4} md={4}>
-          <div
-              className='d-none d-sm-none d-md-block'
-              // style={{ paddingRight: '1rem' }}
-            >
-              <div className='d-flex justify-content-end'>
-                
-                <Button
-                  style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
-                  size='lg'
-                  variant='primary'
-                  type='submit'
-                  className='px-5 me-3 mt-3 mb-3'
-                  onClick={()=>setFormLevel(stepperLevel.PAYMENT)}
-                >
-                  Next
-                </Button>
-              </div>
-            </div>
 
-        </Col>
+        <ExLargeScreenButton setFormLevel={setFormLevel}/>
+
         <Col xs={4} md={0} className='p-0 m-0'></Col>
 
       </Row>
@@ -112,6 +94,32 @@ function ExistingAddressForm({setFormLevel}){
   );
 }
 
+function ExLargeScreenButton({setFormLevel}){
+  return(
+    <Col xs={4} md={4}>
+      <div
+          className='d-none d-sm-none d-md-block'
+          // style={{ paddingRight: '1rem' }}
+        >
+          <div className='d-flex justify-content-end'>
+            
+            <Button
+              style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+              size='lg'
+              variant='primary'
+              type='submit'
+              className='px-5 me-3 mt-3 mb-3'
+              onClick={()=>setFormLevel(stepperLevel.PAYMENT)}
+            >
+              Next
+            </Button>
+          </div>
+        </div>
+    </Col>
+  );
+}
+
+
 
 function AddressComponent(){
   return (
@@ -121,7 +129,7 @@ function AddressComponent(){
           borderColor: '#cccccc', //#E3DED5
           borderWidth: '1px',
         }}
-        className='existing-address-style p-md-4'
+        className='existing-address-style p-md-4 '
       >
         <h6>{shippingObject.firstname + ' ' + shippingObject.lastname}</h6>
         <h6>{shippingObject.adress}</h6>
@@ -214,7 +222,7 @@ function AddressComponent(){
 
 
 function NewAddressForm({setFormLevel}){
-  const [ shippingObjState, setShippingObjState ] = useState(shippingObject);
+  const [ , setShippingObjState ] = useState(shippingObject); //shippingObjState
 
   const [ errorFields, setErrorFields ] = useState([false,false,false,false,false,false,false]);
 
@@ -267,6 +275,9 @@ function NewAddressForm({setFormLevel}){
     }
     return (
       <Form className='f-f-m'>
+
+        <div style={{minHeight:'240px'}}>
+
           <Row className='m-0 p-0 f-f-l'>
 
             <FirstNameComp errorFields={errorFields} handelInputeChange={handelInputeChange}/>
@@ -283,13 +294,17 @@ function NewAddressForm({setFormLevel}){
             
             <ZipCodeComp errorFields={errorFields} handelInputeChange={handelInputeChange}/>
 
-            <Col xs={4} md={8} className='p-0 m-0'></Col>
+            {/* <Col xs={4} md={8} className='p-0 m-0'></Col>
             
             <LargeScreenButtonComp onShippingFormSubmit={onShippingFormSubmit}/>
 
-            <Col xs={4} md={0} className='p-0 m-0'></Col>
+            <Col xs={4} md={0} className='p-0 m-0'></Col> */}
 
           </Row>
+
+        </div>
+
+          <LargeScreenButtonComp onShippingFormSubmit={onShippingFormSubmit}/>
 
           <SmallScreenButtonComp onShippingFormSubmit={onShippingFormSubmit}/>
           
@@ -506,24 +521,31 @@ function ZipCodeComp({errorFields,handelInputeChange}){
 
 function LargeScreenButtonComp({onShippingFormSubmit}){
   return(
-    <Col xs={4} md={4} className='p-0 m-0'>
-      <div className='d-none d-sm-none d-md-block'>
-          <div className='d-flex justify-content-end'>
-            
-            <Button
-              style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
-              size='lg'
-              variant='primary'
-              type='submit'
-              className='f-f px-5 me-3 mt-3 mb-3'
-              onClick={onShippingFormSubmit}
-            >
-              NEXT
-            </Button>
+    <div>
+      <Row className='p-0 m-0'>
+        <Col xs={8} className='p-0 m-0' />
+        <Col xs={4} md={4} className='p-0 m-0'>
 
-          </div>
-        </div>
-    </Col>
+          <div className='d-none d-sm-none d-md-block'>
+              <div className='d-flex justify-content-end'>
+                <Button
+                  style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                  size='lg'
+                  variant='primary'
+                  type='submit'
+                  className='f-f px-3 me-3 mt-3 mb-3'
+                  onClick={onShippingFormSubmit}
+                >
+                  NEXT
+                </Button>
+              </div>
+            </div>
+
+        </Col>
+
+      </Row>
+      
+    </div>
   );
 }
 
@@ -534,7 +556,7 @@ function SmallScreenButtonComp({onShippingFormSubmit}){
       <div className='d-flex justify-content-center'>
         <Button
           style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0 }}
-          size='lg'
+          size='md'
           variant='primary'
           type='submit'
           className='px-5 m-0 mt-3 mb-3'

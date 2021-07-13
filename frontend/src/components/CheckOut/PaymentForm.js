@@ -126,7 +126,7 @@ export default function PaymentForm({ setFormLevel,showToast }) {
       >
         Whats your payment Information ?
       </h6>
-      <Form className='f-f-m'>
+      <Form className='f-f-l'>
         <Row className='m-0 p-0'>
           
           <CardNumberComp paymentObject={paymentObject} handelInputeChange={handelInputeChange} errorFields={errorFields}/>
@@ -141,7 +141,7 @@ export default function PaymentForm({ setFormLevel,showToast }) {
             </div>
           </Col>
 
-          <NetbankingUpiCompNew paymentObject={paymentObject} handelInputeChange={handelInputeChange} />
+          <NetbankingUpiComp paymentObject={paymentObject} handelInputeChange={handelInputeChange} />
 
           <CodComp paymentObject={paymentObject} handelInputeChange={handelInputeChange} errorFields={errorFields}/>
           
@@ -236,34 +236,34 @@ function MounthYearCvcComp({paymentObject,handelInputeChange,errorFields}){
 }
 
 
-function NetbankingUpiComp({paymentObject,handelInputeChange,errorFields}){
-  return(
-    <Col sm={12} md={12} className='m-0 mb-1 p-0 pe-1'>
-      <Form.Control
-        size='md'
-        type='text'
-        placeholder='NET BANKING / UPI'
-        style={{ padding: 15, fontSize: 16 }}
-        name='netbankingUPI'
-        value={paymentObject.netbankingUPI}
-        onChange={handelInputeChange}
-        className={'d-block d-sm-none ' + (errorFields[0] ? 'error-form-style' : '')}
-      />
-      <Form.Control
-        size='lg'
-        type='text'
-        placeholder='NET BANKING / UPI'
-        style={{ padding: 25, fontSize: 16 }}
-        name='netbankingUPI'
-        value={paymentObject.netbankingUPI}
-        onChange={handelInputeChange}
-        className={'d-none d-sm-block ' + (errorFields[0] ? 'error-form-style' : '')}
-      />
-    </Col>
-  );
-}
+// function NetbankingUpiComp({paymentObject,handelInputeChange,errorFields}){
+//   return(
+//     <Col sm={12} md={12} className='m-0 mb-1 p-0 pe-1'>
+//       <Form.Control
+//         size='md'
+//         type='text'
+//         placeholder='NET BANKING / UPI'
+//         style={{ padding: 15, fontSize: 16 }}
+//         name='netbankingUPI'
+//         value={paymentObject.netbankingUPI}
+//         onChange={handelInputeChange}
+//         className={'d-block d-sm-none ' + (errorFields[0] ? 'error-form-style' : '')}
+//       />
+//       <Form.Control
+//         size='lg'
+//         type='text'
+//         placeholder='NET BANKING / UPI'
+//         style={{ padding: 25, fontSize: 16 }}
+//         name='netbankingUPI'
+//         value={paymentObject.netbankingUPI}
+//         onChange={handelInputeChange}
+//         className={'d-none d-sm-block ' + (errorFields[0] ? 'error-form-style' : '')}
+//       />
+//     </Col>
+//   );
+// }
 
-function NetbankingUpiCompNew({paymentObject,handelInputeChange}){
+function NetbankingUpiComp({paymentObject,handelInputeChange}){
   return(
     <Col sm={12} md={12} className='m-0 mb-1 p-0 pe-1'>
       <div
@@ -301,41 +301,64 @@ function NetbankingUpiCompNew({paymentObject,handelInputeChange}){
 function CodComp({paymentObject,handelInputeChange,errorFields}){
   return(
     <Col sm={12} md={12} className='m-0 mb-1 p-0 pe-1'>
-      <div
-        style={{
-          padding: '7px',
-        }}
-        className={'d-block d-sm-none ' + (paymentObject.isCOD ? 'check-box-checked' : 'check-box-unchecked')}
-      >
-        <Form.Check
-          style={{ color: '#4A4A4A', fontSize: '16px' }}
-          type='checkbox'
-          label='COD'
-          name='isCOD'
-          onChange={handelInputeChange}
-          checked={paymentObject.isCOD}
-        />
+      <div style={{height:'60px'}} className='d-block d-sm-none'>
+        <div
+          style={{
+            padding: '7px',
+          }}
+          className={'d-block d-sm-none ' + (paymentObject.isCOD ? 'check-box-checked' : 'check-box-unchecked')}
+        >
+          <Form.Check
+            style={{ color: '#4A4A4A', fontSize: '16px' }}
+            type='checkbox'
+            label='COD'
+            name='isCOD'
+            onChange={handelInputeChange}
+            checked={paymentObject.isCOD}
+          />
+        </div>
+          {
+            paymentObject.isCOD 
+            ? <h6 className='f-f'
+                style={{fontSize:'12px'}}
+            
+            >Additional charges will apply on COD </h6>
+            : null
+          }
       </div>
-      <div
-        // style={{
-        //   padding: '14px',
-        //   paddingLeft: '18px',
-        //   borderStyle: 'solid',
-        //   borderColor: '#cccccc', //#E3DED5
-        //   borderWidth: '1px',
-        //   marginTop: '10px',
-        //   marginBottom: '10px',
-        // }}
-        className={'d-none d-sm-block ' + (paymentObject.isCOD ? 'check-box-checked' : 'check-box-unchecked')}
-      >
-        <Form.Check
-          style={{ color: '#4A4A4A', fontSize: '16px' }}
-          type='checkbox'
-          label='COD'
-          name='isCOD'
-          onChange={handelInputeChange}
-          checked={paymentObject.isCOD}
-        />
+
+      <div style={{height:'45px', borderColor:'red', borderWidth:'2px'}} className='d-none d-sm-block'>
+      
+        <div
+          // style={{
+          //   padding: '14px',
+          //   paddingLeft: '18px',
+          //   borderStyle: 'solid',
+          //   borderColor: '#cccccc', //#E3DED5
+          //   borderWidth: '1px',
+          //   marginTop: '10px',
+          //   marginBottom: '10px',
+          // }}
+          className={'d-none d-sm-block ' + (paymentObject.isCOD ? 'check-box-checked' : 'check-box-unchecked')}
+        >
+          <Form.Check
+            style={{ color: '#4A4A4A', fontSize: '16px' }}
+            type='checkbox'
+            label='COD'
+            name='isCOD'
+            onChange={handelInputeChange}
+            checked={paymentObject.isCOD}
+          />
+        </div>
+        {
+          paymentObject.isCOD 
+          ? <h6 className='f-f'
+              style={{fontSize:'12px'}}
+          
+          >Additional charges will apply on COD </h6>
+          : null
+        }
+
       </div>
     </Col>
   );
@@ -343,7 +366,7 @@ function CodComp({paymentObject,handelInputeChange,errorFields}){
 
 function LargeScreenButtonComp({onPaymentFormSubmit}){
   return(
-    <Col xs={4} md={4} className='p-0 m-0'>
+    <Col xs={4} md={4} className='p-0 m-0 f-f-m'>
       <div
           className='d-none d-sm-none d-md-block'
         >
@@ -368,11 +391,11 @@ function LargeScreenButtonComp({onPaymentFormSubmit}){
 
 function SmallScreenButtonComp({onPaymentFormSubmit}){
   return(
-    <div className='d-block d-sm-block d-md-none'>
+    <div className='d-block d-sm-block d-md-none f-f-m'>
       <div className='d-flex justify-content-center '>
         <Button
           style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0 }}
-          size='lg'
+          size='md'
           variant='primary'
           type='submit'
           className='px-5 me-3 mt-3 mb-3'

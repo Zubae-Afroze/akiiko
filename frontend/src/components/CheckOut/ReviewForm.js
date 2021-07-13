@@ -25,9 +25,9 @@ export default function ReviewForm({ setFormLevel }) {
         style={{ color: '#4A4A4A', fontWeight: 500, marginBottom: '20px' }}
         className='f-f-m'
       >
-        Shipping ?
+        Shipping
       </h6>
-      <Container fluid className='p-0 m-0'>
+      <Container fluid className='p-0 m-0' style={{minHeight:'240px'}}>
         <Row className='p-0 m-0'>
           
           <NameComp />
@@ -44,8 +44,8 @@ export default function ReviewForm({ setFormLevel }) {
             <hr />  
           </Col>
           
-          <Col xs={12} className='p-0 m-0'>
-              <h5>Payment</h5>
+          <Col xs={12} className='p-0 m-0 f-f-m'>
+              <h6>Payment</h6>
           </Col>
 
           <PaymentDetailComp />
@@ -56,12 +56,13 @@ export default function ReviewForm({ setFormLevel }) {
 
           <Col xs={4} md={8} className='p-0 m-0'></Col>
 
-          <LargeScreenPAYbuttonComp setFormLevel={setFormLevel}/>
 
           <Col xs={4} md={0} className='p-0 m-0'></Col>
 
         </Row>
       </Container>
+
+      <LargeScreenPAYbuttonComp setFormLevel={setFormLevel}/>
 
       <SmallScreenPAYbuttonComp />
 
@@ -79,7 +80,7 @@ function NameComp(){
           color: '#4A4A4A',
           width: '100%'
         }}
-        className='p-0 m-0 f-f-m'
+        className='p-0 m-0 f-f'
       >
         <div style={{display:'inlineBlock' }}>{shippingObject.firstname + ' ' + shippingObject.lastname}</div>
       </Container>
@@ -97,7 +98,7 @@ function AddressComp(){
           color: '#4A4A4A',
           width: '100%'
         }}
-        className='p-0 m-0 f-f-m'
+        className='p-0 m-0 f-f'
       >
         <div style={{display:'inlineBlock' }}>{shippingObject.aptFloorSuit + ' - ' + shippingObject.adress}</div>
       </Container>
@@ -115,7 +116,7 @@ function CityStateComp(){
           color: '#4A4A4A',
           width: '100%'
         }}
-        className='p-0 m-0 f-f-m'
+        className='p-0 m-0 f-f'
       >
         <div style={{display:'inlineBlock' }}>{shippingObject.city + ' - ' + shippingObject.zipCode + ' ' + shippingObject.state}</div>
       </Container>
@@ -209,26 +210,34 @@ function EditCardDetailsButtonComp({setFormLevel}){
 
 function LargeScreenPAYbuttonComp({setFormLevel}){
   return(
-    <Col xs={4} md={4} className='p-0 m-0'>
-      <div
-          className='d-none d-sm-none d-md-block'
-          // style={{ paddingRight: '1rem' }}
-        >
-          <div className='d-flex justify-content-end'>
-            
-            <Button
-              style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
-              size='lg'
-              variant='primary'
-              type='submit'
-              className='px-5 me-3 mt-3 mb-3'
-              onClick={() => setFormLevel(2)}
+
+    <div>
+      <Row className='p-0 m-0'>
+        <Col xs={8} className='p-0 m-0' />
+        
+        <Col xs={4} md={4} className='p-0 m-0'>
+          <div
+              className='d-none d-sm-none d-md-block'
+              // style={{ paddingRight: '1rem' }}
             >
-              PAY
-            </Button>
-          </div>
-        </div>
-    </Col>
+              <div className='d-flex justify-content-end'>
+                
+                <Button
+                  style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                  size='lg'
+                  variant='primary'
+                  type='submit'
+                  className='px-5 me-3 mt-3 mb-3'
+                  onClick={() => setFormLevel(2)}
+                >
+                  PAY
+                </Button>
+              </div>
+            </div>
+        </Col>
+
+      </Row>
+    </div>
   );
 }
 
@@ -238,7 +247,7 @@ function SmallScreenPAYbuttonComp(){
       <div className='d-flex justify-content-center '>
         <Button
           style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0 }}
-          size='lg'
+          size='md'
           variant='primary'
           type='submit'
           className='px-5 me-3 mt-3 mb-3'

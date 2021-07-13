@@ -55,9 +55,9 @@ export default function OrderSummaryComp() {
           <h6>Total</h6>
           <h6>{cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}</h6>
         </div>
-
+        <div style={{height:'65px'}} />
         <div className='d-flex justify-content-center'>
-          <button type='button' className='btn btn-outline-secondary'>
+          <button type='button' className='continue-shopping-style'> {/*btn btn-outline-secondary*/}
             Continue Shopping
           </button>
         </div>
