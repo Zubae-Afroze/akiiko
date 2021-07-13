@@ -1,4 +1,6 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
+
 
 import { Modal, ModalBody} from 'react-bootstrap'
 import { Link  } from 'react-router-dom'
@@ -7,7 +9,12 @@ import { addToCart } from '../../actions/actionCart'
 
 import './ProductDetails.css'
 
-export default function CartModal(props,{cartItems,removeFromCartHandler,dispatch,setModalShow,checkoutHandler}) {
+export default function CartModal(props,{removeFromCartHandler,dispatch,setModalShow,checkoutHandler}) {
+
+    const cartList = useSelector((state) => state.cartList)
+
+    const { cartItems } = cartList
+
     return (
       <Modal {...props} animation={false}>
         <ModalBody>

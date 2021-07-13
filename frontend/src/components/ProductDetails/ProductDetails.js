@@ -20,7 +20,7 @@ import ReactImageMagnify from 'react-image-magnify'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
-import CartModal from './CartModal'
+import CartModal from './CartModal';
 
 import './ProductDetails.css'
 
@@ -180,7 +180,7 @@ const ProductDetails = () => {
         />
       ) : error ? (
         <h2>{error}</h2>
-      ) : product._id ? (
+      ) : product.productId ? (
         <Container>
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
@@ -399,13 +399,13 @@ const ProductDetails = () => {
               </Col>
             </Row>
 
-            <CartModal show={modalShow} onHide={() => setModalShow(false)} 
-              cartItems={cartItems}
+            <CartModal show={modalShow} onHide={() => setModalShow(false)}
               removeFromCartHandler={removeFromCartHandler}
               dispatch={dispatch}
               setModalShow={setModalShow}
               checkoutHandler={checkoutHandler}
             />
+            
             {/* <CartModal show={modalShow} onHide={() => setModalShow(false)} /> */}
 
             {/* {product.addOn ? 
