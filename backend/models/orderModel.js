@@ -73,6 +73,9 @@ const orderSchema = mongoose.Schema(
     deliveredAt: {
       type: Date,
     },
+    shipRocketLink: {
+      type: String,
+    },
   },
   {
     timestamps: true,
