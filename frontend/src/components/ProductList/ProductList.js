@@ -101,7 +101,7 @@ const ProductList = () => {
                 {products.map((product) => (
                   <Link
                     className='product-list-card-wrapper'
-                    to={`/product/${product.productId}`}
+                    to={`/product/${product._id}`}
                     key={product.productId}
                   >
                     <div>

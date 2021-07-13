@@ -178,7 +178,7 @@ const ProductDetails = () => {
         />
       ) : error ? (
         <h2>{error}</h2>
-      ) : product.productId ? (
+      ) : product._id ? (
         <Container>
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
@@ -436,7 +436,7 @@ const ProductDetails = () => {
                       className='similar-products-container'
                     >
                       <Link
-                        to={`/product/${prod.productId}`}
+                        to={`/product/${prod.id}`}
                         onClick={() => setImageSrc(prod.heroImage)}
                       >
                         <Col lg={2.4}>
