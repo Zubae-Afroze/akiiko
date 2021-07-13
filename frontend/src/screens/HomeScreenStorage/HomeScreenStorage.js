@@ -96,7 +96,7 @@ const HomeScreenWorkout = () => {
             <Row className='workout-card-wrapper'>
               {storage.map((product) => (
                 <Col className='home-card-items ' key={product._id}>
-                  <Link to={`/product/${product.productId}`}>
+                  <Link to={`/product/${product._id}`}>
                     <div>
                       <div className='women-img-wrap'>
                         <img
