@@ -207,9 +207,11 @@ export default class Menubar extends Component {
                   </Collapse>
                 ) : null}
               </Nav.Item>
-              {/* <Nav.Item as="li">
+              {/* 
+                <Nav.Item as="li">
                         <Nav className='navbar-li'><Link to='/beach'>Beach</Link></Nav>
-                    </Nav.Item> */}
+                </Nav.Item> 
+              */}
               <Nav.Item as='li'>
                 <Nav className='navbar-li'>
                   <div
@@ -417,8 +419,9 @@ export default class Menubar extends Component {
                             </Link>
                           </li>
                           {/* <li>
-                                                <img src='/images/nav_drop/gift/baskets.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>FLORAL</div></li> */}
+                            <img src='/images/nav_drop/gift/baskets.png' alt='laundry_img'/>
+                            <div className='navbar-drop-list-label'>FLORAL</div></li> 
+                          */}
                           <li>
                             <Link to='/productlist/gift/accessories'>
                               <img
@@ -468,8 +471,9 @@ export default class Menubar extends Component {
                       <Col className='navbar-drop-list' sm={8}>
                         <ul onClick={this.toggleStorageDiv}>
                           {/* <li>
-                                                <img src='/images/nav_drop/storage/duffel_bag.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>WORK</div></li> */}
+                            <img src='/images/nav_drop/storage/duffel_bag.png' alt='laundry_img'/>
+                            <div className='navbar-drop-list-label'>WORK</div></li> 
+                          */}
                           <li>
                             <Link to='/productlist/storage/organisers'>
                               <img
@@ -534,8 +538,9 @@ export default class Menubar extends Component {
                             </Link>
                           </li>
                           {/* <li>
-                                                <img src='/images/nav_drop/accessories/coat_cover.png' alt='laundry_img'/>
-                                                <div className='navbar-drop-list-label'>GADGET</div></li> */}
+                              <img src='/images/nav_drop/accessories/coat_cover.png' alt='laundry_img'/>
+                              <div className='navbar-drop-list-label'>GADGET</div></li> 
+                          */}
                           <li>
                             <Link to='/productlist/accessories/wallet'>
                               <img
