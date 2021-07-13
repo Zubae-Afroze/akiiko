@@ -20,6 +20,8 @@ import ReactImageMagnify from 'react-image-magnify'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
+import CartModal from './CartModal'
+
 import './ProductDetails.css'
 
 const ProductDetails = () => {
@@ -65,106 +67,106 @@ const ProductDetails = () => {
     history.push('/login?redirect=shipping')
   }
 
-  function CartModal(props) {
-    return (
-      <Modal {...props} animation={false}>
-        <ModalBody>
-          <div className='head-cart-header'>
-            Shopping Cart
-            <img src='/images/font_images/cart.svg' alt='cart-icon' />
-            <span>
-              {cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}
-            </span>
-          </div>
-          <>
-            {cartItems.length === 0 ? (
-              <div className='head-cart-empty'>Your Cart is empty</div>
-            ) : (
-              <>
-                <div className='head-cart-scroll'>
-                  {cartItems.map((items, index) => (
-                    <div className='head-cart-wrap' key={index}>
-                      <div className='head-cart-img'>
-                        <img src={items.image} alt='cart_1' />
-                      </div>
-                      <div className='head-cart-details'>
-                        <div className='head-cart-subg'>{items.subGroup}</div>
-                        <div className='head-cart-prodn'>
-                          {items.productName}
-                          <img
-                            src='/images/font_images/times.svg'
-                            alt='trash_icon'
-                            onClick={() => removeFromCartHandler(items.product)}
-                          />
-                        </div>
-                        <div className='head-cart-root'>
-                          <div className='head-cart-qty'>
-                            <span
-                              className='head-cart-dum'
-                              onClick={() =>
-                                (items.qty =
-                                  items.qty > 1
-                                    ? dispatch(
-                                        addToCart(items.product, items.qty - 1)
-                                      )
-                                    : 1)
-                              }
-                            >
-                              -
-                            </span>
-                            {items.qty}
-                            <span
-                              className='head-cart-div'
-                              onClick={() =>
-                                (items.qty = dispatch(
-                                  addToCart(items.product, items.qty + 1)
-                                ))
-                              }
-                            >
-                              +
-                            </span>
-                          </div>
-                          <div className='head-cart-price'>
-                            &#x20B9;{items.price * items.qty}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div className='head-cart-bottom-wrap'>
-                  <div className='head-cart-showmore'>
-                    <Link to='/cart'>
-                      <button onClick={() => setModalShow(false)}>
-                        Go To Cart Page
-                      </button>
-                    </Link>
-                  </div>
-                  <div className='head-cart-sub-price-wrap'>
-                    <div className='head-cart-sub-price-label'>
-                      Subtotal Price
-                    </div>
-                    <div className='head-cart-sub-price'>
-                      &#x20B9;
-                      {cartItems.reduce(
-                        (acc, items) => acc + items.qty * items.price,
-                        0
-                      )}
-                    </div>
-                  </div>
-                  <div className='head-cart-purchase-button-wrap'>
-                    <button onClick={checkoutHandler}>
-                      PROCEED TO CHECKOUT
-                    </button>
-                  </div>
-                </div>
-              </>
-            )}
-          </>
-        </ModalBody>
-      </Modal>
-    )
-  }
+  // function CartModal(props) {
+  //   return (
+  //     <Modal {...props} animation={false}>
+  //       <ModalBody>
+  //         <div className='head-cart-header'>
+  //           Shopping Cart
+  //           <img src='/images/font_images/cart.svg' alt='cart-icon' />
+  //           <span>
+  //             {cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}
+  //           </span>
+  //         </div>
+  //         <>
+  //           {cartItems.length === 0 ? (
+  //             <div className='head-cart-empty'>Your Cart is empty</div>
+  //           ) : (
+  //             <>
+  //               <div className='head-cart-scroll'>
+  //                 {cartItems.map((items, index) => (
+  //                   <div className='head-cart-wrap' key={index}>
+  //                     <div className='head-cart-img'>
+  //                       <img src={items.image} alt='cart_1' />
+  //                     </div>
+  //                     <div className='head-cart-details'>
+  //                       <div className='head-cart-subg'>{items.subGroup}</div>
+  //                       <div className='head-cart-prodn'>
+  //                         {items.productName}
+  //                         <img
+  //                           src='/images/font_images/times.svg'
+  //                           alt='trash_icon'
+  //                           onClick={() => removeFromCartHandler(items.product)}
+  //                         />
+  //                       </div>
+  //                       <div className='head-cart-root'>
+  //                         <div className='head-cart-qty'>
+  //                           <span
+  //                             className='head-cart-dum'
+  //                             onClick={() =>
+  //                               (items.qty =
+  //                                 items.qty > 1
+  //                                   ? dispatch(
+  //                                       addToCart(items.product, items.qty - 1)
+  //                                     )
+  //                                   : 1)
+  //                             }
+  //                           >
+  //                             -
+  //                           </span>
+  //                           {items.qty}
+  //                           <span
+  //                             className='head-cart-div'
+  //                             onClick={() =>
+  //                               (items.qty = dispatch(
+  //                                 addToCart(items.product, items.qty + 1)
+  //                               ))
+  //                             }
+  //                           >
+  //                             +
+  //                           </span>
+  //                         </div>
+  //                         <div className='head-cart-price'>
+  //                           &#x20B9;{items.price * items.qty}
+  //                         </div>
+  //                       </div>
+  //                     </div>
+  //                   </div>
+  //                 ))}
+  //               </div>
+  //               <div className='head-cart-bottom-wrap'>
+  //                 <div className='head-cart-showmore'>
+  //                   <Link to='/cart'>
+  //                     <button onClick={() => setModalShow(false)}>
+  //                       Go To Cart Page
+  //                     </button>
+  //                   </Link>
+  //                 </div>
+  //                 <div className='head-cart-sub-price-wrap'>
+  //                   <div className='head-cart-sub-price-label'>
+  //                     Subtotal Price
+  //                   </div>
+  //                   <div className='head-cart-sub-price'>
+  //                     &#x20B9;
+  //                     {cartItems.reduce(
+  //                       (acc, items) => acc + items.qty * items.price,
+  //                       0
+  //                     )}
+  //                   </div>
+  //                 </div>
+  //                 <div className='head-cart-purchase-button-wrap'>
+  //                   <button onClick={checkoutHandler}>
+  //                     PROCEED TO CHECKOUT
+  //                   </button>
+  //                 </div>
+  //               </div>
+  //             </>
+  //           )}
+  //         </>
+  //       </ModalBody>
+  //     </Modal>
+  //   )
+  // }
 
   return (
     <>
@@ -396,7 +398,15 @@ const ProductDetails = () => {
                 </div>
               </Col>
             </Row>
-            <CartModal show={modalShow} onHide={() => setModalShow(false)} />
+
+            <CartModal show={modalShow} onHide={() => setModalShow(false)} 
+              cartItems={cartItems}
+              removeFromCartHandler={removeFromCartHandler}
+              dispatch={dispatch}
+              setModalShow={setModalShow}
+              checkoutHandler={checkoutHandler}
+            />
+            {/* <CartModal show={modalShow} onHide={() => setModalShow(false)} /> */}
 
             {/* {product.addOn ? 
                         <Row className=''> 

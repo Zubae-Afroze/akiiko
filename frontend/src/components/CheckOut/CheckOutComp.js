@@ -137,6 +137,7 @@ export default function CheckOutComp() {
             activeColor='#6B584C'
             completeColor='#A4957A'
             circleFontColor='#6B584C'
+            titleFontSize='14px'
           />
         </div>
 

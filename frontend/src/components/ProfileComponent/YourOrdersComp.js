@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Row, Col,  } from 'react-bootstrap';
 import { motion } from 'framer-motion'
-import ProductRowComp from './productRowComp';
+import ProductRowComp, {ProductRowHeaderComp} from './productRowComp';
 import '../../screens/Chekout/style.css'
 import '../../screens/NewProfileScreen/style.css'
 
@@ -36,6 +36,8 @@ export default function YourOrdresComp() {
                 <Col xs={12}>
                     <hr style={{marginBottom:'0'}}/>
                 </Col>
+
+                <ProductRowHeaderComp/>
                 
                 <ProductRowComp/>
 

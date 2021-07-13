@@ -37,15 +37,15 @@ export default function OrderSummaryComp() {
 
       <div>
         <hr />
-        <div className='d-flex justify-content-between'>
+        <div className='f-f d-flex justify-content-between'>
           <h6>Subtotal</h6>
           <h6>{cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}</h6>
         </div>
-        <div className='d-flex justify-content-between'>
+        <div className='f-f d-flex justify-content-between'>
           <h6>Tax</h6>
           <h6>--</h6>
         </div>
-        <div className='d-flex justify-content-between'>
+        <div className='f-f d-flex justify-content-between'>
           <h6>Shipping</h6>
           <h6>--</h6>
         </div>
