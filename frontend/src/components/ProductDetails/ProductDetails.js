@@ -1,15 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import {
-  Container,
-  Row,
-  Col,
-  Dropdown,
-  Carousel,
-  Modal,
-  ModalBody,
-} from 'react-bootstrap'
+import { Container, Row, Col, Dropdown, Carousel } from 'react-bootstrap'
 import { Link, useHistory, useParams } from 'react-router-dom'
 
 import { actionListProductDetails } from '../../actions/actionProductList'
@@ -20,7 +12,7 @@ import ReactImageMagnify from 'react-image-magnify'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
-import CartModal from './CartModal';
+import CartModal from './CartModal'
 
 import './ProductDetails.css'
 
@@ -53,9 +45,9 @@ const ProductDetails = () => {
     setModalShow(true)
   }
 
-  const cartList = useSelector((state) => state.cartList)
+  //const cartList = useSelector((state) => state.cartList)
 
-  const { cartItems } = cartList
+  //const { cartItems } = cartList
 
   const [modalShow, setModalShow] = useState(false)
 
@@ -399,13 +391,15 @@ const ProductDetails = () => {
               </Col>
             </Row>
 
-            <CartModal show={modalShow} onHide={() => setModalShow(false)}
+            <CartModal
+              show={modalShow}
+              onHide={() => setModalShow(false)}
               removeFromCartHandler={removeFromCartHandler}
               dispatch={dispatch}
               setModalShow={setModalShow}
               checkoutHandler={checkoutHandler}
             />
-            
+
             {/* <CartModal show={modalShow} onHide={() => setModalShow(false)} /> */}
 
             {/* {product.addOn ? 

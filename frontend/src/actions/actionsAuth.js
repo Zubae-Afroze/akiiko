@@ -28,6 +28,13 @@ export const googleAuth = (user) => {
 
         console.log(userObject)
 
+        axios
+          .post('/api/profile', userObject)
+          .then(console.log('success'))
+          .catch((e) => {
+            console.log(e)
+          })
+
         // axios({
         //   method: 'post',
         //   url: '/api/profile/',
