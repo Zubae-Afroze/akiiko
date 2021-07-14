@@ -27,7 +27,6 @@ const profileSchema = mongoose.Schema(
     },
     isAdmin: {
       type: Boolean,
-      requried: true,
       default: false,
     },
     shippingAddress: [

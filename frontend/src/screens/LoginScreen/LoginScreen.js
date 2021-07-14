@@ -9,12 +9,14 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 import Message from '../../components/Message/Message'
 
+import { googleAuth } from '../../actions/actionsAuth'
+
 import './LoginScreen.css'
 
 const LoginScreen = () => {
   const dispatch = useDispatch()
 
-  const userLogin = useSelector((state) => state.userLogin)
+  const userLogin = useSelector((state) => state.firebase.auth)
 
   const { loading, error, userInfo } = userLogin
 
@@ -27,10 +29,10 @@ const LoginScreen = () => {
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
-    if (userInfo) {
+    if (userLogin.uid) {
       history.push(redirect)
     }
-  }, [history, userInfo, redirect])
+  }, [history, userInfo, redirect, userLogin.uid])
 
   const submitHandler = (e) => {
     e.preventDefault()
@@ -38,7 +40,7 @@ const LoginScreen = () => {
   }
 
   const googleHandler = () => {
-    console.log('google')
+    dispatch(googleAuth())
   }
 
   const facebookHandler = () => {

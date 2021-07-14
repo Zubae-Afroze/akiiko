@@ -21,7 +21,9 @@ import {
   orderListMyReducer,
 } from './reducers/reducersOrder'
 
-import { firebaseReducer } from 'react-redux-firebase'
+import { googleAuthReducer } from './reducers/reducersAuth'
+
+import { firebaseReducer, getFirebase } from 'react-redux-firebase'
 
 const reducer = combineReducers({
   productList: reducersProductList,
@@ -36,6 +38,7 @@ const reducer = combineReducers({
   orderPay: orderPayReducer,
   orderListMy: orderListMyReducer,
   firebase: firebaseReducer,
+  auth: googleAuthReducer,
 })
 
 const cartItemsFromStorage = localStorage.getItem('cartItems')
@@ -58,12 +61,12 @@ const initialState = {
   userLogin: { userInfo: userInfoFromStorage },
 }
 
-const middleware = [thunk]
+//const middleware = [thunk]
 
 const store = createStore(
   reducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  composeWithDevTools(applyMiddleware(thunk.withExtraArgument({ getFirebase })))
 )
 
 export default store

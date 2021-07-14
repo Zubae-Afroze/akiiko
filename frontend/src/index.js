@@ -1,16 +1,54 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { Provider } from 'react-redux'
+import { Provider, useSelector } from 'react-redux'
 import store from './store'
 
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
+import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/analytics'
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyCVvHJuSGIGfx3Jkehs6idGg0BnSLzswqs',
+  authDomain: 'akiiko-auth.firebaseapp.com',
+  projectId: 'akiiko-auth',
+  storageBucket: 'akiiko-auth.appspot.com',
+  messagingSenderId: '240901391407',
+  appId: '1:240901391407:web:06751d5045455c66fcf2da',
+  measurementId: 'G-YD934B7ECM',
+}
+
+firebase.initializeApp(firebaseConfig)
+firebase.analytics()
+
+const profileConfig = {
+  userProfile: 'users',
+}
+
+const rrfProps = {
+  firebase,
+  config: profileConfig,
+  dispatch: store.dispatch,
+}
+
+function AuthLoaded({ children }) {
+  const auth = useSelector((state) => state.firebase.auth)
+  if (!isLoaded(auth)) return <div>Auth Loading...</div>
+  return children
+}
+
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <AuthLoaded>
+        <App />
+      </AuthLoaded>
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById('root')
 )

@@ -263,6 +263,13 @@
   right: 0;
 }
 
+.nav-item img {
+  margin-top: 5px;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+}
+
 @media (max-width: 1600px) {
   .title-icon-wrap {
     margin-right: 8.5%;

@@ -40,4 +40,4 @@ const getProfileByUid = asyncHandler(async (req, res) => {
   return res.json(profile)
 })
 
-export { getProfileByUid }
+export { getProfileByUid, createProfile }
