@@ -10,15 +10,16 @@ export const googleAuth = (user) => {
       .auth()
       .signInWithPopup(provider)
       .then((res) => {
-        const displayName = res.user.displayName
+        console.log(res)
+        const name = res.user.displayName
         const email = res.user.email
         const phoneNumber = res.user.phoneNumber
         const photoURL = res.user.photoURL
         const uid = res.user.uid
-        const providerId = res.credentail.providerId
+        const providerId = res.credential.providerId
 
         const userObject = {
-          displayName,
+          name,
           email,
           phoneNumber,
           photoURL,
@@ -26,10 +27,14 @@ export const googleAuth = (user) => {
           providerId,
         }
 
-        console.log(userObject)
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
 
         axios
-          .post('/api/profile', userObject)
+          .post('/api/profile', userObject, config)
           .then(console.log('success'))
           .catch((e) => {
             console.log(e)
