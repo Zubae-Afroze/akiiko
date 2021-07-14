@@ -7,6 +7,13 @@ import Profile from '../models/profileModel.js'
 const createProfile = asyncHandler(async (req, res) => {
   const { name, email, uid, photoUrl, phoneNumber, providerId } = req.body
 
+  const profileExist = await Profile.findOne({ uid })
+
+  if (profileExist) {
+    res.status(400)
+    throw new Error('Profile Already Exsists, no added')
+  }
+
   const profile = await Profile.create({
     name,
     email,
