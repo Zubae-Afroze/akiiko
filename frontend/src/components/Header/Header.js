@@ -175,6 +175,7 @@ const Header = () => {
                   <NavDropdown
                     title={
                       <img
+                        className='image-of-profile'
                         src={
                           auth ? auth.photoURL : '/images/font_images/user.svg'
                         }
