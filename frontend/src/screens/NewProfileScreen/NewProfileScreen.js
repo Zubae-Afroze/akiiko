@@ -5,12 +5,18 @@ import YourOrdresComp from '../../components/ProfileComponent/YourOrdersComp';
 import { AnimatePresence } from 'framer-motion'
 import './style.css'
 import '../Chekout/style.css'
+import ProfileComp from '../../components/ProfileComponent/ProfileComp';
 
+
+export const PROFILE_COMP = 'profile';
+const SHIPPING_COMP = 'shipping';
+const YOUR_ADDRESS_COMP = 'address';
 
 
 export default function NewProfileScreen() {
 
-  const [isYourOrdersComp, setIsYourOrdersComp] = React.useState(false)
+  const [profileScreenDisplayComp, setProfileScreenDisplayComp] = React.useState(PROFILE_COMP)
+
     return (
         <div style={{backgroundColor:'#e2dcd5'}}>
             <Container className='ps-md-5 pe-md-5 d-flex justify-content-center'>
@@ -23,21 +29,24 @@ export default function NewProfileScreen() {
                                 <ul style={{listStyle:'none'}}>
                                     <div className='d-block d-sm-block d-md-none'> <br/> </div>
                                     <li className='f-f-m'>Wlcome Back</li>
-                                    <li>
+                                    <li
+                                        className='tabs'
+                                        onClick={()=>{setProfileScreenDisplayComp(PROFILE_COMP)}}
+                                    >
                                         Suhil Kumar
                                     </li>
                                     <br/>
                                     <hr/>
                                     <li 
                                         className='tabs'
-                                        onClick={()=>{setIsYourOrdersComp(false)}}
+                                        onClick={()=>{setProfileScreenDisplayComp(SHIPPING_COMP)}}
                                     >
                                         Shipping
                                     </li>
                                     <hr/>
                                     <li 
                                         className='tabs'
-                                        onClick={()=>{setIsYourOrdersComp(true)}}
+                                        onClick={()=>{setProfileScreenDisplayComp(YOUR_ADDRESS_COMP)}}
                                     >
                                         Your Orders
                                     </li>
@@ -53,9 +62,11 @@ export default function NewProfileScreen() {
                         <Col xs={12} md={8} className='p-0'>
                             <AnimatePresence>
                                 { 
-                                    isYourOrdersComp ? 
-                                        <YourOrdresComp/>
-                                    :   <ShippingComp/>
+                                    profileScreenDisplayComp === PROFILE_COMP 
+                                    ?   <ProfileComp/>
+                                    : profileScreenDisplayComp === SHIPPING_COMP
+                                    ?    <ShippingComp setProfileScreenDisplayComp={setProfileScreenDisplayComp}/>
+                                    :    <YourOrdresComp/>
                                 }
                             </AnimatePresence>  
                         </Col>

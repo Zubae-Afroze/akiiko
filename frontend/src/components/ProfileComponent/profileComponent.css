@@ -10,3 +10,28 @@
     color: #3e3331;
     background-color: transparent;
 }
+
+
+.input-filed-edit-style{
+    background-color: transparent;
+    /* border-color: #cbc6bf; */
+    border: none;
+    border-left: 1px solid #cbc6bf;
+    color: #3e3331;
+}
+
+
+.input-filed-edit-style:focus{
+    color: #3e3331;
+    border: none;
+    border-left: 1px solid #cbc6bf;
+    background-color: transparent;
+}
+
+.form-control.error-form-style{
+    background-color: transparent;
+    border-color: #3e3331;
+    border-width: 2px;
+    border-radius: 5px;
+    color: #3e3331;
+}

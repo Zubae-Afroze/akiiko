@@ -34,7 +34,7 @@ const Header = () => {
     }
 
     const checkoutHandler = () => {
-        history.push('/login?redirect=shipping')
+        history.push('/login?redirect=checkout')
         setCartModalShow(false);
     }
 
@@ -110,7 +110,7 @@ const Header = () => {
                                 <NavDropdown title={<img src={'/images/font_images/user.svg'} alt='user_icon' />}>
                                     <LinkContainer to='/profile'><NavDropdown.Item>Hello, {userInfo.name}</NavDropdown.Item></LinkContainer>
                                     <NavDropdown.Divider />
-                                    <LinkContainer to='/profile'>
+                                    <LinkContainer to='/newprofile'>
                                         <NavDropdown.Item>Profile</NavDropdown.Item>
                                     </LinkContainer>
                                     <NavDropdown.Item onClick={logouthandler}>Logout</NavDropdown.Item>
