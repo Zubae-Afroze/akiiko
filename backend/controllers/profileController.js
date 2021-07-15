@@ -7,6 +7,13 @@ import Profile from '../models/profileModel.js'
 const createProfile = asyncHandler(async (req, res) => {
   const { name, email, uid, photoUrl, phoneNumber, providerId } = req.body
 
+  const profileExist = await Profile.findOne({ uid })
+
+  if (profileExist) {
+    res.status(400)
+    throw new Error('Profile Already Exsists, not added')
+  }
+
   const profile = await Profile.create({
     name,
     email,
@@ -36,8 +43,21 @@ const createProfile = asyncHandler(async (req, res) => {
 //@route GET /api/profile/:uid
 //@acess Private
 const getProfileByUid = asyncHandler(async (req, res) => {
-  const profile = await Profile.findOne({ udi: req.params.uid })
+  const profile = await Profile.findOne({ uid: req.params.uid })
   return res.json(profile)
 })
 
-export { getProfileByUid }
+//@desc update sipping addres for specific User
+//@route POST /api/profile/addshipping/:uid
+//@acess Private
+const addShippingAddress = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne({ uid: req.params.uid })
+
+  // if (profile) {
+  //   profile.shippingAddress = profile.shippingAddress.push(
+  //     req.body.shippingAddress
+  //   )
+  // }
+})
+
+export { getProfileByUid, createProfile }

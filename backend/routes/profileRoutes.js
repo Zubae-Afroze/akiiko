@@ -1,8 +1,13 @@
 import express from 'express'
-import { getProfileByUid } from '../controllers/profileController.js'
+import {
+  getProfileByUid,
+  createProfile,
+} from '../controllers/profileController.js'
 
 const router = express.Router()
 
-router.route('/:uid').post(getProfileByUid)
+router.route('/').post(createProfile)
+router.route('/:uid').get(getProfileByUid)
+router.route('/addshipping/:uid').post()
 
 export default router
