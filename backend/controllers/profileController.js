@@ -53,11 +53,11 @@ const getProfileByUid = asyncHandler(async (req, res) => {
 const addShippingAddress = asyncHandler(async (req, res) => {
   const profile = await Profile.findOne({ uid: req.params.uid })
 
-  // if (profile) {
-  //   profile.shippingAddress = profile.shippingAddress.push(
-  //     req.body.shippingAddress
-  //   )
-  // }
+  if (profile) {
+    profile.shippingAddress = profile.shippingAddress.push(
+      req.body.shippingAddress
+    )
+  }
 })
 
 export { getProfileByUid, createProfile }
