@@ -45,7 +45,7 @@ const Header = () => {
   }
 
   const checkoutHandler = () => {
-    history.push('/login?redirect=shipping')
+    history.push('/login?redirect=checkout')
     setCartModalShow(false)
   }
 

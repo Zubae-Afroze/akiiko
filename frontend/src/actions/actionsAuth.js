@@ -67,3 +67,7 @@ export const firebaseLogout = () => {
       })
   }
 }
+
+export const getProfileByUID = () => {
+  
+}
