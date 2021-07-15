@@ -57,7 +57,20 @@ const addShippingAddress = asyncHandler(async (req, res) => {
     profile.shippingAddress = profile.shippingAddress.push(
       req.body.shippingAddress
     )
+
+    const updatedProfile = await profile.save()
+
+    res.json({
+      updatedProfile,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Profile with UID Not Found')
   }
 })
 
-export { getProfileByUid, createProfile }
+const updateProfile = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne({ uid: req.params.uid })
+})
+
+export { getProfileByUid, createProfile, addShippingAddress }
