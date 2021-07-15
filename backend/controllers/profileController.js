@@ -11,7 +11,7 @@ const createProfile = asyncHandler(async (req, res) => {
 
   if (profileExist) {
     res.status(400)
-    throw new Error('Profile Already Exsists, no added')
+    throw new Error('Profile Already Exsists, not added')
   }
 
   const profile = await Profile.create({
