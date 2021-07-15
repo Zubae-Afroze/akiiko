@@ -43,8 +43,21 @@ const createProfile = asyncHandler(async (req, res) => {
 //@route GET /api/profile/:uid
 //@acess Private
 const getProfileByUid = asyncHandler(async (req, res) => {
-  const profile = await Profile.findOne({ udi: req.params.uid })
+  const profile = await Profile.findOne({ uid: req.params.uid })
   return res.json(profile)
+})
+
+//@desc update sipping addres for specific User
+//@route POST /api/profile/addshipping/:uid
+//@acess Private
+const addShippingAddress = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne({ uid: req.params.uid })
+
+  // if (profile) {
+  //   profile.shippingAddress = profile.shippingAddress.push(
+  //     req.body.shippingAddress
+  //   )
+  // }
 })
 
 export { getProfileByUid, createProfile }
