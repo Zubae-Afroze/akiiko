@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import AddressComp from './addressComp';
 import '../../screens/Chekout/style.css'
 import '../../screens/NewProfileScreen/style.css'
+import { PROFILE_COMP } from '../../screens/NewProfileScreen/NewProfileScreen' 
 
 const containerVariants = {
     hidden: {
@@ -18,7 +19,7 @@ const containerVariants = {
   }
 
 
-export default function ShippingComp() {
+export default function ShippingComp({setProfileScreenDisplayComp}) {
 
     const [editMobileFieldON, setEditMobileFieldON] = useState(false);
 
@@ -48,7 +49,7 @@ export default function ShippingComp() {
                     }
                 </Col>
                 <Col xs={4}>
-                    <h6 className='tabs f-f-m' style={{textAlign:'end' , paddingRight:'13px'}} onClick={()=> setEditMobileFieldON(!editMobileFieldON)}>
+                    <h6 className='tabs f-f-m' style={{textAlign:'end' , paddingRight:'13px'}} onClick={()=> setProfileScreenDisplayComp(PROFILE_COMP)}>
                         {
                             editMobileFieldON 
                             ?   'Update'
@@ -67,7 +68,7 @@ export default function ShippingComp() {
                     <h6>sanjiv@gaiml.com</h6>
                 </Col>
                 <Col xs={4}>
-                <h6 className='tabs f-f-m' style={{textAlign:'end' , paddingRight:'13px'}}>Edit</h6>
+                <h6 className='tabs f-f-m' style={{textAlign:'end' , paddingRight:'13px'}} onClick={()=> setProfileScreenDisplayComp(PROFILE_COMP)}>Edit</h6>
                 </Col>
                 <Col xs={12}>
                     <hr style={{marginTop:'3px'}}/>   
@@ -79,9 +80,11 @@ export default function ShippingComp() {
                 <Col xs={12}>
                     <h6 className='f-f-m'>Shipping Address</h6>   
                 </Col>
+
+                
                 
                 <AddressComp/>
-                <AddressComp/>
+                <AddressComp isAddNewAddress={true}/>
 
                 <Col xs={12}>
                     <div style={{height:'40px'}}></div>

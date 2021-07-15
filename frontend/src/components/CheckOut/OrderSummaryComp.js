@@ -1,15 +1,20 @@
-import React from 'react'
+import React , {useContext} from 'react'
 import { Container, Row } from 'react-bootstrap'
 import ItemCard from './ItemCard'
 import './style.css'
 import '../../screens/Chekout/style.css'
 import { useSelector, useDispatch } from 'react-redux';
+import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
 
 
 export default function OrderSummaryComp() {
   const cartList = useSelector(state => state.cartList)
 
+  const cashOnDeliveryContext = useContext(CashOnDeliveryContext);
+
   const dispatch = useDispatch()
+
+  console.log('COD Order: ' + cashOnDeliveryContext.value);
 
   return (
     <Container
@@ -47,13 +52,23 @@ export default function OrderSummaryComp() {
         </div>
         <div className='f-f d-flex justify-content-between'>
           <h6>Shipping</h6>
-          <h6>--</h6>
+          {
+            cashOnDeliveryContext.value 
+            ? <h6>50</h6>
+            : <h6>--</h6>
+          }
+          
         </div>
         <hr />
 
         <div className='d-flex justify-content-between'>
           <h6>Total</h6>
-          <h6>{cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}</h6>
+          <h6>{
+            cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) +
+            (cashOnDeliveryContext.value
+            ? 50
+            : 0)
+          }</h6>
         </div>
         <div style={{height:'65px'}} />
         <div className='d-flex justify-content-center'>

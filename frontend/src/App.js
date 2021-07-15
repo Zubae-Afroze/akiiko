@@ -54,7 +54,7 @@ export default class App extends Component {
 
           <Route path='/checkout' render={() => <Checkout />} />
 
-          <Route path='/newProfile' render={() => <NewProfileScreen />} />
+          <Route path='/newprofile' render={() => <NewProfileScreen />} />
 
           <Route path='/payment' render={() => <PaymentScreen />} />
 

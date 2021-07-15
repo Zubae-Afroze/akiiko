@@ -1,10 +1,11 @@
-import React , {useState} from 'react'
+import React , {useState, useContext} from 'react'
 import { Row, Col, Form, Button } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import './style.css'
 import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
 import { paymentObject } from './FormObject'
+import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
 
 
 const containerVariants = {
@@ -50,6 +51,9 @@ export default function PaymentForm({ setFormLevel,showToast }) {
   const [ , setpaymentObjectState ] = useState(paymentObject); //paymentObjectState
   const [ errorFields, setErrorFields ] = useState([false,false]); 
 
+  const cashOnDeliveryContext = useContext(CashOnDeliveryContext);
+
+
   function handelInputeChange(event){
 
     if(event.target.type === 'checkbox'){
@@ -57,25 +61,32 @@ export default function PaymentForm({ setFormLevel,showToast }) {
       // paymentObjectState.monthYearCVC = '';
       paymentObject.cardNumber = '';
       paymentObject.monthYearCVC = '';
-
+      
       if(event.target.name === 'isCOD'){
         paymentObject.isNetbankingUPI = false;
       }
       if(event.target.name === 'isNetbankingUPI'){
         paymentObject.isCOD = false;
       }
+
+
     }
 
     if(event.target.type === 'text'){
       paymentObject.isNetbankingUPI = false;
       paymentObject.isCOD = false;
+
+      cashOnDeliveryContext.toggleCodState(paymentObject.isCOD,'text');
     }
 
     setpaymentObjectState( {[event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value} ) 
     
     paymentObject[event.target.name] = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
+
+    if(event.target.type === 'checkbox') cashOnDeliveryContext.toggleCodState(paymentObject.isCOD,'check');
+
     // console.log({[event.target.name]: event.target.type === 'checkbox' ? event.target.checked : event.target.value} )
-    console.log(paymentObject)
+    // console.log(paymentObject)
   }
 
 

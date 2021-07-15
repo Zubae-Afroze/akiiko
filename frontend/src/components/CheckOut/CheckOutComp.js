@@ -83,6 +83,7 @@ function NavigateBackIcon({ level }) {
 export default function CheckOutComp() {
   const [formLevel, setFormLevel] = useState(stepperLevel.SHIPPING)
 
+
   const showToast = (message) => {
     toast.error(message, {
       position: "top-right",
