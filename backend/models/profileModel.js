@@ -29,14 +29,7 @@ const profileSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    shippingAddress: [
-      {
-        address: { type: String },
-        city: { type: String },
-        state: { type: String },
-        pinCode: { type: String },
-      },
-    ],
+    shippingAddress: [],
   },
   {
     timestamps: true,
