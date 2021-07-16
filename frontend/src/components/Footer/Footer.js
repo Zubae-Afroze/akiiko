@@ -112,7 +112,7 @@ export default class Footer extends Component {
                     <br />
                     <span className='footer-sub-sub'>Corporate Office</span>
                   </div>
-                  9, 2/2, 2nd Lane Cenotoph, <br />
+                  9.2.2 Cenotoph 2nd Lane, <br />
                   Austin Nagar, Teynampet, <br />
                   Chennai 600018 <br />
                   India.
