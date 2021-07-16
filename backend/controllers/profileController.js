@@ -51,8 +51,8 @@ const getProfileByUid = asyncHandler(async (req, res) => {
 //@route POST /api/profile/addshipping/:uid
 //@acess Private
 const addShippingAddress = asyncHandler(async (req, res) => {
-  const profile = await Profile.updateOne({ uid: req.params.uid },
-    { $push: {shippingAddress: req.body.shippingAddress}}
+  const profile = await Profile.findOneAndUpdate({ uid: req.params.uid },
+    { $push: {shippingAddress: req.body}}
     )
 
   // if (profile) {
