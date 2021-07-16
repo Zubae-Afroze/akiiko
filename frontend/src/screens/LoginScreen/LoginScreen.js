@@ -2,14 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useHistory } from 'react-router-dom'
 import { Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../actions/actionUsers'
 
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 import Message from '../../components/Message/Message'
 
-import { googleAuth } from '../../actions/actionAuth'
+import { googleAuth, facebookAuth, emailAuth } from '../../actions/actionAuth'
 
 import './LoginScreen.css'
 
@@ -36,7 +35,8 @@ const LoginScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    dispatch(login(email, password))
+    const creds = { email, password }
+    dispatch(emailAuth(creds))
   }
 
   const googleHandler = () => {
@@ -44,7 +44,7 @@ const LoginScreen = () => {
   }
 
   const facebookHandler = () => {
-    console.log('facebook')
+    dispatch(facebookAuth())
   }
 
   return (
