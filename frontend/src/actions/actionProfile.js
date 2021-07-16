@@ -16,6 +16,8 @@ import {
     EDIT_SHIPPING_ADDRESS_FAILED,
 
 } from "../constants/profileConst";
+
+
 import axios from 'axios';
 
 
@@ -87,13 +89,24 @@ export const editMobileNumber = (mobNumber) => (dispatch) => {
 
 
 
-export const addNewShippingAddress = (address) => (dispatch) => {
+export const addNewShippingAddress = (address) => async (dispatch, getState) => {
     try {
 
         dispatch({
             type: ADD_NEW_SHIPPING_ADDRESS,
             payload: address
         })
+
+        const uid = getState().firebase.auth.uid
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+
+        await axios.post(`/api/profile/addshipping/${uid}`, address, config)
+        console.log(address)
 
         // localStorage.setItem('userInfo', JSON.stringify(data))
 
