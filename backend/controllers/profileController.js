@@ -55,32 +55,88 @@ const getProfileByUid = asyncHandler(async (req, res) => {
   return res.json(profile)
 })
 
-//@desc update sipping addres for specific User
+//@desc add new sipping addres for specific User
 //@route POST /api/profile/addshipping/:uid
 //@acess Private
 const addShippingAddress = asyncHandler(async (req, res) => {
-  const profile = await Profile.findOneAndUpdate({ uid: req.params.uid },
-    { $push: {shippingAddress: req.body}}
-    )
+  const addOrUpdateShipping = await Profile.findOneAndUpdate(
+    { uid: req.params.uid },
+    { $push: { shippingAddress: req.body } },
+    { upsert: true }
+  )
 
-  // if (profile) {
-  //   profile.shippingAddress = profile.shippingAddress.push(
-  //     req.body.shippingAddress
-  //   )
-
-  //   const updatedProfile = await profile.save()
-
-  //   res.json({
-  //     updatedProfile,
-  //   })
-  // } else {
-  //   res.status(404)
-  //   throw new Error('Profile with UID Not Found')
-  // }
+  if (addOrUpdateShipping) {
+    res.status(201).json(addOrUpdateShipping)
+  } else {
+    res.status(400)
+    throw new Error('Invalid User Data')
+  }
 })
 
-const updateProfile = asyncHandler(async (req, res) => {
-  const profile = await Profile.findOne({ uid: req.params.uid })
+//@desc update name of an exisiting user
+//@route POST /api/profile/updatename/:uid
+//@acess Private
+const updateName = asyncHandler(async (req, res) => {
+  const { name } = req.params.body
+
+  const profile = await Profile.findOneAndUpdate(
+    { uid: req.params.uid },
+    { name },
+    { upsert: true }
+  )
+
+  if (profile) {
+    res.status(201).json(addOrUpdateShipping)
+  } else {
+    res.status(400)
+    throw new Error('Invalid User Data')
+  }
 })
 
-export { getProfileByUid, createProfile, addShippingAddress }
+//@desc update name of an exisiting user
+//@route POST /api/profile/updatename/:uid
+//@acess Private
+const updateName = asyncHandler(async (req, res) => {
+  const { name } = req.params.body
+
+  const profile = await Profile.findOneAndUpdate(
+    { uid: req.params.uid },
+    { name },
+    { upsert: true }
+  )
+
+  if (profile) {
+    res.status(201).json(updateName)
+  } else {
+    res.status(400)
+    throw new Error('Invalid User Data')
+  }
+})
+
+//@desc update name of an exisiting user
+//@route POST /api/profile/updatephone/:uid
+//@acess Private
+const updatePhoneNumber = asyncHandler(async (req, res) => {
+  const { phoneNumber } = req.params.body
+
+  const profile = await Profile.findOneAndUpdate(
+    { uid: req.params.uid },
+    { phoneNumber },
+    { upsert: true }
+  )
+
+  if (profile) {
+    res.status(201).json(phoneNumber)
+  } else {
+    res.status(400)
+    throw new Error('Invalid User Data')
+  }
+})
+
+export {
+  getProfileByUid,
+  createProfile,
+  addShippingAddress,
+  updateName,
+  updatePhoneNumber,
+}
