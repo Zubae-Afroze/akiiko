@@ -10,7 +10,6 @@ export const googleAuth = (user) => {
       .auth()
       .signInWithPopup(provider)
       .then((res) => {
-        console.log(res)
         const name = res.user.displayName
         const email = res.user.email
         const phoneNumber = res.user.phoneNumber
@@ -35,7 +34,7 @@ export const googleAuth = (user) => {
 
         axios
           .post('/api/profile', userObject, config)
-          .then(console.log('success'))
+          .then(console.log('Go see the website'))
           .catch((e) => {
             console.log(e)
           })
@@ -66,8 +65,4 @@ export const firebaseLogout = () => {
         dispatch({ type: 'LOGOUT_SUCCESS' })
       })
   }
-}
-
-export const getProfileByUID = () => {
-  
 }

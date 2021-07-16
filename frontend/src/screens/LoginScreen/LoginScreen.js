@@ -9,7 +9,7 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 import Message from '../../components/Message/Message'
 
-import { googleAuth } from '../../actions/actionsAuth'
+import { googleAuth } from '../../actions/actionAuth'
 
 import './LoginScreen.css'
 

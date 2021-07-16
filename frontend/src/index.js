@@ -27,7 +27,7 @@ firebase.initializeApp(firebaseConfig)
 firebase.analytics()
 
 const profileConfig = {
-  userProfile: 'users',
+  userProfile: null,
 }
 
 const rrfProps = {
