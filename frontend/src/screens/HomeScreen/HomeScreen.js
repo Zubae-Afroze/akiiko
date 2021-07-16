@@ -126,7 +126,7 @@ class HomeScreen extends React.Component {
                 <Carousel.Item interval={4000}>
                   <img
                     className='d-block w-100'
-                    src={'/images/carousel_images/carousel_4.png'}
+                    src={'/images/carousel_images/carousel_4.jpg'}
                     alt='Fourth slide'
                   />
                 </Carousel.Item>
