@@ -75,17 +75,17 @@ export default function ShippingForm({ setFormLevel }) {
 
 function ReturnAddressForm({profileDetails,addNewAddressSelected,handelAddNewAddressSelect,setFormLevel}){
 
-  profileDetails.shippingAddress = [
-    {
-      firstname: 'A1 Sam',
-      lastname: 'Surya',
-      adress: 'No: 121, Gfswhvaq auksdkjad',
-      mobile: '234567',
-      city: 'Chennai',
-      state: 'Tamil nadu',
-      zipCode: '600118'
-    }
-  ];
+  // profileDetails.shippingAddress = [
+  //   {
+  //     firstname: 'A1 Sam',
+  //     lastname: 'Surya',
+  //     adress: 'No: 121, Gfswhvaq auksdkjad',
+  //     mobile: '234567',
+  //     city: 'Chennai',
+  //     state: 'Tamil nadu',
+  //     zipCode: '600118'
+  //   }
+  // ];
 
   if(profileDetails.shippingAddress.length === 0){
     return <NewAddressForm setFormLevel={setFormLevel}/>
@@ -100,26 +100,26 @@ function ReturnAddressForm({profileDetails,addNewAddressSelected,handelAddNewAdd
 
 
 function ExistingAddressForm({profileDetails,setFormLevel,handelAddNewAddressSelect}){
-  profileDetails.shippingAddress = [
-    {
-      firstname: 'A1 Sam',
-      lastname: 'Surya',
-      adress: 'No: 121, Gfswhvaq auksdkjad',
-      mobile: '234567',
-      city: 'Chennai',
-      state: 'Tamil nadu',
-      zipCode: '600118'
-    },
-    {
-      firstname: 'A2 Sam',
-      lastname: 'Surya',
-      adress: 'No: 121, Gfswhvaq auksdkjad',
-      mobile: '234567',
-      city: 'Chennai',
-      state: 'Tamil nadu',
-      zipCode: '600118'
-    }
-  ];
+  // profileDetails.shippingAddress = [
+  //   {
+  //     firstname: 'A1 Sam',
+  //     lastname: 'Surya',
+  //     adress: 'No: 121, Gfswhvaq auksdkjad',
+  //     mobile: '234567',
+  //     city: 'Chennai',
+  //     state: 'Tamil nadu',
+  //     zipCode: '600118'
+  //   },
+  //   {
+  //     firstname: 'A2 Sam',
+  //     lastname: 'Surya',
+  //     adress: 'No: 121, Gfswhvaq auksdkjad',
+  //     mobile: '234567',
+  //     city: 'Chennai',
+  //     state: 'Tamil nadu',
+  //     zipCode: '600118'
+  //   }
+  // ];
   return (
     <Container fluid className='p-0 m-0 '>
       

@@ -51,22 +51,24 @@ const getProfileByUid = asyncHandler(async (req, res) => {
 //@route POST /api/profile/addshipping/:uid
 //@acess Private
 const addShippingAddress = asyncHandler(async (req, res) => {
-  const profile = await Profile.findOne({ uid: req.params.uid })
-
-  if (profile) {
-    profile.shippingAddress = profile.shippingAddress.push(
-      req.body.shippingAddress
+  const profile = await Profile.updateOne({ uid: req.params.uid },
+    { $push: {shippingAddress: req.body.shippingAddress}}
     )
 
-    const updatedProfile = await profile.save()
+  // if (profile) {
+  //   profile.shippingAddress = profile.shippingAddress.push(
+  //     req.body.shippingAddress
+  //   )
 
-    res.json({
-      updatedProfile,
-    })
-  } else {
-    res.status(404)
-    throw new Error('Profile with UID Not Found')
-  }
+  //   const updatedProfile = await profile.save()
+
+  //   res.json({
+  //     updatedProfile,
+  //   })
+  // } else {
+  //   res.status(404)
+  //   throw new Error('Profile with UID Not Found')
+  // }
 })
 
 const updateProfile = asyncHandler(async (req, res) => {
