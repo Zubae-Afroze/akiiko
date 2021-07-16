@@ -1,18 +1,20 @@
 import React ,{useState} from 'react'
+import { useDispatch } from 'react-redux'
 import { Container, Form , Row, Col, Button  } from 'react-bootstrap';
 import { motion } from 'framer-motion'
+import { addNewShippingAddress,editShippingAddress } from '../../actions/actionProfile';
 import './profileComponent.css';
 
 
-const updateAddressObject = {
-    firstname : '',
-    lastname : '',
-    address : '',
-    mobile : '',
-    city : '',
-    state : '',
-    zipCode : '',
-}
+// const updateAddressObject = {
+//     firstname : '',
+//     lastname : '',
+//     address : '',
+//     mobile : '',
+//     city : '',
+//     state : '',
+//     zipCode : '',
+// }
 
 const containerVariants = {
     hidden: {
@@ -26,7 +28,7 @@ const containerVariants = {
     },
   }
 
-export default function AddressComp({isAddNewAddress=false}) {
+export default function AddressComp({isAddNewAddress=false, shippingAddress, index}) {
 
     console.log('AddressComp Rendered');
 
@@ -44,9 +46,11 @@ export default function AddressComp({isAddNewAddress=false}) {
 
     const [ errorFields, setErrorFields ] = useState([false,false,false,false,false,false,false]);
 
+    const dispatch = useDispatch();
+
     function handelInputeChange(event){
-        setUpdateAddressObject( {[event.target.name]: event.target.value} )
-        updateAddressObject[event.target.name] = event.target.value;
+        setUpdateAddressObject( prevState => ({...prevState, [event.target.name]: event.target.value}) )
+        // updateAddressObject[event.target.name] = event.target.value;
     }
 
     function onSumbitForm(e){
@@ -86,6 +90,14 @@ export default function AddressComp({isAddNewAddress=false}) {
 
         if(isValidated){
             setEditAddressFieldON(false)
+            
+            if(isAddNewAddress){
+                console.log('new Address Added')
+                dispatch(addNewShippingAddress(updateAddressObject))
+            }else{
+                console.log('Existing Address Updated')
+                dispatch(editShippingAddress(index,updateAddressObject))
+            }
         }else{
             setErrorFields(updatedList)
         }
@@ -135,8 +147,9 @@ export default function AddressComp({isAddNewAddress=false}) {
                        
                     :   <Row>
                             <Col xs={8}>
-                                <h6>Suhail Kumar</h6>
-                                <h6>5c, Rams Villanvfsb </h6>
+                                <h6>{shippingAddress.firstname+ ' ' + shippingAddress.lastname}</h6>
+                                <h6>{shippingAddress.address}</h6>
+                                <h6>{shippingAddress.mobile}</h6>
                             </Col>
                             <Col xs={4}>
                                 <h6 className='tabs f-f-m' 

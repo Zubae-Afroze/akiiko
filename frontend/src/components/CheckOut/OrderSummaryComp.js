@@ -16,6 +16,7 @@ export default function OrderSummaryComp() {
 
   console.log('COD Order: ' + cashOnDeliveryContext.value);
 
+  
   return (
     <Container
       fluid
@@ -47,8 +48,13 @@ export default function OrderSummaryComp() {
           <h6>{cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}</h6>
         </div>
         <div className='f-f d-flex justify-content-between'>
-          <h6>Tax</h6>
-          <h6>--</h6>
+          <h6>Additional Pay</h6>
+          {
+            cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) > 500 ?
+            <h6>--</h6>
+            : <h6>50</h6>
+          }
+          {/* <h6>--</h6> */}
         </div>
         <div className='f-f d-flex justify-content-between'>
           <h6>Shipping</h6>
@@ -65,9 +71,12 @@ export default function OrderSummaryComp() {
           <h6>Total</h6>
           <h6>{
             cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) +
-            (cashOnDeliveryContext.value
-            ? 50
-            : 0)
+            (cashOnDeliveryContext.value ? 50 : 0) +
+            (
+              cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) > 500  
+              ? 0
+              : 50
+            )
           }</h6>
         </div>
         <div style={{height:'65px'}} />

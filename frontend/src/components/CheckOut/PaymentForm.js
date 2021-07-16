@@ -225,7 +225,7 @@ function MounthYearCvcComp({paymentObject,handelInputeChange,errorFields}){
       <Form.Control 
         size='md' 
         type='text' 
-        placeholder='MM/ YY/ CVC' 
+        placeholder='MM/YYYY' 
         style={{ padding: 15, fontSize: 16 }} 
         name='monthYearCVC'
         value={paymentObject.monthYearCVC}
@@ -235,7 +235,7 @@ function MounthYearCvcComp({paymentObject,handelInputeChange,errorFields}){
       <Form.Control 
         size='lg' 
         type='text' 
-        placeholder='MM/ YY/ CVC' 
+        placeholder='MM/YYYY' 
         style={{ padding: 25, fontSize: 16 }} 
         name='monthYearCVC'
         value={paymentObject.monthYearCVC}
