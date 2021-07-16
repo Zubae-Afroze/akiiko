@@ -8,6 +8,9 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 
+import MyComponent from 'react-fullpage-custom-loader'
+import SpinnerIcon from './components/Spinner/SpinnerIcon'
+
 import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -27,7 +30,7 @@ firebase.initializeApp(firebaseConfig)
 firebase.analytics()
 
 const profileConfig = {
-  userProfile: 'users',
+  userProfile: null,
 }
 
 const rrfProps = {
@@ -38,7 +41,16 @@ const rrfProps = {
 
 function AuthLoaded({ children }) {
   const auth = useSelector((state) => state.firebase.auth)
-  if (!isLoaded(auth)) return <div>Auth Loading...</div>
+  if (!isLoaded(auth))
+    return (
+      <MyComponent
+        sentences={[]}
+        wrapperBackgroundColor={'rgba(255,255,255)'}
+        color={'#6e4e37'}
+        loaderType={'ball-spin-clockwise'}
+        customLoader={<SpinnerIcon />}
+      />
+    )
   return children
 }
 

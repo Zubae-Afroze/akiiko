@@ -18,7 +18,7 @@ import MobileNav from '../MobileNav/MobileNav'
 import { addToCart, removeFromCart } from '../../actions/actionCart'
 //import { logout } from '../../actions/actionUsers'
 
-import { firebaseLogout } from '../../actions/actionsAuth'
+import { firebaseLogout } from '../../actions/actionAuth'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -177,7 +177,9 @@ const Header = () => {
                       <img
                         className='image-of-profile'
                         src={
-                          auth ? auth.photoURL : '/images/font_images/user.svg'
+                          auth.photoURL
+                            ? auth.photoURL
+                            : '/images/font_images/user.svg'
                         }
                         alt='user_icon'
                       />
