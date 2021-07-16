@@ -1,16 +1,46 @@
-import React  from 'react'
+import React , {useEffect , useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col } from 'react-bootstrap'
 import CheckOutComp from '../../components/CheckOut/CheckOutComp'
 import OrderSummaryComp from '../../components/CheckOut/OrderSummaryComp'
 import Menubar from '../../components/Menubar/Menubar'
 import MobileNav from '../../components/MobileNav/MobileNav'
-import { paymentObject } from '../../components/CheckOut/FormObject'
+import { paymentObject,shippingObject,isAddNewAddressSelected } from '../../components/CheckOut/FormObject'
+import { getUserProfileByUID } from '../../actions/actionProfile';
+
 
 export const CashOnDeliveryContext = React.createContext();
 
 export default function CheckOut() {
 
-  const [cashOnDeliveryState, setCashOnDeliveryState ] = React.useState(paymentObject.isCOD);
+  
+
+  const [cashOnDeliveryState, setCashOnDeliveryState ] = useState(paymentObject.isCOD);
+
+  const dispatch = useDispatch()
+
+  const uid = useSelector((state) => state.firebase.auth.uid)
+
+  useEffect(() => {
+    dispatch(getUserProfileByUID(uid));
+    console.log(uid);
+    shippingObject.firstname = '';
+    shippingObject.lastname = '';
+    shippingObject.adress = '';
+    shippingObject.mobile = '';
+    shippingObject.city = '';
+    shippingObject.state = '';
+    shippingObject.zipCode = '';
+
+    paymentObject.cardNumber= '';
+    paymentObject.isCheckMeOut= false;
+    paymentObject.monthYearCVC= '';
+    paymentObject.isNetbankingUPI= false;
+    paymentObject.isCOD= false;
+
+    isAddNewAddressSelected.value = false;
+    
+  }, [dispatch,uid])
 
   function toggelCODstate(codState,type){
     if(type==='text') {
@@ -20,6 +50,7 @@ export default function CheckOut() {
     }
     // console.log('-------------------');
   }
+
 
   return (
     <>

@@ -1,10 +1,11 @@
 import React , { useState } from 'react'
+import { useSelector } from 'react-redux'
 import {Container, Row, Col, Form, Button } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import './style.css'
 import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
-import { shippingObject } from './FormObject'
+import { shippingObject, isAddNewAddressSelected } from './FormObject'
 
 const containerVariants = {
   hidden: {
@@ -18,35 +19,120 @@ const containerVariants = {
   },
 }
 
-export default function ShippingForm({ setFormLevel,showToast }) {
+export default function ShippingForm({ setFormLevel }) {
 
+  const [addNewAddressSelected, setAddNewAddressSelected] = useState(isAddNewAddressSelected.value);
+
+  const profileDetails = useSelector((state) => state.profile.userProfile)
+
+  // profileDetails.shippingAddress = [
+  //   {
+  //     firstname: 'A1 Sam',
+  //     lastname: 'Surya',
+  //     adress: 'No: 121, Gfswhvaq auksdkjad',
+  //     mobile: '234567',
+  //     city: 'Chennai',
+  //     state: 'Tamil nadu',
+  //     zipCode: '600118'
+  //   }
+  // ];
+
+  function handelAddNewAddressSelect(){
+    console.log(isAddNewAddressSelected)
+    setAddNewAddressSelected(prevState => {
+      isAddNewAddressSelected.value = !prevState
+      return !prevState
+    });
+  }
   
   return (
-    <motion.div variants={containerVariants} initial='hidden' animate='visible'>
-      <h6
-        style={{ color: '#4A4A4A', fontWeight: 500, marginBottom: '20px' }}
-        className='f-f-m'
-      >
-        Where this order going ?
-      </h6>
+    <>
+      {
+        
+        profileDetails &&
+        <motion.div variants={containerVariants} initial='hidden' animate='visible'>
+          <h6
+            style={{ color: '#4A4A4A', fontWeight: 500, marginBottom: '20px' }}
+            className='f-f-m'
+          >
+            Where this order going ?
+          </h6>
 
-      <NewAddressForm setFormLevel={setFormLevel}/>
-      
-      {/* <ExistingAddressForm setFormLevel={setFormLevel}/> */}
+          {/* <NewAddressForm setFormLevel={setFormLevel}/> */}
 
-    </motion.div>
+          <ReturnAddressForm profileDetails={profileDetails} addNewAddressSelected={addNewAddressSelected} handelAddNewAddressSelect={handelAddNewAddressSelect} setFormLevel={setFormLevel}/>
+          
+          {/* <ExistingAddressForm setFormLevel={setFormLevel}/> */}
+
+        </motion.div>
+      }
+
+    </>
+    
   )
 }
 
 
-function ExistingAddressForm({setFormLevel}){
+function ReturnAddressForm({profileDetails,addNewAddressSelected,handelAddNewAddressSelect,setFormLevel}){
+
+  profileDetails.shippingAddress = [
+    {
+      firstname: 'A1 Sam',
+      lastname: 'Surya',
+      adress: 'No: 121, Gfswhvaq auksdkjad',
+      mobile: '234567',
+      city: 'Chennai',
+      state: 'Tamil nadu',
+      zipCode: '600118'
+    }
+  ];
+
+  if(profileDetails.shippingAddress.length === 0){
+    return <NewAddressForm setFormLevel={setFormLevel}/>
+  }
+  if(addNewAddressSelected){
+    return <NewAddressForm setFormLevel={setFormLevel}/>
+  }
+  if(profileDetails.shippingAddress.length > 0 && !addNewAddressSelected){
+    return <ExistingAddressForm profileDetails={profileDetails} setFormLevel={setFormLevel} handelAddNewAddressSelect={handelAddNewAddressSelect} />
+  }
+}
+
+
+function ExistingAddressForm({profileDetails,setFormLevel,handelAddNewAddressSelect}){
+  profileDetails.shippingAddress = [
+    {
+      firstname: 'A1 Sam',
+      lastname: 'Surya',
+      adress: 'No: 121, Gfswhvaq auksdkjad',
+      mobile: '234567',
+      city: 'Chennai',
+      state: 'Tamil nadu',
+      zipCode: '600118'
+    },
+    {
+      firstname: 'A2 Sam',
+      lastname: 'Surya',
+      adress: 'No: 121, Gfswhvaq auksdkjad',
+      mobile: '234567',
+      city: 'Chennai',
+      state: 'Tamil nadu',
+      zipCode: '600118'
+    }
+  ];
   return (
     <Container fluid className='p-0 m-0 '>
       
       <Row>
-
-        <AddressComponent/>
-       
+        {
+          profileDetails.shippingAddress.map((object, index) => {
+              return (
+                  <AddressComponent setFormLevel={setFormLevel} shippingAddress={object} index={index}/>
+              );
+          })
+        }
+        {/* <AddressComponent setFormLevel={setFormLevel}/> */}
+      
         {/* <AddressComponentNew/> */}
 
         <Col xs={12} md={6}>
@@ -58,7 +144,7 @@ function ExistingAddressForm({setFormLevel}){
             className='existing-address-style add-new-address-style p-md-5'
           >
             <div className='d-flex justify-content-center'>
-              <div id='child'>
+              <div id='child' onClick={()=> handelAddNewAddressSelect()}>
                 <h1 className='d-flex justify-content-center'>+</h1>
                 <h6>Add Address</h6>
               </div>
@@ -121,22 +207,34 @@ function ExLargeScreenButton({setFormLevel}){
 
 
 
-function AddressComponent(){
+function AddressComponent({setFormLevel,shippingAddress}){
   return (
     <Col xs={12} md={6}>
       <div style={{
           borderStyle: 'solid',
           borderColor: '#cccccc', //#E3DED5
           borderWidth: '1px',
+          cursor:'pointer'
         }}
         className='existing-address-style p-md-4 '
+        onClick={()=>{
+          setFormLevel(stepperLevel.PAYMENT)
+          shippingObject.firstname = shippingAddress.firstname;
+          shippingObject.lastname = shippingAddress.lastname;
+          shippingObject.adress = shippingAddress.adress;
+          shippingObject.mobile = shippingAddress.mobile;
+          shippingObject.city = shippingAddress.city;
+          shippingObject.zipcode = shippingAddress.zipCode;
+          shippingObject.state = shippingAddress.state;
+        }}
       >
-        <h6>{shippingObject.firstname + ' ' + shippingObject.lastname}</h6>
-        <h6>{shippingObject.adress}</h6>
-        <h6>{shippingObject.city + ' ' + shippingObject.zipCode}</h6>
-        <h6>{shippingObject.state}</h6>
-        <div style={{height:'5px'}}/>
-        <span style={{color:'#6B584C'}}>Remove</span>
+        <h6>{shippingAddress.firstname + ' ' + shippingAddress.lastname}</h6>
+        <h6>{shippingAddress.adress}</h6>
+        <h6>{shippingAddress.mobile}</h6>
+        <h6>{shippingAddress.city + ' ' + shippingAddress.zipCode}</h6>
+        <h6>{shippingAddress.state}</h6>
+        {/* <div style={{height:'2px'}}/> */}
+        {/* <span style={{color:'#6B584C'}}>Remove</span> */}
       </div>
     </Col>
   );
@@ -250,7 +348,7 @@ function NewAddressForm({setFormLevel}){
         updatedList[2] = true;
         isValidated = false;
       }
-      if(shippingObject.aptFloorSuit === null || shippingObject.aptFloorSuit.trim() === ''){
+      if(shippingObject.mobile === null || shippingObject.mobile.trim() === ''){
         updatedList[3] = true;
         isValidated = false;
       }
@@ -413,18 +511,18 @@ function AptFloorSuiteComp({errorFields,handelInputeChange}){
       <Form.Control
         size='md'
         type='text'
-        placeholder='Apt / Floor / Suite'
-        name='aptFloorSuit'
-        value={shippingObject.aptFloorSuit}
+        placeholder='Mobile Number'
+        name='mobile'
+        value={shippingObject.mobile}
         onChange={handelInputeChange}
         className={'d-block d-sm-none ' + (errorFields[3] ? 'error-form-style' : '')}
       />
       <Form.Control
         size='lg'
         type='text'
-        placeholder='Apt / Floor / Suite'
-        name='aptFloorSuit'
-        value={shippingObject.aptFloorSuit}
+        placeholder='Mobile Number'
+        name='mobile'
+        value={shippingObject.mobile}
         onChange={handelInputeChange}
         className={'d-none d-sm-block ' + (errorFields[3] ? 'error-form-style' : '')}
         style={{ padding: 25, fontSize: 16 }}

@@ -100,7 +100,8 @@ function AddressComp(){
         }}
         className='p-0 m-0 f-f'
       >
-        <div style={{display:'inlineBlock' }}>{shippingObject.aptFloorSuit + ' - ' + shippingObject.adress}</div>
+        <div style={{display:'inlineBlock' }}>{shippingObject.adress}</div>
+        <div style={{display:'inlineBlock' }}>{shippingObject.mobile}</div>
       </Container>
     </Col>
   );

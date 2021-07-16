@@ -1,6 +1,6 @@
 export const userProfileObject = {
     firstName: '',
-    lastname: '',
+    lastName: '',
     mobile: '',
     email: '',
     

@@ -21,6 +21,10 @@ import {
   orderListMyReducer,
 } from './reducers/reducersOrder'
 
+import {
+  profileReducer
+} from './reducers/reducersProfile'
+
 import { googleAuthReducer } from './reducers/reducersAuth'
 
 import { firebaseReducer, getFirebase } from 'react-redux-firebase'
@@ -33,6 +37,7 @@ const reducer = combineReducers({
   userRegister: userRegisterReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
+  profile: profileReducer,
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,

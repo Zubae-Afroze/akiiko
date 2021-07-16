@@ -28,6 +28,11 @@
     background-color: transparent;
 }
 
+.edit-input-field-error{
+    border: 2px solid #3e3331;
+    border-radius: 5px;
+}
+
 .form-control.error-form-style{
     background-color: transparent;
     border-color: #3e3331;

@@ -1,4 +1,5 @@
-import React from 'react'
+import React , {useEffect , useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col,} from 'react-bootstrap';
 import ShippingComp from '../../components/ProfileComponent/ShippingComp';
 import YourOrdresComp from '../../components/ProfileComponent/YourOrdersComp';
@@ -6,6 +7,7 @@ import { AnimatePresence } from 'framer-motion'
 import './style.css'
 import '../Chekout/style.css'
 import ProfileComp from '../../components/ProfileComponent/ProfileComp';
+import { getUserProfileByUID } from '../../actions/actionProfile';
 
 
 export const PROFILE_COMP = 'profile';
@@ -15,7 +17,17 @@ const YOUR_ADDRESS_COMP = 'address';
 
 export default function NewProfileScreen() {
 
-  const [profileScreenDisplayComp, setProfileScreenDisplayComp] = React.useState(PROFILE_COMP)
+  const dispatch = useDispatch()
+
+  const uid = useSelector((state) => state.firebase.auth.uid)
+
+  const [profileScreenDisplayComp, setProfileScreenDisplayComp] = useState(PROFILE_COMP)
+
+  useEffect(() => {
+    dispatch(getUserProfileByUID(uid));
+    console.log(uid);
+  }, [dispatch,uid])
+
 
     return (
         <div style={{backgroundColor:'#e2dcd5'}}>
@@ -28,9 +40,9 @@ export default function NewProfileScreen() {
                             <div className='px-lg-5 profile-tabs'>
                                 <ul style={{listStyle:'none'}}>
                                     <div className='d-block d-sm-block d-md-none'> <br/> </div>
-                                    <li className='f-f-m'>Wlcome Back</li>
+                                    <li className='f-f'>Wlcome Back</li>
                                     <li
-                                        className='tabs'
+                                        className={'tabs ' + (profileScreenDisplayComp === PROFILE_COMP ? 'f-f-dim-b' : '')}
                                         onClick={()=>{setProfileScreenDisplayComp(PROFILE_COMP)}}
                                     >
                                         Suhil Kumar
@@ -38,14 +50,14 @@ export default function NewProfileScreen() {
                                     <br/>
                                     <hr/>
                                     <li 
-                                        className='tabs'
+                                        className={'tabs ' + (profileScreenDisplayComp === SHIPPING_COMP ? 'f-f-dim-b' : '')}
                                         onClick={()=>{setProfileScreenDisplayComp(SHIPPING_COMP)}}
                                     >
                                         Shipping
                                     </li>
                                     <hr/>
                                     <li 
-                                        className='tabs'
+                                        className={'tabs ' + (profileScreenDisplayComp === YOUR_ADDRESS_COMP ? 'f-f-dim-b' : '')}
                                         onClick={()=>{setProfileScreenDisplayComp(YOUR_ADDRESS_COMP)}}
                                     >
                                         Your Orders

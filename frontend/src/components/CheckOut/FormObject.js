@@ -3,7 +3,7 @@ const shippingObject = {
     firstname: 'Sam',
     lastname: 'Surya',
     adress: 'No: 121, Gfswhvaq auksdkjad',
-    aptFloorSuit: 'ejhwjr',
+    mobile: '234567',
     city: 'Chennai',
     state: 'Tamil nadu',
     zipCode: '600118'
@@ -24,4 +24,8 @@ const toastObject = {
     isSuccess: false,
 }
 
-export { shippingObject, paymentObject, toastObject }
+const isAddNewAddressSelected = {
+    value: false
+};
+
+export { shippingObject, paymentObject, toastObject, isAddNewAddressSelected }

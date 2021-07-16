@@ -38,13 +38,14 @@
 .add-new-address-style{
   margin-top: 10px;
   margin-bottom: 10px;
-  height: 190px;
+  height: 185px;
 }
 
 .add-new-address-style #child{
-  margin-top: 8px;
-  
+  margin-top: 1px;
+  cursor: pointer;
 }
+
 
 .form-check-label{
   padding-top: 2px;
