@@ -12,7 +12,9 @@ const RegisterScreen = () => {
   const dispatch = useDispatch()
 
   const userRegister = useSelector((state) => state.userRegister)
-  const { loading, error, userInfo } = userRegister
+  const { loading, error } = userRegister
+
+  const userLogin = useSelector((state) => state.firebase.auth)
 
   const location = useLocation()
   const history = useHistory()
@@ -28,10 +30,10 @@ const RegisterScreen = () => {
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
-    if (userInfo) {
+    if (userLogin.uid) {
       history.push(redirect)
     }
-  }, [history, userInfo, redirect])
+  }, [history, userLogin, redirect])
 
   const submitHandler = (e) => {
     e.preventDefault()
