@@ -183,13 +183,13 @@ const Header = () => {
                       />
                     }
                   >
-                    <LinkContainer to='/profile'>
+                    <LinkContainer to='/newprofile'>
                       <NavDropdown.Item>
                         Hello, {auth.displayName}
                       </NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Divider />
-                    <LinkContainer to='/profile'>
+                    <LinkContainer to='/newprofile'>
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Item onClick={logouthandler}>

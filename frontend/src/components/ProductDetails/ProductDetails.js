@@ -5,7 +5,7 @@ import { Container, Row, Col, Dropdown, Carousel } from 'react-bootstrap'
 import { Link, useHistory, useParams } from 'react-router-dom'
 
 import { actionListProductDetails } from '../../actions/actionProductList'
-import { addToCart, removeFromCart } from '../../actions/actionCart'
+import { addToCart } from '../../actions/actionCart'
 
 import ReactImageMagnify from 'react-image-magnify'
 
@@ -50,10 +50,6 @@ const ProductDetails = () => {
   //const { cartItems } = cartList
 
   const [modalShow, setModalShow] = useState(false)
-
-  const removeFromCartHandler = (id) => {
-    dispatch(removeFromCart(id))
-  }
 
   const checkoutHandler = () => {
     history.push('/login?redirect=shipping')
@@ -394,8 +390,6 @@ const ProductDetails = () => {
             <CartModal
               show={modalShow}
               onHide={() => setModalShow(false)}
-              removeFromCartHandler={removeFromCartHandler}
-              dispatch={dispatch}
               setModalShow={setModalShow}
               checkoutHandler={checkoutHandler}
             />
