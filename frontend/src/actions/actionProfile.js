@@ -48,7 +48,7 @@ export const getUserProfileByUID = (UID) => async (dispatch) => {
     }
 }
 
-export const editUserName = (newName) => (dispatch) => {
+export const editUserName = (newName) => async (dispatch,getState) => {
     try {
 
         dispatch({
@@ -56,7 +56,16 @@ export const editUserName = (newName) => (dispatch) => {
             payload: newName
         })
 
-        // localStorage.setItem('userInfo', JSON.stringify(data))
+        const uid = getState().firebase.auth.uid
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+
+        console.log('New Name :'+ newName)
+        await axios.post(`/api/profile/updatename/${uid}`, newName, config)
 
     } catch (error) {
         dispatch({

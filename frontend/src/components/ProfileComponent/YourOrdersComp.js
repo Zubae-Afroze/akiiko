@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { Container, Row, Col,  } from 'react-bootstrap';
 import { motion } from 'framer-motion'
 import ProductRowComp, {ProductRowHeaderComp} from './productRowComp';
@@ -20,139 +21,76 @@ const containerVariants = {
 
 export default function YourOrdresComp() {
 
+    const orderDetails = useSelector((state) => state.orderDetails)
     
     return (
-        <motion.div variants={containerVariants} initial='hidden' animate='visible'>
-        <Container className='pe-lg-5 ps-lg-0 m-0 d-flex justify-content-center'>  
-            <Row>
-                <Col xs={12} className='d-block d-sm-none '>
-                    <div style={{height:'30px'}}></div>
-                </Col>
-                <Col xs={12}>
-                    <h6 className='f-f-m'>Your Orders</h6>
-                    <div style={{paddingBottom:'2px'}}></div>
-                </Col>
+        <>
+            {
+                orderDetails &&
 
-                <Col xs={12}>
-                    <hr style={{marginBottom:'0'}}/>
-                </Col>
-
-                <ProductRowHeaderComp/>
+                <motion.div variants={containerVariants} initial='hidden' animate='visible'>
+                <Container className='pe-lg-5 ps-lg-0 m-0 d-flex justify-content-center'>  
+                     <ProductsComp orderDetails={orderDetails}/>
+                </Container>
                 
-                <ProductRowComp/>
+                </motion.div>
 
-                <ProductRowComp/>
-
-                {/* <Col xs={3}>
-                    <h6>Email</h6>
-                </Col>
-                <Col xs={5}>
-                    <h6>sanjiv@gaiml.com</h6>
-                </Col>
-                <Col xs={4}>
-                    <h6 className='tabs f-f-m' style={{textAlign:'end', paddingRight:'13px'}}>Edit</h6>
-                </Col>
-                <Col xs={12}>
-                    <hr style={{marginTop:'3px'}}/>   
-                </Col>
-                <Col xs={12}>
-                    <div style={{height:'55px'}}></div>
-                </Col>
-
-                <Col xs={12}>
-                    <h6 className='f-f-m'>Shipping Address</h6>   
-                </Col>
-                <Col xs={12}>
-                    <Container
-                        style={{
-                            padding: '10px',
-                            paddingBottom: '5px',
-                            borderStyle: 'solid',
-                            borderColor: '#cbc6bf',
-                            borderWidth: '1.8px',
-                            marginTop: '10px',
-                            marginBottom: '10px',
-                            width: '100%',   
-                        }}
-                    >
-                        <Row>
-                            <Col xs={8}>
-                                <h6>Suhail Kumar</h6>
-                                <h6>5c, Rams Villanvfsb </h6>
-                            </Col>
-                            <Col xs={4}>
-                                <h6 className='tabs f-f-m' 
-                                    style={{textAlign:'end', paddingTop: '18px'}}
-                                >
-                                    Edit
-                                </h6>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-
-                <Col xs={12}>
-                    <Container
-                        style={{
-                            padding: '10px',
-                            paddingBottom: '5px',
-                            borderStyle: 'solid',
-                            borderColor: '#cbc6bf',
-                            borderWidth: '1.8px',
-                            marginBottom: '10px',
-                            width: '100%',   
-                        }}
-                    >
-                        <Row>
-                            <Col xs={8}>
-                                <h6>Kumar Suhail</h6>
-                                <h6>7c, Villaims KnockL </h6>
-                            </Col>
-                            <Col xs={4}>
-                                <h6 className='tabs f-f-m' 
-                                    style={{textAlign:'end', paddingTop: '18px'}}
-                                    // onClick={() => setModalShow(true)}
-                                >
-                                    Edit
-                                </h6>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col>
-                <Col xs={12}>
-                    <div style={{height:'40px'}}></div>
-                </Col>
-
-                <Col xs={12}>
-                    <h6 className='f-f-m'>Your Saved Card</h6>   
-                </Col>
-                <Col xs={12}>
-                    <Container
-                        style={{
-                            padding: '10px',
-                            paddingBottom: '5px',
-                            borderStyle: 'solid',
-                            borderColor: '#cbc6bf',
-                            borderWidth: '1.8px',
-                            marginBottom: '10px',
-                            width: '100%',   
-                        }}
-                    >
-                        <Row>
-                            <Col xs={8}>
-                                <h6 style={{ paddingTop: '5px'}}>**** **** 6789</h6>
-                            </Col>
-                            <Col xs={4}>
-                                <h6 className='tabs f-f-m' style={{textAlign:'end', paddingTop: '5px'}}>REMOVE</h6>
-                            </Col>
-                        </Row>
-                    </Container>
-                </Col> */}
-
-            </Row>
-        </Container>
-        
-        </motion.div>
+            }
+        </>
 
     )
+}
+
+
+function ProductsComp({orderDetails}){
+
+    if(orderDetails.orderItems.length === 0){
+        return(
+            <Col xs={12}>
+                <div style={{
+                // borderTop: '1.7px solid #cbc6bf',
+                // borderBottomStyle: 'solid',
+                // borderBottomColor: '#cbc6bf',
+                // borderBottomWidth: '1.7px',
+                paddingTop:'12px',
+                paddingBottom:'18px',
+                cursor:'pointer',
+
+            }}>
+                <div style={{width:'100%'}} className='d-flex justify-content-center'>
+                    <h6>No Orders</h6>  
+                </div>
+            </div>
+            </Col>
+        )
+    }else{
+        return(
+            orderDetails.orderItems.map((object, index) => {
+                return (
+                    <Row>
+                        <Col xs={12} className='d-block d-sm-none '>
+                            <div style={{height:'30px'}}></div>
+                        </Col>
+                        <Col xs={12}>
+                            <h6 className='f-f-m'>Your Orders</h6>
+                            <div style={{paddingBottom:'2px'}}></div>
+                        </Col>
+
+                        <Col xs={12}>
+                            <hr style={{marginBottom:'0'}}/>
+                        </Col>
+
+                        <ProductRowHeaderComp/>
+                        
+                        <ProductsComp orderDetails={orderDetails} />
+
+                        {/* <ProductRowComp/>
+
+                        <ProductRowComp/> */}
+
+                    </Row>
+                );
+            })
+        )
+    }
 }

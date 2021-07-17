@@ -77,15 +77,15 @@
 
 .continue-shopping-style{
   background-color: transparent;
-  border: 1px solid #6b584c;
+  border: 1px solid #977257;
   padding: 9px;
   padding-left: 10px;
   padding-right: 10px;
-  color: #6b584c
+  color: #977257
 }
 
 .continue-shopping-style:hover{
-  background-color: #6b584c;
+  background-color: #977257;
   color: #FFFFFF;
   transition: all 300ms ease-out;
 }
@@ -145,4 +145,18 @@
 
   
   
+}
+
+
+@media (max-width: 320px) {
+  .remove-padding{
+    padding:0 !important;
+  }
+  .remove-margin{
+    margin:0 !important;
+  }
+  .remove-p-m{
+    padding:0 !important;
+    margin:0 !important;
+  }
 }

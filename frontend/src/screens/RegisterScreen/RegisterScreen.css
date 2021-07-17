@@ -1,3 +1,4 @@
+
 .register-card {
   height: 730px;
   width: 370px;
@@ -81,6 +82,15 @@
 .checkbox-label:checked {
   background-color: #707070;
 }
+
+.error-field-style{
+  background-color: transparent;
+  border-color: #3e3331 !important;
+  border-width: 2px !important;
+  border-radius: 5px;
+}
+
+
 @media only screen and (min-width: 1024px) {
   .register-page-tab {
     display: none;

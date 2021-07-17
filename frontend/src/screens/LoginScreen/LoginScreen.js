@@ -25,6 +25,8 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
+  const [ errorFields, setErrorFields ] = useState([false,false]);
+
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
@@ -33,10 +35,41 @@ const LoginScreen = () => {
     }
   }, [history, userInfo, redirect, userLogin.uid])
 
+  function validateEmailCharecters(value) 
+  {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(value).toLowerCase());
+  }
+
   const submitHandler = (e) => {
     e.preventDefault()
-    const creds = { email, password }
-    dispatch(emailAuth(creds))
+
+    let isValidated = true;
+    let updatedList = [false,false];
+
+    if(email === null || email.trim() === ''){
+      updatedList[0] = true;
+      isValidated = false;
+    }else{
+      updatedList[0] = !validateEmailCharecters(email);
+      isValidated = validateEmailCharecters(email);
+    }
+    if(password === null || password.trim() === ''){
+      updatedList[1] = true;
+      isValidated = false;
+    }
+    
+
+    if(isValidated){
+      // const creds = { email, password }
+      // dispatch(emailAuth(creds))
+      console.log('Signed In')
+
+    }else{
+      console.log('Fill The Form')
+      setErrorFields(updatedList)
+    }
+    
   }
 
   const googleHandler = () => {
@@ -84,6 +117,9 @@ const LoginScreen = () => {
                         </Row>
                     </Card.Body>
                 </Card> */}
+
+
+
         <div className='sign-in-web'>
           <div className='sign-in-title'>
             <Link to={'/'}>
@@ -109,13 +145,13 @@ const LoginScreen = () => {
               <input
                 type='text'
                 placeholder='Email Address'
-                className='email-ad'
+                className={'email-ad '+ (errorFields[0] ? 'error-field-style' : '')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <Link
                 to={redirect ? `/register?redirect=${redirect}` : '/register'}
-              >
+              > 
                 <div className='user-reg'>
                   <img
                     src='./images/home_screen_images/user-round.svg'
@@ -139,7 +175,7 @@ const LoginScreen = () => {
               <input
                 type='password'
                 placeholder='Password'
-                className='password-box'
+                className={'password-box '+ (errorFields[1] ? 'error-field-style' : '')}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -161,6 +197,11 @@ const LoginScreen = () => {
             </div>
           </Form>
         </div>
+
+
+
+
+        
         <div className='sign-in-tab'>
           <div className='sign-in-title'>
             <Link to={'/'}>
@@ -186,7 +227,7 @@ const LoginScreen = () => {
               <input
                 type='text'
                 placeholder='Email Address'
-                className='email-ad'
+                className={'email-ad '+ (errorFields[0] ? 'error-field-style' : '')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -204,7 +245,7 @@ const LoginScreen = () => {
               <input
                 type='text'
                 placeholder='Password'
-                className='password-box'
+                className={'password-box ' + (errorFields[1] ? 'error-field-style' : '')}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -238,6 +279,11 @@ const LoginScreen = () => {
             </div>
           </Form>
         </div>
+
+
+
+
+
         <div className='sign-in-mobile'>
           <div className='sign-in-mob-grp'>
             <div className='sign-in-title'>
@@ -271,14 +317,14 @@ const LoginScreen = () => {
               <input
                 type='text'
                 placeholder='Email Address'
-                className='email-ad'
+                className={'email-ad ' + (errorFields[0] ? 'error-field-style' : '')}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
                 type='text'
                 placeholder='Password'
-                className='password-box'
+                className={'password-box ' + (errorFields[1] ? 'error-field-style' : '')}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />

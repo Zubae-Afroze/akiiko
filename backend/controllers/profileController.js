@@ -78,40 +78,29 @@ const addShippingAddress = asyncHandler(async (req, res) => {
 //@acess Private
 const updateName = asyncHandler(async (req, res) => {
   const { name } = req.params.body
+  console.log('Update Name API called: '+ name)
+  Person.updateOne({uid: req.params.uid}, {
+    name: name, 
+  }, function(err, affected, resp) {
+    console.log(resp);
+  })
+  // const profile = await Profile.findOneAndUpdate(
+  //   { uid: req.params.uid },
+  //   { name },
+  //   { upsert: true }
+  // )
 
-  const profile = await Profile.findOneAndUpdate(
-    { uid: req.params.uid },
-    { name },
-    { upsert: true }
-  )
-
-  if (profile) {
-    res.status(201).json(addOrUpdateShipping)
-  } else {
-    res.status(400)
-    throw new Error('Invalid User Data')
-  }
+  // if (profile) {
+  //   res.status(201).json(addOrUpdateShipping)
+  // } else {
+  //   res.status(400)
+  //   throw new Error('Invalid User Data')
+  // }
+  // const doc = await Person.findOne({ uid: req.params.uid })
+  // doc.overwrite({ name: name });
+  // await doc.save();
 })
 
-//@desc update name of an exisiting user
-//@route POST /api/profile/updatename/:uid
-//@acess Private
-const updateName = asyncHandler(async (req, res) => {
-  const { name } = req.params.body
-
-  const profile = await Profile.findOneAndUpdate(
-    { uid: req.params.uid },
-    { name },
-    { upsert: true }
-  )
-
-  if (profile) {
-    res.status(201).json(updateName)
-  } else {
-    res.status(400)
-    throw new Error('Invalid User Data')
-  }
-})
 
 //@desc update name of an exisiting user
 //@route POST /api/profile/updatephone/:uid

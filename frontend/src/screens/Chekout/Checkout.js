@@ -7,7 +7,7 @@ import Menubar from '../../components/Menubar/Menubar'
 import MobileNav from '../../components/MobileNav/MobileNav'
 import { paymentObject,shippingObject,isAddNewAddressSelected } from '../../components/CheckOut/FormObject'
 import { getUserProfileByUID } from '../../actions/actionProfile';
-
+import './style.css'
 
 export const CashOnDeliveryContext = React.createContext();
 
@@ -22,6 +22,7 @@ export default function CheckOut() {
   const uid = useSelector((state) => state.firebase.auth.uid)
 
   useEffect(() => {
+    isAddNewAddressSelected.value = false;
     dispatch(getUserProfileByUID(uid));
     console.log(uid);
     shippingObject.firstname = '';
@@ -38,7 +39,6 @@ export default function CheckOut() {
     paymentObject.isNetbankingUPI= false;
     paymentObject.isCOD= false;
 
-    isAddNewAddressSelected.value = false;
     
   }, [dispatch,uid])
 
@@ -56,7 +56,7 @@ export default function CheckOut() {
     <>
     <Menubar />
     <MobileNav />
-    <Container fluid className='p-0 m-0 d-flex justify-content-center' style={{width:'100%' }}>
+    <Container fluid className='p-0 m-0 d-flex justify-content-center remove-margin' style={{width:'100%' }}>
     <div style={{ padding: 0, margin: 0, fontFamily: 'rutanLight' }}>
       <Container style={{ margin: 0, padding: 0 }}>
         <Container fluid className='p-0 m-0 d-flex justify-content-center'>
@@ -76,7 +76,7 @@ export default function CheckOut() {
                 </div>
               </Col>
 
-              <Col sm={12} md={12} lg={4} style={{ margin: 0, padding: 0 }}>
+              <Col sm={12} md={12} lg={4} style={{ margin: 0, padding: 0 }} className='small-size'>
                 <OrderSummaryComp />
               </Col>
             </Row>

@@ -27,6 +27,11 @@ const RegisterScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState('')
   const [passMessage, setPassMessage] = useState(null)
 
+
+  const [ errorFields, setErrorFields ] = useState([false,false,false,false,false,false]);
+
+
+
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
@@ -35,16 +40,68 @@ const RegisterScreen = () => {
     }
   }, [history, userLogin, redirect])
 
+  function validateEmailCharecters(value) 
+  {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(value).toLowerCase());
+  }
+
   const submitHandler = (e) => {
     e.preventDefault()
     //dispatch(Login(email, password))
+
+    let isValidated = true;
+    let updatedList = [false,false,false,false,false,false];
+
     if (password !== confirmPassword) {
+      isValidated = false;
       setPassMessage('Password do not match, please enter again')
-    } else {
+    } 
+    // else {
+    //   const name = fname + ' ' + lname
+    //   const userObject = { name, email, password, phoneNumber }
+    //   dispatch(registerWithEmail(userObject))
+    // }
+
+    if(fname === null || fname.trim() === ''){
+      updatedList[0] = true;
+      isValidated = false;
+    }
+    if(lname === null || lname.trim() === ''){
+      updatedList[1] = true;
+      isValidated = false;
+    }
+    if(email === null || email.trim() === ''){
+      updatedList[2] = true;
+      isValidated = false;
+    }else{
+      updatedList[2] = !validateEmailCharecters(email);
+      isValidated = validateEmailCharecters(email);
+    }
+    if(phoneNumber === null || phoneNumber.trim() === ''){
+      updatedList[3] = true;
+      isValidated = false;
+    }
+    if(password === null || password.trim() === ''){
+      updatedList[4] = true;
+      isValidated = false;
+    }
+    if(confirmPassword === null || confirmPassword.trim() === ''){
+      updatedList[5] = true;
+      isValidated = false;
+    }
+
+
+    if(isValidated){
       const name = fname + ' ' + lname
       const userObject = { name, email, password, phoneNumber }
-      dispatch(registerWithEmail(userObject))
+      console.log('Registered')
+      // dispatch(registerWithEmail(userObject))
+    }else{
+      console.log('Please Fill')
+      setErrorFields(updatedList)
     }
+    
   }
 
   return (
@@ -99,6 +156,10 @@ const RegisterScreen = () => {
                     </Row>
                 </Card.Body>
             </Card> */}
+
+
+
+
       <div className='register-page-web'>
         {passMessage && <Message variant='danger'>{passMessage}</Message>}
         {error && <Message>{error}</Message>}
@@ -114,7 +175,7 @@ const RegisterScreen = () => {
           <div className='reg-row-one'>
             <div controlid='name'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[0] ? 'error-field-style' : '')}
                 type='text'
                 placeholder='First Name'
                 value={fname}
@@ -123,7 +184,7 @@ const RegisterScreen = () => {
             </div>
             <div controlid='name'>
               <input
-                className='fc-label middle-field'
+                className={'fc-label middle-field '+ (errorFields[1] ? 'error-field-style' : '')}
                 type='text'
                 placeholder='Last Name'
                 value={lname}
@@ -132,7 +193,7 @@ const RegisterScreen = () => {
             </div>
             <div controlid='email'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[2] ? 'error-field-style' : '')}
                 type='email'
                 placeholder='Enter email'
                 value={email}
@@ -143,7 +204,7 @@ const RegisterScreen = () => {
           <div className='reg-row-two'>
             <div controlid='phone'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[3] ? 'error-field-style' : '')}
                 type='text'
                 placeholder='Mobile Number'
                 value={phoneNumber}
@@ -152,7 +213,7 @@ const RegisterScreen = () => {
             </div>
             <div className='login-group' controlid='password'>
               <input
-                className='fc-label middle-field'
+                className={'fc-label middle-field '+ (errorFields[4] ? 'error-field-style' : '')}
                 type='password'
                 placeholder='Enter password'
                 value={password}
@@ -161,7 +222,7 @@ const RegisterScreen = () => {
             </div>
             <div className='login-group' controlid='confirmPassword'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[5] ? 'error-field-style' : '')}
                 type='password'
                 placeholder='Re-Enter password'
                 value={confirmPassword}
@@ -201,6 +262,10 @@ const RegisterScreen = () => {
           </div>
         </Form>
       </div>
+
+
+
+
       <div className='register-page-tab'>
         {passMessage && <Message variant='danger'>{passMessage}</Message>}
         {error && <Message>{error}</Message>}
@@ -216,7 +281,7 @@ const RegisterScreen = () => {
           <div className='reg-row-one'>
             <div controlid='name'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[0] ? 'error-field-style' : '')}
                 type='text'
                 placeholder='First Name'
                 value={fname}
@@ -225,7 +290,7 @@ const RegisterScreen = () => {
             </div>
             <div controlid='name'>
               <input
-                className='fc-label middle-field'
+                className={'fc-label middle-field '+ (errorFields[1] ? 'error-field-style' : '')}
                 type='text'
                 placeholder='Last Name'
                 value={lname}
@@ -236,7 +301,7 @@ const RegisterScreen = () => {
           <div className='reg-row-two'>
             <div controlid='email'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[2] ? 'error-field-style' : '')}
                 type='email'
                 placeholder='Enter email'
                 value={email}
@@ -245,7 +310,7 @@ const RegisterScreen = () => {
             </div>
             <div controlid='phone'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[3] ? 'error-field-style' : '')}
                 type='text'
                 placeholder='Mobile Number'
                 value={phoneNumber}
@@ -256,7 +321,7 @@ const RegisterScreen = () => {
           <div className='reg-row-three'>
             <div className='login-group' controlid='password'>
               <input
-                className='fc-label middle-field'
+                className={'fc-label middle-field '+ (errorFields[4] ? 'error-field-style' : '')}
                 type='password'
                 placeholder='Enter password'
                 value={password}
@@ -265,7 +330,7 @@ const RegisterScreen = () => {
             </div>
             <div className='login-group' controlid='confirmPassword'>
               <input
-                className='fc-label'
+                className={'fc-label '+ (errorFields[5] ? 'error-field-style' : '')}
                 type='password'
                 placeholder='Re-Enter password'
                 value={confirmPassword}
@@ -299,6 +364,10 @@ const RegisterScreen = () => {
           </div>
         </Form>
       </div>
+
+
+
+
       <div className='register-page-mobile'>
         {passMessage && <Message variant='danger'>{passMessage}</Message>}
         {error && <Message>{error}</Message>}
@@ -312,42 +381,42 @@ const RegisterScreen = () => {
             Create an account
           </div>
           <input
-            className='fc-label'
+            className={'fc-label '+ (errorFields[0] ? 'error-field-style' : '')}
             type='text'
             placeholder='First Name'
             value={fname}
             onChange={(e) => setFname(e.target.value)}
           />
           <input
-            className='fc-label middle-field'
+            className={'fc-label middle-field '+ (errorFields[1] ? 'error-field-style' : '')}
             type='text'
             placeholder='Last Name'
             value={lname}
             onChange={(e) => setLname(e.target.value)}
           />
           <input
-            className='fc-label'
+            className={'fc-label '+ (errorFields[2] ? 'error-field-style' : '')}
             type='email'
             placeholder='Enter email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            className='fc-label'
+            className={'fc-label '+ (errorFields[3] ? 'error-field-style' : '')}
             type='text'
             placeholder='Mobile Number'
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
           <input
-            className='fc-label middle-field'
+            className={'fc-label middle-field '+ (errorFields[4] ? 'error-field-style' : '')}
             type='password'
             placeholder='Enter password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
-            className='fc-label'
+            className={'fc-label '+ (errorFields[5] ? 'error-field-style' : '')}
             type='password'
             placeholder='Re-Enter password'
             value={confirmPassword}
