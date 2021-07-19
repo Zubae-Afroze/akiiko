@@ -384,7 +384,7 @@ function LargeScreenButtonComp({onPaymentFormSubmit}){
           <div className='d-flex justify-content-end'>
             
             <Button
-              style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+              style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
               size='lg'
               variant='primary'
               type='submit'
@@ -405,7 +405,7 @@ function SmallScreenButtonComp({onPaymentFormSubmit}){
     <div className='d-block d-sm-block d-md-none f-f-m'>
       <div className='d-flex justify-content-center '>
         <Button
-          style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0 }}
+          style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
           size='md'
           variant='primary'
           type='submit'

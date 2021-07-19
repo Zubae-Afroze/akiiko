@@ -1,4 +1,4 @@
-import React , { useState } from 'react'
+import React , { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import {Container, Row, Col, Form, Button } from 'react-bootstrap'
 import { motion } from 'framer-motion'
@@ -20,7 +20,7 @@ const containerVariants = {
 }
 
 export default function ShippingForm({ setFormLevel }) {
-
+  console.log('Tope State IsAddress'+isAddNewAddressSelected.value)
   const [addNewAddressSelected, setAddNewAddressSelected] = useState(isAddNewAddressSelected.value);
 
   const profileDetails = useSelector((state) => state.profile.userProfile)
@@ -37,8 +37,12 @@ export default function ShippingForm({ setFormLevel }) {
   //   }
   // ];
 
+  useEffect(() => {
+    isAddNewAddressSelected.value = false;
+  }, [])
+
   function handelAddNewAddressSelect(){
-    console.log(isAddNewAddressSelected)
+    console.log(isAddNewAddressSelected.value)
     setAddNewAddressSelected(prevState => {
       isAddNewAddressSelected.value = !prevState
       return !prevState
@@ -74,6 +78,7 @@ export default function ShippingForm({ setFormLevel }) {
 
 
 function ReturnAddressForm({profileDetails,addNewAddressSelected,handelAddNewAddressSelect,setFormLevel}){
+  console.log('Rendering isAddress: '+addNewAddressSelected + isAddNewAddressSelected.value)
 
   // profileDetails.shippingAddress = [
   //   {
@@ -88,13 +93,14 @@ function ReturnAddressForm({profileDetails,addNewAddressSelected,handelAddNewAdd
   // ];
 
   if(profileDetails.shippingAddress.length === 0){
+    isAddNewAddressSelected.value = true;
     return <NewAddressForm setFormLevel={setFormLevel}/>
+  }
+  if(profileDetails.shippingAddress.length > 0 && !isAddNewAddressSelected.value){
+    return <ExistingAddressForm profileDetails={profileDetails} setFormLevel={setFormLevel} handelAddNewAddressSelect={handelAddNewAddressSelect} />
   }
   if(addNewAddressSelected){
     return <NewAddressForm setFormLevel={setFormLevel}/>
-  }
-  if(profileDetails.shippingAddress.length > 0 && !addNewAddressSelected){
-    return <ExistingAddressForm profileDetails={profileDetails} setFormLevel={setFormLevel} handelAddNewAddressSelect={handelAddNewAddressSelect} />
   }
 }
 
@@ -121,7 +127,7 @@ function ExistingAddressForm({profileDetails,setFormLevel,handelAddNewAddressSel
   //   }
   // ];
   return (
-    <Container fluid className='p-0 m-0 '>
+    <Container fluid className='p-0 m-0 ' style={{maxWidth:'750px'}}>
       
       <Row>
         {
@@ -135,7 +141,7 @@ function ExistingAddressForm({profileDetails,setFormLevel,handelAddNewAddressSel
       
         {/* <AddressComponentNew/> */}
 
-        <Col xs={12} md={6}>
+        {/* <Col xs={12} md={6}>
           <div style={{
               borderStyle: 'solid',
               borderColor: '#cccccc', //#E3DED5
@@ -150,27 +156,71 @@ function ExistingAddressForm({profileDetails,setFormLevel,handelAddNewAddressSel
               </div>
             </div>
           </div>
-        </Col>
+        </Col> */}
+        {
+          profileDetails.shippingAddress.length === 1
+          ?  <Col xs={12} md={6} className='d-none d-sm-none d-md-block'>
+              <div style={{
+                  minHeight: '205px',
+                  minWidth: '250px'
+                }}
+              />
+            </Col>
+          
+          : null
+          
+        }
 
-        <Col xs={4} md={8} className='p-0 m-0'></Col>
+        {/* <Col xs={4} md={6} className='p-0 m-0'></Col>
 
         <ExLargeScreenButton setFormLevel={setFormLevel}/>
 
-        <Col xs={4} md={0} className='p-0 m-0'></Col>
+        <Col xs={4} md={0} className='p-0 m-0'></Col> */}
 
       </Row>
 
-      <div className='d-block d-sm-block d-md-none'>
+      {/* <div className='d-block d-sm-block d-md-none'>
         <div className='d-flex justify-content-center'>
           <Button
-            style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0 }}
+            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
             size='lg'
             variant='primary'
             type='submit'
             className='px-5 m-0 mt-3 mb-3'
             onClick={()=>setFormLevel(stepperLevel.PAYMENT)}
           >
-            NEXT
+            ADD New Address
+          </Button>
+        </div>
+      </div> */}
+
+      <div style={{height:'20px'}}/>
+      <div className='d-block d-sm-block d-md-none'>
+        <div className='d-flex justify-content-center'>
+          <Button
+            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, fontSize:'14px' }}
+            size='md'
+            variant='primary'
+            type='submit'
+            className='px-5 m-0 mt-3 mb-3'
+            onClick={()=>handelAddNewAddressSelect()}
+          >
+            ADD New Address
+          </Button>
+        </div>
+      </div>
+
+      <div className='d-none d-sm-none d-md-block'>
+        <div className='d-flex justify-content-end'>
+          <Button
+            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0,fontSize:'17px' }}
+            size='lg'
+            variant='primary'
+            type='submit'
+            className='px-5 m-0 mt-3 mb-3'
+            onClick={()=>handelAddNewAddressSelect()}
+          >
+            ADD New Address
           </Button>
         </div>
       </div>
@@ -180,30 +230,30 @@ function ExistingAddressForm({profileDetails,setFormLevel,handelAddNewAddressSel
   );
 }
 
-function ExLargeScreenButton({setFormLevel}){
-  return(
-    <Col xs={4} md={4}>
-      <div
-          className='d-none d-sm-none d-md-block'
-          // style={{ paddingRight: '1rem' }}
-        >
-          <div className='d-flex justify-content-end'>
+// function ExLargeScreenButton({setFormLevel}){
+//   return(
+//     <Col xs={4} md={6}>
+//       <div
+//           className='d-none d-sm-none d-md-block'
+//           // style={{ paddingRight: '1rem' }}
+//         >
+//           <div className='d-flex justify-content-end'>
             
-            <Button
-              style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
-              size='lg'
-              variant='primary'
-              type='submit'
-              className='px-5 me-3 mt-3 mb-3'
-              onClick={()=>setFormLevel(stepperLevel.PAYMENT)}
-            >
-              Next
-            </Button>
-          </div>
-        </div>
-    </Col>
-  );
-}
+//             <Button
+//               style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+//               size='lg'
+//               variant='primary'
+//               type='submit'
+//               className='px-5 me-3 mt-3 mb-3'
+//               onClick={()=>setFormLevel(stepperLevel.PAYMENT)}
+//             >
+//               ADD New Address
+//             </Button>
+//           </div>
+//         </div>
+//     </Col>
+//   );
+// }
 
 
 
@@ -214,22 +264,24 @@ function AddressComponent({setFormLevel,shippingAddress}){
           borderStyle: 'solid',
           borderColor: '#cccccc', //#E3DED5
           borderWidth: '1px',
-          cursor:'pointer'
+          cursor:'pointer',
+          minHeight: '205px',
+          minWidth: '250px'
         }}
         className='existing-address-style p-md-4 '
         onClick={()=>{
           setFormLevel(stepperLevel.PAYMENT)
           shippingObject.firstname = shippingAddress.firstname;
           shippingObject.lastname = shippingAddress.lastname;
-          shippingObject.adress = shippingAddress.adress;
+          shippingObject.adress = shippingAddress.address;
           shippingObject.mobile = shippingAddress.mobile;
           shippingObject.city = shippingAddress.city;
-          shippingObject.zipcode = shippingAddress.zipCode;
+          shippingObject.zipCode = shippingAddress.zipCode;
           shippingObject.state = shippingAddress.state;
         }}
       >
         <h6>{shippingAddress.firstname + ' ' + shippingAddress.lastname}</h6>
-        <h6>{shippingAddress.adress}</h6>
+        <h6>{shippingAddress.address}</h6>
         <h6>{shippingAddress.mobile}</h6>
         <h6>{shippingAddress.city + ' ' + shippingAddress.zipCode}</h6>
         <h6>{shippingAddress.state}</h6>
@@ -627,7 +679,7 @@ function LargeScreenButtonComp({onShippingFormSubmit}){
           <div className='d-none d-sm-none d-md-block'>
               <div className='d-flex justify-content-end'>
                 <Button
-                  style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                  style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
                   size='lg'
                   variant='primary'
                   type='submit'
@@ -653,7 +705,7 @@ function SmallScreenButtonComp({onShippingFormSubmit}){
     <div className='d-block d-sm-block d-md-none'>
       <div className='d-flex justify-content-center'>
         <Button
-          style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0 }}
+          style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
           size='md'
           variant='primary'
           type='submit'

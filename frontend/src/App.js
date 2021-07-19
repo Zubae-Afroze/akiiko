@@ -32,6 +32,8 @@ import Terms from './components/Terms/Terms'
 import RefundPolicy from './components/RefundPolicy/RefundPolicy'
 import PrivacyStatement from './components/PrivacyStatement/PrivacyStatement'
 import LifestyleAllProducts from './components/LifestyleAllProducts/LifestyleAllProducts'
+
+import TestCheckOutScreen from './screens/Test Checkout/CheckOutIndex'
 export default class App extends Component {
   // constructor(props){
   //   super(props);
@@ -52,7 +54,9 @@ export default class App extends Component {
 
           <Route path='/shipping' render={() => <ShippingScreen />} />
 
-          <Route path='/checkout' render={() => <Checkout />} />
+          <Route path='/checkout' render={() => <Checkout />} /> 
+
+          <Route path='/testcheckout' render={() => <TestCheckOutScreen />} /> 
 
           <Route path='/newprofile' render={() => <NewProfileScreen />} />
 

@@ -76,7 +76,6 @@ const addShippingAddress = asyncHandler(async (req, res) => {
 //@desc update name of an exisiting user
 //@route PUT /api/profile/updatename/:uid
 //@acess Private
-// const updateName = asyncHandler(async (req, res) => {
 //   const { name } = req.params.body
 
 //   const profile = await Profile.findOneAndUpdate(
@@ -114,31 +113,3 @@ const updateNameAndPhone = asyncHandler(async (req, res) => {
     throw new Error('Profile Not Found')
   }
 })
-
-//@desc update name of an exisiting user
-//@route POST /api/profile/updatephone/:uid
-//@acess Private
-const updatePhoneNumber = asyncHandler(async (req, res) => {
-  const { phoneNumber } = req.params.body
-
-  const profile = await Profile.findOneAndUpdate(
-    { uid: req.params.uid },
-    { phoneNumber },
-    { upsert: true }
-  )
-
-  if (profile) {
-    res.status(201).json(phoneNumber)
-  } else {
-    res.status(400)
-    throw new Error('Invalid User Data')
-  }
-})
-
-export {
-  getProfileByUid,
-  createProfile,
-  addShippingAddress,
-  updateNameAndPhone,
-  updatePhoneNumber,
-}

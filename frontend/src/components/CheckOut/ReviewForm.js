@@ -1,7 +1,7 @@
 import React from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { motion } from 'framer-motion'
-import { shippingObject,paymentObject } from './FormObject'
+import { shippingObject,paymentObject,isAddNewAddressSelected } from './FormObject'
 import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
 
@@ -90,6 +90,7 @@ function NameComp(){
 
 
 function AddressComp(){
+  console.log('Address: '+ shippingObject.adress)
   return(
     <Col xs={12} className='p-0 m-0'>
       <Container fluid
@@ -224,12 +225,15 @@ function LargeScreenPAYbuttonComp({setFormLevel}){
               <div className='d-flex justify-content-end'>
                 
                 <Button
-                  style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                  style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
                   size='lg'
                   variant='primary'
                   type='submit'
                   className='px-5 me-3 mt-3 mb-3'
-                  onClick={() => setFormLevel(2)}
+                  onClick={(e) => {
+                    console.log('isAddressSelected: '+isAddNewAddressSelected.value)
+                    e.preventDefault()
+                  }}
                 >
                   PAY
                 </Button>
@@ -247,12 +251,13 @@ function SmallScreenPAYbuttonComp(){
     <div className='d-block d-sm-block d-md-none'>
       <div className='d-flex justify-content-center '>
         <Button
-          style={{ backgroundColor: '#6B584C', border: 0, borderRadius: 0 }}
+          style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
           size='md'
           variant='primary'
           type='submit'
           className='px-5 me-3 mt-3 mb-3'
           onClick={(e) => {
+            console.log('isAddressSelected: '+isAddNewAddressSelected.value)
             e.preventDefault()
           }}
         >

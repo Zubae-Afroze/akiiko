@@ -1,3 +1,6 @@
+
+
+
 .login-wrap {
   display: flex;
   justify-content: center;
@@ -166,6 +169,14 @@
   flex-direction: column;
   justify-content: center;
   height: 80vh;
+}
+
+
+.error-field-style{
+  background-color: transparent;
+  border-color: #3e3331;
+  border-width: 2px;
+  border-radius: 5px;
 }
 
 @media only screen and (max-width: 1024px) {
