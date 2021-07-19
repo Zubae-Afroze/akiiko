@@ -74,42 +74,44 @@ const addShippingAddress = asyncHandler(async (req, res) => {
 })
 
 //@desc update name of an exisiting user
-//@route POST /api/profile/updatename/:uid
+//@route PUT /api/profile/updatename/:uid
 //@acess Private
-const updateName = asyncHandler(async (req, res) => {
-  const { name } = req.params.body
+// const updateName = asyncHandler(async (req, res) => {
+//   const { name } = req.params.body
 
-  const profile = await Profile.findOneAndUpdate(
-    { uid: req.params.uid },
-    { name },
-    { upsert: true }
-  )
+//   const profile = await Profile.findOneAndUpdate(
+//     { uid: req.params.uid },
+//     { name },
+//     { upsert: true }
+//   )
+
+//   if (profile) {
+//     res.status(201).json(updateName)
+//   } else {
+//     res.status(400)
+//     throw new Error('Invalid User Data')
+//   }
+// })
+
+const updateNameAndPhone = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne(req.params.uid)
 
   if (profile) {
-    res.status(201).json(addOrUpdateShipping)
+    profile.name = req.body.name || profile.name
+    profile.phoneNumber = req.body.phone || profile.phoneNumber
+
+    const updateProfile = await profile.save()
+
+    res.json({
+      _id: updateProfile._id,
+      name: updateProfile.name,
+      email: updateProfile.email,
+      phoneNumber: updateProfile.phoneNumber,
+      isAdmin: updateProfile.isAdmin,
+    })
   } else {
-    res.status(400)
-    throw new Error('Invalid User Data')
-  }
-})
-
-//@desc update name of an exisiting user
-//@route POST /api/profile/updatename/:uid
-//@acess Private
-const updateName = asyncHandler(async (req, res) => {
-  const { name } = req.params.body
-
-  const profile = await Profile.findOneAndUpdate(
-    { uid: req.params.uid },
-    { name },
-    { upsert: true }
-  )
-
-  if (profile) {
-    res.status(201).json(updateName)
-  } else {
-    res.status(400)
-    throw new Error('Invalid User Data')
+    res.status(404)
+    throw new Error('Profile Not Found')
   }
 })
 
@@ -137,6 +139,6 @@ export {
   getProfileByUid,
   createProfile,
   addShippingAddress,
-  updateName,
+  updateNameAndPhone,
   updatePhoneNumber,
 }
