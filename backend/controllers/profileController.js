@@ -76,28 +76,11 @@ export const addShippingAddress = asyncHandler(async (req, res) => {
 //@desc update name of an exisiting user
 //@route PUT /api/profile/updatename/:uid
 //@acess Private
-//   const { name } = req.params.body
-
-//   const profile = await Profile.findOneAndUpdate(
-//     { uid: req.params.uid },
-//     { name },
-//     { upsert: true }
-//   )
-
-//   if (profile) {
-//     res.status(201).json(updateName)
-//   } else {
-//     res.status(400)
-//     throw new Error('Invalid User Data')
-//   }
-// })
-
-export const updateNameAndPhone = asyncHandler(async (req, res) => {
+export const updateName = asyncHandler(async (req, res) => {
   const profile = await Profile.findOne({ uid: req.params.uid })
 
   if (profile) {
     profile.name = req.body.name || profile.name
-    profile.phoneNumber = req.body.phone || profile.phoneNumber
 
     const updateProfile = await profile.save()
 
@@ -112,24 +95,28 @@ export const updateNameAndPhone = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('Profile Not Found')
   }
+})
 
-  // const profile = await Profile.findOne(req.params.uid)
+//@desc update name of an exisiting user
+//@route PUT /api/profile/updatephone/:uid
+//@acess Private
+export const updatePhone = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne({ uid: req.params.uid })
 
-  // if (profile) {
-  //   profile.name = req.body.name || profile.name
-  //   profile.phoneNumber = req.body.phone || profile.phoneNumber
+  if (profile) {
+    profile.name = req.body.phoneNumber || profile.phoneNumber
 
-  //   const updateProfile = await profile.save()
+    const updatePhone = await profile.save()
 
-  //   res.json({
-  //     _id: updateProfile._id,
-  //     name: updateProfile.name,
-  //     email: updateProfile.email,
-  //     phoneNumber: updateProfile.phoneNumber,
-  //     isAdmin: updateProfile.isAdmin,
-  //   })
-  // } else {
-  //   res.status(404)
-  //   throw new Error('Profile Not Found')
-  // }
+    res.json({
+      _id: updatePhone._id,
+      name: updatePhone.name,
+      email: updatePhone.email,
+      phoneNumber: updatePhone.phoneNumber,
+      isAdmin: updatePhone.isAdmin,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Profile not found')
+  }
 })
