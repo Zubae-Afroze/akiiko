@@ -93,7 +93,7 @@ export const addShippingAddress = asyncHandler(async (req, res) => {
 // })
 
 export const updateNameAndPhone = asyncHandler(async (req, res) => {
-  const profile = await Profile.findOne(req.params.uid)
+  const profile = await Profile.findOne({ uid: req.params.uid })
 
   if (profile) {
     profile.name = req.body.name || profile.name
@@ -112,4 +112,24 @@ export const updateNameAndPhone = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error('Profile Not Found')
   }
+
+  // const profile = await Profile.findOne(req.params.uid)
+
+  // if (profile) {
+  //   profile.name = req.body.name || profile.name
+  //   profile.phoneNumber = req.body.phone || profile.phoneNumber
+
+  //   const updateProfile = await profile.save()
+
+  //   res.json({
+  //     _id: updateProfile._id,
+  //     name: updateProfile.name,
+  //     email: updateProfile.email,
+  //     phoneNumber: updateProfile.phoneNumber,
+  //     isAdmin: updateProfile.isAdmin,
+  //   })
+  // } else {
+  //   res.status(404)
+  //   throw new Error('Profile Not Found')
+  // }
 })

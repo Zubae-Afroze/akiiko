@@ -64,8 +64,12 @@ export const editUserName = (newName) => async (dispatch,getState) => {
             }
         }
 
+        const tempName = { 
+            name: newName
+        }
+
         console.log('New Name :'+ newName)
-        await axios.post(`/api/profile/updatename/${uid}`, newName, config)
+        await axios.put(`/api/profile/updatename/${uid}`, tempName, config)
 
     } catch (error) {
         dispatch({
