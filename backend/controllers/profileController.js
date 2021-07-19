@@ -4,7 +4,7 @@ import Profile from '../models/profileModel.js'
 //@desc Create user Profile
 //@route POST /api/profile/create
 //@access Private
-const createProfile = asyncHandler(async (req, res) => {
+export const createProfile = asyncHandler(async (req, res) => {
   const { name, email, uid, photoUrl, phoneNumber, providerId } = req.body
 
   const profileExist = await Profile.findOneAndUpdate(
@@ -50,7 +50,7 @@ const createProfile = asyncHandler(async (req, res) => {
 //@desc Get User profile with using UID
 //@route GET /api/profile/:uid
 //@acess Private
-const getProfileByUid = asyncHandler(async (req, res) => {
+export const getProfileByUid = asyncHandler(async (req, res) => {
   const profile = await Profile.findOne({ uid: req.params.uid })
   return res.json(profile)
 })
@@ -58,7 +58,7 @@ const getProfileByUid = asyncHandler(async (req, res) => {
 //@desc add new sipping addres for specific User
 //@route POST /api/profile/addshipping/:uid
 //@acess Private
-const addShippingAddress = asyncHandler(async (req, res) => {
+export const addShippingAddress = asyncHandler(async (req, res) => {
   const addOrUpdateShipping = await Profile.findOneAndUpdate(
     { uid: req.params.uid },
     { $push: { shippingAddress: req.body } },
@@ -92,7 +92,7 @@ const addShippingAddress = asyncHandler(async (req, res) => {
 //   }
 // })
 
-const updateNameAndPhone = asyncHandler(async (req, res) => {
+export const updateNameAndPhone = asyncHandler(async (req, res) => {
   const profile = await Profile.findOne(req.params.uid)
 
   if (profile) {
