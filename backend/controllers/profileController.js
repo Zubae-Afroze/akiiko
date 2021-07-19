@@ -11,25 +11,7 @@ export const createProfile = asyncHandler(async (req, res) => {
     { uid: uid },
     { name, email, uid, phoneNumber, photoUrl, providerId },
     { upsert: true }
-    // function (err, doc) {
-    //   if (err) return res.send(500, { error: err })
-    //   return res.send('Succesfully saved.')
-    // }
   )
-
-  // if (profileExist) {
-  //   res.status(400)
-  //   throw new Error('Profile Already Exsists, not added')
-  // }
-
-  // const profile = await Profile.create({
-  //   name,
-  //   email,
-  //   uid,
-  //   phoneNumber,
-  //   photoUrl,
-  //   providerId,
-  // })
 
   if (profileExist) {
     res.status(201).json({
