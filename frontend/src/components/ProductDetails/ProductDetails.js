@@ -13,6 +13,7 @@ import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 import CartModal from './CartModal'
+import Footer from '../Footer/Footer'
 
 import './ProductDetails.css'
 
@@ -474,6 +475,7 @@ const ProductDetails = () => {
           </div>
         </Container>
       ) : null}
+      <Footer />
     </>
   )
 }

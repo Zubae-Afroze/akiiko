@@ -127,7 +127,7 @@ export default class App extends Component {
 
           <Route path='/' component={HomeScreen} exact />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </Router>
     )
   }
