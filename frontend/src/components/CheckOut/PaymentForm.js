@@ -184,6 +184,7 @@ function CardNumberComp({paymentObject,handelInputeChange,errorFields}){
       <div style={{ marginRight: 7 }}>
         <Form.Group className='mb-1' controlId='formBasicCheckbox'>
           <Form.Control size='md' type='text' placeholder='Card Number' 
+            disabled
             style={{ padding: 15, fontSize: 16 }}
             name='cardNumber'
             value={paymentObject.cardNumber}
@@ -191,6 +192,7 @@ function CardNumberComp({paymentObject,handelInputeChange,errorFields}){
             className={'d-block d-sm-none ' + (errorFields[0] ? 'error-form-style' : '')}
           />
           <Form.Control size='lg' type='text' placeholder='Card Number' 
+            disabled
             style={{ padding: 25, fontSize: 16 }}
             name='cardNumber'
             value={paymentObject.cardNumber}
@@ -199,6 +201,7 @@ function CardNumberComp({paymentObject,handelInputeChange,errorFields}){
           />
           <Form.Check
             style={{ color: '#787878', fontSize: '14px'}}
+            disabled
             type='checkbox'
             label='Check me out'
             name='isCheckMeOut'
@@ -223,6 +226,7 @@ function MounthYearCvcComp({paymentObject,handelInputeChange,errorFields}){
       className='p-0 m-0'
     >
       <Form.Control 
+        disabled
         size='md' 
         type='text' 
         placeholder='MM/YYYY' 
@@ -233,6 +237,7 @@ function MounthYearCvcComp({paymentObject,handelInputeChange,errorFields}){
         className={'d-block d-sm-none ' + (errorFields[1] ? 'error-form-style' : '')}
       />
       <Form.Control 
+        disabled
         size='lg' 
         type='text' 
         placeholder='MM/YYYY' 
@@ -284,6 +289,7 @@ function NetbankingUpiComp({paymentObject,handelInputeChange}){
         className={'d-block d-sm-none ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
       >
         <Form.Check
+          disabled
           style={{ color: '#4A4A4A', fontSize: '16px' }}
           type='checkbox'
           label='Net Banking UPI'
@@ -296,6 +302,7 @@ function NetbankingUpiComp({paymentObject,handelInputeChange}){
         className={'d-none d-sm-block ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
       >
         <Form.Check
+          disabled
           style={{ color: '#4A4A4A', fontSize: '16px' }}
           type='checkbox'
           label='Net Banking UPI'

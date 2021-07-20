@@ -7,6 +7,7 @@ import Menubar from '../../components/Menubar/Menubar'
 import MobileNav from '../../components/MobileNav/MobileNav'
 import { paymentObject,shippingObject,isAddNewAddressSelected } from '../../components/CheckOut/FormObject'
 import { getUserProfileByUID } from '../../actions/actionProfile';
+import { Redirect } from 'react-router-dom'
 import './style.css'
 
 export const CashOnDeliveryContext = React.createContext();
@@ -20,6 +21,8 @@ export default function CheckOut() {
   const dispatch = useDispatch()
 
   const uid = useSelector((state) => state.firebase.auth.uid)
+
+  const order = useSelector((state) => state.orderCreate)
 
   useEffect(() => {
     isAddNewAddressSelected.value = false;
@@ -39,7 +42,8 @@ export default function CheckOut() {
     paymentObject.isNetbankingUPI= false;
     paymentObject.isCOD= false;
 
-    
+    console.log('---------- Use Effect called -------');
+
   }, [dispatch,uid])
 
   function toggelCODstate(codState,type){
@@ -53,6 +57,9 @@ export default function CheckOut() {
 
 
   return (
+    
+    <>
+    { order.order ? <Redirect to='/'/> :
     <>
     <Menubar />
     <MobileNav />
@@ -87,6 +94,8 @@ export default function CheckOut() {
       </Container>
     </div>
     </Container>
+    </>
+    }
     </>
   )
 }

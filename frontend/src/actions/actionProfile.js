@@ -37,7 +37,7 @@ export const getUserProfileByUID = (UID) => async (dispatch) => {
             payload: data
         })
 
-        // localStorage.setItem('userInfo', JSON.stringify(data))
+        localStorage.setItem('profile', JSON.stringify(data))
 
     } catch (error) {
         dispatch({
@@ -64,12 +64,12 @@ export const editUserName = (newName) => async (dispatch,getState) => {
             }
         }
 
-        const tempName = { 
-            name: newName
+        const tempJson = { 
+            name: newName,
         }
 
         console.log('New Name :'+ newName)
-        await axios.put(`/api/profile/updatename/${uid}`, tempName, config)
+        await axios.put(`/api/profile/updatename/${uid}`, tempJson, config)
 
     } catch (error) {
         dispatch({
@@ -81,13 +81,27 @@ export const editUserName = (newName) => async (dispatch,getState) => {
 }
 
 
-export const editMobileNumber = (mobNumber) => (dispatch) => {
+export const editMobileNumber = (mobNumber) => async (dispatch,getState) => {
     try {
 
         dispatch({
             type: EDIT_PHONE_NUMBER,
             payload: mobNumber
         })
+
+        const uid = getState().firebase.auth.uid
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+        
+        const tempJson = { 
+            phoneNumber: mobNumber,
+        }
+
+        await axios.put(`/api/profile/updatephone/${uid}`, tempJson, config)
 
         // localStorage.setItem('userInfo', JSON.stringify(data))
 

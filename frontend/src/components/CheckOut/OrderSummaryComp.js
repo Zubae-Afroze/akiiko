@@ -5,6 +5,7 @@ import './style.css'
 import '../../screens/Chekout/style.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
+import { Link } from 'react-router-dom'
 
 
 export default function OrderSummaryComp() {
@@ -81,9 +82,11 @@ export default function OrderSummaryComp() {
         </div>
         <div style={{height:'65px'}} />
         <div className='d-flex justify-content-center'>
-          <button type='button' className='continue-shopping-style'> {/*btn btn-outline-secondary*/}
-            Continue Shopping
-          </button>
+          <Link to='/'>
+            <button type='button' className='continue-shopping-style'> {/*btn btn-outline-secondary*/}
+              Continue Shopping
+            </button>
+          </Link>
         </div>
       </div>
     </Container>

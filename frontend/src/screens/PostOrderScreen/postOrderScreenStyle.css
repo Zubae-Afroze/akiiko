@@ -1,0 +1,108 @@
+.successBGimage {
+    background-image: url("./assets/checkOutBG.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #cccccc;
+    height:calc(100vh - 100px);
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-content-deskTop {
+    width: 100%;
+    max-width: 930px;
+    overflow: hidden;
+    display: table;
+    border: 1px solid white;
+}
+
+.chinky-girl-wraper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chinky-girl{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+}
+
+
+.message-wraper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* width: 100%; */
+}
+
+.normal-message{
+    font-family: 'rutan';
+    color: white;
+    font-size: 20px;
+}
+
+.bold-message{
+    font-family: 'rutanBold';
+    color: white;
+    font-size: 20px;
+}
+
+.continue-shooping-message{
+    font-family: 'rutan';
+    color: white;
+    font-size: 15px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 300ms ease-out;
+}
+
+.continue-shooping-message:hover{
+    font-family: 'rutanMedium';
+}
+
+@media (min-width: 1030px) {
+    .continue-shooping-message{
+        margin-left: 30px;
+    }
+}
+
+@media (max-width: 1232px) {
+    .main-content-deskTop{
+        margin: 50px;
+    }
+    .chinky-girl-wraper{
+        height:100%;
+        width:100%;
+    }
+}
+
+
+@media (max-width: 430px) {
+    .main-content-deskTop{
+        margin: 30px;
+        width: 60vw;
+    }
+
+    .chinky-girl-wraper{
+        width: 60vw;
+        height: 60vw;
+    }
+    
+}
+
+
+/* SE */
+@media (max-width: 320px) {
+    .main-content-deskTop{
+        margin: 10px;
+        width: 60vw;
+    }
+
+    .chinky-girl-wraper{
+        width: 60vw;
+        height: 60vw;
+    }
+}

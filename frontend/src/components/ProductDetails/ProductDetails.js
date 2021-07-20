@@ -42,7 +42,7 @@ const ProductDetails = () => {
   const addToCartHandler = () => {
     // history.push(`/cart/${id}?qty=${itemQuantity}`)
     dispatch(addToCart(id, itemQuantity))
-    setModalShow(true)
+    // setModalShow(true)
   }
 
   //const cartList = useSelector((state) => state.cartList)

@@ -20,7 +20,7 @@ const containerVariants = {
   }
 
 
-export default function ProfileComp() {
+export default function ProfileComp({profileDetails}) {
 
     const [editMobileFieldON, setEditMobileFieldON] = useState(false);
     const [editNameFieldON, setEditNameFieldON] = useState(false);
@@ -30,7 +30,7 @@ export default function ProfileComp() {
 
     const dispatch = useDispatch();
 
-    const profileDetails = useSelector((state) => state.profile.userProfile)
+    // const profileDetails = useSelector((state) => state.profile.userProfile)
 
     function handelInputeChange(event){
         if(event.target.name === 'firstName' || event.target.name === 'lastName'){
@@ -246,7 +246,7 @@ export default function ProfileComp() {
                                         </div>
 
                                     </>
-                                :   <><span>{`${getName().firstName}`}</span> <span> </span><sapn>{`${getName().lastName}`}</sapn></>
+                                :   <><span>{`${getName().firstName}`}</span> <span> </span><span>{`${getName().lastName}`}</span></>
                             }
                         </Col>
                         <Col xs={4}>

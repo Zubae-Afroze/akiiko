@@ -86,7 +86,7 @@ export const updatePhone = asyncHandler(async (req, res) => {
   const profile = await Profile.findOne({ uid: req.params.uid })
 
   if (profile) {
-    profile.name = req.body.phoneNumber || profile.phoneNumber
+    profile.phoneNumber = req.body.phoneNumber || profile.phoneNumber
 
     const updatePhone = await profile.save()
 

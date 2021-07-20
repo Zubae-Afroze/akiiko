@@ -10,15 +10,15 @@ import { protect } from '../middleware/authMiddleware.js'
 
 const router = express.Router()
 
-router.route('/').post(protect, addOrderItems)
+router.route('/').post(addOrderItems)
 
-router.route('/myorders').get(protect, getMyOrders)
+router.route('/:id').get(getOrderById)
 
-router.route('/:id').get(protect, getOrderById)
+router.route('/myorders/:profile').get(getMyOrders)
 
-router.route('/:id/pay').get(protect, createRazorpayOrder)
+router.route('/:id/pay').get(createRazorpayOrder)
 
-router.route('/:id/ordercomplete').post(protect, orderPaymentComplete)
+router.route('/:id/ordercomplete').post(orderPaymentComplete)
 
 // router.route('/:id/razorpay').get(getRazorpayObject)
 

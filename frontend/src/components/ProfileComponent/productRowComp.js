@@ -16,8 +16,9 @@ const containerVariants = {
   }
   
 
-export default function ProductRowComp() {
+export default function ProductRowComp({orderDetails,index}) {
     const [showOrderDetails,setShowOrderDetails] = React.useState(false);
+
     return (
         <Col xs={12}>
             <div style={{
@@ -44,8 +45,8 @@ export default function ProductRowComp() {
                             borderColor: '#707070',
                             borderRadius: '1px'
                         }} className='d-flex justify-content-center'
-                        >1</div>
-                            
+                        >{index+1}</div>
+                           
 
                     </Col>
                     <Col xs={6} md={6}>
@@ -57,19 +58,19 @@ export default function ProductRowComp() {
                                 whiteSpace: 'nowrap',
                                 overflow: 'hidden',
                                 textOverflow: 'ellipsis',
-                            }}> 60152fe43400c90004f1900a </h6>
+                            }}> {orderDetails._id} </h6>
                         </div>
                     </Col>
                     <Col xs={3} md={2} className='p-0 m-0'>
                         <div style={{marginTop:'8px'}}>
-                            <h6 style={{fontSize:'14px', marginBottom:'2px'}}> Delivered </h6>
-                            <h6 style={{fontSize:'14px', opacity:'50%', marginBottom:'2px'}}> 10th March </h6>
+                            <h6 style={{fontSize:'14px', marginBottom:'2px'}}> Placed </h6>
+                            <h6 style={{fontSize:'14px', opacity:'50%', marginBottom:'2px'}}> { returnFormatedDate() } </h6>
                         </div>
                     </Col>
                     <Col xs={3} md={3} className='p-0 m-0'>
-                        <h6 className='tabs' style={{fontSize:'14px',textAlign:'end' , paddingRight:'13px', marginTop:'18px'}}>
-                            Re-order
-                        </h6>
+                        {/* <h6 className='tabs' style={{fontSize:'14px',textAlign:'end' , paddingRight:'13px', marginTop:'18px'}}> */}
+                            {CodReorderDeliveredButton()}
+                        {/* </h6> */}
                     </Col>
 
                 </Row>
@@ -84,66 +85,126 @@ export default function ProductRowComp() {
 
         </Col>
     )
-}
 
-function OdrerDetailsListComponent(){
-    return (
-        <motion.div variants={containerVariants} initial='hidden' animate='visible'>
 
-        <Row>
+    function returnFormatedDate(){
 
-            <Col xs={12} lg={6}>
-                <OrderListCompnent/>
-            </Col>
-
-            <Col xs={12} lg={6}>
-                <OrderListCompnent/>
-            </Col>
-
-        </Row>
-
+        let stringdate = orderDetails.createdAt;
+        let date = new Date(stringdate.substring(0, 4), stringdate.substring(5, 7), stringdate.substring(8, 10));
+        let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
+        let month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
+        let day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
         
-
-            
-            <div style={{height:'20px'}}/>
-        </motion.div>
-    );
-}
+        return `${day} ${month} ${year}`;
+    }
 
 
-function OrderListCompnent(){
-    return (
-        <div style={{border:'1px solid #cbc6bf', marginTop:'10px', marginBottom:'10px', fontSize:'14px'}}>
+    function CodReorderDeliveredButton(){
+
+
+        if((orderDetails.shippingPrice !== '' || orderDetails.shippingPrice === null) && !orderDetails.isPaid && !orderDetails.isDelivered){
+            return (
+                <h6 style={{fontSize:'14px',textAlign:'end' , paddingRight:'13px', marginTop:'18px'}}>
+                    COD
+                </h6>
+            );
+        }
+        if(orderDetails.isPaid && !orderDetails.isDelivered){
+            return (
+                <h6 style={{fontSize:'14px',textAlign:'end' , paddingRight:'13px', marginTop:'18px'}}>
+                    Payed
+                </h6>
+            );
+        }
+        if(orderDetails.isDelivered){
+            return (
+                <h6 className='tabs' style={{fontSize:'14px',textAlign:'end' , paddingRight:'13px', marginTop:'18px'}}>
+                    Re-order
+                </h6>
+            );
+        }
+    }
+    
+
+    function OdrerDetailsListComponent(){
+        return (
+            <motion.div variants={containerVariants} initial='hidden' animate='visible'>
+    
             <Row>
-                <Col xs={3} lg={4} className='p-0 m-0'>
-                    <div style={{
-                        height:'70px',
-                        width:'70px',
-                        margin: '10px',
-                        marginLeft: '25px',
-                        backgroundColor: 'white',
-                        color: 'black',
-                        borderColor: '#707070',
-                        borderRadius: '1px',
-                    }} className='d-flex justify-content-center'
-                    >1</div>
+
+                {
+                    orderDetails.orderItems.map((object, index) => {
+                    return (
+                        <Col xs={12} lg={6}>
+                            <OrderListCompnent itemDetail={object}/>
+                        </Col>
+                    )})
+                }
+
+                {/* <Col xs={12} lg={6}>
+                    <OrderListCompnent/>
                 </Col>
-                <Col xs={7} lg={8}>
-                    <div className='f-f' style={{marginTop: '10px', display: 'flex', alignItems: 'center', marginLeft:'5px'}}>
-                        <div style={{marginTop:'12px'}}>
-                            <h6 className='f-f'>Product Title</h6>
-                            <span className='f-f' style={{opacity:'60%'}}>Quantity:</span> 
-                            <span className='f-f'> 3</span> 
-                            <span className='f-f' style={{opacity:'60%'}}> | </span> 
-                            <span className='f-f' style={{opacity:'60%'}}>Price:</span>
-                            <span> 199</span>
-                        </div>
-                    </div>
-                </Col>
+    
+                <Col xs={12} lg={6}>
+                    <OrderListCompnent/>
+                </Col> */}
+    
             </Row>
-        </div>
-    );
+    
+            
+    
+                
+                <div style={{height:'20px'}}/>
+            </motion.div>
+        );
+    }
+    
+    
+    function OrderListCompnent({itemDetail}){
+        return (
+            <div style={{border:'1px solid #cbc6bf', marginTop:'10px', marginBottom:'10px', fontSize:'14px'}}>
+                <Row>
+                    <Col xs={3} lg={4} className='p-0 m-0'>
+                        <div style={{
+                            height:'70px',
+                            width:'70px',
+                            margin: '10px',
+                            marginLeft: '25px',
+                            backgroundColor: 'white',
+                            color: 'black',
+                            borderColor: '#707070',
+                            borderRadius: '1px',
+                        }} className='d-flex justify-content-center'
+                        >
+                            {/* <div
+                                style={{ height: '65%', width: '100%', backgroundColor: '#6B584C' }}
+                                > */}
+                                <img src={itemDetail.image} alt="Girl in a jacket" width="100%" height="100%"/> 
+                            {/* </div> */}
+                        </div>
+                    </Col>
+                    <Col xs={7} lg={8}>
+                        <div className='f-f' style={{marginTop: '10px', display: 'flex', alignItems: 'center', marginLeft:'5px'}}>
+                            <div style={{marginTop:'12px'}}>
+                                <h6 className='f-f'>{itemDetail.productName}</h6>
+                                <span className='f-f' style={{opacity:'60%'}}>Quantity:</span> 
+                                <span className='f-f'> {itemDetail.qty} </span> 
+                                <span className='f-f' style={{opacity:'60%'}}> | </span> 
+                                <span className='f-f' style={{opacity:'60%'}}>Price:</span>
+                                <span> {itemDetail.price} </span>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+            </div>
+        );
+    }
+
+
 }
+
+
+
 
 
 export function ProductRowHeaderComp() {

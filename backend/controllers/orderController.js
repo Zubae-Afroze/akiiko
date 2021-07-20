@@ -14,6 +14,8 @@ const addOrderItems = asyncHandler(async (req, res) => {
     itemsPrice,
     taxPrice,
     totalPrice,
+    user,
+    shippingPrice,
   } = req.body
 
   if (orderItems && orderItems.length === 0) {
@@ -23,12 +25,13 @@ const addOrderItems = asyncHandler(async (req, res) => {
   } else {
     const order = new Order({
       orderItems,
-      user: req.profile._id,
+      user,
       shippingAddress,
       paymentMethod,
       itemsPrice,
       taxPrice,
       totalPrice,
+      shippingPrice
     })
 
     const createdOrder = await order.save()
@@ -137,10 +140,10 @@ const orderPaymentComplete = asyncHandler(async (req, res) => {
 })
 
 //@desc Get logged in user orders
-//@route GET /api/orders/myorders
+//@route GET /api/orders/myorders/:profile
 //@access Private
 const getMyOrders = asyncHandler(async (req, res) => {
-  const orders = await Order.find({ profile: req.profile._id })
+  const orders = await Order.find({ user: req.params.profile })
 
   res.json(orders)
 })
