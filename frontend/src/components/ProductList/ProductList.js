@@ -8,6 +8,7 @@ import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 import Message from '../Message/Message'
+import Footer from '../Footer/Footer'
 
 // import { actionListProductList } from '../../actions/actionProductList'
 
@@ -145,6 +146,7 @@ const ProductList = () => {
           </div>
         </Container>
       )}
+      <Footer />
     </>
   )
 }

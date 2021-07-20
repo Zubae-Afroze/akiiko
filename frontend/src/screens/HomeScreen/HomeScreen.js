@@ -8,6 +8,7 @@ import HomeScreenStorage from '../HomeScreenStorage/HomeScreenStorage'
 
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
+import Footer from '../../components/Footer/Footer'
 
 import './HomeScreen.css'
 
@@ -137,6 +138,7 @@ class HomeScreen extends React.Component {
           <HomeScreenHome />
           <HomeScreenStorage />
         </Container>
+        <Footer />
       </React.Fragment>
     )
   }
