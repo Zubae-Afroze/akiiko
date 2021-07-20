@@ -15,20 +15,22 @@ import {
 
 import axios from 'axios'
 
-export const createOrder = (order) => async (dispatch, getState) => {
+export const createOrder = (order) => async (dispatch) => {
   try {
     dispatch({
       type: ORDER_CREATE_REQUEST,
     })
 
-    const {
-      userLogin: { userInfo },
-    } = getState()
+    // const { finalOrderPlacemnetJson } = order
+
+    // const {
+    //   userLogin: { userInfo },
+    // } = getState()
 
     const config = {
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
+        // Authorization: `Bearer ${userInfo.token}`,
       },
     }
 
@@ -127,17 +129,20 @@ export const listMyOrders = () => async (dispatch, getState) => {
       type: ORDER_LIST_MY_REQUEST,
     })
 
-    const {
-      userLogin: { userInfo },
-    } = getState()
+    // const {
+    //   userLogin: { userInfo },
+    // } = getState()
+    const profile = getState().profile.userProfile._id
+
+    console.log('Profile: '+profile)
 
     const config = {
       headers: {
-        Authorization: `Bearer ${userInfo.token}`,
+      //Authorization: `Bearer ${userInfo.token}`,
       },
     }
 
-    const { data } = await axios.get(`/api/orders/myorders`, config)
+    const { data } = await axios.get(`/api/orders/myorders/${profile}`, config)
 
     dispatch({
       type: ORDER_LIST_MY_SUCCESS,

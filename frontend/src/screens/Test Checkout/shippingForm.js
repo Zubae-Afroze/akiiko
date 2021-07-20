@@ -24,7 +24,21 @@ export default function ShippingFormT() {
 
                 <PinCodeField />
 
+                <Col xs={12} sm={4} className='p-0 m-0' />
+                <Col xs={12} sm={4} className='p-0 m-0' />
+                <Col xs={12} sm={4} className='p-0 m-0'>
+                    <div style={{height:'50px', backgroundColor:'yellow'}}>
+                        <h5>Button</h5>   
+                    </div>
+                </Col>
+
             </Row>
+
+            <div>
+                
+            </div>
+
+            
         </>
     )
 

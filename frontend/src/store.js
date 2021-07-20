@@ -18,7 +18,7 @@ import {
   orderCreateReducer,
   orderDetailsReducer,
   orderPayReducer,
-  orderListMyReducer,
+  orderListByProfileReducer,
 } from './reducers/reducersOrder'
 
 import {
@@ -41,7 +41,7 @@ const reducer = combineReducers({
   orderCreate: orderCreateReducer,
   orderDetails: orderDetailsReducer,
   orderPay: orderPayReducer,
-  orderListMy: orderListMyReducer,
+  orderListByProfile: orderListByProfileReducer,
   firebase: firebaseReducer,
   auth: googleAuthReducer,
 })

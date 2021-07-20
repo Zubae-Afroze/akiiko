@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import { shippingObject,paymentObject,isAddNewAddressSelected } from './FormObject'
 import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
+import { useSelector, useDispatch } from 'react-redux';
+import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
+import {createOrder} from '../../actions/actionOrder'
+import { useHistory } from 'react-router-dom'
 
 const containerVariants = {
   hidden: {
@@ -19,6 +23,20 @@ const containerVariants = {
 
 
 export default function ReviewForm({ setFormLevel }) {
+
+  const cartList = useSelector(state => state.cartList)
+
+  const cashOnDeliveryContext = useContext(CashOnDeliveryContext);
+
+  const dispatch = useDispatch()
+
+  const profileDetails = useSelector((state) => state.profile.userProfile)
+
+  let history = useHistory();
+
+  console.log('COD Order In Payment: ' + cashOnDeliveryContext.value);
+
+
   return (
     <motion.div variants={containerVariants} initial='hidden' animate='visible'>
       <h6
@@ -62,13 +80,78 @@ export default function ReviewForm({ setFormLevel }) {
         </Row>
       </Container>
 
-      <LargeScreenPAYbuttonComp setFormLevel={setFormLevel}/>
+      {/* <Route render={({ history}) => (
+        <button
+          type='button'
+          onClick={() => { history.push('/new-location') }}
+        >
+          Click Me!
+        </button>
+      )} /> */}
 
-      <SmallScreenPAYbuttonComp />
+      <LargeScreenPAYbuttonComp payButtonFunction={payButtonFunction}/>
+
+      <SmallScreenPAYbuttonComp payButtonFunction={payButtonFunction}/>
 
     </motion.div>
   )
+
+  function payButtonFunction(){
+
+    const itemPriceTemp = cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0);
+    const additionlaPriceTemp = (itemPriceTemp > 500) ? 0 : 50;
+    const shippingPriceTemp = cashOnDeliveryContext.value ? 50 : 0;
+
+    const orderItemsList = cartList.cartItems.map((item, index) => {
+      return {
+        
+        product: item.product,
+        productName: item.productName,
+        image: item.image,
+        price: item.price,
+        qty: item.qty,
+
+      }
+    })
+  
+    const finalOrderPlacemnetJson = {
+      itemsPrice: itemPriceTemp,
+      taxPrice: additionlaPriceTemp, //aditional Price
+      shippingPrice: shippingPriceTemp,
+      totalPrice: itemPriceTemp + additionlaPriceTemp + shippingPriceTemp,
+      isPaid: false,
+      isDelivered: false,
+      orderItems: orderItemsList,
+      user: profileDetails._id,
+      shippingAddress: {
+        firstName: shippingObject.firstname,
+        lastName: shippingObject.lastname,
+        address: shippingObject.adress,
+        phoneNumber: shippingObject.mobile,
+        city: shippingObject.city,
+        state: shippingObject.state,
+        postalCode: shippingObject.zipCode,
+      },
+      paymentMethod: cashOnDeliveryContext.value ? 'cod' : 'online',
+    }
+
+    console.log(finalOrderPlacemnetJson)
+
+    dispatch(createOrder(finalOrderPlacemnetJson));
+
+    history.replace('/ordersuccess')
+
+  }
+
 }
+    // <Route render={({ history}) => (
+    //   <button
+    //     type='button'
+    //     onClick={() => { history.push('/new-location') }}
+    //   >
+    //     Click Me!
+    //   </button>
+    // )} />
 
 
 function NameComp(){
@@ -210,7 +293,10 @@ function EditCardDetailsButtonComp({setFormLevel}){
 }
 
 
-function LargeScreenPAYbuttonComp({setFormLevel}){
+
+
+
+function LargeScreenPAYbuttonComp({payButtonFunction}){
   return(
 
     <div>
@@ -233,6 +319,7 @@ function LargeScreenPAYbuttonComp({setFormLevel}){
                   onClick={(e) => {
                     console.log('isAddressSelected: '+isAddNewAddressSelected.value)
                     e.preventDefault()
+                    payButtonFunction();
                   }}
                 >
                   PAY
@@ -246,7 +333,7 @@ function LargeScreenPAYbuttonComp({setFormLevel}){
   );
 }
 
-function SmallScreenPAYbuttonComp(){
+function SmallScreenPAYbuttonComp({payButtonFunction}){
   return(
     <div className='d-block d-sm-block d-md-none'>
       <div className='d-flex justify-content-center '>
@@ -259,6 +346,7 @@ function SmallScreenPAYbuttonComp(){
           onClick={(e) => {
             console.log('isAddressSelected: '+isAddNewAddressSelected.value)
             e.preventDefault()
+            payButtonFunction();
           }}
         >
           PAY

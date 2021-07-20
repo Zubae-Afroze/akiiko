@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import {
   Container,
@@ -15,10 +15,13 @@ import Menubar from '../Menubar/Menubar'
 import './Header.css'
 import MobileNav from '../MobileNav/MobileNav'
 
+import { getUserProfileByUID } from '../../actions/actionProfile';
+
 import { addToCart, removeFromCart } from '../../actions/actionCart'
 //import { logout } from '../../actions/actionUsers'
 
 import { firebaseLogout } from '../../actions/actionAuth'
+import { listMyOrders } from '../../actions/actionOrder'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -48,6 +51,16 @@ const Header = () => {
     history.push('/login?redirect=checkout')
     setCartModalShow(false)
   }
+
+  const uid = useSelector((state) => state.firebase.auth.uid)
+
+  useEffect(() => {
+    dispatch(getUserProfileByUID(uid));
+  }, [dispatch, uid])
+
+  useEffect(() => {
+    dispatch(listMyOrders())
+  }, [dispatch])
 
   function CartModal(props) {
     return (

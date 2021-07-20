@@ -21,16 +21,16 @@ const containerVariants = {
 
 export default function YourOrdresComp() {
 
-    const orderDetails = useSelector((state) => state.orderDetails)
+    const ordersList = useSelector((state) => state.orderListByProfile.orders)
     
     return (
         <>
             {
-                orderDetails &&
+                ordersList &&
 
                 <motion.div variants={containerVariants} initial='hidden' animate='visible'>
                 <Container className='pe-lg-5 ps-lg-0 m-0 d-flex justify-content-center'>  
-                     <ProductsComp orderDetails={orderDetails}/>
+                    <ProductsComp />
                 </Container>
                 
                 </motion.div>
@@ -39,58 +39,65 @@ export default function YourOrdresComp() {
         </>
 
     )
-}
 
 
-function ProductsComp({orderDetails}){
+    function ProductsComp(){
 
-    if(orderDetails.orderItems.length === 0){
-        return(
-            <Col xs={12}>
-                <div style={{
-                // borderTop: '1.7px solid #cbc6bf',
-                // borderBottomStyle: 'solid',
-                // borderBottomColor: '#cbc6bf',
-                // borderBottomWidth: '1.7px',
-                paddingTop:'12px',
-                paddingBottom:'18px',
-                cursor:'pointer',
-
-            }}>
-                <div style={{width:'100%'}} className='d-flex justify-content-center'>
-                    <h6>No Orders</h6>  
+    
+        if(ordersList.length === 0){
+            return(
+                <Col xs={12}>
+                    <div style={{
+                    // borderTop: '1.7px solid #cbc6bf',
+                    // borderBottomStyle: 'solid',
+                    // borderBottomColor: '#cbc6bf',
+                    // borderBottomWidth: '1.7px',
+                    paddingTop:'12px',
+                    paddingBottom:'18px',
+                    cursor:'pointer',
+    
+                }}>
+                    <div style={{width:'100%'}} className='d-flex justify-content-center'>
+                        <h6>No Orders</h6>  
+                    </div>
                 </div>
-            </div>
-            </Col>
-        )
-    }else{
-        return(
-            orderDetails.orderItems.map((object, index) => {
-                return (
-                    <Row>
-                        <Col xs={12} className='d-block d-sm-none '>
-                            <div style={{height:'30px'}}></div>
-                        </Col>
-                        <Col xs={12}>
-                            <h6 className='f-f-m'>Your Orders</h6>
-                            <div style={{paddingBottom:'2px'}}></div>
-                        </Col>
+                </Col>
+            )
+        }else{
+            return(
+                
+                <Row>
+                    <Col xs={12} className='d-block d-sm-none '>
+                        <div style={{height:'30px'}}></div>
+                    </Col>
+                    <Col xs={12}>
+                        <h6 className='f-f-m'>Your Orders</h6>
+                        <div style={{paddingBottom:'2px'}}></div>
+                    </Col>
 
-                        <Col xs={12}>
-                            <hr style={{marginBottom:'0'}}/>
-                        </Col>
+                    <Col xs={12}>
+                        <hr style={{marginBottom:'0'}}/>
+                    </Col>
 
-                        <ProductRowHeaderComp/>
-                        
-                        <ProductsComp orderDetails={orderDetails} />
+                    <ProductRowHeaderComp/>
 
-                        {/* <ProductRowComp/>
+                    {
+                        ordersList.map((object, index) => {
+                        return (
+                            <ProductRowComp orderDetails={object} index={index}/>
+                        )})
+                    }
+                    
+                    {/* <ProductsComp /> */}
 
-                        <ProductRowComp/> */}
+                    {/* <ProductRowComp/> */}
 
-                    </Row>
-                );
-            })
-        )
+
+                </Row>
+                
+            )
+        }
     }
 }
+
+
