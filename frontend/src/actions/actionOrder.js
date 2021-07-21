@@ -134,11 +134,11 @@ export const listMyOrders = () => async (dispatch, getState) => {
     // } = getState()
     const profile = getState().profile.userProfile._id
 
-    console.log('Profile: '+profile)
+    console.log('Profile: ' + profile)
 
     const config = {
       headers: {
-      //Authorization: `Bearer ${userInfo.token}`,
+        //Authorization: `Bearer ${userInfo.token}`,
       },
     }
 
@@ -157,4 +157,9 @@ export const listMyOrders = () => async (dispatch, getState) => {
           : error.message,
     })
   }
+}
+
+export const resetOrder = () => (dispatch) => {
+  //localStorage.removeItem('cartList')
+  dispatch({ type: 'ORDER_RESET' })
 }

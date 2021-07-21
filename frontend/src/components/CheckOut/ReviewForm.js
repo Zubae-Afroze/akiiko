@@ -1,14 +1,19 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { motion } from 'framer-motion'
-import { shippingObject,paymentObject,isAddNewAddressSelected } from './FormObject'
+import {
+  shippingObject,
+  paymentObject,
+  isAddNewAddressSelected,
+} from './FormObject'
 import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
-import {createOrder} from '../../actions/actionOrder'
+import { createOrder, resetOrder } from '../../actions/actionOrder'
 import { useHistory } from 'react-router-dom'
-import Astric from './asterisk.svg';
+import { resetCartItems } from '../../actions/actionCart'
+import Astric from './asterisk.svg'
 
 const containerVariants = {
   hidden: {
@@ -22,21 +27,18 @@ const containerVariants = {
   },
 }
 
-
 export default function ReviewForm({ setFormLevel }) {
+  const cartList = useSelector((state) => state.cartList)
 
-  const cartList = useSelector(state => state.cartList)
-
-  const cashOnDeliveryContext = useContext(CashOnDeliveryContext);
+  const cashOnDeliveryContext = useContext(CashOnDeliveryContext)
 
   const dispatch = useDispatch()
 
   const profileDetails = useSelector((state) => state.profile.userProfile)
 
-  let history = useHistory();
+  let history = useHistory()
 
-  console.log('COD Order In Payment: ' + cashOnDeliveryContext.value);
-
+  console.log('COD Order In Payment: ' + cashOnDeliveryContext.value)
 
   return (
     <motion.div variants={containerVariants} initial='hidden' animate='visible'>
@@ -46,9 +48,8 @@ export default function ReviewForm({ setFormLevel }) {
       >
         Shipping
       </h6>
-      <Container fluid className='p-0 m-0' style={{minHeight:'240px'}}>
+      <Container fluid className='p-0 m-0' style={{ minHeight: '240px' }}>
         <Row className='p-0 m-0'>
-          
           <NameComp />
 
           <AddressComp />
@@ -60,11 +61,11 @@ export default function ReviewForm({ setFormLevel }) {
           <EditShippingDetailsButtonComp setFormLevel={setFormLevel} />
 
           <Col xs={12} className='p-0 m-0'>
-            <hr />  
+            <hr />
           </Col>
-          
+
           <Col xs={12} className='p-0 m-0 f-f-m'>
-              <h6>Payment</h6>
+            <h6>Payment</h6>
           </Col>
 
           <PaymentDetailComp />
@@ -75,9 +76,7 @@ export default function ReviewForm({ setFormLevel }) {
 
           <Col xs={4} md={8} className='p-0 m-0'></Col>
 
-
           <Col xs={4} md={0} className='p-0 m-0'></Col>
-
         </Row>
       </Container>
 
@@ -90,31 +89,30 @@ export default function ReviewForm({ setFormLevel }) {
         </button>
       )} /> */}
 
-      <LargeScreenPAYbuttonComp payButtonFunction={payButtonFunction}/>
+      <LargeScreenPAYbuttonComp payButtonFunction={payButtonFunction} />
 
-      <SmallScreenPAYbuttonComp payButtonFunction={payButtonFunction}/>
-
+      <SmallScreenPAYbuttonComp payButtonFunction={payButtonFunction} />
     </motion.div>
   )
 
-  function payButtonFunction(){
-
-    const itemPriceTemp = cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0);
-    const additionlaPriceTemp = (itemPriceTemp > 500) ? 0 : 50;
-    const shippingPriceTemp = cashOnDeliveryContext.value ? 50 : 0;
+  function payButtonFunction() {
+    const itemPriceTemp = cartList.cartItems.reduce(
+      (acc, items) => acc + items.qty * items.price,
+      0
+    )
+    const additionlaPriceTemp = itemPriceTemp > 500 ? 0 : 50
+    const shippingPriceTemp = cashOnDeliveryContext.value ? 50 : 0
 
     const orderItemsList = cartList.cartItems.map((item, index) => {
       return {
-        
         product: item.product,
         productName: item.productName,
         image: item.image,
         price: item.price,
         qty: item.qty,
-
       }
     })
-  
+
     const finalOrderPlacemnetJson = {
       itemsPrice: itemPriceTemp,
       taxPrice: additionlaPriceTemp, //aditional Price
@@ -138,108 +136,120 @@ export default function ReviewForm({ setFormLevel }) {
 
     console.log(finalOrderPlacemnetJson)
 
-    dispatch(createOrder(finalOrderPlacemnetJson));
+    dispatch(createOrder(finalOrderPlacemnetJson))
 
-    history.replace('/ordersuccess') 
+    dispatch(resetCartItems())
 
+    dispatch(resetOrder())
+
+    history.replace('/ordersuccess')
   }
-
 }
-    // <Route render={({ history}) => (
-    //   <button
-    //     type='button'
-    //     onClick={() => { history.push('/new-location') }}
-    //   >
-    //     Click Me!
-    //   </button>
-    // )} />
+// <Route render={({ history}) => (
+//   <button
+//     type='button'
+//     onClick={() => { history.push('/new-location') }}
+//   >
+//     Click Me!
+//   </button>
+// )} />
 
-
-function NameComp(){
-  return(
+function NameComp() {
+  return (
     <Col xs={12} className='p-0 m-0'>
-      <Container fluid
-        style={{
-          marginTop: '5px',
-          color: '#4A4A4A',
-          width: '100%'
-        }}
-        className='p-0 m-0 f-f'
-      >
-        <div style={{display:'inlineBlock' }}>{shippingObject.firstname + ' ' + shippingObject.lastname}</div>
-      </Container>
-    </Col>
-  );
-}
-
-
-function AddressComp(){
-  console.log('Address: '+ shippingObject.adress)
-  return(
-    <Col xs={12} className='p-0 m-0'>
-      <Container fluid
-        style={{
-          marginTop: '5px',
-          color: '#4A4A4A',
-          width: '100%'
-        }}
-        className='p-0 m-0 f-f'
-      >
-        <div style={{display:'inlineBlock' }}>{shippingObject.adress}</div>
-        <div style={{display:'inlineBlock' }}>{shippingObject.mobile}</div>
-      </Container>
-    </Col>
-  );
-}
-
-
-function CityStateComp(){
-  return(
-    <Col xs={11} className='p-0 m-0'>
-      <Container fluid
-        style={{
-          marginTop: '5px',
-          color: '#4A4A4A',
-          width: '100%'
-        }}
-        className='p-0 m-0 f-f'
-      >
-        <div style={{display:'inlineBlock' }}>{shippingObject.city + ' - ' + shippingObject.zipCode + ' ' + shippingObject.state}</div>
-      </Container>
-    </Col>
-  );
-}
-
-
-function EditShippingDetailsButtonComp({setFormLevel}){
-  return(
-    <Col xs={1} className='p-0 m-0'>
-      <Container fluid
+      <Container
+        fluid
         style={{
           marginTop: '5px',
           color: '#4A4A4A',
           width: '100%',
-          height:'100%',
         }}
-        className='p-0 m-0 f-f-m'
-        // 
+        className='p-0 m-0 f-f'
       >
-        <h6 className='p-0 m-0'
-          style={{
-          position: 'absolute',
-          bottom: 0,
-          right: 0,
-          }}
-          onClick={() => setFormLevel(stepperLevel.SHIPPING)}
-        >Edit</h6>
+        <div style={{ display: 'inlineBlock' }}>
+          {shippingObject.firstname + ' ' + shippingObject.lastname}
+        </div>
       </Container>
     </Col>
-  );
+  )
 }
 
+function AddressComp() {
+  console.log('Address: ' + shippingObject.adress)
+  return (
+    <Col xs={12} className='p-0 m-0'>
+      <Container
+        fluid
+        style={{
+          marginTop: '5px',
+          color: '#4A4A4A',
+          width: '100%',
+        }}
+        className='p-0 m-0 f-f'
+      >
+        <div style={{ display: 'inlineBlock' }}>{shippingObject.adress}</div>
+        <div style={{ display: 'inlineBlock' }}>{shippingObject.mobile}</div>
+      </Container>
+    </Col>
+  )
+}
 
-function PaymentDetailComp(){
-  return(
+function CityStateComp() {
+  return (
+    <Col xs={11} className='p-0 m-0'>
+      <Container
+        fluid
+        style={{
+          marginTop: '5px',
+          color: '#4A4A4A',
+          width: '100%',
+        }}
+        className='p-0 m-0 f-f'
+      >
+        <div style={{ display: 'inlineBlock' }}>
+          {shippingObject.city +
+            ' - ' +
+            shippingObject.zipCode +
+            ' ' +
+            shippingObject.state}
+        </div>
+      </Container>
+    </Col>
+  )
+}
+
+function EditShippingDetailsButtonComp({ setFormLevel }) {
+  return (
+    <Col xs={1} className='p-0 m-0'>
+      <Container
+        fluid
+        style={{
+          marginTop: '5px',
+          color: '#4A4A4A',
+          width: '100%',
+          height: '100%',
+        }}
+        className='p-0 m-0 f-f-m'
+        //
+      >
+        <h6
+          className='p-0 m-0'
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            right: 0,
+          }}
+          onClick={() => setFormLevel(stepperLevel.SHIPPING)}
+        >
+          Edit
+        </h6>
+      </Container>
+    </Col>
+  )
+}
+
+function PaymentDetailComp() {
+  return (
     <Col xs={11} className='f-f p-0 m-0'>
       <div
         style={{
@@ -277,7 +287,7 @@ function PaymentDetailComp(){
       }
       </div>
     </Col>
-  );
+  )
 }
 
 
@@ -291,71 +301,77 @@ function PaymentDetailComp(){
 function EditCardDetailsButtonComp({setFormLevel}){
   return(
     <Col xs={1} className='p-0 m-0'>
-      <Container fluid
+      <Container
+        fluid
         style={{
           marginTop: '5px',
           color: '#4A4A4A',
           width: '100%',
-          height:'100%',
+          height: '100%',
         }}
         className='p-0 m-0 f-f-m'
       >
-        <h6 className='p-0 m-0'
+        <h6
+          className='p-0 m-0'
           style={{
-          position: 'absolute',
-          bottom: '10px',
-          right: 0,
-        }}
-        onClick={() => setFormLevel(stepperLevel.PAYMENT)}
-        > Edit</h6>
+            position: 'absolute',
+            bottom: '10px',
+            right: 0,
+          }}
+          onClick={() => setFormLevel(stepperLevel.PAYMENT)}
+        >
+          {' '}
+          Edit
+        </h6>
       </Container>
     </Col>
-  );
+  )
 }
 
-
-
-
-
-function LargeScreenPAYbuttonComp({payButtonFunction}){
-  return(
-
+function LargeScreenPAYbuttonComp({ payButtonFunction }) {
+  return (
     <div>
       <Row className='p-0 m-0'>
         <Col xs={8} className='p-0 m-0' />
-        
+
         <Col xs={4} md={4} className='p-0 m-0'>
           <div
-              className='d-none d-sm-none d-md-block'
-              // style={{ paddingRight: '1rem' }}
-            >
-              <div className='d-flex justify-content-end'>
-                
-                <Button
-                  style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
-                  size='lg'
-                  variant='primary'
-                  type='submit'
-                  className='px-5 me-3 mt-3 mb-3'
-                  onClick={(e) => {
-                    console.log('isAddressSelected: '+isAddNewAddressSelected.value)
-                    e.preventDefault()
-                    payButtonFunction();
-                  }}
-                >
-                  PAY
-                </Button>
-              </div>
+            className='d-none d-sm-none d-md-block'
+            // style={{ paddingRight: '1rem' }}
+          >
+            <div className='d-flex justify-content-end'>
+              <Button
+                style={{
+                  backgroundColor: '#977257',
+                  border: 0,
+                  borderRadius: 0,
+                  width: '100%',
+                  marginLeft: '7px',
+                }}
+                size='lg'
+                variant='primary'
+                type='submit'
+                className='px-5 me-3 mt-3 mb-3'
+                onClick={(e) => {
+                  console.log(
+                    'isAddressSelected: ' + isAddNewAddressSelected.value
+                  )
+                  e.preventDefault()
+                  payButtonFunction()
+                }}
+              >
+                PAY
+              </Button>
             </div>
+          </div>
         </Col>
-
       </Row>
     </div>
-  );
+  )
 }
 
-function SmallScreenPAYbuttonComp({payButtonFunction}){
-  return(
+function SmallScreenPAYbuttonComp({ payButtonFunction }) {
+  return (
     <div className='d-block d-sm-block d-md-none'>
       <div className='d-flex justify-content-center '>
         <Button
@@ -365,18 +381,17 @@ function SmallScreenPAYbuttonComp({payButtonFunction}){
           type='submit'
           className='px-5 me-3 mt-3 mb-3'
           onClick={(e) => {
-            console.log('isAddressSelected: '+isAddNewAddressSelected.value)
+            console.log('isAddressSelected: ' + isAddNewAddressSelected.value)
             e.preventDefault()
-            payButtonFunction();
+            payButtonFunction()
           }}
         >
           PAY
         </Button>
       </div>
     </div>
-  );
+  )
 }
-
 
 /* <Row className='p-0 m-0'>
           <Col xs={12} className='p-0 m-0'>

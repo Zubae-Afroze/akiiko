@@ -62,6 +62,6 @@ export const savePaymentMethod = (data) => (dispatch) => {
 }
 
 export const resetCartItems = () => (dispatch) => {
-  localStorage.removeItem('cartList')
+  localStorage.removeItem('cartItems')
   dispatch({ type: CART_RESET })
 }
