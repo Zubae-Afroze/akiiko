@@ -4,11 +4,128 @@
 }
 
 .checkOut-container-wraper #child{
-    width: 100%;
-    max-width: 1230px;
-    overflow: hidden;
-    display: table;
+  width: 100%;
+  max-width: 1230px;
+  overflow: hidden;
+  display: table;
 }
+
+.left-side-field-style{
+  margin-right: 5px;
+}
+
+.right-side-field-style{
+  margin-left: 5px;
+}
+
+.state-field-style{
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.pin-code-field-style{
+  margin-left: 5px;
+}
+
+.hr-row-style{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+
+.hr-row-style > #block1{
+  width: 37.5%;
+  padding: 0;
+  margin: 0;
+  /* background-color: green; */
+}
+
+.hr-row-style > #block2{
+  text-align: center;
+  width: 37.5%;
+  padding: 0;
+  margin: 0;
+  /* background-color: red; */
+}
+
+.hr-row-style > .blockCenter{
+  text-align: center;
+  width: 25%;
+  padding: 0;
+  margin: 0;
+}
+
+
+.check-box-unchecked{
+  padding: 7px;
+  padding-left: 18px;
+  border-style: solid;
+  border-color: #ced4da; /* #3e3331 //#ced4da */
+  border-width: 1px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.check-box-checked{
+  padding: 7px;
+  padding-left: 18px;
+  border-style: solid;
+  border-color: #6b584c; /* #3e3331 //#ced4da */
+  border-width: 2px;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  transition: all 300ms ease-out;
+}
+
+.payment-method-type-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  padding-top: 20px;
+  border-style: solid;
+  border-color: #ced4da;
+  border-width: 1px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  width: 60%;
+}
+
+
+.f-f {
+  font-family: 'rutan';
+}
+
+.f-f-m {
+  font-family: 'rutanMedium';
+}
+
+.f-f-l {
+  font-family: 'rutanLight';
+}
+
+.f-f-t {
+  font-family: 'rutanThin';
+}
+
+.f-f-b {
+  font-family: 'rutanBold';
+}
+
+.f-f-dim-b {
+  font-family: 'rutanDemibold';
+}
+
+.f-f-black {
+  font-family: 'rutanBlack';
+}
+
+
 
 
 /* For mobile phones: */
@@ -25,9 +142,20 @@
 
 /* Iphone 5s */
 @media (max-width: 320px) {
-    .checkOut-container-wraper #child{
+    /* .checkOut-container-wraper #child{
         background-color: yellow;
-    }
+    } */
+}
+
+@media (max-width: 574px) {
+  .state-field-style{
+    margin-left:5px;
+    margin-right:0;
+  }
+  
+  .pin-code-field-style{
+    margin:0;
+  }
 }
 
   

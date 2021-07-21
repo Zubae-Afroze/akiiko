@@ -1,0 +1,39 @@
+.orderSummary-container-wraper{
+    display: flex;
+    justify-content: center;
+    min-height: 600px;
+    background-color: #e3ded5;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+/* .orderSummary-container-wraper #child{
+  width: 100%;
+  overflow: hidden;
+  display: table;
+} */
+
+@media (max-width: 1226px) {
+    
+}
+
+
+
+/* Iphone 5s */
+@media (max-width: 320px) {
+    /* .checkOut-container-wraper #child{
+        background-color: yellow;
+    } */
+}
+
+@media (max-width: 574px) {
+  .state-field-style{
+    margin-left:5px;
+    margin-right:0;
+  }
+  
+  .pin-code-field-style{
+    margin:0;
+  }
+}

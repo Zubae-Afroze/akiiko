@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
 import {createOrder} from '../../actions/actionOrder'
 import { useHistory } from 'react-router-dom'
+import Astric from './asterisk.svg';
 
 const containerVariants = {
   hidden: {
@@ -139,7 +140,7 @@ export default function ReviewForm({ setFormLevel }) {
 
     dispatch(createOrder(finalOrderPlacemnetJson));
 
-    history.replace('/ordersuccess')
+    history.replace('/ordersuccess') 
 
   }
 
@@ -255,16 +256,36 @@ function PaymentDetailComp(){
       >
 
       {
+        
         paymentObject.isCOD 
         ? <h6> Cash On Delivery </h6>
         : paymentObject.isNetbankingUPI
         ? <h6>Net Banking UPI</h6>
-        : <h6> .... .... 9876 </h6>
+        : <div>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <div style={{width:'5px', display:'inline-block'}}/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <div style={{width:'5px', display:'inline-block'}}/>
+            <h6 style={{display:'inline-block'}}>6789</h6>
+          </div>
       }
       </div>
     </Col>
   );
 }
+
+
+// paymentObject.isCOD 
+//         ? <h6> Cash On Delivery </h6>
+//         : paymentObject.isNetbankingUPI
+//         ? <h6>Net Banking UPI</h6>
+//         : <h6> .... .... 9876 </h6>
 
 
 function EditCardDetailsButtonComp({setFormLevel}){

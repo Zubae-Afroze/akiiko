@@ -1,6 +1,10 @@
-import React from 'react'
+import React , {useContext} from 'react'
 import Stepper from 'react-stepper-horizontal'
 import ShippingFormT from './shippingForm';
+import {Row, Col, Button} from 'react-bootstrap'
+import { CheckOutFormContext } from './CheckOutIndex'
+import PaymentFormT from './PaymentForm'
+import ReviewFormT from './reviewForm'
 
 function CloseIcon(){
     return(
@@ -20,6 +24,10 @@ function CloseIcon(){
 }
 
 export default function CheckOutCompT() {
+
+    const checkOutFormObj = useContext(CheckOutFormContext);
+
+
     return (
         <>
             <div className='pt-3 pb-4 mt-3 mb-4'>
@@ -27,18 +35,22 @@ export default function CheckOutCompT() {
                     steps={[
                     { 
                         title: 'Shipping',
-                        // onClick: () => { 
-                        //     setFormLevel(stepperLevel.SHIPPING)
-                        // }
+                        onClick: () => { 
+                            checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel:0})
+                        }
                     },
                     { 
                         title: 'Payment',
+                        onClick: () => { 
+                            checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel:1})
+                            // checkOutFormObj.obj.setStepperlevel(1)
+                        }
                     },
                     { 
                         title: 'Review',
                     },
                     ]}
-                    activeStep={1}
+                    activeStep={checkOutFormObj.formObject.stepperlevel}
                     size={12}
                     circleFontSize={0}
                     activeColor='#6B584C'
@@ -54,11 +66,71 @@ export default function CheckOutCompT() {
             </div>
             <hr/>
 
-            <div style={{backgroundColor:'red', minHeight:'400px'}}>
+            <div style={{
+                // backgroundColor:'#e6e6e6', 
+                minHeight:'300px'}}>
                 
-                <ShippingFormT/>
+                {
+                    checkOutFormObj.formObject.stepperlevel === 0 ?
+                        <ShippingFormT/>
+                    :   checkOutFormObj.formObject.stepperlevel === 1 ?
+                        <PaymentFormT />
+                    :   <ReviewFormT />
 
+                }
+
+            </div>
+            <div className='d-none d-sm-none d-md-block'>
+                <Row className='p-0 m-0'>
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0'>
+                        {/* <div style={{height:'50px', backgroundColor:'yellow'}}>
+                            <h5>Button</h5>   
+                        </div> */}
+                        <Button
+                            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                            size='lg'
+                            variant='primary'
+                            type='submit'
+                            className='p-2 m-0'
+                            onClick={onPaymentFormSubmit}
+                        >
+                            Next
+                        </Button>
+                    </Col>
+                </Row>
+            </div>
+            <div className='d-block d-sm-block d-md-none f-f-m'>
+                <div className='d-flex justify-content-center '>
+                    <Button
+                        style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
+                        size='md'
+                        variant='primary'
+                        type='submit'
+                        className='px-5 me-3 mt-3 mb-3'
+                        onClick={onPaymentFormSubmit}
+                    >
+                        NEXT
+                    </Button>
+                </div>
             </div>
         </>
     )
+
+    function onPaymentFormSubmit(e){
+        e.preventDefault();
+        console.log('On Submit: ');
+        console.log(checkOutFormObj.formObject)
+
+        if(checkOutFormObj.formObject.stepperlevel < 2){
+
+            checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: checkOutFormObj.formObject.stepperlevel + 1})
+
+        }else{
+            checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 0})
+        }
+
+        // checkOutFormObj.setStepperlevel(1)
+    }
 }
