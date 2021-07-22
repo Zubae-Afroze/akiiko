@@ -32,8 +32,8 @@ const profileSchema = mongoose.Schema(
     shippingAddress: [
       {
         _id: { type: mongoose.Schema.Types.ObjectId },
-        firstName: { type: String },
-        lastName: { type: String },
+        firstname: { type: String },
+        lastname: { type: String },
         address: { type: String },
         mobile: { type: String },
         city: { type: String },
