@@ -96,6 +96,42 @@
   width: 60%;
 }
 
+.form-control.error-form-style{
+  background-color: transparent;
+  border-color: #3e3331;
+  border-width: 2px;
+  border-radius: 5px;
+  color: #3e3331;
+}
+
+
+.existing-address-component{
+  border: 1px solid #cfcfcf;
+  padding: 10px;
+  transition: box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  min-height: 150px;
+}
+
+.existing-address-component:hover{
+  box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
+              0 2px 4px rgba(0,0,0,0.07), 
+              0 4px 8px rgba(0,0,0,0.07), 
+              0 8px 16px rgba(0,0,0,0.07),
+              0 16px 32px rgba(0,0,0,0.07), 
+              0 32px 64px rgba(0,0,0,0.07);
+}
+
+.existing-address-hardNum-style{
+  margin-right: 20px;
+}
+
+.existing-address-oddNum-style{
+  margin-left: 20px;
+}
+
+
+
 
 .f-f {
   font-family: 'rutan';
@@ -155,6 +191,18 @@
   
   .pin-code-field-style{
     margin:0;
+  }
+
+}
+
+@media (max-width: 755px) {
+
+  .existing-address-hardNum-style{
+    margin-right: 0;
+  }
+  
+  .existing-address-oddNum-style{
+    margin-left: 0;
   }
 }
 

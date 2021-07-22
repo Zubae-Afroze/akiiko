@@ -80,14 +80,11 @@ export default function CheckOutCompT() {
                 }
 
             </div>
-            <div className='d-none d-sm-none d-md-block'>
+            {/* <div className='d-none d-sm-none d-md-block'>
                 <Row className='p-0 m-0'>
                     <Col xs={12} sm={4} className='p-0 m-0' />
                     <Col xs={12} sm={4} className='p-0 m-0' />
                     <Col xs={12} sm={4} className='p-0 m-0'>
-                        {/* <div style={{height:'50px', backgroundColor:'yellow'}}>
-                            <h5>Button</h5>   
-                        </div> */}
                         <Button
                             style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
                             size='lg'
@@ -114,7 +111,7 @@ export default function CheckOutCompT() {
                         NEXT
                     </Button>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 

@@ -388,6 +388,9 @@ input.footer-main-form::placeholder {
   .form-inline {
     justify-content: left !important;
   }
+  .very-end-blyat-list li:nth-child(5) {
+    padding-left: 0;
+  }
 }
 
 @media (max-width: 480px) {
@@ -425,6 +428,10 @@ input.footer-main-form::placeholder {
   }
   .footer-image-row {
     margin: 10px 0px;
+  }
+
+  .very-end-blyat-list li:nth-child(4) {
+    padding-left: 0;
   }
 }
 

@@ -136,13 +136,19 @@ export default function ReviewForm({ setFormLevel }) {
 
     console.log(finalOrderPlacemnetJson)
 
-    dispatch(createOrder(finalOrderPlacemnetJson))
+    dispatch(createOrder(finalOrderPlacemnetJson)).then(()=>{
 
-    dispatch(resetCartItems())
+      history.replace('/ordersuccess')
+      dispatch(resetCartItems())
 
-    dispatch(resetOrder())
+    }).then(()=>{
 
-    history.replace('/ordersuccess')
+      dispatch(resetOrder())
+
+    }).catch((e)=>{
+      console.log(e)
+    })
+
   }
 }
 // <Route render={({ history}) => (

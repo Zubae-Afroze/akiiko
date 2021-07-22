@@ -56,7 +56,7 @@ export default function TestCheckOutScreen() {
             phoneNumber: '',
             city: '',
             state: '',
-            pinCode: '',
+            zipCode: '',
 
             cardNumber: '',
             monthYear: '',

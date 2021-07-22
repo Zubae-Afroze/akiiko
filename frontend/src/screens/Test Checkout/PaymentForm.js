@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Col, Row, Form } from 'react-bootstrap'
+import { Col, Row, Form, Button } from 'react-bootstrap'
 import { CheckOutFormContext } from './CheckOutIndex'
 
 const hrStyle = {
@@ -84,38 +84,78 @@ export default function PaymentFormT() {
         setChangePaymentFormState(newObj);
     }
 
+
+    function onSubmitPaymentForm(e){
+        e.preventDefault();
+        checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 2})
+    }
+
     return (
         <>
-            <Row className='p-0 m-0'>
 
-                <CardNumberField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+            <div style={{minHeight:'260px'}}>
 
-                <MonthField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+                <Row className='p-0 m-0'>
 
-                <YearField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+                    <CardNumberField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
 
-                <DummyHeight />
+                    <MonthField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
 
-                <Col xs={12} className='p-0 m-0'>
-                    <div style={hrStyle.row}>
-                    <div style={hrStyle.block}><hr/></div>
-                    <div style={hrStyle.blockCenter}><h6 style={{margin:0, marginTop:6}}>OR</h6></div>
-                    <div style={hrStyle.block}><hr/></div>
-                    </div>
-                </Col>
+                    <YearField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+
+                    <DummyHeight />
+
+                    <Col xs={12} className='p-0 m-0'>
+                        <div style={hrStyle.row}>
+                        <div style={hrStyle.block}><hr/></div>
+                        <div style={hrStyle.blockCenter}><h6 style={{margin:0, marginTop:6}}>OR</h6></div>
+                        <div style={hrStyle.block}><hr/></div>
+                        </div>
+                    </Col>
+                    
+                    <DummyHeight small={true}/>
+
+                    <NetBankingField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+
+                    <DummyHeight small={true}/>
+
+                    <CodField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+
+                </Row>
                 
-                <DummyHeight small={true}/>
+            </div>
 
-                <NetBankingField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
-
-                <DummyHeight small={true}/>
-
-                <CodField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
-
-            </Row>
-
-            <div>
-                
+            <div className='d-none d-sm-none d-md-block'>
+                <Row className='p-0 m-0'>
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0'>
+                        <Button
+                            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                            size='lg'
+                            variant='primary'
+                            type='submit'
+                            className='p-2 m-0'
+                            onClick={onSubmitPaymentForm}
+                        >
+                            Next
+                        </Button>
+                    </Col>
+                </Row>
+            </div>
+            <div className='d-block d-sm-block d-md-none f-f-m'>
+                <div className='d-flex justify-content-center '>
+                    <Button
+                        style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
+                        size='md'
+                        variant='primary'
+                        type='submit'
+                        className='px-5 me-3 mt-3 mb-3'
+                        onClick={onSubmitPaymentForm}
+                    >
+                        NEXT
+                    </Button>
+                </div>
             </div>
 
             
