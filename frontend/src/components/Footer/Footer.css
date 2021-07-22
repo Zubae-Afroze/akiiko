@@ -393,6 +393,12 @@ input.footer-main-form::placeholder {
   }
 }
 
+@media (max-width: 430px) {
+  .very-end-blyat-list li:nth-child(5) {
+    padding-left: 0;
+  }
+}
+
 @media (max-width: 480px) {
   .footer-brand-logo {
     font-size: 80px;
