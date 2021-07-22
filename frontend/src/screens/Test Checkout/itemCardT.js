@@ -1,23 +1,24 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
-import './style.css'
+import './CheckOutStyleIndex.css'
 
 const containerStyle = {
   width: '143px',
   height: '210px',
   backgroundColor: 'white',
   padding: 0,
-  margin: 4,
+  // margin: 4,
+  marginBottom: '15px'
 }
 
-export default function ItemCardT({item,dispatch}) {
+export default function ItemCardT({item}) {
   return (
-    <Col xs={6} className='p-0 mb-2'>
+    <Col xs={6} className='p-0 m-0'>
       <div style={containerStyle}>
         <div
           style={{ height: '65%', width: '100%', backgroundColor: '#6B584C' }}
         >
-          <img src={item.image} alt="Girl in a jacket" width="143px" height="100%"/> 
+          <img src='{item.image}' alt="Girl in a jacket" width="143px" height="100%"/> 
         </div>
         <div
           style={{
@@ -52,7 +53,7 @@ export default function ItemCardT({item,dispatch}) {
             height: '10%',
             width: '100%',
             backgroundColor: '#E3DED5',
-            paddingTop: 5,
+            // paddingTop: 1,
           }}
           className='d-flex justify-content-center'
         >

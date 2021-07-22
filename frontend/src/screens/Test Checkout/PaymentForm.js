@@ -47,11 +47,17 @@ export default function PaymentFormT() {
             
             if(event.target.name === 'isCodChecked'){
                 checkOutFormObj.formObject.isNetbankingUpiChecked = false;
-                checkOutFormObj.formObject.isCodChecked = true;
+                checkOutFormObj.formObject.isCodChecked = event.target.checked;
+
+                let checkBoxesObj = { ...checkOutFormObj.formObject };
+                checkOutFormObj.setFormObject(checkBoxesObj)
             }
             if(event.target.name === 'isNetbankingUpiChecked'){
+                checkOutFormObj.formObject.isNetbankingUpiChecked = event.target.checked;
                 checkOutFormObj.formObject.isCodChecked = false;
-                checkOutFormObj.formObject.isNetbankingUpiChecked = true;
+
+                let checkBoxesObj = { ...checkOutFormObj.formObject };
+                checkOutFormObj.setFormObject(checkBoxesObj)
             }
       
         }
@@ -93,7 +99,7 @@ export default function PaymentFormT() {
     return (
         <>
 
-            <div style={{minHeight:'260px'}}>
+            <div style={{minHeight:'340px'}}>
 
                 <Row className='p-0 m-0'>
 

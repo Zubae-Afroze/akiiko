@@ -98,7 +98,7 @@ export default function PaymentForm({ setFormLevel,showToast }) {
     if(!paymentObject.isCOD){
       
       if(
-          (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '') 
+          (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '' || paymentObject.cardNumber.length < 16) 
           && 
           (!paymentObject.isNetbankingUPI)
       ){
@@ -184,7 +184,7 @@ function CardNumberComp({paymentObject,handelInputeChange,errorFields}){
       <div style={{ marginRight: 7 }}>
         <Form.Group className='mb-1' controlId='formBasicCheckbox'>
           <Form.Control size='md' type='text' placeholder='Card Number' 
-            disabled
+            // disabled
             style={{ padding: 15, fontSize: 16 }}
             name='cardNumber'
             value={paymentObject.cardNumber}
@@ -192,14 +192,14 @@ function CardNumberComp({paymentObject,handelInputeChange,errorFields}){
             className={'d-block d-sm-none ' + (errorFields[0] ? 'error-form-style' : '')}
           />
           <Form.Control size='lg' type='text' placeholder='Card Number' 
-            disabled
+            // disabled
             style={{ padding: 25, fontSize: 16 }}
             name='cardNumber'
             value={paymentObject.cardNumber}
             onChange={handelInputeChange}
             className={'d-none d-sm-block ' + (errorFields[0] ? 'error-form-style' : '')}
           />
-          <Form.Check
+          {/* <Form.Check
             style={{ color: '#787878', fontSize: '14px'}}
             disabled
             type='checkbox'
@@ -207,7 +207,7 @@ function CardNumberComp({paymentObject,handelInputeChange,errorFields}){
             name='isCheckMeOut'
             onChange={handelInputeChange}
             checked={paymentObject.isCheckMeOut}
-          />
+          /> */}
         </Form.Group>
       </div>
 
@@ -226,7 +226,7 @@ function MounthYearCvcComp({paymentObject,handelInputeChange,errorFields}){
       className='p-0 m-0'
     >
       <Form.Control 
-        disabled
+        // disabled
         size='md' 
         type='text' 
         placeholder='MM/YYYY' 
@@ -237,7 +237,7 @@ function MounthYearCvcComp({paymentObject,handelInputeChange,errorFields}){
         className={'d-block d-sm-none ' + (errorFields[1] ? 'error-form-style' : '')}
       />
       <Form.Control 
-        disabled
+        // disabled
         size='lg' 
         type='text' 
         placeholder='MM/YYYY' 
@@ -289,7 +289,7 @@ function NetbankingUpiComp({paymentObject,handelInputeChange}){
         className={'d-block d-sm-none ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
       >
         <Form.Check
-          disabled
+          // disabled
           style={{ color: '#4A4A4A', fontSize: '16px' }}
           type='checkbox'
           label='Net Banking UPI'
@@ -302,7 +302,7 @@ function NetbankingUpiComp({paymentObject,handelInputeChange}){
         className={'d-none d-sm-block ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
       >
         <Form.Check
-          disabled
+          // disabled
           style={{ color: '#4A4A4A', fontSize: '16px' }}
           type='checkbox'
           label='Net Banking UPI'
@@ -345,7 +345,7 @@ function CodComp({paymentObject,handelInputeChange,errorFields}){
           }
       </div>
 
-      <div style={{height:'45px', borderColor:'red', borderWidth:'2px'}} className='d-none d-sm-block'>
+      <div style={{height:'45px', borderColor:'red', borderWidth:'2px', marginBottom:'25px'}} className='d-none d-sm-block'>
       
         <div
           // style={{
