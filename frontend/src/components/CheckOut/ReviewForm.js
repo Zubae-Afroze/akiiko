@@ -13,6 +13,7 @@ import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
 import { createOrder, resetOrder } from '../../actions/actionOrder'
 import { useHistory } from 'react-router-dom'
 import { resetCartItems } from '../../actions/actionCart'
+import Astric from './asterisk.svg'
 
 const containerVariants = {
   hidden: {
@@ -263,20 +264,42 @@ function PaymentDetailComp() {
           width: '60%',
         }}
       >
-        {paymentObject.isCOD ? (
-          <h6> Cash On Delivery </h6>
-        ) : paymentObject.isNetbankingUPI ? (
-          <h6>Net Banking UPI</h6>
-        ) : (
-          <h6> .... .... 9876 </h6>
-        )}
+
+      {
+        
+        paymentObject.isCOD 
+        ? <h6> Cash On Delivery </h6>
+        : paymentObject.isNetbankingUPI
+        ? <h6>Net Banking UPI</h6>
+        : <div>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <div style={{width:'5px', display:'inline-block'}}/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <img src={Astric} alt='Astric'/>
+            <div style={{width:'5px', display:'inline-block'}}/>
+            <h6 style={{display:'inline-block'}}>6789</h6>
+          </div>
+      }
       </div>
     </Col>
   )
 }
 
-function EditCardDetailsButtonComp({ setFormLevel }) {
-  return (
+
+// paymentObject.isCOD 
+//         ? <h6> Cash On Delivery </h6>
+//         : paymentObject.isNetbankingUPI
+//         ? <h6>Net Banking UPI</h6>
+//         : <h6> .... .... 9876 </h6>
+
+
+function EditCardDetailsButtonComp({setFormLevel}){
+  return(
     <Col xs={1} className='p-0 m-0'>
       <Container
         fluid
