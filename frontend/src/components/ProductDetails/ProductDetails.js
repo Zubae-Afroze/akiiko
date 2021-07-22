@@ -1,261 +1,404 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { Container, Row, Col, Dropdown, Carousel, Modal, ModalBody } from 'react-bootstrap';
-import { Link, useHistory, useParams } from 'react-router-dom';
+import {
+  Container,
+  Row,
+  Col,
+  Dropdown,
+  Carousel,
+  Modal,
+  ModalBody,
+} from 'react-bootstrap'
+import { Link, useHistory, useParams } from 'react-router-dom'
 
 import { actionListProductDetails } from '../../actions/actionProductList'
-import { addToCart, removeFromCart } from '../../actions/actionCart';
+import { addToCart, removeFromCart } from '../../actions/actionCart'
 
-import ReactImageMagnify from 'react-image-magnify';
+import ReactImageMagnify from 'react-image-magnify'
 
-import MyComponent from 'react-fullpage-custom-loader';
-import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
+import MyComponent from 'react-fullpage-custom-loader'
+import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
-import './ProductDetails.css';
+import './ProductDetails.css'
 
 const ProductDetails = () => {
+  const { id } = useParams()
 
-    const { id } = useParams()
+  const history = useHistory()
 
-    const history = useHistory();
+  const dispatch = useDispatch()
 
-    const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(actionListProductDetails(id))
+  }, [dispatch, id])
 
-    useEffect(() => {
-        dispatch(actionListProductDetails(id))
+  const productDetails = useSelector((state) => state.productDetails)
 
-    }, [dispatch, id])
+  const { loading, error, product } = productDetails
 
-    const productDetails = useSelector(state => state.productDetails);
+  const [bigImageSrc, setImageSrc] = useState(product.heroImage)
 
-    const { loading, error, product } = productDetails
+  useEffect(() => {
+    setImageSrc(product.heroImage)
+  }, [product.heroImage])
 
-    const [bigImageSrc, setImageSrc] = useState(product.heroImage);
+  let [itemQuantity, setItemQuantity] = useState(1)
 
-    useEffect(() => {
-        setImageSrc(product.heroImage)
-    }, [product.heroImage])
+  const addToCartHandler = () => {
+    // history.push(`/cart/${id}?qty=${itemQuantity}`)
+    dispatch(addToCart(id, itemQuantity))
+    //setModalShow(true);
+  }
 
-    let [itemQuantity, setItemQuantity] = useState(1);
+  const cartList = useSelector((state) => state.cartList)
 
-    const addToCartHandler = () => {
-        // history.push(`/cart/${id}?qty=${itemQuantity}`)
-        dispatch(addToCart(id, itemQuantity));
-        setModalShow(true);
+  const { cartItems } = cartList
 
-    }
+  const [modalShow, setModalShow] = useState(false)
 
-    const cartList = useSelector(state => state.cartList)
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id))
+  }
 
-    const { cartItems } = cartList
+  const checkoutHandler = () => {
+    history.push('/login?redirect=shipping')
+  }
 
-    const [modalShow, setModalShow] = useState(false);
-
-    const removeFromCartHandler = (id) => {
-        dispatch(removeFromCart(id))
-    }
-
-    const checkoutHandler = () => {
-        history.push('/login?redirect=shipping')
-    }
-
-    function CartModal(props) {
-        return (
-            <Modal
-                {...props}
-                animation={false}>
-
-                <ModalBody>
-                    <div className='head-cart-header'>Shopping Cart<img src='/images/font_images/cart.svg' alt='cart-icon' /><span>{cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}</span></div>
-                    <>
-                        {cartItems.length === 0 ? <div className='head-cart-empty'>Your Cart is empty</div> :
-                            <>
-                                <div className='head-cart-scroll'>
-                                    {cartItems.map((items, index) => (
-                                        <div className='head-cart-wrap' key={index}>
-                                            <div className='head-cart-img'>
-                                                <img src={items.image} alt='cart_1' />
-                                            </div>
-                                            <div className='head-cart-details'>
-                                                <div className='head-cart-subg'>{items.subGroup}</div>
-                                                <div className='head-cart-prodn'>{items.productName}
-                                                    <img src='/images/font_images/times.svg' alt='trash_icon' onClick={() => removeFromCartHandler(items.product)} />
-                                                </div>
-                                                <div className='head-cart-root'>
-                                                    <div className='head-cart-qty'>
-                                                        <span className='head-cart-dum' onClick={() => items.qty = items.qty > 1 ? dispatch(addToCart(items.product, items.qty - 1)) : 1}>-</span>
-                                                        {items.qty}
-                                                        <span className='head-cart-div' onClick={() => items.qty = dispatch(addToCart(items.product, items.qty + 1))}>+</span>
-                                                    </div>
-                                                    <div className='head-cart-price'>&#x20B9;{items.price * items.qty}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className='head-cart-bottom-wrap'>
-                                    <div className='head-cart-showmore'>
-                                        <Link to='/cart'><button onClick={() => setModalShow(false)}>Go To Cart Page</button></Link>
-                                    </div>
-                                    <div className='head-cart-sub-price-wrap'>
-                                        <div className='head-cart-sub-price-label'>
-                                            Subtotal Price
-                                </div>
-                                        <div className='head-cart-sub-price'>
-                                            &#x20B9;{cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}
-                                        </div>
-                                    </div>
-                                    <div className='head-cart-purchase-button-wrap'>
-                                        <button onClick={checkoutHandler}>PROCEED TO CHECKOUT</button>
-                                    </div>
-                                </div>
-                            </>
-                        }
-                    </>
-                </ModalBody>
-            </Modal>
-        )
-    }
-
+  function CartModal(props) {
     return (
-        <>
-            {loading ? <MyComponent
-                sentences={[]}
-                wrapperBackgroundColor={'rgba(255,255,255)'}
-                color={'#6e4e37'}
-                loaderType={'ball-spin-clockwise'}
-                customLoader={<SpinnerIcon />}
-            /> : error ? <h2>{error}</h2> : product.productId ?
-                <Container>
-                    <div className='product-details-wrapper'>
-                        <Col sm={12} className='carousel-wrapper product-details-carousel'>
-                            <Carousel controls={false}>
-                                {product.images.map((prod, index) => (<Carousel.Item interval={null} key={index}>
-                                    <img
-                                        className="d-block w-100"
-                                        src={prod}
-                                        alt="First slide"
-                                    />
-                                </Carousel.Item>))}
-                            </Carousel>
-                        </Col>
-                        <Row>
-                            <Col xs={1} className='alt-img-list'>
-                                <ul>
-                                    {product.images.map((prod, index) => (
-                                        <li key={index}><img onClick={() => setImageSrc(prod)} src={prod} alt='alt_image' /></li>
-                                    ))}
-                                </ul>
-                            </Col>
-                            <Col xs={5} className='alt-img-hero-container'>
-                                <div className='alt-img-hero'>
-                                    <ReactImageMagnify {...{
-                                        smallImage: {
-                                            alt: 'big_img',
-                                            src: bigImageSrc,
-                                            width: 522,
-                                            height: 522
-                                        },
-                                        largeImage: {
-                                            src: bigImageSrc,
-                                            width: 1600,
-                                            height: 1600
-                                        },
-                                        className: 'test-magnify',
-                                        enlargedImageContainerClassName: 'mag-img-cont',
-                                        enlargedImageClassName: 'mag-img',
-                                        imageClassName: 'img-hero-wrap',
-                                        lensStyle: {
-                                            background: 'hsla(0, 0%, 100%, .3)',
-                                            border: '1px solid #ccc'
-                                        },
-                                        shouldUsePositiveSpaceLens: true
-                                    }} />
-                                </div>
-                            </Col>
-                            <Col lg={6} className='product-det'>
-                                <div className='products-details-head'>{product.group}</div>
-                                <div className='products-details-label'> {product.productName}{product.price ? <div className='products-details-price'><span className='strike-price'>&#x20B9; {product.mrpPrice}</span>  <span className='nstrike-price'>&#x20B9;{product.price}</span></div> : <div className='products-details-price'>&#x20B9; {product.mrpPrice}</div>}
-                                </div>
-                                <Row className='cart-det'>
-                                    <Col className='material-det'>
-                                        <Dropdown>
-                                            <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
-                                                <div className='material-div'>MATERIAL:</div> <div className='material-dum'>Cotton Canvas <i className="lni lni-chevron-down"></i></div>
-                                            </Dropdown.Toggle>
+      <Modal {...props} animation={false}>
+        <ModalBody>
+          <div className='head-cart-header'>
+            Shopping Cart
+            <img src='/images/font_images/cart.svg' alt='cart-icon' />
+            <span>
+              {cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}
+            </span>
+          </div>
+          <>
+            {cartItems.length === 0 ? (
+              <div className='head-cart-empty'>Your Cart is empty</div>
+            ) : (
+              <>
+                <div className='head-cart-scroll'>
+                  {cartItems.map((items, index) => (
+                    <div className='head-cart-wrap' key={index}>
+                      <div className='head-cart-img'>
+                        <img src={items.image} alt='cart_1' />
+                      </div>
+                      <div className='head-cart-details'>
+                        <div className='head-cart-subg'>{items.subGroup}</div>
+                        <div className='head-cart-prodn'>
+                          {items.productName}
+                          <img
+                            src='/images/font_images/times.svg'
+                            alt='trash_icon'
+                            onClick={() => removeFromCartHandler(items.product)}
+                          />
+                        </div>
+                        <div className='head-cart-root'>
+                          <div className='head-cart-qty'>
+                            <span
+                              className='head-cart-dum'
+                              onClick={() =>
+                                (items.qty =
+                                  items.qty > 1
+                                    ? dispatch(
+                                        addToCart(items.product, items.qty - 1)
+                                      )
+                                    : 1)
+                              }
+                            >
+                              -
+                            </span>
+                            {items.qty}
+                            <span
+                              className='head-cart-div'
+                              onClick={() =>
+                                (items.qty = dispatch(
+                                  addToCart(items.product, items.qty + 1)
+                                ))
+                              }
+                            >
+                              +
+                            </span>
+                          </div>
+                          <div className='head-cart-price'>
+                            &#x20B9;{items.price * items.qty}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className='head-cart-bottom-wrap'>
+                  <div className='head-cart-showmore'>
+                    <Link to='/cart'>
+                      <button onClick={() => setModalShow(false)}>
+                        Go To Cart Page
+                      </button>
+                    </Link>
+                  </div>
+                  <div className='head-cart-sub-price-wrap'>
+                    <div className='head-cart-sub-price-label'>
+                      Subtotal Price
+                    </div>
+                    <div className='head-cart-sub-price'>
+                      &#x20B9;
+                      {cartItems.reduce(
+                        (acc, items) => acc + items.qty * items.price,
+                        0
+                      )}
+                    </div>
+                  </div>
+                  <div className='head-cart-purchase-button-wrap'>
+                    <button onClick={checkoutHandler}>
+                      PROCEED TO CHECKOUT
+                    </button>
+                  </div>
+                </div>
+              </>
+            )}
+          </>
+        </ModalBody>
+      </Modal>
+    )
+  }
 
-                                            <Dropdown.Menu>
-                                                <Dropdown.Item>Cotton Canvas</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </Col>
-                                    <Col className='material-det'>
-                                        <Dropdown>
-                                            <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
-                                                <div className='thickness-div'>THICKNESS:</div> <div className='thickness-dum'>9 Ounce <i className="lni lni-chevron-down"></i></div>
-                                            </Dropdown.Toggle>
+  return (
+    <>
+      {loading ? (
+        <MyComponent
+          sentences={[]}
+          wrapperBackgroundColor={'rgba(255,255,255)'}
+          color={'#6e4e37'}
+          loaderType={'ball-spin-clockwise'}
+          customLoader={<SpinnerIcon />}
+        />
+      ) : error ? (
+        <h2>{error}</h2>
+      ) : product.productId ? (
+        <Container>
+          <div className='product-details-wrapper'>
+            <Col sm={12} className='carousel-wrapper product-details-carousel'>
+              <Carousel controls={false}>
+                {product.images.map((prod, index) => (
+                  <Carousel.Item interval={null} key={index}>
+                    <img
+                      className='d-block w-100'
+                      src={prod}
+                      alt='First slide'
+                    />
+                  </Carousel.Item>
+                ))}
+              </Carousel>
+            </Col>
+            <Row>
+              <Col xs={1} className='alt-img-list'>
+                <ul>
+                  {product.images.map((prod, index) => (
+                    <li key={index}>
+                      <img
+                        onClick={() => setImageSrc(prod)}
+                        src={prod}
+                        alt='alt_image'
+                      />
+                    </li>
+                  ))}
+                </ul>
+              </Col>
+              <Col xs={5} className='alt-img-hero-container'>
+                <div className='alt-img-hero'>
+                  <ReactImageMagnify
+                    {...{
+                      smallImage: {
+                        alt: 'big_img',
+                        src: bigImageSrc,
+                        width: 522,
+                        height: 522,
+                      },
+                      largeImage: {
+                        src: bigImageSrc,
+                        width: 1600,
+                        height: 1600,
+                      },
+                      className: 'test-magnify',
+                      enlargedImageContainerClassName: 'mag-img-cont',
+                      enlargedImageClassName: 'mag-img',
+                      imageClassName: 'img-hero-wrap',
+                      lensStyle: {
+                        background: 'hsla(0, 0%, 100%, .3)',
+                        border: '1px solid #ccc',
+                      },
+                      shouldUsePositiveSpaceLens: true,
+                    }}
+                  />
+                </div>
+              </Col>
+              <Col lg={6} className='product-det'>
+                <div className='products-details-head'>{product.group}</div>
+                <div className='products-details-label'>
+                  {' '}
+                  {product.productName}
+                  {product.price ? (
+                    <div className='products-details-price'>
+                      <span className='strike-price'>
+                        &#x20B9; {product.mrpPrice}
+                      </span>{' '}
+                      <span className='nstrike-price'>
+                        &#x20B9;{product.price}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className='products-details-price'>
+                      &#x20B9; {product.mrpPrice}
+                    </div>
+                  )}
+                </div>
+                <Row className='cart-det'>
+                  <Col className='material-det'>
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        className='product-details-button'
+                        variant='default'
+                        id='dropdown-basic'
+                      >
+                        <div className='material-div'>MATERIAL:</div>{' '}
+                        <div className='material-dum'>
+                          Cotton Canvas <i className='lni lni-chevron-down'></i>
+                        </div>
+                      </Dropdown.Toggle>
 
-                                            <Dropdown.Menu>
-                                                <Dropdown.Item>{product.thickness}</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </Col>
-                                </Row>
+                      <Dropdown.Menu>
+                        <Dropdown.Item>Cotton Canvas</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Col>
+                  <Col className='material-det'>
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        className='product-details-button'
+                        variant='default'
+                        id='dropdown-basic'
+                      >
+                        <div className='thickness-div'>THICKNESS:</div>{' '}
+                        <div className='thickness-dum'>
+                          9 Ounce <i className='lni lni-chevron-down'></i>
+                        </div>
+                      </Dropdown.Toggle>
 
-                                <Row className='cart-det'>
-                                    <Col className='product-details-color'>
-                                        <Dropdown>
-                                            <Dropdown.Toggle className='product-details-button' variant="default" id="dropdown-basic">
-                                                <div className='color-div'>Color:</div><div className='color-pick'><i className="lni lni-chevron-down testing"></i></div>
-                                            </Dropdown.Toggle>
+                      <Dropdown.Menu>
+                        <Dropdown.Item>{product.thickness}</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Col>
+                </Row>
 
-                                            <Dropdown.Menu>
-                                                <Dropdown.Item>Natural<div className='color-pick'></div></Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </Col>
+                <Row className='cart-det'>
+                  <Col className='product-details-color'>
+                    <Dropdown>
+                      <Dropdown.Toggle
+                        className='product-details-button'
+                        variant='default'
+                        id='dropdown-basic'
+                      >
+                        <div className='color-div'>Color:</div>
+                        <div className='color-pick'>
+                          <i className='lni lni-chevron-down testing'></i>
+                        </div>
+                      </Dropdown.Toggle>
 
-                                    <Col className='product-details-quantity'>
-                                        <div className='details-quantity'>
-                                            <div className='quantity-div'>Quantity:</div>
-                                            <div className='quantity-dum'><span className='quantity-decrease' onClick={() => setItemQuantity(itemQuantity <= 1 ? itemQuantity = 1 : itemQuantity - 1)}>-</span>
-                                                {itemQuantity}
-                                                <span className='quantity-increase' onClick={() => setItemQuantity(itemQuantity + 1)}>+</span></div>
-                                        </div>
-                                    </Col>
-                                </Row>
-                                <button className='product-purchase-button' onClick={addToCartHandler}>ADD TO CART</button>
+                      <Dropdown.Menu>
+                        <Dropdown.Item>
+                          Natural<div className='color-pick'></div>
+                        </Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
+                  </Col>
 
-                                <div className='product-details-second-wrapper'>
-                                    <div className='product-description-label '>PRODUCT DESCRIPTION</div>
-                                    <div className='product-description-text'>{product.description}</div>
+                  <Col className='product-details-quantity'>
+                    <div className='details-quantity'>
+                      <div className='quantity-div'>Quantity:</div>
+                      <div className='quantity-dum'>
+                        <span
+                          className='quantity-decrease'
+                          onClick={() =>
+                            setItemQuantity(
+                              itemQuantity <= 1
+                                ? (itemQuantity = 1)
+                                : itemQuantity - 1
+                            )
+                          }
+                        >
+                          -
+                        </span>
+                        {itemQuantity}
+                        <span
+                          className='quantity-increase'
+                          onClick={() => setItemQuantity(itemQuantity + 1)}
+                        >
+                          +
+                        </span>
+                      </div>
+                    </div>
+                  </Col>
+                </Row>
+                <button
+                  className='product-purchase-button'
+                  onClick={addToCartHandler}
+                >
+                  ADD TO CART
+                </button>
 
-                                    <div>
-                                        <div className='product-details-label '>Details</div>
-                                        <ul className='product-details-text'>
-                                            <li className='product-details-texts'><span className='target-bold'>Item Code: </span> {product.productId}</li>
+                <div className='product-details-second-wrapper'>
+                  <div className='product-description-label '>
+                    PRODUCT DESCRIPTION
+                  </div>
+                  <div className='product-description-text'>
+                    {product.description}
+                  </div>
 
-                                            {product.content ? <li className='product-details-texts'><span className='target-bold'>Content: </span> {product.content}</li> : null}
-                                            <li className='product-details-texts'><span className='target-bold'>Size:</span> {product.measurement}</li>
-                                            <li className='product-details-texts'><span className='target-bold'>Material:</span> {product.material}</li>
-                                            {/* <li>Care Instruction: {product.washingCare}</li> */}
-                                        </ul>
-                                    </div>
+                  <div>
+                    <div className='product-details-label '>Details</div>
+                    <ul className='product-details-text'>
+                      <li className='product-details-texts'>
+                        <span className='target-bold'>Item Code: </span>{' '}
+                        {product.productId}
+                      </li>
 
-                                    <div>
-                                        <div className='product-details-label '>Care Instruction</div>
-                                        <div className='product-details-text'>{product.washingCare}</div>
-                                    </div>
-                                </div>
-                            </Col>
-                        </Row>
-                        <CartModal
-                            show={modalShow}
-                            onHide={() => setModalShow(false)}
-                        />
+                      {product.content ? (
+                        <li className='product-details-texts'>
+                          <span className='target-bold'>Content: </span>{' '}
+                          {product.content}
+                        </li>
+                      ) : null}
+                      <li className='product-details-texts'>
+                        <span className='target-bold'>Size:</span>{' '}
+                        {product.measurement}
+                      </li>
+                      <li className='product-details-texts'>
+                        <span className='target-bold'>Material:</span>{' '}
+                        {product.material}
+                      </li>
+                      {/* <li>Care Instruction: {product.washingCare}</li> */}
+                    </ul>
+                  </div>
 
-                        {/* {product.addOn ? 
+                  <div>
+                    <div className='product-details-label '>
+                      Care Instruction
+                    </div>
+                    <div className='product-details-text'>
+                      {product.washingCare}
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            <CartModal show={modalShow} onHide={() => setModalShow(false)} />
+
+            {/* {product.addOn ? 
         <Row className=''> 
             <Col sm={3}>
                 <div className='addon-img-container'>
@@ -282,33 +425,59 @@ const ProductDetails = () => {
             </Col>
         </Row>
         : null} */}
-                        {product.similarProducts ?
-                            <div>
-                                <div className='similar-products-head'>You may also like</div>
-                                <Row className='similar-products-wrapper'>
-                                    {/* Similar Products */}
-                                    {product.similarProducts.map(prod => (
-                                        <div key={prod.productId} className='similar-products-container'>
-                                            <Link to={`/product/${prod.id}`} onClick={() => setImageSrc(prod.heroImage)}>
-                                                <Col lg={2.4} >
-                                                    <div>
-                                                        <div className='similar-products-image'><img src={prod.heroImage} alt={prod.productId}></img>
-                                                            {prod.bestSeller ? <span className='label-best'>{prod.bestSeller}</span> : null}
-                                                            {prod.quickView ? <span className='label-view'>{prod.quickView}</span> : null}
-                                                        </div>
-                                                        <div className='similar-products-title'>{prod.productName}</div>
-                                                        <div className='similar-products-text'> View Details - &#x20B9;{prod.price ? prod.price : prod.mrpPrice}</div>
-                                                    </div>
-                                                </Col>
-                                            </Link>
-                                        </div>
-                                    ))}
-                                </Row> </div> : null
-                        }
+            {product.similarProducts ? (
+              <div>
+                <div className='similar-products-head'>You may also like</div>
+                <Row className='similar-products-wrapper'>
+                  {/* Similar Products */}
+                  {product.similarProducts.map((prod) => (
+                    <div
+                      key={prod.productId}
+                      className='similar-products-container'
+                    >
+                      <Link
+                        to={`/product/${prod.id}`}
+                        onClick={() => setImageSrc(prod.heroImage)}
+                      >
+                        <Col lg={2.4}>
+                          <div>
+                            <div className='similar-products-image'>
+                              <img
+                                src={prod.heroImage}
+                                alt={prod.productId}
+                              ></img>
+                              {prod.bestSeller ? (
+                                <span className='label-best'>
+                                  {prod.bestSeller}
+                                </span>
+                              ) : null}
+                              {prod.quickView ? (
+                                <span className='label-view'>
+                                  {prod.quickView}
+                                </span>
+                              ) : null}
+                            </div>
+                            <div className='similar-products-title'>
+                              {prod.productName}
+                            </div>
+                            <div className='similar-products-text'>
+                              {' '}
+                              View Details - &#x20B9;
+                              {prod.price ? prod.price : prod.mrpPrice}
+                            </div>
+                          </div>
+                        </Col>
+                      </Link>
                     </div>
-                </Container> : null}
-        </>
-    )
+                  ))}
+                </Row>{' '}
+              </div>
+            ) : null}
+          </div>
+        </Container>
+      ) : null}
+    </>
+  )
 }
 
 export default ProductDetails
