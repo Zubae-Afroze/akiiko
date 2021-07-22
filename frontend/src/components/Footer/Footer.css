@@ -379,6 +379,9 @@ input.footer-main-form::placeholder {
     margin: 25px 5px 10px 20px;
     font-size: 25px;
   }
+  .very-end-blyat-list li:nth-child(4) {
+    padding-left: 0;
+  }
 }
 @media (max-width: 575px) {
   .footer-main-form {
@@ -386,6 +389,9 @@ input.footer-main-form::placeholder {
   }
   .form-inline {
     justify-content: left !important;
+  }
+  .very-end-blyat-list li:nth-child(4) {
+    padding-left: 0;
   }
 }
 
@@ -424,6 +430,9 @@ input.footer-main-form::placeholder {
   }
   .footer-image-row {
     margin: 10px 0px;
+  }
+  .very-end-blyat-list li:nth-child(5) {
+    padding-left: 0;
   }
 }
 
