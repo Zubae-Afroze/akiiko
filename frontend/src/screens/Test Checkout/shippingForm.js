@@ -76,7 +76,7 @@ export default function ShippingFormT() {
 
     return (
         <>  
-            <div style={{minHeight:'260px'}}>
+            <div style={{minHeight:'340px'}}>
 
                 {/* <EnterNewAddressComp changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields}/> */}
 
@@ -426,7 +426,7 @@ function ZipCodeField({changeShippingFormState,handelInputeChange,errorFields}) 
                     type='text'
                     placeholder='Zip Code'
                     name='zipCode'
-                    value={changeShippingFormState.pinCode}
+                    value={changeShippingFormState.zipCode}
                     onChange={handelInputeChange}
                     className={'d-block d-sm-none '+ (errorFields[6] ? 'error-form-style' : '')}
                 />
@@ -436,7 +436,7 @@ function ZipCodeField({changeShippingFormState,handelInputeChange,errorFields}) 
                     type='text'
                     placeholder='Zip Code'
                     name='zipCode'
-                    value={changeShippingFormState.pinCode}
+                    value={changeShippingFormState.zipCode}
                     onChange={handelInputeChange}
                     className={'d-none d-sm-block '+ (errorFields[6] ? 'error-form-style' : '')}
                 />

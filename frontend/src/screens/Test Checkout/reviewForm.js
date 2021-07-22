@@ -10,7 +10,7 @@ export default function ReviewFormT() {
 
     return (
         <>
-            <div style={{minHeight:'260px'}}>
+            <div style={{minHeight:'340px'}}>
 
                 <Row className='p-0 m-0'>
                     

@@ -258,17 +258,18 @@ function PaymentDetailComp() {
   return (
     <Col xs={11} className='f-f p-0 m-0'>
       <div
-        style={{
-          padding: '12px',
-          paddingTop: '20px',
-          paddingLeft: '20px',
-          borderStyle: 'solid',
-          borderColor: '#ced4da',
-          borderWidth: '1px',
-          marginTop: '10px',
-          marginBottom: '10px',
-          width: '60%',
-        }}
+        // style={{
+        //   padding: '12px',
+        //   paddingTop: '20px',
+        //   paddingLeft: '20px',
+        //   borderStyle: 'solid',
+        //   borderColor: '#ced4da',
+        //   borderWidth: '1px',
+        //   marginTop: '10px',
+        //   marginBottom: '10px',
+        //   width: '60%',
+        // }}
+        className='payment-detail-component'
       >
 
       {
@@ -277,23 +278,36 @@ function PaymentDetailComp() {
         ? <h6> Cash On Delivery </h6>
         : paymentObject.isNetbankingUPI
         ? <h6>Net Banking UPI</h6>
-        : <div>
-            <img src={Astric} alt='Astric'/>
-            <img src={Astric} alt='Astric'/>
-            <img src={Astric} alt='Astric'/>
-            <img src={Astric} alt='Astric'/>
-            <div style={{width:'5px', display:'inline-block'}}/>
-            <img src={Astric} alt='Astric'/>
-            <img src={Astric} alt='Astric'/>
-            <img src={Astric} alt='Astric'/>
-            <img src={Astric} alt='Astric'/>
-            <div style={{width:'5px', display:'inline-block'}}/>
-            <h6 style={{display:'inline-block'}}>6789</h6>
-          </div>
+        : <EncryptedCardNumber />
       }
       </div>
     </Col>
   )
+}
+
+
+function EncryptedCardNumber(){
+  let lastFourNumbers  = paymentObject.cardNumber.substring(12, 17);
+  return(
+    <div>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <div style={{width:'5px', display:'inline-block'}}/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <div style={{width:'5px', display:'inline-block'}}/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <img src={Astric} alt='Astric'/>
+      <div style={{width:'5px', display:'inline-block'}}/>
+      <h6 style={{display:'inline-block'}}>{lastFourNumbers}</h6>
+    </div>
+  );
 }
 
 
