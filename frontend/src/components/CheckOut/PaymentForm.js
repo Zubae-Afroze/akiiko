@@ -98,7 +98,7 @@ export default function PaymentForm({ setFormLevel,showToast }) {
     if(!paymentObject.isCOD){
       
       if(
-          (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '' || paymentObject.cardNumber.length < 16) 
+          (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '' || paymentObject.cardNumber.length !== 16) 
           && 
           (!paymentObject.isNetbankingUPI)
       ){

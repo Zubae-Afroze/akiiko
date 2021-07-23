@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import {
@@ -14,6 +14,18 @@ import { createOrder, resetOrder } from '../../actions/actionOrder'
 import { useHistory } from 'react-router-dom'
 import { resetCartItems } from '../../actions/actionCart'
 import Astric from './asterisk.svg'
+import { addNewShippingAddress } from '../../actions/actionProfile'
+
+// import { Link, useParams } from 'react-router-dom';
+// import Message from '../../components/Message/Message';
+
+// // import axios from 'axios';
+
+// import MyComponent from 'react-fullpage-custom-loader';
+// import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
+
+import { getOrderDetails } from '../../actions/actionOrder'
+import axios from 'axios'
 
 const containerVariants = {
   hidden: {
@@ -30,15 +42,189 @@ const containerVariants = {
 export default function ReviewForm({ setFormLevel }) {
   const cartList = useSelector((state) => state.cartList)
 
+  const orderPlacedDetail = useSelector((state) => state.orderCreate.order)
+
+  const profileDetails = useSelector((state) => state.profile.userProfile)
+
   const cashOnDeliveryContext = useContext(CashOnDeliveryContext)
 
   const dispatch = useDispatch()
 
-  const profileDetails = useSelector((state) => state.profile.userProfile)
-
   let history = useHistory()
 
   console.log('COD Order In Payment: ' + cashOnDeliveryContext.value)
+
+  const payButtonFunction = (e) => {
+    e.preventDefault()
+    const itemPriceTemp = cartList.cartItems.reduce(
+      (acc, items) => acc + items.qty * items.price,
+      0
+    )
+    const additionlaPriceTemp = itemPriceTemp > 500 ? 0 : 50
+    const shippingPriceTemp = cashOnDeliveryContext.value ? 50 : 0
+
+    const orderItemsList = cartList.cartItems.map((item, index) => {
+      return {
+        product: item.product,
+        productName: item.productName,
+        image: item.image,
+        price: item.price,
+        qty: item.qty,
+      }
+    })
+
+    const finalOrderPlacemnetJson = {
+      itemsPrice: itemPriceTemp,
+      taxPrice: additionlaPriceTemp, //aditional Price
+      shippingPrice: shippingPriceTemp,
+      totalPrice: itemPriceTemp,
+      //+ additionlaPriceTemp + shippingPriceTemp,
+      isPaid: false,
+      isDelivered: false,
+      orderItems: orderItemsList,
+      user: profileDetails._id,
+      shippingAddress: {
+        firstName: shippingObject.firstname,
+        lastName: shippingObject.lastname,
+        address: shippingObject.adress,
+        phoneNumber: shippingObject.mobile,
+        city: shippingObject.city,
+        state: shippingObject.state,
+        postalCode: shippingObject.zipCode,
+      },
+      paymentMethod: cashOnDeliveryContext.value ? 'cod' : 'online',
+    }
+
+    console.log(finalOrderPlacemnetJson)
+
+    // dispatch(createOrder(finalOrderPlacemnetJson)).then(()=>{
+
+    //   // history.replace('/ordersuccess')
+    //   // dispatch(resetCartItems())
+
+    // }).then(()=>{
+
+    //   // dispatch(resetOrder())
+
+    // }).catch((e)=>{
+    //   console.log(e)
+    // })
+
+    dispatch(
+      createOrder(finalOrderPlacemnetJson, profileDetails.email, history)
+    )
+
+    if (isAddNewAddressSelected.value) {
+      dispatch(
+        addNewShippingAddress({
+          firstname: shippingObject.firstname,
+          lastname: shippingObject.lastname,
+          address: shippingObject.adress,
+          mobile: shippingObject.mobile,
+          city: shippingObject.city,
+          state: shippingObject.state,
+          zipCode: shippingObject.zipCode,
+        })
+      )
+    }
+
+    // .then(() => {
+    //   if(finalOrderPlacemnetJson.paymentMethod === 'cod'){
+    //     history.replace('/ordersuccess')
+    //   }else{
+    //     payHandler(finalOrderPlacemnetJson)
+    //       .then((res)=>{
+    //         console.log('Payment: '+res)
+    //     })
+    //     .catch((e) => {
+    //         console.log('Error: '+ e)
+    //     })
+
+    //   }
+
+    // })
+
+    // await dispatch(createOrder(finalOrderPlacemnetJson))
+
+    // if(finalOrderPlacemnetJson.paymentMethod === 'cod') {
+    //   history.replace('/ordersuccess')
+    // } else {
+    //   await payHandler(finalOrderPlacemnetJson)
+    // }
+
+    // dispatch(createOrder(finalOrderPlacemnetJson)).then(()=>{
+
+    //   history.replace('/ordersuccess')
+    //   dispatch(resetCartItems())
+
+    // }).then(()=>{
+
+    //   dispatch(resetOrder())
+
+    // }).catch((e)=>{
+    //   console.log(e)
+    // })
+
+    console.log('order created ' + orderPlacedDetail)
+  }
+
+  // const orderDetails = useSelector(state => state.orderDetails)
+  // const { orderItems, loading, error } = orderDetails
+
+  // const user = useSelector(state => state.userLogin)
+  // const { userInfo } = user
+
+  // const payHandler = async () => {
+  //     const config = {
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //             // Authorization: `Bearer ${userInfo.token}`
+  //         }
+  //     }
+
+  //     const { data: dataRazor } = await axios.get(`/api/orders/${orderItems._id}/pay`, config)
+
+  //     var options = {
+  //         "key": dataRazor.razor_key,
+  //         "amount": dataRazor.amount,
+  //         "currency": dataRazor.currency,
+  //         "name": orderItems.user.name,
+  //         "description": "",
+  //         "order_id": dataRazor.id,
+  //         "handler": async function (response) {
+  //             // alert(response.razorpay_payment_id);
+  //             // alert(response.razorpay_order_id);
+  //             // alert(response.razorpay_signature);
+  //             console.log(response)
+  //             try {
+  //                 const res = await axios.post(`/api/orders/${orderItems._id}/ordercomplete`, {
+  //                     payment_id: response.razorpay_payment_id,
+  //                     razorpay_order_id: response.razorpay_order_id,
+  //                     signature: response.razorpay_signature
+  //                 }, config)
+  //                 console.log(res);
+
+  //                 //We can use res.body orderItems to overwitre the order details to store
+  //                 dispatch(getOrderDetails(orderItems._id))
+  //             } catch (error) {
+  //                 console.log(error);
+  //             }
+  //         },
+  //         "prefill": {
+  //             "name": orderItems.user.name,
+  //             "email": orderItems.user.email,
+  //             "contact": userInfo.phoneNumber
+  //         },
+  //         "notes": {
+  //             "address": "Razorpay Corporate Office"
+  //         },
+  //         "theme": {
+  //             "color": "#6e4e37"
+  //         }
+  //     };
+  //     var rzp1 = new window.Razorpay(options);
+  //     rzp1.open();
+  // }
 
   return (
     <motion.div variants={containerVariants} initial='hidden' animate='visible'>
@@ -94,60 +280,6 @@ export default function ReviewForm({ setFormLevel }) {
       <SmallScreenPAYbuttonComp payButtonFunction={payButtonFunction} />
     </motion.div>
   )
-
-  function payButtonFunction() {
-    const itemPriceTemp = cartList.cartItems.reduce(
-      (acc, items) => acc + items.qty * items.price,
-      0
-    )
-    const additionlaPriceTemp = itemPriceTemp > 500 ? 0 : 50
-    const shippingPriceTemp = cashOnDeliveryContext.value ? 50 : 0
-
-    const orderItemsList = cartList.cartItems.map((item, index) => {
-      return {
-        product: item.product,
-        productName: item.productName,
-        image: item.image,
-        price: item.price,
-        qty: item.qty,
-      }
-    })
-
-    const finalOrderPlacemnetJson = {
-      itemsPrice: itemPriceTemp,
-      taxPrice: additionlaPriceTemp, //aditional Price
-      shippingPrice: shippingPriceTemp,
-      totalPrice: itemPriceTemp + additionlaPriceTemp + shippingPriceTemp,
-      isPaid: false,
-      isDelivered: false,
-      orderItems: orderItemsList,
-      user: profileDetails._id,
-      shippingAddress: {
-        firstName: shippingObject.firstname,
-        lastName: shippingObject.lastname,
-        address: shippingObject.adress,
-        phoneNumber: shippingObject.mobile,
-        city: shippingObject.city,
-        state: shippingObject.state,
-        postalCode: shippingObject.zipCode,
-      },
-      paymentMethod: cashOnDeliveryContext.value ? 'cod' : 'online',
-    }
-
-    console.log(finalOrderPlacemnetJson)
-
-    dispatch(createOrder(finalOrderPlacemnetJson))
-      .then(() => {
-        history.replace('/ordersuccess')
-        dispatch(resetCartItems())
-      })
-      .then(() => {
-        dispatch(resetOrder())
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }
 }
 // <Route render={({ history}) => (
 //   <button
@@ -370,7 +502,7 @@ function LargeScreenPAYbuttonComp({ payButtonFunction }) {
                     'isAddressSelected: ' + isAddNewAddressSelected.value
                   )
                   e.preventDefault()
-                  payButtonFunction()
+                  payButtonFunction(e)
                 }}
               >
                 PAY
@@ -396,7 +528,7 @@ function SmallScreenPAYbuttonComp({ payButtonFunction }) {
           onClick={(e) => {
             console.log('isAddressSelected: ' + isAddNewAddressSelected.value)
             e.preventDefault()
-            payButtonFunction()
+            payButtonFunction(e)
           }}
         >
           PAY

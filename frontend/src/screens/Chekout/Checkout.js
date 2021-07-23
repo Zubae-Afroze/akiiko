@@ -59,7 +59,7 @@ export default function CheckOut() {
   return (
     
     <>
-    { order.order ? <Redirect to='/'/> :
+    { false ? <Redirect to='/'/> : //order.order
     <>
     <Menubar />
     <MobileNav />
