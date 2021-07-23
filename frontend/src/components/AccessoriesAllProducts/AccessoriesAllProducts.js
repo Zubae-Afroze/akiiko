@@ -9,6 +9,7 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 //import { actionListOnTheGo, actionListWallet } from '../../actions/actionAccessories'
 import axios from 'axios'
+import Footer from '../Footer/Footer'
 
 //import axios from 'axios';
 
@@ -79,52 +80,126 @@ const AccessoriesAllProducts = () => {
   }
 
   return (
-    <Container>
-      <div className='product-list-wrapper'>
-        <Link to='/' className='product-list-back-button'>
-          <img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>
-          BACK
-        </Link>
-        {loading && (
-          <MyComponent
-            sentences={[]}
-            wrapperBackgroundColor={'rgba(255,255,255)'}
-            color={'#6e4e37'}
-            loaderType={'ball-spin-clockwise'}
-            customLoader={<SpinnerIcon />}
-          />
-        )}
-        {error && <h2>{error}</h2>}
-        {go && (
-          <>
-            {go[Object.keys(go)[0]] ? (
-              <>
-                <div className='product-list-label'>
-                  {go[Object.keys(go)[0]].subGroup}
-                </div>
-                <div className='product-list-text'>
-                  {go[Object.keys(go)[0]].groupDescription}
-                </div>
-              </>
-            ) : null}
-            <div>
-              <Row className='product-list-card-wrapper'>
-                {go.map((product) => (
-                  <div
-                    className='product-list-card-wrapper'
-                    key={product.productId}
-                  >
-                    <Link to={`/product/${product._id}`}>
-                      <div className='product-list-image'>
-                        <div>
-                          <img src={product.heroImage} alt='home_1' />
+    <>
+      <Container>
+        <div className='product-list-wrapper'>
+          <Link to='/' className='product-list-back-button'>
+            <img
+              src='/images/font_images/back_arrow.svg'
+              alt='back_arrow'
+            ></img>
+            BACK
+          </Link>
+          {loading && (
+            <MyComponent
+              sentences={[]}
+              wrapperBackgroundColor={'rgba(255,255,255)'}
+              color={'#6e4e37'}
+              loaderType={'ball-spin-clockwise'}
+              customLoader={<SpinnerIcon />}
+            />
+          )}
+          {error && <h2>{error}</h2>}
+          {go && (
+            <>
+              {go[Object.keys(go)[0]] ? (
+                <>
+                  <div className='product-list-label'>
+                    {go[Object.keys(go)[0]].subGroup}
+                  </div>
+                  <div className='product-list-text'>
+                    {go[Object.keys(go)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              <div>
+                <Row className='product-list-card-wrapper'>
+                  {go.map((product) => (
+                    <div
+                      className='product-list-card-wrapper'
+                      key={product.productId}
+                    >
+                      <Link to={`/product/${product._id}`}>
+                        <div className='product-list-image'>
+                          <div>
+                            <img src={product.heroImage} alt='home_1' />
+                            {product.bestSeller ? (
+                              <span className='label-best'>
+                                {product.bestSeller}
+                              </span>
+                            ) : null}
+                            {product.quickView ? (
+                              <span className='label-view'>
+                                {product.quickView}
+                              </span>
+                            ) : null}
+                          </div>
+                          <div className='product-list-card-title'>
+                            {product.productName}
+                          </div>
+                          <div className='product-list-card-text'>
+                            View Details - &#x20B9;
+                            {product.price ? product.price : product.mrpPrice}
+                          </div>
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </Row>
+              </div>
+            </>
+          )}
+          {loading && (
+            <MyComponent
+              sentences={[]}
+              wrapperBackgroundColor={'rgba(255,255,255)'}
+              color={'#6e4e37'}
+              loaderType={'ball-spin-clockwise'}
+              customLoader={<SpinnerIcon />}
+            />
+          )}{' '}
+          {wallet && <h2>{error}</h2>}{' '}
+          {wallet[Object.keys(wallet)[0]] && (
+            <>
+              {wallet[Object.keys(wallet)[0]] ? (
+                <>
+                  <div className='product-list-label'>
+                    {wallet[Object.keys(wallet)[0]].subGroup}
+                  </div>
+                  <div className='product-list-text'>
+                    {wallet[Object.keys(wallet)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              <div>
+                <Row className='product-list-card-wrapper'>
+                  {wallet.map((product) => (
+                    <div
+                      className='product-list-card-wrapper'
+                      key={product.productId}
+                    >
+                      <Link to={`/product/${product._id}`}>
+                        <div className='product-list-image'>
+                          <img
+                            id={product.productId}
+                            src={product.heroImage}
+                            alt='home_1'
+                          />
                           {product.bestSeller ? (
-                            <span className='label-best'>
+                            <span className='pl-label-best'>
                               {product.bestSeller}
                             </span>
                           ) : null}
                           {product.quickView ? (
-                            <span className='label-view'>
+                            <span
+                              className='pl-label-view'
+                              onMouseEnter={() => {
+                                handleMouseEnter(product)
+                              }}
+                              onMouseOut={() => {
+                                handleMouseOut(product)
+                              }}
+                            >
                               {product.quickView}
                             </span>
                           ) : null}
@@ -136,85 +211,17 @@ const AccessoriesAllProducts = () => {
                           View Details - &#x20B9;
                           {product.price ? product.price : product.mrpPrice}
                         </div>
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </Row>
-            </div>
-          </>
-        )}
-        {loading && (
-          <MyComponent
-            sentences={[]}
-            wrapperBackgroundColor={'rgba(255,255,255)'}
-            color={'#6e4e37'}
-            loaderType={'ball-spin-clockwise'}
-            customLoader={<SpinnerIcon />}
-          />
-        )}{' '}
-        {wallet && <h2>{error}</h2>}{' '}
-        {wallet[Object.keys(wallet)[0]] && (
-          <>
-            {wallet[Object.keys(wallet)[0]] ? (
-              <>
-                <div className='product-list-label'>
-                  {wallet[Object.keys(wallet)[0]].subGroup}
-                </div>
-                <div className='product-list-text'>
-                  {wallet[Object.keys(wallet)[0]].groupDescription}
-                </div>
-              </>
-            ) : null}
-            <div>
-              <Row className='product-list-card-wrapper'>
-                {wallet.map((product) => (
-                  <div
-                    className='product-list-card-wrapper'
-                    key={product.productId}
-                  >
-                    <Link to={`/product/${product._id}`}>
-                      <div className='product-list-image'>
-                        <img
-                          id={product.productId}
-                          src={product.heroImage}
-                          alt='home_1'
-                        />
-                        {product.bestSeller ? (
-                          <span className='pl-label-best'>
-                            {product.bestSeller}
-                          </span>
-                        ) : null}
-                        {product.quickView ? (
-                          <span
-                            className='pl-label-view'
-                            onMouseEnter={() => {
-                              handleMouseEnter(product)
-                            }}
-                            onMouseOut={() => {
-                              handleMouseOut(product)
-                            }}
-                          >
-                            {product.quickView}
-                          </span>
-                        ) : null}
-                      </div>
-                      <div className='product-list-card-title'>
-                        {product.productName}
-                      </div>
-                      <div className='product-list-card-text'>
-                        View Details - &#x20B9;
-                        {product.price ? product.price : product.mrpPrice}
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </Row>
-            </div>
-          </>
-        )}
-      </div>
-    </Container>
+                      </Link>
+                    </div>
+                  ))}
+                </Row>
+              </div>
+            </>
+          )}
+        </div>
+      </Container>
+      <Footer />
+    </>
   )
 }
 

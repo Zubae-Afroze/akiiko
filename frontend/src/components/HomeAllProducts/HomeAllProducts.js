@@ -6,6 +6,7 @@ import '../ProductList/ProductList.css'
 
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
+import Footer from '../Footer/Footer'
 
 // import {
 //   actionListTableware,
@@ -128,41 +129,118 @@ const HomeAllProducts = () => {
   }
 
   return (
-    <Container>
-      <div className='product-list-wrapper'>
-        <Link to='/' className='product-list-back-button'>
-          <img src='/images/font_images/back_arrow.svg' alt='back_arrow'></img>
-          BACK
-        </Link>
-        {loading && (
-          <MyComponent
-            sentences={[]}
-            wrapperBackgroundColor={'rgba(255,255,255)'}
-            color={'#6e4e37'}
-            loaderType={'ball-spin-clockwise'}
-            customLoader={<SpinnerIcon />}
-          />
-        )}{' '}
-        {error && <h1>{error}</h1>}
-        {tableware[Object.keys(tableware)[0]] && (
-          <>
-            {tableware[Object.keys(tableware)[0]] ? (
-              <>
-                <div className='product-list-label'>
-                  {tableware[Object.keys(tableware)[0]].subGroup}
-                </div>
-                <div className='product-list-text'>
-                  {tableware[Object.keys(tableware)[0]].groupDescription}
-                </div>
-              </>
-            ) : null}
-            <div>
-              <Row className='product-list-card-wrapper'>
-                {tableware.map((product) => (
-                  <Link to={`/product/${product._id}`} key={product.productId}>
-                    <div className='product-list-card-wrapper'>
-                      <div className='product-list-image'>
-                        <div>
+    <>
+      <Container>
+        <div className='product-list-wrapper'>
+          <Link to='/' className='product-list-back-button'>
+            <img
+              src='/images/font_images/back_arrow.svg'
+              alt='back_arrow'
+            ></img>
+            BACK
+          </Link>
+          {loading && (
+            <MyComponent
+              sentences={[]}
+              wrapperBackgroundColor={'rgba(255,255,255)'}
+              color={'#6e4e37'}
+              loaderType={'ball-spin-clockwise'}
+              customLoader={<SpinnerIcon />}
+            />
+          )}{' '}
+          {error && <h1>{error}</h1>}
+          {tableware[Object.keys(tableware)[0]] && (
+            <>
+              {tableware[Object.keys(tableware)[0]] ? (
+                <>
+                  <div className='product-list-label'>
+                    {tableware[Object.keys(tableware)[0]].subGroup}
+                  </div>
+                  <div className='product-list-text'>
+                    {tableware[Object.keys(tableware)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              <div>
+                <Row className='product-list-card-wrapper'>
+                  {tableware.map((product) => (
+                    <Link
+                      to={`/product/${product._id}`}
+                      key={product.productId}
+                    >
+                      <div className='product-list-card-wrapper'>
+                        <div className='product-list-image'>
+                          <div>
+                            <img
+                              id={product.productId}
+                              src={product.heroImage}
+                              alt='home_1'
+                            />
+                            {product.bestSeller ? (
+                              <span className='pl-label-best'>
+                                {product.bestSeller}
+                              </span>
+                            ) : null}
+                            {product.quickView ? (
+                              <span
+                                className='pl-label-view'
+                                onMouseEnter={() => {
+                                  handleMouseEnter(product)
+                                }}
+                                onMouseOut={() => {
+                                  handleMouseOut(product)
+                                }}
+                              >
+                                {product.quickView}
+                              </span>
+                            ) : null}
+                          </div>
+                          <div className='product-list-card-title'>
+                            {product.productName}
+                          </div>
+                          <div className='product-list-card-text'>
+                            View Details - &#x20B9;
+                            {product.price ? product.price : product.mrpPrice}
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </Row>
+              </div>
+            </>
+          )}
+          {loading && (
+            <MyComponent
+              sentences={[]}
+              wrapperBackgroundColor={'rgba(255,255,255)'}
+              color={'#6e4e37'}
+              loaderType={'ball-spin-clockwise'}
+              customLoader={<SpinnerIcon />}
+            />
+          )}{' '}
+          {error && <h1>{error}</h1>}
+          {kitchen[Object.keys(kitchen)[0]] && (
+            <>
+              {kitchen[Object.keys(kitchen)[0]] ? (
+                <>
+                  <div className='product-list-label'>
+                    {kitchen[Object.keys(kitchen)[0]].subGroup}
+                  </div>
+                  <div className='product-list-text'>
+                    {kitchen[Object.keys(kitchen)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              <div>
+                <Row className='product-list-card-wrapper'>
+                  {kitchen.map((product) => (
+                    <div
+                      className='product-list-card-wrapper'
+                      key={product.productId}
+                    >
+                      <Link to={`/product/${product._id}`}>
+                        <div className='product-list-image'>
                           <img
                             id={product.productId}
                             src={product.heroImage}
@@ -194,216 +272,151 @@ const HomeAllProducts = () => {
                           View Details - &#x20B9;
                           {product.price ? product.price : product.mrpPrice}
                         </div>
-                      </div>
+                      </Link>
                     </div>
-                  </Link>
-                ))}
-              </Row>
-            </div>
-          </>
-        )}
-        {loading && (
-          <MyComponent
-            sentences={[]}
-            wrapperBackgroundColor={'rgba(255,255,255)'}
-            color={'#6e4e37'}
-            loaderType={'ball-spin-clockwise'}
-            customLoader={<SpinnerIcon />}
-          />
-        )}{' '}
-        {error && <h1>{error}</h1>}
-        {kitchen[Object.keys(kitchen)[0]] && (
-          <>
-            {kitchen[Object.keys(kitchen)[0]] ? (
-              <>
-                <div className='product-list-label'>
-                  {kitchen[Object.keys(kitchen)[0]].subGroup}
-                </div>
-                <div className='product-list-text'>
-                  {kitchen[Object.keys(kitchen)[0]].groupDescription}
-                </div>
-              </>
-            ) : null}
-            <div>
-              <Row className='product-list-card-wrapper'>
-                {kitchen.map((product) => (
-                  <div
-                    className='product-list-card-wrapper'
-                    key={product.productId}
-                  >
-                    <Link to={`/product/${product._id}`}>
-                      <div className='product-list-image'>
-                        <img
-                          id={product.productId}
-                          src={product.heroImage}
-                          alt='home_1'
-                        />
-                        {product.bestSeller ? (
-                          <span className='pl-label-best'>
-                            {product.bestSeller}
-                          </span>
-                        ) : null}
-                        {product.quickView ? (
-                          <span
-                            className='pl-label-view'
-                            onMouseEnter={() => {
-                              handleMouseEnter(product)
-                            }}
-                            onMouseOut={() => {
-                              handleMouseOut(product)
-                            }}
-                          >
-                            {product.quickView}
-                          </span>
-                        ) : null}
-                      </div>
-                      <div className='product-list-card-title'>
-                        {product.productName}
-                      </div>
-                      <div className='product-list-card-text'>
-                        View Details - &#x20B9;
-                        {product.price ? product.price : product.mrpPrice}
+                  ))}
+                </Row>
+              </div>
+            </>
+          )}
+          {loading && (
+            <MyComponent
+              sentences={[]}
+              wrapperBackgroundColor={'rgba(255,255,255)'}
+              color={'#6e4e37'}
+              loaderType={'ball-spin-clockwise'}
+              customLoader={<SpinnerIcon />}
+            />
+          )}{' '}
+          {error && <h1>{error}</h1>}
+          {laundry[Object.keys(laundry)[0]] && (
+            <>
+              {laundry[Object.keys(laundry)[0]] ? (
+                <>
+                  <div className='product-list-label'>
+                    {laundry[Object.keys(laundry)[0]].subGroup}
+                  </div>
+                  <div className='product-list-text'>
+                    {laundry[Object.keys(laundry)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              <div>
+                <Row className='product-list-card-wrapper'>
+                  {laundry.map((product) => (
+                    <div
+                      className='product-list-card-wrapper'
+                      key={product.productId}
+                    >
+                      <Link to={`/product/${product._id}`}>
+                        <div className='product-list-image'>
+                          <img
+                            id={product.productId}
+                            src={product.heroImage}
+                            alt='home_1'
+                          />
+                          {product.bestSeller ? (
+                            <span className='pl-label-best'>
+                              {product.bestSeller}
+                            </span>
+                          ) : null}
+                          {product.quickView ? (
+                            <span
+                              className='pl-label-view'
+                              onMouseEnter={() => {
+                                handleMouseEnter(product)
+                              }}
+                              onMouseOut={() => {
+                                handleMouseOut(product)
+                              }}
+                            >
+                              {product.quickView}
+                            </span>
+                          ) : null}
+                        </div>
+                        <div className='product-list-card-title'>
+                          {product.productName}
+                        </div>
+                        <div className='product-list-card-text'>
+                          View Details - &#x20B9;
+                          {product.price ? product.price : product.mrpPrice}
+                        </div>
+                      </Link>
+                    </div>
+                  ))}
+                </Row>
+              </div>
+            </>
+          )}
+          {loading && (
+            <MyComponent
+              sentences={[]}
+              wrapperBackgroundColor={'rgba(255,255,255)'}
+              color={'#6e4e37'}
+              loaderType={'ball-spin-clockwise'}
+              customLoader={<SpinnerIcon />}
+            />
+          )}{' '}
+          {error && <h1>{error}</h1>}:
+          {garden[Object.keys(garden)[0]] && (
+            <>
+              {garden[Object.keys(garden)[0]] ? (
+                <>
+                  <div className='product-list-label'>
+                    {garden[Object.keys(garden)[0]].subGroup}
+                  </div>
+                  <div className='product-list-text'>
+                    {garden[Object.keys(garden)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              <div>
+                <Row className='product-list-card-wrapper'>
+                  {garden.map((product) => (
+                    <Link
+                      to={`/product/${product._id}`}
+                      key={product.productId}
+                    >
+                      <div className='product-list-card-wrapper'>
+                        <div className='product-list-image'>
+                          <img src={product.heroImage} alt='home_1' />
+                          {product.bestSeller ? (
+                            <span className='pl-label-best'>
+                              {product.bestSeller}
+                            </span>
+                          ) : null}
+                          {product.quickView ? (
+                            <span
+                              className='pl-label-view'
+                              onMouseEnter={() => {
+                                handleMouseEnter(product)
+                              }}
+                              onMouseOut={() => {
+                                handleMouseOut(product)
+                              }}
+                            >
+                              {product.quickView}
+                            </span>
+                          ) : null}
+                        </div>
+                        <div className='product-list-card-title'>
+                          {product.productName}
+                        </div>
+                        <div className='product-list-card-text'>
+                          View Details - &#x20B9;
+                          {product.price ? product.price : product.mrpPrice}
+                        </div>
                       </div>
                     </Link>
-                  </div>
-                ))}
-              </Row>
-            </div>
-          </>
-        )}
-        {loading && (
-          <MyComponent
-            sentences={[]}
-            wrapperBackgroundColor={'rgba(255,255,255)'}
-            color={'#6e4e37'}
-            loaderType={'ball-spin-clockwise'}
-            customLoader={<SpinnerIcon />}
-          />
-        )}{' '}
-        {error && <h1>{error}</h1>}
-        {laundry[Object.keys(laundry)[0]] && (
-          <>
-            {laundry[Object.keys(laundry)[0]] ? (
-              <>
-                <div className='product-list-label'>
-                  {laundry[Object.keys(laundry)[0]].subGroup}
-                </div>
-                <div className='product-list-text'>
-                  {laundry[Object.keys(laundry)[0]].groupDescription}
-                </div>
-              </>
-            ) : null}
-            <div>
-              <Row className='product-list-card-wrapper'>
-                {laundry.map((product) => (
-                  <div
-                    className='product-list-card-wrapper'
-                    key={product.productId}
-                  >
-                    <Link to={`/product/${product._id}`}>
-                      <div className='product-list-image'>
-                        <img
-                          id={product.productId}
-                          src={product.heroImage}
-                          alt='home_1'
-                        />
-                        {product.bestSeller ? (
-                          <span className='pl-label-best'>
-                            {product.bestSeller}
-                          </span>
-                        ) : null}
-                        {product.quickView ? (
-                          <span
-                            className='pl-label-view'
-                            onMouseEnter={() => {
-                              handleMouseEnter(product)
-                            }}
-                            onMouseOut={() => {
-                              handleMouseOut(product)
-                            }}
-                          >
-                            {product.quickView}
-                          </span>
-                        ) : null}
-                      </div>
-                      <div className='product-list-card-title'>
-                        {product.productName}
-                      </div>
-                      <div className='product-list-card-text'>
-                        View Details - &#x20B9;
-                        {product.price ? product.price : product.mrpPrice}
-                      </div>
-                    </Link>
-                  </div>
-                ))}
-              </Row>
-            </div>
-          </>
-        )}
-        {loading && (
-          <MyComponent
-            sentences={[]}
-            wrapperBackgroundColor={'rgba(255,255,255)'}
-            color={'#6e4e37'}
-            loaderType={'ball-spin-clockwise'}
-            customLoader={<SpinnerIcon />}
-          />
-        )}{' '}
-        {error && <h1>{error}</h1>}:
-        {garden[Object.keys(garden)[0]] && (
-          <>
-            {garden[Object.keys(garden)[0]] ? (
-              <>
-                <div className='product-list-label'>
-                  {garden[Object.keys(garden)[0]].subGroup}
-                </div>
-                <div className='product-list-text'>
-                  {garden[Object.keys(garden)[0]].groupDescription}
-                </div>
-              </>
-            ) : null}
-            <div>
-              <Row className='product-list-card-wrapper'>
-                {garden.map((product) => (
-                  <Link to={`/product/${product._id}`} key={product.productId}>
-                    <div className='product-list-card-wrapper'>
-                      <div className='product-list-image'>
-                        <img src={product.heroImage} alt='home_1' />
-                        {product.bestSeller ? (
-                          <span className='pl-label-best'>
-                            {product.bestSeller}
-                          </span>
-                        ) : null}
-                        {product.quickView ? (
-                          <span
-                            className='pl-label-view'
-                            onMouseEnter={() => {
-                              handleMouseEnter(product)
-                            }}
-                            onMouseOut={() => {
-                              handleMouseOut(product)
-                            }}
-                          >
-                            {product.quickView}
-                          </span>
-                        ) : null}
-                      </div>
-                      <div className='product-list-card-title'>
-                        {product.productName}
-                      </div>
-                      <div className='product-list-card-text'>
-                        View Details - &#x20B9;
-                        {product.price ? product.price : product.mrpPrice}
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </Row>
-            </div>
-          </>
-        )}
-      </div>
-    </Container>
+                  ))}
+                </Row>
+              </div>
+            </>
+          )}
+        </div>
+      </Container>
+      <Footer />
+    </>
   )
 }
 

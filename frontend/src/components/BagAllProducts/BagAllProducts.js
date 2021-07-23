@@ -7,6 +7,7 @@ import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 import axios from 'axios'
+import Footer from '../Footer/Footer'
 
 const BagAllProducts = () => {
   // const [allProductList, setAllProductList] = useState({});
@@ -405,6 +406,7 @@ const BagAllProducts = () => {
           )}
         </div>
       </Container>
+      <Footer />
     </>
   )
 }

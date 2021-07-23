@@ -6,6 +6,7 @@ import '../ProductList/ProductList.css'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import axios from 'axios'
+import Footer from '../Footer/Footer'
 
 const LifestyleAllProducts = () => {
   // const dispatch = useDispatch()
@@ -341,6 +342,7 @@ const LifestyleAllProducts = () => {
           )}
         </div>
       </Container>
+      <Footer />
     </React.Fragment>
   )
 }
