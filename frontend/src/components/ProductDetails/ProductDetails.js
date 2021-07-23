@@ -47,14 +47,14 @@ const ProductDetails = () => {
     dispatch(addToCart(id, itemQuantity))
 
     toast('Item Added to cart', {
-      position: "top-center",
+      position: 'top-center',
       autoClose: 5000,
       hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
       progress: undefined,
-    });
+    })
     // setModalShow(true)
   }
 
@@ -183,17 +183,17 @@ const ProductDetails = () => {
         <h2>{error}</h2>
       ) : product.productId ? (
         <Container>
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+          <ToastContainer
+            position='top-center'
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>
