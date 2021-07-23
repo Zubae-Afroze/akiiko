@@ -98,12 +98,26 @@ export default function PaymentFormT() {
         checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 2})
 
         let isValidated = true;
-        let updatedList = [false,false];
+        let updatedList = [false,false,false,false,false];
+
+
+        if(checkOutFormObj.formObject.cardNumber === null || checkOutFormObj.formObject.cardNumber.trim() === ''){
+            updatedList[0] = true;
+            isValidated = false;
+        }
+        if(checkOutFormObj.formObject.month === null || checkOutFormObj.formObject.month.trim() === ''){
+            updatedList[1] = true;
+            isValidated = false;
+        }
+        if(checkOutFormObj.formObject.year === null || checkOutFormObj.formObject.year.trim() === ''){
+            updatedList[2] = true;
+            isValidated = false;
+        }
 
         // if(changePaymentFormState.isCOD){
         
         // if(
-        //     (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '' || paymentObject.cardNumber.length < 16) 
+        //     (changePaymentFormState.cardNumber == null || changePaymentFormState.cardNumber.trim() === '' || paymentObject.cardNumber.length < 16) 
         //     && 
         //     (!paymentObject.isNetbankingUPI)
         // ){

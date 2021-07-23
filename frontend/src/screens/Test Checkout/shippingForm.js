@@ -78,9 +78,9 @@ export default function ShippingFormT() {
         <>  
             <div style={{minHeight:'340px'}}>
 
-                {/* <EnterNewAddressComp changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields}/> */}
+                <EnterNewAddressComp changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields}/>
 
-                <ExistingAddressComp checkOutFormObj={checkOutFormObj}/>
+                {/* <ExistingAddressComp checkOutFormObj={checkOutFormObj}/> */}
 
             </div>
 
