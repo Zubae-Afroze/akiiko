@@ -96,7 +96,7 @@ const RegisterScreen = () => {
       const name = fname + ' ' + lname
       const userObject = { name, email, password, phoneNumber }
       console.log('Registered')
-      // dispatch(registerWithEmail(userObject))
+      dispatch(registerWithEmail(userObject))
     }else{
       console.log('Please Fill')
       setErrorFields(updatedList)

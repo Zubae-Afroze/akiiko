@@ -34,6 +34,8 @@ export default function PaymentFormT() {
 
     const [ changePaymentFormState , setChangePaymentFormState] = useState(checkOutFormObj.formObject)
 
+    const [ errorFields, setErrorFields ] = useState([false,false,false,false,false]);
+
     console.log('------Payment Form Rendered-----');
     
 
@@ -94,6 +96,41 @@ export default function PaymentFormT() {
     function onSubmitPaymentForm(e){
         e.preventDefault();
         checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 2})
+
+        let isValidated = true;
+        let updatedList = [false,false];
+
+        // if(changePaymentFormState.isCOD){
+        
+        // if(
+        //     (paymentObject.cardNumber === null || paymentObject.cardNumber.trim() === '' || paymentObject.cardNumber.length < 16) 
+        //     && 
+        //     (!paymentObject.isNetbankingUPI)
+        // ){
+        //     updatedList[0] = true;
+        //     isValidated = false;
+        // }
+        // if(
+        //     (paymentObject.monthYearCVC === null || paymentObject.monthYearCVC.trim() === '')
+        //     &&
+        //     (!paymentObject.isNetbankingUPI)
+        //     // (paymentObject.netbankingUPI === null || paymentObject.netbankingUPI.trim() === '')
+
+        // ){
+        //     updatedList[1] = true;
+        //     isValidated = false;
+        // }
+        
+        // if(isValidated){
+        //     console.log('Validated'+ stepperLevel.REVIEW)
+        //     setFormLevel(stepperLevel.REVIEW)
+        // }else{
+        //     setErrorFields(updatedList)
+        // } 
+
+        // }else{
+        // setFormLevel(stepperLevel.REVIEW)
+        // }
     }
 
     return (
