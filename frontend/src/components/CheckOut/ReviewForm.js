@@ -136,19 +136,17 @@ export default function ReviewForm({ setFormLevel }) {
 
     console.log(finalOrderPlacemnetJson)
 
-    dispatch(createOrder(finalOrderPlacemnetJson)).then(()=>{
-
-      history.replace('/ordersuccess')
-      dispatch(resetCartItems())
-
-    }).then(()=>{
-
-      dispatch(resetOrder())
-
-    }).catch((e)=>{
-      console.log(e)
-    })
-
+    dispatch(createOrder(finalOrderPlacemnetJson))
+      .then(() => {
+        history.replace('/ordersuccess')
+        dispatch(resetCartItems())
+      })
+      .then(() => {
+        dispatch(resetOrder())
+      })
+      .catch((e) => {
+        console.log(e)
+      })
   }
 }
 // <Route render={({ history}) => (
@@ -271,55 +269,50 @@ function PaymentDetailComp() {
         // }}
         className='payment-detail-component'
       >
-
-      {
-        
-        paymentObject.isCOD 
-        ? <h6> Cash On Delivery </h6>
-        : paymentObject.isNetbankingUPI
-        ? <h6>Net Banking UPI</h6>
-        : <EncryptedCardNumber />
-      }
+        {paymentObject.isCOD ? (
+          <h6> Cash On Delivery </h6>
+        ) : paymentObject.isNetbankingUPI ? (
+          <h6>Net Banking UPI</h6>
+        ) : (
+          <EncryptedCardNumber />
+        )}
       </div>
     </Col>
   )
 }
 
-
-function EncryptedCardNumber(){
-  let lastFourNumbers  = paymentObject.cardNumber.substring(12, 17);
-  return(
+function EncryptedCardNumber() {
+  let lastFourNumbers = paymentObject.cardNumber.substring(12, 17)
+  return (
     <div>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <div style={{width:'5px', display:'inline-block'}}/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <div style={{width:'5px', display:'inline-block'}}/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <img src={Astric} alt='Astric'/>
-      <div style={{width:'5px', display:'inline-block'}}/>
-      <h6 style={{display:'inline-block'}}>{lastFourNumbers}</h6>
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <div style={{ width: '5px', display: 'inline-block' }} />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <div style={{ width: '5px', display: 'inline-block' }} />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <img src={Astric} alt='Astric' />
+      <div style={{ width: '5px', display: 'inline-block' }} />
+      <h6 style={{ display: 'inline-block' }}>{lastFourNumbers}</h6>
     </div>
-  );
+  )
 }
 
-
-// paymentObject.isCOD 
+// paymentObject.isCOD
 //         ? <h6> Cash On Delivery </h6>
 //         : paymentObject.isNetbankingUPI
 //         ? <h6>Net Banking UPI</h6>
 //         : <h6> .... .... 9876 </h6>
 
-
-function EditCardDetailsButtonComp({setFormLevel}){
-  return(
+function EditCardDetailsButtonComp({ setFormLevel }) {
+  return (
     <Col xs={1} className='p-0 m-0'>
       <Container
         fluid
