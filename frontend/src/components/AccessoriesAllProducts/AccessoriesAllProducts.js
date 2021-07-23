@@ -114,7 +114,7 @@ const AccessoriesAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product.productId}`}>
+                    <Link to={`/product/${product._id}`}>
                       <div className='product-list-image'>
                         <div>
                           <img src={product.heroImage} alt='home_1' />
@@ -173,7 +173,7 @@ const AccessoriesAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product.productId}`}>
+                    <Link to={`/product/${product._id}`}>
                       <div className='product-list-image'>
                         <img
                           id={product.productId}

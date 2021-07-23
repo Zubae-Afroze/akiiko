@@ -159,10 +159,7 @@ const HomeAllProducts = () => {
             <div>
               <Row className='product-list-card-wrapper'>
                 {tableware.map((product) => (
-                  <Link
-                    to={`/product/${product.productId}`}
-                    key={product.productId}
-                  >
+                  <Link to={`/product/${product._id}`} key={product.productId}>
                     <div className='product-list-card-wrapper'>
                       <div className='product-list-image'>
                         <div>
@@ -234,7 +231,7 @@ const HomeAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product.productId}`}>
+                    <Link to={`/product/${product._id}`}>
                       <div className='product-list-image'>
                         <img
                           id={product.productId}
@@ -303,7 +300,7 @@ const HomeAllProducts = () => {
                     className='product-list-card-wrapper'
                     key={product.productId}
                   >
-                    <Link to={`/product/${product.productId}`}>
+                    <Link to={`/product/${product._id}`}>
                       <div className='product-list-image'>
                         <img
                           id={product.productId}
@@ -368,10 +365,7 @@ const HomeAllProducts = () => {
             <div>
               <Row className='product-list-card-wrapper'>
                 {garden.map((product) => (
-                  <Link
-                    to={`/product/${product.productId}`}
-                    key={product.productId}
-                  >
+                  <Link to={`/product/${product._id}`} key={product.productId}>
                     <div className='product-list-card-wrapper'>
                       <div className='product-list-image'>
                         <img src={product.heroImage} alt='home_1' />
