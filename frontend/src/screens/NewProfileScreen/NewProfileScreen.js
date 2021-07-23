@@ -9,6 +9,8 @@ import '../Chekout/style.css'
 import ProfileComp from '../../components/ProfileComponent/ProfileComp';
 import { getUserProfileByUID } from '../../actions/actionProfile';
 import { listMyOrders } from '../../actions/actionOrder';
+import { firebaseLogout } from '../../actions/actionAuth'
+import { useHistory } from 'react-router-dom'
 
 
 export const PROFILE_COMP = 'profile';
@@ -26,6 +28,8 @@ export default function NewProfileScreen() {
 
   const profileDetails = useSelector((state) => state.profile.userProfile)
 
+  const history = useHistory()
+
   useEffect(() => {
     dispatch(getUserProfileByUID(uid));
   }, [dispatch,uid])
@@ -33,6 +37,11 @@ export default function NewProfileScreen() {
   useEffect(() => {
       dispatch(listMyOrders())
   })
+
+  const logouthandler = () => {
+    dispatch(firebaseLogout())
+    history.push('/')
+  }
 
 
     return (
@@ -73,7 +82,9 @@ export default function NewProfileScreen() {
                                                 Your Orders
                                             </li>
                                             <hr/>
-                                            <li className='tabs'>Log Out</li>
+                                            <li className='tabs'
+                                                onClick={()=>{logouthandler()}}
+                                            >Log Out</li>
                                             <hr/>
                                         </ul>
                                     </div>

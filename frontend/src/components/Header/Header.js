@@ -136,13 +136,13 @@ const Header = () => {
                   ))}
                 </div>
                 <div className='head-cart-bottom-wrap'>
-                  <div className='head-cart-showmore'>
+                  {/* <div className='head-cart-showmore'>
                     <Link to='/cart'>
                       <button onClick={() => setCartModalShow(false)}>
                         Go To Cart Page
                       </button>
                     </Link>
-                  </div>
+                  </div> */}
                   <div className='head-cart-sub-price-wrap'>
                     <div className='head-cart-sub-price-label'>
                       Subtotal Price
