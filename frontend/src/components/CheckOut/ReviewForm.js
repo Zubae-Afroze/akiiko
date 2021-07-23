@@ -77,8 +77,7 @@ export default function ReviewForm({ setFormLevel }) {
       itemsPrice: itemPriceTemp,
       taxPrice: additionlaPriceTemp, //aditional Price
       shippingPrice: shippingPriceTemp,
-      totalPrice: itemPriceTemp,
-      //+ additionlaPriceTemp + shippingPriceTemp,
+      totalPrice: itemPriceTemp + additionlaPriceTemp + shippingPriceTemp,
       isPaid: false,
       isDelivered: false,
       orderItems: orderItemsList,
