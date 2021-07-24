@@ -27,7 +27,7 @@ export default function ProductRowComp({orderDetails,index}) {
                 // borderBottomColor: '#cbc6bf',
                 // borderBottomWidth: '1.7px',
                 paddingTop:'12px',
-                paddingBottom:'18px',
+                paddingBottom:'15px',
                 cursor:'pointer'
             }}
                 onClick={()=>setShowOrderDetails(prev => !prev)}
@@ -72,9 +72,16 @@ export default function ProductRowComp({orderDetails,index}) {
                             {CodReorderDeliveredButton()}
                         {/* </h6> */}
                     </Col>
+                                  
+                    <Col xs={12}><div style={{height:'5px'}}/></Col>
+                    <Col xs={2} md={1} className='d-none d-sm-none d-md-block'>
 
+                    </Col>
+
+                    <Col xs={6} md={6} className='f-f-l tabs' style={{fontSize:'12px', textDecoration: 'underline'}}>
+                        View Details
+                    </Col>
                 </Row>
-
             </div>
 
             {

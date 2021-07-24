@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Col, Row, Form, Button } from 'react-bootstrap'
 import { CheckOutFormContext } from './CheckOutIndex'
+import './CheckOutStyleIndex.css'
 
 const hrStyle = {
     row: {
@@ -95,56 +96,36 @@ export default function PaymentFormT() {
 
     function onSubmitPaymentForm(e){
         e.preventDefault();
-        checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 2})
-
+        
         let isValidated = true;
         let updatedList = [false,false,false,false,false];
 
+        if(!checkOutFormObj.formObject.isNetbankingUpiChecked && !checkOutFormObj.formObject.isCodChecked){
 
-        if(checkOutFormObj.formObject.cardNumber === null || checkOutFormObj.formObject.cardNumber.trim() === ''){
-            updatedList[0] = true;
-            isValidated = false;
+            if(checkOutFormObj.formObject.cardNumber === null || checkOutFormObj.formObject.cardNumber.trim() === ''){
+                updatedList[0] = true;
+                isValidated = false;
+            }
+            if(checkOutFormObj.formObject.month === null || checkOutFormObj.formObject.month.trim() === ''){
+                updatedList[1] = true;
+                isValidated = false;
+            }
+            if(checkOutFormObj.formObject.year === null || checkOutFormObj.formObject.year.trim() === ''){
+                updatedList[2] = true;
+                isValidated = false;
+            }
+
         }
-        if(checkOutFormObj.formObject.month === null || checkOutFormObj.formObject.month.trim() === ''){
-            updatedList[1] = true;
-            isValidated = false;
+            
+
+
+        if(isValidated){
+            checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 2})
+        }else{
+            setErrorFields(updatedList)
         }
-        if(checkOutFormObj.formObject.year === null || checkOutFormObj.formObject.year.trim() === ''){
-            updatedList[2] = true;
-            isValidated = false;
-        }
 
-        // if(changePaymentFormState.isCOD){
-        
-        // if(
-        //     (changePaymentFormState.cardNumber == null || changePaymentFormState.cardNumber.trim() === '' || paymentObject.cardNumber.length < 16) 
-        //     && 
-        //     (!paymentObject.isNetbankingUPI)
-        // ){
-        //     updatedList[0] = true;
-        //     isValidated = false;
-        // }
-        // if(
-        //     (paymentObject.monthYearCVC === null || paymentObject.monthYearCVC.trim() === '')
-        //     &&
-        //     (!paymentObject.isNetbankingUPI)
-        //     // (paymentObject.netbankingUPI === null || paymentObject.netbankingUPI.trim() === '')
 
-        // ){
-        //     updatedList[1] = true;
-        //     isValidated = false;
-        // }
-        
-        // if(isValidated){
-        //     console.log('Validated'+ stepperLevel.REVIEW)
-        //     setFormLevel(stepperLevel.REVIEW)
-        // }else{
-        //     setErrorFields(updatedList)
-        // } 
-
-        // }else{
-        // setFormLevel(stepperLevel.REVIEW)
-        // }
     }
 
     return (
@@ -154,11 +135,11 @@ export default function PaymentFormT() {
 
                 <Row className='p-0 m-0'>
 
-                    <CardNumberField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+                    <CardNumberField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-                    <MonthField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+                    <MonthField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-                    <YearField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+                    <YearField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
                     <DummyHeight />
 
@@ -188,11 +169,11 @@ export default function PaymentFormT() {
                     <Col xs={12} sm={4} className='p-0 m-0' />
                     <Col xs={12} sm={4} className='p-0 m-0'>
                         <Button
-                            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                            // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
                             size='lg'
                             variant='primary'
                             type='submit'
-                            className='p-2 m-0'
+                            className='p-2 m-0 Button-on-click'
                             onClick={onSubmitPaymentForm}
                         >
                             Next
@@ -203,11 +184,11 @@ export default function PaymentFormT() {
             <div className='d-block d-sm-block d-md-none f-f-m'>
                 <div className='d-flex justify-content-center '>
                     <Button
-                        style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
+                        // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
                         size='md'
                         variant='primary'
                         type='submit'
-                        className='px-5 me-3 mt-3 mb-3'
+                        className='px-5 me-3 mt-3 mb-3 Button-on-click'
                         onClick={onSubmitPaymentForm}
                     >
                         NEXT
@@ -229,7 +210,7 @@ export default function PaymentFormT() {
 }
 
 
-function CardNumberField({changePaymentFormState,handelInputeChange}) {
+function CardNumberField({changePaymentFormState,handelInputeChange,errorFields}) {
     return(
         <>
             <Col xs={6} lg={6} className='p-0 m-0'>
@@ -243,7 +224,7 @@ function CardNumberField({changePaymentFormState,handelInputeChange}) {
                         name='cardNumber'
                         value={changePaymentFormState.cardNumber}
                         onChange={handelInputeChange}
-                        className='d-block d-sm-none '
+                        className={'d-block d-sm-none '+ (errorFields[0] ? 'error-form-style' : '')}
                     />
 
                     <Form.Control
@@ -253,7 +234,7 @@ function CardNumberField({changePaymentFormState,handelInputeChange}) {
                         name='cardNumber'
                         value={changePaymentFormState.cardNumber}
                         onChange={handelInputeChange}
-                        className='d-none d-sm-block '
+                        className={'d-none d-sm-block '+ (errorFields[0] ? 'error-form-style' : '')}
                     />
 
                     {/* <Form.Check
@@ -275,7 +256,7 @@ function CardNumberField({changePaymentFormState,handelInputeChange}) {
 }
 
 
-function MonthField({changePaymentFormState,handelInputeChange}){
+function MonthField({changePaymentFormState,handelInputeChange,errorFields}){
     return(
         <Col xs={3} lg={3} className='p-0 m-0'>
                 
@@ -287,7 +268,7 @@ function MonthField({changePaymentFormState,handelInputeChange}){
                 name='month'
                 value={changePaymentFormState.month}
                 onChange={handelInputeChange}
-                className='d-block d-sm-none '
+                className={'d-block d-sm-none '+ (errorFields[1] ? 'error-form-style' : '')}
             />
 
             <Form.Control
@@ -297,7 +278,7 @@ function MonthField({changePaymentFormState,handelInputeChange}){
                 name='month'
                 value={changePaymentFormState.month}
                 onChange={handelInputeChange}
-                className='d-none d-sm-block '
+                className={'d-none d-sm-block '+ (errorFields[1] ? 'error-form-style' : '')}
             />
 
 
@@ -305,7 +286,7 @@ function MonthField({changePaymentFormState,handelInputeChange}){
     );
 }
 
-function YearField({changePaymentFormState,handelInputeChange}){
+function YearField({changePaymentFormState,handelInputeChange,errorFields}){
     return(
         <Col xs={3} lg={3} className='p-0 m-0'>
                 
@@ -318,7 +299,7 @@ function YearField({changePaymentFormState,handelInputeChange}){
                     name='year'
                     value={changePaymentFormState.year}
                     onChange={handelInputeChange}
-                    className='d-block d-sm-none '
+                    className={'d-block d-sm-none '+ (errorFields[2] ? 'error-form-style' : '')}
                 />
 
                 <Form.Control
@@ -328,7 +309,7 @@ function YearField({changePaymentFormState,handelInputeChange}){
                     name='year'
                     value={changePaymentFormState.year}
                     onChange={handelInputeChange}
-                    className='d-none d-sm-block '
+                    className={'d-none d-sm-block '+ (errorFields[2] ? 'error-form-style' : '')}
                 />
 
             </div>
@@ -344,8 +325,7 @@ function NetBankingField({changePaymentFormState,handelInputeChange}){
           style={{
             padding: '7px',
           }}
-          className='d-block d-sm-none check-box-unchecked'
-        //   className={'d-block d-sm-none ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
+          className={'d-block d-sm-none ' + (changePaymentFormState.isNetbankingUpiChecked ? 'check-box-checked' : 'check-box-unchecked')}
         >
           <Form.Check
             style={{ color: '#4A4A4A', fontSize: '16px' }}
@@ -357,8 +337,7 @@ function NetBankingField({changePaymentFormState,handelInputeChange}){
           />
         </div>
         <div
-        //   className={'d-none d-sm-block ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
-          className='d-none d-sm-block check-box-unchecked'
+          className={'d-none d-sm-block ' + (changePaymentFormState.isNetbankingUpiChecked ? 'check-box-checked' : 'check-box-unchecked')}
         >
           <Form.Check
             style={{ color: '#4A4A4A', fontSize: '16px' }}
@@ -380,8 +359,7 @@ function CodField({changePaymentFormState,handelInputeChange}){
           style={{
             padding: '7px',
           }}
-          className='d-block d-sm-none check-box-unchecked'
-        //   className={'d-block d-sm-none ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
+          className={'d-block d-sm-none '+ (changePaymentFormState.isCodChecked ? 'check-box-checked' : 'check-box-unchecked')}
         >
           <Form.Check
             style={{ color: '#4A4A4A', fontSize: '16px' }}
@@ -393,8 +371,7 @@ function CodField({changePaymentFormState,handelInputeChange}){
           />
         </div>
         <div
-        //   className={'d-none d-sm-block ' + (paymentObject.isNetbankingUPI ? 'check-box-checked' : 'check-box-unchecked')}
-          className='d-none d-sm-block check-box-unchecked'
+          className={'d-none d-sm-block '+ (changePaymentFormState.isCodChecked ? 'check-box-checked' : 'check-box-unchecked')}
         >
           <Form.Check
             style={{ color: '#4A4A4A', fontSize: '16px' }}
@@ -405,6 +382,14 @@ function CodField({changePaymentFormState,handelInputeChange}){
             checked={changePaymentFormState.isCodChecked}
           />
         </div>
+          {
+            changePaymentFormState.isCodChecked
+            ? <h6 className='f-f'
+                style={{fontSize:'12px'}}
+            
+            >Additional charges will apply on COD </h6>
+            : null
+          }
       </Col>
     );
 }

@@ -9,6 +9,7 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import Message from '../../components/Message/Message'
 
 import { googleAuth, facebookAuth, emailAuth } from '../../actions/actionAuth'
+import { ToastContainer, toast } from 'react-toastify'
 
 import './LoginScreen.css'
 
@@ -16,6 +17,8 @@ const LoginScreen = () => {
   const dispatch = useDispatch()
 
   const userLogin = useSelector((state) => state.firebase.auth)
+
+  const auth = useSelector((state) => state.auth)
 
   const { loading, error, userInfo } = userLogin
 
@@ -28,12 +31,60 @@ const LoginScreen = () => {
   const [errorFields, setErrorFields] = useState([false, false])
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
-
+  
+  
   useEffect(() => {
     if (userLogin.uid) {
+      toast('Logged in successfully', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
       history.push(redirect)
     }
-  }, [history, userInfo, redirect, userLogin.uid])
+    
+
+    if(auth !== null && auth.authError !== null && auth.authError.length !== 0){
+
+      let fireBasePasswordError = 'The password is invalid or the user does not have a password.';
+      let fireBaseUserDosentExistError = 'There is no user record corresponding to this identifier. The user may have been deleted.';
+
+
+      if(auth.authError === fireBasePasswordError){
+
+        toast('Invalid Password', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+      }
+
+      if(auth.authError === fireBaseUserDosentExistError){
+
+        toast('User does not exist', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+
+      }
+
+    }
+
+  }, [history, userInfo, redirect, userLogin.uid, auth])
 
   function validateEmailCharecters(value) {
     const re =
@@ -67,6 +118,7 @@ const LoginScreen = () => {
       console.log('Fill The Form')
       setErrorFields(updatedList)
     }
+
   }
 
   const googleHandler = () => {
@@ -80,6 +132,17 @@ const LoginScreen = () => {
   return (
     <React.Fragment>
       <div className='login-wrap'>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
         {loading && (
           <MyComponent
             sentences={[]}
@@ -240,7 +303,7 @@ const LoginScreen = () => {
                 Continue with Facebook
               </div>
               <input
-                type='text'
+                type='password'
                 placeholder='Password'
                 className={
                   'password-box ' + (errorFields[1] ? 'error-field-style' : '')
@@ -319,7 +382,7 @@ const LoginScreen = () => {
                 onChange={(e) => setEmail(e.target.value)}
               />
               <input
-                type='text'
+                type='password'
                 placeholder='Password'
                 className={
                   'password-box ' + (errorFields[1] ? 'error-field-style' : '')

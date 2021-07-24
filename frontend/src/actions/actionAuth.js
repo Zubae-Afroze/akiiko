@@ -173,6 +173,7 @@ export const emailAuth = (creds) => {
       })
       .catch((error) => {
         dispatch({ type: 'EMAIL_AUTH_ERROR', error })
+        console.log('Email Auth Error: '+ error);
       })
   }
 }

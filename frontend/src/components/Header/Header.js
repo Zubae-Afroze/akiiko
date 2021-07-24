@@ -52,6 +52,11 @@ const Header = () => {
     setCartModalShow(false)
   }
 
+  const continueShoppinghandler = () => {
+    history.push('/')
+    setCartModalShow(false)
+  }
+
   const uid = useSelector((state) => state.firebase.auth.uid)
 
   useEffect(() => {
@@ -156,6 +161,11 @@ const Header = () => {
                     </div>
                   </div>
                   <div className='head-cart-purchase-button-wrap'>
+                    <button onClick={continueShoppinghandler} style={{backgroundColor:'#6b584c'}}>
+                      CONTINUE SHOPPING
+                    </button>
+                  </div>
+                  <div className='head-cart-purchase-button-wrap'>
                     <button onClick={checkoutHandler}>
                       PROCEED TO CHECKOUT
                     </button>
@@ -187,6 +197,7 @@ const Header = () => {
                 {auth.uid ? (
                   <NavDropdown
                     title={
+                      auth.photoURL ?
                       <img
                         className='image-of-profile'
                         src={
@@ -196,6 +207,20 @@ const Header = () => {
                         }
                         alt='user_icon'
                       />
+                      :
+                      <div style={{
+                        marginTop: '5px', 
+                        paddingTop: '2px',
+                        width:'21px', 
+                        height: '21px', 
+                        backgroundColor:'#977257', 
+                        borderRadius: '50%', 
+                        color:'#fff', 
+                        textTransform: 'uppercase', 
+                        fontSize: '15px' 
+                        }} className='d-flex justify-content-center align-items-center'>
+                        {auth.email[0]}
+                      </div>
                     }
                   >
                     <LinkContainer to='/newprofile'>

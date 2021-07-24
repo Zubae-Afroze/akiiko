@@ -29,6 +29,7 @@ export default function ShippingFormT() {
         setChangeShippingFormState(newObj);
     }
 
+
     function onSubmitShippingForm(e){
         e.preventDefault();
 
@@ -76,46 +77,26 @@ export default function ShippingFormT() {
 
     return (
         <>  
-            <div style={{minHeight:'340px'}}>
+            {
+                profileDetails &&
 
-                <EnterNewAddressComp changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields}/>
+                <>
 
-                {/* <ExistingAddressComp checkOutFormObj={checkOutFormObj}/> */}
+                    <div style={{minHeight:'340px'}}>
 
-            </div>
+                        <ReturnAddressForm 
+                            profileDetails={profileDetails}
+                            checkOutFormObj={checkOutFormObj}
+                            changeShippingFormState={changeShippingFormState} 
+                            handelInputeChange={handelInputeChange} 
+                            errorFields={errorFields}
+                            onSubmitShippingForm={onSubmitShippingForm}
+                        />
 
-            <div className='d-none d-sm-none d-md-block'>
-                <Row className='p-0 m-0'>
-                    <Col xs={12} sm={4} className='p-0 m-0' />
-                    <Col xs={12} sm={4} className='p-0 m-0' />
-                    <Col xs={12} sm={4} className='p-0 m-0'>
-                        <Button
-                            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
-                            size='lg'
-                            variant='primary'
-                            type='submit'
-                            className='p-2 m-0'
-                            onClick={onSubmitShippingForm}
-                        >
-                            Next
-                        </Button>
-                    </Col>
-                </Row>
-            </div>
-            <div className='d-block d-sm-block d-md-none f-f-m'>
-                <div className='d-flex justify-content-center '>
-                    <Button
-                        style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
-                        size='md'
-                        variant='primary'
-                        type='submit'
-                        className='px-5 me-3 mt-3 mb-3'
-                        onClick={onSubmitShippingForm}
-                    >
-                        NEXT
-                    </Button>
-                </div>
-            </div>
+                    </div>
+
+                </>
+            }
 
             
         </>
@@ -124,76 +105,187 @@ export default function ShippingFormT() {
 }
 
 
-function ExistingAddressComp({checkOutFormObj}){
+function ReturnAddressForm({profileDetails,checkOutFormObj,changeShippingFormState,handelInputeChange,errorFields,onSubmitShippingForm}){
+  
+    if(profileDetails.shippingAddress.length === 0){
+        checkOutFormObj.formObject.isNewAddress = true;
+      return  <EnterNewAddressComp 
+                changeShippingFormState={changeShippingFormState} 
+                handelInputeChange={handelInputeChange} 
+                errorFields={errorFields} 
+                onSubmitShippingForm={onSubmitShippingForm}
+            />
+
+    }
+    if(profileDetails.shippingAddress.length > 0 && !checkOutFormObj.formObject.isNewAddress){
+      checkOutFormObj.formObject.isNewAddress = false;
+      return  <ExistingAddressComp checkOutFormObj={checkOutFormObj} profileDetails={profileDetails} />
+    }
+    if(checkOutFormObj.formObject.isNewAddress){
+      return  <EnterNewAddressComp 
+                changeShippingFormState={changeShippingFormState} 
+                handelInputeChange={handelInputeChange} 
+                errorFields={errorFields} 
+                onSubmitShippingForm={onSubmitShippingForm}
+            />
+
+    }
+
+}
+
+
+function ExistingAddressComp({checkOutFormObj,profileDetails}){
     return(
         <>
-            <Row className='p-0 m-0'>
+            <div style={{minHeight:'340px'}}>
 
-                <Col xs={12} md={6} className='p-0 m-0'>
-                    <div className='existing-address-component existing-address-hardNum-style' onClick={()=>OnClickexistingAddress(checkOutFormObj)}>
-                        <h6>Sam Surya</h6>
-                        <h6>Test Address Address</h6>
-                        <h6>Chennai - 600123</h6>
-                        <h6>Mobile - 0123456789</h6>
-                    </div>
-                </Col>
+                <Row className='p-0 m-0'>
 
-                <Col xs={12} md={6} className='p-0 m-0'>
-                    <div className='existing-address-component existing-address-oddNum-style' onClick={()=>OnClickexistingAddress(checkOutFormObj)}>
-                        <h6>Sam Surya</h6>
-                        <h6>Test Address Address</h6>
-                        <h6>Chennai - 600123</h6>
-                        <h6>Mobile - 0123456789</h6>
-                    </div>
-                </Col>
+                {
+                    profileDetails.shippingAddress.map((object, index) => {
+                        return (
+                            <Col xs={12} md={6} className='p-0 m-0'>
+                                <div className={'existing-address-component existing-address-'+(index % 2 === 0 ? 'even':'odd')+'Num-style'}
 
-            </Row>
+                                    onClick={()=>{
+                                        checkOutFormObj.formObject.firstName = object.firstname;
+                                        checkOutFormObj.formObject.lastName = object.lastname;
+                                        checkOutFormObj.formObject.address = object.address;
+                                        checkOutFormObj.formObject.phoneNumber = object.mobile;
+                                        checkOutFormObj.formObject.city = object.city;
+                                        checkOutFormObj.formObject.state = object.state;
+                                        checkOutFormObj.formObject.zipCode = object.zipCode;
+                                        checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 1})
+                                    }}
+                                >
+
+                                    <h6>{object.firstname + ' ' + object.lastname}</h6>
+                                    <h6>{object.address}</h6>
+                                    <h6>Mobile - {object.mobile}</h6>
+                                    <h6>{object.state}</h6>
+                                    <h6>{object.city + ' ' + object.zipCode}</h6>
+
+                                </div>
+                            </Col>
+                        );
+                    })
+                }
+
+                </Row>
+
+            </div>
+
+
+            <div className='d-none d-sm-none d-md-block'>
+                <Row className='p-0 m-0'>
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0'>
+                        <Button
+                            // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                            size='lg'
+                            variant='primary'
+                            type='submit'
+                            className='p-2 m-0 Button-on-click' 
+                            onClick={()=>{checkOutFormObj.setFormObject({...checkOutFormObj.formObject,isNewAddress: true})}}
+                        >   
+                            Add New Address
+
+                        </Button>
+                    </Col>
+                </Row>
+            </div>
+            <div className='d-block d-sm-block d-md-none f-f-m'>
+                <div className='d-flex justify-content-center '>
+                    <Button
+                        // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
+                        size='md'
+                        variant='primary'
+                        type='submit'
+                        className='px-5 me-3 mt-3 mb-3 Button-on-click'
+                        onClick={()=>{checkOutFormObj.setFormObject({...checkOutFormObj.formObject,isNewAddress: true})}}
+                    >
+                        Add New Address
+                    </Button>
+                </div>
+            </div>
+
+            
         </>
     );
 }
 
-function OnClickexistingAddress(checkOutFormObj){
-    checkOutFormObj.formObject.firstName = 'Sam';
-    checkOutFormObj.formObject.lastName = 'Surya';
-    checkOutFormObj.formObject.address = 'Test Address existing';
-    checkOutFormObj.formObject.phoneNumber = '0123456789';
-    checkOutFormObj.formObject.city = 'Chennai';
-    checkOutFormObj.formObject.state = 'Tamil nadu';
-    checkOutFormObj.formObject.zipCode = '600123';
-    checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 1})
-}
 
 
-function EnterNewAddressComp({changeShippingFormState,handelInputeChange,errorFields}){
+function EnterNewAddressComp({changeShippingFormState,handelInputeChange,errorFields,onSubmitShippingForm}){
     return(
         <>
-            <Row className='p-0 m-0'>
+            <div style={{minHeight:'340px'}}>
 
-            <Col xs={12} className='p-0 m-0'>
-                <h6>Where this order joing ?</h6>
-            </Col>
+                <Row className='p-0 m-0'>
 
-            <NameField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
+                <Col xs={12} className='p-0 m-0'>
+                    <h6>Where this order joing ?</h6>
+                </Col>
 
-            <DummyHeight />
+                <NameField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-            <AddressField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
+                <DummyHeight />
 
-            <PhoneNumberField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
+                <AddressField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-            <DummyHeight />
+                <PhoneNumberField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-            <CityComp changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
+                <DummyHeight />
 
-            <StateField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
+                <CityComp changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-            <DummyHeightVisibleOnlyOnXtraSmallScreen />
+                <StateField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-            <ZipCodeField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
+                <DummyHeightVisibleOnlyOnXtraSmallScreen />
 
-            </Row>
+                <ZipCodeField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
+
+                </Row>
+            </div>
+
+
+            <div className='d-none d-sm-none d-md-block'>
+                <Row className='p-0 m-0'>
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0'>
+                        <Button
+                            // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                            size='lg'
+                            variant='primary'
+                            type='submit'
+                            className='p-2 m-0 Button-on-click'
+                            onClick={onSubmitShippingForm}
+                        >   
+                            Next
+                            
+                        </Button>
+                    </Col>
+                </Row>
+            </div>
+            <div className='d-block d-sm-block d-md-none f-f-m'>
+                <div className='d-flex justify-content-center '>
+                    <Button
+                        // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
+                        size='md'
+                        variant='primary'
+                        type='submit'
+                        className='px-5 me-3 mt-3 mb-3 Button-on-click'
+                        onClick={onSubmitShippingForm}
+                    >
+                        Next
+                    </Button>
+                </div>
+            </div>
         </>
     );
+
 
     function DummyHeight() {
         return(
@@ -212,6 +304,7 @@ function EnterNewAddressComp({changeShippingFormState,handelInputeChange,errorFi
         )
     }
 }
+
 
 function NameField({changeShippingFormState,handelInputeChange,errorFields}) {
     return(
