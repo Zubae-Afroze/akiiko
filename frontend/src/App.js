@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import Header from './components/Header/Header'
-import Footer from './components/Footer/Footer'
 import HomeScreen from './screens/HomeScreen/HomeScreen'
 import CartScreen from './screens/CartScreen/CartScreen'
 import LoginScreen from './screens/LoginScreen/LoginScreen'
@@ -56,11 +55,11 @@ export default class App extends Component {
 
           <Route path='/shipping' render={() => <ShippingScreen />} />
 
-          <Route path='/checkout' render={() => <Checkout />} /> 
+          <Route path='/checkout' render={() => <Checkout />} />
 
-          <Route path='/ordersuccess' render={() => <PostOrderScreen />} /> 
+          <Route path='/ordersuccess' render={() => <PostOrderScreen />} />
 
-          <Route path='/testcheckout' render={() => <TestCheckOutScreen />} /> 
+          <Route path='/testcheckout' render={() => <TestCheckOutScreen />} />
 
           <Route path='/newprofile' render={() => <NewProfileScreen />} />
 
