@@ -28,7 +28,7 @@ export default function OrderSummaryComp() {
 
       {/* className="pt-xs-5 pb-xs-5 ps-xs-1 pe-xs-1 ps-sm-1 pe-sm-1 pt-sm-5 ps-lg-5 pe-lg-5 pt-lg-5 " */}
 
-      <h5>Order Summary - 2 items</h5>
+      <h5>Order Summary</h5>
       <hr />
       <Container fluid className='p-0 m-0'> { /* d-flex justify-content-center */}
       { cartList &&
