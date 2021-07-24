@@ -138,9 +138,9 @@ class HomeScreen extends React.Component {
           <HomeScreenHome />
           <HomeScreenStorage />
 
-          <div className='floating-chat-icon'>
+          {/* <div className='floating-chat-icon'>
             <i class="fa fa-plus my-float"></i>
-          </div>
+          </div> */}
         </Container>
         <Footer />
       </React.Fragment>

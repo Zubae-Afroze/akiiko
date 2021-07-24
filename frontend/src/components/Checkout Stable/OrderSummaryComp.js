@@ -4,6 +4,7 @@ import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckO
 import { useSelector } from 'react-redux';
 import { Row } from 'react-bootstrap'
 import '../../screens/Stable Checkout Screen/orderSummaryStyle.css'
+import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
 
 export default function OrderSummaryCompT() {
 
