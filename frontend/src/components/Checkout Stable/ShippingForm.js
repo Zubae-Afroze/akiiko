@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Col, Row, Form, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { CheckOutFormContext } from './CheckOutIndex'
+import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
+import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
 
 export default function ShippingFormT() {
 
@@ -82,7 +83,9 @@ export default function ShippingFormT() {
 
                 <>
 
-                    <div style={{minHeight:'340px'}}>
+                    <div className='forms-height' 
+                        // style={{minHeight:'340px'}}
+                    >
 
                         <ReturnAddressForm 
                             profileDetails={profileDetails}
@@ -137,7 +140,7 @@ function ReturnAddressForm({profileDetails,checkOutFormObj,changeShippingFormSta
 function ExistingAddressComp({checkOutFormObj,profileDetails}){
     return(
         <>
-            <div style={{minHeight:'340px'}}>
+            <div className='forms-height'>
 
                 <Row className='p-0 m-0'>
 
@@ -220,12 +223,12 @@ function ExistingAddressComp({checkOutFormObj,profileDetails}){
 function EnterNewAddressComp({changeShippingFormState,handelInputeChange,errorFields,onSubmitShippingForm}){
     return(
         <>
-            <div style={{minHeight:'340px'}}>
+            <div className='forms-height'>
 
                 <Row className='p-0 m-0'>
 
                 <Col xs={12} className='p-0 m-0'>
-                    <h6>Where this order joing ?</h6>
+                    <h6>Where this order going ?</h6>
                 </Col>
 
                 <NameField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
@@ -269,8 +272,9 @@ function EnterNewAddressComp({changeShippingFormState,handelInputeChange,errorFi
                     </Col>
                 </Row>
             </div>
+
             <div className='d-block d-sm-block d-md-none f-f-m'>
-                <div className='d-flex justify-content-center '>
+                <div className='d-flex justify-content-center'>
                     <Button
                         // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
                         size='md'

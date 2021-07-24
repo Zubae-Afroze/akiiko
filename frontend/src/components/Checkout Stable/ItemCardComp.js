@@ -1,6 +1,8 @@
 import React from 'react'
 import { Col } from 'react-bootstrap'
-import './CheckOutStyleIndex.css'
+import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
+import '../../screens/Stable Checkout Screen/orderSummaryStyle.css'
+
 
 const containerStyle = {
   width: '143px',
@@ -18,7 +20,7 @@ export default function ItemCardT({item}) {
         <div
           style={{ height: '65%', width: '100%', backgroundColor: '#6B584C' }}
         >
-          <img src='{item.image}' alt="Girl in a jacket" width="143px" height="100%"/> 
+          <img src={item.image} alt="Girl in a jacket" width="143px" height="100%"/> 
         </div>
         <div
           style={{

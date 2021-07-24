@@ -1,14 +1,16 @@
 import React , {useContext} from 'react'
 import Stepper from 'react-stepper-horizontal'
-import ShippingFormT from './shippingForm';
-import {Row, Col, Button} from 'react-bootstrap'
+import ShippingFormT from '../../components/Checkout Stable/ShippingForm';
 import { CheckOutFormContext } from './CheckOutIndex'
-import PaymentFormT from './PaymentForm'
-import ReviewFormT from './reviewForm'
+import PaymentFormT from '../../components/Checkout Stable/PaymentForm'
+import ReviewFormT from '../../components/Checkout Stable/ReviewForm'
+import { useHistory } from 'react-router-dom'
 
-function CloseIcon(){
+function CloseIcon({history}){
     return(
-        <span>
+        <span onClick={()=>{
+            history.push('/')
+        }}>
             <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='23'
@@ -26,6 +28,8 @@ function CloseIcon(){
 export default function CheckOutCompT() {
 
     const checkOutFormObj = useContext(CheckOutFormContext);
+
+    const history = useHistory()
 
 
     return (
@@ -61,14 +65,15 @@ export default function CheckOutCompT() {
             </div>
             
             <div style={{display:'flex',alignItems:'center',}}>
-                <CloseIcon />
+                <CloseIcon history={history}/>
                 <span><h4 style={{marginTop:'10px' ,display:'inline' ,maxWidth:'150px'}}>Checkout</h4></span>
             </div>
             <hr/>
 
-            <div style={{
-                // backgroundColor:'#e6e6e6', 
-                minHeight:'300px'}}>
+            <div 
+                className='forms-wraper-height f-f-l'
+                // style={{minHeight:'300px'}}
+                >
                 
                 {
                     checkOutFormObj.formObject.stepperlevel === 0 ?
@@ -80,54 +85,8 @@ export default function CheckOutCompT() {
                 }
 
             </div>
-            {/* <div className='d-none d-sm-none d-md-block'>
-                <Row className='p-0 m-0'>
-                    <Col xs={12} sm={4} className='p-0 m-0' />
-                    <Col xs={12} sm={4} className='p-0 m-0' />
-                    <Col xs={12} sm={4} className='p-0 m-0'>
-                        <Button
-                            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
-                            size='lg'
-                            variant='primary'
-                            type='submit'
-                            className='p-2 m-0'
-                            onClick={onPaymentFormSubmit}
-                        >
-                            Next
-                        </Button>
-                    </Col>
-                </Row>
-            </div>
-            <div className='d-block d-sm-block d-md-none f-f-m'>
-                <div className='d-flex justify-content-center '>
-                    <Button
-                        style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
-                        size='md'
-                        variant='primary'
-                        type='submit'
-                        className='px-5 me-3 mt-3 mb-3'
-                        onClick={onPaymentFormSubmit}
-                    >
-                        NEXT
-                    </Button>
-                </div>
-            </div> */}
+            
         </>
     )
 
-    function onPaymentFormSubmit(e){
-        e.preventDefault();
-        console.log('On Submit: ');
-        console.log(checkOutFormObj.formObject)
-
-        if(checkOutFormObj.formObject.stepperlevel < 2){
-
-            checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: checkOutFormObj.formObject.stepperlevel + 1})
-
-        }else{
-            checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 0})
-        }
-
-        // checkOutFormObj.setStepperlevel(1)
-    }
 }

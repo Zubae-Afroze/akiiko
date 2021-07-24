@@ -2,7 +2,7 @@
   background-color: #977257 !important;
   border: 0;
   border-radius: 0;
-  width: 100%;
+  /* width: 100%; */
   margin-left: 7px;
 
   /* text-decoration: none;
@@ -29,6 +29,15 @@
   box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
   border-radius: 10px !important;
   /* Lowering the shadow */
+}
+
+
+.forms-height{
+  min-height: 340px;
+}
+
+.forms-wraper-height{
+  min-height: 300px
 }
 
 .checkOut-container-wraper{
@@ -129,6 +138,8 @@
   width: 60%;
 }
 
+
+
 .form-control.error-form-style{
   background-color: transparent;
   border-color: #3e3331;
@@ -227,6 +238,14 @@
     margin:0;
   }
 
+  .payment-method-type-box{
+    width: 80%
+  }
+
+  .forms-height{
+    min-height: 190px;
+  }
+
 }
 
 @media (max-width: 755px) {
@@ -237,6 +256,14 @@
   
   .existing-address-oddNum-style{
     margin-left: 0;
+  }
+
+}
+
+
+@media (min-width: 768px) {
+  .Button-on-click{
+    width:100%
   }
 }
 

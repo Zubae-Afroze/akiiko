@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Col, Row, Form, Button } from 'react-bootstrap'
-import { CheckOutFormContext } from './CheckOutIndex'
-import './CheckOutStyleIndex.css'
+import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
+import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
+
 
 const hrStyle = {
     row: {
@@ -102,7 +103,7 @@ export default function PaymentFormT() {
 
         if(!checkOutFormObj.formObject.isNetbankingUpiChecked && !checkOutFormObj.formObject.isCodChecked){
 
-            if(checkOutFormObj.formObject.cardNumber === null || checkOutFormObj.formObject.cardNumber.trim() === ''){
+            if(checkOutFormObj.formObject.cardNumber === null || checkOutFormObj.formObject.cardNumber.trim() === '' || checkOutFormObj.formObject.cardNumber.length !== 16){
                 updatedList[0] = true;
                 isValidated = false;
             }
@@ -131,7 +132,9 @@ export default function PaymentFormT() {
     return (
         <>
 
-            <div style={{minHeight:'340px'}}>
+                <div className='forms-height' 
+                        // style={{minHeight:'340px'}}
+                    >
 
                 <Row className='p-0 m-0'>
 
@@ -169,7 +172,6 @@ export default function PaymentFormT() {
                     <Col xs={12} sm={4} className='p-0 m-0' />
                     <Col xs={12} sm={4} className='p-0 m-0'>
                         <Button
-                            // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
                             size='lg'
                             variant='primary'
                             type='submit'
@@ -184,7 +186,6 @@ export default function PaymentFormT() {
             <div className='d-block d-sm-block d-md-none f-f-m'>
                 <div className='d-flex justify-content-center '>
                     <Button
-                        // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
                         size='md'
                         variant='primary'
                         type='submit'

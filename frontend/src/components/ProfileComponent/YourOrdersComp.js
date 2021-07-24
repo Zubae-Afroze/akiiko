@@ -48,10 +48,6 @@ export default function YourOrdresComp() {
             return(
                 <Col xs={12}>
                     <div style={{
-                    // borderTop: '1.7px solid #cbc6bf',
-                    // borderBottomStyle: 'solid',
-                    // borderBottomColor: '#cbc6bf',
-                    // borderBottomWidth: '1.7px',
                     paddingTop:'12px',
                     paddingBottom:'18px',
                     cursor:'pointer',
@@ -82,15 +78,11 @@ export default function YourOrdresComp() {
                     <ProductRowHeaderComp/>
 
                     {
-                        ordersList.map((object, index) => {
+                        ordersList.reverse().map((object, index) => {
                         return (
                             <ProductRowComp orderDetails={object} index={index}/>
                         )})
                     }
-                    
-                    {/* <ProductsComp /> */}
-
-                    {/* <ProductRowComp/> */}
 
 
                 </Row>
