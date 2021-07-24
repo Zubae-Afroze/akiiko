@@ -8,6 +8,7 @@ export default function ReviewFormT() {
 
     const checkOutFormObj = useContext(CheckOutFormContext);
 
+
     return (
         <>
             <div style={{minHeight:'340px'}}>
@@ -45,7 +46,7 @@ export default function ReviewFormT() {
                             size='lg'
                             variant='primary'
                             type='submit'
-                            className='p-2 m-0'
+                            className='p-2 m-0 Button-on-click'
                             // onClick={onPaymentFormSubmit}
                         >
                             PAY
@@ -60,7 +61,7 @@ export default function ReviewFormT() {
                         size='md'
                         variant='primary'
                         type='submit'
-                        className='px-5 me-3 mt-3 mb-3'
+                        className='px-5 me-3 mt-3 mb-3 Button-on-click'
                         // onClick={onPaymentFormSubmit}
                     >
                         PAY
@@ -74,6 +75,8 @@ export default function ReviewFormT() {
     )
 
     function AddressComp(){
+    console.log('Is New Address :' + checkOutFormObj.formObject.isNewAddress)
+
         return(
             <>
                 <Col xs={10} className='p-0 m-0'>
