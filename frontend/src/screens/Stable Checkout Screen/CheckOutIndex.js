@@ -2,50 +2,15 @@ import React , { createContext, useState } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import Menubar from '../../components/Menubar/Menubar'
 import MobileNav from '../../components/MobileNav/MobileNav'
-import CheckOutCompT from './CheckOutCompT'
-import OrderSummaryCompT from './orderSummaryComp'
-import './CheckOutStyleIndex.css';
+import CheckOutCompT from './CheckOutFormsComp'
+import OrderSummaryCompT from '../../components/Checkout Stable/OrderSummaryComp'
+import './CheckOutStlye.css';
 import './orderSummaryStyle.css'
 
 export const CheckOutFormContext = createContext(null);
 
-// const CheckOutFormObj = {
-//     shippingForm: {
-//         firtsName: '',
-//         lastname: '',
-//         address: '',
-//         phoneNumber: '',
-//         city: '',
-//         state: '',
-//         pinCode: '',
-//     },
 
-//     paymentForm: {
-//         cardNumber: '',
-//         monthYear: '',
-//         isSaveMyCardChecked: false,
-//         isNetbankingUpiChecked: false,
-//         isCodChecked: isCodCheckedState,
-//         setCodeState: function(){
-//             setIsCodCheckedState(prevState=> !prevState)
-//         }
-//     },
-
-//     addressDetails: {
-//         isNewAddress: false,
-//     },
-
-//     stepperlevel: stepperlevel,
-//     setStepperlevel: function(level){
-//         setStepperlevel(level)
-//     }
-// }
-
-export default function TestCheckOutScreen() {
-
-    const [isCodCheckedState, setIsCodCheckedState] = useState(false);
-
-    const [stepperlevel, setStepperlevel] = useState(0);
+export default function StableCheckOutScreen() {
 
     const [ formObject, setFormObject] = useState(
         {
@@ -75,7 +40,6 @@ export default function TestCheckOutScreen() {
 
     const providerValue = { formObject , setFormObject }
 
-    console.log('-------- Test Checkout complete Re-Render -------' + formObject.firstName)
 
     return (
         <>

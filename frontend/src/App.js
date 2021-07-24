@@ -34,7 +34,7 @@ import LifestyleAllProducts from './components/LifestyleAllProducts/LifestyleAll
 
 import PostOrderScreen from './screens/PostOrderScreen/postOrderScreen'
 
-import TestCheckOutScreen from './screens/Test Checkout/CheckOutIndex'
+import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex'
 export default class App extends Component {
   // constructor(props){
   //   super(props);
@@ -59,7 +59,10 @@ export default class App extends Component {
 
           <Route path='/ordersuccess' render={() => <PostOrderScreen />} />
 
-          <Route path='/testcheckout' render={() => <TestCheckOutScreen />} />
+          <Route
+            path='/stablecheckout'
+            render={() => <StableCheckOutScreen />}
+          />
 
           <Route path='/newprofile' render={() => <NewProfileScreen />} />
 

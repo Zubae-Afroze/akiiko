@@ -161,7 +161,7 @@ const Header = () => {
                     </div>
                   </div>
                   <div className='head-cart-purchase-button-wrap'>
-                    <button onClick={continueShoppinghandler} style={{backgroundColor:'#6b584c'}}>
+                    <button id='continue' onClick={continueShoppinghandler} style={{backgroundColor:'#977257'}}>
                       CONTINUE SHOPPING
                     </button>
                   </div>
@@ -205,7 +205,7 @@ const Header = () => {
                             ? auth.photoURL
                             : '/images/font_images/user.svg'
                         }
-                        alt='user_icon'
+                        alt='profile'
                       />
                       :
                       <div style={{

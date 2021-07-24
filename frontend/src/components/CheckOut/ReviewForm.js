@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { Button, Container, Row, Col } from 'react-bootstrap'
 import { motion } from 'framer-motion'
 import {
@@ -10,9 +10,8 @@ import '../../screens/Chekout/style.css'
 import stepperLevel from './StepperContants'
 import { useSelector, useDispatch } from 'react-redux'
 import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
-import { createOrder, resetOrder } from '../../actions/actionOrder'
+import { createOrder } from '../../actions/actionOrder'
 import { useHistory } from 'react-router-dom'
-import { resetCartItems } from '../../actions/actionCart'
 import Astric from './asterisk.svg'
 import { addNewShippingAddress } from '../../actions/actionProfile'
 
@@ -23,9 +22,6 @@ import { addNewShippingAddress } from '../../actions/actionProfile'
 
 // import MyComponent from 'react-fullpage-custom-loader';
 // import SpinnerIcon from '../../components/Spinner/SpinnerIcon';
-
-import { getOrderDetails } from '../../actions/actionOrder'
-import axios from 'axios'
 
 const containerVariants = {
   hidden: {

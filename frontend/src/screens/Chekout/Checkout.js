@@ -22,7 +22,7 @@ export default function CheckOut() {
 
   const uid = useSelector((state) => state.firebase.auth.uid)
 
-  const order = useSelector((state) => state.orderCreate)
+  // const order = useSelector((state) => state.orderCreate)
 
   useEffect(() => {
     isAddNewAddressSelected.value = false;

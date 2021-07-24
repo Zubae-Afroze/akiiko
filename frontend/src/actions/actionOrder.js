@@ -85,7 +85,12 @@ export const createOrder = (order,email,history) => async (dispatch) => {
         "prefill": {
             "name": order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
             "email": email,
-            "contact": order.shippingAddress.phoneNumber
+            "contact": order.shippingAddress.phoneNumber,
+            // "method": "card",
+            // "card[name]": order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
+            // "card[number]": "4111111111111111",
+            // "card[expiry]": "12/21",
+            // "card[cvv]": "123"
         },
         "notes": {
             "address": "Razorpay Corporate Office"
