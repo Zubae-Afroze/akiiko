@@ -239,13 +239,15 @@ function EnterNewAddressComp({changeShippingFormState,handelInputeChange,errorFi
 
                 <PhoneNumberField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-                <DummyHeight />
+                <DummyHeightVisibleOnlyOnlargScreen />
+
+                {/* <DummyHeightVisibleOnlyOnXtraSmallScreen /> */}
 
                 <CityComp changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
                 <StateField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
-                <DummyHeightVisibleOnlyOnXtraSmallScreen />
+                {/* <DummyHeightVisibleOnlyOnXtraSmallScreen /> */}
 
                 <ZipCodeField changeShippingFormState={changeShippingFormState} handelInputeChange={handelInputeChange} errorFields={errorFields} />
 
@@ -300,9 +302,9 @@ function EnterNewAddressComp({changeShippingFormState,handelInputeChange,errorFi
     }
 
 
-    function DummyHeightVisibleOnlyOnXtraSmallScreen() {
+    function DummyHeightVisibleOnlyOnlargScreen() {
         return(
-            <Col xs={12} className='d-block d-sm-none '>
+            <Col xs={12} className='d-none d-sm-none d-lg-block'>
                 <div style={{height: '10px'}}/>
             </Col>
         )
@@ -376,9 +378,9 @@ function NameField({changeShippingFormState,handelInputeChange,errorFields}) {
 
 function AddressField({changeShippingFormState,handelInputeChange,errorFields}) {
     return(
-        <Col xs={6} lg={6} className='p-0 m-0'>
+        <Col xs={12} lg={6} className='p-0 m-0'>
             
-            <div className='left-side-field-style'>
+            <div className='address-field-style'>
 
                 <Form.Control
                     size='sm'
@@ -413,7 +415,7 @@ function PhoneNumberField({changeShippingFormState,handelInputeChange,errorField
     return(
         <Col xs={6} className='p-0 m-0'>
             
-            <div className='right-side-field-style'>
+            <div className='phone-number-field-style'>
 
                 <Form.Control
                     size='sm'
@@ -445,9 +447,9 @@ function PhoneNumberField({changeShippingFormState,handelInputeChange,errorField
 
 function CityComp({changeShippingFormState,handelInputeChange,errorFields}) {
     return(
-        <Col xs={6} sm={4} className='p-0 m-0'>
+        <Col xs={6} lg={4} className='p-0 m-0'>
 
-            <div className='left-side-field-style'>
+            <div className='city-field-style'>
 
                 <Form.Control
                     size='sm'
@@ -479,7 +481,7 @@ function CityComp({changeShippingFormState,handelInputeChange,errorFields}) {
 
 function StateField({changeShippingFormState,handelInputeChange,errorFields}) {
     return(
-        <Col xs={6} sm={4} className='p-0 m-0'>
+        <Col xs={6} lg={4} className='p-0 m-0'>
 
             <div className='state-field-style'>
 
@@ -514,9 +516,9 @@ function StateField({changeShippingFormState,handelInputeChange,errorFields}) {
 
 function ZipCodeField({changeShippingFormState,handelInputeChange,errorFields}) {
     return(
-        <Col xs={12} sm={4} className='p-0 m-0'>
+        <Col xs={6} lg={4} className='p-0 m-0'>
             
-            <div className='pin-code-field-style'>
+            <div className='pin-code-field-style test-pin-code'>
 
                 <Form.Control
                     size='sm'

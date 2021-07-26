@@ -55,14 +55,14 @@ export default class App extends Component {
 
           <Route path='/shipping' render={() => <ShippingScreen />} />
 
-          <Route path='/checkout' render={() => <Checkout />} />
+          <Route path='/checkout' render={() => <StableCheckOutScreen />} />
 
           <Route path='/ordersuccess' render={() => <PostOrderScreen />} />
 
-          <Route
+          {/* <Route
             path='/stablecheckout'
             render={() => <StableCheckOutScreen />}
-          />
+          /> */}
 
           <Route path='/newprofile' render={() => <NewProfileScreen />} />
 

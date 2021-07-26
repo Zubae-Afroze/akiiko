@@ -48,7 +48,8 @@ export default function ReviewFormT() {
           itemsPrice: itemPriceTemp,
           taxPrice: additionlaPriceTemp, //aditional Price
           shippingPrice: shippingPriceTemp,
-          totalPrice: itemPriceTemp + additionlaPriceTemp + shippingPriceTemp,
+          totalPrice: itemPriceTemp ,
+          //+ additionlaPriceTemp + shippingPriceTemp,
           isPaid: false,
           isDelivered: false,
           orderItems: orderItemsList,
@@ -56,6 +57,7 @@ export default function ReviewFormT() {
           shippingAddress: {
             firstName: checkOutFormObj.formObject.firstName,
             lastName: checkOutFormObj.formObject.lastName,
+            email: profileDetails.email,
             address: checkOutFormObj.formObject.address,
             phoneNumber: checkOutFormObj.formObject.phoneNumber,
             city: checkOutFormObj.formObject.city,
@@ -67,16 +69,16 @@ export default function ReviewFormT() {
     
         console.log(checkOutFormObj.formObject)
 
-        let cardDetails = {
-            number : checkOutFormObj.formObject.cardNumber ,
-            expiryMonth: checkOutFormObj.formObject.month ,
-            expiryYear: checkOutFormObj.formObject.year ,
-        }
+        // let cardDetails = {
+        //     number : checkOutFormObj.formObject.cardNumber ,
+        //     expiryMonth: checkOutFormObj.formObject.month ,
+        //     expiryYear: checkOutFormObj.formObject.year ,
+        // }
     
     
         dispatch(createOrder(finalOrderPlacemnetJson,profileDetails.email,history))
     
-        if(checkOutFormObj.formObject.isNewAddress.value){
+        if(checkOutFormObj.formObject.isNewAddress){
     
           dispatch(addNewShippingAddress({
             firstname : checkOutFormObj.formObject.firstName,
@@ -133,7 +135,11 @@ export default function ReviewFormT() {
                             className='p-2 m-0 Button-on-click'
                             onClick={onPaymentFormSubmit}
                         >
-                            PAY
+                            {
+                                checkOutFormObj.formObject.isCodChecked ?
+                                'Confirm'
+                                : 'PAY'
+                            }
                         </Button>
                     </Col>
                 </Row>
@@ -148,7 +154,11 @@ export default function ReviewFormT() {
                         className='px-5 me-3 mt-3 mb-3 Button-on-click'
                         onClick={onPaymentFormSubmit}
                     >
-                        PAY
+                        {
+                            checkOutFormObj.formObject.isCodChecked ?
+                            'Confirm'
+                            : 'PAY'
+                        }
                     </Button>
                 </div>
             </div>
