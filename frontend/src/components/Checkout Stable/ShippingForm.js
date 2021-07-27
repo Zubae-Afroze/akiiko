@@ -4,6 +4,31 @@ import { useSelector } from 'react-redux'
 import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
 import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
 
+const hrStyle = {
+    row: {
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      textAlign: 'center',
+      padding: 0,
+      margin: 0,
+    },
+    block: {
+      textAlign: 'center',
+      width: '100%',
+      padding: 0,
+      margine: 0,
+    },
+  
+    blockCenter: {
+      textAlign: 'center',
+      width: '25%',
+      padding: 0,
+      margine: 0,
+    }
+}
+
 export default function ShippingFormT() {
 
     console.log('------Shipping Form Rendered-----');
@@ -161,12 +186,25 @@ function ExistingAddressComp({checkOutFormObj,profileDetails}){
                                         checkOutFormObj.setFormObject({...checkOutFormObj.formObject,stepperlevel: 1})
                                     }}
                                 >
+                                    <div style={{padding:'10px'}}>
+                                        <h6>{object.firstname + ' ' + object.lastname}</h6>
+                                        <h6>{object.address}</h6>
+                                        <h6>Mobile - {object.mobile}</h6>
+                                        <h6>{object.state}</h6>
+                                        <h6>{object.city + ' ' + object.zipCode}</h6>
+                                    </div>
+                                    
+                                    <div className='f-f'>
+                                        <button className='continue-with-this-address-btn' style={{display: 'inline'}}>
+                                            Continue with this Address
+                                        </button>
+                                        <span style={{display: 'inline', color: '#977257'}}>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                            </svg>
+                                        </span>
 
-                                    <h6>{object.firstname + ' ' + object.lastname}</h6>
-                                    <h6>{object.address}</h6>
-                                    <h6>Mobile - {object.mobile}</h6>
-                                    <h6>{object.state}</h6>
-                                    <h6>{object.city + ' ' + object.zipCode}</h6>
+                                    </div>
 
                                 </div>
                             </Col>
@@ -198,14 +236,21 @@ function ExistingAddressComp({checkOutFormObj,profileDetails}){
                     </Col>
                 </Row>
             </div>
-            <div className='d-block d-sm-block d-md-none f-f-m'>
+            <div className='d-block d-sm-block d-md-none pt-3 f-f-l'>
+
+                    <div style={hrStyle.row}>
+                        <div style={hrStyle.block}><hr style={{borderColor:'#d6d6d6'}}/></div>
+                        <div style={hrStyle.blockCenter}><h6 style={{margin:0, marginTop:8,color:'gray'}}>OR</h6></div>
+                        <div style={hrStyle.block}><hr style={{borderColor:'#d6d6d6'}}/></div>
+                    </div>
+
                 <div className='d-flex justify-content-center '>
                     <Button
                         // style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
                         size='md'
                         variant='primary'
                         type='submit'
-                        className='px-5 me-3 mt-3 mb-3 Button-on-click'
+                        className='px-3 me-3 mt-3 mb-3 Button-on-click'
                         onClick={()=>{checkOutFormObj.setFormObject({...checkOutFormObj.formObject,isNewAddress: true})}}
                     >
                         Add New Address

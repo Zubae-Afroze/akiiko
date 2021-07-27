@@ -168,7 +168,8 @@
 
 .existing-address-component{
   border: 1px solid #cfcfcf;
-  padding: 10px;
+  padding: 0;
+  padding-bottom: 0;
   transition: box-shadow 0.2s ease-in-out;
   cursor: pointer;
   min-height: 150px;
@@ -190,6 +191,15 @@
 
 .existing-address-oddNum-style{
   margin-left: 20px;
+}
+
+.continue-with-this-address-btn{
+  border:none;
+  background-color: #fff;
+  color: #977257;
+  font-size: 13px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 
