@@ -179,7 +179,7 @@
   text-transform: uppercase;
   margin-bottom: 45px;
   font-family: 'rutanMedium';
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
@@ -207,7 +207,6 @@
 .home-card-items a:hover {
   text-decoration: none;
 }
-
 
 @media (max-width: 683px) {
   .hero-image-workout {

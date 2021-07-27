@@ -164,11 +164,11 @@ const HomeAllProducts = () => {
               <div>
                 <Row className='product-list-card-wrapper'>
                   {tableware.map((product) => (
-                    <Link
-                      to={`/product/${product._id}`}
+                    <div
+                      className='product-list-card-wrapper'
                       key={product.productId}
                     >
-                      <div className='product-list-card-wrapper'>
+                      <Link to={`/product/${product._id}`}>
                         <div className='product-list-image'>
                           <div>
                             <img
@@ -203,8 +203,8 @@ const HomeAllProducts = () => {
                             {product.price ? product.price : product.mrpPrice}
                           </div>
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
+                    </div>
                   ))}
                 </Row>
               </div>
@@ -357,7 +357,7 @@ const HomeAllProducts = () => {
               customLoader={<SpinnerIcon />}
             />
           )}{' '}
-          {error && <h1>{error}</h1>}:
+          {error && <h1>{error}</h1>}
           {garden[Object.keys(garden)[0]] && (
             <>
               {garden[Object.keys(garden)[0]] ? (
@@ -373,11 +373,11 @@ const HomeAllProducts = () => {
               <div>
                 <Row className='product-list-card-wrapper'>
                   {garden.map((product) => (
-                    <Link
-                      to={`/product/${product._id}`}
+                    <div
+                      className='product-list-card-wrapper'
                       key={product.productId}
                     >
-                      <div className='product-list-card-wrapper'>
+                      <Link to={`/product/${product._id}`}>
                         <div className='product-list-image'>
                           <img src={product.heroImage} alt='home_1' />
                           {product.bestSeller ? (
@@ -406,8 +406,8 @@ const HomeAllProducts = () => {
                           View Details - &#x20B9;
                           {product.price ? product.price : product.mrpPrice}
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
+                    </div>
                   ))}
                 </Row>
               </div>

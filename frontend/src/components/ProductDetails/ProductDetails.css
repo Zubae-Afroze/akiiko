@@ -1,6 +1,6 @@
 .Toastify__toast--default {
   background-color: #977257;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .product-details-wrapper {
@@ -373,6 +373,10 @@
 
 .alt-img-hero-container {
   padding: 0px;
+}
+
+.carousel-indicators li {
+  background-color: #eedab1 !important;
 }
 
 .strike-price {
