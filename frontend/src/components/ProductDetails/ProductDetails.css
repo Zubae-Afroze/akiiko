@@ -377,6 +377,7 @@
 
 .carousel-indicators li {
   background-color: #eedab1 !important;
+  height: 2px;
 }
 
 .strike-price {
