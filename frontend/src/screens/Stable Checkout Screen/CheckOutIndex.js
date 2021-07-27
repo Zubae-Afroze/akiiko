@@ -9,6 +9,17 @@ import './orderSummaryStyle.css'
 
 export const CheckOutFormContext = createContext(null);
 
+// export const addressFormStateStore = {
+//     firstName: '',
+//     lastName: '',
+//     address: '',
+//     phoneNumber: '',
+//     city: '',
+//     state: '',
+//     zipCode: '',
+//     isNewAddress: false,
+// }
+
 
 export default function StableCheckOutScreen() {
 
@@ -39,6 +50,33 @@ export default function StableCheckOutScreen() {
     )
 
     const providerValue = { formObject , setFormObject }
+
+    // useEffect(() => {
+    //     let tempObj = {
+
+    //         firstName: addressFormStateStore.firstName,
+    //         lastName: addressFormStateStore.lastName,
+    //         address: addressFormStateStore.address,
+    //         phoneNumber: addressFormStateStore.phoneNumber,
+    //         city: addressFormStateStore.city,
+    //         state: addressFormStateStore.state,
+    //         zipCode: addressFormStateStore.zipCode,
+
+    //         cardNumber: '',
+    //         monthYear: '',
+    //         month: '',
+    //         year: '',
+    //         isSaveMyCardChecked: false,
+    //         isNetbankingUpiChecked: false,
+    //         isCodChecked: false,
+            
+    //         isNewAddress: addressFormStateStore.isNewAddress,
+
+    //         stepperlevel: 0,
+
+    //     }
+    //     setFormObject()
+    // }, [])
 
 
     return (
