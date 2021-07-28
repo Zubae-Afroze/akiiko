@@ -44,7 +44,14 @@ export default function SearchScreen() {
 
     return (
         <>
-            <SearchBar searchInput={searchInput} searchValue={searchValue} setSearchvalue={setSearchvalue} onSearch={onSearch}/>
+            <SearchBar 
+                searchInput={searchInput} 
+                searchValue={searchValue} 
+                setSearchvalue={setSearchvalue} 
+                onSearch={onSearch}
+                setSearchedProducts={setSearchedProducts}
+                products={products}
+            />
             <div style={{height:'100vh', width:'100vw',}}>
             {loading && (
                 <MyComponent
@@ -80,7 +87,7 @@ export default function SearchScreen() {
 }
 
 
-function SearchBar({searchInput, searchValue , setSearchvalue, onSearch}){
+function SearchBar({searchInput, searchValue , setSearchvalue, onSearch, setSearchedProducts, products }){
 
     return(
         <div className="search-fixed" >
@@ -101,7 +108,10 @@ function SearchBar({searchInput, searchValue , setSearchvalue, onSearch}){
                             onChange={onSearch}
                         /> 
                         <span className="left-pan"
-                            onClick={()=>setSearchvalue('')}
+                            onClick={()=>{
+                                setSearchvalue('')
+                                setSearchedProducts(products)
+                            }}
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
                                 <path d="M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z"/>
@@ -122,7 +132,8 @@ function SearchResult({searchedProducts}){
                 <Row>
                     {
                         searchedProducts.map((product,index) => {
-                            return <SearchedProductTow product={product} />
+                            if(searchedProducts.length === 3) return <SearchedProductThree product={product}/>
+                            return <SearchedProduct product={product} />
                         })
                     }
                 </Row>
@@ -132,35 +143,35 @@ function SearchResult({searchedProducts}){
 }
 
 
-function SearchedProduct({product}){
-    return(
-        <Col xs={6} md={3} style={{marginBottom:'20px'}}>
-            <div
-                classname='search-product-wraper'
+// function SearchedProduct({product}){
+//     return(
+//         <Col xs={6} md={3} style={{marginBottom:'20px'}}>
+//             <div
+//                 classname='search-product-wraper'
                 
-            >
-                <img src={product.images[0]} alt="Girl in a jacket" width="100%" height="90%"/> 
-                </div>
-                <div
-                style={{
-                    height: '20px',
-                    width: '100%',
-                    backgroundColor: 'white',
-                    paddingLeft: 5,
-                    paddingRight: 5,
-                    paddingTop: 8
-                }}
-                >
-                <h6 className='product-title' >
-                    {product.productName}
-                </h6>
-            </div>
-        </Col>
-    )
-}
+//             >
+//                 <img src={product.images[0]} alt="Girl in a jacket" width="100%" height="90%"/> 
+//                 </div>
+//                 <div
+//                 style={{
+//                     height: '20px',
+//                     width: '100%',
+//                     backgroundColor: 'white',
+//                     paddingLeft: 5,
+//                     paddingRight: 5,
+//                     paddingTop: 8
+//                 }}
+//                 >
+//                 <h6 className='product-title' >
+//                     {product.productName}
+//                 </h6>
+//             </div>
+//         </Col>
+//     )
+// }
 
 
-function SearchedProductTow({product}){
+function SearchedProduct({product}){
     const handleMouseEnter = (product) => {
     document.getElementById(product.productId).src = product.hoverImage
     }
@@ -171,6 +182,60 @@ function SearchedProductTow({product}){
 
     return(
         <Col xs={6} md={3} style={{marginBottom:'20px'}}>
+        <Link to={`/product/${product._id}`}>
+            <div>
+                <div className='home-img-wrap'>
+                <img
+                    id={product.productId}
+                    className='home-card-image'
+                    src={product.images[0]}
+                    alt='home_1'
+                />
+                {product.bestSeller ? (
+                    <span className='label-best label-best-workout'>
+                    {product.bestSeller}
+                    </span>
+                ) : null}
+                {product.quickView ? (
+                    <span
+                    className='label-view label-view-workout'
+                    onMouseEnter={() => {
+                        handleMouseEnter(product)
+                    }}
+                    onMouseOut={() => {
+                        handleMouseOut(product)
+                    }}
+                    >
+                    {product.quickView}
+                    </span>
+                ) : null}
+                </div>
+                <div className='home-card-title'>
+                {product.productName}
+                </div>
+                <div className='home-card-text'>
+                View Details - &#x20B9;
+                {product.price ? product.price : product.mrpPrice}
+                </div>
+            </div>
+
+        </Link>
+        </Col>
+    )
+}
+
+
+function SearchedProductThree({product}){
+    const handleMouseEnter = (product) => {
+    document.getElementById(product.productId).src = product.hoverImage
+    }
+
+    const handleMouseOut = (product) => {
+    document.getElementById(product.productId).src = product.images[0]
+    }
+
+    return(
+        <Col xs={6} md={4} style={{marginBottom:'20px'}}>
         <Link to={`/product/${product._id}`}>
             <div>
                 <div className='home-img-wrap'>
