@@ -66,6 +66,7 @@ export default function ReviewFormT() {
           },
           paymentMethod: checkOutFormObj.formObject.isCodChecked ? 'cod' : 'online',
           deliveryStatus: 'placed',
+          shipRocketLink: '',
         }
     
         console.log(checkOutFormObj.formObject)
