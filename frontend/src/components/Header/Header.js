@@ -191,7 +191,14 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto title-icon-wrap'>
               <Nav className='title-bar-icon title-search'>
-                <img src={'/images/font_images/search.svg'} alt='search_icon' />
+              <Link to='/search'>
+                <img src={'/images/font_images/search.svg'} alt='search_icon' 
+                  onClick={()=>{
+                    let rootCss = document.querySelector(':root');
+                    rootCss.style.setProperty('--nav-bar-display', 'none');
+                  }}
+                />
+              </Link>
               </Nav>
               <Nav className='title-bar-icon'>
                 {auth.uid ? (

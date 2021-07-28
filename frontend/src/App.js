@@ -35,6 +35,7 @@ import LifestyleAllProducts from './components/LifestyleAllProducts/LifestyleAll
 import PostOrderScreen from './screens/PostOrderScreen/postOrderScreen'
 
 import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex'
+import SearchScreen from './screens/SearchScreen/SearchScreen'
 export default class App extends Component {
   // constructor(props){
   //   super(props);
@@ -51,6 +52,8 @@ export default class App extends Component {
             render={() => <OrderSummaryScreen />}
           />
 
+          <Route path='/search' render={() => <SearchScreen />} />
+          
           <Route path='/login' render={() => <LoginScreen />} />
 
           <Route path='/shipping' render={() => <ShippingScreen />} />

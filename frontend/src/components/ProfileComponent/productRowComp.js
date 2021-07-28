@@ -119,7 +119,7 @@ export default function ProductRowComp({orderDetails,index}) {
         if(orderDetails.isPaid && !orderDetails.isDelivered){
             return (
                 <h6 style={{fontSize:'14px',textAlign:'end' , paddingRight:'13px', marginTop:'18px'}}>
-                    Payed
+                    Paid
                 </h6>
             );
         }

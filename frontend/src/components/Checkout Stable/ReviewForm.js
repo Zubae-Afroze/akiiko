@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import { Row,Col, Button } from 'react-bootstrap'
+import React, {useContext,useState} from 'react'
+import { Row,Col, Button, Spinner } from 'react-bootstrap'
 import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
 import Astric from '../../components/CheckOut/asterisk.svg'
 import { useSelector, useDispatch } from 'react-redux'
@@ -13,9 +13,10 @@ export default function ReviewFormT() {
 
     const cartList = useSelector((state) => state.cartList)
 
-    const orderPlacedDetail = useSelector((state) => state.orderCreate.order)
+    // const orderPlacedDetail = useSelector((state) => state.orderCreate.order)
     
     const profileDetails = useSelector((state) => state.profile.userProfile)
+
 
     const dispatch = useDispatch()
 
@@ -48,8 +49,7 @@ export default function ReviewFormT() {
           itemsPrice: itemPriceTemp,
           taxPrice: additionlaPriceTemp, //aditional Price
           shippingPrice: shippingPriceTemp,
-          totalPrice: itemPriceTemp ,
-          //+ additionlaPriceTemp + shippingPriceTemp,
+          totalPrice: itemPriceTemp + additionlaPriceTemp + shippingPriceTemp,
           isPaid: false,
           isDelivered: false,
           orderItems: orderItemsList,
@@ -122,7 +122,8 @@ export default function ReviewFormT() {
             </div>
 
 
-            <div className='d-none d-sm-none d-md-block'>
+            <PaymentButton onPaymentFormSubmit={onPaymentFormSubmit} checkOutFormObj={checkOutFormObj} />
+            {/* <div className='d-none d-sm-none d-md-block'>
                 <Row className='p-0 m-0'>
                     <Col xs={12} sm={4} className='p-0 m-0' />
                     <Col xs={12} sm={4} className='p-0 m-0' />
@@ -134,6 +135,7 @@ export default function ReviewFormT() {
                             type='submit'
                             className='p-2 m-0 Button-on-click'
                             onClick={onPaymentFormSubmit}
+                            disabled
                         >
                             {
                                 checkOutFormObj.formObject.isCodChecked ?
@@ -152,6 +154,7 @@ export default function ReviewFormT() {
                         variant='primary'
                         type='submit'
                         className='px-5 me-3 mt-3 mb-3 Button-on-click'
+                        
                         onClick={onPaymentFormSubmit}
                     >
                         {
@@ -161,12 +164,13 @@ export default function ReviewFormT() {
                         }
                     </Button>
                 </div>
-            </div>
+            </div> */}
 
         </>
 
         
     )
+
 
     function AddressComp(){
     console.log('Is New Address :' + checkOutFormObj.formObject.isNewAddress)
@@ -255,4 +259,101 @@ export default function ReviewFormT() {
         );
       }
 
+}
+
+
+function PaymentButton({onPaymentFormSubmit,checkOutFormObj}){
+
+
+    const [ payButtonClicked , setpayButtonClicked ] = useState(false);
+
+    return(
+        <>
+            <div className='d-none d-sm-none d-md-block'>
+                <Row className='p-0 m-0'>
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0' />
+                    <Col xs={12} sm={4} className='p-0 m-0'>
+                        <Button
+                            style={{ backgroundColor: '#977257', border: 0, borderRadius: 0, width:'100%', marginLeft:'7px' }}
+                            size='lg'
+                            variant='primary'
+                            type='submit'
+                            className='p-2 m-0 Button-on-click'
+                            disabled={payButtonClicked}
+                            onClick={(e)=>{
+                                if(!payButtonClicked){
+                                    onPaymentFormSubmit(e)
+                                    // console.log('Pay Button Clicked')
+                                }
+                                setpayButtonClicked(true)
+                                setTimeout(function() {
+                                    setpayButtonClicked(false)
+                                }, 5000);
+                            }}
+                        >
+                            {/* {
+                                checkOutFormObj.formObject.isCodChecked ?
+                                'Confirm'
+                                : 'PAY'
+                            } */}
+
+                            <PayButtonClild />
+                        </Button>
+                    </Col>
+                </Row>
+            </div>
+            <div className='d-block d-sm-block d-md-none f-f-m'>
+                <div className='d-flex justify-content-center '>
+                    <Button
+                        style={{ backgroundColor: '#977257', border: 0, borderRadius: 0 }}
+                        size='md'
+                        variant='primary'
+                        type='submit'
+                        className='px-5 me-3 mt-3 mb-3 Button-on-click'
+                        disabled={payButtonClicked}
+                        onClick={(e)=>{
+                                if(!payButtonClicked){
+                                    onPaymentFormSubmit(e)
+                                    // console.log('Pay Button Clicked')
+                                }
+                                setpayButtonClicked(true)
+                                setTimeout(function() {
+                                    setpayButtonClicked(false)
+                                }, 5000);
+                            }}
+                        >
+                            {/* {
+                                checkOutFormObj.formObject.isCodChecked ?
+                                'Confirm'
+                                : 'PAY'
+                            } */}
+
+                            <PayButtonClild />
+                    </Button>
+                </div>
+            </div>
+        </>
+    )
+
+
+    function PayButtonClild(){
+        if(payButtonClicked){
+            return <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+            />
+        }else{
+            
+            if(checkOutFormObj.formObject.isCodChecked){
+                return 'Confirm'
+            }else{
+                return 'PAY'
+            }
+
+        }
+    }
 }
