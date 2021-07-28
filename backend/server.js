@@ -1,6 +1,8 @@
 import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
+import http from 'http'
+import enforce from 'express-sslify'
 
 import HomeScreenBagsProducts from './data/HomeScreenBagsProducts.js'
 import HomeScreenHomeProducts from './data/HomeScreenHomeProducts.js'
@@ -27,6 +29,8 @@ dotenv.config()
 connectDb()
 
 const app = express()
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 app.use(express.json())
 
