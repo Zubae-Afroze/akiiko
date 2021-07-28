@@ -30,6 +30,7 @@
     "express-sslify": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.8",
+    "nodemailer": "^6.6.3",
     "razorpay": "^2.0.6",
     "react-router-hash-link": "^2.4.0"
   },

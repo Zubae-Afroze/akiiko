@@ -14,6 +14,7 @@ import masterProductRoutes from './routes/masterProductRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import orderRoutes from './routes/orderRoutes.js'
 import profileRoutes from './routes/profileRoutes.js'
+import mailRoutes from './routes/mailRoutes.js'
 
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 // import router from './routes/masterProductRoutes.js'
@@ -54,6 +55,7 @@ app.use('/api/productlist', masterProductRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/orders', orderRoutes)
 app.use('/api/profile', profileRoutes)
+app.use('/api/mail', mailRoutes)
 
 // app.get('/api/config/razorpay', (req, res) => res.send(process.env.RAZOR_PAY_KEY))
 
