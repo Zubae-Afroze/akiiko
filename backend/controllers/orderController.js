@@ -151,17 +151,17 @@ const getMyOrders = asyncHandler(async (req, res) => {
 //@desc Get All Orders for Admin panel
 //@route GET /api/orders/allorders/:page
 //@access Private
-// const getAllOrders = asyncHandler(async (req, res) => {
-//   const perPage = 20
-//   const page = Math.max(0, req.params.page)
+const getAllOrders = asyncHandler(async (req, res) => {
+  const perPage = 20
+  const page = Math.max(0, req.params.page)
 
-//   const orders = await Order.find({})
-//     .limit(perPage)
-//     .skip(page * perPage)
-//     .sort({ createdAt: 'desc' })
+  const orders = await Order.find({})
+    .limit(perPage)
+    .skip(page * perPage)
+    .sort({ createdAt: 'desc' })
 
-//   return res.json(orders)
-// })
+  return res.json(orders)
+})
 
 export {
   addOrderItems,
@@ -169,5 +169,5 @@ export {
   createRazorpayOrder,
   orderPaymentComplete,
   getMyOrders,
-  //getAllOrders,
+  getAllOrders,
 }

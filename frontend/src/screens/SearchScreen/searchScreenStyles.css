@@ -1,7 +1,7 @@
 .search-fixed{
-    position: fixed;
+    /* position: fixed;
     top: 100px;
-    z-index: 4;
+    z-index: 4; */
     width:100%
 }
 
@@ -46,7 +46,7 @@
 } */
 
 .search-result-wraper{
-    margin-top: 95px;
+    margin-top: 10px; /*95*/
     width:100vw;
     display: flex;
     justify-content: center;

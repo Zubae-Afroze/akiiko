@@ -70,7 +70,7 @@ const Header = () => {
   function CartModal(props) {
     return (
       <Modal {...props} animation={false}>
-        <ModalBody>
+        <ModalBody className='scroll-modal'>
           <div className='head-cart-header'>
             Shopping Cart
             <img src='/images/font_images/cart.svg' alt='cart-icon' />{' '}
