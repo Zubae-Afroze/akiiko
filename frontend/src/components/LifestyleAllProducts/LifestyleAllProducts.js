@@ -106,6 +106,13 @@ const LifestyleAllProducts = () => {
     <React.Fragment>
       <Container>
         <div className='product-list-wrapper'>
+          <Link to='/' className='product-list-back-button'>
+            <img
+              src='/images/font_images/back_arrow.svg'
+              alt='back_arrow'
+            ></img>
+            BACK
+          </Link>
           {loading && (
             <MyComponent
               sentences={[]}
@@ -174,7 +181,7 @@ const LifestyleAllProducts = () => {
               customLoader={<SpinnerIcon />}
             />
           )}{' '}
-          {error && <h1>{error}</h1>} :
+          {error && <h1>{error}</h1>}
           {stationery[Object.keys(stationery)[0]] && (
             <>
               {stationery[Object.keys(stationery)[0]] ? (

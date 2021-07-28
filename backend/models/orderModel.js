@@ -23,7 +23,7 @@ const orderSchema = mongoose.Schema(
     shippingAddress: {
       firstName: { type: String },
       lastName: { type: String },
-      email: { type: String},
+      email: { type: String },
       address: { type: String, required: true },
       phoneNumber: { type: String },
       city: { type: String, required: true },
@@ -79,6 +79,9 @@ const orderSchema = mongoose.Schema(
       type: Date,
     },
     shipRocketLink: {
+      type: String,
+    },
+    deliveryStatus: {
       type: String,
     },
   },
