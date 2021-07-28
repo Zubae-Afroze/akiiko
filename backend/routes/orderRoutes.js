@@ -5,6 +5,7 @@ import {
   createRazorpayOrder,
   orderPaymentComplete,
   getMyOrders,
+  //getAllOrders,
 } from '../controllers/orderController.js'
 import { protect } from '../middleware/authMiddleware.js'
 
@@ -19,6 +20,8 @@ router.route('/myorders/:profile').get(getMyOrders)
 router.route('/:id/pay').get(createRazorpayOrder)
 
 router.route('/:id/ordercomplete').post(orderPaymentComplete)
+
+//router.route('/allorders/:page').get(getAllOrders)
 
 // router.route('/:id/razorpay').get(getRazorpayObject)
 
