@@ -16,11 +16,10 @@ import { resetCartItems } from './actionCart'
 
 import axios from 'axios'
 
-export const createOrder = (order,email,history) => async (dispatch) => {
+export const createOrder = (order, email, history) => async (dispatch) => {
   try {
     dispatch({
       type: ORDER_CREATE_REQUEST,
-
     })
 
     // const { finalOrderPlacemnetJson } = order
@@ -43,72 +42,82 @@ export const createOrder = (order,email,history) => async (dispatch) => {
       payload: data,
     })
 
-    if(order.paymentMethod !== 'cod'){
-
+    if (order.paymentMethod !== 'cod') {
       const configF = {
         headers: {
-            'Content-Type': 'application/json',
-            // Authorization: `Bearer ${userInfo.token}`
-        }
+          'Content-Type': 'application/json',
+          // Authorization: `Bearer ${userInfo.token}`
+        },
       }
-  
-      console.log('data: '+data)
-  
-      const { data: dataRazor } = await axios.get(`/api/orders/${data._id}/pay`, configF)
-  
-      var options = {
-        "key": dataRazor.razor_key,
-        "amount": dataRazor.amount,
-        "currency": dataRazor.currency,
-        "name": order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
-        "description": "",
-        "order_id": dataRazor.id,
-        "handler": async function (response) {
-            // alert(response.razorpay_payment_id);
-            // alert(response.razorpay_order_id);
-            // alert(response.razorpay_signature);
-            try {
-                const res = await axios.post(`/api/orders/${data._id}/ordercomplete`, {
-                    payment_id: response.razorpay_payment_id,
-                    razorpay_order_id: response.razorpay_order_id,
-                    signature: response.razorpay_signature
-                }, config)
-  
-                history.replace('/ordersuccess')
-  
-                //We can use res.body orderItems to overwitre the order details to store
-                dispatch(getOrderDetails(data._id))
-                dispatch(resetCartItems())
-            } catch (error) {
-                console.log(error);
-            }
-        },
-        "prefill": {
-            "name": order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
-            "email": email,
-            "contact": order.shippingAddress.phoneNumber,
-            // "method": "card",
-            // "card[name]": order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
-            // "card[number]": "4111111111111111",
-            // "card[expiry]": "12/21",
-            // "card[cvv]": "123"
-        },
-        "notes": {
-            "address": "Razorpay Corporate Office"
-        },
-        "theme": {
-            "color": "#6e4e37"
-        }
-      };
-      var rzp1 = new window.Razorpay(options);
-      rzp1.open()
 
-    }else{
+      console.log('data: ' + data)
+
+      const { data: dataRazor } = await axios.get(
+        `/api/orders/${data._id}/pay`,
+        configF
+      )
+
+      var options = {
+        key: dataRazor.razor_key,
+        amount: dataRazor.amount,
+        currency: dataRazor.currency,
+        name:
+          order.shippingAddress.firstName +
+          ' ' +
+          order.shippingAddress.lastName,
+        description: '',
+        order_id: dataRazor.id,
+        handler: async function (response) {
+          // alert(response.razorpay_payment_id);
+          // alert(response.razorpay_order_id);
+          // alert(response.razorpay_signature);
+          try {
+            const res = await axios.post(
+              `/api/orders/${data._id}/ordercomplete`,
+              {
+                payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+                signature: response.razorpay_signature,
+              },
+              config
+            )
+
+            history.replace('/ordersuccess')
+
+            //We can use res.body orderItems to overwitre the order details to store
+            dispatch(getOrderDetails(data._id))
+            dispatch(resetCartItems())
+          } catch (error) {
+            console.log(error)
+          }
+        },
+        prefill: {
+          name:
+            order.shippingAddress.firstName +
+            ' ' +
+            order.shippingAddress.lastName,
+          email: email,
+          contact: order.shippingAddress.phoneNumber,
+          // "method": "card",
+          // "card[name]": order.shippingAddress.firstName + ' ' + order.shippingAddress.lastName,
+          // "card[number]": "4111111111111111",
+          // "card[expiry]": "12/21",
+          // "card[cvv]": "123"
+        },
+        notes: {
+          address: 'Razorpay Corporate Office',
+        },
+        theme: {
+          color: '#6e4e37',
+        },
+      }
+      var rzp1 = new window.Razorpay(options)
+      rzp1.open()
+    } else {
       dispatch(resetCartItems())
+      axios.post(`/api/mail/orderplaced`, order, config)
       history.replace('/ordersuccess')
     }
-
-    
   } catch (error) {
     dispatch({
       type: ORDER_CREATE_FAIL,
