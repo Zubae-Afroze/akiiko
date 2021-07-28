@@ -25,6 +25,6 @@ router.route('/:id/ordercomplete').post(orderPaymentComplete)
 
 // router.route('/:id/razorpay').get(getRazorpayObject)
 
-//router.route('/:id/paid').post(updateOrderToPaid)
+// router.route('/:id/paid').post(updateOrderToPaid)
 
 export default router
