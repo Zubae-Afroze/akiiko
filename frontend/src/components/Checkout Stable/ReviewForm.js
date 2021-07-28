@@ -65,6 +65,7 @@ export default function ReviewFormT() {
             postalCode: checkOutFormObj.formObject.zipCode,
           },
           paymentMethod: checkOutFormObj.formObject.isCodChecked ? 'cod' : 'online',
+          deliveryStatus: 'placed',
         }
     
         console.log(checkOutFormObj.formObject)

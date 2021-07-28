@@ -288,6 +288,11 @@
   margin-left: 5px;
 }
 
+
+.scroll-modal{
+  overflow-y:auto;
+}
+
 @media (max-width: 1600px) {
   .title-icon-wrap {
     margin-right: 8.5%;
