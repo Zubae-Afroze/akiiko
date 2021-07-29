@@ -16,6 +16,7 @@ const addOrderItems = asyncHandler(async (req, res) => {
     totalPrice,
     user,
     shippingPrice,
+    deliveryStatus,
   } = req.body
 
   if (orderItems && orderItems.length === 0) {
@@ -168,7 +169,7 @@ const getAllOrders = asyncHandler(async (req, res) => {
 //@route PUT /api/orders/deliverystatus
 //@acess Private
 const updateOrderDeliveryStatus = asyncHandler(async (req, res) => {
-  const order = await Order.findById(req.order._id)
+  const order = await Order.findById(req.body._id)
 
   if (order) {
     order.deliveryStatus = req.body.deliveryStatus || deliveryStatus
@@ -185,6 +186,29 @@ const updateOrderDeliveryStatus = asyncHandler(async (req, res) => {
   }
 })
 
+
+//@desc Update shipRocketLink for Placed, Dispatched, Delivered
+//@route PUT /api/orders/shiprocketlink
+//@acess Private
+const updateShipRocketLink = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.body._id);
+
+  if (order) {
+    order.shipRocketLink = req.body.shipRocketLink || shipRocketLink
+
+    const updatedOrder = await order.save()
+
+    res.json({
+      _id: updatedOrder._id,
+      shipRocketLink: updatedOrder.shipRocketLink,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Order Not Found')
+  }
+
+})
+
 export {
   addOrderItems,
   getOrderById,
@@ -193,4 +217,5 @@ export {
   getMyOrders,
   getAllOrders,
   updateOrderDeliveryStatus,
+  updateShipRocketLink,
 }

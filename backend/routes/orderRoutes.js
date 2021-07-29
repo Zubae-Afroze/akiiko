@@ -7,6 +7,7 @@ import {
   getMyOrders,
   getAllOrders,
   updateOrderDeliveryStatus,
+  updateShipRocketLink
 } from '../controllers/orderController.js'
 import { protect } from '../middleware/authMiddleware.js'
 
@@ -25,6 +26,8 @@ router.route('/:id/ordercomplete').post(orderPaymentComplete)
 router.route('/allorders/:page').get(getAllOrders)
 
 router.route('/deliverystatus').put(updateOrderDeliveryStatus)
+
+router.route('/shiprocketlink').put(updateShipRocketLink)
 
 // router.route('/:id/razorpay').get(getRazorpayObject)
 
