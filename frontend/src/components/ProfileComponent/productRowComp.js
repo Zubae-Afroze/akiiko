@@ -62,10 +62,13 @@ export default function ProductRowComp({orderDetails,index}) {
                         </div>
                     </Col>
                     <Col xs={3} md={2} className='p-0 m-0'>
-                        <div style={{marginTop:'8px'}}>
+                        {/* <div style={{marginTop:'8px'}}>
                             <h6 style={{fontSize:'14px', marginBottom:'2px'}}> Placed </h6>
                             <h6 style={{fontSize:'14px', opacity:'50%', marginBottom:'2px'}}> { returnFormatedDate() } </h6>
-                        </div>
+                        </div> */}
+
+                        <TrackOrder orderDetails={orderDetails}/>
+
                     </Col>
                     <Col xs={3} md={3} className='p-0 m-0'>
                         {/* <h6 className='tabs' style={{fontSize:'14px',textAlign:'end' , paddingRight:'13px', marginTop:'18px'}}> */}
@@ -94,10 +97,61 @@ export default function ProductRowComp({orderDetails,index}) {
     )
 
 
-    function returnFormatedDate(){
+    function TrackOrder({orderDetails}){
 
-        let stringdate = orderDetails.createdAt;
-        let date = new Date(stringdate.substring(0, 4), stringdate.substring(5, 7), stringdate.substring(8, 10));
+        if(orderDetails.deliveryStatus === null || orderDetails.deliveryStatus === undefined){
+            return(
+                <div style={{marginTop:'8px'}}>
+                    <h6 style={{fontSize:'14px', marginBottom:'2px'}}> Placed </h6>
+                    <h6 style={{fontSize:'14px', opacity:'50%', marginBottom:'2px'}}> { returnFormatedDate(orderDetails.createdAt) } </h6>
+                </div>
+            )
+        }else{
+
+
+            if(orderDetails.deliveryStatus === 'placed'){
+                return(
+                    <div style={{marginTop:'8px'}}>
+                        <h6 style={{fontSize:'14px', marginBottom:'2px'}}> Placed </h6>
+                        <h6 style={{fontSize:'14px', opacity:'50%', marginBottom:'2px'}}> { returnFormatedDate(orderDetails.createdAt) } </h6>
+                    </div>
+                )
+            }
+
+            else if(orderDetails.deliveryStatus === 'dispatched'){
+                return(
+                    <div style={{marginTop:'8px'}}>
+                        <h6 style={{fontSize:'14px', marginBottom:'2px'}}> Dispatched </h6>
+                        {
+                            (orderDetails.shipRocketLink === null || orderDetails.shipRocketLink === undefined)
+                            ? <h6 style={{fontSize:'14px', opacity:'50%', marginBottom:'2px'}}> { returnFormatedDate(orderDetails.updatedAt) } </h6>
+                            :  <a href={orderDetails.shipRocketLink} rel="noreferrer" target="_blank"
+                                className='f-f-l tabs' style={{fontSize:'12px', textDecoration: 'underline'}}
+                            >Track Order</a> 
+                        }
+                        
+                    </div>
+                )
+            }
+
+            else{
+                return(
+                    <div style={{marginTop:'8px'}}>
+                        <h6 style={{fontSize:'14px', marginBottom:'2px'}}> Delivered </h6>
+                        <h6 style={{fontSize:'14px', opacity:'50%', marginBottom:'2px'}}> { returnFormatedDate(orderDetails.updatedAt) } </h6>
+                            
+                    </div>
+                )
+            }
+
+        }
+
+    }
+
+
+    function returnFormatedDate(stringdate){
+
+        let date = new Date(stringdate.substring(0, 4), (stringdate.substring(5, 7) === 0 ? 0 : (stringdate.substring(5, 7) - 1) ), stringdate.substring(8, 10));
         let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date);
         let month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date);
         let day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date);
