@@ -163,6 +163,27 @@ const getAllOrders = asyncHandler(async (req, res) => {
   return res.json(orders)
 })
 
+//@desc Update delivery status for Placed, Dispatched, Delivered
+//@route PUT /api/orders/deliverystatus
+//@acess Private
+const updateOrderDeliveryStatus = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.order._id)
+
+  if (order) {
+    order.deliveryStatus = req.body.deliveryStatus || deliveryStatus
+
+    const updatedOrder = await order.save()
+
+    res.json({
+      _id: updatedOrder._id,
+      deliveryStatus: updatedOrder.deliveryStatus,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Order Not Found')
+  }
+})
+
 export {
   addOrderItems,
   getOrderById,
@@ -170,4 +191,5 @@ export {
   orderPaymentComplete,
   getMyOrders,
   getAllOrders,
+  updateOrderDeliveryStatus,
 }
