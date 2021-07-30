@@ -21,6 +21,8 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     },
   })
 
+  const { totalPrice } = req.body
+
   const { email } = req.body.shippingAddress
 
   const mailOptions = {
@@ -31,8 +33,8 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     text: '',
     html: `
           <h3>Thank you for choosing akiiko, you order will be dispatched soon.</h3>
-          <p>Total Price:${req.body.totalPrice}</p>
-          <p>You can track your order, in your profile. goto:</p> https://www.akiiko.com/
+          <p>Total Price:${totalPrice}</p>
+          <p>You can track your order, in your profile. goto:</p> https://www.akiiko.com/newProfile.
           <p>For any queries, you can revert back to us, or call: +91 904 047 5000 / +91 985 859 0505</p>
           `,
   }
@@ -41,7 +43,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     if (err) {
       res.status(500).send({
         status: 'FAIL',
-        message: 'Internal Error, mail not sent' + err,
+        message: 'Internal Error, mail not sent. ' + err,
       })
     } else {
       res.status(200).json({ status: 'OK', msg: 'Email sent' })
