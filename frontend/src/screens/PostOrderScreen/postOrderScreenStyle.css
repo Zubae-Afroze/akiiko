@@ -57,15 +57,40 @@
     text-decoration: underline;
     cursor: pointer;
     transition: all 300ms ease-out;
+    padding-left: 5px;
 }
 
 .continue-shooping-message:hover{
     font-family: 'rutanMedium';
 }
 
+.order-success-msg-container{
+    margin: 2px;
+    /* border: 2px solid white; */
+    padding: 3px;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.order-success-msg-wraper{
+    margin: 8px;
+    border: 2px solid white;
+    padding: 3px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+
 @media (min-width: 1030px) {
     .continue-shooping-message{
-        margin-left: 30px;
+        margin-left: 40px;
+    }
+    .order-success-msg-container{
+        padding-left: 40px;
+        padding-right: 40px;
     }
 }
 
@@ -90,7 +115,13 @@
         width: 60vw;
         height: 60vw;
     }
+
     
+    .order-success-msg-container{
+        margin: 2px;
+        color: white;
+        font: 11px !important
+    }
 }
 
 
@@ -105,4 +136,6 @@
         width: 60vw;
         height: 60vw;
     }
+
+    
 }

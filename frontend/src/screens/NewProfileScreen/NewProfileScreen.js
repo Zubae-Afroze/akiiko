@@ -31,8 +31,9 @@ export default function NewProfileScreen() {
   const history = useHistory()
 
   useEffect(() => {
+    // history.push('/login?redirect=/')
     dispatch(getUserProfileByUID(uid));
-  }, [dispatch,uid])
+  }, [dispatch, uid, ])
 
   useEffect(() => {
       dispatch(listMyOrders())

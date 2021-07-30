@@ -53,9 +53,10 @@ export default function OrderSummaryCompT() {
                 <h6>Additional Pay</h6>
 
                 {
-                    cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) > 500 ?
-                    <h6>--</h6>
-                    : <h6>50</h6>
+                    /* cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) > 500  ? */
+                    isCodCheckedFunction() ?
+                    <h6>50</h6>
+                    : <h6>--</h6>
                 }
 
                 </div>
@@ -64,7 +65,7 @@ export default function OrderSummaryCompT() {
                 
                 {   
                     /* checkOutFormObj.formObject.isCodChecked  */
-                    isCodCheckedFunction()
+                    checkPriceIsBelow500()
                     ? <h6>50</h6>
                     : <h6>--</h6>
                 }
@@ -113,6 +114,18 @@ export default function OrderSummaryCompT() {
         }else{
             return false
         }
+    }
+
+
+    function checkPriceIsBelow500(){
+
+        const itemPriceTemp = cartList.cartItems.reduce(
+            (acc, items) => acc + items.qty * items.price,
+            0
+        )
+        
+        return itemPriceTemp < 500 ? true : false
+        
     }
 
 }

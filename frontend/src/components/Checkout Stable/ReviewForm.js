@@ -28,14 +28,24 @@ export default function ReviewFormT() {
 
 
     const onPaymentFormSubmit = (e) => {
+
+
+        // BELOW  500  =>  
+        // UPI or COD anything 50 for shipping
+
+        // ABOVE  500  =>
+        // if COD checked only 50 for Additional/tax pay
+
+
         e.preventDefault()
         const itemPriceTemp = cartList.cartItems.reduce(
           (acc, items) => acc + items.qty * items.price,
           0
         )
-        const additionlaPriceTemp = itemPriceTemp > 500 ? 0 : 50
-        // const shippingPriceTemp = checkOutFormObj.formObject.isCodChecked ? 50 : 0
-        const shippingPriceTemp = additionlaPriceTemp === 50 ? 0 : checkOutFormObj.formObject.isCodChecked ? 50 : 0
+        const additionlaPriceTemp = (checkOutFormObj.formObject.isCodChecked && itemPriceTemp > 500 )  ? 50 : 0
+        // const shippingPriceTemp = checkOutFormObj.formObject.isCodChecked ? 50 : 0 itemPriceTemp > 500
+        // const shippingPriceTemp = additionlaPriceTemp === 50 ? 0 : checkOutFormObj.formObject.isCodChecked ? 50 : 0 
+        const shippingPriceTemp = itemPriceTemp < 500 ? 50 : 0;
         
     
         const orderItemsList = cartList.cartItems.map((item, index) => {
@@ -80,22 +90,23 @@ export default function ReviewFormT() {
         //     expiryYear: checkOutFormObj.formObject.year ,
         // }
     
+
     
-        // dispatch(createOrder(finalOrderPlacemnetJson,profileDetails.email,history))
+        dispatch(createOrder(finalOrderPlacemnetJson,profileDetails.email,history))
     
-        // if(checkOutFormObj.formObject.isNewAddress){
+        if(checkOutFormObj.formObject.isNewAddress){
     
-        //   dispatch(addNewShippingAddress({
-        //     firstname : checkOutFormObj.formObject.firstName,
-        //     lastname : checkOutFormObj.formObject.lastName,
-        //     address : checkOutFormObj.formObject.address,
-        //     mobile : checkOutFormObj.formObject.phoneNumber,
-        //     city : checkOutFormObj.formObject.city,
-        //     state : checkOutFormObj.formObject.state,
-        //     zipCode : checkOutFormObj.formObject.zipCode,
-        //   }))
+          dispatch(addNewShippingAddress({
+            firstname : checkOutFormObj.formObject.firstName,
+            lastname : checkOutFormObj.formObject.lastName,
+            address : checkOutFormObj.formObject.address,
+            mobile : checkOutFormObj.formObject.phoneNumber,
+            city : checkOutFormObj.formObject.city,
+            state : checkOutFormObj.formObject.state,
+            zipCode : checkOutFormObj.formObject.zipCode,
+          }))
     
-        // }
+        }
     
     }
 

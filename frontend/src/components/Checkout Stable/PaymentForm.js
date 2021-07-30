@@ -391,11 +391,11 @@ function CodField({changePaymentFormState,handelInputeChange,cartList}){
         </div>
           {
             isCodCheckedFunction()
-            //changePaymentFormState.isCodChecked
+            /* changePaymentFormState.isCodChecked */
             ? <h6 className='f-f'
                 style={{fontSize:'12px'}}
             
-            >Additional charges will apply on COD </h6>
+            > {checkPriceIsBelow500() ? 'Shipping ' : 'Additional '} charges will apply on COD </h6>
             : null
           }
       </Col>
@@ -408,11 +408,21 @@ function CodField({changePaymentFormState,handelInputeChange,cartList}){
         )
 
         if(changePaymentFormState.isCodChecked){
-
             return itemPriceTemp > 500 ? true : false
         }else{
             return false
         }
+    }
+
+    function checkPriceIsBelow500(){
+
+        const itemPriceTemp = cartList.cartItems.reduce(
+            (acc, items) => acc + items.qty * items.price,
+            0
+        )
+        
+        return itemPriceTemp < 500 ? true : false
+        
     }
 }
 
