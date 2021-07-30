@@ -24,7 +24,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
 
   const mailOptions = {
     from: 'precisofashion@gmail.com',
-    to: 'zubaemd@gmail.com',
+    to: req.body.shpppingAddress.email,
     replyTo: 'precisofashion@gmail.com',
     subject: 'Akiiko Order Summary for order:' + req.body._id,
     text: 'test',
