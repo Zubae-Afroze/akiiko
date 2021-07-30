@@ -5,6 +5,7 @@ import { CheckOutFormContext } from './CheckOutIndex'
 import PaymentFormT from '../../components/Checkout Stable/PaymentForm'
 import ReviewFormT from '../../components/Checkout Stable/ReviewForm'
 import { useHistory } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 
 function CloseIcon({history,checkOutFormObj}){
 
@@ -102,7 +103,9 @@ export default function CheckOutCompT() {
                 className='forms-wraper-height f-f-l'
                 // style={{minHeight:'300px'}}
                 >
-                
+
+                <AnimatePresence>
+
                 {
                     checkOutFormObj.formObject.stepperlevel === 0 ?
                         <ShippingFormT/>
@@ -111,7 +114,10 @@ export default function CheckOutCompT() {
                     :   <ReviewFormT />
 
                 }
+                    
+                </AnimatePresence>
 
+                
             </div>
             
         </>

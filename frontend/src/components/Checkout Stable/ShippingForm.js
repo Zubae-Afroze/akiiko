@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Col, Row, Form, Button } from 'react-bootstrap'
 import { useSelector } from 'react-redux'
-import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
+import { CheckOutFormContext , formEntranceAnimation } from '../../screens/Stable Checkout Screen/CheckOutIndex'
+import { motion } from 'framer-motion'
 import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
 
 const hrStyle = {
@@ -105,25 +106,28 @@ export default function ShippingFormT() {
         <>  
             {
                 profileDetails &&
+                <motion.div variants={formEntranceAnimation} initial='hidden' animate='visible'>
 
-                <>
+                    <>
 
-                    <div className='forms-height' 
-                        // style={{minHeight:'340px'}}
-                    >
+                        <div className='forms-height' 
+                            // style={{minHeight:'340px'}}
+                        >
 
-                        <ReturnAddressForm 
-                            profileDetails={profileDetails}
-                            checkOutFormObj={checkOutFormObj}
-                            changeShippingFormState={changeShippingFormState} 
-                            handelInputeChange={handelInputeChange} 
-                            errorFields={errorFields}
-                            onSubmitShippingForm={onSubmitShippingForm}
-                        />
+                            <ReturnAddressForm 
+                                profileDetails={profileDetails}
+                                checkOutFormObj={checkOutFormObj}
+                                changeShippingFormState={changeShippingFormState} 
+                                handelInputeChange={handelInputeChange} 
+                                errorFields={errorFields}
+                                onSubmitShippingForm={onSubmitShippingForm}
+                            />
 
-                    </div>
+                        </div>
 
-                </>
+                    </>
+
+                </motion.div>
             }
 
             
@@ -173,6 +177,7 @@ function ExistingAddressComp({checkOutFormObj,profileDetails}){
                     profileDetails.shippingAddress.map((object, index) => {
                         return (
                             <Col xs={12} md={6} className='p-0 m-0'>
+
                                 <div className={'existing-address-component existing-address-'+(index % 2 === 0 ? 'even':'odd')+'Num-style'}
 
                                     onClick={()=>{
@@ -199,9 +204,12 @@ function ExistingAddressComp({checkOutFormObj,profileDetails}){
                                             Continue with this Address
                                         </button>
                                         <span style={{display: 'inline', color: '#977257'}}>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
-                                            </svg>
+                                            <div className='hvr-wobble-horizontal'>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                                </svg>
+
+                                            </div>
                                         </span>
 
                                     </div>

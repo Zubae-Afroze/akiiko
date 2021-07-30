@@ -62,8 +62,9 @@ export default function OrderSummaryCompT() {
                 <div className='f-f d-flex justify-content-between'>
                 <h6>Shipping</h6>
                 
-                {
-                    checkOutFormObj.formObject.isCodChecked 
+                {   
+                    /* checkOutFormObj.formObject.isCodChecked  */
+                    isCodCheckedFunction()
                     ? <h6>50</h6>
                     : <h6>--</h6>
                 }
@@ -78,7 +79,8 @@ export default function OrderSummaryCompT() {
                 <h6 className='f-f-m'>
                     {
                         cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) +
-                        (checkOutFormObj.formObject.isCodChecked ? 50 : 0) +
+                        (isCodCheckedFunction() ? 50 : 0) +
+                        /* (checkOutFormObj.formObject.isCodChecked ? 50 : 0) + */
                         (
                         cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) > 500  
                             ? 0
@@ -97,6 +99,20 @@ export default function OrderSummaryCompT() {
                 <div style={{height:'65px'}} />
             </div>
         );
+    }
+
+    
+    function isCodCheckedFunction(){
+        const itemPriceTemp = cartList.cartItems.reduce(
+            (acc, items) => acc + items.qty * items.price,
+            0
+        )
+
+        if(checkOutFormObj.formObject.isCodChecked){
+            return itemPriceTemp > 500 ? true : false
+        }else{
+            return false
+        }
     }
 
 }

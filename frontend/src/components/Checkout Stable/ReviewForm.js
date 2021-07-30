@@ -1,11 +1,12 @@
 import React, {useContext,useState} from 'react'
 import { Row,Col, Button, Spinner } from 'react-bootstrap'
-import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
+import { CheckOutFormContext, formEntranceAnimation } from '../../screens/Stable Checkout Screen/CheckOutIndex'
 import Astric from '../../components/CheckOut/asterisk.svg'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createOrder } from '../../actions/actionOrder'
 import { addNewShippingAddress } from '../../actions/actionProfile'
+import { motion } from 'framer-motion'
 import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
 
 
@@ -33,7 +34,9 @@ export default function ReviewFormT() {
           0
         )
         const additionlaPriceTemp = itemPriceTemp > 500 ? 0 : 50
-        const shippingPriceTemp = checkOutFormObj.formObject.isCodChecked ? 50 : 0
+        // const shippingPriceTemp = checkOutFormObj.formObject.isCodChecked ? 50 : 0
+        const shippingPriceTemp = additionlaPriceTemp === 50 ? 0 : checkOutFormObj.formObject.isCodChecked ? 50 : 0
+        
     
         const orderItemsList = cartList.cartItems.map((item, index) => {
           return {
@@ -69,7 +72,7 @@ export default function ReviewFormT() {
           shipRocketLink: '',
         }
     
-        console.log(checkOutFormObj.formObject)
+        console.log(finalOrderPlacemnetJson)
 
         // let cardDetails = {
         //     number : checkOutFormObj.formObject.cardNumber ,
@@ -78,27 +81,29 @@ export default function ReviewFormT() {
         // }
     
     
-        dispatch(createOrder(finalOrderPlacemnetJson,profileDetails.email,history))
+        // dispatch(createOrder(finalOrderPlacemnetJson,profileDetails.email,history))
     
-        if(checkOutFormObj.formObject.isNewAddress){
+        // if(checkOutFormObj.formObject.isNewAddress){
     
-          dispatch(addNewShippingAddress({
-            firstname : checkOutFormObj.formObject.firstName,
-            lastname : checkOutFormObj.formObject.lastName,
-            address : checkOutFormObj.formObject.address,
-            mobile : checkOutFormObj.formObject.phoneNumber,
-            city : checkOutFormObj.formObject.city,
-            state : checkOutFormObj.formObject.state,
-            zipCode : checkOutFormObj.formObject.zipCode,
-          }))
+        //   dispatch(addNewShippingAddress({
+        //     firstname : checkOutFormObj.formObject.firstName,
+        //     lastname : checkOutFormObj.formObject.lastName,
+        //     address : checkOutFormObj.formObject.address,
+        //     mobile : checkOutFormObj.formObject.phoneNumber,
+        //     city : checkOutFormObj.formObject.city,
+        //     state : checkOutFormObj.formObject.state,
+        //     zipCode : checkOutFormObj.formObject.zipCode,
+        //   }))
     
-        }
+        // }
     
     }
 
 
     return (
         <>
+            <motion.div variants={formEntranceAnimation} initial='hidden' animate='visible'>
+
             <div className='forms-height'>
 
                 <Row className='p-0 m-0'>
@@ -167,6 +172,8 @@ export default function ReviewFormT() {
                     </Button>
                 </div>
             </div> */}
+
+            </motion.div>
 
         </>
 

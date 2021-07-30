@@ -9,6 +9,18 @@ import './orderSummaryStyle.css'
 
 export const CheckOutFormContext = createContext(null);
 
+export const formEntranceAnimation = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 1,
+      },
+    },
+  }
+
 // export const addressFormStateStore = {
 //     firstName: '',
 //     lastName: '',
@@ -81,8 +93,11 @@ export default function StableCheckOutScreen() {
 
     return (
         <>
+        <div style={{width:'100vw'}}>
+
         <Menubar />
         <MobileNav />
+
             <div className='checkOut-container-wraper f-f'>
                 
                 <div id='child'>
@@ -112,6 +127,7 @@ export default function StableCheckOutScreen() {
                 </div>
 
             </div>
+        </div>
         </>
     )
 }

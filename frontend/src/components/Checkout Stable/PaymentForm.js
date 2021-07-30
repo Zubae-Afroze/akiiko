@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { Col, Row, Form, Button } from 'react-bootstrap'
-import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
+import { useSelector } from 'react-redux'
+import { CheckOutFormContext, formEntranceAnimation } from '../../screens/Stable Checkout Screen/CheckOutIndex'
+import { motion } from 'framer-motion'
 import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
 
 
@@ -33,6 +35,8 @@ const hrStyle = {
 export default function PaymentFormT() {
 
     const checkOutFormObj = useContext(CheckOutFormContext);
+
+    const cartList = useSelector((state) => state.cartList)
 
     const [ changePaymentFormState , setChangePaymentFormState] = useState(checkOutFormObj.formObject)
 
@@ -132,6 +136,7 @@ export default function PaymentFormT() {
     return (
         <>
 
+            <motion.div variants={formEntranceAnimation} initial='hidden' animate='visible'>
                 <div className='forms-height' 
                         // style={{minHeight:'340px'}}
                     >
@@ -160,7 +165,7 @@ export default function PaymentFormT() {
 
                     <DummyHeight small={true}/>
 
-                    <CodField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange}/>
+                    <CodField changePaymentFormState={changePaymentFormState} handelInputeChange={handelInputeChange} cartList={cartList}/>
 
                 </Row>
                 
@@ -196,6 +201,7 @@ export default function PaymentFormT() {
                     </Button>
                 </div>
             </div>
+            </motion.div>
 
             
         </>
@@ -353,7 +359,7 @@ function NetBankingField({changePaymentFormState,handelInputeChange}){
     );
 }
 
-function CodField({changePaymentFormState,handelInputeChange}){
+function CodField({changePaymentFormState,handelInputeChange,cartList}){
     return(
       <Col sm={12} md={12} className='m-0 p-0'>
         <div
@@ -384,7 +390,8 @@ function CodField({changePaymentFormState,handelInputeChange}){
           />
         </div>
           {
-            changePaymentFormState.isCodChecked
+            isCodCheckedFunction()
+            //changePaymentFormState.isCodChecked
             ? <h6 className='f-f'
                 style={{fontSize:'12px'}}
             
@@ -393,6 +400,20 @@ function CodField({changePaymentFormState,handelInputeChange}){
           }
       </Col>
     );
+
+    function isCodCheckedFunction(){
+        const itemPriceTemp = cartList.cartItems.reduce(
+            (acc, items) => acc + items.qty * items.price,
+            0
+        )
+
+        if(changePaymentFormState.isCodChecked){
+
+            return itemPriceTemp > 500 ? true : false
+        }else{
+            return false
+        }
+    }
 }
 
 
