@@ -26,16 +26,17 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     from: 'precisofashion@gmail.com',
     to: req.body.shpppingAddress.email,
     replyTo: 'precisofashion@gmail.com',
-    subject: 'Akiiko Order Summary for order:' + req.body._id,
-    text: '',
-    html: `
-          <h1>Thank you for choosing akiiko, you order will be dispatched soon.</h1>
-          <p>Order for order Id:${req.body._id}</p>
-          <p>Total Price:${req.body.totalPrice}</p>
+    subject: 'Akiiko Order Summary for order',
+    text: 'req.body',
 
-          <p>You can track your order, in your profile. goto: <a href:"https://www.akiiko.com/">Akiiko</a></p>
-          <p>For any queries, you can revert back to us, or call: +91 904 047 5000 / +91 985 859 0505</p>
-          `,
+    // html: `
+    //       <h1>Thank you for choosing akiiko, you order will be dispatched soon.</h1>
+    //       <p>Order for order</p>
+    //       <p>Total Price:${req.body.totalPrice}</p>
+
+    //       <p>You can track your order, in your profile. goto: <a href:"https://www.akiiko.com/">Akiiko</a></p>
+    //       <p>For any queries, you can revert back to us, or call: +91 904 047 5000 / +91 985 859 0505</p>
+    //       `,
   }
 
   transporter.sendMail(mailOptions, (err, info) => {

@@ -84,6 +84,8 @@ export const createOrder = (order, email, history) => async (dispatch) => {
 
             history.replace('/ordersuccess')
 
+            axios.post(`/api/mail/orderplaced`, order, config)      
+
             //We can use res.body orderItems to overwitre the order details to store
             dispatch(getOrderDetails(data._id))
             dispatch(resetCartItems())
@@ -115,8 +117,8 @@ export const createOrder = (order, email, history) => async (dispatch) => {
       rzp1.open()
     } else {
       dispatch(resetCartItems())
-      axios.post(`/api/mail/orderplaced`, order, config)
       history.replace('/ordersuccess')
+      axios.post(`/api/mail/orderplaced`, order, config)      
     }
   } catch (error) {
     dispatch({
