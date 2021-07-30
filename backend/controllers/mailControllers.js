@@ -16,8 +16,8 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'precisofashion@gmail.com',
-      pass: 'preciso@123',
+      user: 'zubae.ali@gmail.com',
+      pass: 'Bowmaster@123',
     },
   })
 
