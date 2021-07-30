@@ -44,6 +44,11 @@ export default function NewProfileScreen() {
     history.push('/')
   }
 
+  if(uid === null || uid === undefined){
+    history.push('/login?redirect=/newProfile')
+  }
+
+
 
     return (
         <>
