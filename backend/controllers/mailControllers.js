@@ -30,7 +30,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     subject: 'Akiiko Order Summary for order',
     text: '',
     html: `
-          <h5>Thank you for choosing akiiko, you order will be dispatched soon.</h5>
+          <h3>Thank you for choosing akiiko, you order will be dispatched soon.</h3>
           <p>Total Price:${req.body.totalPrice}</p>
           <p>You can track your order, in your profile. goto:</p> https://www.akiiko.com/
           <p>For any queries, you can revert back to us, or call: +91 904 047 5000 / +91 985 859 0505</p>
