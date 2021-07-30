@@ -13,17 +13,18 @@ import nodemailer from 'nodemailer'
     html: 
 */
 const orderPlacedMail = asyncHandler(async (req, res) => {
+  console.log(req.body)
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'zubae.ali@gmail.com',
-      pass: 'Bowmaster@123',
+      user: 'precisofashion@gmail.com',
+      pass: 'preciso@123',
     },
   })
 
   const mailOptions = {
     from: 'precisofashion@gmail.com',
-    to: req.body.shippingAddress.email,
+    to: 'zubaemd@gmail.com',
     replyTo: 'precisofashion@gmail.com',
     subject: 'Akiiko Order Summary for order:' + req.body._id,
     text: 'test',
@@ -31,9 +32,10 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
 
   transporter.sendMail(mailOptions, (err, info) => {
     if (err) {
-      res
-        .status(500)
-        .send({ status: 'FAIL', message: 'Internal Error, mail not sent' })
+      res.status(500).send({
+        status: 'FAIL',
+        message: 'Internal Error, mail not sent' + err,
+      })
     } else {
       res.status(200).json({ status: 'OK', msg: 'Email sent' })
     }
