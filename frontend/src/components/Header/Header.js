@@ -15,7 +15,7 @@ import Menubar from '../Menubar/Menubar'
 import './Header.css'
 import MobileNav from '../MobileNav/MobileNav'
 
-import { getUserProfileByUID } from '../../actions/actionProfile';
+import { getUserProfileByUID } from '../../actions/actionProfile'
 
 import { addToCart, removeFromCart } from '../../actions/actionCart'
 //import { logout } from '../../actions/actionUsers'
@@ -60,7 +60,7 @@ const Header = () => {
   const uid = useSelector((state) => state.firebase.auth.uid)
 
   useEffect(() => {
-    dispatch(getUserProfileByUID(uid));
+    dispatch(getUserProfileByUID(uid))
   }, [dispatch, uid])
 
   useEffect(() => {
@@ -161,7 +161,11 @@ const Header = () => {
                     </div>
                   </div>
                   <div className='head-cart-purchase-button-wrap'>
-                    <button id='continue' onClick={continueShoppinghandler} style={{backgroundColor:'#977257'}}>
+                    <button
+                      id='continue'
+                      onClick={continueShoppinghandler}
+                      style={{ backgroundColor: '#977257' }}
+                    >
                       CONTINUE SHOPPING
                     </button>
                   </div>
@@ -191,43 +195,49 @@ const Header = () => {
           <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ml-auto title-icon-wrap'>
               <Nav className='title-bar-icon title-search'>
-              <Link to='/search'>
-                <img src={'/images/font_images/search.svg'} alt='search_icon' 
-                  onClick={()=>{
-                    let rootCss = document.querySelector(':root');
-                    rootCss.style.setProperty('--nav-bar-display', 'none');
-                  }}
-                />
-              </Link>
+                <Link to='/search'>
+                  <img
+                    src={'/images/font_images/search.svg'}
+                    alt='search_icon'
+                    onClick={() => {
+                      let rootCss = document.querySelector(':root')
+                      rootCss.style.setProperty('--nav-bar-display', 'none')
+                    }}
+                  />
+                </Link>
               </Nav>
               <Nav className='title-bar-icon'>
                 {auth.uid ? (
                   <NavDropdown
                     title={
-                      auth.photoURL ?
-                      <img
-                        className='image-of-profile'
-                        src={
-                          auth.photoURL
-                            ? auth.photoURL
-                            : '/images/font_images/user.svg'
-                        }
-                        alt='profile'
-                      />
-                      :
-                      <div style={{
-                        marginTop: '5px', 
-                        paddingTop: '2px',
-                        width:'21px', 
-                        height: '21px', 
-                        backgroundColor:'#977257', 
-                        borderRadius: '50%', 
-                        color:'#fff', 
-                        textTransform: 'uppercase', 
-                        fontSize: '15px' 
-                        }} className='d-flex justify-content-center align-items-center'>
-                        {auth.email[0]}
-                      </div>
+                      auth.photoURL ? (
+                        <img
+                          className='image-of-profile'
+                          src={
+                            auth.photoURL
+                              ? auth.photoURL
+                              : '/images/font_images/user.svg'
+                          }
+                          alt='profile'
+                        />
+                      ) : (
+                        <div
+                          style={{
+                            marginTop: '5px',
+                            paddingTop: '2px',
+                            width: '21px',
+                            height: '21px',
+                            backgroundColor: '#977257',
+                            borderRadius: '50%',
+                            color: '#fff',
+                            textTransform: 'uppercase',
+                            fontSize: '15px',
+                          }}
+                          className='d-flex justify-content-center align-items-center'
+                        >
+                          {auth.email[0]}
+                        </div>
+                      )
                     }
                   >
                     <LinkContainer to='/newprofile'>
@@ -236,7 +246,7 @@ const Header = () => {
                       </NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Divider />
-                    <LinkContainer to='/newprofile'>
+                    <LinkContainer to='/newProfile'>
                       <NavDropdown.Item>Profile</NavDropdown.Item>
                     </LinkContainer>
                     <NavDropdown.Item onClick={logouthandler}>

@@ -111,7 +111,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 body {
-  user-select: none;
 }
 
 @media (max-width: 1266px) {

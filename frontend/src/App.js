@@ -53,7 +53,7 @@ export default class App extends Component {
           />
 
           <Route path='/search' render={() => <SearchScreen />} />
-          
+
           <Route path='/login' render={() => <LoginScreen />} />
 
           <Route path='/shipping' render={() => <ShippingScreen />} />
@@ -67,7 +67,7 @@ export default class App extends Component {
             render={() => <StableCheckOutScreen />}
           /> */}
 
-          <Route path='/newprofile' render={() => <NewProfileScreen />} />
+          <Route path='/newProfile' render={() => <NewProfileScreen />} />
 
           <Route path='/payment' render={() => <PaymentScreen />} />
 
