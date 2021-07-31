@@ -1,10 +1,29 @@
-
-
-
 .login-wrap {
   display: flex;
   justify-content: center;
   background-image: url(../BackgroundImage/web.png);
+  height: 100vh;
+}
+
+.forgot-password-screen-warp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../BackgroundImage/web.png);
+  height: 85vh;
+}
+
+.send-verfication-link-btn {
+  width: 320px;
+  height: 53px;
+  text-align: center;
+  font-family: 'rutanMedium';
+  font-size: 16px;
+  padding: 15px 0px;
+  text-align: center;
+  background-color: #6b584c;
+  color: #fff;
+  display: block;
 }
 
 .card-wrap {
@@ -171,8 +190,7 @@
   height: 80vh;
 }
 
-
-.error-field-style{
+.error-field-style {
   background-color: transparent;
   border-color: #3e3331;
   border-width: 2px;

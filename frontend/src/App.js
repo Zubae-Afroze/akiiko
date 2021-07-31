@@ -36,6 +36,7 @@ import PostOrderScreen from './screens/PostOrderScreen/postOrderScreen'
 
 import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex'
 import SearchScreen from './screens/SearchScreen/SearchScreen'
+import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
 export default class App extends Component {
   // constructor(props){
   //   super(props);
@@ -55,6 +56,11 @@ export default class App extends Component {
           <Route path='/search' render={() => <SearchScreen />} />
 
           <Route path='/login' render={() => <LoginScreen />} />
+
+          <Route
+            path='/forgotpassword'
+            render={() => <ForgotPasswordScreen />}
+          />
 
           <Route path='/shipping' render={() => <ShippingScreen />} />
 

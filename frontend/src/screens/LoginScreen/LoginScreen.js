@@ -31,59 +31,55 @@ const LoginScreen = () => {
   const [errorFields, setErrorFields] = useState([false, false])
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
-  
-  
+
   useEffect(() => {
     if (userLogin.uid) {
       toast('Logged in successfully', {
-        position: "top-center",
+        position: 'top-center',
         autoClose: 2000,
         hideProgressBar: true,
         closeOnClick: true,
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-      });
+      })
       history.push(redirect)
     }
-    
 
-    if(auth !== null && auth.authError !== null && auth.authError.length !== 0){
+    if (
+      auth !== null &&
+      auth.authError !== null &&
+      auth.authError.length !== 0
+    ) {
+      let fireBasePasswordError =
+        'The password is invalid or the user does not have a password.'
+      let fireBaseUserDosentExistError =
+        'There is no user record corresponding to this identifier. The user may have been deleted.'
 
-      let fireBasePasswordError = 'The password is invalid or the user does not have a password.';
-      let fireBaseUserDosentExistError = 'There is no user record corresponding to this identifier. The user may have been deleted.';
-
-
-      if(auth.authError === fireBasePasswordError){
-
+      if (auth.authError === fireBasePasswordError) {
         toast('Invalid Password', {
-          position: "top-center",
+          position: 'top-center',
           autoClose: 2000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-        });
-
+        })
       }
 
-      if(auth.authError === fireBaseUserDosentExistError){
-
+      if (auth.authError === fireBaseUserDosentExistError) {
         toast('User does not exist', {
-          position: "top-center",
+          position: 'top-center',
           autoClose: 2000,
           hideProgressBar: true,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
           progress: undefined,
-        });
-
+        })
       }
-
     }
-
   }, [history, userInfo, redirect, userLogin.uid, auth])
 
   function validateEmailCharecters(value) {
@@ -118,7 +114,6 @@ const LoginScreen = () => {
       console.log('Fill The Form')
       setErrorFields(updatedList)
     }
-
   }
 
   const googleHandler = () => {
@@ -133,7 +128,7 @@ const LoginScreen = () => {
     <React.Fragment>
       <div className='login-wrap'>
         <ToastContainer
-          position="top-center"
+          position='top-center'
           autoClose={5000}
           hideProgressBar={false}
           newestOnTop={false}
@@ -253,7 +248,9 @@ const LoginScreen = () => {
                     <input type='checkbox' className='check-box' />
                     Remember me
                   </span>
-                  <span>Forgot your password?</span>
+                  <Link to={'/forgotpassword'}>
+                    <span>Forgot your password?</span>
+                  </Link>
                 </span>
               </div>
             </div>
@@ -335,7 +332,10 @@ const LoginScreen = () => {
                     <input type='checkbox' className='check-box' />
                     Remember me
                   </span>
-                  <span>Forgot your password?</span>
+
+                  <Link to={'/forgotpassword'}>
+                    <span>Forgot your password?</span>
+                  </Link>
                 </span>
               </div>
             </div>
@@ -399,7 +399,9 @@ const LoginScreen = () => {
                     <input type='checkbox' className='check-box' />
                     Remember me
                   </span>
-                  <span>Forgot your password?</span>
+                  <Link to={'/forgotpassword'}>
+                    <span>Forgot your password?</span>
+                  </Link>
                 </span>
               </div>
               <Link
