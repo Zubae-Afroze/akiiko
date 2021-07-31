@@ -52,7 +52,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
 
   orderItems.forEach((item) => {
     orderItemsName.push(
-      '<span>' + item.productName + ' (qty: ' + item.qty + ')  ' + ', </span>'
+      '<span>' + item.productName + ' (qty: ' + item.qty + ')  ' + ' </span>'
     )
   })
 
