@@ -23,19 +23,64 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
 
   const { totalPrice } = req.body
 
+  const { _id } = req.body
+
   const { email } = req.body.shippingAddress
+  const { firstName } = req.body.shippingAddress
+  const { lastName } = req.body.shippingAddress
+
+  const { createdAt } = req.body
+
+  function returnFormatedDate(stringdate) {
+    let date = new Date(
+      stringdate.substring(0, 4),
+      stringdate.substring(5, 7) === 0 ? 0 : stringdate.substring(5, 7) - 1,
+      stringdate.substring(8, 10)
+    )
+    let year = new Intl.DateTimeFormat('en', { year: 'numeric' }).format(date)
+    let month = new Intl.DateTimeFormat('en', { month: 'short' }).format(date)
+    let day = new Intl.DateTimeFormat('en', { day: '2-digit' }).format(date)
+
+    return `${day} ${month} ${year}`
+  }
+
+  const buildDate = returnFormatedDate(createdAt)
+
+  const { orderItems } = req.body
+
+  const orderItemsName = []
+
+  orderItems.forEach((item) => {
+    orderItemsName.push(
+      '<span>' + item.productName + ' qty: ' + item.qty + '  ' + ' </span>'
+    )
+  })
 
   const mailOptions = {
     from: 'precisofashion@gmail.com',
     to: email,
     replyTo: 'precisofashion@gmail.com',
-    subject: 'Akiiko Order Summary for order',
+    subject: `Akiiko Order Summary for ${_id}`,
     text: '',
     html: `
-          <h3>Thank you for choosing akiiko, you order will be dispatched soon.</h3>
-          <p>Total Price:${totalPrice}</p>
-          <p>You can track your order, in your profile. goto:</p> https://www.akiiko.com/newProfile.
-          <p>For any queries, you can revert back to us, or call: +91 904 047 5000 || +91 985 859 0505</p>
+          <html> 
+          <head>
+          <head>
+          <body>
+          <div>
+            <p>Hello ${firstName} ${lastName},</p>
+            <p>We would like to thank you for your appreciation of akiiko and value your contribution towards creating a more natural and eco-friendly world.<p>
+            <p>Your order has been placed sucessfully and is being prepared for dispatch.</p>
+            <span>You can track your order status by clicking </span><a href='https://www.akiiko.com/newProfile'>here.</a>
+          </div>
+          <div>
+          <p><strong>Order Summary</strong></p>
+          <p>Order Number: ${_id}</p>
+          <p>Items: ${orderItemsName}</p>
+          <p>Order Total Price: ${totalPrice}</p>
+          <p>Placed On ${buildDate} </p>
+          <p>You will recieve updates from out shipping partner post dispatch. </p>
+          <div>
           `,
   }
 

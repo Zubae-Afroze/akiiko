@@ -84,7 +84,7 @@ export const createOrder = (order, email, history) => async (dispatch) => {
 
             history.replace('/ordersuccess')
 
-            axios.post(`/api/mail/orderplaced`, order, config)      
+            axios.post(`/api/mail/orderplaced`, data, config)
 
             //We can use res.body orderItems to overwitre the order details to store
             dispatch(getOrderDetails(data._id))
@@ -118,7 +118,7 @@ export const createOrder = (order, email, history) => async (dispatch) => {
     } else {
       dispatch(resetCartItems())
       history.replace('/ordersuccess')
-      axios.post(`/api/mail/orderplaced`, order, config)      
+      axios.post(`/api/mail/orderplaced`, data, config)
     }
   } catch (error) {
     dispatch({
