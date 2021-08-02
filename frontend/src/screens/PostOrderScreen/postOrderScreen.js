@@ -63,13 +63,13 @@ export default function PostOrderScreen(){
     <div className='order-success-msg-wraper f-f-l'>
 
       <div className='order-success-msg-container'>
-        <div>Thank you for choosing akiiko products.</div>
+        <div>Thank you for choosing akiiko.</div>
         <div>You will be receiving an email from us shortly.</div> 
       </div>
       <div>
       <Link to='/newprofile'>
         <h6 className='continue-shooping-message'>
-          Your Profile
+          View order status
         </h6>
       </Link>
       </div>
