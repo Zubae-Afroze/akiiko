@@ -359,10 +359,12 @@ const ProductDetails = () => {
                   </Col>
                 </Row>
                 <button
+                  disabled={product.isOutOfStock ? true : false}
                   className='product-purchase-button'
                   onClick={addToCartHandler}
                 >
-                  ADD TO CART
+                  {product.isOutOfStock ? 'OUT OF STOCK' : 'ADD TO CART'}
+                  {/* ADD TO CART */}
                 </button>
 
                 <div className='product-details-second-wrapper'>
