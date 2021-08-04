@@ -14,10 +14,16 @@ import nodemailer from 'nodemailer'
 */
 const orderPlacedMail = asyncHandler(async (req, res) => {
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: '465',
+    secure: true,
     auth: {
       user: 'precisofashion@gmail.com',
       pass: 'preciso@123',
+    },
+    tls: {
+      // do not fail on invalid certs
+      rejectUnauthorized: false,
     },
   })
 
