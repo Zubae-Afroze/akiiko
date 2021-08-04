@@ -1,5 +1,6 @@
 import asyncHandler from 'express-async-handler'
 import nodemailer from 'nodemailer'
+import dotenv from 'dotenv'
 
 // @desc sending order summary email to the customer
 // @route POST /api/mail/orderplaced
@@ -12,14 +13,15 @@ import nodemailer from 'nodemailer'
     text: req.body.content
     html: 
 */
+
+dotenv.config()
+
 const orderPlacedMail = asyncHandler(async (req, res) => {
   let transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: '465',
-    secure: true,
+    service: 'gmail',
     auth: {
       user: 'precisofashion@gmail.com',
-      pass: 'preciso@123',
+      pass: process.env.GMAIL_PASSWORD,
     },
     tls: {
       // do not fail on invalid certs
@@ -62,7 +64,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     )
   })
 
-  const mailOptions = {
+  let mailOptions = {
     from: 'precisofashion@gmail.com',
     to: email,
     replyTo: 'precisofashion@gmail.com',
@@ -97,7 +99,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
         message: 'Internal Error, mail not sent. ' + err,
       })
     } else {
-      res.status(200).json({ status: 'OK', msg: 'Email sent' })
+      res.status(200).json({ status: 'OK', msg: 'Email sent', data: info })
     }
   })
 })
