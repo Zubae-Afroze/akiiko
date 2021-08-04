@@ -13,7 +13,7 @@ import nodemailer from 'nodemailer'
     html: 
 */
 const orderPlacedMail = asyncHandler(async (req, res) => {
-  const transporter = nodemailer.createTransport({
+  let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: '465',
     secure: true,
