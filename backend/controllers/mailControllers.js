@@ -18,9 +18,11 @@ dotenv.config()
 
 const orderPlacedMail = asyncHandler(async (req, res) => {
   let transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'mail.precisofashion.com',
+    port: '587',
+    secure: false,
     auth: {
-      user: 'precisofashion@gmail.com',
+      user: 'orders@precisofashion.com',
       pass: process.env.GMAIL_PASSWORD,
     },
     tls: {
@@ -35,7 +37,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
 
   const { email } = req.body.shippingAddress
   const { firstName } = req.body.shippingAddress
-  const { lastName } = req.body.shippingAddress
+  // const { lastName } = req.body.shippingAddress
 
   const { createdAt } = req.body
 
@@ -65,7 +67,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
   })
 
   let mailOptions = {
-    from: 'precisofashion@gmail.com',
+    from: 'orders@precisofashion.com',
     to: email,
     replyTo: 'precisofashion@gmail.com',
     subject: `Akiiko Order Summary for ${_id}`,
