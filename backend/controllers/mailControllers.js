@@ -37,7 +37,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
 
   const { email } = req.body.shippingAddress
   const { firstName } = req.body.shippingAddress
-  // const { lastName } = req.body.shippingAddress
+  const { lastName } = req.body.shippingAddress
 
   const { createdAt } = req.body
 
