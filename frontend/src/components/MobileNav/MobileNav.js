@@ -11,7 +11,7 @@ export default class MobileNav extends Component {
         return (
             <>
                 <Container>
-                    <div className='mobile-nav-cont'>
+                    <div className='mobile-nav-cont f-f-l'>
                         <ul className='mobile-nav-wrapper'>
                             <li className='mobile-nav-test'>
                                 <Link to='/allproducts/productlist/bags'>BAGS</Link>
@@ -38,3 +38,4 @@ export default class MobileNav extends Component {
         )
     }
 }
+

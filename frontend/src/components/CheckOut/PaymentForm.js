@@ -161,7 +161,6 @@ export default function PaymentForm({ setFormLevel,showToast }) {
           <LargeScreenButtonComp onPaymentFormSubmit={onPaymentFormSubmit} />
 
           <Col xs={4} md={0} className='p-0 m-0'></Col>
-
         </Row>
 
         <SmallScreenButtonComp onPaymentFormSubmit={onPaymentFormSubmit} />

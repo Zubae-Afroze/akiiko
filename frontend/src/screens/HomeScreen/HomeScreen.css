@@ -76,17 +76,24 @@
   width: 100%;
 } */
 
-.floating-chat-icon{
-  position:fixed;
-	width:60px;
-	height:60px;
-	bottom:40px;
-	right:40px;
-	background-color:#0C9;
-	color:#FFF;
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
+.floating-chat-icon {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #977257;
+  color: #fff;
+  border-radius: 50px;
+  text-align: center;
+  padding-top: 9px;
+  padding-left: 2px;
+  /* box-shadow: 2px 2px 3px #999; */
+  cursor: pointer;
+}
+
+.floating-chat-icon a {
+  color: #fff;
 }
 
 .hero-logo {
@@ -365,6 +372,10 @@
   }
   .home-screen-container {
     flex-wrap: wrap-reverse;
+  }
+  .floating-chat-icon {
+    bottom: 20px;
+    right: 20px;
   }
 }
 @media (max-width: 375px) {

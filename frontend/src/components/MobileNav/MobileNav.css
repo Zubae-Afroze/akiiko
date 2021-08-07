@@ -1,7 +1,7 @@
 .mobile-nav-cont {
   display: none;
   background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.692);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.692); */
   z-index: 1;
 }
 
@@ -11,9 +11,10 @@
   flex-direction: row;
   list-style: none;
   overflow: scroll;
-  font-size: 14px;
+  font-size: 11px;
   width: 100%;
   font-family: 'rutan';
+  justify-content: space-between;
 }
 
 .mobile-nav-wrapper:hover {
@@ -26,16 +27,16 @@
 }
 
 .mobile-nav-test:first-child {
-  margin-left: auto;
+  margin-left: 15px;
 }
 
 .mobile-nav-test:last-child {
-  margin-right: auto;
+  margin-right: 15px;
 }
 
 .mobile-nav-test a {
   color: black;
-  margin: 0 20px;
+  margin: 0 1px;
 }
 
 .mobile-nav-test a:hover {
@@ -55,6 +56,6 @@
 
 @media (max-width: 414px) {
   .mobile-nav-test {
-    margin-right: 14px;
+    margin-right: 6px;
   }
 }

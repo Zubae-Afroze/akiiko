@@ -4,6 +4,7 @@ import { Container, Row, Col,  } from 'react-bootstrap';
 import { motion } from 'framer-motion'
 import { userProfileObject } from './InitialObject';
 import { editUserName, editMobileNumber } from '../../actions/actionProfile';
+import AddressComp from './addressComp'
 import '../../screens/Chekout/style.css'
 import '../../screens/NewProfileScreen/style.css'
 
@@ -314,6 +315,12 @@ export default function ProfileComp({profileDetails}) {
                             <div style={{height:'55px'}}></div>
                         </Col>
 
+                        <Col xs={12}>
+                            <h6 className='f-f-m'>Default Address</h6>
+                        </Col>
+
+                        <ShippingAddressesComp profileDetails={profileDetails} />
+
 
                     </Row>
                 </Container>
@@ -323,3 +330,15 @@ export default function ProfileComp({profileDetails}) {
         </>
     )
 }
+
+function ShippingAddressesComp({ profileDetails }) {
+    return (
+      <>
+        {profileDetails.shippingAddress.length === 0 ? (
+          <AddressComp isAddNewAddress={true} isProfile={true}/>
+        ) : (
+            <AddressComp shippingAddress={profileDetails.shippingAddress[0]} index={0} key={0} />
+        )}
+      </>
+    )
+  }

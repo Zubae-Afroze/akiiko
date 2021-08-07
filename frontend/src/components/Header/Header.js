@@ -188,6 +188,7 @@ const Header = () => {
       <Container>
         <div className='padding-class'></div>
         <Navbar fixed='top'>
+        {/* <SideNav /> */}
           <Navbar.Brand>
             <Link to='/'>akiiko</Link>
           </Navbar.Brand>
@@ -289,3 +290,11 @@ const Header = () => {
 }
 
 export default Header
+
+function SideNav(){
+  return(
+      <div style={{height:'20px',width:'20px',backgroundColor:'red'}}>
+          H
+      </div>
+  );
+}

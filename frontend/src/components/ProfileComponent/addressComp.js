@@ -28,7 +28,7 @@ const containerVariants = {
     },
   }
 
-export default function AddressComp({isAddNewAddress=false, shippingAddress, index}) {
+export default function AddressComp({isAddNewAddress=false, shippingAddress, index, isProfile=false}) {
 
     console.log('AddressComp Rendered');
 
@@ -124,7 +124,12 @@ export default function AddressComp({isAddNewAddress=false, shippingAddress, ind
                     ?   <Row>
                             <Col xs={8}>
                                 <div style={{height:'12px'}}/>
-                                <h6>Add New Shipping Address</h6>
+                                {
+                                    isProfile ?
+                                    <h6>Add Default Shipping Address</h6>
+                                    :
+                                    <h6>Add New Shipping Address</h6>
+                                }
                             </Col>
                             <Col xs={4} className='d-none d-sm-none d-md-block'>
                                 <h6 className='tabs f-f-m' 
