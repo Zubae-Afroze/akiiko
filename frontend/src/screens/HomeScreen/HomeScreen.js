@@ -140,7 +140,7 @@ class HomeScreen extends React.Component {
 
           <div className='floating-chat-icon'>
             <a
-              href='https://wa.me/+917904924481'
+              href='https://wa.me/+919858590505'
               target='_blank'
               rel='noreferrer'
             >
