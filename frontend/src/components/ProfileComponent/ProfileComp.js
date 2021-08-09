@@ -358,6 +358,7 @@ export default function ProfileComp({ profileDetails }) {
                   style={{
                     textAlign: 'end',
                     paddingRight: '13px',
+                    cursor: 'pointer',
                   }}
                 >
                   Edit
