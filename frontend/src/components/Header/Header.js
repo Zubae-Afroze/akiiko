@@ -188,7 +188,7 @@ const Header = () => {
       <Container>
         <div className='padding-class'></div>
         <Navbar fixed='top'>
-          <SideNav />
+          {/* <SideNav /> */}
           <Navbar.Brand>
             <Link to='/'>akiiko</Link>
           </Navbar.Brand>
@@ -291,19 +291,27 @@ const Header = () => {
 
 export default Header
 
-function SideNav(){
-  return(
-    <div id="menuToggle">
-    <input type="checkbox" value={false} /> {/* checked={false} */}
+function SideNav() {
+  return (
+    <div id='menuToggle'>
+      <input type='checkbox' value={false} /> {/* checked={false} */}
       <span></span>
       <span></span>
       <span></span>
-      <ul id="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Info</a></li>
-        <li><a href="#">Contact</a></li>
+      <ul id='menu'>
+        <li>
+          <a href='#'>Home</a>
+        </li>
+        <li>
+          <a href='#'>About</a>
+        </li>
+        <li>
+          <a href='#'>Info</a>
+        </li>
+        <li>
+          <a href='#'>Contact</a>
+        </li>
       </ul>
     </div>
-  );
+  )
 }
