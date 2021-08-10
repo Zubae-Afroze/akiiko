@@ -399,7 +399,7 @@ export function ProductRowHeaderComp() {
                 paddingRight: '13px',
                 marginTop: '18px',
               }}
-            ></h6>
+            > </h6>
           </Col>
         </Row>
       </div>
