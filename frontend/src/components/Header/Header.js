@@ -291,27 +291,27 @@ const Header = () => {
 
 export default Header
 
-function SideNav() {
-  return (
-    <div id='menuToggle'>
-      <input type='checkbox' value={false} /> {/* checked={false} */}
-      <span></span>
-      <span></span>
-      <span></span>
-      <ul id='menu'>
-        <li>
-          <a href='#'>Home</a>
-        </li>
-        <li>
-          <a href='#'>About</a>
-        </li>
-        <li>
-          <a href='#'>Info</a>
-        </li>
-        <li>
-          <a href='#'>Contact</a>
-        </li>
-      </ul>
-    </div>
-  )
-}
+// function SideNav() {
+//   return (
+//     <div id='menuToggle'>
+//       <input type='checkbox' value={false} /> {/* checked={false} */}
+//       <span></span>
+//       <span></span>
+//       <span></span>
+//       <ul id='menu'>
+//         <li>
+//           <a href='#'>Home</a>
+//         </li>
+//         <li>
+//           <a href='#'>About</a>
+//         </li>
+//         <li>
+//           <a href='#'>Info</a>
+//         </li>
+//         <li>
+//           <a href='#'>Contact</a>
+//         </li>
+//       </ul>
+//     </div>
+//   )
+// }

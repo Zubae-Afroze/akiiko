@@ -10,7 +10,7 @@ import ShippingScreen from './screens/ShippingScreen/ShippingScreen'
 import PaymentScreen from './screens/PaymentScreen/PaymentScreen'
 import OrderScreen from './screens/OrderScreen/OrderScreen'
 import OrderSummaryScreen from './screens/OrderSummaryScreen/OrderSummaryScreen'
-import Checkout from './screens/Chekout/Checkout'
+// import Checkout from './screens/Chekout/Checkout'
 import NewProfileScreen from './screens/NewProfileScreen/NewProfileScreen'
 
 import ProductList from './components/ProductList/ProductList'

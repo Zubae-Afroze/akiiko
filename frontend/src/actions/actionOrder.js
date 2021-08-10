@@ -89,6 +89,8 @@ export const createOrder = (order, email, history) => async (dispatch) => {
             //We can use res.body orderItems to overwitre the order details to store
             dispatch(getOrderDetails(data._id))
             dispatch(resetCartItems())
+
+            console.log(res)
           } catch (error) {
             console.log(error)
           }
