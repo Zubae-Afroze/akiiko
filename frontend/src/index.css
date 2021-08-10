@@ -93,6 +93,10 @@ body {
   padding: 0 50px;
 }
 
+::selection {
+  background-color: #fefaef;
+}
+
 body::-webkit-scrollbar {
   -webkit-appearance: none;
 }
