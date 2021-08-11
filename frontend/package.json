@@ -27,6 +27,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-hash-link": "^2.4.3",
     "react-scripts": "4.0.0",
+    "react-sidebar": "^3.0.2",
     "react-stepper-horizontal": "^1.0.11",
     "react-sticky": "^6.0.3",
     "react-toastify": "^7.0.4",

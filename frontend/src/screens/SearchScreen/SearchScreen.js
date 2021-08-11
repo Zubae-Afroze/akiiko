@@ -1,9 +1,10 @@
 import React, { useState, useEffect, createRef } from 'react'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Form } from 'react-bootstrap'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Sidebar from 'react-sidebar'
 
 import '../HomeScreen/HomeScreen.css'
 import './searchScreenStyles.css'
@@ -17,11 +18,21 @@ export default function SearchScreen() {
     searchInput.current.focus()
   }, [searchInput])
 
+  const [open, setOpen] = useState(false)
+  const [categoryDrop, setCategoryDrop] = useState(false)
+  const [materialDrop, setMaterialDrop] = useState(false)
+  const [productPrice, setProductPrice] = useState(false)
+
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
   const [searchedProducts, setSearchedProducts] = useState([])
+
+  const filterOpenHandler = () => {
+    const opn = open
+    setOpen(!opn)
+  }
 
   useEffect(() => {
     //dispatch(actionListHomeBags())
@@ -42,6 +53,145 @@ export default function SearchScreen() {
 
   return (
     <>
+      <span className='search-screen__filter-open' onClick={filterOpenHandler}>
+        <i className='lni lni-chevron-right'></i>
+      </span>
+      <Sidebar
+        children='test'
+        sidebar={
+          <div className='p-3' style={{ fontFamily: 'rutanLight' }}>
+            <div
+              className='d-flex justify-content-between align-items-center'
+              style={{ borderBottom: 'solid 1px #000' }}
+            >
+              <p style={{ textTransform: 'uppercase' }}>Filter</p>
+              <p style={{ fontSize: '14px', cursor: 'pointer' }}>
+                <u>Clear All</u>
+              </p>
+            </div>
+            <div style={{ borderBottom: 'solid 1px #000' }}>
+              <div
+                className='d-flex justify-content-between align-items-center py-3'
+                style={{ cursor: 'pointer' }}
+                onClick={() => setCategoryDrop(!categoryDrop)}
+              >
+                <div style={{ textTransform: 'uppercase' }}>Categories</div>
+                <div>
+                  <i
+                    style={{ transition: 'all ease-out .3s' }}
+                    className={
+                      categoryDrop
+                        ? 'lni lni-chevron-down fa-rotate-180'
+                        : 'lni lni-chevron-down'
+                    }
+                  ></i>
+                </div>
+              </div>
+              <div
+                className={
+                  categoryDrop
+                    ? 'search-screen__form-check-visible'
+                    : 'search-screen__form-check'
+                }
+              >
+                <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+                  <Form.Check type='checkbox' label='Bags' />
+                  <Form.Check type='checkbox' label='Home' />
+                  <Form.Check type='checkbox' label='Lifestyle' />
+                  <Form.Check type='checkbox' label='Gift' />
+                  <Form.Check type='checkbox' label='Storage' />
+                  <Form.Check type='checkbox' label='Accessories' />
+                </Form.Group>
+              </div>
+            </div>
+            <div style={{ borderBottom: 'solid 1px #000' }}>
+              <div
+                className='d-flex justify-content-between align-items-center py-3'
+                style={{ cursor: 'pointer' }}
+                onClick={() => setMaterialDrop(!materialDrop)}
+              >
+                <div style={{ textTransform: 'uppercase' }}>Material</div>
+                <div>
+                  <i
+                    style={{ transition: 'all ease-out .3s' }}
+                    className={
+                      materialDrop
+                        ? 'lni lni-chevron-down fa-rotate-180'
+                        : 'lni lni-chevron-down'
+                    }
+                  ></i>
+                </div>
+              </div>
+              <div
+                className={
+                  materialDrop
+                    ? 'search-screen__form-check-visible'
+                    : 'search-screen__form-check'
+                }
+              >
+                <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+                  <Form.Check type='checkbox' label='Cotton' />
+                  <Form.Check type='checkbox' label='Hemp' />
+                </Form.Group>
+              </div>
+            </div>
+            <div style={{ borderBottom: 'solid 1px #000' }}>
+              <div
+                className='d-flex justify-content-between align-items-center py-3'
+                style={{ cursor: 'pointer' }}
+                onClick={() => setProductPrice(!productPrice)}
+              >
+                <div style={{ textTransform: 'uppercase' }}>Price</div>
+                <div>
+                  <i
+                    style={{ transition: 'all ease-out .3s' }}
+                    className={
+                      productPrice
+                        ? 'lni lni-chevron-down fa-rotate-180'
+                        : 'lni lni-chevron-down'
+                    }
+                  ></i>
+                </div>
+              </div>
+              <div
+                className={
+                  productPrice
+                    ? 'search-screen__form-check-visible'
+                    : 'search-screen__form-check'
+                }
+              >
+                <Form.Group className='mb-3' controlId='formBasicCheckbox'>
+                  <Form.Check type='checkbox' label='Below &#8377;500' />
+                  <Form.Check
+                    type='checkbox'
+                    label='&#8377;501 - &#8377;1000'
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='&#8377;1001 - &#8377;1500'
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='&#8377;1501 - &#8377;2000'
+                  />
+                </Form.Group>
+              </div>
+            </div>
+          </div>
+        }
+        open={open}
+        onSetOpen={filterOpenHandler}
+        styles={{
+          sidebar: {
+            background: 'white',
+            width: '300px',
+            zIndex: '1070',
+            position: 'fixed',
+            top: '162px',
+            height: '70vh',
+          },
+        }}
+      />
       <SearchBar
         searchInput={searchInput}
         searchValue={searchValue}
@@ -50,7 +200,7 @@ export default function SearchScreen() {
         setSearchedProducts={setSearchedProducts}
         products={products}
       />
-      <div style={{ height: '100vh', width: '100vw' }}>
+      <div style={{ height: 'auto', width: '100vw' }}>
         {loading && (
           <MyComponent
             sentences={[]}
@@ -101,7 +251,7 @@ function SearchBar({
                 width='16'
                 height='16'
                 fill='currentColor'
-                class='bi bi-search'
+                className='bi bi-search'
                 viewBox='0 0 16 16'
               >
                 <path d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z' />
@@ -127,7 +277,7 @@ function SearchBar({
                 width='16'
                 height='16'
                 fill='currentColor'
-                class='bi bi-x-lg'
+                className='bi bi-x-lg'
                 viewBox='0 0 16 16'
               >
                 <path d='M1.293 1.293a1 1 0 0 1 1.414 0L8 6.586l5.293-5.293a1 1 0 1 1 1.414 1.414L9.414 8l5.293 5.293a1 1 0 0 1-1.414 1.414L8 9.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L6.586 8 1.293 2.707a1 1 0 0 1 0-1.414z' />
@@ -147,10 +297,10 @@ function SearchResult({ searchedProducts }) {
         <Row>
           {searchedProducts.map((product, index) => {
             if (searchedProducts.length === 3)
-              return <SearchedProductThree product={product} />
+              return <SearchedProductThree product={product} key={index} />
             if (searchedProducts.length === 2)
-              return <SearchedProductTwo product={product} />
-            return <SearchedProduct product={product} />
+              return <SearchedProductTwo product={product} key={index} />
+            return <SearchedProduct product={product} key={index} />
           })}
         </Row>
       </div>
