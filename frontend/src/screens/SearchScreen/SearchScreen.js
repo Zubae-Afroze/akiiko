@@ -199,6 +199,7 @@ export default function SearchScreen() {
         onSearch={onSearch}
         setSearchedProducts={setSearchedProducts}
         products={products}
+        open={open}
       />
       <div style={{ height: 'auto', width: '100vw' }}>
         {loading && (
@@ -239,6 +240,7 @@ function SearchBar({
   onSearch,
   setSearchedProducts,
   products,
+  open,
 }) {
   return (
     <div className='search-fixed'>
@@ -264,6 +266,8 @@ function SearchBar({
               placeholder='Search anything...'
               value={searchValue}
               onChange={onSearch}
+              autoFocus={false}
+              disabled={open}
             />
             <span
               className='left-pan'
