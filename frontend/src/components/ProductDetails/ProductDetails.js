@@ -183,7 +183,7 @@ const ProductDetails = () => {
         <h2>{error}</h2>
       ) : product.productId ? (
         <Container>
-          <ToastContainer
+          {/* <ToastContainer
             position='top-center'
             autoClose={5000}
             hideProgressBar={false}
@@ -193,7 +193,7 @@ const ProductDetails = () => {
             pauseOnFocusLoss
             draggable
             pauseOnHover
-          />
+          /> */}
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>

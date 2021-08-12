@@ -127,7 +127,7 @@ const LoginScreen = () => {
   return (
     <React.Fragment>
       <div className='login-wrap'>
-        <ToastContainer
+        {/* <ToastContainer
           position='top-center'
           autoClose={5000}
           hideProgressBar={false}
@@ -137,7 +137,7 @@ const LoginScreen = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-        />
+        /> */}
         {loading && (
           <MyComponent
             sentences={[]}
