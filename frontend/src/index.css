@@ -93,6 +93,10 @@ body {
   padding: 0 50px;
 }
 
+::selection {
+  background-color: #fefaef;
+}
+
 body::-webkit-scrollbar {
   -webkit-appearance: none;
 }
@@ -108,9 +112,6 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background-color: #2e2614;
-}
-
-body {
 }
 
 @media (max-width: 1266px) {

@@ -55,6 +55,26 @@ export const addShippingAddress = asyncHandler(async (req, res) => {
   }
 })
 
+//@desc update shipping address of an existing proflie
+//@route PUT /api/profile/editshipping
+//@acess Private
+export const editShippingAddress = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne({ uid: req.params.uid })
+
+  if (profile) {
+    profile.shippingAddress = req.body
+
+    const updatedProfile = await profile.save()
+
+    res.json({
+      shippingAddress: updatedProfile.shippingAddress,
+    })
+  } else {
+    res.status(404)
+    throw new Error('Profile not found')
+  }
+})
+
 //@desc update name of an exisiting user
 //@route PUT /api/profile/updatename/:uid
 //@acess Private
