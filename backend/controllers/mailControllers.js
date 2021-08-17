@@ -80,7 +80,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
           <div>
             <p>Hello ${firstName},</p>
             <p>We would like to thank you for your appreciation of akiiko and value your contribution towards creating a more natural and eco-friendly world.<p>
-            <p>Your order has been placed sucessfully and is being prepared for dispatch.</p>
+            <p>Your order has been placed successfully and is being prepared for dispatch.</p>
             <span>You can track your order status by clicking </span><a href='https://www.akiiko.com/newProfile'>here.</a>
           </div>
           <div>
@@ -89,7 +89,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
           <p>Items: ${orderItemsName}</p>
           <p>Order Total Price: ${totalPrice}</p>
           <p>Placed On ${buildDate} </p>
-          <p>You will recieve updates from our shipping partner post dispatch. </p>
+          <p>You will receive updates from our shipping partner post dispatch. </p>
           <div>
           `,
   }

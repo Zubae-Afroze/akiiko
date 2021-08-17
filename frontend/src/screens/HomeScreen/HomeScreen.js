@@ -139,7 +139,11 @@ class HomeScreen extends React.Component {
           <HomeScreenStorage />
 
           <div className='floating-chat-icon'>
-            <a href='https://wa.me/7904924481' target='_blank' rel='noreferrer'>
+            <a
+              href='https://wa.me/+919858590505'
+              target='_blank'
+              rel='noreferrer'
+            >
               <svg
                 xmlns='http://www.w3.org/2000/svg'
                 width='30'

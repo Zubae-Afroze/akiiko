@@ -51,6 +51,122 @@ export default function SearchScreen() {
       })
   }, [])
 
+  function bagsFilter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.group === 'bags')
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function homeFilter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.group === 'home')
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function lifestyleFilter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.group === 'lifestyle')
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function giftFilter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.group === 'gift')
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function storageFilter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.group === 'storage')
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function accessoriesFilter(checked) {
+    if (checked) {
+      const result = products.filter(
+        (product) => product.group === 'accessories'
+      )
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function cottonFilter(checked) {
+    if (checked) {
+      const result = products.filter(
+        (product) => product.material === 'Cotton Canvas'
+      )
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function hempFilter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.material === 'Hemp')
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function price500Filter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.mrpPrice < 500)
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function price1000Filter(checked) {
+    if (checked) {
+      const result = products.filter((product) => product.mrpPrice < 1000)
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function price1500Filter(checked) {
+    if (checked) {
+      const result = products.filter(
+        (product) => product.mrpPrice < 1500 && product.mrpPrice > 1000
+      )
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function price2000Filter(checked) {
+    if (checked) {
+      const result = products.filter(
+        (product) => product.mrpPrice < 2000 && product.mrpPrice > 1500
+      )
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
   return (
     <>
       <span className='search-screen__filter-open' onClick={filterOpenHandler}>
@@ -94,13 +210,37 @@ export default function SearchScreen() {
                     : 'search-screen__form-check'
                 }
               >
-                <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-                  <Form.Check type='checkbox' label='Bags' />
-                  <Form.Check type='checkbox' label='Home' />
-                  <Form.Check type='checkbox' label='Lifestyle' />
-                  <Form.Check type='checkbox' label='Gift' />
-                  <Form.Check type='checkbox' label='Storage' />
-                  <Form.Check type='checkbox' label='Accessories' />
+                <Form.Group className='mb-3'>
+                  <Form.Check
+                    type='checkbox'
+                    label='Bags'
+                    onChange={(e) => bagsFilter(e.target.checked)}
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='Home'
+                    onChange={(e) => homeFilter(e.target.checked)}
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='Lifestyle'
+                    onChange={(e) => lifestyleFilter(e.target.checked)}
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='Gift'
+                    onChange={(e) => giftFilter(e.target.checked)}
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='Storage'
+                    onChange={(e) => storageFilter(e.target.checked)}
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='Accessories'
+                    onChange={(e) => accessoriesFilter(e.target.checked)}
+                  />
                 </Form.Group>
               </div>
             </div>
@@ -129,9 +269,17 @@ export default function SearchScreen() {
                     : 'search-screen__form-check'
                 }
               >
-                <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-                  <Form.Check type='checkbox' label='Cotton' />
-                  <Form.Check type='checkbox' label='Hemp' />
+                <Form.Group className='mb-3'>
+                  <Form.Check
+                    type='checkbox'
+                    label='Cotton'
+                    onChange={(e) => cottonFilter(e.target.checked)}
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='Hemp'
+                    onChange={(e) => hempFilter(e.target.checked)}
+                  />
                 </Form.Group>
               </div>
             </div>
@@ -160,19 +308,26 @@ export default function SearchScreen() {
                     : 'search-screen__form-check'
                 }
               >
-                <Form.Group className='mb-3' controlId='formBasicCheckbox'>
-                  <Form.Check type='checkbox' label='Below &#8377;500' />
+                <Form.Group className='mb-3'>
+                  <Form.Check
+                    type='checkbox'
+                    label='Below &#8377;500'
+                    onChange={(e) => price500Filter(e.target.checked)}
+                  />
                   <Form.Check
                     type='checkbox'
                     label='&#8377;501 - &#8377;1000'
+                    onChange={(e) => price1000Filter(e.target.checked)}
                   />
                   <Form.Check
                     type='checkbox'
                     label='&#8377;1001 - &#8377;1500'
+                    onChange={(e) => price1500Filter(e.target.checked)}
                   />
                   <Form.Check
                     type='checkbox'
                     label='&#8377;1501 - &#8377;2000'
+                    onChange={(e) => price2000Filter(e.target.checked)}
                   />
                 </Form.Group>
               </div>
