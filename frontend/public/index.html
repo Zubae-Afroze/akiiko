@@ -42,7 +42,7 @@
     <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet">
     <title>akiiko: Shop Natural Home Decor | Utility Products</title>
 
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics 
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-204226128-1">
       </script>
       <script>
@@ -51,7 +51,40 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-204226128-1');
+      </script> -->
+    <!-- Global site tag (gtag.js) - Google Ads: 322846655 -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=AW-322846655"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'AW-322846655');
       </script>
+    <!-- Event snippet for Purchase - Skin care - Sale - Aug 12 to Aug 21 conversion page
+      In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+      <script>
+        function gtag_report_conversion(url) {
+          var callback = function () {
+            if (typeof(url) != 'undefined') {
+              window.location = url;
+            }
+          };
+          gtag('event', 'conversion', {
+              'send_to': 'AW-322846655/HA4zCMb5oucCEL__-JkB',
+              'transaction_id': '',
+              'event_callback': callback
+          });
+          return false;
+        }
+        </script>
+      <!-- Event snippet for Purchase - Skin care - Sale - Aug 12 to Aug 21 conversion page -->
+        <script>
+          gtag('event', 'conversion', {
+              'send_to': 'AW-322846655/HA4zCMb5oucCEL__-JkB',
+              'transaction_id': ''
+          });
+        </script>  
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
