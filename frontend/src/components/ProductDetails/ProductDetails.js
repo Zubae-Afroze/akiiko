@@ -15,7 +15,7 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import CartModal from './CartModal'
 import Footer from '../Footer/Footer'
 
-import { ToastContainer, toast } from 'react-toastify'
+//import { ToastContainer, toast } from 'react-toastify'
 
 import './ProductDetails.css'
 
@@ -46,15 +46,15 @@ const ProductDetails = () => {
     // history.push(`/cart/${id}?qty=${itemQuantity}`)
     dispatch(addToCart(id, itemQuantity))
 
-    toast('Item Added to cart', {
-      position: 'top-center',
-      autoClose: 2000,
-      hideProgressBar: true,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-    })
+    // toast('Item Added to cart', {
+    //   position: 'top-center',
+    //   autoClose: 2000,
+    //   hideProgressBar: true,
+    //   closeOnClick: true,
+    //   pauseOnHover: true,
+    //   draggable: true,
+    //   progress: undefined,
+    // })
     // setModalShow(true)
   }
 
@@ -183,7 +183,7 @@ const ProductDetails = () => {
         <h2>{error}</h2>
       ) : product.productId ? (
         <Container>
-          <ToastContainer
+          {/* <ToastContainer
             position='top-center'
             autoClose={5000}
             hideProgressBar={false}
@@ -193,7 +193,7 @@ const ProductDetails = () => {
             pauseOnFocusLoss
             draggable
             pauseOnHover
-          />
+          /> */}
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>

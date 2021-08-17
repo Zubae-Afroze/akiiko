@@ -9,7 +9,7 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import Message from '../../components/Message/Message'
 
 import { googleAuth, facebookAuth, emailAuth } from '../../actions/actionAuth'
-import { ToastContainer, toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 import './LoginScreen.css'
 
@@ -34,15 +34,15 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userLogin.uid) {
-      toast('Logged in successfully', {
-        position: 'top-center',
-        autoClose: 2000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      })
+      // toast('Logged in successfully', {
+      //   position: 'top-center',
+      //   autoClose: 2000,
+      //   hideProgressBar: true,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      // })
       history.push(redirect)
     }
 
@@ -57,15 +57,15 @@ const LoginScreen = () => {
         'There is no user record corresponding to this identifier. The user may have been deleted.'
 
       if (auth.authError === fireBasePasswordError) {
-        toast('Invalid Password', {
-          position: 'top-center',
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
+        // toast('Invalid Password', {
+        //   position: 'top-center',
+        //   autoClose: 2000,
+        //   hideProgressBar: true,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // })
       }
 
       if (auth.authError === fireBaseUserDosentExistError) {
@@ -127,7 +127,7 @@ const LoginScreen = () => {
   return (
     <React.Fragment>
       <div className='login-wrap'>
-        <ToastContainer
+        {/* <ToastContainer
           position='top-center'
           autoClose={5000}
           hideProgressBar={false}
@@ -137,7 +137,7 @@ const LoginScreen = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-        />
+        /> */}
         {loading && (
           <MyComponent
             sentences={[]}
