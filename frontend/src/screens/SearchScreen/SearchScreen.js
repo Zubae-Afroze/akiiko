@@ -121,7 +121,7 @@ export default function SearchScreen() {
   function wovenCottonFilter(checked) {
     if (checked) {
       const result = products.filter(
-        (product) => product.material === 'Cotton Canvas'
+        (product) => product.material === 'Woven Canvas'
       )
       setSearchedProducts(result)
     } else {
