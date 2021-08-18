@@ -121,24 +121,13 @@ export default function SearchScreen() {
   function wovenCottonFilter(checked) {
     if (checked) {
       const result = products.filter(
-        (product) => product.material === 'Woven Canvas'
+        (product) => product.material === 'Woven Cotton'
       )
       setSearchedProducts(result)
     } else {
       setSearchedProducts(products)
     }
   }
-
-  // function wovenCottonFilter(checked) {
-  //   if (checked) {
-  //     const result = products.filter(
-  //       (product) => product.material === 'Woven Canvas'
-  //     )
-  //     setSearchedProducts(result)
-  //   } else {
-  //     setSearchedProducts(products)
-  //   }
-  // }
 
   function hempFilter(checked) {
     if (checked) {
