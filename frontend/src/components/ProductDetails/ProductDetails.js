@@ -280,12 +280,13 @@ const ProductDetails = () => {
                       >
                         <div className='material-div'>MATERIAL:</div>{' '}
                         <div className='material-dum'>
-                          Cotton Canvas <i className='lni lni-chevron-down'></i>
+                          {product.material}{' '}
+                          <i className='lni lni-chevron-down'></i>
                         </div>
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu>
-                        <Dropdown.Item>Cotton Canvas</Dropdown.Item>
+                        <Dropdown.Item>{product.material}</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
                   </Col>
@@ -298,7 +299,8 @@ const ProductDetails = () => {
                       >
                         <div className='thickness-div'>THICKNESS:</div>{' '}
                         <div className='thickness-dum'>
-                          9 Ounce <i className='lni lni-chevron-down'></i>
+                          {product.thickness}{' '}
+                          <i className='lni lni-chevron-down'></i>
                         </div>
                       </Dropdown.Toggle>
 
