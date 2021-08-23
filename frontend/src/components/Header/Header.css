@@ -297,6 +297,20 @@
   height: 100vh !important;
 }
 
+.head-progress-label {
+  font-size: 14px;
+  padding: 10px 0;
+  letter-spacing: 0;
+}
+
+.progress-bar {
+  background-color: #977257 !important;
+}
+
+.progress {
+  height: 5px !important;
+}
+
 /* .scroll-modal{
   overflow-y:auto;
 } */
