@@ -87,12 +87,10 @@ export default function OrderSummaryComp() {
         </div>
         <div style={{ height: '65px' }} />
         <div className='d-flex justify-content-center continue-shopping-style'>
-          <Link to='/'>
-            <button type='button'>
-              {' '}
-              {/*btn btn-outline-secondary*/}
-              Continue Shopping
-            </button>
+          <Link to='/search'>
+            {/* <button type='button'> */} {/*btn btn-outline-secondary*/}
+            Continue Shopping
+            {/* </button> */}
           </Link>
         </div>
       </div>

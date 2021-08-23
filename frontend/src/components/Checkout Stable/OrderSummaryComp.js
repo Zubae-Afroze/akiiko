@@ -87,7 +87,7 @@ export default function OrderSummaryCompT() {
         </div>
         <div style={{ height: '65px' }} />
         <div className='d-flex justify-content-center continue-shopping-style'>
-          <Link to='/'>
+          <Link to='/search'>
             {/* <button type='button'> */} {/*btn btn-outline-secondary*/}
             Continue Shopping
             {/* </button> */}
