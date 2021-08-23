@@ -89,9 +89,9 @@ const ProductList = () => {
             {products[Object.keys(products)[0]] ? (
               <>
                 {' '}
-                <div className='product-list-label'>
+                <h2 className='product-list-label'>
                   {products[Object.keys(products)[0]].subGroup}
-                </div>
+                </h2>
                 <div className='product-list-text'>
                   {products[Object.keys(products)[0]].groupDescription}
                 </div>

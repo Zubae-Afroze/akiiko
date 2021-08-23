@@ -138,9 +138,9 @@ const BagAllProducts = () => {
             <>
               {women[Object.keys(women)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {women[Object.keys(women)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {women[Object.keys(women)[0]].groupDescription}
                   </div>
@@ -209,9 +209,9 @@ const BagAllProducts = () => {
             <>
               {tote[Object.keys(tote)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {tote[Object.keys(tote)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {tote[Object.keys(tote)[0]].groupDescription}
                   </div>
@@ -280,9 +280,9 @@ const BagAllProducts = () => {
             <>
               {office[Object.keys(office)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {office[Object.keys(office)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {office[Object.keys(office)[0]].groupDescription}
                   </div>
@@ -349,9 +349,9 @@ const BagAllProducts = () => {
             <>
               {travel[Object.keys(travel)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {travel[Object.keys(travel)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {travel[Object.keys(travel)[0]].groupDescription}
                   </div>

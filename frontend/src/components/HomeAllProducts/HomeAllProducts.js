@@ -153,9 +153,9 @@ const HomeAllProducts = () => {
             <>
               {tableware[Object.keys(tableware)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {tableware[Object.keys(tableware)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {tableware[Object.keys(tableware)[0]].groupDescription}
                   </div>
@@ -224,9 +224,9 @@ const HomeAllProducts = () => {
             <>
               {kitchen[Object.keys(kitchen)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {kitchen[Object.keys(kitchen)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {kitchen[Object.keys(kitchen)[0]].groupDescription}
                   </div>
@@ -293,9 +293,9 @@ const HomeAllProducts = () => {
             <>
               {laundry[Object.keys(laundry)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {laundry[Object.keys(laundry)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {laundry[Object.keys(laundry)[0]].groupDescription}
                   </div>
@@ -362,9 +362,9 @@ const HomeAllProducts = () => {
             <>
               {garden[Object.keys(garden)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {garden[Object.keys(garden)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {garden[Object.keys(garden)[0]].groupDescription}
                   </div>

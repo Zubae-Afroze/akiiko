@@ -243,9 +243,8 @@
 
 .head-cart-purchase-button-wrap button {
   padding: 10px 0;
-  border: none;
   width: 100%;
-  /* background-color: #977257; */
+  background-color: transparent;
   color: #977257;
   cursor: pointer;
   border: 1px solid #977257;

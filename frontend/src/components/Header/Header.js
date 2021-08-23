@@ -122,6 +122,11 @@ const Header = () => {
                           0
                         ) < 450
                       ? 85
+                      : cartItems.reduce(
+                          (acc, items) => acc + items.qty * items.price,
+                          0
+                        ) < 500
+                      ? 95
                       : 100
                   }
                 />

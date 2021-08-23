@@ -1,23 +1,21 @@
-import React , {useContext} from 'react'
+import React, { useContext } from 'react'
 import { Container, Row } from 'react-bootstrap'
 import ItemCard from './ItemCard'
 import './style.css'
 import '../../screens/Chekout/style.css'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux'
 import { CashOnDeliveryContext } from '../../screens/Chekout/Checkout'
 import { Link } from 'react-router-dom'
 
-
 export default function OrderSummaryComp() {
-  const cartList = useSelector(state => state.cartList)
+  const cartList = useSelector((state) => state.cartList)
 
-  const cashOnDeliveryContext = useContext(CashOnDeliveryContext);
+  const cashOnDeliveryContext = useContext(CashOnDeliveryContext)
 
   const dispatch = useDispatch()
 
-  console.log('COD Order: ' + cashOnDeliveryContext.value);
+  console.log('COD Order: ' + cashOnDeliveryContext.value)
 
-  
   return (
     <Container
       fluid
@@ -30,60 +28,69 @@ export default function OrderSummaryComp() {
 
       <h5>Order Summary</h5>
       <hr />
-      <Container fluid className='p-0 m-0'> { /* d-flex justify-content-center */}
-      { cartList &&
-        <Row className='f-f-l p-0 m-0'>
-          {cartList.cartItems.map((item, index) => {
-              return (
-                <ItemCard item={item} dispatch={dispatch}/>
-              );
-          })}
-        </Row>
-      }
+      <Container fluid className='p-0 m-0'>
+        {' '}
+        {/* d-flex justify-content-center */}
+        {cartList && (
+          <Row className='f-f-l p-0 m-0'>
+            {cartList.cartItems.map((item, index) => {
+              return <ItemCard item={item} dispatch={dispatch} />
+            })}
+          </Row>
+        )}
       </Container>
 
       <div>
         <hr />
         <div className='f-f d-flex justify-content-between'>
           <h6>Subtotal</h6>
-          <h6>{cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0)}</h6>
+          <h6>
+            {cartList.cartItems.reduce(
+              (acc, items) => acc + items.qty * items.price,
+              0
+            )}
+          </h6>
         </div>
         <div className='f-f d-flex justify-content-between'>
           <h6>Additional Pay</h6>
-          {
-            cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) > 500 ?
+          {cartList.cartItems.reduce(
+            (acc, items) => acc + items.qty * items.price,
+            0
+          ) > 500 ? (
             <h6>--</h6>
-            : <h6>50</h6>
-          }
+          ) : (
+            <h6>50</h6>
+          )}
           {/* <h6>--</h6> */}
         </div>
         <div className='f-f d-flex justify-content-between'>
           <h6>Shipping</h6>
-          {
-            cashOnDeliveryContext.value 
-            ? <h6>50</h6>
-            : <h6>--</h6>
-          }
-          
+          {cashOnDeliveryContext.value ? <h6>50</h6> : <h6>--</h6>}
         </div>
         <hr />
 
         <div className='d-flex justify-content-between'>
           <h6>Total</h6>
-          <h6>{
-            cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) +
-            (cashOnDeliveryContext.value ? 50 : 0) +
-            (
-              cartList.cartItems.reduce((acc, items) => acc + items.qty * items.price, 0) > 500  
-              ? 0
-              : 50
-            )
-          }</h6>
+          <h6>
+            {cartList.cartItems.reduce(
+              (acc, items) => acc + items.qty * items.price,
+              0
+            ) +
+              (cashOnDeliveryContext.value ? 50 : 0) +
+              (cartList.cartItems.reduce(
+                (acc, items) => acc + items.qty * items.price,
+                0
+              ) > 500
+                ? 0
+                : 50)}
+          </h6>
         </div>
-        <div style={{height:'65px'}} />
-        <div className='d-flex justify-content-center'>
+        <div style={{ height: '65px' }} />
+        <div className='d-flex justify-content-center continue-shopping-style'>
           <Link to='/'>
-            <button type='button' className='continue-shopping-style'> {/*btn btn-outline-secondary*/}
+            <button type='button'>
+              {' '}
+              {/*btn btn-outline-secondary*/}
               Continue Shopping
             </button>
           </Link>

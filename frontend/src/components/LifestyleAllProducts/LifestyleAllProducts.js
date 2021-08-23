@@ -127,9 +127,9 @@ const LifestyleAllProducts = () => {
             <>
               {hobby[Object.keys(hobby)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {hobby[Object.keys(hobby)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {hobby[Object.keys(hobby)[0]].groupDescription}
                   </div>
@@ -186,9 +186,9 @@ const LifestyleAllProducts = () => {
             <>
               {stationery[Object.keys(stationery)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {stationery[Object.keys(stationery)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {stationery[Object.keys(stationery)[0]].groupDescription}
                   </div>
@@ -245,9 +245,9 @@ const LifestyleAllProducts = () => {
             <>
               {hygiene[Object.keys(hygiene)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {hygiene[Object.keys(hygiene)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {hygiene[Object.keys(hygiene)[0]].groupDescription}
                   </div>
@@ -304,9 +304,9 @@ const LifestyleAllProducts = () => {
             <>
               {workout[Object.keys(workout)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {workout[Object.keys(workout)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {workout[Object.keys(workout)[0]].groupDescription}
                   </div>{' '}

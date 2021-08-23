@@ -104,9 +104,9 @@ const AccessoriesAllProducts = () => {
             <>
               {go[Object.keys(go)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {go[Object.keys(go)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {go[Object.keys(go)[0]].groupDescription}
                   </div>
@@ -163,9 +163,9 @@ const AccessoriesAllProducts = () => {
             <>
               {wallet[Object.keys(wallet)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {wallet[Object.keys(wallet)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {wallet[Object.keys(wallet)[0]].groupDescription}
                   </div>
