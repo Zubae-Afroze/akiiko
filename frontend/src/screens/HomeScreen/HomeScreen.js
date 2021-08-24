@@ -10,7 +10,7 @@ import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import Footer from '../../components/Footer/Footer'
 
-import TopPopUpComp ,{showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
+// import TopPopUpComp ,{showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
 
 import './HomeScreen.css'
 
@@ -62,7 +62,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <TopPopUpComp />
+      {/* <TopPopUpComp /> */}
         {/* <UseSpinner loading={this.state.loading} /> */}
         {this.state.showLoader ? (
           <MyComponent
@@ -160,8 +160,8 @@ class HomeScreen extends React.Component {
             </a>
           </div>
         </Container>
-        <button onClick={()=>{showTopPopUp('Hyy it Worked')}}> Click Button </button>
-        <button onClick={()=>{showTopPopUp('Hyy it Worked 2')}}> Click Button </button>
+        {/* <button onClick={()=>{showTopPopUp('Hyy it Worked')}}> Click Button </button>
+        <button onClick={()=>{showTopPopUp('Hyy it Worked 2')}}> Click Button </button> */}
         <Footer />
       </React.Fragment>
     )
