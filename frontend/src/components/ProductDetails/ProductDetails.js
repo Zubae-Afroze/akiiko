@@ -15,6 +15,8 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import CartModal from './CartModal'
 import Footer from '../Footer/Footer'
 
+import TopPopUpComp , {showTopPopUp} from '../TopPopUp/TopPopUpComp'
+
 //import { ToastContainer, toast } from 'react-toastify'
 
 import './ProductDetails.css'
@@ -46,6 +48,7 @@ const ProductDetails = () => {
     // history.push(`/cart/${id}?qty=${itemQuantity}`)
     dispatch(addToCart(id, itemQuantity))
 
+    showTopPopUp('Item Added to cart')
     // toast('Item Added to cart', {
     //   position: 'top-center',
     //   autoClose: 2000,
@@ -171,6 +174,7 @@ const ProductDetails = () => {
 
   return (
     <>
+      <TopPopUpComp />
       {loading ? (
         <MyComponent
           sentences={[]}

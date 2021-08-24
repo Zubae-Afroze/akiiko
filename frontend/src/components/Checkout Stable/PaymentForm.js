@@ -337,7 +337,7 @@ function NetBankingField({changePaymentFormState,handelInputeChange}){
           <Form.Check
             style={{ color: '#4A4A4A', fontSize: '16px' }}
             type='checkbox'
-            label='Net Banking UPI'
+            label='Pre-paid / UPI' //Net Banking UPI
             name='isNetbankingUpiChecked'
             onChange={handelInputeChange}
             checked={changePaymentFormState.isNetbankingUpiChecked}
@@ -349,7 +349,7 @@ function NetBankingField({changePaymentFormState,handelInputeChange}){
           <Form.Check
             style={{ color: '#4A4A4A', fontSize: '16px' }}
             type='checkbox'
-            label='Net Banking UPI'
+            label='Pre-paid / UPI'
             name='isNetbankingUpiChecked'
             onChange={handelInputeChange}
             checked={changePaymentFormState.isNetbankingUpiChecked}

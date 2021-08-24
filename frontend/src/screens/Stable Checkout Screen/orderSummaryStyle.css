@@ -1,11 +1,27 @@
-.orderSummary-container-wraper{
-    display: flex;
-    justify-content: center;
-    min-height: 600px;
-    background-color: #e3ded5;
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-right: 30px;
+.orderSummary-container-wraper {
+  display: flex;
+  justify-content: center;
+  min-height: 600px;
+  background-color: #e3ded5;
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.orderSummary-continue-shooping-btn {
+  background-color: #c5a99552;
+  padding: 10px 10px;
+  font-family: 'rutan';
+  color: #7a5941;
+  border: none;
+  cursor: pointer;
+  border: 1px solid #977257;
+  transition: all 300ms ease-out;
+}
+
+.orderSummary-continue-shooping-btn:hover {
+  color: #fff;
+  background-color: #977257;
 }
 
 /* .orderSummary-container-wraper #child{
@@ -15,30 +31,27 @@
 } */
 
 @media (max-width: 1226px) {
-    
 }
-
-
 
 /* Iphone 5s */
 @media (max-width: 320px) {
-  .orderSummary-container-wraper{
+  .orderSummary-container-wraper {
     padding-top: 10px;
     padding-left: 0;
     padding-right: 0;
   }
-    /* .checkOut-container-wraper #child{
+  /* .checkOut-container-wraper #child{
         background-color: yellow;
     } */
 }
 
 @media (max-width: 574px) {
-  .state-field-style{
-    margin-left:5px;
-    margin-right:0;
+  .state-field-style {
+    margin-left: 5px;
+    margin-right: 0;
   }
-  
-  .pin-code-field-style{
-    margin:0;
+
+  .pin-code-field-style {
+    margin: 0;
   }
 }

@@ -98,6 +98,8 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
             type: USER_DETAILS_REQUEST
         })
 
+        console.log("get User Details: "+ id)
+
         const { userLogin: { userInfo } } = getState()
 
         const config = {

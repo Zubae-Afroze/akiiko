@@ -3,12 +3,15 @@ import ItemCardT from './ItemCardComp'
 import { CheckOutFormContext } from '../../screens/Stable Checkout Screen/CheckOutIndex'
 import { useSelector } from 'react-redux';
 import { Row } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
 import '../../screens/Stable Checkout Screen/orderSummaryStyle.css'
 import '../../screens/Stable Checkout Screen/CheckOutStlye.css'
 
 export default function OrderSummaryCompT() {
 
     const cartList = useSelector(state => state.cartList)
+
+    const history = useHistory()
 
     const checkOutFormObj = useContext(CheckOutFormContext);
 
@@ -93,7 +96,7 @@ export default function OrderSummaryCompT() {
                 </div>
                 <div style={{height:'65px'}} />
                 <div className='d-flex justify-content-center'>
-                    <button type='button' className='continue-shopping-style'> {/*btn btn-outline-secondary*/}
+                    <button type='button' className='orderSummary-continue-shooping-btn' onClick={()=>{history.push('/')}}> {/*btn btn-outline-secondary continue-shopping-style */}
                     Continue Shopping
                     </button>
                 </div>

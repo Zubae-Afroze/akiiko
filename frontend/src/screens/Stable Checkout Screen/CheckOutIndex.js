@@ -1,9 +1,11 @@
-import React , { createContext, useState } from 'react'
+import React , { createContext, useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
 import Menubar from '../../components/Menubar/Menubar'
 import MobileNav from '../../components/MobileNav/MobileNav'
 import CheckOutCompT from './CheckOutFormsComp'
 import OrderSummaryCompT from '../../components/Checkout Stable/OrderSummaryComp'
+import { getUserDetails } from '../../actions/actionUsers'
 import './CheckOutStlye.css';
 import './orderSummaryStyle.css'
 
@@ -34,6 +36,14 @@ export const formEntranceAnimation = {
 
 
 export default function StableCheckOutScreen() {
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUserDetails('profile'))
+        console.log('stable checkout rendered');
+    }, [])
+
 
     const [ formObject, setFormObject] = useState(
         {

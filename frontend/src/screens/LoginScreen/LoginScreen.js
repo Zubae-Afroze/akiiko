@@ -11,6 +11,8 @@ import Message from '../../components/Message/Message'
 import { googleAuth, facebookAuth, emailAuth } from '../../actions/actionAuth'
 import { toast } from 'react-toastify'
 
+import TopPopUpComp , {showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
+
 import './LoginScreen.css'
 
 const LoginScreen = () => {
@@ -34,6 +36,7 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userLogin.uid) {
+      showTopPopUp('Logged in Successfully')
       // toast('Logged in successfully', {
       //   position: 'top-center',
       //   autoClose: 2000,
@@ -57,6 +60,7 @@ const LoginScreen = () => {
         'There is no user record corresponding to this identifier. The user may have been deleted.'
 
       if (auth.authError === fireBasePasswordError) {
+        showTopPopUp('Invalid Password')
         // toast('Invalid Password', {
         //   position: 'top-center',
         //   autoClose: 2000,
@@ -69,15 +73,16 @@ const LoginScreen = () => {
       }
 
       if (auth.authError === fireBaseUserDosentExistError) {
-        toast('User does not exist', {
-          position: 'top-center',
-          autoClose: 2000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        })
+        showTopPopUp('User does not exist')
+        // toast('User does not exist', {
+        //   position: 'top-center',
+        //   autoClose: 2000,
+        //   hideProgressBar: true,
+        //   closeOnClick: true,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        //   progress: undefined,
+        // })
       }
     }
   }, [history, userInfo, redirect, userLogin.uid, auth])
@@ -126,6 +131,7 @@ const LoginScreen = () => {
 
   return (
     <React.Fragment>
+    <TopPopUpComp />
       <div className='login-wrap'>
         {/* <ToastContainer
           position='top-center'

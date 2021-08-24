@@ -170,7 +170,8 @@ export default function SearchScreen() {
   return (
     <>
       <span className='search-screen__filter-open' onClick={filterOpenHandler}>
-        <i className='lni lni-chevron-right'></i>
+        {/* <i className='lni lni-chevron-right'></i> */}
+        <i class="fas fa-filter"></i>
       </span>
       <Sidebar
         children='test'

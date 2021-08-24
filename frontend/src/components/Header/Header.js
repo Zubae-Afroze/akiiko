@@ -22,6 +22,7 @@ import { addToCart, removeFromCart } from '../../actions/actionCart'
 
 import { firebaseLogout } from '../../actions/actionAuth'
 import { listMyOrders } from '../../actions/actionOrder'
+import SideBarComp from '../SideBar/SideBarComp'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -188,6 +189,7 @@ const Header = () => {
       <Container>
         <div className='padding-class'></div>
         <Navbar fixed='top'>
+          <SideBarComp />
           {/* <SideNav /> */}
           <Navbar.Brand>
             <Link to='/'>akiiko</Link>

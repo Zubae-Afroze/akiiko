@@ -1,0 +1,76 @@
+/* Style the accordion section */
+.accordion__section {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .accordion__section button {
+  border: none !important;
+} */
+
+.accordion__section button:focus {
+  outline: none !important;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.89);
+  cursor: pointer;
+  padding: 2px;
+  padding-left: 0;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-bottom: 1px solid rgba(233, 228, 228, 0.507);
+  outline: none;
+  transition: background-color 0.6s ease;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.accordion:hover,
+.active {
+  background-color: transparent;
+  /* border: none !important; */
+}
+
+/* Style the accordion content title */
+.accordion__title {
+  /* font-weight: 600; */
+  font-size: 14px;
+  text-align: left;
+  font-family: 'rutanLight';
+  margin: 0;
+  /* font-family: 'robotoRegular'; */
+  /* font-weight: 200; */
+}
+
+/* Style the accordion chevron icon */
+.accordion__icon {
+  margin-left: auto;
+  transition: transform 0.6s ease;
+}
+
+/* Style to rotate icon when state is active */
+.rotate {
+  transform: rotate(90deg);
+}
+
+/* Style the accordion content panel. Note: hidden by default */
+.accordion__content {
+  background-color: transparent;
+  overflow: auto;
+  transition: max-height 0.6s ease;
+}
+
+/* Style the accordion content text */
+.accordion__text {
+  /* font-weight: 300; */
+  font-size: 14px;
+  padding: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* font-family: 'robotoRegular'; */
+}
