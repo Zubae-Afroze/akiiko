@@ -504,6 +504,22 @@ const ProductDetails = () => {
               </div>
             ) : null}
           </div>
+          {product.reviews.length !== 0 ? (
+            <div>
+              <div className='review-head'>Customer Reviews</div>
+              <div className='review-flex'>
+                {product.reviews.map((res, index) => (
+                  <div className='review-wrap'>
+                    <div className='review-content'>
+                      <i class='fa fa-quote-left' aria-hidden='true'></i>
+                      <div className='review-main'>{res.review}</div>
+                      <div className='review-user'>- {res.userName}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ) : null}
         </Container>
       ) : null}
       <Footer />

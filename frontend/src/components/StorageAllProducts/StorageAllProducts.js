@@ -103,9 +103,9 @@ const StorageAllProducts = () => {
             <>
               {organisers[Object.keys(organisers)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {organisers[Object.keys(organisers)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {organisers[Object.keys(organisers)[0]].groupDescription}
                   </div>
@@ -175,9 +175,9 @@ const StorageAllProducts = () => {
               {home[Object.keys(home)[0]] ? (
                 <>
                   {' '}
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {home[Object.keys(home)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {home[Object.keys(home)[0]].groupDescription}
                   </div>

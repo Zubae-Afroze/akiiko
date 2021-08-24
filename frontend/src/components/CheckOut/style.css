@@ -6,16 +6,16 @@
   margin-left: 7px;
 }
 
-.order-summary-xxsm{
+.order-summary-xxsm {
   font-family: 'rutanMedium';
 }
 
 .Toastify__toast--default {
-  background-color: #6B584C;
-  color: #FFFFFF;
+  background-color: #6b584c;
+  color: #ffffff;
 }
 
-.form-control.error-form-style{
+.form-control.error-form-style {
   background-color: transparent;
   border-color: #3e3331;
   border-width: 2px;
@@ -23,35 +23,34 @@
   color: #3e3331;
 }
 
-.existing-address-style{
+.existing-address-style {
   font-family: 'rutan';
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
-.existing-address-wraper{
+.existing-address-wraper {
   max-height: 290px;
   overflow-y: scroll;
   /* background-color: red; */
 }
 
-.add-new-address-style{
+.add-new-address-style {
   margin-top: 10px;
   margin-bottom: 10px;
   height: 185px;
 }
 
-.add-new-address-style #child{
+.add-new-address-style #child {
   margin-top: 1px;
   cursor: pointer;
 }
 
-
-.form-check-label{
+.form-check-label {
   padding-top: 2px;
 }
 
-.check-box-unchecked{
+.check-box-unchecked {
   padding: 7px;
   padding-left: 18px;
   border-style: solid;
@@ -61,7 +60,7 @@
   margin-bottom: 10px;
 }
 
-.check-box-checked{
+.check-box-checked {
   padding: 7px;
   padding-left: 18px;
   border-style: solid;
@@ -73,50 +72,51 @@
   transition: all 300ms ease-out;
 }
 
-
-
-.continue-shopping-style{
+.continue-shopping-style {
   background-color: transparent;
-  border: 1px solid #977257;
+  border: 2px solid #977257;
   padding: 9px;
   padding-left: 10px;
   padding-right: 10px;
-  color: #977257
+  color: #977257;
+  cursor: pointer;
 }
 
-.continue-shopping-style:hover{
+.continue-shopping-style a:hover {
   background-color: #977257;
-  color: #FFFFFF;
+  color: #ffffff;
   transition: all 300ms ease-out;
 }
 
-.custom-control-input-green:focus~.custom-control-label::before { 
+.custom-control-input-green:focus ~ .custom-control-label::before {
   border-color: #6b584c !important;
   box-shadow: 0 0 0 0.2rem #e3ded5 !important;
   /* border-color: #28a745 !important;
   box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25) !important; */
 }
 
-.custom-control-input-green:checked~.custom-control-label::before {
+.custom-control-input-green:checked ~ .custom-control-label::before {
   border-color: #6b584c !important;
   background-color: #6b584c !important;
   /* border-color: #28a745 !important;
   background-color: #28a745 !important; */
 }
 
-.custom-control-input-green:focus:not(:checked)~.custom-control-label::before {
+.custom-control-input-green:focus:not(:checked)
+  ~ .custom-control-label::before {
   border-color: #6b584c !important;
   /* border-color: #5bd778 !important; */
 }
 
-.custom-control-input-green:not(:disabled):active~.custom-control-label::before {
+.custom-control-input-green:not(:disabled):active
+  ~ .custom-control-label::before {
   background-color: #d6f5dd !important;
   border-color: #d6f5dd !important;
   /* background-color: #d6f5dd !important;
   border-color: #d6f5dd !important; */
 }
 
-.payment-detail-component{
+.payment-detail-component {
   padding: 12px;
   padding-top: 20px;
   padding-left: 20px;
@@ -128,28 +128,27 @@
   width: 60%;
 }
 
-
 @media only screen and (max-width: 414px) {
   .zip-code {
     margin-left: 0;
     margin-right: 7px;
   }
 
-  .existing-address-style{
-    padding:1rem;
+  .existing-address-style {
+    padding: 1rem;
   }
 
-  .add-new-address-style{
-    padding:1rem;
+  .add-new-address-style {
+    padding: 1rem;
     height: 185px;
   }
 
-  .add-new-address-style #child{
+  .add-new-address-style #child {
     margin-top: 33px;
   }
 
-  .payment-detail-component{
-    width:80%
+  .payment-detail-component {
+    width: 80%;
   }
 }
 
@@ -158,21 +157,17 @@
     padding: 20px;
     padding-top: 30px;
   }
-
-  
-  
 }
 
-
 @media (max-width: 320px) {
-  .remove-padding{
-    padding:0 !important;
+  .remove-padding {
+    padding: 0 !important;
   }
-  .remove-margin{
-    margin:0 !important;
+  .remove-margin {
+    margin: 0 !important;
   }
-  .remove-p-m{
-    padding:0 !important;
-    margin:0 !important;
+  .remove-p-m {
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }

@@ -450,6 +450,49 @@
   color: #212529;
 }
 
+.review-head {
+  margin-top: 45px;
+  margin-bottom: 45px;
+  font-size: 28px;
+  text-transform: uppercase;
+  font-family: 'rutanLight';
+  letter-spacing: 4.48px;
+}
+
+.review-flex {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.review-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 0 30px;
+}
+
+.review-wrap .fa-quote-left {
+  text-align: center;
+  font-size: 22px;
+  padding-bottom: 20px;
+}
+
+.review-content {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  text-align: center;
+}
+
+.review-main {
+  padding-bottom: 20px;
+}
+
+.review-user {
+  font-family: rutanLight;
+  padding-bottom: 20px;
+}
+
 /* -----------------------------------------LAPTOP  UPTO 1440PX------------------------------------------- */
 @media (max-width: 1290px) {
   .products-details-label {

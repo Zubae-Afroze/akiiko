@@ -8,6 +8,7 @@ import {
   Modal,
   ModalBody,
   Badge,
+  ProgressBar,
 } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { Link, useHistory } from 'react-router-dom'
@@ -84,6 +85,54 @@ const Header = () => {
             <span>
               {cartItems.reduce((acc, items) => acc + Number(items.qty), 0)}
             </span>
+            {cartItems.length !== 0 ? (
+              <div>
+                {cartItems.reduce(
+                  (acc, items) => acc + items.qty * items.price,
+                  0
+                ) < 500 ? (
+                  <div className='head-progress-label'>
+                    You are &#x20B9;{' '}
+                    {Math.abs(
+                      cartItems.reduce(
+                        (acc, items) => acc + items.qty * items.price,
+                        0
+                      ) - 500
+                    )}{' '}
+                    away from free shipping{' '}
+                  </div>
+                ) : (
+                  <div className='head-progress-label'>
+                    You are eligible for free shipping
+                  </div>
+                )}
+                <ProgressBar
+                  now={
+                    cartItems.reduce(
+                      (acc, items) => acc + items.qty * items.price,
+                      0
+                    ) === 0
+                      ? 0
+                      : cartItems.reduce(
+                          (acc, items) => acc + items.qty * items.price,
+                          0
+                        ) < 250
+                      ? 50
+                      : cartItems.reduce(
+                          (acc, items) => acc + items.qty * items.price,
+                          0
+                        ) < 450
+                      ? 85
+                      : cartItems.reduce(
+                          (acc, items) => acc + items.qty * items.price,
+                          0
+                        ) < 500
+                      ? 95
+                      : 100
+                  }
+                />
+              </div>
+            ) : null}
           </div>
           <>
             {cartItems.length === 0 ? (

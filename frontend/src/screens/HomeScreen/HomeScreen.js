@@ -79,13 +79,13 @@ class HomeScreen extends React.Component {
               <div className='hero-container'>
                 <div className='empty-div'></div>
                 <div className='hero-logo'>akiiko</div>
-                <div className='hero-text'>
+                <h1 className='hero-text'>
                   eco-friendly
                   <br />
                   utilitarian
                   <br />
                   vegan
-                </div>
+                </h1>
                 <div className='hero-sub-text'></div>
                 <div className='hero-button'>
                   <Link to='/allproducts/productlist/bags'>

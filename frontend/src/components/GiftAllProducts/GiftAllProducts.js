@@ -109,9 +109,9 @@ const GiftAllProducts = () => {
             <>
               {box[Object.keys(box)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {box[Object.keys(box)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {box[Object.keys(box)[0]].groupDescription}
                   </div>
@@ -168,9 +168,9 @@ const GiftAllProducts = () => {
             <>
               {bag[Object.keys(bag)[0]] ? (
                 <>
-                  <div className='product-list-label'>
+                  <h2 className='product-list-label'>
                     {bag[Object.keys(bag)[0]].subGroup}
-                  </div>
+                  </h2>
                   <div className='product-list-text'>
                     {bag[Object.keys(bag)[0]].groupDescription}
                   </div>
@@ -223,9 +223,9 @@ const GiftAllProducts = () => {
           {error && <h1>{error}</h1>}{' '}
           {accessories[Object.keys(accessories)[0]] && (
             <>
-              <div className='product-list-label'>
+              <h2 className='product-list-label'>
                 {accessories[Object.keys(accessories)[0]].subGroup}
-              </div>
+              </h2>
               <div className='product-list-text'>
                 {accessories[Object.keys(accessories)[0]].groupDescription}
               </div>

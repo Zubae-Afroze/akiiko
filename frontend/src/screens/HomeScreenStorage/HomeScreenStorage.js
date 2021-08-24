@@ -63,7 +63,7 @@ const HomeScreenWorkout = () => {
           </Link>
         </Col>
         <Col sm={9} className='home-wrapper'>
-          <div className='home-title'>STORAGE</div>
+          <h2 className='home-title'>STORAGE</h2>
           <div className='home-text'>
             A thoughtful range of organisers and storage bags to compliment and
             increase the functionality of your home. Simplistic and warm, the

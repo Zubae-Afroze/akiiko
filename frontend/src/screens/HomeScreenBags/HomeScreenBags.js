@@ -57,7 +57,7 @@ const HomeScreenBags = () => {
     <div>
       <Row className='women-wrapper'>
         <Col sm={9} className='women-wrap'>
-          <div className='home-title women-title'>BAGS </div>
+          <h2 className='home-title women-title'>BAGS </h2>
           <div className='women-text'>
             A delightful range of sustainable bags that are designed to
             perfection. Minimal, yet classic silhouettes to compliment just

@@ -107,10 +107,21 @@ export default function SearchScreen() {
     }
   }
 
-  function cottonFilter(checked) {
+  function cottonCanvasFilter(checked) {
     if (checked) {
       const result = products.filter(
         (product) => product.material === 'Cotton Canvas'
+      )
+      setSearchedProducts(result)
+    } else {
+      setSearchedProducts(products)
+    }
+  }
+
+  function wovenCottonFilter(checked) {
+    if (checked) {
+      const result = products.filter(
+        (product) => product.material === 'Woven Cotton'
       )
       setSearchedProducts(result)
     } else {
@@ -273,8 +284,13 @@ export default function SearchScreen() {
                 <Form.Group className='mb-3'>
                   <Form.Check
                     type='checkbox'
-                    label='Cotton'
-                    onChange={(e) => cottonFilter(e.target.checked)}
+                    label='Cotton Canvas'
+                    onChange={(e) => cottonCanvasFilter(e.target.checked)}
+                  />
+                  <Form.Check
+                    type='checkbox'
+                    label='Woven Cotton'
+                    onChange={(e) => wovenCottonFilter(e.target.checked)}
                   />
                   <Form.Check
                     type='checkbox'

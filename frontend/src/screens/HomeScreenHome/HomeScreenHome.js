@@ -59,7 +59,7 @@ const HomeScreenHome = () => {
           </Link>
         </Col>
         <Col sm={9} className='home-wrapper'>
-          <div className='home-title'>HOME</div>
+          <h2 className='home-title'>HOME</h2>
           <div className='home-text'>
             A simple yet inviting collection of natural fabric kitchen
             accessories that will blend harmoniously with every home’s mood &
