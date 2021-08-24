@@ -6,6 +6,7 @@ import { registerWithEmail } from '../../actions/actionAuth'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import Message from '../../components/Message/Message'
+import TopPopUpComp , {showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
 import './RegisterScreen.css'
 
 const RegisterScreen = () => {
@@ -15,6 +16,8 @@ const RegisterScreen = () => {
   const { loading, error } = userRegister
 
   const userLogin = useSelector((state) => state.firebase.auth)
+
+  const auth = useSelector((state) => state.auth)
 
   const location = useLocation()
   const history = useHistory()
@@ -42,7 +45,19 @@ const RegisterScreen = () => {
     if (userLogin.uid) {
       history.push(redirect)
     }
-  }, [history, userLogin, redirect])
+
+    if (
+      auth !== null &&
+      auth.authError !== null &&
+      auth.authError.length !== 0 &&
+      password === confirmPassword
+    ) {
+
+      showTopPopUp(auth.authError)
+
+    }
+
+  }, [history, userLogin, redirect, auth])
 
   function validateEmailCharecters(value) {
     const re =
@@ -59,7 +74,8 @@ const RegisterScreen = () => {
 
     if (password !== confirmPassword) {
       isValidated = false
-      setPassMessage('Password do not match, please enter again')
+      // setPassMessage('Password do not match, please enter again')
+      showTopPopUp('Password do not match, please enter again')
     }
     // else {
     //   const name = fname + ' ' + lname
@@ -100,6 +116,9 @@ const RegisterScreen = () => {
       const userObject = { name, email, password, phoneNumber }
       console.log('Registered')
       dispatch(registerWithEmail(userObject))
+
+
+
     } else {
       console.log('Please Fill')
       setErrorFields(updatedList)
@@ -107,6 +126,10 @@ const RegisterScreen = () => {
   }
 
   return (
+    <>
+    
+    <TopPopUpComp />
+
     <div className='login-wrap'>
       {loading && (
         <MyComponent
@@ -484,6 +507,7 @@ const RegisterScreen = () => {
         </Form>
       </div>
     </div>
+    </>
   )
 }
 
