@@ -37,10 +37,28 @@ import PostOrderScreen from './screens/PostOrderScreen/postOrderScreen'
 import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex'
 import SearchScreen from './screens/SearchScreen/SearchScreen'
 import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
-export default class App extends Component {
-  // constructor(props){
-  //   super(props);
-  // }
+import ReactGa from 'react-ga'
+import { connect } from 'react-redux'
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      test: '',
+    }
+  }
+
+  componentDidMount() {
+    ReactGa.initialize('UA-205864671-1', {
+      debug: true,
+      gaOptions: {
+        userId: this.props.profile.email,
+      },
+    })
+    ReactGa.pageview(window.location.path + window.location.search)
+
+    console.log(this.props.profile.email)
+  }
 
   render() {
     return (
@@ -143,3 +161,11 @@ export default class App extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    profile: state.profile.userProfile,
+  }
+}
+
+export default connect(mapStateToProps)(App)

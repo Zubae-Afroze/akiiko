@@ -6,7 +6,9 @@ import { registerWithEmail } from '../../actions/actionAuth'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import Message from '../../components/Message/Message'
-import TopPopUpComp , {showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
+import TopPopUpComp, {
+  showTopPopUp,
+} from '../../components/TopPopUp/TopPopUpComp'
 import './RegisterScreen.css'
 
 const RegisterScreen = () => {
@@ -52,12 +54,9 @@ const RegisterScreen = () => {
       auth.authError.length !== 0 &&
       password === confirmPassword
     ) {
-
       showTopPopUp(auth.authError)
-
     }
-
-  }, [history, userLogin, redirect, auth])
+  }, [history, userLogin, redirect, auth, confirmPassword, password])
 
   function validateEmailCharecters(value) {
     const re =
@@ -116,9 +115,6 @@ const RegisterScreen = () => {
       const userObject = { name, email, password, phoneNumber }
       console.log('Registered')
       dispatch(registerWithEmail(userObject))
-
-
-
     } else {
       console.log('Please Fill')
       setErrorFields(updatedList)
@@ -127,20 +123,19 @@ const RegisterScreen = () => {
 
   return (
     <>
-    
-    <TopPopUpComp />
+      <TopPopUpComp />
 
-    <div className='login-wrap'>
-      {loading && (
-        <MyComponent
-          sentences={[]}
-          wrapperBackgroundColor={'rgba(255,255,255)'}
-          color={'#6e4e37'}
-          loaderType={'ball-spin-clockwise'}
-          customLoader={<SpinnerIcon />}
-        />
-      )}
-      {/* <Card className='register-card'>
+      <div className='login-wrap'>
+        {loading && (
+          <MyComponent
+            sentences={[]}
+            wrapperBackgroundColor={'rgba(255,255,255)'}
+            color={'#6e4e37'}
+            loaderType={'ball-spin-clockwise'}
+            customLoader={<SpinnerIcon />}
+          />
+        )}
+        {/* <Card className='register-card'>
                 <Card.Body>
                     {passMessage && <Message variant='danger'>{passMessage}</Message>}
                     <h1>Sign Up</h1>
@@ -182,240 +177,9 @@ const RegisterScreen = () => {
                 </Card.Body>
             </Card> */}
 
-      <div className='register-page-web'>
-        {passMessage && <Message variant='danger'>{passMessage}</Message>}
-        {error && <Message>{error}</Message>}
-        <div className='register-title'>
-          <img
-            src='./images/home_screen_images/closes.svg'
-            alt='close-img'
-            className='close-icon'
-          />
-          Create an account
-        </div>
-        <Form onSubmit={submitHandler}>
-          <div className='reg-row-one'>
-            <div controlid='name'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[0] ? 'error-field-style' : '')
-                }
-                type='text'
-                placeholder='First Name'
-                value={fname}
-                onChange={(e) => setFname(e.target.value)}
-              />
-            </div>
-            <div controlid='name'>
-              <input
-                className={
-                  'fc-label middle-field ' +
-                  (errorFields[1] ? 'error-field-style' : '')
-                }
-                type='text'
-                placeholder='Last Name'
-                value={lname}
-                onChange={(e) => setLname(e.target.value)}
-              />
-            </div>
-            <div controlid='email'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[2] ? 'error-field-style' : '')
-                }
-                type='email'
-                placeholder='Enter email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className='reg-row-two'>
-            <div controlid='phone'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[3] ? 'error-field-style' : '')
-                }
-                type='text'
-                placeholder='Mobile Number'
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </div>
-            <div className='login-group' controlid='password'>
-              <input
-                className={
-                  'fc-label middle-field ' +
-                  (errorFields[4] ? 'error-field-style' : '')
-                }
-                type='password'
-                placeholder='Enter password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className='login-group' controlid='confirmPassword'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[5] ? 'error-field-style' : '')
-                }
-                type='password'
-                placeholder='Re-Enter password'
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className='reg-row-three'>
-            <div className='checkbox-label'>
-              <input type='checkbox' className='c-box' />
-              <span className='dis'>
-                By clicking here, I agree to the Terms of Use and Privacy
-                Policy.
-              </span>
-            </div>
-            <div className='checkbox-label middle-field'>
-              <input type='checkbox' className='c-box ' />
-              <span className='dis'>
-                Sign up for email updates on stuff you’ll probably want to know
-                about, including products, launches, surveys, and events.
-                Unsubscribe anytime.
-              </span>
-            </div>
-            <div className='checkbox-label'>
-              <div>
-                <Link
-                  to={redirect ? `/login?redirect=${redirect}` : '/register'}
-                  className='already-have'
-                >
-                  Already have an account
-                </Link>
-                <button className='sign-button' type='submit'>
-                  Sign up
-                </button>
-              </div>
-            </div>
-          </div>
-        </Form>
-      </div>
-
-      <div className='register-page-tab'>
-        {passMessage && <Message variant='danger'>{passMessage}</Message>}
-        {error && <Message>{error}</Message>}
-        <div className='register-title'>
-          <img
-            src='./images/home_screen_images/closes.svg'
-            alt='close-img'
-            className='close-icon'
-          />
-          Create an account
-        </div>
-        <Form onSubmit={submitHandler}>
-          <div className='reg-row-one'>
-            <div controlid='name'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[0] ? 'error-field-style' : '')
-                }
-                type='text'
-                placeholder='First Name'
-                value={fname}
-                onChange={(e) => setFname(e.target.value)}
-              />
-            </div>
-            <div controlid='name'>
-              <input
-                className={
-                  'fc-label middle-field ' +
-                  (errorFields[1] ? 'error-field-style' : '')
-                }
-                type='text'
-                placeholder='Last Name'
-                value={lname}
-                onChange={(e) => setLname(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className='reg-row-two'>
-            <div controlid='email'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[2] ? 'error-field-style' : '')
-                }
-                type='email'
-                placeholder='Enter email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            <div controlid='phone'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[3] ? 'error-field-style' : '')
-                }
-                type='text'
-                placeholder='Mobile Number'
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-              />
-            </div>
-          </div>
-          <div className='reg-row-three'>
-            <div className='login-group' controlid='password'>
-              <input
-                className={
-                  'fc-label middle-field ' +
-                  (errorFields[4] ? 'error-field-style' : '')
-                }
-                type='password'
-                placeholder='Enter password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            <div className='login-group' controlid='confirmPassword'>
-              <input
-                className={
-                  'fc-label ' + (errorFields[5] ? 'error-field-style' : '')
-                }
-                type='password'
-                placeholder='Re-Enter password'
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
-            </div>
-            {/* <div className="checkbox-label"><input type="checkbox" className='c-box' /><span className="dis">By clicking here, I agree to the Terms of Use and Privacy Policy.</span></div> */}
-          </div>
-          <div className='reg-row-four'>
-            <div className='checkbox-label middle-field'>
-              <input type='checkbox' className='c-box ' readOnly />
-              <span className='dis'>
-                Sign up for email updates on stuff you’ll probably want to know
-                about, including products, launches, surveys, and events.
-                Unsubscribe anytime.
-              </span>
-            </div>
-            <div className='checkbox-label'>
-              <div>
-                <Link
-                  to={redirect ? `/login?redirect=${redirect}` : '/register'}
-                  className='already-have'
-                >
-                  Already have an account
-                </Link>
-                <button className='sign-button' type='submit'>
-                  Sign up
-                </button>
-              </div>
-            </div>
-          </div>
-        </Form>
-      </div>
-
-      <div className='register-page-mobile'>
-        {passMessage && <Message variant='danger'>{passMessage}</Message>}
-        {error && <Message>{error}</Message>}
-        <Form onSubmit={submitHandler}>
+        <div className='register-page-web'>
+          {passMessage && <Message variant='danger'>{passMessage}</Message>}
+          {error && <Message>{error}</Message>}
           <div className='register-title'>
             <img
               src='./images/home_screen_images/closes.svg'
@@ -424,89 +188,321 @@ const RegisterScreen = () => {
             />
             Create an account
           </div>
-          <input
-            className={
-              'fc-label ' + (errorFields[0] ? 'error-field-style' : '')
-            }
-            type='text'
-            placeholder='First Name'
-            value={fname}
-            onChange={(e) => setFname(e.target.value)}
-          />
-          <input
-            className={
-              'fc-label middle-field ' +
-              (errorFields[1] ? 'error-field-style' : '')
-            }
-            type='text'
-            placeholder='Last Name'
-            value={lname}
-            onChange={(e) => setLname(e.target.value)}
-          />
-          <input
-            className={
-              'fc-label ' + (errorFields[2] ? 'error-field-style' : '')
-            }
-            type='email'
-            placeholder='Enter email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            className={
-              'fc-label ' + (errorFields[3] ? 'error-field-style' : '')
-            }
-            type='text'
-            placeholder='Mobile Number'
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-          />
-          <input
-            className={
-              'fc-label middle-field ' +
-              (errorFields[4] ? 'error-field-style' : '')
-            }
-            type='password'
-            placeholder='Enter password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <input
-            className={
-              'fc-label ' + (errorFields[5] ? 'error-field-style' : '')
-            }
-            type='password'
-            placeholder='Re-Enter password'
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-          <div className='checkbox-label'>
-            <input
-              type='checkbox'
-              className='c-box'
-              checked='checked'
-              readOnly
-            />
-            <span className='dis'>
-              By clicking here, I agree to the Terms of Use and Privacy Policy.
-            </span>
-          </div>
-          <div className='checkbox-label'>
-            <div>
-              <Link
-                to={redirect ? `/login?redirect=${redirect}` : '/register'}
-                className='already-have'
-              >
-                Already have an account
-              </Link>
-              <button className='sign-button' type='submit'>
-                Sign up
-              </button>
+          <Form onSubmit={submitHandler}>
+            <div className='reg-row-one'>
+              <div controlid='name'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[0] ? 'error-field-style' : '')
+                  }
+                  type='text'
+                  placeholder='First Name'
+                  value={fname}
+                  onChange={(e) => setFname(e.target.value)}
+                />
+              </div>
+              <div controlid='name'>
+                <input
+                  className={
+                    'fc-label middle-field ' +
+                    (errorFields[1] ? 'error-field-style' : '')
+                  }
+                  type='text'
+                  placeholder='Last Name'
+                  value={lname}
+                  onChange={(e) => setLname(e.target.value)}
+                />
+              </div>
+              <div controlid='email'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[2] ? 'error-field-style' : '')
+                  }
+                  type='email'
+                  placeholder='Enter email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
             </div>
+            <div className='reg-row-two'>
+              <div controlid='phone'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[3] ? 'error-field-style' : '')
+                  }
+                  type='text'
+                  placeholder='Mobile Number'
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </div>
+              <div className='login-group' controlid='password'>
+                <input
+                  className={
+                    'fc-label middle-field ' +
+                    (errorFields[4] ? 'error-field-style' : '')
+                  }
+                  type='password'
+                  placeholder='Enter password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className='login-group' controlid='confirmPassword'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[5] ? 'error-field-style' : '')
+                  }
+                  type='password'
+                  placeholder='Re-Enter password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className='reg-row-three'>
+              <div className='checkbox-label'>
+                <input type='checkbox' className='c-box' />
+                <span className='dis'>
+                  By clicking here, I agree to the Terms of Use and Privacy
+                  Policy.
+                </span>
+              </div>
+              <div className='checkbox-label middle-field'>
+                <input type='checkbox' className='c-box ' />
+                <span className='dis'>
+                  Sign up for email updates on stuff you’ll probably want to
+                  know about, including products, launches, surveys, and events.
+                  Unsubscribe anytime.
+                </span>
+              </div>
+              <div className='checkbox-label'>
+                <div>
+                  <Link
+                    to={redirect ? `/login?redirect=${redirect}` : '/register'}
+                    className='already-have'
+                  >
+                    Already have an account
+                  </Link>
+                  <button className='sign-button' type='submit'>
+                    Sign up
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Form>
+        </div>
+
+        <div className='register-page-tab'>
+          {passMessage && <Message variant='danger'>{passMessage}</Message>}
+          {error && <Message>{error}</Message>}
+          <div className='register-title'>
+            <img
+              src='./images/home_screen_images/closes.svg'
+              alt='close-img'
+              className='close-icon'
+            />
+            Create an account
           </div>
-        </Form>
+          <Form onSubmit={submitHandler}>
+            <div className='reg-row-one'>
+              <div controlid='name'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[0] ? 'error-field-style' : '')
+                  }
+                  type='text'
+                  placeholder='First Name'
+                  value={fname}
+                  onChange={(e) => setFname(e.target.value)}
+                />
+              </div>
+              <div controlid='name'>
+                <input
+                  className={
+                    'fc-label middle-field ' +
+                    (errorFields[1] ? 'error-field-style' : '')
+                  }
+                  type='text'
+                  placeholder='Last Name'
+                  value={lname}
+                  onChange={(e) => setLname(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className='reg-row-two'>
+              <div controlid='email'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[2] ? 'error-field-style' : '')
+                  }
+                  type='email'
+                  placeholder='Enter email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div controlid='phone'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[3] ? 'error-field-style' : '')
+                  }
+                  type='text'
+                  placeholder='Mobile Number'
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className='reg-row-three'>
+              <div className='login-group' controlid='password'>
+                <input
+                  className={
+                    'fc-label middle-field ' +
+                    (errorFields[4] ? 'error-field-style' : '')
+                  }
+                  type='password'
+                  placeholder='Enter password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+              <div className='login-group' controlid='confirmPassword'>
+                <input
+                  className={
+                    'fc-label ' + (errorFields[5] ? 'error-field-style' : '')
+                  }
+                  type='password'
+                  placeholder='Re-Enter password'
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
+              {/* <div className="checkbox-label"><input type="checkbox" className='c-box' /><span className="dis">By clicking here, I agree to the Terms of Use and Privacy Policy.</span></div> */}
+            </div>
+            <div className='reg-row-four'>
+              <div className='checkbox-label middle-field'>
+                <input type='checkbox' className='c-box ' readOnly />
+                <span className='dis'>
+                  Sign up for email updates on stuff you’ll probably want to
+                  know about, including products, launches, surveys, and events.
+                  Unsubscribe anytime.
+                </span>
+              </div>
+              <div className='checkbox-label'>
+                <div>
+                  <Link
+                    to={redirect ? `/login?redirect=${redirect}` : '/register'}
+                    className='already-have'
+                  >
+                    Already have an account
+                  </Link>
+                  <button className='sign-button' type='submit'>
+                    Sign up
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Form>
+        </div>
+
+        <div className='register-page-mobile'>
+          {passMessage && <Message variant='danger'>{passMessage}</Message>}
+          {error && <Message>{error}</Message>}
+          <Form onSubmit={submitHandler}>
+            <div className='register-title'>
+              <img
+                src='./images/home_screen_images/closes.svg'
+                alt='close-img'
+                className='close-icon'
+              />
+              Create an account
+            </div>
+            <input
+              className={
+                'fc-label ' + (errorFields[0] ? 'error-field-style' : '')
+              }
+              type='text'
+              placeholder='First Name'
+              value={fname}
+              onChange={(e) => setFname(e.target.value)}
+            />
+            <input
+              className={
+                'fc-label middle-field ' +
+                (errorFields[1] ? 'error-field-style' : '')
+              }
+              type='text'
+              placeholder='Last Name'
+              value={lname}
+              onChange={(e) => setLname(e.target.value)}
+            />
+            <input
+              className={
+                'fc-label ' + (errorFields[2] ? 'error-field-style' : '')
+              }
+              type='email'
+              placeholder='Enter email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              className={
+                'fc-label ' + (errorFields[3] ? 'error-field-style' : '')
+              }
+              type='text'
+              placeholder='Mobile Number'
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+            />
+            <input
+              className={
+                'fc-label middle-field ' +
+                (errorFields[4] ? 'error-field-style' : '')
+              }
+              type='password'
+              placeholder='Enter password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <input
+              className={
+                'fc-label ' + (errorFields[5] ? 'error-field-style' : '')
+              }
+              type='password'
+              placeholder='Re-Enter password'
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+            />
+            <div className='checkbox-label'>
+              <input
+                type='checkbox'
+                className='c-box'
+                checked='checked'
+                readOnly
+              />
+              <span className='dis'>
+                By clicking here, I agree to the Terms of Use and Privacy
+                Policy.
+              </span>
+            </div>
+            <div className='checkbox-label'>
+              <div>
+                <Link
+                  to={redirect ? `/login?redirect=${redirect}` : '/register'}
+                  className='already-have'
+                >
+                  Already have an account
+                </Link>
+                <button className='sign-button' type='submit'>
+                  Sign up
+                </button>
+              </div>
+            </div>
+          </Form>
+        </div>
       </div>
-    </div>
     </>
   )
 }
