@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import Header from './components/Header/Header'
 import HomeScreen from './screens/HomeScreen/HomeScreen'
@@ -38,132 +38,130 @@ import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex
 import SearchScreen from './screens/SearchScreen/SearchScreen'
 import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
 import ReactGa from 'react-ga'
-import { connect } from 'react-redux'
+import { getUserDetails } from './actions/actionUsers'
+import { useSelector, useDispatch } from 'react-redux'
 
-class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      test: '',
+const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUserDetails('profile'))
+  }, [dispatch])
+
+  const profileDetails = useSelector((state) => state.profile.userProfile)
+
+  useEffect(() => {
+    if (profileDetails) {
+      ReactGa.initialize('UA-205864671-1', {
+        debug: true,
+        gaOptions: {
+          userId: profileDetails.email,
+        },
+      })
+      console.log(profileDetails.email)
+    } else {
+      ReactGa.initialize('UA-205864671-1', {
+        debug: true,
+        gaOptions: {
+          userId: 'anonymous',
+        },
+      })
     }
-  }
+    ReactGa.pageview(window.location.pathname + window.location.search)
+  }, [profileDetails])
 
-  componentDidMount() {
-    ReactGa.initialize('UA-205864671-1', {
-      debug: true,
-      gaOptions: {
-        userId: 123,
-      },
-    })
-    ReactGa.pageview(window.location.path + window.location.search)
-  }
+  return (
+    <Router>
+      <ScrollToTop />
+      <Header />
+      <Switch>
+        <Route path='/orders/:orderId' render={() => <OrderSummaryScreen />} />
 
-  render() {
-    return (
-      <Router>
-        <ScrollToTop />
-        <Header />
-        <Switch>
-          <Route
-            path='/orders/:orderId'
-            render={() => <OrderSummaryScreen />}
-          />
+        <Route path='/search' render={() => <SearchScreen />} />
 
-          <Route path='/search' render={() => <SearchScreen />} />
+        <Route path='/login' render={() => <LoginScreen />} />
 
-          <Route path='/login' render={() => <LoginScreen />} />
+        <Route path='/forgotpassword' render={() => <ForgotPasswordScreen />} />
 
-          <Route
-            path='/forgotpassword'
-            render={() => <ForgotPasswordScreen />}
-          />
+        <Route path='/shipping' render={() => <ShippingScreen />} />
 
-          <Route path='/shipping' render={() => <ShippingScreen />} />
+        <Route path='/checkout' render={() => <StableCheckOutScreen />} />
 
-          <Route path='/checkout' render={() => <StableCheckOutScreen />} />
+        <Route path='/ordersuccess' render={() => <PostOrderScreen />} />
 
-          <Route path='/ordersuccess' render={() => <PostOrderScreen />} />
-
-          {/* <Route
+        {/* <Route
             path='/stablecheckout'
             render={() => <StableCheckOutScreen />}
           /> */}
 
-          <Route path='/newProfile' render={() => <NewProfileScreen />} />
+        <Route path='/newProfile' render={() => <NewProfileScreen />} />
 
-          <Route path='/payment' render={() => <PaymentScreen />} />
+        <Route path='/payment' render={() => <PaymentScreen />} />
 
-          <Route path='/placeorder' render={() => <OrderScreen />} />
+        <Route path='/placeorder' render={() => <OrderScreen />} />
 
-          <Route path='/register' render={() => <RegisterScreen />} />
+        <Route path='/register' render={() => <RegisterScreen />} />
 
-          <Route path='/profile' render={() => <ProfileScreen />} />
+        <Route path='/profile' render={() => <ProfileScreen />} />
 
-          <Route path='/cart/:id?' render={() => <CartScreen />} />
-          {/* Product Listing */}
-          <Route
-            path='/productlist/:group/:subGroup'
-            render={() => <ProductList />}
-          />
+        <Route path='/cart/:id?' render={() => <CartScreen />} />
+        {/* Product Listing */}
+        <Route
+          path='/productlist/:group/:subGroup'
+          render={() => <ProductList />}
+        />
 
-          {/* Bags View All */}
-          <Route
-            path='/allproducts/productlist/bags'
-            render={() => <BagAllProducts />}
-          />
+        {/* Bags View All */}
+        <Route
+          path='/allproducts/productlist/bags'
+          render={() => <BagAllProducts />}
+        />
 
-          {/* Home View All */}
-          <Route
-            path='/allproducts/productlist/home'
-            render={() => <HomeAllProducts />}
-          />
+        {/* Home View All */}
+        <Route
+          path='/allproducts/productlist/home'
+          render={() => <HomeAllProducts />}
+        />
 
-          {/* Gift View All */}
-          <Route
-            path='/allproducts/productlist/gift'
-            render={() => <GiftAllProducts />}
-          />
+        {/* Gift View All */}
+        <Route
+          path='/allproducts/productlist/gift'
+          render={() => <GiftAllProducts />}
+        />
 
-          {/* Lifestyle View All */}
-          <Route
-            path='/allproducts/productlist/lifestyle'
-            render={() => <LifestyleAllProducts />}
-          />
+        {/* Lifestyle View All */}
+        <Route
+          path='/allproducts/productlist/lifestyle'
+          render={() => <LifestyleAllProducts />}
+        />
 
-          {/* Storage View All */}
-          <Route
-            path='/allproducts/productlist/storage'
-            render={() => <StorageAllProducts />}
-          />
+        {/* Storage View All */}
+        <Route
+          path='/allproducts/productlist/storage'
+          render={() => <StorageAllProducts />}
+        />
 
-          {/* Accessories View All */}
-          <Route
-            path='/allproducts/productlist/accessories'
-            render={() => <AccessoriesAllProducts />}
-          />
+        {/* Accessories View All */}
+        <Route
+          path='/allproducts/productlist/accessories'
+          render={() => <AccessoriesAllProducts />}
+        />
 
-          {/* All Products */}
-          <Route path='/product/:id' render={() => <ProductDetails />} />
+        {/* All Products */}
+        <Route path='/product/:id' render={() => <ProductDetails />} />
 
-          <Route path='/FooterLinks' render={() => <FooterLinks />} />
-          <Route path='/AboutUs/' render={() => <AboutUs />} />
-          <Route path='/Careers/' render={() => <Careers />} />
-          <Route path='/TermsofService' render={() => <Terms />} />
-          <Route path='/Refund' render={() => <RefundPolicy />} />
-          <Route path='/PrivacyStatement' render={() => <PrivacyStatement />} />
+        <Route path='/FooterLinks' render={() => <FooterLinks />} />
+        <Route path='/AboutUs/' render={() => <AboutUs />} />
+        <Route path='/Careers/' render={() => <Careers />} />
+        <Route path='/TermsofService' render={() => <Terms />} />
+        <Route path='/Refund' render={() => <RefundPolicy />} />
+        <Route path='/PrivacyStatement' render={() => <PrivacyStatement />} />
 
-          <Route path='/' component={HomeScreen} exact />
-        </Switch>
-        {/* <Footer /> */}
-      </Router>
-    )
-  }
+        <Route path='/' component={HomeScreen} exact />
+      </Switch>
+      {/* <Footer /> */}
+    </Router>
+  )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    profile: state.profile.userProfile,
-  }
-}
-
-export default connect(mapStateToProps)(App)
+export default App
