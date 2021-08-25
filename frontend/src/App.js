@@ -52,7 +52,7 @@ class App extends Component {
     ReactGa.initialize('UA-205864671-1', {
       debug: true,
       gaOptions: {
-        userId: this.props.profile.email,
+        userId: 123,
       },
     })
     ReactGa.pageview(window.location.path + window.location.search)
