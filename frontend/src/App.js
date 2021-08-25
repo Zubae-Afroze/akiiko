@@ -56,8 +56,6 @@ class App extends Component {
       },
     })
     ReactGa.pageview(window.location.path + window.location.search)
-
-    console.log(this.props.profile.email)
   }
 
   render() {
