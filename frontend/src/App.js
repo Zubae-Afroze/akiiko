@@ -58,7 +58,6 @@ const App = () => {
           userId: profileDetails.email,
         },
       })
-      console.log(profileDetails.email)
     } else {
       ReactGa.initialize('UA-205864671-1', {
         debug: true,
