@@ -9,7 +9,15 @@ import Sidebar from 'react-sidebar'
 import '../HomeScreen/HomeScreen.css'
 import './searchScreenStyles.css'
 
+let filtersObj = {
+  category: '',
+  material: '',
+  startingPrice: 0,
+  endingPrice: 100000,
+}
+
 export default function SearchScreen() {
+
   const searchInput = createRef()
 
   const [searchValue, setSearchvalue] = useState('')
@@ -22,16 +30,25 @@ export default function SearchScreen() {
   const [categoryDrop, setCategoryDrop] = useState(false)
   const [materialDrop, setMaterialDrop] = useState(false)
   const [productPrice, setProductPrice] = useState(false)
+  const [selectedFilters, setSelectedFilters] = useState(0)
+  const [error, setError] = useState('')
 
   const [products, setProducts] = useState([])
   const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
+  // const [filtersObj, setFiltersObj] = useState({
+  //   category: '',
+  //   material: '',
+  //   startingPrice: 0,
+  //   endingPrice: 100000,
+  // })
+  
 
   const [searchedProducts, setSearchedProducts] = useState([])
 
   const filterOpenHandler = () => {
     const opn = open
     setOpen(!opn)
+    console.log('Products Length: '+products.length);
   }
 
   useEffect(() => {
@@ -51,20 +68,77 @@ export default function SearchScreen() {
       })
   }, [])
 
+  function selectedFiltersFunction(selected){
+    if(selected){
+        setSelectedFilters((preValue) => {
+          return preValue + 1;
+        })
+    }else{
+      setSelectedFilters((preValue)  => {
+        return preValue - 1;
+      })
+    }
+  }
+
+
+  function categorysFilter(product){
+    if(filtersObj.category === ''){
+      console.log('No Category: '+ filtersObj.category)
+      return true;
+    } else{
+      console.log('Has Category: '+ filtersObj.category)
+      return  product.group === filtersObj.category;
+    }
+  }
+
+  function materialsFilter(product){
+    if(filtersObj.material === '') return true;
+    return product.material === filtersObj.material;
+  }
+
+  function priceFilter(product){
+    return product.mrpPrice >= filtersObj.startingPrice && product.mrpPrice <= filtersObj.endingPrice
+  }
+
+
+  function upadateFilter(checked){
+    let filteredProducts = products.filter(categorysFilter).filter(materialsFilter).filter(materialsFilter).filter(priceFilter)
+    setSearchedProducts(filteredProducts)
+    console.log(checked + ' Filterd Products Length: ' + filteredProducts.length + filtersObj.category)
+    // if(checked){
+    // }else{
+    //   setSearchedProducts(products)
+    //   console.log(checked + ' Filterd Products Length: ' + filtersObj.category)
+    // }
+    
+  }
+
+
   function bagsFilter(checked) {
-    if (checked) {
+    selectedFiltersFunction(checked)
+    if ( checked && selectedFilters=== 0 ) {
       const result = products.filter((product) => product.group === 'bags')
       setSearchedProducts(result)
-    } else {
-      setSearchedProducts(products)
+      console.log('New Filter')
+    } else if(checked && selectedFilters > 0) {
+      console.log('Has Filter')
+    } 
+
+    if(!checked) {
+        setSearchedProducts(products)
     }
   }
 
   function homeFilter(checked) {
-    if (checked) {
+    selectedFiltersFunction(checked)
+    if (checked && selectedFilters=== 0 ) {
       const result = products.filter((product) => product.group === 'home')
       setSearchedProducts(result)
-    } else {
+      console.log('New Filter')
+    } else if(checked && selectedFilters > 0){
+      console.log('Has Filter')
+    }
+    if(!checked) {
       setSearchedProducts(products)
     }
   }
@@ -73,8 +147,10 @@ export default function SearchScreen() {
     if (checked) {
       const result = products.filter((product) => product.group === 'lifestyle')
       setSearchedProducts(result)
+      selectedFiltersFunction(true)
     } else {
       setSearchedProducts(products)
+      selectedFiltersFunction(false)
     }
   }
 
@@ -82,8 +158,10 @@ export default function SearchScreen() {
     if (checked) {
       const result = products.filter((product) => product.group === 'gift')
       setSearchedProducts(result)
+      selectedFiltersFunction(true)
     } else {
       setSearchedProducts(products)
+      selectedFiltersFunction(false)
     }
   }
 
@@ -91,8 +169,10 @@ export default function SearchScreen() {
     if (checked) {
       const result = products.filter((product) => product.group === 'storage')
       setSearchedProducts(result)
+      selectedFiltersFunction(true)
     } else {
       setSearchedProducts(products)
+      selectedFiltersFunction(false)
     }
   }
 
@@ -102,8 +182,10 @@ export default function SearchScreen() {
         (product) => product.group === 'accessories'
       )
       setSearchedProducts(result)
+      selectedFiltersFunction(true)
     } else {
       setSearchedProducts(products)
+      selectedFiltersFunction(false)
     }
   }
 
@@ -113,8 +195,10 @@ export default function SearchScreen() {
         (product) => product.material === 'Cotton Canvas'
       )
       setSearchedProducts(result)
+      selectedFiltersFunction(true)
     } else {
       setSearchedProducts(products)
+      selectedFiltersFunction(false)
     }
   }
 
@@ -124,8 +208,10 @@ export default function SearchScreen() {
         (product) => product.material === 'Woven Cotton'
       )
       setSearchedProducts(result)
+      selectedFiltersFunction(true)
     } else {
       setSearchedProducts(products)
+      selectedFiltersFunction(false)
     }
   }
 
@@ -194,7 +280,7 @@ export default function SearchScreen() {
             >
               <p style={{ textTransform: 'uppercase' }}>Filter</p>
               <p style={{ fontSize: '14px', cursor: 'pointer' }}>
-                <u>Clear All</u>
+                <u>{selectedFilters}Clear All</u>
               </p>
             </div>
             <div style={{ borderBottom: 'solid 1px #000' }}>
@@ -226,32 +312,97 @@ export default function SearchScreen() {
                   <Form.Check
                     type='checkbox'
                     label='Bags'
-                    onChange={(e) => bagsFilter(e.target.checked)}
+                    checked={ filtersObj.category === 'bags' ? true : false}
+                    onChange={(e) => {
+                      // bagsFilter(e.target.checked)
+                      if(e.target.checked){
+                        // setFiltersObj({...filtersObj,category:'bags'})
+                        filtersObj.category = 'bags'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        console.log('OBJ :' + filtersObj.category)
+                        // setFiltersObj({...filtersObj,category:''})
+                        filtersObj.category = ''
+                        upadateFilter(e.target.checked)
+                        // setSearchedProducts(products)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='Home'
-                    onChange={(e) => homeFilter(e.target.checked)}
+                    checked={ filtersObj.category === 'home' ? true : false}
+                    onChange={(e) => {
+                      // bagsFilter(e.target.checked)
+                      if(e.target.checked){
+                        filtersObj.category = 'home'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.category = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='Lifestyle'
-                    onChange={(e) => lifestyleFilter(e.target.checked)}
+                    // onChange={(e) => lifestyleFilter(e.target.checked)}
+                    checked={ filtersObj.category === 'lifestyle' ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.category = 'lifestyle'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.category = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='Gift'
-                    onChange={(e) => giftFilter(e.target.checked)}
+                    // onChange={(e) => giftFilter(e.target.checked)}
+                    checked={ filtersObj.category === 'gift' ? true : false}
+                    onChange={(e) => {
+                      // bagsFilter(e.target.checked)
+                      if(e.target.checked){
+                        filtersObj.category = 'gift'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.category = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='Storage'
-                    onChange={(e) => storageFilter(e.target.checked)}
+                    // onChange={(e) => storageFilter(e.target.checked)}
+                    checked={ filtersObj.category === 'storage' ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.category = 'storage'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.category = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='Accessories'
-                    onChange={(e) => accessoriesFilter(e.target.checked)}
+                    // onChange={(e) => accessoriesFilter(e.target.checked)}
+                    checked={ filtersObj.category === 'accessories' ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.category = 'accessories'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.category = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                 </Form.Group>
               </div>
@@ -285,17 +436,47 @@ export default function SearchScreen() {
                   <Form.Check
                     type='checkbox'
                     label='Cotton Canvas'
-                    onChange={(e) => cottonCanvasFilter(e.target.checked)}
+                    // onChange={(e) => cottonCanvasFilter(e.target.checked)}
+                    checked={ filtersObj.material === 'Cotton Canvas' ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.material = 'Cotton Canvas'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.material = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='Woven Cotton'
-                    onChange={(e) => wovenCottonFilter(e.target.checked)}
+                    // onChange={(e) => wovenCottonFilter(e.target.checked)}
+                    checked={ filtersObj.material === 'Woven Cotton' ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.material = 'Woven Cotton'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.material = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='Hemp'
-                    onChange={(e) => hempFilter(e.target.checked)}
+                    // onChange={(e) => hempFilter(e.target.checked)}
+                    checked={ filtersObj.material === 'Hemp' ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.material = 'Hemp'
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.material = ''
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                 </Form.Group>
               </div>
@@ -329,22 +510,70 @@ export default function SearchScreen() {
                   <Form.Check
                     type='checkbox'
                     label='Below &#8377;500'
-                    onChange={(e) => price500Filter(e.target.checked)}
+                    // onChange={(e) => price500Filter(e.target.checked)}
+                    checked={ filtersObj.endingPrice === 500 ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.startingPrice = 0
+                        filtersObj.endingPrice = 500
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.startingPrice = 0
+                        filtersObj.endingPrice = 10000
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='&#8377;501 - &#8377;1000'
-                    onChange={(e) => price1000Filter(e.target.checked)}
+                    // onChange={(e) => price1000Filter(e.target.checked)}
+                    checked={ filtersObj.endingPrice === 1000 ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.startingPrice = 500
+                        filtersObj.endingPrice = 1000
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.startingPrice = 0
+                        filtersObj.endingPrice = 10000
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='&#8377;1001 - &#8377;1500'
-                    onChange={(e) => price1500Filter(e.target.checked)}
+                    // onChange={(e) => price1500Filter(e.target.checked)}
+                    checked={ filtersObj.endingPrice === 1500 ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.startingPrice = 1000
+                        filtersObj.endingPrice = 1500
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.startingPrice = 0
+                        filtersObj.endingPrice = 10000
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                   <Form.Check
                     type='checkbox'
                     label='&#8377;1501 - &#8377;2000'
-                    onChange={(e) => price2000Filter(e.target.checked)}
+                    // onChange={(e) => price2000Filter(e.target.checked)}
+                    checked={ filtersObj.endingPrice === 2000 ? true : false}
+                    onChange={(e) => {
+                      if(e.target.checked){
+                        filtersObj.startingPrice = 1500
+                        filtersObj.endingPrice = 2000
+                        upadateFilter(e.target.checked)
+                      }else{
+                        filtersObj.startingPrice = 0
+                        filtersObj.endingPrice = 10000
+                        upadateFilter(e.target.checked)
+                      }
+                    }}
                   />
                 </Form.Group>
               </div>
