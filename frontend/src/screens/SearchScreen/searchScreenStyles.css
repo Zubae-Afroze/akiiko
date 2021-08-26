@@ -73,7 +73,9 @@
 }
 
 .search-screen__filter-open {
-  position: absolute;
+  position: fixed;
+  top: 120px;
+  left: 2px;
   padding: 5px;
   background-color: #fefaef;
   border: 1px solid #6b584c4d;
@@ -99,8 +101,9 @@
 
 @media only screen and (max-width: 500px) {
   .search-screen__filter-open {
-    position: absolute;
+    position: fixed;
     top: 115px;
+    left: 2px;
   }
 
   .search-screen__filter-open.lni-chevron-right {
