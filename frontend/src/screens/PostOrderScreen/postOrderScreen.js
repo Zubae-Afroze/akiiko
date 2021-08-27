@@ -18,6 +18,14 @@ export default function PostOrderScreen() {
             'transaction_id': ''
         });`}
         </script>
+        <script>
+          {`gtag('event', 'conversion', {
+              'send_to': 'AW-322846655/qjvTCM2r7O8CEL__-JkB',
+              'value': 1.0,
+              'currency': 'INR',
+              'transaction_id': ''
+          });`}
+        </script>
       </Helmet>
       <div className='successBGimage'>
         <div className='order-success-msg-wraper f-f-l'>
