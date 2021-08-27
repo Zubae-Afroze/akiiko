@@ -17,14 +17,13 @@ let filtersObj = {
 }
 
 export default function SearchScreen() {
-
   const searchInput = createRef()
 
   const [searchValue, setSearchvalue] = useState('')
 
-  useEffect(() => {
-    searchInput.current.focus()
-  }, [searchInput])
+  // useEffect(() => {
+  //   searchInput.current.focus()
+  // }, [searchInput])
 
   const [open, setOpen] = useState(false)
   const [categoryDrop, setCategoryDrop] = useState(false)
@@ -41,14 +40,13 @@ export default function SearchScreen() {
   //   startingPrice: 0,
   //   endingPrice: 100000,
   // })
-  
 
   const [searchedProducts, setSearchedProducts] = useState([])
 
   const filterOpenHandler = () => {
     const opn = open
     setOpen(!opn)
-    console.log('Products Length: '+products.length);
+    console.log('Products Length: ' + products.length)
   }
 
   useEffect(() => {
@@ -68,207 +66,215 @@ export default function SearchScreen() {
       })
   }, [])
 
-  function selectedFiltersFunction(selected){
-    if(selected){
-        setSelectedFilters((preValue) => {
-          return preValue + 1;
-        })
-    }else{
-      setSelectedFilters((preValue)  => {
-        return preValue - 1;
-      })
+  // function selectedFiltersFunction(selected){
+  //   if(selected){
+  //       setSelectedFilters((preValue) => {
+  //         return preValue + 1;
+  //       })
+  //   }else{
+  //     setSelectedFilters((preValue)  => {
+  //       return preValue - 1;
+  //     })
+  //   }
+  // }
+
+  function categorysFilter(product) {
+    if (filtersObj.category === '') {
+      console.log('No Category: ' + filtersObj.category)
+      return true
+    } else {
+      console.log('Has Category: ' + filtersObj.category)
+      return product.group === filtersObj.category
     }
   }
 
-
-  function categorysFilter(product){
-    if(filtersObj.category === ''){
-      console.log('No Category: '+ filtersObj.category)
-      return true;
-    } else{
-      console.log('Has Category: '+ filtersObj.category)
-      return  product.group === filtersObj.category;
-    }
+  function materialsFilter(product) {
+    if (filtersObj.material === '') return true
+    return product.material === filtersObj.material
   }
 
-  function materialsFilter(product){
-    if(filtersObj.material === '') return true;
-    return product.material === filtersObj.material;
+  function priceFilter(product) {
+    return (
+      product.mrpPrice >= filtersObj.startingPrice &&
+      product.mrpPrice <= filtersObj.endingPrice
+    )
   }
 
-  function priceFilter(product){
-    return product.mrpPrice >= filtersObj.startingPrice && product.mrpPrice <= filtersObj.endingPrice
-  }
-
-
-  function upadateFilter(checked){
-    let filteredProducts = products.filter(categorysFilter).filter(materialsFilter).filter(materialsFilter).filter(priceFilter)
+  function upadateFilter(checked) {
+    let filteredProducts = products
+      .filter(categorysFilter)
+      .filter(materialsFilter)
+      .filter(materialsFilter)
+      .filter(priceFilter)
     setSearchedProducts(filteredProducts)
-    console.log(checked + ' Filterd Products Length: ' + filteredProducts.length + filtersObj.category)
+    console.log(
+      checked +
+        ' Filterd Products Length: ' +
+        filteredProducts.length +
+        filtersObj.category
+    )
     // if(checked){
     // }else{
     //   setSearchedProducts(products)
     //   console.log(checked + ' Filterd Products Length: ' + filtersObj.category)
     // }
-    
   }
 
+  // function bagsFilter(checked) {
+  //   selectedFiltersFunction(checked)
+  //   if ( checked && selectedFilters=== 0 ) {
+  //     const result = products.filter((product) => product.group === 'bags')
+  //     setSearchedProducts(result)
+  //     console.log('New Filter')
+  //   } else if(checked && selectedFilters > 0) {
+  //     console.log('Has Filter')
+  //   }
 
-  function bagsFilter(checked) {
-    selectedFiltersFunction(checked)
-    if ( checked && selectedFilters=== 0 ) {
-      const result = products.filter((product) => product.group === 'bags')
-      setSearchedProducts(result)
-      console.log('New Filter')
-    } else if(checked && selectedFilters > 0) {
-      console.log('Has Filter')
-    } 
+  //   if(!checked) {
+  //       setSearchedProducts(products)
+  //   }
+  // }
 
-    if(!checked) {
-        setSearchedProducts(products)
-    }
-  }
+  // function homeFilter(checked) {
+  //   selectedFiltersFunction(checked)
+  //   if (checked && selectedFilters=== 0 ) {
+  //     const result = products.filter((product) => product.group === 'home')
+  //     setSearchedProducts(result)
+  //     console.log('New Filter')
+  //   } else if(checked && selectedFilters > 0){
+  //     console.log('Has Filter')
+  //   }
+  //   if(!checked) {
+  //     setSearchedProducts(products)
+  //   }
+  // }
 
-  function homeFilter(checked) {
-    selectedFiltersFunction(checked)
-    if (checked && selectedFilters=== 0 ) {
-      const result = products.filter((product) => product.group === 'home')
-      setSearchedProducts(result)
-      console.log('New Filter')
-    } else if(checked && selectedFilters > 0){
-      console.log('Has Filter')
-    }
-    if(!checked) {
-      setSearchedProducts(products)
-    }
-  }
+  // function lifestyleFilter(checked) {
+  //   if (checked) {
+  //     const result = products.filter((product) => product.group === 'lifestyle')
+  //     setSearchedProducts(result)
+  //     selectedFiltersFunction(true)
+  //   } else {
+  //     setSearchedProducts(products)
+  //     selectedFiltersFunction(false)
+  //   }
+  // }
 
-  function lifestyleFilter(checked) {
-    if (checked) {
-      const result = products.filter((product) => product.group === 'lifestyle')
-      setSearchedProducts(result)
-      selectedFiltersFunction(true)
-    } else {
-      setSearchedProducts(products)
-      selectedFiltersFunction(false)
-    }
-  }
+  // function giftFilter(checked) {
+  //   if (checked) {
+  //     const result = products.filter((product) => product.group === 'gift')
+  //     setSearchedProducts(result)
+  //     selectedFiltersFunction(true)
+  //   } else {
+  //     setSearchedProducts(products)
+  //     selectedFiltersFunction(false)
+  //   }
+  // }
 
-  function giftFilter(checked) {
-    if (checked) {
-      const result = products.filter((product) => product.group === 'gift')
-      setSearchedProducts(result)
-      selectedFiltersFunction(true)
-    } else {
-      setSearchedProducts(products)
-      selectedFiltersFunction(false)
-    }
-  }
+  // function storageFilter(checked) {
+  //   if (checked) {
+  //     const result = products.filter((product) => product.group === 'storage')
+  //     setSearchedProducts(result)
+  //     selectedFiltersFunction(true)
+  //   } else {
+  //     setSearchedProducts(products)
+  //     selectedFiltersFunction(false)
+  //   }
+  // }
 
-  function storageFilter(checked) {
-    if (checked) {
-      const result = products.filter((product) => product.group === 'storage')
-      setSearchedProducts(result)
-      selectedFiltersFunction(true)
-    } else {
-      setSearchedProducts(products)
-      selectedFiltersFunction(false)
-    }
-  }
+  // function accessoriesFilter(checked) {
+  //   if (checked) {
+  //     const result = products.filter(
+  //       (product) => product.group === 'accessories'
+  //     )
+  //     setSearchedProducts(result)
+  //     selectedFiltersFunction(true)
+  //   } else {
+  //     setSearchedProducts(products)
+  //     selectedFiltersFunction(false)
+  //   }
+  // }
 
-  function accessoriesFilter(checked) {
-    if (checked) {
-      const result = products.filter(
-        (product) => product.group === 'accessories'
-      )
-      setSearchedProducts(result)
-      selectedFiltersFunction(true)
-    } else {
-      setSearchedProducts(products)
-      selectedFiltersFunction(false)
-    }
-  }
+  // function cottonCanvasFilter(checked) {
+  //   if (checked) {
+  //     const result = products.filter(
+  //       (product) => product.material === 'Cotton Canvas'
+  //     )
+  //     setSearchedProducts(result)
+  //     selectedFiltersFunction(true)
+  //   } else {
+  //     setSearchedProducts(products)
+  //     selectedFiltersFunction(false)
+  //   }
+  // }
 
-  function cottonCanvasFilter(checked) {
-    if (checked) {
-      const result = products.filter(
-        (product) => product.material === 'Cotton Canvas'
-      )
-      setSearchedProducts(result)
-      selectedFiltersFunction(true)
-    } else {
-      setSearchedProducts(products)
-      selectedFiltersFunction(false)
-    }
-  }
+  // function wovenCottonFilter(checked) {
+  //   if (checked) {
+  //     const result = products.filter(
+  //       (product) => product.material === 'Woven Cotton'
+  //     )
+  //     setSearchedProducts(result)
+  //     selectedFiltersFunction(true)
+  //   } else {
+  //     setSearchedProducts(products)
+  //     selectedFiltersFunction(false)
+  //   }
+  // }
 
-  function wovenCottonFilter(checked) {
-    if (checked) {
-      const result = products.filter(
-        (product) => product.material === 'Woven Cotton'
-      )
-      setSearchedProducts(result)
-      selectedFiltersFunction(true)
-    } else {
-      setSearchedProducts(products)
-      selectedFiltersFunction(false)
-    }
-  }
+  // function hempFilter(checked) {
+  //   if (checked) {
+  //     const result = products.filter((product) => product.material === 'Hemp')
+  //     setSearchedProducts(result)
+  //   } else {
+  //     setSearchedProducts(products)
+  //   }
+  // }
 
-  function hempFilter(checked) {
-    if (checked) {
-      const result = products.filter((product) => product.material === 'Hemp')
-      setSearchedProducts(result)
-    } else {
-      setSearchedProducts(products)
-    }
-  }
+  // function price500Filter(checked) {
+  //   if (checked) {
+  //     const result = products.filter((product) => product.mrpPrice < 500)
+  //     setSearchedProducts(result)
+  //   } else {
+  //     setSearchedProducts(products)
+  //   }
+  // }
 
-  function price500Filter(checked) {
-    if (checked) {
-      const result = products.filter((product) => product.mrpPrice < 500)
-      setSearchedProducts(result)
-    } else {
-      setSearchedProducts(products)
-    }
-  }
+  // function price1000Filter(checked) {
+  //   if (checked) {
+  //     const result = products.filter((product) => product.mrpPrice < 1000)
+  //     setSearchedProducts(result)
+  //   } else {
+  //     setSearchedProducts(products)
+  //   }
+  // }
 
-  function price1000Filter(checked) {
-    if (checked) {
-      const result = products.filter((product) => product.mrpPrice < 1000)
-      setSearchedProducts(result)
-    } else {
-      setSearchedProducts(products)
-    }
-  }
+  // function price1500Filter(checked) {
+  //   if (checked) {
+  //     const result = products.filter(
+  //       (product) => product.mrpPrice < 1500 && product.mrpPrice > 1000
+  //     )
+  //     setSearchedProducts(result)
+  //   } else {
+  //     setSearchedProducts(products)
+  //   }
+  // }
 
-  function price1500Filter(checked) {
-    if (checked) {
-      const result = products.filter(
-        (product) => product.mrpPrice < 1500 && product.mrpPrice > 1000
-      )
-      setSearchedProducts(result)
-    } else {
-      setSearchedProducts(products)
-    }
-  }
-
-  function price2000Filter(checked) {
-    if (checked) {
-      const result = products.filter(
-        (product) => product.mrpPrice < 2000 && product.mrpPrice > 1500
-      )
-      setSearchedProducts(result)
-    } else {
-      setSearchedProducts(products)
-    }
-  }
+  // function price2000Filter(checked) {
+  //   if (checked) {
+  //     const result = products.filter(
+  //       (product) => product.mrpPrice < 2000 && product.mrpPrice > 1500
+  //     )
+  //     setSearchedProducts(result)
+  //   } else {
+  //     setSearchedProducts(products)
+  //   }
+  // }
 
   return (
     <>
       <span className='search-screen__filter-open' onClick={filterOpenHandler}>
         {/* <i className='lni lni-chevron-right'></i> */}
-        <i class="fas fa-filter"></i>
+        <i class='fas fa-filter'></i>
       </span>
       <Sidebar
         children='test'
@@ -312,14 +318,14 @@ export default function SearchScreen() {
                   <Form.Check
                     type='checkbox'
                     label='Bags'
-                    checked={ filtersObj.category === 'bags' ? true : false}
+                    checked={filtersObj.category === 'bags' ? true : false}
                     onChange={(e) => {
                       // bagsFilter(e.target.checked)
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         // setFiltersObj({...filtersObj,category:'bags'})
                         filtersObj.category = 'bags'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         console.log('OBJ :' + filtersObj.category)
                         // setFiltersObj({...filtersObj,category:''})
                         filtersObj.category = ''
@@ -331,13 +337,13 @@ export default function SearchScreen() {
                   <Form.Check
                     type='checkbox'
                     label='Home'
-                    checked={ filtersObj.category === 'home' ? true : false}
+                    checked={filtersObj.category === 'home' ? true : false}
                     onChange={(e) => {
                       // bagsFilter(e.target.checked)
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.category = 'home'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.category = ''
                         upadateFilter(e.target.checked)
                       }
@@ -347,12 +353,12 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Lifestyle'
                     // onChange={(e) => lifestyleFilter(e.target.checked)}
-                    checked={ filtersObj.category === 'lifestyle' ? true : false}
+                    checked={filtersObj.category === 'lifestyle' ? true : false}
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.category = 'lifestyle'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.category = ''
                         upadateFilter(e.target.checked)
                       }
@@ -362,13 +368,13 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Gift'
                     // onChange={(e) => giftFilter(e.target.checked)}
-                    checked={ filtersObj.category === 'gift' ? true : false}
+                    checked={filtersObj.category === 'gift' ? true : false}
                     onChange={(e) => {
                       // bagsFilter(e.target.checked)
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.category = 'gift'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.category = ''
                         upadateFilter(e.target.checked)
                       }
@@ -378,12 +384,12 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Storage'
                     // onChange={(e) => storageFilter(e.target.checked)}
-                    checked={ filtersObj.category === 'storage' ? true : false}
+                    checked={filtersObj.category === 'storage' ? true : false}
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.category = 'storage'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.category = ''
                         upadateFilter(e.target.checked)
                       }
@@ -393,12 +399,14 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Accessories'
                     // onChange={(e) => accessoriesFilter(e.target.checked)}
-                    checked={ filtersObj.category === 'accessories' ? true : false}
+                    checked={
+                      filtersObj.category === 'accessories' ? true : false
+                    }
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.category = 'accessories'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.category = ''
                         upadateFilter(e.target.checked)
                       }
@@ -437,12 +445,14 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Cotton Canvas'
                     // onChange={(e) => cottonCanvasFilter(e.target.checked)}
-                    checked={ filtersObj.material === 'Cotton Canvas' ? true : false}
+                    checked={
+                      filtersObj.material === 'Cotton Canvas' ? true : false
+                    }
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.material = 'Cotton Canvas'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.material = ''
                         upadateFilter(e.target.checked)
                       }
@@ -452,12 +462,14 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Woven Cotton'
                     // onChange={(e) => wovenCottonFilter(e.target.checked)}
-                    checked={ filtersObj.material === 'Woven Cotton' ? true : false}
+                    checked={
+                      filtersObj.material === 'Woven Cotton' ? true : false
+                    }
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.material = 'Woven Cotton'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.material = ''
                         upadateFilter(e.target.checked)
                       }
@@ -467,12 +479,12 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Hemp'
                     // onChange={(e) => hempFilter(e.target.checked)}
-                    checked={ filtersObj.material === 'Hemp' ? true : false}
+                    checked={filtersObj.material === 'Hemp' ? true : false}
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.material = 'Hemp'
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.material = ''
                         upadateFilter(e.target.checked)
                       }
@@ -511,13 +523,13 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='Below &#8377;500'
                     // onChange={(e) => price500Filter(e.target.checked)}
-                    checked={ filtersObj.endingPrice === 500 ? true : false}
+                    checked={filtersObj.endingPrice === 500 ? true : false}
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.startingPrice = 0
                         filtersObj.endingPrice = 500
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.startingPrice = 0
                         filtersObj.endingPrice = 10000
                         upadateFilter(e.target.checked)
@@ -528,13 +540,13 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='&#8377;501 - &#8377;1000'
                     // onChange={(e) => price1000Filter(e.target.checked)}
-                    checked={ filtersObj.endingPrice === 1000 ? true : false}
+                    checked={filtersObj.endingPrice === 1000 ? true : false}
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.startingPrice = 500
                         filtersObj.endingPrice = 1000
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.startingPrice = 0
                         filtersObj.endingPrice = 10000
                         upadateFilter(e.target.checked)
@@ -545,13 +557,13 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='&#8377;1001 - &#8377;1500'
                     // onChange={(e) => price1500Filter(e.target.checked)}
-                    checked={ filtersObj.endingPrice === 1500 ? true : false}
+                    checked={filtersObj.endingPrice === 1500 ? true : false}
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.startingPrice = 1000
                         filtersObj.endingPrice = 1500
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.startingPrice = 0
                         filtersObj.endingPrice = 10000
                         upadateFilter(e.target.checked)
@@ -562,13 +574,13 @@ export default function SearchScreen() {
                     type='checkbox'
                     label='&#8377;1501 - &#8377;2000'
                     // onChange={(e) => price2000Filter(e.target.checked)}
-                    checked={ filtersObj.endingPrice === 2000 ? true : false}
+                    checked={filtersObj.endingPrice === 2000 ? true : false}
                     onChange={(e) => {
-                      if(e.target.checked){
+                      if (e.target.checked) {
                         filtersObj.startingPrice = 1500
                         filtersObj.endingPrice = 2000
                         upadateFilter(e.target.checked)
-                      }else{
+                      } else {
                         filtersObj.startingPrice = 0
                         filtersObj.endingPrice = 10000
                         upadateFilter(e.target.checked)
@@ -601,6 +613,7 @@ export default function SearchScreen() {
         setSearchedProducts={setSearchedProducts}
         products={products}
         open={open}
+        focus={false}
       />
       <div style={{ height: 'auto', width: '100vw' }}>
         {loading && (
@@ -642,6 +655,7 @@ function SearchBar({
   setSearchedProducts,
   products,
   open,
+  focus,
 }) {
   return (
     <div className='search-fixed'>
@@ -665,9 +679,9 @@ function SearchBar({
               type='text'
               className='form-control form-input f-f'
               placeholder='Search anything...'
+              autoFocus={false}
               value={searchValue}
               onChange={onSearch}
-              autoFocus={false}
               disabled={open}
             />
             <span
