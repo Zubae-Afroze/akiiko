@@ -16,8 +16,8 @@ const TestScreen = () => {
         <HomeScreenBags />
         <HomeScreenHome />
         <HomeScreenStorage />
-        <Footer />
       </Container>
+      <Footer />
     </>
   )
 }
