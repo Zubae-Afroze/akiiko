@@ -37,6 +37,7 @@ import PostOrderScreen from './screens/PostOrderScreen/postOrderScreen'
 import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex'
 import SearchScreen from './screens/SearchScreen/SearchScreen'
 import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
+import TestScreen from './screens/TestScreen/TestScreen'
 // import ReactGa from 'react-ga'
 // import { getUserDetails } from './actions/actionUsers'
 // import { useSelector, useDispatch } from 'react-redux'
@@ -155,6 +156,7 @@ const App = () => {
         <Route path='/TermsofService' render={() => <Terms />} />
         <Route path='/Refund' render={() => <RefundPolicy />} />
         <Route path='/PrivacyStatement' render={() => <PrivacyStatement />} />
+        <Route path='/testscreen' render={() => <TestScreen />} />
 
         <Route path='/' component={HomeScreen} exact />
       </Switch>
