@@ -286,7 +286,7 @@ export default function SearchScreen() {
             >
               <p style={{ textTransform: 'uppercase' }}>Filter</p>
               <p style={{ fontSize: '14px', cursor: 'pointer' }}>
-                <u>{selectedFilters}Clear All</u>
+                <u></u>
               </p>
             </div>
             <div style={{ borderBottom: 'solid 1px #000' }}>
