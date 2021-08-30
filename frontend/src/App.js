@@ -43,33 +43,6 @@ import TestScreen from './screens/TestScreen/TestScreen'
 // import { useSelector, useDispatch } from 'react-redux'
 
 const App = () => {
-  // const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(getUserDetails('profile'))
-  // }, [dispatch])
-
-  // const profileDetails = useSelector((state) => state.profile.userProfile)
-
-  // useEffect(() => {
-  //   if (profileDetails) {
-  //     ReactGa.initialize('UA-205864671-1', {
-  //       debug: true,
-  //       gaOptions: {
-  //         userId: profileDetails.email,
-  //       },
-  //     })
-  //   } else {
-  //     ReactGa.initialize('UA-205864671-1', {
-  //       debug: true,
-  //       gaOptions: {
-  //         userId: 'anonymous',
-  //       },
-  //     })
-  //   }
-  //   ReactGa.pageview(window.location.pathname + window.location.search)
-  // }, [profileDetails])
-
   return (
     <Router>
       <ScrollToTop />
