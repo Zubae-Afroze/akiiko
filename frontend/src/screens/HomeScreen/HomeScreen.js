@@ -88,7 +88,7 @@ class HomeScreen extends React.Component {
                 </h1>
                 <div className='hero-sub-text'></div>
                 <div className='hero-button'>
-                  <Link to='/allproducts/productlist/bags'>
+                  <Link to='/search'>
                     <button>Shop Now</button>
                   </Link>
                 </div>
