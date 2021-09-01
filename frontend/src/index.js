@@ -15,6 +15,7 @@ import { ReactReduxFirebaseProvider, isLoaded } from 'react-redux-firebase'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/analytics'
+import 'firebase/storage'
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCVvHJuSGIGfx3Jkehs6idGg0BnSLzswqs',
@@ -28,6 +29,8 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 firebase.analytics()
+
+export const storage = firebase.storage()
 
 const profileConfig = {
   userProfile: null,
