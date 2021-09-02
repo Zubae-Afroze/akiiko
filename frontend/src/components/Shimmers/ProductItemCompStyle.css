@@ -1,0 +1,236 @@
+.skeleton {
+  offset: 0.5;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.skeleton-text {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 0.25rem;
+  border-radius: 0.125rem;
+}
+
+.title-text-comp {
+  width: 100%;
+  height: 50px;
+  background-color: #fefaef;
+  overflow: hidden;
+}
+
+.price-text-comp {
+  width: 100%;
+  height: 50px;
+  background-color: #f6f1ea;
+  overflow: hidden;
+}
+
+.shimmer {
+  offset: 0.6;
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+.product-item-card {
+  /* width: 230px;
+  height: 322px; */
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  /* margin: 10px; */
+  overflow: hidden;
+  margin: 5px;
+  /* min-width: 322px; */
+}
+
+.product-item-card:last-child {
+  margin-right: 0;
+}
+
+.product-item-card-img-wrapper {
+  position: relative;
+  height: 70%;
+  border: solid rgb(199, 199, 199) 1px;
+  /* min-height: 200px; */
+}
+.product-item-card-img-wrapper img {
+  /* width: 230px;
+  height: 230px; */
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  margin: 0;
+  transition: opacity 1.5s ease-in-out;
+  background-color: #f6f1ea;
+}
+
+.quick-view-comp {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25px;
+  background-color: rgba(255, 255, 255, 0.616);
+  font-family: 'rutan';
+  text-align: center;
+}
+
+.best-seller-comp {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  /* width: 30%; */
+  /* height: 22px; */
+
+  background-color: rgba(255, 255, 255, 0.616);
+  font-family: 'rutan';
+  text-align: center;
+  border-radius: 2px;
+  padding-top: 1px;
+  font-size: 14px;
+  padding: 3px 5px;
+}
+
+.product-item-card-title-wrapper {
+  /* width: 230px;
+  height: 41px; */
+  width: 100%;
+  height: 15%;
+  /* height: 40px; */
+  /* padding-top: 15px; */
+  padding-left: 8px;
+  padding-right: 2px;
+  display: flex;
+  align-items: center;
+  /* padding: 4% 5%; */
+  font-family: 'rutan';
+  font-size: 14px;
+  text-transform: uppercase;
+  color: #3e3331;
+  background-color: #fefaef;
+}
+
+.product-item-card-price-wrapper {
+  /* width: 230px;
+  height: 51px; */
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  /* height: 40px; */
+  padding-top: 15px;
+  padding-left: 8px;
+  padding: 4% 5%;
+  font-family: 'rutanMedium';
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #3e3331;
+  background-color: #f6f1ea;
+  transition: all 500ms ease-in-out;
+}
+
+.product-item-card-price-wrapper:hover {
+  background-color: #977257;
+  color: #f6f1ea;
+}
+
+.view-price-add-to-cart-comp {
+  overflow: hidden;
+}
+.view-price-comp,
+.add-to-cart-comp {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: all 500ms ease-in-out;
+}
+.view-price-comp {
+  height: auto;
+  opacity: 1;
+  width: auto;
+}
+.add-to-cart-comp {
+  color: #f6f1ea;
+  height: 0;
+  opacity: 0;
+  width: 0;
+  font-family: 'rutan';
+  text-transform: none;
+}
+.product-item-card-price-wrapper:hover .view-price-comp {
+  height: 0px;
+  opacity: 0;
+  width: 0px;
+}
+.product-item-card-price-wrapper:hover .add-to-cart-comp {
+  height: auto;
+  opacity: 1;
+  width: auto;
+}
+
+.product-item-card-price-wrapper-MOB {
+  display: none;
+  width: 100%;
+  height: 15%;
+  padding-top: 15px;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding: 4% 5%;
+  font-family: 'rutanMedium';
+  text-transform: uppercase;
+  color: #3e3331;
+  background-color: #f6f1ea;
+  transition: all 500ms ease-in-out;
+}
+
+.view-price-MOB {
+  font-family: 'rutanMedium';
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-visible {
+  opacity: 1;
+}
+.image-hidden {
+  opacity: 0;
+}
+
+/* 
+
+  IPHONE SE 320 = 147 x 229
+
+  MOB M 375 = 
+
+*/
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsla(202, 11%, 86%, 0.801);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+@media (max-width: 1071px) {
+  .product-item-card-title-wrapper {
+    height: 48px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .product-item-card-price-wrapper {
+    display: none;
+  }
+
+  .product-item-card-price-wrapper-MOB {
+    display: block;
+  }
+}
+
+@media (max-width: 775px) {
+  .product-item-card-title-wrapper {
+    font-size: 11px;
+    height: 45px;
+  }
+}

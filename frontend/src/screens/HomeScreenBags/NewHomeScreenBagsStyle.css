@@ -1,0 +1,126 @@
+.bags-comp-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.bags-comp-wrapper .product-item-card {
+  flex-basis: 19%;
+  min-width: 80px;
+  margin: 0;
+}
+
+.bags-comp-wrapper .product-item-card-title-wrapper {
+  height: 40px;
+}
+
+.bags-title-comp {
+  font-family: 'rutanLight';
+  color: #3a2f2d;
+  text-align: left;
+  font-size: 82px;
+  letter-spacing: 13px;
+  margin-top: 60px;
+}
+
+.bags-header-comp {
+  font-family: 'rutanLight';
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+}
+
+.bags-header-comp span {
+  padding-right: 10%;
+  align-self: flex-end;
+}
+
+.bags-header-shop-btn {
+  /* margin-top: 20px; */
+  align-self: flex-end;
+  width: 360px;
+  height: 60px;
+  background-color: #977257;
+  color: white;
+  border: none;
+  font-family: 'rutanMedium';
+  text-transform: uppercase;
+}
+
+.bags-footer-shop-btn {
+  width: 100%;
+  height: 55px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.bags-footer-shop-btn button {
+  width: 60%;
+  height: 100%;
+  background-color: #977257;
+  color: white;
+  border: none;
+  font-family: 'rutanMedium';
+  text-transform: uppercase;
+}
+
+@media (max-width: 928px) {
+  .bags-comp-wrapper .product-item-card {
+    flex-basis: 18.5%;
+    font-size: 12px;
+  }
+}
+
+/* MOB SCREEN STARTS */
+@media (max-width: 430px) {
+  .bags-comp-wrapper .product-item-card {
+    flex-basis: 48%;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .bags-comp-wrapper .product-item-card:last-child {
+    display: none;
+  }
+
+  .bags-title-comp {
+    font-size: 250%;
+  }
+
+  .bags-header-comp span {
+    padding: 5px;
+    padding-left: 0;
+  }
+
+  .bags-header-shop-btn {
+    display: none;
+  }
+
+  .bags-footer-shop-btn {
+    display: flex;
+  }
+}
+
+@media (max-width: 360px) {
+  .bags-comp-wrapper .product-item-card {
+    flex-basis: 46.5%;
+    font-size: 12px;
+  }
+  .bags-comp-wrapper .product-item-card:last-child {
+    display: none;
+  }
+}
+/* 
+@media (max-width: 918px) {
+  .bags-comp-wrapper .product-item-card {
+    flex-basis: 16%;
+  }
+}
+
+@media (max-width: 768px) {
+  .bags-comp-wrapper .product-item-card {
+    flex-basis: 18%;
+  }
+} */

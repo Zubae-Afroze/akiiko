@@ -6,11 +6,13 @@ import { Link } from 'react-router-dom'
 
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
+import ProductItemComp from '../../components/Shimmers/ProductItemComp'
 
 import axios from 'axios'
 
 //import HomeScreenStorageProducts from '../../assets/products/HomeScreenStorageProducts';
 import './HomeScreenStorage.css'
+import './NewHomeScreenStorageStyle.css'
 
 const HomeScreenWorkout = () => {
   const handleMouseEnter = (product) => {
@@ -53,7 +55,63 @@ const HomeScreenWorkout = () => {
   //const HomeScreenStorageProducts = []
 
   return (
-    <div className='home-screen-component'>
+    <NewComp />
+  )
+
+
+  function NewComp(){
+    return(
+      <>
+      <div className='storage-title-comp'>
+        STORAGE
+      </div>
+      <div className='storage-header-comp'>
+        <span>
+        A thoughtful range of organisers and storage bags to compliment and
+            increase the functionality of your home. Simplistic and warm, the
+            colour tones and minimal design elevate the mood of your personal
+            spaces and allow for easy declaring.
+        </span>
+        <button className='storage-header-shop-btn'>
+          SHOP ALL
+        </button>
+      </div>
+
+      <div style={{height: '20px'}}/>
+
+        <div className='storage-bags-comp-main-content-wrapper'>
+
+          <img className='storage-flex-img-wrapper'
+            src={`/images/home_screen_images/HomeScreenStorageHero.jpg`}
+            alt='home_hero_img'
+          />
+
+          <div className='storage-bags-comp'>
+
+          {
+            storage && (
+              storage.map((product) => (
+                <ProductItemComp product={product}/>
+              ))
+            )
+          }
+          </div>
+        </div>
+        
+        <div className='storage-footer-shop-btn'>
+          <button>
+            SHOP ALL
+          </button>
+        </div>
+        <div style={{height:'100px'}} />
+      </>
+    );
+  }
+
+  
+  function OldComp(){
+    return(
+      <div className='home-screen-component'>
       <Row className='home-wrapper workout-cont'>
         <Col sm={3} className='home-button-placement'>
           <Link to='/allproducts/productlist/storage'>
@@ -145,6 +203,8 @@ const HomeScreenWorkout = () => {
         </Link>
       </div>
     </div>
-  )
+    );
+  }
+
 }
 export default HomeScreenWorkout

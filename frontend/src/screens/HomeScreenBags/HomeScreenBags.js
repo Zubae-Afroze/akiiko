@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
+import ProductItemComp from '../../components/Shimmers/ProductItemComp'
+
 //Action
 //import { actionListHomeBags } from '../../actions/actionHomeBags'
 
@@ -13,6 +15,7 @@ import axios from 'axios'
 
 //import HomeScreenBagsProducts from '../../assets/products/HomeScreenBagsProducts';
 import './HomeScreenBags.css'
+import './NewHomeScreenBagsStyle.css'
 
 const HomeScreenBags = () => {
   const handleMouseEnter = (product) => {
@@ -54,7 +57,50 @@ const HomeScreenBags = () => {
   //const HomeScreenBagsProducts = []
 
   return (
-    <div>
+    <NewComp />
+  )
+
+  function NewComp(){
+    return(
+      <>
+      <div className='bags-title-comp'>
+        BAGS
+      </div>
+      <div className='bags-header-comp'>
+        <span>
+          A delightful range of sustainable bags that are designed to perfection. Minimal, yet classic silhouettes to compliment just about every look, multipurpose & eye-catching.
+        </span>
+        <button className='bags-header-shop-btn'>
+          SHOP ALL
+        </button>
+      </div>
+      <div style={{height: '20px'}}/>
+        {
+          bags && (
+            <div className='bags-comp-wrapper'>
+              {
+                bags.map((product) => (
+                  <ProductItemComp product={product}/>
+                ))
+              }
+            </div>
+          )
+        }
+
+        <div className='bags-footer-shop-btn'>
+          <button>
+            SHOP ALL
+          </button>
+        </div>
+
+      </>
+    );
+  }
+
+
+  function OldComp(){
+    return(
+      <div>
       <Row className='women-wrapper'>
         <Col sm={9} className='women-wrap'>
           <h2 className='home-title women-title'>BAGS </h2>
@@ -89,6 +135,7 @@ const HomeScreenBags = () => {
             >
               <Link to={`/product/${product._id}`}>
                 <Col lg={2.6} className='women-shop-bag-container'>
+                  {/* <ProductItemComp /> */}
                   <div>
                     <div className='women-card-image'>
                       <div className='women-img-wrap'>
@@ -137,7 +184,9 @@ const HomeScreenBags = () => {
         </Link>
       </div>
     </div>
-  )
+    );
+  }
 }
+
 
 export default HomeScreenBags

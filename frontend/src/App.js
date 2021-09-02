@@ -37,6 +37,8 @@ import PostOrderScreen from './screens/PostOrderScreen/postOrderScreen'
 import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex'
 import SearchScreen from './screens/SearchScreen/SearchScreen'
 import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
+
+import ProductTestScreen from './components/Shimmers/ProductTestScreen'
 // import ReactGa from 'react-ga'
 // import { getUserDetails } from './actions/actionUsers'
 // import { useSelector, useDispatch } from 'react-redux'
@@ -74,6 +76,9 @@ const App = () => {
       <ScrollToTop />
       <Header />
       <Switch>
+
+        <Route path='/producttest' render={() => <ProductTestScreen />} />
+
         <Route path='/orders/:orderId' render={() => <OrderSummaryScreen />} />
 
         <Route path='/search' render={() => <SearchScreen />} />

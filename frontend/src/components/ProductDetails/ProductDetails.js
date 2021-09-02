@@ -15,6 +15,8 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import CartModal from './CartModal'
 import Footer from '../Footer/Footer'
 
+import ProductItemComp from '../Shimmers/ProductItemComp'
+
 import TopPopUpComp , {showTopPopUp} from '../TopPopUp/TopPopUpComp'
 
 //import { ToastContainer, toast } from 'react-toastify'
@@ -187,17 +189,6 @@ const ProductDetails = () => {
         <h2>{error}</h2>
       ) : product.productId ? (
         <Container>
-          {/* <ToastContainer
-            position='top-center'
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          /> */}
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>
@@ -218,6 +209,7 @@ const ProductDetails = () => {
                   {product.images.map((prod, index) => (
                     <li key={index}>
                       <img
+                      className='maginfier-shimmer'
                         onClick={() => setImageSrc(prod)}
                         src={prod}
                         alt='alt_image'
@@ -229,6 +221,8 @@ const ProductDetails = () => {
               <Col xs={5} className='alt-img-hero-container'>
                 <div className='alt-img-hero'>
                   <ReactImageMagnify
+                  enlargedImageContainerClassName='maginfier-shimmer'
+                  enlargedImageClassName='maginfier-shimmer'
                     {...{
                       smallImage: {
                         alt: 'big_img',
@@ -455,54 +449,15 @@ const ProductDetails = () => {
                             </Col>
                         </Row>
                         : null} */}
-            {product.similarProducts ? (
-              <div>
-                <div className='similar-products-head'>You may also like</div>
-                <Row className='similar-products-wrapper'>
-                  {/* Similar Products */}
-                  {product.similarProducts.map((prod) => (
-                    <div
-                      key={prod.productId}
-                      className='similar-products-container'
-                    >
-                      <Link
-                        to={`/product/${prod.id}`}
-                        onClick={() => setImageSrc(prod.heroImage)}
-                      >
-                        <Col lg={2.4}>
-                          <div>
-                            <div className='similar-products-image'>
-                              <img
-                                src={prod.heroImage}
-                                alt={prod.productId}
-                              ></img>
-                              {prod.bestSeller ? (
-                                <span className='label-best'>
-                                  {prod.bestSeller}
-                                </span>
-                              ) : null}
-                              {prod.quickView ? (
-                                <span className='label-view'>
-                                  {prod.quickView}
-                                </span>
-                              ) : null}
-                            </div>
-                            <div className='similar-products-title'>
-                              {prod.productName}
-                            </div>
-                            <div className='similar-products-text'>
-                              {' '}
-                              View Details - &#x20B9;
-                              {prod.price ? prod.price : prod.mrpPrice}
-                            </div>
-                          </div>
-                        </Col>
-                      </Link>
-                    </div>
-                  ))}
-                </Row>{' '}
-              </div>
-            ) : null}
+
+
+            {/* <div className='similar-products-head'>You may also like</div>
+            <div style={{height: '20px'}} />
+            <SimilarProducts />
+            <div style={{height: '30px'}} /> */}
+
+
+            <OldComp />
           </div>
           {product.reviews.length !== 0 ? (
             <div>
@@ -525,6 +480,76 @@ const ProductDetails = () => {
       <Footer />
     </>
   )
+
+  function SimilarProducts(){
+    if(product.similarProducts){
+      return (<div className='similar-products-comp-wrapper'>
+        {
+          product.similarProducts.map((product) => (
+            <ProductItemComp product={product} isSimilarProducts={true}/>
+          ))
+        }
+      </div>)
+    }else{
+      return null;
+    }
+  }
+
+
+  function OldComp(){
+    if(product.similarProducts){
+      return(
+        <div>
+          <div className='similar-products-head'>You may also like</div>
+          <Row className='similar-products-wrapper'>
+            {/* Similar Products */}
+            {product.similarProducts.map((prod) => (
+              <div
+                key={prod.productId}
+                className='similar-products-container'
+              >
+                <Link
+                  to={`/product/${prod.id}`}
+                  onClick={() => setImageSrc(prod.heroImage)}
+                >
+                  <Col lg={2.4}>
+                    <div>
+                      <div className='similar-products-image'>
+                        <img
+                          src={prod.heroImage}
+                          alt={prod.productId}
+                        ></img>
+                        {prod.bestSeller ? (
+                          <span className='label-best'>
+                            {prod.bestSeller}
+                          </span>
+                        ) : null}
+                        {prod.quickView ? (
+                          <span className='label-view'>
+                            {prod.quickView}
+                          </span>
+                        ) : null}
+                      </div>
+                      <div className='similar-products-title'>
+                        {prod.productName}
+                      </div>
+                      <div className='similar-products-text'>
+                        {' '}
+                        View Details - &#x20B9;
+                        {prod.price ? prod.price : prod.mrpPrice}
+                      </div>
+                    </div>
+                  </Col>
+                </Link>
+              </div>
+            ))}
+          </Row>{' '}
+        </div>
+      );
+    }else{
+      return null;
+    }
+  }
 }
 
 export default ProductDetails

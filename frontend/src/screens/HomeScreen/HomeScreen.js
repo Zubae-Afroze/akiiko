@@ -9,6 +9,7 @@ import HomeScreenStorage from '../HomeScreenStorage/HomeScreenStorage'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import Footer from '../../components/Footer/Footer'
+import TopPopUpComp from '../../components/TopPopUp/TopPopUpComp'
 
 // import TopPopUpComp ,{showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
 
@@ -62,6 +63,7 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <React.Fragment>
+      <TopPopUpComp />
       {/* <TopPopUpComp /> */}
         {/* <UseSpinner loading={this.state.loading} /> */}
         {this.state.showLoader ? (

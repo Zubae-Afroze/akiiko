@@ -5,8 +5,10 @@ import './HomeScreenHome.css'
 
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
+import ProductItemComp from '../../components/Shimmers/ProductItemComp'
 
 import axios from 'axios'
+import './NewHomeScreenHomeStyle.css'
 
 //import { actionListHomeHome } from '../../actions/actionHomeHome'
 
@@ -51,7 +53,64 @@ const HomeScreenHome = () => {
   //const HomeScreenHomeProducts = []
 
   return (
-    <div className='home-screen-component'>
+    <>
+      <NewComp />
+
+    </>
+  )
+
+
+  function NewComp(){
+    return(
+      <>
+      <div className='home-title-comp'>
+        HOME
+      </div>
+      <div className='home-header-comp'>
+        <button className='home-header-shop-btn'>
+          SHOP ALL
+        </button>
+        <span>
+        A simple yet inviting collection of natural fabric kitchen accessories that will blend harmoniously with every home’s mood & feel. Multi-purpose & vegan lunch bags, aprons & more
+        </span>
+      </div>
+
+      <div style={{height: '20px'}}/>
+
+        <div className='home-bags-comp-main-content-wrapper'>
+          
+          <img className='home-flex-img-wrapper'
+            src={`/images/home_screen_images/HomeScreenHomeHero.jpg`}
+            alt='home_hero_img'
+          />
+
+          <div className='home-bags-comp'>
+
+          {
+            home && (
+              home.map((product) => (
+                <ProductItemComp product={product}/>
+              ))
+            )
+          }
+          </div>
+        </div>
+        
+        <div className='home-footer-shop-btn'>
+          <button>
+            SHOP ALL
+          </button>
+        </div>
+
+      </>
+    );
+  }
+
+
+
+  function OldComp(){
+    return(
+      <div className='home-screen-component'>
       <Row className='home-wrapper workout-cont'>
         <Col sm={3} className='home-button-placement'>
           <Link to='/allproducts/productlist/home'>
@@ -140,7 +199,8 @@ const HomeScreenHome = () => {
         </Link>
       </div>
     </div>
-  )
+    );
+  }
 }
 
 export default HomeScreenHome

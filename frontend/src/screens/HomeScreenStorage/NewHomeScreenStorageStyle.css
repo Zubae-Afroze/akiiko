@@ -1,0 +1,117 @@
+.storage-bags-comp-main-content-wrapper {
+  display: flex;
+}
+
+.storage-flex-img-wrapper {
+  width: 40vw;
+  /* height: 76vh; */
+  margin-right: 10px;
+}
+
+.storage-bags-comp {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.storage-bags-comp .product-item-card {
+  flex-basis: 32%;
+  height: 48.5%;
+  margin: 0;
+  /* min-width: 80px; */
+}
+
+.storage-bags-comp .product-item-card:nth-child(n + 1):nth-child(-n + 3) {
+  margin-bottom: 15px;
+}
+
+.storage-title-comp {
+  font-family: 'rutanLight';
+  color: #3a2f2d;
+  text-align: left;
+  font-size: 82px;
+  letter-spacing: 13px;
+  margin-top: 60px;
+}
+
+.storage-header-comp {
+  font-family: 'rutanLight';
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+}
+
+.storage-header-comp span {
+  padding-right: 10%;
+  align-self: flex-end;
+}
+
+.storage-header-shop-btn {
+  align-self: flex-end;
+  width: 40%;
+  height: 60px;
+  background-color: #977257;
+  color: white;
+  border: none;
+  font-family: 'rutanMedium';
+  text-transform: uppercase;
+}
+
+.storage-footer-shop-btn {
+  width: 100%;
+  height: 55px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.storage-footer-shop-btn button {
+  width: 60%;
+  height: 100%;
+  background-color: #977257;
+  color: white;
+  border: none;
+  font-family: 'rutanMedium';
+  text-transform: uppercase;
+}
+
+@media (max-width: 1075px) {
+  .storage-bags-comp-main-content-wrapper img {
+    display: none;
+  }
+  /* .storage-bags-comp .product-item-card {
+      flex-basis: 19%;
+      height: 48.5%;
+    } */
+}
+
+/* MOB SCREEN STARTS */
+@media (max-width: 430px) {
+  .storage-bags-comp .product-item-card {
+    flex-basis: 48%;
+    font-size: 12px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .storage-title-comp {
+    font-size: 250%;
+    text-align: left;
+  }
+
+  .storage-header-comp span {
+    padding: 5px;
+    padding-right: 0;
+    text-align: justify;
+  }
+
+  .storage-header-shop-btn {
+    display: none;
+  }
+
+  .storage-footer-shop-btn {
+    display: flex;
+  }
+}
