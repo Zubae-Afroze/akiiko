@@ -39,38 +39,12 @@ import SearchScreen from './screens/SearchScreen/SearchScreen'
 import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
 
 import ProductTestScreen from './components/Shimmers/ProductTestScreen'
+import TestScreen from './screens/TestScreen/TestScreen'
 // import ReactGa from 'react-ga'
 // import { getUserDetails } from './actions/actionUsers'
 // import { useSelector, useDispatch } from 'react-redux'
 
 const App = () => {
-  // const dispatch = useDispatch()
-
-  // useEffect(() => {
-  //   dispatch(getUserDetails('profile'))
-  // }, [dispatch])
-
-  // const profileDetails = useSelector((state) => state.profile.userProfile)
-
-  // useEffect(() => {
-  //   if (profileDetails) {
-  //     ReactGa.initialize('UA-205864671-1', {
-  //       debug: true,
-  //       gaOptions: {
-  //         userId: profileDetails.email,
-  //       },
-  //     })
-  //   } else {
-  //     ReactGa.initialize('UA-205864671-1', {
-  //       debug: true,
-  //       gaOptions: {
-  //         userId: 'anonymous',
-  //       },
-  //     })
-  //   }
-  //   ReactGa.pageview(window.location.pathname + window.location.search)
-  // }, [profileDetails])
-
   return (
     <Router>
       <ScrollToTop />
@@ -160,6 +134,7 @@ const App = () => {
         <Route path='/TermsofService' render={() => <Terms />} />
         <Route path='/Refund' render={() => <RefundPolicy />} />
         <Route path='/PrivacyStatement' render={() => <PrivacyStatement />} />
+        <Route path='/testscreen' render={() => <TestScreen />} />
 
         <Route path='/' component={HomeScreen} exact />
       </Switch>

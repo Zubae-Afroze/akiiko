@@ -90,7 +90,7 @@ class HomeScreen extends React.Component {
                 </h1>
                 <div className='hero-sub-text'></div>
                 <div className='hero-button'>
-                  <Link to='/allproducts/productlist/bags'>
+                  <Link to='/search'>
                     <button>Shop Now</button>
                   </Link>
                 </div>
@@ -107,34 +107,42 @@ class HomeScreen extends React.Component {
                 controls={false}
               >
                 <Carousel.Item interval={4000}>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_1.jpg'}
-                    alt='First slide'
-                  />
+                  <Link to='/productlist/bags/tote'>
+                    <img
+                      className='d-block w-100'
+                      src={'/images/carousel_images/carousel_1.jpg'}
+                      alt='First slide'
+                    />
+                  </Link>
                 </Carousel.Item>
                 <Carousel.Item interval={4000}>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_2.jpg'}
-                    alt='Second slide'
-                  />
+                  <Link to='/productlist/home/tableware'>
+                    <img
+                      className='d-block w-100'
+                      src={'/images/carousel_images/carousel_2.jpg'}
+                      alt='Second slide'
+                    />
+                  </Link>
                   <Carousel.Caption className='carousel-slide-2'></Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={4000}>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_3.jpg'}
-                    alt='Third slide'
-                  />
+                  <Link to='/product/60f945fa8df1a30d9f0ac75e'>
+                    <img
+                      className='d-block w-100'
+                      src={'/images/carousel_images/carousel_3.jpg'}
+                      alt='Third slide'
+                    />
+                  </Link>
                   <Carousel.Caption className='carousel-slide-3'></Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item interval={4000}>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_4.jpg'}
-                    alt='Fourth slide'
-                  />
+                  <Link to='product/60f945748df1a30d9f0ac75d'>
+                    <img
+                      className='d-block w-100'
+                      src={'/images/carousel_images/carousel_4.jpg'}
+                      alt='Fourth slide'
+                    />
+                  </Link>
                 </Carousel.Item>
               </Carousel>
             </Col>
