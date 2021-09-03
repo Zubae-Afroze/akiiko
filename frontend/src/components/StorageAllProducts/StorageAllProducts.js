@@ -6,6 +6,7 @@ import '../ProductList/ProductList.css'
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import Footer from '../Footer/Footer'
+import AllProductsRowComp from '../AllProductsRowComp/AllProductRowComp'
 
 // import {
 //   actionListOrganiser,
@@ -13,6 +14,7 @@ import Footer from '../Footer/Footer'
 // } from '../../actions/actionStorage.js'
 
 import axios from 'axios'
+import TopPopUpComp from '../TopPopUp/TopPopUpComp'
 
 const StorageAllProducts = () => {
   // const [organisersAllProduct, setOraniserAllProduct] = useState({});
@@ -37,31 +39,31 @@ const StorageAllProducts = () => {
     // dispatch(actionListHome())
 
     const fetchOrganisers = () => {
-      setLoading(true)
+      // setLoading(true)
       axios
         .get('/api/productlist/storage/organisers')
         .then((res) => {
-          setLoading(false)
+          // setLoading(false)
           setOrganiser(res.data)
-          setError([])
+          // setError([])
         })
         .catch((err) => {
-          setLoading(false)
+          // setLoading(false)
           setError(err.message)
         })
     }
 
     const fetchHome = () => {
-      setLoading(true)
+      // setLoading(true)
       axios
         .get('/api/productlist/storage/home')
         .then((res) => {
-          setLoading(false)
+          // setLoading(false)
           setHome(res.data)
-          setError([])
+          // setError([])
         })
         .catch((err) => {
-          setLoading(false)
+          // setLoading(false)
           setError(err.message)
         })
     }
@@ -80,6 +82,7 @@ const StorageAllProducts = () => {
 
   return (
     <>
+    <TopPopUpComp />
       <Container>
         <div className='product-list-wrapper'>
           <Link to='/' className='product-list-back-button'>
@@ -89,15 +92,6 @@ const StorageAllProducts = () => {
             ></img>
             BACK
           </Link>
-          {loading && (
-            <MyComponent
-              sentences={[]}
-              wrapperBackgroundColor={'rgba(255,255,255)'}
-              color={'#6e4e37'}
-              loaderType={'ball-spin-clockwise'}
-              customLoader={<SpinnerIcon />}
-            />
-          )}
           {error && <h1>{error}</h1>}
           {organisers[Object.keys(organisers)[0]] && (
             <>
@@ -111,64 +105,9 @@ const StorageAllProducts = () => {
                   </div>
                 </>
               ) : null}
-              <div>
-                <Row className='product-list-card-wrapper'>
-                  {organisers.map((product) => (
-                    <div
-                      className='product-list-card-wrapper'
-                      key={product.productId}
-                    >
-                      <Link to={`/product/${product._id}`}>
-                        <div className='product-list-image'>
-                          <div>
-                            <img
-                              id={product.productId}
-                              src={product.heroImage}
-                              alt='home_1'
-                            />
-                            {product.bestSeller ? (
-                              <span className='label-best'>
-                                {product.bestSeller}
-                              </span>
-                            ) : null}
-                            {product.quickView ? (
-                              <span
-                                className='label-view'
-                                onMouseEnter={() => {
-                                  handleMouseEnter(product)
-                                }}
-                                onMouseOut={() => {
-                                  handleMouseOut(product)
-                                }}
-                              >
-                                {product.quickView}
-                              </span>
-                            ) : null}
-                          </div>
-                          <div className='product-list-card-title'>
-                            {product.productName}
-                          </div>
-                          <div className='product-list-card-text'>
-                            View Details - &#x20B9;
-                            {product.price ? product.price : product.mrpPrice}
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
-                </Row>
-              </div>
+              <AllProductsRowComp products={organisers} /> 
             </>
           )}
-          {loading && (
-            <MyComponent
-              sentences={[]}
-              wrapperBackgroundColor={'rgba(255,255,255)'}
-              color={'#6e4e37'}
-              loaderType={'ball-spin-clockwise'}
-              customLoader={<SpinnerIcon />}
-            />
-          )}{' '}
           {error && <h1>{error}</h1>}{' '}
           {home[Object.keys(home)[0]] && (
             <>
@@ -183,53 +122,8 @@ const StorageAllProducts = () => {
                   </div>
                 </>
               ) : null}
-              <div>
-                <Row className='product-list-card-wrapper'>
-                  {home.map((product) => (
-                    <div
-                      className='product-list-card-wrapper'
-                      key={product.productId}
-                    >
-                      <Link to={`/product/${product._id}`}>
-                        <div className='product-list-image'>
-                          <div>
-                            <img
-                              id={product.productId}
-                              src={product.heroImage}
-                              alt='home_1'
-                            />
-                            {product.bestSeller ? (
-                              <span className='label-best'>
-                                {product.bestSeller}
-                              </span>
-                            ) : null}
-                            {product.quickView ? (
-                              <span
-                                className='label-view'
-                                onMouseEnter={() => {
-                                  handleMouseEnter(product)
-                                }}
-                                onMouseOut={() => {
-                                  handleMouseOut(product)
-                                }}
-                              >
-                                {product.quickView}
-                              </span>
-                            ) : null}
-                          </div>
-                        </div>
-                        <div className='product-list-card-title'>
-                          {product.productName}
-                        </div>
-                        <div className='product-list-card-text'>
-                          View Details - &#x20B9;
-                          {product.price ? product.price : product.mrpPrice}
-                        </div>
-                      </Link>
-                    </div>
-                  ))}
-                </Row>
-              </div>
+              <AllProductsRowComp products={home} />
+              
             </>
           )}
         </div>
@@ -237,6 +131,168 @@ const StorageAllProducts = () => {
       <Footer />
     </>
   )
+
+  function OldComp(){
+    return (
+      <>
+        <Container>
+          <div className='product-list-wrapper'>
+            <Link to='/' className='product-list-back-button'>
+              <img
+                src='/images/font_images/back_arrow.svg'
+                alt='back_arrow'
+              ></img>
+              BACK
+            </Link>
+            {loading && (
+              <MyComponent
+                sentences={[]}
+                wrapperBackgroundColor={'rgba(255,255,255)'}
+                color={'#6e4e37'}
+                loaderType={'ball-spin-clockwise'}
+                customLoader={<SpinnerIcon />}
+              />
+            )}
+            {error && <h1>{error}</h1>}
+            {organisers[Object.keys(organisers)[0]] && (
+              <>
+                {organisers[Object.keys(organisers)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {organisers[Object.keys(organisers)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {organisers[Object.keys(organisers)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <div>
+                  <Row className='product-list-card-wrapper'>
+                    {organisers.map((product) => (
+                      <div
+                        className='product-list-card-wrapper'
+                        key={product.productId}
+                      >
+                        <Link to={`/product/${product._id}`}>
+                          <div className='product-list-image'>
+                            <div>
+                              <img
+                                id={product.productId}
+                                src={product.heroImage}
+                                alt='home_1'
+                              />
+                              {product.bestSeller ? (
+                                <span className='label-best'>
+                                  {product.bestSeller}
+                                </span>
+                              ) : null}
+                              {product.quickView ? (
+                                <span
+                                  className='label-view'
+                                  onMouseEnter={() => {
+                                    handleMouseEnter(product)
+                                  }}
+                                  onMouseOut={() => {
+                                    handleMouseOut(product)
+                                  }}
+                                >
+                                  {product.quickView}
+                                </span>
+                              ) : null}
+                            </div>
+                            <div className='product-list-card-title'>
+                              {product.productName}
+                            </div>
+                            <div className='product-list-card-text'>
+                              View Details - &#x20B9;
+                              {product.price ? product.price : product.mrpPrice}
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  </Row>
+                </div>
+              </>
+            )}
+            {loading && (
+              <MyComponent
+                sentences={[]}
+                wrapperBackgroundColor={'rgba(255,255,255)'}
+                color={'#6e4e37'}
+                loaderType={'ball-spin-clockwise'}
+                customLoader={<SpinnerIcon />}
+              />
+            )}{' '}
+            {error && <h1>{error}</h1>}{' '}
+            {home[Object.keys(home)[0]] && (
+              <>
+                {home[Object.keys(home)[0]] ? (
+                  <>
+                    {' '}
+                    <h2 className='product-list-label'>
+                      {home[Object.keys(home)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {home[Object.keys(home)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <div>
+                  <Row className='product-list-card-wrapper'>
+                    {home.map((product) => (
+                      <div
+                        className='product-list-card-wrapper'
+                        key={product.productId}
+                      >
+                        <Link to={`/product/${product._id}`}>
+                          <div className='product-list-image'>
+                            <div>
+                              <img
+                                id={product.productId}
+                                src={product.heroImage}
+                                alt='home_1'
+                              />
+                              {product.bestSeller ? (
+                                <span className='label-best'>
+                                  {product.bestSeller}
+                                </span>
+                              ) : null}
+                              {product.quickView ? (
+                                <span
+                                  className='label-view'
+                                  onMouseEnter={() => {
+                                    handleMouseEnter(product)
+                                  }}
+                                  onMouseOut={() => {
+                                    handleMouseOut(product)
+                                  }}
+                                >
+                                  {product.quickView}
+                                </span>
+                              ) : null}
+                            </div>
+                          </div>
+                          <div className='product-list-card-title'>
+                            {product.productName}
+                          </div>
+                          <div className='product-list-card-text'>
+                            View Details - &#x20B9;
+                            {product.price ? product.price : product.mrpPrice}
+                          </div>
+                        </Link>
+                      </div>
+                    ))}
+                  </Row>
+                </div>
+              </>
+            )}
+          </div>
+        </Container>
+        <Footer />
+      </>
+    )
+  }
 }
 
 export default StorageAllProducts

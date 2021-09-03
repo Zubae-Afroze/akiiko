@@ -79,7 +79,7 @@
 }
 
 @media (max-width: 1075px) {
-  .storage-bags-comp-main-content-wrapper img {
+  .storage-bags-comp-main-content-wrapper .storage-flex-img-wrapper {
     display: none;
   }
   .storage-bags-comp .shimmer-img-size {
