@@ -99,6 +99,10 @@
   font-size: 30px;
 }
 
+.search-result-body .product-item-card .product-item-card-price-wrapper-MOB {
+  font-size: 13px;
+}
+
 @media only screen and (max-width: 500px) {
   .search-screen__filter-open {
     position: fixed;

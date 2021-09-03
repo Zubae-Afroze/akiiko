@@ -79,8 +79,8 @@ const HomeScreenBags = () => {
           bags && (
             <div className='bags-comp-wrapper'>
               {
-                bags.map((product) => (
-                  <ProductItemComp product={product}/>
+                bags.map((product,index) => (
+                  <ProductItemComp product={product} key={index}/>
                 ))
               }
             </div>

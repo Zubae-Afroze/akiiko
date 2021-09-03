@@ -195,7 +195,7 @@ const ProductDetails = () => {
                 {product.images.map((prod, index) => (
                   <Carousel.Item interval={null} key={index}>
                     <img
-                      className='d-block w-100'
+                      className='d-block w-100 maginfier-shimmer'
                       src={prod}
                       alt='First slide'
                     />

@@ -17,8 +17,38 @@
 }
 
 .maginfier-shimmer {
-  offset: 0.7;
-  animation: maginfier-shimmer-anime 1s linear infinite alternate;
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: mag-shimmer;
+  animation-timing-function: linear;
+  /* background: #ddd; */
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    72deg,
+    rgba(238, 238, 238, 0.9821564749385534) 8%,
+    rgba(252, 252, 252, 0.9653025423542837) 18%,
+    rgba(240, 238, 238, 0.9681115311183286) 33%
+  );
+  background-size: 1200px 100%;
+}
+
+@-webkit-keyframes mag-shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes mag-shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
 }
 
 .Toastify__toast--default {

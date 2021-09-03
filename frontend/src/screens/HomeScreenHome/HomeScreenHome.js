@@ -33,6 +33,7 @@ const HomeScreenHome = () => {
 
   const [home, setHome] = useState([])
   const [loading, setLoading] = useState(false)
+  const [mainImageLoaded, setMainImageLoaded] = useState(false)
   const [error, setError] = useState('')
 
   useEffect(() => {
@@ -76,20 +77,25 @@ const HomeScreenHome = () => {
       </div>
 
       <div style={{height: '20px'}}/>
-
+      
         <div className='home-bags-comp-main-content-wrapper'>
-          
-          <img className='home-flex-img-wrapper'
-            src={`/images/home_screen_images/HomeScreenHomeHero.jpg`}
-            alt='home_hero_img'
-          />
+
+          {/* <div className='home-products-main-img-shimmer'> */}
+            <img className='home-flex-img-wrapper'
+              src={`/images/home_screen_images/HomeScreenHomeHero.jpg`}
+              alt='home_hero_img'
+              onLoad={()=>{
+                setMainImageLoaded(true)
+              }}
+            />
+          {/* </div> */}
 
           <div className='home-bags-comp'>
 
           {
             home && (
-              home.map((product) => (
-                <ProductItemComp product={product}/>
+              home.map((product,index) => (
+                <ProductItemComp product={product} key={index}/>
               ))
             )
           }

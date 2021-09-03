@@ -45,20 +45,20 @@ class HomeScreen extends React.Component {
   //     })
   // }
 
-  componentDidMount() {
-    const timer = setTimeout(() => {
-      this.togglePageLoader()
-    }, 2000)
-    return () => clearTimeout(timer)
-  }
+  // componentDidMount() {
+  //   const timer = setTimeout(() => {
+  //     this.togglePageLoader()
+  //   }, 2000)
+  //   return () => clearTimeout(timer)
+  // }
 
-  componentWillUnmount() {
-    this.setState({ showLoader: false })
-  }
+  // componentWillUnmount() {
+  //   this.setState({ showLoader: false })
+  // }
 
-  togglePageLoader = () => {
-    this.setState({ showLoader: !this.state.showLoader })
-  }
+  // togglePageLoader = () => {
+  //   this.setState({ showLoader: !this.state.showLoader })
+  // }
 
   render() {
     return (
@@ -66,7 +66,7 @@ class HomeScreen extends React.Component {
       <TopPopUpComp />
       {/* <TopPopUpComp /> */}
         {/* <UseSpinner loading={this.state.loading} /> */}
-        {this.state.showLoader ? (
+        {/* {this.state.showLoader ? (
           <MyComponent
             sentences={[]}
             wrapperBackgroundColor={'rgba(255,255,255)'}
@@ -74,7 +74,7 @@ class HomeScreen extends React.Component {
             loaderType={'ball-spin-clockwise'}
             customLoader={<SpinnerIcon />}
           />
-        ) : null}
+        ) : null} */}
         <Container>
           <Row className='home-screen-container'>
             <Col sm={4}>

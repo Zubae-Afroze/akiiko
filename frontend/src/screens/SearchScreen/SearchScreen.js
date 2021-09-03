@@ -5,7 +5,8 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Sidebar from 'react-sidebar'
-
+import ProductItemComp from '../../components/Shimmers/ProductItemComp'
+import TopPopUpComp from '../../components/TopPopUp/TopPopUpComp'
 import '../HomeScreen/HomeScreen.css'
 import './searchScreenStyles.css'
 
@@ -272,6 +273,7 @@ export default function SearchScreen() {
 
   return (
     <>
+      <TopPopUpComp />
       <span className='search-screen__filter-open' onClick={filterOpenHandler}>
         {/* <i className='lni lni-chevron-right'></i> */}
         <i class='fas fa-filter'></i>
@@ -765,7 +767,8 @@ function SearchedProduct({ product }) {
 
   return (
     <Col xs={6} md={3} style={{ marginBottom: '20px' }}>
-      <Link to={`/product/${product._id}`}>
+    <ProductItemComp product={product}/>
+      {/* <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
             <img
@@ -799,7 +802,7 @@ function SearchedProduct({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link>
+      </Link> */}
     </Col>
   )
 }
@@ -815,6 +818,8 @@ function SearchedProductThree({ product }) {
 
   return (
     <Col xs={6} md={4} style={{ marginBottom: '20px' }}>
+    <ProductItemComp product={product}/>
+{/* 
       <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
@@ -849,7 +854,7 @@ function SearchedProductThree({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link>
+      </Link> */}
     </Col>
   )
 }
@@ -865,7 +870,8 @@ function SearchedProductTwo({ product }) {
 
   return (
     <Col xs={6} style={{ marginBottom: '20px' }}>
-      <Link to={`/product/${product._id}`}>
+    <ProductItemComp product={product}/>
+      {/* <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
             <img
@@ -899,7 +905,7 @@ function SearchedProductTwo({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link>
+      </Link> */}
     </Col>
   )
 }

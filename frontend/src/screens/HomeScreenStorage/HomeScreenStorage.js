@@ -90,8 +90,8 @@ const HomeScreenWorkout = () => {
 
           {
             storage && (
-              storage.map((product) => (
-                <ProductItemComp product={product}/>
+              storage.map((product,index) => (
+                <ProductItemComp product={product} key={index}/>
               ))
             )
           }

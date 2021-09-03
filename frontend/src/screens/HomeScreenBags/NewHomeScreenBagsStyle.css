@@ -5,7 +5,7 @@
 }
 
 .bags-comp-wrapper .product-item-card {
-  flex-basis: 19%;
+  flex-basis: 18%;
   min-width: 80px;
   margin: 0;
 }
@@ -72,10 +72,30 @@
     flex-basis: 18.5%;
     font-size: 12px;
   }
+
+  .bags-comp-wrapper .shimmer-img-size {
+    height: 134px !important;
+    width: 134px !important;
+  }
+
+  .bags-comp-wrapper .shimmer-text-size {
+    height: 20px !important;
+    width: 134px !important;
+  }
 }
 
 /* MOB SCREEN STARTS */
 @media (max-width: 430px) {
+  .bags-comp-wrapper .shimmer-img-size {
+    height: 182px !important;
+    width: 182px !important;
+  }
+
+  .bags-comp-wrapper .shimmer-text-size {
+    height: 20px !important;
+    width: 132px !important;
+  }
+
   .bags-comp-wrapper .product-item-card {
     flex-basis: 48%;
     font-size: 12px;

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../../actions/actionCart'
 import { showTopPopUp } from '../../components/TopPopUp/TopPopUpComp'
+import { storage } from '../../index'
 import './ProductItemCompStyle.css'
 
 
@@ -12,6 +13,7 @@ export default function ProductItemComp(props) {
     // console.log(props.product.productName + ' : ' + props.product.material)
     // if a product has QUICK VIEW / HOVER IMAGE then we need to load that GIF using UseEffect and then
     // store it in variable and then show it in img
+    console.log('BUILD')
 
     const dispatch = useDispatch()
 
@@ -22,6 +24,7 @@ export default function ProductItemComp(props) {
     const [isImageLoaded, setIsImageLoaded] = useState(false);
     const [isQuickViewON, setIsQuickViewON] = useState(false);
     const [addToCartText, setAddToCartText] = useState('Add to Cart')
+    const [imageRef, setImageRef] = useState(null)
     const masterProduct = useRef({})
 
 
@@ -85,11 +88,18 @@ export default function ProductItemComp(props) {
 
 
     useEffect(()=> {
+
+
+        storage
+            .ref(props.product.images_web[0])
+            .getDownloadURL()
+            .then((url) => {
+                setImageRef(url)
+            })
         
         async function getMasterProduct(){
             axios.get(`api/product/${props.isSimilarProducts ? props.product.id : props.product._id}`).then((product)=>{
                 masterProduct.current = product.data;
-                console.log('Got data')
             })
         }
 
@@ -105,7 +115,7 @@ export default function ProductItemComp(props) {
             //         productPrice: posts[0].body,
             //     })
             // })
-    },)
+    },[])
 
 
 
@@ -132,20 +142,20 @@ export default function ProductItemComp(props) {
             https://source.unsplash.com/100x100/?nature  
             'https://alm.parasoft.com/hubfs/api-testing-1.png'
         */}
-            <div className='product-item-card'>
+            <div className='product-item-card' key={props.isSimilarProducts ? props.product.id : props.product._id}>
                     <Link to={`/product/${ props.isSimilarProducts ? props.product.id : props.product._id}`}>
-                        <div className={`product-item-card-img-wrapper  ${isImageLoaded ? '' : 'shimmer'}`} style={ isImageLoaded ? {} : shimmerIMGstyle} >
-                            <img style={{display: isQuickViewON ? 'block' : 'none' }}
+                        <div className={`product-item-card-img-wrapper  ${isImageLoaded ? '' : 'shimmer shimmer-img-size'}`} style={{border: isImageLoaded ? 'solid rgb(199, 199, 199) 0.1px' : '0'}}>
+                            <img loading='lazy' style={{display: isQuickViewON ? 'block' : 'none' }}
                                 id={props.product.productId + 1}
                                 src={props.product.hoverImage}
                                 alt='home_1'
                                 onLoad={()=>{setImage()}}
                             />
 
-                            <img className={`${isImageLoaded ? 'image-visible' : 'image-hidden'}` }
+                            <img loading='lazy' className={`${isImageLoaded ? 'image-visible' : 'image-hidden'}` }
                                 id={props.product.productId}
                                 style={{display: isQuickViewON ? 'none' : 'block' }}
-                                src={props.product.heroImage}
+                                src={imageRef}
                                 alt='home_1'
                                 onLoad={()=>{setImage()}}
                             />
@@ -178,7 +188,7 @@ export default function ProductItemComp(props) {
 
                 {<div style={{height: isImageLoaded ? '0' : '5px'}} />}
 
-                <div className={`${isImageLoaded ? '' : 'shimmer'} product-item-card-title-wrapper`}>
+                <div className={`${isImageLoaded ? '' : 'shimmer shimmer-text-size'} product-item-card-title-wrapper`}>
                     <div style={{display: isImageLoaded ? 'block' : 'none'}}>
                         { isImageLoaded? `${props.product.productName}` : '' }
                     </div>
@@ -186,7 +196,7 @@ export default function ProductItemComp(props) {
 
                 {<div style={{height: isImageLoaded ? '0' : '5px'}} />}
 
-                <div className={`${isImageLoaded ? '' : 'shimmer'} product-item-card-price-wrapper`}>
+                <div className={`${isImageLoaded ? '' : 'shimmer shimmer-text-size'} product-item-card-price-wrapper`}>
                     <div style={{display: isImageLoaded ? 'block' : 'none',width:'100%'}} onClick={()=>{cartHandler()}}>
                         { isImageLoaded? 
                             <div className="view-price-add-to-cart-comp title">
@@ -208,7 +218,7 @@ export default function ProductItemComp(props) {
                     </div>
                 </div>
 
-                <div className={`${isImageLoaded ? '' : 'shimmer'} product-item-card-price-wrapper-MOB`}>
+                <div className={`${isImageLoaded ? '' : 'shimmer shimmer-text-size'} product-item-card-price-wrapper-MOB`}>
                     <div style={{display: isImageLoaded ? 'block' : 'none'}}>
                         { isImageLoaded? 
                             <div className="view-price-MOB" onClick={()=>{cartHandler()}}>

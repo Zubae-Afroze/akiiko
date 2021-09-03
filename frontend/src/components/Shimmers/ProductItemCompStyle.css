@@ -25,8 +25,52 @@
 }
 
 .shimmer {
-  offset: 0.6;
-  animation: skeleton-loading 1s linear infinite alternate;
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: shimmer;
+  animation-timing-function: linear;
+  /* background: #ddd; */
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    72deg,
+    rgba(238, 238, 238, 0.9821564749385534) 8%,
+    rgba(252, 252, 252, 0.9653025423542837) 18%,
+    rgba(240, 238, 238, 0.9681115311183286) 33%
+  );
+  /* background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%); */
+  background-size: 1200px 100%;
+
+  /* offset: 0.5;
+  animation: skeleton-loading 1s linear infinite alternate; */
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+.shimmer-img-size {
+  height: 221px !important;
+  width: 221px !important;
+}
+
+.shimmer-text-size {
+  height: 36px !important;
+  width: 221px !important;
 }
 
 .product-item-card {
@@ -48,7 +92,7 @@
 .product-item-card-img-wrapper {
   position: relative;
   height: 70%;
-  border: solid rgb(199, 199, 199) 1px;
+  /* border: solid rgb(199, 199, 199) 1px; */
   /* min-height: 200px; */
 }
 .product-item-card-img-wrapper img {
