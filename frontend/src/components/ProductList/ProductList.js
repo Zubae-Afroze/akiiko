@@ -9,10 +9,15 @@ import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
 
 import Message from '../Message/Message'
 import Footer from '../Footer/Footer'
+import ProductItemComp from '../Shimmers/ProductItemComp'
+
 
 // import { actionListProductList } from '../../actions/actionProductList'
 
 import axios from 'axios'
+
+import './ProductListNewStyle.css'
+import TopPopUpComp from '../TopPopUp/TopPopUpComp'
 
 const ProductList = () => {
   const { group, subGroup } = useParams()
@@ -66,89 +71,140 @@ const ProductList = () => {
 
   return (
     <>
-      {loading && (
-        <MyComponent
-          sentences={[]}
-          wrapperBackgroundColor={'rgba(255,255,255)'}
-          color={'#6e4e37'}
-          loaderType={'ball-spin-clockwise'}
-          customLoader={<SpinnerIcon />}
-        />
-      )}{' '}
-      {error && <Message variant='dark'>{error}</Message>}{' '}
+      <TopPopUpComp />
       {products && (
-        <Container>
-          <div className='product-list-wrapper'>
-            <Link to='/' className='product-list-back-button'>
-              <img
-                src='/images/font_images/back_arrow.svg'
-                alt='back_arrow'
-              ></img>
-              BACK
-            </Link>
-            {products[Object.keys(products)[0]] ? (
-              <>
-                {' '}
-                <h2 className='product-list-label'>
-                  {products[Object.keys(products)[0]].subGroup}
-                </h2>
-                <div className='product-list-text'>
-                  {products[Object.keys(products)[0]].groupDescription}
-                </div>
-              </>
-            ) : null}
-            <div>
-              <Row className='product-list-card-wrapper'>
-                {products.map((product) => (
-                  <Link
-                    className='product-list-card-wrapper'
-                    to={`/product/${product._id}`}
-                    key={product.productId}
-                  >
-                    <div>
-                      <div className='product-list-image'>
-                        <img
-                          id={product.productId}
-                          src={product.heroImage}
-                          alt='home_1'
-                        />
-                        {product.bestSeller ? (
-                          <span className='pl-label-best'>
-                            {product.bestSeller}
-                          </span>
-                        ) : null}
-                        {product.quickView ? (
-                          <span
-                            className='pl-label-view'
-                            onMouseEnter={() => {
-                              handleMouseEnter(product)
-                            }}
-                            onMouseOut={() => {
-                              handleMouseOut(product)
-                            }}
-                          >
-                            {product.quickView}
-                          </span>
-                        ) : null}
-                      </div>
-                      <div className='product-list-card-title'>
-                        {product.productName}
-                      </div>
-                      <div className='product-list-card-text'>
-                        View Details - &#x20B9;
-                        {product.price ? product.price : product.mrpPrice}
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </Row>
+          <Container>
+            <div className='product-list-wrapper'>
+              <Link to='/' className='product-list-back-button'>
+                <img
+                  src='/images/font_images/back_arrow.svg'
+                  alt='back_arrow'
+                ></img>
+                BACK
+              </Link>
+              {products[Object.keys(products)[0]] ? (
+                <>
+                  {' '}
+                  <h2 className='product-list-label'>
+                    {products[Object.keys(products)[0]].subGroup}
+                  </h2>
+                  <div className='product-list-text'>
+                    {products[Object.keys(products)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              
+              <NewComp />
+              
+              <div style={{height:'50px'}} />
             </div>
-          </div>
-        </Container>
-      )}
-      <Footer />
+          </Container>
+        )}
+        <Footer />
     </>
   )
+
+
+  function NewComp(){
+      return (
+        <div className='product-list-comp-wrapper'>
+          {
+            products.map((product) => (
+              <ProductItemComp product={product} isSimilarProducts={false}/>
+            ))
+          }
+        </div>
+      )
+  }
+
+
+  function OldComp(){
+    return(
+      <>
+        {loading && (
+          <MyComponent
+            sentences={[]}
+            wrapperBackgroundColor={'rgba(255,255,255)'}
+            color={'#6e4e37'}
+            loaderType={'ball-spin-clockwise'}
+            customLoader={<SpinnerIcon />}
+          />
+        )}{' '}
+        {error && <Message variant='dark'>{error}</Message>}{' '}
+        {products && (
+          <Container>
+            <div className='product-list-wrapper'>
+              <Link to='/' className='product-list-back-button'>
+                <img
+                  src='/images/font_images/back_arrow.svg'
+                  alt='back_arrow'
+                ></img>
+                BACK
+              </Link>
+              {products[Object.keys(products)[0]] ? (
+                <>
+                  {' '}
+                  <h2 className='product-list-label'>
+                    {products[Object.keys(products)[0]].subGroup}
+                  </h2>
+                  <div className='product-list-text'>
+                    {products[Object.keys(products)[0]].groupDescription}
+                  </div>
+                </>
+              ) : null}
+              <div>
+                <Row className='product-list-card-wrapper'>
+                  {products.map((product) => (
+                    <Link
+                      className='product-list-card-wrapper'
+                      to={`/product/${product._id}`}
+                      key={product.productId}
+                    >
+                      <div>
+                        <div className='product-list-image'>
+                          <img
+                            id={product.productId}
+                            src={product.heroImage}
+                            alt='home_1'
+                          />
+                          {product.bestSeller ? (
+                            <span className='pl-label-best'>
+                              {product.bestSeller}
+                            </span>
+                          ) : null}
+                          {product.quickView ? (
+                            <span
+                              className='pl-label-view'
+                              onMouseEnter={() => {
+                                handleMouseEnter(product)
+                              }}
+                              onMouseOut={() => {
+                                handleMouseOut(product)
+                              }}
+                            >
+                              {product.quickView}
+                            </span>
+                          ) : null}
+                        </div>
+                        <div className='product-list-card-title'>
+                          {product.productName}
+                        </div>
+                        <div className='product-list-card-text'>
+                          View Details - &#x20B9;
+                          {product.price ? product.price : product.mrpPrice}
+                        </div>
+                      </div>
+                    </Link>
+                  ))}
+                </Row>
+              </div>
+            </div>
+          </Container>
+        )}
+        <Footer />
+      </>
+    );
+  }
 }
 
 export default ProductList

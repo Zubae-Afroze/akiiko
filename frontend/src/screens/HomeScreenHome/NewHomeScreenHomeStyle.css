@@ -96,7 +96,7 @@
 }
 
 @media (max-width: 1075px) {
-  .home-bags-comp-main-content-wrapper img {
+  .home-bags-comp-main-content-wrapper .home-flex-img-wrapper {
     display: none;
   }
 
