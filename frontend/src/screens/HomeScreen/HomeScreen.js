@@ -18,12 +18,12 @@ import './HomeScreen.css'
 // import UseSpinner from '../../components/Spinner/UseSpinner';
 
 class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      showLoader: true,
-    }
-  }
+  // constructor(props) {
+  //   super(props)
+  //   this.state = {
+  //     showLoader: true,
+  //   }
+  // }
   // componentDidMount
   // ComponentShouldUpdate
   // componentDidUpdate
@@ -63,8 +63,8 @@ class HomeScreen extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <TopPopUpComp />
-      {/* <TopPopUpComp /> */}
+        <TopPopUpComp />
+        {/* <TopPopUpComp /> */}
         {/* <UseSpinner loading={this.state.loading} /> */}
         {/* {this.state.showLoader ? (
           <MyComponent
