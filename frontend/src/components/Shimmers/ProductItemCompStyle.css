@@ -193,6 +193,7 @@
 }
 .add-to-cart-comp {
   color: #f6f1ea;
+  justify-content: center;
   height: 0;
   opacity: 0;
   width: 0;
