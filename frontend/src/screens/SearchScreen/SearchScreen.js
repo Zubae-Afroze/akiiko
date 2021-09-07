@@ -767,59 +767,7 @@ function SearchedProduct({ product }) {
 
   return (
     <Col xs={6} md={3} style={{ marginBottom: '20px' }}>
-    <ProductItemComp product={product}/>
-      {/* <Link to={`/product/${product._id}`}>
-        <div>
-          <div className='home-img-wrap'>
-            <img
-              id={product.productId}
-              className='home-card-image'
-              src={product.images[0]}
-              alt='home_1'
-            />
-            {product.bestSeller ? (
-              <span className='label-best label-best-workout'>
-                {product.bestSeller}
-              </span>
-            ) : null}
-            {product.quickView ? (
-              <span
-                className='label-view label-view-workout'
-                onMouseEnter={() => {
-                  handleMouseEnter(product)
-                }}
-                onMouseOut={() => {
-                  handleMouseOut(product)
-                }}
-              >
-                {product.quickView}
-              </span>
-            ) : null}
-          </div>
-          <div className='home-card-title'>{product.productName}</div>
-          <div className='home-card-text'>
-            View Details - &#x20B9;
-            {product.price ? product.price : product.mrpPrice}
-          </div>
-        </div>
-      </Link> */}
-    </Col>
-  )
-}
-
-function SearchedProductThree({ product }) {
-  const handleMouseEnter = (product) => {
-    document.getElementById(product.productId).src = product.hoverImage
-  }
-
-  const handleMouseOut = (product) => {
-    document.getElementById(product.productId).src = product.images[0]
-  }
-
-  return (
-    <Col xs={6} md={4} style={{ marginBottom: '20px' }}>
-    <ProductItemComp product={product}/>
-{/* 
+      {/* <ProductItemComp product={product}/> */}
       <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
@@ -854,12 +802,12 @@ function SearchedProductThree({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link> */}
+      </Link>
     </Col>
   )
 }
 
-function SearchedProductTwo({ product }) {
+function SearchedProductThree({ product }) {
   const handleMouseEnter = (product) => {
     document.getElementById(product.productId).src = product.hoverImage
   }
@@ -869,9 +817,10 @@ function SearchedProductTwo({ product }) {
   }
 
   return (
-    <Col xs={6} style={{ marginBottom: '20px' }}>
-    <ProductItemComp product={product}/>
-      {/* <Link to={`/product/${product._id}`}>
+    <Col xs={6} md={4} style={{ marginBottom: '20px' }}>
+      {/* <ProductItemComp product={product}/> */}
+
+      <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
             <img
@@ -905,7 +854,58 @@ function SearchedProductTwo({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link> */}
+      </Link>
+    </Col>
+  )
+}
+
+function SearchedProductTwo({ product }) {
+  const handleMouseEnter = (product) => {
+    document.getElementById(product.productId).src = product.hoverImage
+  }
+
+  const handleMouseOut = (product) => {
+    document.getElementById(product.productId).src = product.images[0]
+  }
+
+  return (
+    <Col xs={6} style={{ marginBottom: '20px' }}>
+      {/* <ProductItemComp product={product}/> */}
+      <Link to={`/product/${product._id}`}>
+        <div>
+          <div className='home-img-wrap'>
+            <img
+              id={product.productId}
+              className='home-card-image'
+              src={product.images[0]}
+              alt='home_1'
+            />
+            {product.bestSeller ? (
+              <span className='label-best label-best-workout'>
+                {product.bestSeller}
+              </span>
+            ) : null}
+            {product.quickView ? (
+              <span
+                className='label-view label-view-workout'
+                onMouseEnter={() => {
+                  handleMouseEnter(product)
+                }}
+                onMouseOut={() => {
+                  handleMouseOut(product)
+                }}
+              >
+                {product.quickView}
+              </span>
+            ) : null}
+          </div>
+          <div className='home-card-title'>{product.productName}</div>
+          <div className='home-card-text'>
+            View Details - &#x20B9;
+            {product.price ? product.price : product.mrpPrice}
+          </div>
+        </div>
+      </Link>
     </Col>
   )
 }
