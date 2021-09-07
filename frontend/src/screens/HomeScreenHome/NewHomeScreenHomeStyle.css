@@ -39,9 +39,9 @@
   /* min-width: 80px; */
 }
 
-.home-bags-comp .product-item-card:nth-child(n + 1):nth-child(-n + 3) {
+/* .home-bags-comp .product-item-card:nth-child(n + 1):nth-child(-n + 3) {
   margin-bottom: 15px;
-}
+} */
 
 .home-title-comp {
   font-family: 'rutanLight';
@@ -132,6 +132,7 @@
     font-size: 12px;
     height: auto;
     margin-bottom: 20px;
+    min-height: 240px;
   }
 
   .home-title-comp {

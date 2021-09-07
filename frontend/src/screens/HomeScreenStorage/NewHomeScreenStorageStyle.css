@@ -114,6 +114,7 @@
     font-size: 12px;
     height: auto;
     margin-bottom: 20px;
+    min-height: 240px;
   }
 
   .storage-title-comp {

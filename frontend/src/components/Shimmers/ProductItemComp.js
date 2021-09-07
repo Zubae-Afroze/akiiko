@@ -164,7 +164,7 @@ export default function ProductItemComp(props) {
 
                             {
                                 props.product.quickView ?
-                                <div className='quick-view-comp' style={{display: isImageLoaded ? 'block' : 'none'}} 
+                                <div className='quick-view-comp' style={{display: isImageLoaded ? 'flex' : 'none'}} 
                                 onMouseEnter={()=>{
                                     onQuickView()
                                 }}
@@ -196,7 +196,7 @@ export default function ProductItemComp(props) {
                     </div>
                 </div>
 
-                {<div style={{height: isImageLoaded ? '0' : '5px'}} />}
+                {<div style={{height: isImageLoaded ? '0' : '5px'}} />} 
 
                 <div className={`${isImageLoaded ? '' : 'shimmer shimmer-text-size'} product-item-card-price-wrapper`}>
                     <div style={{display: isImageLoaded ? 'block' : 'none',width:'100%'}} onClick={()=>{cartHandler()}}>
