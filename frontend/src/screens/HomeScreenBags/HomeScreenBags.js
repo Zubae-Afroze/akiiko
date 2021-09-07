@@ -48,6 +48,7 @@ const HomeScreenBags = () => {
         setBags(res.data)
       })
       .catch((err) => {
+        console.log('HAS ERROR' + err)
         // setLoading(false)
         // setError(err.message)
       })

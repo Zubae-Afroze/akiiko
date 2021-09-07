@@ -66,10 +66,10 @@ const HomeScreenHome = () => {
         <div className='home-title-comp'>HOME</div>
         <div className='home-header-comp'>
           <button
+            className='home-header-shop-btn'
             onClick={() => {
               history.push('/allproducts/productlist/home')
             }}
-            className='home-header-shop-btn'
           >
             SHOP ALL
           </button>
@@ -102,16 +102,15 @@ const HomeScreenHome = () => {
                 ))}
             </div>
           </div>
-
-          <div className='home-footer-shop-btn'>
-            <button
-              onClick={() => {
-                history.push('/allproducts/productlist/home')
-              }}
-            >
-              SHOP ALL
-            </button>
-          </div>
+        </div>
+        <div className='home-footer-shop-btn'>
+          <button
+            onClick={() => {
+              history.push('/allproducts/productlist/home')
+            }}
+          >
+            SHOP ALL
+          </button>
         </div>
       </>
     )
