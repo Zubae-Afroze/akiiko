@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 //import { actionListHomeStorage } from '../../actions/actionHomeStorage'
 
@@ -28,7 +28,7 @@ const HomeScreenWorkout = () => {
   const [storage, setStorage] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
+  const history = useHistory();
   //const dispatch = useDispatch()
 
   //const homeScreenStorage = useSelector((state) => state.homeScreenStorage)
@@ -72,7 +72,9 @@ const HomeScreenWorkout = () => {
             colour tones and minimal design elevate the mood of your personal
             spaces and allow for easy declaring.
         </span>
-        <button className='storage-header-shop-btn'>
+        <button onClick={()=>{
+          history.push('/allproducts/productlist/storage')
+        }} className='storage-header-shop-btn'>
           SHOP ALL
         </button>
       </div>
@@ -99,7 +101,9 @@ const HomeScreenWorkout = () => {
         </div>
         
         <div className='storage-footer-shop-btn'>
-          <button>
+          <button onClick={()=>{
+          history.push('/allproducts/productlist/storage')
+        }} >
             SHOP ALL
           </button>
         </div>

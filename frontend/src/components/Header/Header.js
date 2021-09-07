@@ -24,6 +24,8 @@ import { addToCart, removeFromCart } from '../../actions/actionCart'
 import { firebaseLogout } from '../../actions/actionAuth'
 import { listMyOrders } from '../../actions/actionOrder'
 import SideBarComp from '../SideBar/SideBarComp'
+import cartFilledIcon from '../Shimmers/cart-filled-icon.png'
+import cartUnFilledIcon from '../Shimmers/cart-unfilled-icon.png'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -249,7 +251,7 @@ const Header = () => {
               <Nav className='title-bar-icon title-search'>
                 <Link to='/search'>
                   <img
-                    src={'/images/font_images/search.svg'}
+                    src={'/images/font_images/search.svg'} 
                     alt='search_icon'
                     onClick={() => {
                       let rootCss = document.querySelector(':root')

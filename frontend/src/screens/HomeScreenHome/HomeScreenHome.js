@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './HomeScreenHome.css'
 
 import MyComponent from 'react-fullpage-custom-loader'
@@ -35,6 +35,7 @@ const HomeScreenHome = () => {
   const [loading, setLoading] = useState(false)
   const [mainImageLoaded, setMainImageLoaded] = useState(false)
   const [error, setError] = useState('')
+  const history = useHistory();
 
   useEffect(() => {
     setLoading(true)
@@ -68,7 +69,9 @@ const HomeScreenHome = () => {
         HOME
       </div>
       <div className='home-header-comp'>
-        <button className='home-header-shop-btn'>
+        <button onClick={()=>{
+          history.push('/allproducts/productlist/home')
+        }} className='home-header-shop-btn'>
           SHOP ALL
         </button>
         <span>
@@ -103,7 +106,9 @@ const HomeScreenHome = () => {
         </div>
         
         <div className='home-footer-shop-btn'>
-          <button>
+          <button onClick={()=>{
+          history.push('/allproducts/productlist/home')
+        }}>
             SHOP ALL
           </button>
         </div>

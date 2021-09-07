@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 // import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import MyComponent from 'react-fullpage-custom-loader'
 import SpinnerIcon from '../../components/Spinner/SpinnerIcon'
@@ -37,6 +37,7 @@ const HomeScreenBags = () => {
   const [bags, setBags] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const history = useHistory();
 
   useEffect(() => {
     //dispatch(actionListHomeBags())
@@ -70,7 +71,9 @@ const HomeScreenBags = () => {
         <span>
           A delightful range of sustainable bags that are designed to perfection. Minimal, yet classic silhouettes to compliment just about every look, multipurpose & eye-catching.
         </span>
-        <button className='bags-header-shop-btn'>
+        <button onClick={()=>{
+          history.push('/allproducts/productlist/bags')
+        }} className='bags-header-shop-btn'>
           SHOP ALL
         </button>
       </div>
@@ -88,7 +91,9 @@ const HomeScreenBags = () => {
         }
 
         <div className='bags-footer-shop-btn'>
-          <button>
+          <button onClick={()=>{
+          history.push('/allproducts/productlist/bags')
+        }}>
             SHOP ALL
           </button>
         </div>
