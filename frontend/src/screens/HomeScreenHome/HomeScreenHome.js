@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import './HomeScreenHome.css'
 
 import MyComponent from 'react-fullpage-custom-loader'
@@ -32,9 +32,10 @@ const HomeScreenHome = () => {
   //const { loading, error, products } = homeScreenHome
 
   const [home, setHome] = useState([])
-  // const [loading, setLoading] = useState(false)
-  // const [mainImageLoaded, setMainImageLoaded] = useState(false)
-  // const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [mainImageLoaded, setMainImageLoaded] = useState(false)
+  const [error, setError] = useState('')
+  const history = useHistory()
 
   useEffect(() => {
     // setLoading(true)
@@ -64,7 +65,14 @@ const HomeScreenHome = () => {
       <>
         <div className='home-title-comp'>HOME</div>
         <div className='home-header-comp'>
-          <button className='home-header-shop-btn'>SHOP ALL</button>
+          <button
+            onClick={() => {
+              history.push('/allproducts/productlist/home')
+            }}
+            className='home-header-shop-btn'
+          >
+            SHOP ALL
+          </button>
           <span>
             A simple yet inviting collection of natural fabric kitchen
             accessories that will blend harmoniously with every home’s mood &
@@ -75,27 +83,35 @@ const HomeScreenHome = () => {
         <div style={{ height: '20px' }} />
 
         <div className='home-bags-comp-main-content-wrapper'>
-          {/* <div className='home-products-main-img-shimmer'> */}
-          <img
-            className='home-flex-img-wrapper'
-            src={`/images/home_screen_images/HomeScreenHomeHero.jpg`}
-            alt='home_hero_img'
-            // onLoad={() => {
-            //   setMainImageLoaded(true)
-            // }}
-          />
-          {/* </div> */}
+          <div className='home-bags-comp-main-content-wrapper'>
+            {/* <div className='home-products-main-img-shimmer'> */}
+            <img
+              className='home-flex-img-wrapper'
+              src={`/images/home_screen_images/HomeScreenHomeHero.jpg`}
+              alt='home_hero_img'
+              // onLoad={() => {
+              //   setMainImageLoaded(true)
+              // }}
+            />
+            {/* </div> */}
 
-          <div className='home-bags-comp'>
-            {home &&
-              home.map((product, index) => (
-                <ProductItemComp product={product} key={index} />
-              ))}
+            <div className='home-bags-comp'>
+              {home &&
+                home.map((product, index) => (
+                  <ProductItemComp product={product} key={index} />
+                ))}
+            </div>
           </div>
-        </div>
 
-        <div className='home-footer-shop-btn'>
-          <button>SHOP ALL</button>
+          <div className='home-footer-shop-btn'>
+            <button
+              onClick={() => {
+                history.push('/allproducts/productlist/home')
+              }}
+            >
+              SHOP ALL
+            </button>
+          </div>
         </div>
       </>
     )

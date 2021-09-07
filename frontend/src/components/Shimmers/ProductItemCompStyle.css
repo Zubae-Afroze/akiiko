@@ -192,6 +192,7 @@
   width: auto;
 }
 .add-to-cart-comp {
+  justify-content: center;
   color: #f6f1ea;
   justify-content: center;
   height: 0;
