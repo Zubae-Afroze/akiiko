@@ -81,58 +81,61 @@ const AccessoriesAllProducts = () => {
     document.getElementById(product.productId).src = product.images[0]
   }
 
-  return (
-    <>
-    <TopPopUpComp />
-      <Container>
-        <div className='product-list-wrapper'>
-          <Link to='/' className='product-list-back-button'>
-            <img
-              src='/images/font_images/back_arrow.svg'
-              alt='back_arrow'
-            ></img>
-            BACK
-          </Link>
-          {error && <h2>{error}</h2>}
-          {go && (
-            <>
-              {go[Object.keys(go)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {go[Object.keys(go)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {go[Object.keys(go)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={go} /> 
-            </>
-          )}
-          {wallet && <h2>{error}</h2>}{' '}
-          {wallet[Object.keys(wallet)[0]] && (
-            <>
-              {wallet[Object.keys(wallet)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {wallet[Object.keys(wallet)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {wallet[Object.keys(wallet)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={wallet} /> 
-            
-            </>
-          )}
-        </div>
-      </Container>
-      <Footer />
-    </>
-  )
+  return <OldComp />
 
-  function OldComp(){
+  function NewComp() {
+    return (
+      <>
+        <TopPopUpComp />
+        <Container>
+          <div className='product-list-wrapper'>
+            <Link to='/' className='product-list-back-button'>
+              <img
+                src='/images/font_images/back_arrow.svg'
+                alt='back_arrow'
+              ></img>
+              BACK
+            </Link>
+            {error && <h2>{error}</h2>}
+            {go && (
+              <>
+                {go[Object.keys(go)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {go[Object.keys(go)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {go[Object.keys(go)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={go} />
+              </>
+            )}
+            {wallet && <h2>{error}</h2>}{' '}
+            {wallet[Object.keys(wallet)[0]] && (
+              <>
+                {wallet[Object.keys(wallet)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {wallet[Object.keys(wallet)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {wallet[Object.keys(wallet)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={wallet} />
+              </>
+            )}
+          </div>
+        </Container>
+        <Footer />
+      </>
+    )
+  }
+
+  function OldComp() {
     return (
       <>
         <Container>

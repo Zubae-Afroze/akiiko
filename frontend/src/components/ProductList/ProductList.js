@@ -11,7 +11,6 @@ import Message from '../Message/Message'
 import Footer from '../Footer/Footer'
 import ProductItemComp from '../Shimmers/ProductItemComp'
 
-
 // import { actionListProductList } from '../../actions/actionProductList'
 
 import axios from 'axios'
@@ -69,10 +68,12 @@ const ProductList = () => {
     document.getElementById(product.productId).src = product.images[0]
   }
 
-  return (
-    <>
-      <TopPopUpComp />
-      {products && (
+  return <OldComp />
+  function NewComp() {
+    return (
+      <>
+        <TopPopUpComp />
+        {products && (
           <Container>
             <div className='product-list-wrapper'>
               <Link to='/' className='product-list-back-button'>
@@ -93,33 +94,30 @@ const ProductList = () => {
                   </div>
                 </>
               ) : null}
-              
-              <NewComp />
-              
-              <div style={{height:'50px'}} />
+
+              <NewComp2 />
+
+              <div style={{ height: '50px' }} />
             </div>
           </Container>
         )}
         <Footer />
-    </>
-  )
-
-
-  function NewComp(){
-      return (
-        <div className='product-list-comp-wrapper'>
-          {
-            products.map((product) => (
-              <ProductItemComp product={product} isSimilarProducts={false}/>
-            ))
-          }
-        </div>
-      )
+      </>
+    )
   }
 
+  function NewComp2() {
+    return (
+      <div className='product-list-comp-wrapper'>
+        {products.map((product) => (
+          <ProductItemComp product={product} isSimilarProducts={false} />
+        ))}
+      </div>
+    )
+  }
 
-  function OldComp(){
-    return(
+  function OldComp() {
+    return (
       <>
         {loading && (
           <MyComponent
@@ -203,7 +201,7 @@ const ProductList = () => {
         )}
         <Footer />
       </>
-    );
+    )
   }
 }
 

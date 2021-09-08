@@ -104,90 +104,94 @@ const LifestyleAllProducts = () => {
     fetchStationery()
   }, [])
 
-  return (
-    <React.Fragment>
-    <TopPopUpComp />
-      <Container>
-        <div className='product-list-wrapper'>
-          <Link to='/' className='product-list-back-button'>
-            <img
-              src='/images/font_images/back_arrow.svg'
-              alt='back_arrow'
-            ></img>
-            BACK
-          </Link>
-          {error && <h1>{error}</h1>}{' '}
-          {hobby[Object.keys(hobby)[0]] && (
-            <>
-              {hobby[Object.keys(hobby)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {hobby[Object.keys(hobby)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {hobby[Object.keys(hobby)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={hobby} />
-            </>
-          )}
-          {error && <h1>{error}</h1>}
-          {stationery[Object.keys(stationery)[0]] && (
-            <>
-              {stationery[Object.keys(stationery)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {stationery[Object.keys(stationery)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {stationery[Object.keys(stationery)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={stationery} />
-            </>
-          )}
-          {error && <h1>{error}</h1>}
-          {hygiene[Object.keys(hygiene)[0]] && (
-            <>
-              {hygiene[Object.keys(hygiene)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {hygiene[Object.keys(hygiene)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {hygiene[Object.keys(hygiene)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={hygiene} />
-            </>
-          )}
-          {error && <h1>{error}</h1>}
-          {workout[Object.keys(workout)[0]] && (
-            <>
-              {workout[Object.keys(workout)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {workout[Object.keys(workout)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {workout[Object.keys(workout)[0]].groupDescription}
-                  </div>{' '}
-                </>
-              ) : null}
-              <AllProductsRowComp products={workout} />
-            </>
-          )}
-        </div>
-      </Container>
-      <div style={{height: '50px'}} />
-      <Footer />
-    </React.Fragment>
-  )
+  return <OldComp />
 
-  function OldComp(){
+  function NewComp() {
+    return (
+      <React.Fragment>
+        <TopPopUpComp />
+        <Container>
+          <div className='product-list-wrapper'>
+            <Link to='/' className='product-list-back-button'>
+              <img
+                src='/images/font_images/back_arrow.svg'
+                alt='back_arrow'
+              ></img>
+              BACK
+            </Link>
+            {error && <h1>{error}</h1>}{' '}
+            {hobby[Object.keys(hobby)[0]] && (
+              <>
+                {hobby[Object.keys(hobby)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {hobby[Object.keys(hobby)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {hobby[Object.keys(hobby)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={hobby} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}
+            {stationery[Object.keys(stationery)[0]] && (
+              <>
+                {stationery[Object.keys(stationery)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {stationery[Object.keys(stationery)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {stationery[Object.keys(stationery)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={stationery} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}
+            {hygiene[Object.keys(hygiene)[0]] && (
+              <>
+                {hygiene[Object.keys(hygiene)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {hygiene[Object.keys(hygiene)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {hygiene[Object.keys(hygiene)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={hygiene} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}
+            {workout[Object.keys(workout)[0]] && (
+              <>
+                {workout[Object.keys(workout)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {workout[Object.keys(workout)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {workout[Object.keys(workout)[0]].groupDescription}
+                    </div>{' '}
+                  </>
+                ) : null}
+                <AllProductsRowComp products={workout} />
+              </>
+            )}
+          </div>
+        </Container>
+        <div style={{ height: '50px' }} />
+        <Footer />
+      </React.Fragment>
+    )
+  }
+
+  function OldComp() {
     return (
       <React.Fragment>
         <Container>

@@ -80,59 +80,62 @@ const StorageAllProducts = () => {
     document.getElementById(product.productId).src = product.images[0]
   }
 
-  return (
-    <>
-    <TopPopUpComp />
-      <Container>
-        <div className='product-list-wrapper'>
-          <Link to='/' className='product-list-back-button'>
-            <img
-              src='/images/font_images/back_arrow.svg'
-              alt='back_arrow'
-            ></img>
-            BACK
-          </Link>
-          {error && <h1>{error}</h1>}
-          {organisers[Object.keys(organisers)[0]] && (
-            <>
-              {organisers[Object.keys(organisers)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {organisers[Object.keys(organisers)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {organisers[Object.keys(organisers)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={organisers} /> 
-            </>
-          )}
-          {error && <h1>{error}</h1>}{' '}
-          {home[Object.keys(home)[0]] && (
-            <>
-              {home[Object.keys(home)[0]] ? (
-                <>
-                  {' '}
-                  <h2 className='product-list-label'>
-                    {home[Object.keys(home)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {home[Object.keys(home)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={home} />
-              
-            </>
-          )}
-        </div>
-      </Container>
-      <Footer />
-    </>
-  )
+  return <OldComp />
 
-  function OldComp(){
+  function NewComp() {
+    return (
+      <>
+        <TopPopUpComp />
+        <Container>
+          <div className='product-list-wrapper'>
+            <Link to='/' className='product-list-back-button'>
+              <img
+                src='/images/font_images/back_arrow.svg'
+                alt='back_arrow'
+              ></img>
+              BACK
+            </Link>
+            {error && <h1>{error}</h1>}
+            {organisers[Object.keys(organisers)[0]] && (
+              <>
+                {organisers[Object.keys(organisers)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {organisers[Object.keys(organisers)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {organisers[Object.keys(organisers)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={organisers} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}{' '}
+            {home[Object.keys(home)[0]] && (
+              <>
+                {home[Object.keys(home)[0]] ? (
+                  <>
+                    {' '}
+                    <h2 className='product-list-label'>
+                      {home[Object.keys(home)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {home[Object.keys(home)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={home} />
+              </>
+            )}
+          </div>
+        </Container>
+        <Footer />
+      </>
+    )
+  }
+
+  function OldComp() {
     return (
       <>
         <Container>
