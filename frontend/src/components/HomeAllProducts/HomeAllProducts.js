@@ -56,7 +56,7 @@ const HomeAllProducts = () => {
     const fetchTableware = () => {
       // setLoading(true)
       axios
-        .get('/api/productlist/home/tableware')
+        .get('/api/productlist/home/dining')
         .then((res) => {
           // setLoading(false)
           setTableware(res.data)
