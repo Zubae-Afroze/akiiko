@@ -24,7 +24,7 @@ export default function ProductItemComp(props) {
   const [isQuickViewON, setIsQuickViewON] = useState(false)
   const [addToCartText, setAddToCartText] = useState('Add to Cart')
   const [imageRef, setImageRef] = useState(null)
-  const masterProduct = useRef({})
+  const masterProduct = useRef()
 
   const shimmerIMGstyle = {
     height: '230px',
