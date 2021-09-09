@@ -227,13 +227,13 @@ export default class Menubar extends Component {
                       <Col className='navbar-drop-list' sm={8}>
                         <ul onClick={this.toggleHomeDiv}>
                           <li>
-                            <Link to='/productlist/home/tableware'>
+                            <Link to='/productlist/home/dining'>
                               <img
                                 src='/images/nav_drop/home/tableware.jpg'
                                 alt='_img'
                               />
                               <div className='navbar-drop-list-label'>
-                                TABLEWARE
+                                DINING
                               </div>
                             </Link>
                           </li>
