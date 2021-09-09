@@ -65,8 +65,8 @@ export default function SideBarComp() {
             content={
               <>
                 <AccordianSubItemsComp
-                  link={'/productlist/home/tableware'}
-                  title={'Table Ware'}
+                  link={'/productlist/home/dining'}
+                  title={'Dining'}
                 />
                 <AccordianSubItemsComp
                   link={'/productlist/home/kitchen'}
