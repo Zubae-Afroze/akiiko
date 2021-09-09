@@ -116,7 +116,7 @@ class HomeScreen extends React.Component {
                   </Link>
                 </Carousel.Item>
                 <Carousel.Item interval={4000}>
-                  <Link to='/productlist/home/tableware'>
+                  <Link to='/productlist/home/dining'>
                     <img
                       className='d-block w-100'
                       src={'/images/carousel_images/carousel_2.jpg'}
