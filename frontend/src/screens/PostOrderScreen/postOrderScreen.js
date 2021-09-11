@@ -35,6 +35,9 @@ export default function PostOrderScreen() {
           });`}
         </script>
       </Helmet>
+
+
+      
       <div className='successBGimage'>
         <div className='order-success-msg-wraper f-f-l'>
           <div className='order-success-msg-container'>
