@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 // import { Row, Col } from 'react-bootstrap'
 // import chinkyGirl from './assets/animeGirl.png'
 import './postOrderScreenStyle.css'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
+import { useSelector } from 'react-redux'
+import ReactPixel from 'react-facebook-pixel'
 
 export default function PostOrderScreen() {
+  const order = useSelector((state) => state.orderCreate.order)
+
+  let finalOrder = {}
+
+  if (order) {
+    finalOrder = order
+  } else {
+    finalOrder.totalPrice = null
+  }
+
+  useEffect(() => {
+    ReactPixel.trackCustom('track', 'Purchase', {
+      currency: 'INR',
+      value: finalOrder.totalPrice,
+    })
+  }, [finalOrder])
+
   return (
     <>
       <Helmet>

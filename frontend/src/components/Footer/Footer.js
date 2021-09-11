@@ -199,6 +199,12 @@ export default class Footer extends Component {
                   <Link to={'./PrivacyStatement'}>PRIVACY STATEMENT</Link>
                 </li>
               </ul>
+              {/* <div
+                className='d-flex justify-content-end align-items-end'
+                style={{ marginTop: '20px' }}
+              >
+                All rights reserved &copy; Akiiko 2020
+              </div> */}
             </div>
           </Container>
         </div>
