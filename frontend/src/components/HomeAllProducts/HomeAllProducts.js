@@ -130,97 +130,97 @@ const HomeAllProducts = () => {
     document.getElementById(product.productId).src = product.images[0]
   }
 
-  return (
-    <>
-    <TopPopUpComp />
-      <Container>
-        <div className='product-list-wrapper'>
-          <Link to='/' className='product-list-back-button'>
-            <img
-              src='/images/font_images/back_arrow.svg'
-              alt='back_arrow'
-            ></img>
-            BACK
-          </Link>
-          {error && <h1>{error}</h1>}
-          {tableware[Object.keys(tableware)[0]] && (
-            <>
-              {tableware[Object.keys(tableware)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {tableware[Object.keys(tableware)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {tableware[Object.keys(tableware)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={tableware} />
-            </>
-          )}
+  return <OldComp />
 
-          {error && <h1>{error}</h1>}
-          {kitchen[Object.keys(kitchen)[0]] && (
-            <>
-              {kitchen[Object.keys(kitchen)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {kitchen[Object.keys(kitchen)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {kitchen[Object.keys(kitchen)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={kitchen} />
-            
-            </>
-          )}
+  function NewComp() {
+    return (
+      <>
+        <TopPopUpComp />
+        <Container>
+          <div className='product-list-wrapper'>
+            <Link to='/' className='product-list-back-button'>
+              <img
+                src='/images/font_images/back_arrow.svg'
+                alt='back_arrow'
+              ></img>
+              BACK
+            </Link>
+            {error && <h1>{error}</h1>}
+            {tableware[Object.keys(tableware)[0]] && (
+              <>
+                {tableware[Object.keys(tableware)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {tableware[Object.keys(tableware)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {tableware[Object.keys(tableware)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={tableware} />
+              </>
+            )}
 
-          {error && <h1>{error}</h1>}
-          {laundry[Object.keys(laundry)[0]] && (
-            <>
-              {laundry[Object.keys(laundry)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {laundry[Object.keys(laundry)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {laundry[Object.keys(laundry)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={laundry} />
-              
-            </>
-          )}
-          
-          {error && <h1>{error}</h1>}
-          {garden[Object.keys(garden)[0]] && (
-            <>
-              {garden[Object.keys(garden)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {garden[Object.keys(garden)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {garden[Object.keys(garden)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={garden} />
-              
-            </>
-          )}
-        </div>
-      </Container>
-      <div style={{height:'50px'}} />
-      <Footer />
-    </>
-  )
+            {error && <h1>{error}</h1>}
+            {kitchen[Object.keys(kitchen)[0]] && (
+              <>
+                {kitchen[Object.keys(kitchen)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {kitchen[Object.keys(kitchen)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {kitchen[Object.keys(kitchen)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={kitchen} />
+              </>
+            )}
 
+            {error && <h1>{error}</h1>}
+            {laundry[Object.keys(laundry)[0]] && (
+              <>
+                {laundry[Object.keys(laundry)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {laundry[Object.keys(laundry)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {laundry[Object.keys(laundry)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={laundry} />
+              </>
+            )}
 
-  function OldComp(){
+            {error && <h1>{error}</h1>}
+            {garden[Object.keys(garden)[0]] && (
+              <>
+                {garden[Object.keys(garden)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {garden[Object.keys(garden)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {garden[Object.keys(garden)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={garden} />
+              </>
+            )}
+          </div>
+        </Container>
+        <div style={{ height: '50px' }} />
+        <Footer />
+      </>
+    )
+  }
+
+  function OldComp() {
     return (
       <>
         <Container>

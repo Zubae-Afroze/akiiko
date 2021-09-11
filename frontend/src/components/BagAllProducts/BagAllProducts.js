@@ -115,111 +115,106 @@ const BagAllProducts = () => {
     document.getElementById(product.productId).src = product.images[0]
   }
 
-  return (
-    <>
-    <TopPopUpComp />
-      <Container>
-        <div className='product-list-wrapper'>
-          <Link to='/' className='product-list-back-button'>
-            <img
-              src='/images/font_images/back_arrow.svg'
-              alt='back_arrow'
-            ></img>
-            BACK
-          </Link>
-          {error && <h2>{error}</h2>}
-          {women && (
-            <>
-              {women[Object.keys(women)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {women[Object.keys(women)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {women[Object.keys(women)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              
-              <ProductsRowComp products={women}/>
-              
-            </>
-          )}
-          
-          {error && <h1>{error}</h1>}{' '}
-          {tote && (
-            <>
-              {tote[Object.keys(tote)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {tote[Object.keys(tote)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {tote[Object.keys(tote)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
+  return <OldComp />
 
-              <ProductsRowComp products={tote}/>
-            </>
-          )}
+  function NewComp() {
+    return (
+      <>
+        <TopPopUpComp />
+        <Container>
+          <div className='product-list-wrapper'>
+            <Link to='/' className='product-list-back-button'>
+              <img
+                src='/images/font_images/back_arrow.svg'
+                alt='back_arrow'
+              ></img>
+              BACK
+            </Link>
+            {error && <h2>{error}</h2>}
+            {women && (
+              <>
+                {women[Object.keys(women)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {women[Object.keys(women)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {women[Object.keys(women)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
 
-          {error && <h2>{error}</h2>}
-          {office && (
-            <>
-              {office[Object.keys(office)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {office[Object.keys(office)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {office[Object.keys(office)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <ProductsRowComp products={office}/>
-            </>
-          )}
-          
-          {error && <h1>{error}</h1>}{' '}
-          {travel && (
-            <>
-              {travel[Object.keys(travel)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {travel[Object.keys(travel)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {travel[Object.keys(travel)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <ProductsRowComp products={travel}/>
-            </>
-          )}
-        </div>
-        <div style={{height:'50px'}} />
-      </Container>
-      <Footer />
-    </>
-  )
+                <ProductsRowComp products={women} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}{' '}
+            {tote && (
+              <>
+                {tote[Object.keys(tote)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {tote[Object.keys(tote)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {tote[Object.keys(tote)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
 
-
-  function ProductsRowComp({products}){
-    return(
-      <div className='all-products-products-comp-wrapper'>
-        {
-          products.map((product) => (
-            <ProductItemComp product={product} isSimilarProducts={false} />
-          ))
-        }
-      </div>
-    );
+                <ProductsRowComp products={tote} />
+              </>
+            )}
+            {error && <h2>{error}</h2>}
+            {office && (
+              <>
+                {office[Object.keys(office)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {office[Object.keys(office)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {office[Object.keys(office)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <ProductsRowComp products={office} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}{' '}
+            {travel && (
+              <>
+                {travel[Object.keys(travel)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {travel[Object.keys(travel)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {travel[Object.keys(travel)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <ProductsRowComp products={travel} />
+              </>
+            )}
+          </div>
+          <div style={{ height: '50px' }} />
+        </Container>
+        <Footer />
+      </>
+    )
   }
 
+  function ProductsRowComp({ products }) {
+    return (
+      <div className='all-products-products-comp-wrapper'>
+        {products.map((product) => (
+          <ProductItemComp product={product} isSimilarProducts={false} />
+        ))}
+      </div>
+    )
+  }
 
-
-  function OldComp(){
+  function OldComp() {
     return (
       <>
         <Container>

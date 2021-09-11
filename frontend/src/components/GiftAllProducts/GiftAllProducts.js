@@ -86,70 +86,74 @@ const GiftAllProducts = () => {
     fetchAccessories()
   }, [])
 
-  return (
-    <>
-    <TopPopUpComp />
-      <Container>
-        <div className='product-list-wrapper'>
-          <Link to='/' className='product-list-back-button'>
-            <img
-              src='/images/font_images/back_arrow.svg'
-              alt='back_arrow'
-            ></img>
-            BACK
-          </Link>
-          {error && <h1>{error}</h1>}{' '}
-          {box[Object.keys(box)[0]] && (
-            <>
-              {box[Object.keys(box)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {box[Object.keys(box)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {box[Object.keys(box)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={box} />
-            </>
-          )}
-          {error && <h1>{error}</h1>}
-          {bag[Object.keys(bag)[0]] && (
-            <>
-              {bag[Object.keys(bag)[0]] ? (
-                <>
-                  <h2 className='product-list-label'>
-                    {bag[Object.keys(bag)[0]].subGroup}
-                  </h2>
-                  <div className='product-list-text'>
-                    {bag[Object.keys(bag)[0]].groupDescription}
-                  </div>
-                </>
-              ) : null}
-              <AllProductsRowComp products={bag} />
-            </>
-          )}
-          {error && <h1>{error}</h1>}{' '}
-          {accessories[Object.keys(accessories)[0]] && (
-            <>
-              <h2 className='product-list-label'>
-                {accessories[Object.keys(accessories)[0]].subGroup}
-              </h2>
-              <div className='product-list-text'>
-                {accessories[Object.keys(accessories)[0]].groupDescription}
-              </div>
-              <AllProductsRowComp products={accessories} />
-            </>
-          )}
-        </div>
-      </Container>
-      <div style={{height:'50px'}} />
-      <Footer />
-    </>
-  )
+  return <OldComp />
 
-  function OldComp(){
+  function NewComp() {
+    return (
+      <>
+        <TopPopUpComp />
+        <Container>
+          <div className='product-list-wrapper'>
+            <Link to='/' className='product-list-back-button'>
+              <img
+                src='/images/font_images/back_arrow.svg'
+                alt='back_arrow'
+              ></img>
+              BACK
+            </Link>
+            {error && <h1>{error}</h1>}{' '}
+            {box[Object.keys(box)[0]] && (
+              <>
+                {box[Object.keys(box)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {box[Object.keys(box)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {box[Object.keys(box)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={box} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}
+            {bag[Object.keys(bag)[0]] && (
+              <>
+                {bag[Object.keys(bag)[0]] ? (
+                  <>
+                    <h2 className='product-list-label'>
+                      {bag[Object.keys(bag)[0]].subGroup}
+                    </h2>
+                    <div className='product-list-text'>
+                      {bag[Object.keys(bag)[0]].groupDescription}
+                    </div>
+                  </>
+                ) : null}
+                <AllProductsRowComp products={bag} />
+              </>
+            )}
+            {error && <h1>{error}</h1>}{' '}
+            {accessories[Object.keys(accessories)[0]] && (
+              <>
+                <h2 className='product-list-label'>
+                  {accessories[Object.keys(accessories)[0]].subGroup}
+                </h2>
+                <div className='product-list-text'>
+                  {accessories[Object.keys(accessories)[0]].groupDescription}
+                </div>
+                <AllProductsRowComp products={accessories} />
+              </>
+            )}
+          </div>
+        </Container>
+        <div style={{ height: '50px' }} />
+        <Footer />
+      </>
+    )
+  }
+
+  function OldComp() {
     return (
       <>
         <Container>
