@@ -19,7 +19,7 @@ export default function PostOrderScreen() {
   }
 
   useEffect(() => {
-    ReactPixel.track('track', 'Purchase', {
+    ReactPixel.trackCustom('track', 'Purchase', {
       currency: 'INR',
       value: finalOrder.totalPrice,
     })
