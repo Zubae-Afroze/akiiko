@@ -28,7 +28,7 @@ export default function PostOrderScreen() {
   return (
     <>
       <Helmet>
-        <title>Order Success</title>
+        <title>akiiko - Order Success</title>
         <script>
           {`gtag('event', 'conversion', {
             'send_to': 'AW-322846655/rwSuCMaIge4CEL__-JkB',

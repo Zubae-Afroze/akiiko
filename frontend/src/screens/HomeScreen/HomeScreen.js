@@ -14,6 +14,7 @@ import ReactPixel from 'react-facebook-pixel'
 // import TopPopUpComp ,{showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
 
 import './HomeScreen.css'
+import { Helmet } from 'react-helmet'
 
 // import UseSpinner from '../../components/Spinner/UseSpinner';
 
@@ -85,6 +86,13 @@ const HomeScreen = () => {
           />
         ) : null} */}
       <Container>
+        <Helmet>
+          <title>akiiko: Natural Home Decor and Lifestyle Products</title>
+          <meta
+            name='description'
+            content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
+          ></meta>
+        </Helmet>
         <Row className='home-screen-container'>
           <Col sm={4}>
             <div className='hero-container'>

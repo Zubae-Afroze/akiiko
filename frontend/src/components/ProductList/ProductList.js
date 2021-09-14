@@ -17,6 +17,7 @@ import axios from 'axios'
 
 import './ProductListNewStyle.css'
 import TopPopUpComp from '../TopPopUp/TopPopUpComp'
+import { Helmet } from 'react-helmet'
 
 const ProductList = () => {
   const { group, subGroup } = useParams()
@@ -72,6 +73,9 @@ const ProductList = () => {
   function NewComp() {
     return (
       <>
+        <Helmet>
+          <title>{`Product List - ${products[0].group}`}</title>
+        </Helmet>
         <TopPopUpComp />
         {products && (
           <Container>
@@ -131,6 +135,9 @@ const ProductList = () => {
         {error && <Message variant='dark'>{error}</Message>}{' '}
         {products && (
           <Container>
+            <Helmet>
+              <title>akiiko - Products Listing</title>
+            </Helmet>
             <div className='product-list-wrapper'>
               <Link to='/' className='product-list-back-button'>
                 <img
