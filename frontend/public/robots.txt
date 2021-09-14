@@ -1,3 +1,22 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Allow: /productlist
+Allow: /product
+Allow: /AboutUs
+Allow: /Careers
+Allow: /TermsofService
+Allow: /Refund
+Allow: /PrivacyStatement
+Allow: /productlist/accessories
+Allow: /productlist/storage
+Allow: /productlist/lifestyle
+Allow: /productlist/gift
+Allow: /productlist/home
+Allow: /productlist/bags
+Allow: /productlist/newProfile
+Allow: /newProfile
+Allow: /ordersuccess
+Disallow: /search
+Disallow: /checkout
+Sitemap: https://akiiko.com/sitemap.xml
