@@ -11,9 +11,12 @@ import Message from '../../components/Message/Message'
 import { googleAuth, facebookAuth, emailAuth } from '../../actions/actionAuth'
 import { toast } from 'react-toastify'
 
-import TopPopUpComp , {showTopPopUp} from '../../components/TopPopUp/TopPopUpComp'
+import TopPopUpComp, {
+  showTopPopUp,
+} from '../../components/TopPopUp/TopPopUpComp'
 
 import './LoginScreen.css'
+import { Helmet } from 'react-helmet'
 
 const LoginScreen = () => {
   const dispatch = useDispatch()
@@ -131,7 +134,7 @@ const LoginScreen = () => {
 
   return (
     <React.Fragment>
-    <TopPopUpComp />
+      <TopPopUpComp />
       <div className='login-wrap'>
         {/* <ToastContainer
           position='top-center'
@@ -180,6 +183,9 @@ const LoginScreen = () => {
                 </Card> */}
 
         <div className='sign-in-web'>
+          <Helmet>
+            <title>akiiko - Login Screen</title>
+          </Helmet>
           <div className='sign-in-title'>
             <Link to={'/'}>
               <img

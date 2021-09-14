@@ -10,6 +10,7 @@ import TopPopUpComp, {
   showTopPopUp,
 } from '../../components/TopPopUp/TopPopUpComp'
 import './RegisterScreen.css'
+import { Helmet } from 'react-helmet'
 
 const RegisterScreen = () => {
   const dispatch = useDispatch()
@@ -124,7 +125,9 @@ const RegisterScreen = () => {
   return (
     <>
       <TopPopUpComp />
-
+      <Helmet>
+        <title>akiiko - Register Screen</title>
+      </Helmet>
       <div className='login-wrap'>
         {loading && (
           <MyComponent

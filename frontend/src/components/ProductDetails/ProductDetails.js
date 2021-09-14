@@ -24,6 +24,8 @@ import axios from 'axios';
 
 //import { ToastContainer, toast } from 'react-toastify'
 
+import { Helmet } from 'react-helmet'
+
 import './ProductDetails.css'
 
 const ProductDetails = () => {
@@ -232,7 +234,9 @@ const ProductDetails = () => {
         <h2>{error}</h2>
       ) : product.productId ? (
         <Container>
-        {console.log(product)}
+          <Helmet>
+            <title>akiiko - Products Details</title>
+          </Helmet>
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>
