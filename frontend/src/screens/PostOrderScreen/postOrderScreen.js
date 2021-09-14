@@ -31,26 +31,8 @@ export default function PostOrderScreen() {
         <title>akiiko - Order Success</title>
         <script>
           {`gtag('event', 'conversion', {
-            'send_to': 'AW-322846655/rwSuCMaIge4CEL__-JkB',
-            'value': 1.0,
-            'currency': 'INR',
-            'transaction_id': ''
-        });`}
-        </script>
-        <script>
-          {`gtag('event', 'conversion', {
-              'send_to': 'AW-322846655/qjvTCM2r7O8CEL__-JkB',
-              'value': 1.0,
-              'currency': 'INR',
-              'transaction_id': ''
-          });`}
-        </script>
-        <script>
-          {`gtag('event', 'conversion', {
-            'send_to': 'AW-322846655/BxltCMvCqvECEL__-JkB',
-            'value': 1.0,
-            'currency': 'INR',
-            'transaction_id': ''
+            'send_to': 'AW-322846655/qy3WCJHSvvQCEL__-JkB',
+            'transaction_id': ${finalOrder._id}
           });`}
         </script>
       </Helmet>
