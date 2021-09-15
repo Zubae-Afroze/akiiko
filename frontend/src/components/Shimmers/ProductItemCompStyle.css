@@ -183,6 +183,7 @@
 
 .view-price-add-to-cart-comp {
   overflow: hidden;
+  cursor: pointer !important;
 }
 .view-price-comp,
 .add-to-cart-comp {
