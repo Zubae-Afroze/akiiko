@@ -55,7 +55,7 @@ const HomeScreenWorkout = () => {
 
   //const HomeScreenStorageProducts = []
 
-  return <OldComp />
+  return <NewComp />
 
   function NewComp() {
     return (

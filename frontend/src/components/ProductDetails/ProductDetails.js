@@ -47,43 +47,47 @@ const ProductDetails = () => {
   const [bigImageSrc, setImageSrc] = useState(null)
 
   useEffect(() => {
+    setProduct(null)
+    setLoading(true)
     // dispatch(actionListProductDetails(id))
     async function getAllData(){
       const prod = await axios.get(`/api/product/${id}`);
-        // console.log(prod.data)
-        const _product = prod.data;
-        
+      // console.log(prod.data)
+      const _product = prod.data;
+      
         for(let i=0; i<prod.data.images_web.length; i++ ){
           const url = await storage
           .ref(prod.data.images_web[i])
           .getDownloadURL()
           // .then((url) => {
-          //   // setImageRef(url)
-          // })
-          _product.images_web[i] = url;
-          console.log(_product.images_web[i])
-        }
-        // console.log('firebase'+_product.images_web)
-  
-        setProduct(_product)
-        setImageSrc(_product.images_web[0])
-        setLoading(false)
-        setError(null)
-        console.log('Link: '+_product.images_web)
-        // prod.data.images_web.forEach((path,index) => {
+            //   // setImageRef(url)
+            // })
+            _product.images_web[i] = url;
+            // console.log(_product.images_web[i])
+          }
+          // console.log('firebase'+_product.images_web)
           
-        // });
-        
-        
-        // setLoading(true);
-    
-    }
+          setProduct(_product)
+          setImageSrc(_product.images_web[0])
+          setLoading(false)
+          setError(null)
+          // console.log('Link: '+_product.images_web)
+          // prod.data.images_web.forEach((path,index) => {
+            
+            // });
+            
+            
+            // setLoading(true);
+            
+          }
+          
+          getAllData();
 
-    getAllData();
+          console.log('Product Detail page Rendered')
   }, [id])
-
-
-
+        
+        
+        
 
   // useEffect(() => {
   //   setImageSrc(product.heroImage)
@@ -243,7 +247,7 @@ const ProductDetails = () => {
                 {product.images_web.map((prod, index) => {
 
                   return (
-                    <Carousel.Item interval={null} key={index}>
+                    <Carousel.Item interval={null} key={index+id}>
                       <img
                         className='d-block w-100 maginfier-shimmer'
                         src={prod}
@@ -259,7 +263,7 @@ const ProductDetails = () => {
               <Col xs={1} className='alt-img-list'>
                 <ul>
                   {product.images_web.map((prod, index) => (
-                    <li key={index}>
+                    <li key={index+id}>
                       <img
                         className='maginfier-shimmer'
                         onClick={() => setImageSrc(prod)}
@@ -507,7 +511,7 @@ const ProductDetails = () => {
             <SimilarProducts />
             <div style={{height: '30px'}} /> */}
 
-            <OldComp />
+            <SimilarProducts />
           </div>
           {product.reviews.length !== 0 ? (
             <div>

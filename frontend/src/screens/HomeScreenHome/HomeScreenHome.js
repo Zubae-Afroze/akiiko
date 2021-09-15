@@ -56,7 +56,7 @@ const HomeScreenHome = () => {
 
   return (
     <>
-      <OldComp />
+      <NewComp />
     </>
   )
 

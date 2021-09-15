@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import HomeScreenBags from '../HomeScreenBags/HomeScreenBags'
 import HomeScreenHome from '../HomeScreenHome/HomeScreenHome'
 import HomeScreenStorage from '../HomeScreenStorage/HomeScreenStorage'
+import { Link } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 import './TestScreen.css'
 import { Container } from 'react-bootstrap'
@@ -42,9 +43,13 @@ function ProductTagComp(){
     {/* <div className='hover_box' /> */}
     <div className='product_tag'>
       <div className='product_detail'>
-        <div>Product Title</div>
-        <div>price - 99</div>
+        <p>Product Title kisudyerhq asioudyaoiws </p>
+        <Link
+          to={'/product/5fe18171a384156e680756fe'}
+        >
+        <div>&#x20B9; 99</div>
         <div className='view-product-tag-btn'>View Product &#10095;</div>
+        </Link>
       </div>
     </div>
     {/* <div className='product_tag_detail_box'>

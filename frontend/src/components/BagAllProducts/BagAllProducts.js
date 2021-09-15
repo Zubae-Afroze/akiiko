@@ -115,7 +115,7 @@ const BagAllProducts = () => {
     document.getElementById(product.productId).src = product.images[0]
   }
 
-  return <OldComp />
+  return <NewComp />
 
   function NewComp() {
     return (

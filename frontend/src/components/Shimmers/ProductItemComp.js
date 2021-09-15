@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect, useRef } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { addToCart, removeFromCart } from '../../actions/actionCart'
 import { showTopPopUp } from '../../components/TopPopUp/TopPopUpComp'
 import { storage } from '../../index'
@@ -19,6 +19,8 @@ export default function ProductItemComp(props) {
   const cartList = useSelector((state) => state.cartList)
 
   const { cartItems } = cartList
+
+  const history = useHistory()
 
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const [isQuickViewON, setIsQuickViewON] = useState(false)
@@ -90,27 +92,40 @@ export default function ProductItemComp(props) {
   }
 
   useEffect(() => {
-    storage
-      .ref(props.product.images_web[0])
-      .getDownloadURL()
-      .then((url) => {
-        setImageRef(url)
-      })
+    // storage
+    //   .ref(props.product.images_web[0])
+    //   .getDownloadURL()
+    //   .then((url) => {
+    //     setImageRef(url)
+    //   })
 
     async function getMasterProduct() {
-      axios
+      // console.log('Got product ID: '+ props.product.id)
+      const product = await axios
         .get(
-          `api/product/${
+          `/api/product/${
             props.isSimilarProducts ? props.product.id : props.product._id
           }`
         )
-        .then((product) => {
+          //images_web[0]
           masterProduct.current = product.data
-        })
+          storage 
+          .ref(masterProduct.current.displayImage)
+          .getDownloadURL()
+          .then((url) => {
+            setImageRef(url)
+          })
+      
     }
 
     if(props.isSearchScreen){
       masterProduct.current = props.product;
+      storage
+      .ref(props.product.displayImage)
+      .getDownloadURL()
+      .then((url) => {
+        setImageRef(url)
+      })
     }else{
         getMasterProduct()
     }
@@ -170,6 +185,11 @@ export default function ProductItemComp(props) {
             style={{
               border: isImageLoaded ? 'solid rgb(199, 199, 199) 0.1px' : '0',
             }}
+          //   onClick={()=>{
+          //     history.push(`/product/${
+          //   props.isSimilarProducts ? props.product.id : props.product._id
+          // }`)
+          //   }}
           >
             <img
               loading='lazy'

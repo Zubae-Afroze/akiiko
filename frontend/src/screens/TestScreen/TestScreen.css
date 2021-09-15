@@ -79,6 +79,14 @@
   cursor: default;
 }
 
+.product_detail p {
+  padding: 0 5px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .view-product-tag-btn {
   height: 20px;
   /* background-color: red; */

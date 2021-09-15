@@ -767,8 +767,9 @@ function SearchedProduct({ product }) {
 
   return (
     <Col xs={6} md={3} style={{ marginBottom: '20px' }}>
-      {/* <ProductItemComp product={product}/> */}
-      <Link to={`/product/${product._id}`}>
+      <ProductItemComp product={product}/>
+
+      {/* <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
             <img
@@ -802,7 +803,7 @@ function SearchedProduct({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link>
+      </Link> */}
     </Col>
   )
 }
@@ -818,9 +819,9 @@ function SearchedProductThree({ product }) {
 
   return (
     <Col xs={6} md={4} style={{ marginBottom: '20px' }}>
-      {/* <ProductItemComp product={product}/> */}
+      <ProductItemComp product={product}/>
 
-      <Link to={`/product/${product._id}`}>
+      {/* <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
             <img
@@ -854,7 +855,7 @@ function SearchedProductThree({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link>
+      </Link> */}
     </Col>
   )
 }
@@ -870,8 +871,9 @@ function SearchedProductTwo({ product }) {
 
   return (
     <Col xs={6} style={{ marginBottom: '20px' }}>
-      {/* <ProductItemComp product={product}/> */}
-      <Link to={`/product/${product._id}`}>
+      <ProductItemComp product={product}/>
+
+      {/* <Link to={`/product/${product._id}`}>
         <div>
           <div className='home-img-wrap'>
             <img
@@ -905,7 +907,7 @@ function SearchedProductTwo({ product }) {
             {product.price ? product.price : product.mrpPrice}
           </div>
         </div>
-      </Link>
+      </Link> */}
     </Col>
   )
 }
