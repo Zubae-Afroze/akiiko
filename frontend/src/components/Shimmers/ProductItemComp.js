@@ -38,11 +38,19 @@ export default function ProductItemComp(props) {
   }
 
   function onQuickView() {
-    setIsQuickViewON(true)
+    // const imgElement = document.getElementById(`${props.product.productId}`);
+    // if(imgElement){
+      //   console.log('Got Element')
+      // }
+      // imgElement.src = "";
+      // imgElement.src = props.product.hoverImage;
+      // setIsQuickViewON(true)
+      document.getElementById(props.product.productId).src = props.product.hoverImage;
   }
 
   function offQuickView() {
-    setIsQuickViewON(false)
+    // setIsQuickViewON(false)
+    document.getElementById(props.product.productId).src = imageRef;
   }
 
   const isProductInCart = () => {
@@ -191,22 +199,22 @@ export default function ProductItemComp(props) {
           // }`)
           //   }}
           >
-            <img
+            {/* <img
               loading='lazy'
               style={{ display: isQuickViewON ? 'block' : 'none' }}
-              id={props.product.productId + 1}
+              id={props.product.productId}
               src={props.product.hoverImage}
               alt='home_1'
               onLoad={() => {
                 setImage()
               }}
-            />
+            /> */}
 
             <img
               loading='lazy'
               className={`${isImageLoaded ? 'image-visible' : 'image-hidden'}`}
               id={props.product.productId}
-              style={{ display: isQuickViewON ? 'none' : 'block' }}
+              // style={{ display: isQuickViewON ? 'none' : 'block' }}
               src={imageRef}
               alt='home_1'
               onLoad={() => {
@@ -223,6 +231,9 @@ export default function ProductItemComp(props) {
                 }}
                 onMouseOut={() => {
                   offQuickView()
+                }}
+                onClick={()=>{
+                  onQuickView()
                 }}
               >
                 QUICK VIEW
