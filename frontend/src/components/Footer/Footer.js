@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { HashLink as Link } from 'react-router-hash-link'
-import Journal from '../Journal/Journal'
 import './Footer.css'
 
 export default class Footer extends Component {
@@ -102,11 +101,6 @@ export default class Footer extends Component {
             </Row>
           </Container>
         </div>
-        {/* <div>
-          <Container>
-            <Journal />
-          </Container>
-        </div> */}
         <div className='footer-main-wrapper'>
           <Container>
             <Row className='footer-main'>

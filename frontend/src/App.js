@@ -40,6 +40,7 @@ import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
 
 import ProductTestScreen from './components/Shimmers/ProductTestScreen'
 import TestScreen from './screens/TestScreen/TestScreen'
+
 // import ReactGa from 'react-ga'
 // import { getUserDetails } from './actions/actionUsers'
 // import { useSelector, useDispatch } from 'react-redux'
@@ -50,7 +51,6 @@ const App = () => {
       <ScrollToTop />
       <Header />
       <Switch>
-
         <Route path='/producttest' render={() => <ProductTestScreen />} />
 
         <Route path='/orders/:orderId' render={() => <OrderSummaryScreen />} />

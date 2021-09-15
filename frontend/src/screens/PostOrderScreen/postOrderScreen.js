@@ -31,7 +31,7 @@ export default function PostOrderScreen() {
         <title>akiiko - Order Success</title>
         <script>
           {`gtag('event', 'conversion', {
-            'send_to': 'AW-322846655/qy3WCJHSvvQCEL__-JkB',
+            'send_to': 'AW-322846655/C6vzCMCjzPQCEL__-JkB',
             'transaction_id': ${finalOrder._id}
           });`}
         </script>
