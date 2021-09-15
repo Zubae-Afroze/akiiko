@@ -17,19 +17,30 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const orderPlacedMail = asyncHandler(async (req, res) => {
-  let transporter = nodemailer.createTransport({
-    host: 'mail.precisofashion.com',
-    port: '587',
-    secure: false,
-    auth: {
-      user: 'orders@precisofashion.com',
-      pass: process.env.GMAIL_PASSWORD,
-    },
-    tls: {
-      // do not fail on invalid certs
-      rejectUnauthorized: false,
-    },
-  })
+  // let transporter = nodemailer.createTransport({
+  //   host: 'mail.precisofashion.com',
+  //   port: '587',
+  //   secure: false,
+  //   auth: {
+  //     user: 'akiikoindia@gmail.com',
+  //     pass: process.env.GMAIL_PASSWORD,
+  //   },
+  //   tls: {
+  //     // do not fail on invalid certs
+  //     rejectUnauthorized: false,
+  //   },
+  // })
+
+  var transporter = nodemailer.createTransport(
+    smtpTransport({
+      service: 'gmail',
+      host: 'smtp.gmail.com',
+      auth: {
+        user: 'akiikoindia@gmail.com',
+        pass: process.env.GMAIL_PASSWORD,
+      },
+    })
+  )
 
   const { totalPrice } = req.body
 
@@ -67,7 +78,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
   })
 
   let mailOptions = {
-    from: 'orders@precisofashion.com',
+    from: 'akiikoindia@gmail.com',
     to: email,
     replyTo: 'precisofashion@gmail.com',
     subject: `Akiiko Order Summary for ${_id}`,
