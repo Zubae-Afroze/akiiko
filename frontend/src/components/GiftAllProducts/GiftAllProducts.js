@@ -86,7 +86,7 @@ const GiftAllProducts = () => {
     fetchAccessories()
   }, [])
 
-  return <OldComp />
+  return <NewComp />
 
   function NewComp() {
     return (

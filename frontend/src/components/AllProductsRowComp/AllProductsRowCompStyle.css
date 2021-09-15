@@ -1,7 +1,8 @@
 .all-products-products-comp-wrapper {
   display: flex;
   flex-direction: row;
-  gap: 5px;
+  /* gap: 5px; */
+  gap: 10px;
   flex-wrap: wrap;
 }
 
@@ -31,6 +32,9 @@
 
 /* MOB starts */
 @media (max-width: 440px) {
+  .all-products-products-comp-wrapper {
+    gap: 7px;
+  }
   .all-products-products-comp-wrapper .product-item-card {
     flex-basis: 45%;
   }

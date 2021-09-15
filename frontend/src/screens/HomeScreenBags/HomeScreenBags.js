@@ -57,7 +57,7 @@ const HomeScreenBags = () => {
 
   //const HomeScreenBagsProducts = []
 
-  return <OldComp />
+  return <NewComp />
 
   function NewComp() {
     return (

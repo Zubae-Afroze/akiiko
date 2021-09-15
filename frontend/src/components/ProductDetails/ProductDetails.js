@@ -18,6 +18,9 @@ import Footer from '../Footer/Footer'
 import ProductItemComp from '../Shimmers/ProductItemComp'
 
 import TopPopUpComp, { showTopPopUp } from '../TopPopUp/TopPopUpComp'
+import { storage } from '../../index'
+import axios from 'axios';
+
 
 //import { ToastContainer, toast } from 'react-toastify'
 
@@ -32,19 +35,63 @@ const ProductDetails = () => {
 
   const dispatch = useDispatch()
 
+  
+  // const productDetails = useSelector((state) => state.productDetails)
+  
+  // const { loading, error, product } = productDetails
+  
+  const [ product , setProduct ] = useState(null);
+  const [ loading , setLoading ] = useState(true);
+  const [ error , setError ] = useState(null);
+  // const { data } = await axios.get(`/api/product/${id}`) product.heroImage
+  const [bigImageSrc, setImageSrc] = useState(null)
+
   useEffect(() => {
-    dispatch(actionListProductDetails(id))
-  }, [dispatch, id])
+    setProduct(null)
+    setLoading(true)
+    // dispatch(actionListProductDetails(id))
+    async function getAllData(){
+      const prod = await axios.get(`/api/product/${id}`);
+      // console.log(prod.data)
+      const _product = prod.data;
+      
+        for(let i=0; i<prod.data.images_web.length; i++ ){
+          const url = await storage
+          .ref(prod.data.images_web[i])
+          .getDownloadURL()
+          // .then((url) => {
+            //   // setImageRef(url)
+            // })
+            _product.images_web[i] = url;
+            // console.log(_product.images_web[i])
+          }
+          // console.log('firebase'+_product.images_web)
+          
+          setProduct(_product)
+          setImageSrc(_product.images_web[0])
+          setLoading(false)
+          setError(null)
+          // console.log('Link: '+_product.images_web)
+          // prod.data.images_web.forEach((path,index) => {
+            
+            // });
+            
+            
+            // setLoading(true);
+            
+          }
+          
+          getAllData();
 
-  const productDetails = useSelector((state) => state.productDetails)
+          console.log('Product Detail page Rendered')
+  }, [id])
+        
+        
+        
 
-  const { loading, error, product } = productDetails
-
-  const [bigImageSrc, setImageSrc] = useState(product.heroImage)
-
-  useEffect(() => {
-    setImageSrc(product.heroImage)
-  }, [product.heroImage])
+  // useEffect(() => {
+  //   setImageSrc(product.heroImage)
+  // }, [product.heroImage])
 
   let [itemQuantity, setItemQuantity] = useState(1)
 
@@ -197,22 +244,26 @@ const ProductDetails = () => {
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>
-                {product.images.map((prod, index) => (
-                  <Carousel.Item interval={null} key={index}>
-                    <img
-                      className='d-block w-100 maginfier-shimmer'
-                      src={prod}
-                      alt='First slide'
-                    />
-                  </Carousel.Item>
-                ))}
+                {product.images_web.map((prod, index) => {
+
+                  return (
+                    <Carousel.Item interval={null} key={index+id}>
+                      <img
+                        className='d-block w-100 maginfier-shimmer'
+                        src={prod}
+                        alt='First slide'
+                      />
+                    </Carousel.Item>
+                  )
+                }
+                )}
               </Carousel>
             </Col>
             <Row>
               <Col xs={1} className='alt-img-list'>
                 <ul>
-                  {product.images.map((prod, index) => (
-                    <li key={index}>
+                  {product.images_web.map((prod, index) => (
+                    <li key={index+id}>
                       <img
                         className='maginfier-shimmer'
                         onClick={() => setImageSrc(prod)}
@@ -460,7 +511,7 @@ const ProductDetails = () => {
             <SimilarProducts />
             <div style={{height: '30px'}} /> */}
 
-            <OldComp />
+            <SimilarProducts />
           </div>
           {product.reviews.length !== 0 ? (
             <div>
@@ -483,6 +534,9 @@ const ProductDetails = () => {
       <Footer />
     </>
   )
+
+
+  
 
   function SimilarProducts() {
     if (product.similarProducts) {
@@ -542,6 +596,35 @@ const ProductDetails = () => {
       return null
     }
   }
+}
+
+
+function MobileCaroselImg({prod,index}){
+  const [imageRef, setImageRef] = useState(null)
+
+  useEffect(() => {
+    storage
+    .ref(prod)
+    .getDownloadURL()
+    .then((url) => {
+      setImageRef(url)
+    })
+  }, [prod])
+
+  return (
+    <Carousel.Item interval={null} key={index}>
+      <img
+        className='d-block w-100 maginfier-shimmer'
+        src={imageRef}
+        alt='First slide'
+      />
+    </Carousel.Item>
+  )
+}
+
+
+function WebSelectorImages({prod,index,states}){
+
 }
 
 export default ProductDetails

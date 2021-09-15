@@ -69,12 +69,12 @@ const ProductList = () => {
     document.getElementById(product.productId).src = product.images[0]
   }
 
-  return <OldComp />
+  return <NewComp />
   function NewComp() {
     return (
       <>
         <Helmet>
-          <title>{`Product List - ${products[0].group}`}</title>
+          <title>akiiko - Products Listing</title>
         </Helmet>
         <TopPopUpComp />
         {products && (

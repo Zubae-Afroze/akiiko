@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Col, Row } from 'react-bootstrap'
 import Menubar from '../../components/Menubar/Menubar'
 import MobileNav from '../../components/MobileNav/MobileNav'
@@ -37,10 +37,12 @@ export const formEntranceAnimation = {
 export default function StableCheckOutScreen() {
   const dispatch = useDispatch()
 
+  const uid = useSelector((state) => state.firebase.auth.uid)
+
   useEffect(() => {
-    dispatch(getUserDetails('profile'))
+    dispatch(getUserDetails(uid))
     console.log('stable checkout rendered')
-  }, [dispatch])
+  }, [uid,dispatch])
 
   const [formObject, setFormObject] = useState({
     firstName: '',

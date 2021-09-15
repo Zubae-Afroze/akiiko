@@ -1,4 +1,36 @@
-# Getting Started with Create React App
+# Getting Started with Akiiko App
+
+### Structuring CSS properties
+
+##### -> display stuffs
+
+display: flex,
+justify-content,
+
+##### -> Positioning stuffs
+
+position: absolute;
+left: 1rem;
+right,
+z-index
+
+##### -> Box-model stuff
+
+height,
+background-color
+padding,
+margin
+
+##### -> Typography
+
+font-size
+color
+
+##### -> Manipulation
+
+transform,
+filter,
+opacity
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
