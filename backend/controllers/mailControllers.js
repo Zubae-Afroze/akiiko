@@ -31,16 +31,13 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
   //   },
   // })
 
-  var transporter = nodemailer.createTransport(
-    smtpTransport({
-      service: 'gmail',
-      host: 'smtp.gmail.com',
-      auth: {
-        user: 'akiikoindia@gmail.com',
-        pass: process.env.GMAIL_PASSWORD,
-      },
-    })
-  )
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'akiikoindia@gmail.com',
+      pass: 'akiiko_india_chennai',
+    },
+  })
 
   const { totalPrice } = req.body
 
