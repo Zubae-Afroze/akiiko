@@ -7,22 +7,36 @@ import Review from '../models/reviewModel.js'
 export const createReview = asyncHandler(async (req, res) => {
   const { name, email, uid, message, rating } = req.body
 
-  const reviewExist = await Review.findOneAndUpdate(
-    { uid: uid },
-    { name, email, uid, message, rating },
-    { upsert: true }
-  )
+  // const reviewExist = await Review.findOneAndUpdate(
+  //   { uid: uid },
+  //   { name, email, uid, message, rating },
+  //   { upsert: true }
+  // )
 
-  if (reviewExist) {
-    res.status(201).json({
-      uid: uid,
-      name: name,
-      email: email,
-      message: message,
-      rating: rating,
+  // if (reviewExist) {
+  //   res.status(201).json({
+  //     uid: uid,
+  //     name: name,
+  //     email: email,
+  //     message: message,
+  //     rating: rating,
+  //   })
+  // } else {
+  //   res.status(404)
+  //   throw new Error('Invalid Review')
+  // }
+
+  if (email) {
+    const review = new Review({
+      name,
+      email,
+      uid,
+      message,
+      rating,
     })
-  } else {
-    res.status(404)
-    throw new Error('Invalid Review')
+
+    const review = await review.save()
+
+    res.status(201).json(review)
   }
 })
