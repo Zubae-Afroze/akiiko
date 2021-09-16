@@ -114,6 +114,10 @@ body::-webkit-scrollbar-thumb {
   background-color: #2e2614;
 }
 
+.carousel .carousel-item {
+  transition-duration: 1s;
+}
+
 @media (max-width: 1266px) {
   .container {
     padding: 0px 15px;

@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import ProfileModel from './profileModel'
 
 const reviewSchema = mongoose.Schema(
   {

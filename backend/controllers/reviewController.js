@@ -35,8 +35,8 @@ export const createReview = asyncHandler(async (req, res) => {
       rating,
     })
 
-    const review = await review.save()
+    const createReview = await review.save()
 
-    res.status(201).json(review)
+    res.status(201).json(createReview)
   }
 })
