@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+import {storage} from '.././index'
 import {
   CART_ADD_ITEM,
   CART_REMOVE_ITEM,
@@ -10,6 +10,9 @@ import {
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
   const { data } = await axios.get(`/api/product/${id}`)
+  const url = await storage 
+  .ref(data.displayImage)
+  .getDownloadURL();
 
   dispatch({
     type: CART_ADD_ITEM,
@@ -17,7 +20,8 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
       product: data._id,
       productId: data.productId,
       productName: data.productName,
-      image: data.heroImage,
+      // image: data.heroImage,
+      image: url,
       price: data.price ? data.price : data.mrpPrice,
       group: data.group,
       subGroup: data.subGroup,
