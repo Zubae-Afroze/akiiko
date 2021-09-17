@@ -4,7 +4,7 @@ import React, { useEffect, useState, useRef } from 'react'
 import './postOrderScreenStyle.css'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import ReactPixel from 'react-facebook-pixel'
 import unFilledstar from './assets/starUnFilledN.svg'
 import filledstar from './assets/starFilledN.svg'
@@ -16,8 +16,11 @@ import threeStar from './assets/3-star.svg'
 import fourStar from './assets/4-star.svg'
 import fiveStar from './assets/5-star.svg'
 import defaultEmoji from './assets/default-emoji.svg'
+import { getUserProfileByUID } from '../../actions/actionProfile'
 
 export default function PostOrderScreen() {
+  const dispatch = useDispatch()
+
   const order = useSelector((state) => state.orderCreate.order)
   const uid = useSelector((state) => state.firebase.auth.uid)
   const profileDetails = useSelector((state) => state.profile.userProfile)
@@ -42,6 +45,7 @@ export default function PostOrderScreen() {
       currency: 'INR',
       value: finalOrder.totalPrice,
     })
+    dispatch(getUserProfileByUID(uid))
   }, [finalOrder])
 
   const sendFeedBackToDataBase = async () => {
@@ -61,20 +65,20 @@ export default function PostOrderScreen() {
   }
 
   const submitFeedBack = () => {
-    if(givenRating.current < 0 && givenFeedBack.current.trim() === ''){
+    if (givenRating.current < 0 && givenFeedBack.current.trim() === '') {
       history.push('/')
-    }else{
+    } else {
       setOpenThanksNote(true)
       sendFeedBackToDataBase()
       setTimeout(() => {
         history.push('/')
-      }, 2000);
+      }, 2000)
     }
   }
 
-  const getStarRating = (val) => { 
-    givenRating.current = val + 1;
-  };
+  const getStarRating = (val) => {
+    givenRating.current = val + 1
+  }
 
   const onEnterFeedBack = (e) => {
     givenFeedBack.current = e.target.value
@@ -119,20 +123,20 @@ export default function PostOrderScreen() {
               placeholder='Tell us more'
               name='message'
               class='feedBackArea'
-              onChange={(e)=>onEnterFeedBack(e)}
+              onChange={(e) => onEnterFeedBack(e)}
             ></textarea>
           </div>
 
           <div className='form-submit-buttons-container'>
             <button
               onClick={() => {
-                submitFeedBack();
+                submitFeedBack()
                 // console.log(openThanksNote.current)
               }}
             >
               submmit
             </button>
-            <button onClick={()=> history.push('/') } >skip</button>
+            <button onClick={() => history.push('/')}>skip</button>
           </div>
 
           <input
@@ -144,15 +148,15 @@ export default function PostOrderScreen() {
               setOpenThanksNote(e.target.checked)
             }}
           />
-        
+
           {/* position: "absolute", bottom: "2px", zIndex: 2 */}
-          
+
           {/* <button style={{position: "absolute", bottom: "2px",left: "5px", zIndex: 3}} onClick={()=>{
             const elem = document.querySelector(".feedback-form-pop-up-wrapper");
             elem.style.animation = "feedbackFormOuttro 0.5s 0s";
           }} > scale out </button> */}
 
-        <div className='feedback-thanks-wrapper'>
+          <div className='feedback-thanks-wrapper'>
             Thanks for sharing your experience with us.
           </div>
         </div>
@@ -161,7 +165,7 @@ export default function PostOrderScreen() {
   )
 }
 
-function FeedBackFormRattingComp({getStarRating}) {
+function FeedBackFormRattingComp({ getStarRating }) {
   const [rating, setRating] = React.useState(-1)
   const [stars, setStars] = React.useState([
     unFilledstar,
@@ -228,28 +232,27 @@ function FeedBackFormRattingComp({getStarRating}) {
     }
   }
 
-
   const returnEmojiSrc = () => {
-    switch(rating) {
+    switch (rating) {
       case 0:
-        return oneStar;
+        return oneStar
 
       case 1:
-        return twoStar;
-      
+        return twoStar
+
       case 2:
-        return threeStar;
-      
+        return threeStar
+
       case 3:
-        return fourStar;
-      
+        return fourStar
+
       case 4:
-        return fiveStar;
+        return fiveStar
 
       default:
-        return defaultEmoji;
- 
-        // code block
+        return defaultEmoji
+
+      // code block
     }
   }
 
@@ -258,7 +261,7 @@ function FeedBackFormRattingComp({getStarRating}) {
       <div>How would you rate your experience from our site ?</div>
       <div className='reactions-container-wrapper'>
         <div id='rc' className='reactions-container'>
-        <img src={returnEmojiSrc()} alt='1 star' />
+          <img src={returnEmojiSrc()} alt='1 star' />
           {/* {rating + 1} */}
         </div>
       </div>
