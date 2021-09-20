@@ -35,7 +35,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'akiikoindia@gmail.com',
-      pass: 'akiiko_india_chennai',
+      pass: process.env.GMAIL_PASSWORD,
     },
   })
 
