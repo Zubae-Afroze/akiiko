@@ -134,9 +134,9 @@ export default function PostOrderScreen() {
                 // console.log(openThanksNote.current)
               }}
             >
-              submmit
+              Submit
             </button>
-            <button onClick={() => history.push('/')}>skip</button>
+            <button onClick={() => history.push('/')}>Skip</button>
           </div>
 
           <input
