@@ -88,7 +88,7 @@ const HomeScreenHome = () => {
             <img
               className='home-flex-img-wrapper'
               src={`/images/home_screen_images/HomeScreenHomeHero.jpg`}
-              alt='home_hero_img'
+              alt='hemp cushion covers'
               // onLoad={() => {
               //   setMainImageLoaded(true)
               // }}
@@ -139,7 +139,7 @@ const HomeScreenHome = () => {
             <div className='workout-hero-image'>
               <img
                 src={`/images/home_screen_images/HomeScreenHomeHero.jpg`}
-                alt='home_hero_img'
+                alt='hemp cushion covers'
               />
             </div>
           </Col>
@@ -165,7 +165,7 @@ const HomeScreenHome = () => {
                             id={product.productId}
                             className='home-card-image'
                             src={product.images[0]}
-                            alt='home_1'
+                            alt={product.productName}
                           />
                           {product.bestSeller ? (
                             <span className='label-best label-best-workout'>

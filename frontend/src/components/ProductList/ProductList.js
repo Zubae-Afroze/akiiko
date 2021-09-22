@@ -170,7 +170,7 @@ const ProductList = () => {
                           <img
                             id={product.productId}
                             src={product.heroImage}
-                            alt='home_1'
+                            alt={product.productName}
                           />
                           {product.bestSeller ? (
                             <span className='pl-label-best'>

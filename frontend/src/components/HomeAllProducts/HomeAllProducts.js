@@ -267,7 +267,7 @@ const HomeAllProducts = () => {
                               <img
                                 id={product.productId}
                                 src={product.heroImage}
-                                alt='home_1'
+                                alt={product.heroImage}
                               />
                               {product.bestSeller ? (
                                 <span className='pl-label-best'>
@@ -337,7 +337,7 @@ const HomeAllProducts = () => {
                             <img
                               id={product.productId}
                               src={product.heroImage}
-                              alt='home_1'
+                              alt={product.productName}
                             />
                             {product.bestSeller ? (
                               <span className='pl-label-best'>
@@ -406,7 +406,7 @@ const HomeAllProducts = () => {
                             <img
                               id={product.productId}
                               src={product.heroImage}
-                              alt='home_1'
+                              alt={product.productName}
                             />
                             {product.bestSeller ? (
                               <span className='pl-label-best'>
@@ -472,7 +472,10 @@ const HomeAllProducts = () => {
                       >
                         <Link to={`/product/${product._id}`}>
                           <div className='product-list-image'>
-                            <img src={product.heroImage} alt='home_1' />
+                            <img
+                              src={product.heroImage}
+                              alt={product.heroImage}
+                            />
                             {product.bestSeller ? (
                               <span className='pl-label-best'>
                                 {product.bestSeller}

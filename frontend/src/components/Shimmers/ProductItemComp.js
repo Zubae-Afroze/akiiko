@@ -40,17 +40,18 @@ export default function ProductItemComp(props) {
   function onQuickView() {
     // const imgElement = document.getElementById(`${props.product.productId}`);
     // if(imgElement){
-      //   console.log('Got Element')
-      // }
-      // imgElement.src = "";
-      // imgElement.src = props.product.hoverImage;
-      // setIsQuickViewON(true)
-      document.getElementById(props.product.productId).src = props.product.hoverImage;
+    //   console.log('Got Element')
+    // }
+    // imgElement.src = "";
+    // imgElement.src = props.product.hoverImage;
+    // setIsQuickViewON(true)
+    document.getElementById(props.product.productId).src =
+      props.product.hoverImage
   }
 
   function offQuickView() {
     // setIsQuickViewON(false)
-    document.getElementById(props.product.productId).src = imageRef;
+    document.getElementById(props.product.productId).src = imageRef
   }
 
   const isProductInCart = () => {
@@ -109,33 +110,31 @@ export default function ProductItemComp(props) {
 
     async function getMasterProduct() {
       // console.log('Got product ID: '+ props.product.id)
-      const product = await axios
-        .get(
-          `/api/product/${
-            props.isSimilarProducts ? props.product.id : props.product._id
-          }`
-        )
-          //images_web[0]
-          masterProduct.current = product.data
-          storage 
-          .ref(masterProduct.current.displayImage)
-          .getDownloadURL()
-          .then((url) => {
-            setImageRef(url)
-          })
-      
+      const product = await axios.get(
+        `/api/product/${
+          props.isSimilarProducts ? props.product.id : props.product._id
+        }`
+      )
+      //images_web[0]
+      masterProduct.current = product.data
+      storage
+        .ref(masterProduct.current.displayImage)
+        .getDownloadURL()
+        .then((url) => {
+          setImageRef(url)
+        })
     }
 
-    if(props.isSearchScreen){
-      masterProduct.current = props.product;
+    if (props.isSearchScreen) {
+      masterProduct.current = props.product
       storage
-      .ref(props.product.displayImage)
-      .getDownloadURL()
-      .then((url) => {
-        setImageRef(url)
-      })
-    }else{
-        getMasterProduct()
+        .ref(props.product.displayImage)
+        .getDownloadURL()
+        .then((url) => {
+          setImageRef(url)
+        })
+    } else {
+      getMasterProduct()
     }
 
     // getMasterProduct()
@@ -193,11 +192,11 @@ export default function ProductItemComp(props) {
             style={{
               border: isImageLoaded ? 'solid rgb(199, 199, 199) 0.1px' : '0',
             }}
-          //   onClick={()=>{
-          //     history.push(`/product/${
-          //   props.isSimilarProducts ? props.product.id : props.product._id
-          // }`)
-          //   }}
+            //   onClick={()=>{
+            //     history.push(`/product/${
+            //   props.isSimilarProducts ? props.product.id : props.product._id
+            // }`)
+            //   }}
           >
             {/* <img
               loading='lazy'
@@ -216,7 +215,7 @@ export default function ProductItemComp(props) {
               id={props.product.productId}
               // style={{ display: isQuickViewON ? 'none' : 'block' }}
               src={imageRef}
-              alt='home_1'
+              alt={props.product.productName}
               onLoad={() => {
                 setImage()
               }}
@@ -232,7 +231,7 @@ export default function ProductItemComp(props) {
                 onMouseOut={() => {
                   offQuickView()
                 }}
-                onClick={()=>{
+                onClick={() => {
                   onQuickView()
                 }}
               >

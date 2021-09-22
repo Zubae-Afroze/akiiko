@@ -197,7 +197,10 @@ const GiftAllProducts = () => {
                         <Link to={`/product/${product._id}`}>
                           <div className='product-list-image'>
                             <div>
-                              <img src={product.heroImage} alt='home_1' />
+                              <img
+                                src={product.heroImage}
+                                alt={product.productName}
+                              />
                               {product.bestSeller ? (
                                 <span className='label-best'>
                                   {product.bestSeller}
@@ -255,7 +258,10 @@ const GiftAllProducts = () => {
                       >
                         <Link to={`/product/${product._id}`}>
                           <div className='product-list-image'>
-                            <img src={product.heroImage} alt='home_1' />
+                            <img
+                              src={product.heroImage}
+                              alt={product.productName}
+                            />
                             {product.bestSeller ? (
                               <span className='label-best'>
                                 {product.bestSeller}
@@ -308,7 +314,10 @@ const GiftAllProducts = () => {
                       >
                         <Link to={`/product/${product._id}`}>
                           <div className='product-list-image'>
-                            <img src={product.heroImage} alt='home_1' />
+                            <img
+                              src={product.heroImage}
+                              alt={product.heroImage}
+                            />
                             {product.bestSeller ? (
                               <span className='pl-label-best'>
                                 {product.bestSeller}
