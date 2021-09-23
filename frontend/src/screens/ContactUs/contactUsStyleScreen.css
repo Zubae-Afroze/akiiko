@@ -2,6 +2,7 @@
   width: 100vw;
   height: 86.5vh;
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   margin-bottom: 30px;
@@ -19,12 +20,22 @@
   flex-direction: row;
 }
 
+.contactus-infoCard-wrapper h1 {
+  flex-basis: 20%;
+  font-family: 'caudex';
+  color: #3e3331;
+  margin-block: 0;
+  order: 1;
+}
+
 /* Contact US */
 .contactus-form-wrapper {
-  flex-basis: 50%;
-  /* border: 1px solid rgb(180, 138, 103); */
+  flex-basis: 40%;
+  border: 1px solid #3e3331;
   padding: 20px;
-  padding-bottom: 0;
+  /* padding-bottom: 0; */
+  margin: 0 30px;
+  order: 2;
 }
 
 .input-form-field-wrapper input {
@@ -52,23 +63,28 @@
   margin-top: 10px;
   border: none;
   font-family: 'rutan';
-  color: #ffff;
+  color: #3e3331;
   padding-block: 5px;
   width: 40%;
-  background-color: #977257;
+  background-color: #e6dac4;
 }
 
 .info-form-wrapper {
-  flex-basis: 50%;
+  flex-basis: 40%;
   background-color: #e6dac4;
+  display: flex;
+  align-items: end;
+  order: 3;
 }
 
 .info-form-address-wrapper {
   margin: 20px;
   margin-top: 35px;
+  color: #977257;
+  font-family: 'rutan';
 }
 .info-form-address-wrapper > span {
-  color: #66504d;
+  color: #977257;
   font-size: 12px;
   display: block;
 }
@@ -78,7 +94,21 @@
     width: 90%;
     flex-direction: column;
   }
+
+  .contactus-infoCard-wrapper h1 {
+    text-align: center;
+    order: 1;
+    margin-bottom: 10px;
+  }
   .contactus-form-wrapper {
     flex-basis: 100%;
+    order: 3;
+    margin-block: 10px;
+    margin-inline: 0;
+  }
+
+  .info-form-wrapper {
+    flex-basis: 100%;
+    order: 2;
   }
 }

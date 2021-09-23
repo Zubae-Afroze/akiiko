@@ -19,7 +19,7 @@ import productImg from './assets/productImg.png';
 // import desktopImg from './Linen bag desktop.jpg';
 // import laptopImg from './Linen bag laptop.jpg';
 // import ipadImg from './Linen bag ipad.jpg';
-import mobileImgt from './Linen bag mobile.jpg';
+// import mobileImgt from './Linen bag mobile.jpg';
 
 // import desktopImg from './Desktop.jpg';
 // import tabImg from './Ipad.jpg';

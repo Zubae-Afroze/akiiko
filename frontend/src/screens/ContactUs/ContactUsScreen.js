@@ -5,13 +5,15 @@ export default function ContactUsScreen() {
     return (
         <div className='contactus-wrapper'>
 
-            <h2>Reach out to us</h2>
+            {/* <h2>Get in Touch</h2> */}
 
             <div className='contactus-infoCard-wrapper'>
 
-                <InfoCardComp />
+                <h1>Get in Touch !</h1>
 
                 <ContactUsFormComp />
+
+                <InfoCardComp />
 
             </div>
             
@@ -106,6 +108,7 @@ function InfoCardComp(){
                 9.2.2, Cenotoph 2nd Lane, <br />
                 Austin Nagar, Teynampet, <br />
                 Chennai 600018 <br />
+                9858590505 <br />
                 India.
             </div>
         </div>

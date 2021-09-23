@@ -1,0 +1,9 @@
+.Home-screen-carousel-slide-wrapper {
+  width: 100vw;
+  height: 86vh;
+}
+
+.Home-screen-carousel-slide-wrapper img {
+  position: relative;
+  z-index: 1;
+}
