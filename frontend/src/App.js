@@ -85,49 +85,28 @@ const App = () => {
 
         <Route path='/cart/:id?' render={() => <CartScreen />} />
         {/* Product Listing */}
-        <Route
-          path='/productlist/:group/:subGroup'
-          render={() => <ProductList />}
-        />
+        <Route path='/:group/:subGroup' render={() => <ProductList />} />
 
         {/* Bags View All */}
-        <Route
-          path='/allproducts/productlist/bags'
-          render={() => <BagAllProducts />}
-        />
+        <Route path='/bags' render={() => <BagAllProducts />} />
 
         {/* Home View All */}
-        <Route
-          path='/allproducts/productlist/home'
-          render={() => <HomeAllProducts />}
-        />
+        <Route path='/home' render={() => <HomeAllProducts />} />
 
         {/* Gift View All */}
-        <Route
-          path='/allproducts/productlist/gift'
-          render={() => <GiftAllProducts />}
-        />
+        <Route path='/gift' render={() => <GiftAllProducts />} />
 
         {/* Lifestyle View All */}
-        <Route
-          path='/allproducts/productlist/lifestyle'
-          render={() => <LifestyleAllProducts />}
-        />
+        <Route path='/lifestyle' render={() => <LifestyleAllProducts />} />
 
         {/* Storage View All */}
-        <Route
-          path='/allproducts/productlist/storage'
-          render={() => <StorageAllProducts />}
-        />
+        <Route path='/storage' render={() => <StorageAllProducts />} />
 
         {/* Accessories View All */}
-        <Route
-          path='/allproducts/productlist/accessories'
-          render={() => <AccessoriesAllProducts />}
-        />
+        <Route path='/accessories' render={() => <AccessoriesAllProducts />} />
 
         {/* All Products */}
-        <Route path='/product/:id' render={() => <ProductDetails />} />
+        <Route path='/:group/:subGroup/:id' render={() => <ProductDetails />} />
 
         <Route path='/FooterLinks' render={() => <FooterLinks />} />
         <Route path='/AboutUs/' render={() => <AboutUs />} />

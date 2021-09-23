@@ -38,22 +38,10 @@ export default function SideBarComp() {
             title='BAGS'
             content={
               <>
-                <AccordianSubItemsComp
-                  link={'/productlist/bags/women'}
-                  title={'Women'}
-                />
-                <AccordianSubItemsComp
-                  link={'/productlist/bags/tote'}
-                  title={'Tote'}
-                />
-                <AccordianSubItemsComp
-                  link={'/productlist/bags/office'}
-                  title={'Office'}
-                />
-                <AccordianSubItemsComp
-                  link={'/productlist/bags/travel'}
-                  title={'Travel'}
-                />
+                <AccordianSubItemsComp link={'/bags/women'} title={'Women'} />
+                <AccordianSubItemsComp link={'/bags/tote'} title={'Tote'} />
+                <AccordianSubItemsComp link={'/bags/office'} title={'Office'} />
+                <AccordianSubItemsComp link={'/bags/travel'} title={'Travel'} />
               </>
             }
           />
@@ -64,22 +52,16 @@ export default function SideBarComp() {
             title='HOME'
             content={
               <>
+                <AccordianSubItemsComp link={'/home/dining'} title={'Dining'} />
                 <AccordianSubItemsComp
-                  link={'/productlist/home/dining'}
-                  title={'Dining'}
-                />
-                <AccordianSubItemsComp
-                  link={'/productlist/home/kitchen'}
+                  link={'/home/kitchen'}
                   title={'Kitchen'}
                 />
                 <AccordianSubItemsComp
-                  link={'/productlist/home/laundry'}
+                  link={'/home/laundry'}
                   title={'Laundry'}
                 />
-                <AccordianSubItemsComp
-                  link={'/productlist/home/garden'}
-                  title={'Garden'}
-                />
+                <AccordianSubItemsComp link={'/home/garden'} title={'Garden'} />
               </>
             }
           />
@@ -91,19 +73,19 @@ export default function SideBarComp() {
             content={
               <>
                 <AccordianSubItemsComp
-                  link={'/productlist/lifestyle/hygiene'}
+                  link={'/lifestyle/hygiene'}
                   title={'Health & Hygiene'}
                 />
                 <AccordianSubItemsComp
-                  link={'/productlist/lifestyle/workout'}
+                  link={'/lifestyle/workout'}
                   title={'Workout'}
                 />
                 <AccordianSubItemsComp
-                  link={'/productlist/lifestyle/hobby'}
+                  link={'/lifestyle/hobby'}
                   title={'Hobby'}
                 />
                 <AccordianSubItemsComp
-                  link={'/productlist/lifestyle/stationery'}
+                  link={'/lifestyle/stationery'}
                   title={'Stationery'}
                 />
               </>
@@ -117,15 +99,15 @@ export default function SideBarComp() {
             content={
               <>
                 <AccordianSubItemsComp
-                  link={'/productlist/gift/giftbox'}
+                  link={'/gift/giftbox'}
                   title={'Gift Box'}
                 />
                 <AccordianSubItemsComp
-                  link={'/productlist/gift/giftbag'}
+                  link={'/gift/giftbag'}
                   title={'Gift Bag'}
                 />
                 <AccordianSubItemsComp
-                  link={'/productlist/gift/accessories'}
+                  link={'/gift/accessories'}
                   title={'Accessories'}
                 />
               </>
@@ -139,13 +121,10 @@ export default function SideBarComp() {
             content={
               <>
                 <AccordianSubItemsComp
-                  link={'/productlist/storage/organisers'}
+                  link={'/storage/organisers'}
                   title={'Organisers'}
                 />
-                <AccordianSubItemsComp
-                  link={'/productlist/storage/home'}
-                  title={'Home'}
-                />
+                <AccordianSubItemsComp link={'/storage/home'} title={'Home'} />
               </>
             }
           />
@@ -157,11 +136,11 @@ export default function SideBarComp() {
             content={
               <>
                 <AccordianSubItemsComp
-                  link={'/productlist/accessories/onthego'}
+                  link={'/accessories/onthego'}
                   title={'On The Go'}
                 />
                 <AccordianSubItemsComp
-                  link={'/productlist/accessories/wallet'}
+                  link={'/accessories/wallet'}
                   title={'Wallets'}
                 />
               </>
