@@ -84,9 +84,11 @@ function ContactUsFormComp() {
           )
           .then(function (response) {
             console.log('SUCCESS!', response.status, response.text)
+            setbuttontext('Sent')
           })
           .catch(function (error) {
             console.log('FAILED!', error)
+            setbuttontext('SUBMIT')
           })
       }
       sendEmail(eParams)
