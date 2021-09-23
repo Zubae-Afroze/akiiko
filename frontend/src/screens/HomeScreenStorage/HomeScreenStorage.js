@@ -135,7 +135,7 @@ const HomeScreenWorkout = () => {
             <div className='workout-hero-image'>
               <img
                 src={'/images/home_screen_images/HomeScreenStorageHero.jpg'}
-                alt='home_hero_img'
+                alt='Muti purpose pouches'
               />
             </div>
           </Col>
@@ -161,7 +161,7 @@ const HomeScreenWorkout = () => {
                             id={product.productId}
                             className='home-card-image'
                             src={product.heroImage}
-                            alt='home_1'
+                            alt={product.productName}
                           />
                           {product.bestSeller ? (
                             <span className='label-best label-best-workout'>

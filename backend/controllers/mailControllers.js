@@ -35,7 +35,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     service: 'gmail',
     auth: {
       user: 'akiikoindia@gmail.com',
-      pass: 'akiiko_india_chennai',
+      pass: process.env.GMAIL_PASSWORD,
     },
   })
 
@@ -78,7 +78,7 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
     from: 'akiikoindia@gmail.com',
     to: email,
     replyTo: 'precisofashion@gmail.com',
-    subject: `Akiiko Order Summary for ${_id}`,
+    subject: `Your akiiko Order Summary from ${buildDate}`,
     text: '',
     html: `
           <html> 
@@ -98,6 +98,9 @@ const orderPlacedMail = asyncHandler(async (req, res) => {
           <p>Order Total Price: ${totalPrice}</p>
           <p>Placed On ${buildDate} </p>
           <p>You will receive updates from our shipping partner post dispatch. </p>
+          <p>Regards, </p>
+          <p>Team akiiko</p>
+          <p>Division of Preciso Fashion</p>
           <div>
           `,
   }

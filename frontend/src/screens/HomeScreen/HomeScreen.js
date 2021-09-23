@@ -124,7 +124,7 @@ const HomeScreen = () => {
                   <img
                     className='d-block w-100'
                     src={'/images/carousel_images/carousel_1.jpg'}
-                    alt='First slide'
+                    alt='the bindle bag collection'
                   />
                 </Link>
               </Carousel.Item>
@@ -133,7 +133,7 @@ const HomeScreen = () => {
                   <img
                     className='d-block w-100'
                     src={'/images/carousel_images/carousel_2.jpg'}
-                    alt='Second slide'
+                    alt='tableware collection'
                   />
                 </Link>
                 <Carousel.Caption className='carousel-slide-2'></Carousel.Caption>
@@ -143,7 +143,7 @@ const HomeScreen = () => {
                   <img
                     className='d-block w-100'
                     src={'/images/carousel_images/carousel_3.jpg'}
-                    alt='Third slide'
+                    alt='Box Puches made with woven cotton'
                   />
                 </Link>
                 <Carousel.Caption className='carousel-slide-3'></Carousel.Caption>
@@ -153,7 +153,7 @@ const HomeScreen = () => {
                   <img
                     className='d-block w-100'
                     src={'/images/carousel_images/carousel_4.jpg'}
-                    alt='Fourth slide'
+                    alt='Trianble hemp pouches'
                   />
                 </Link>
               </Carousel.Item>

@@ -39,7 +39,7 @@ const TestScreen = () => {
   //     setImageRef(url)
   //     return url
   //   })
-  const intervalVal = 6000;
+  const intervalVal = 6000
 
   return (
     <>
@@ -131,15 +131,33 @@ const TestScreen = () => {
   )
 }
 
-function TestComp(){
+function TestComp() {
   return (
     <>
       <div className='test__banner-image'>
         {/* <img src={'/images/carousel_images/new_banner.jpg'} alt='image_ref' /> */}
         {/* <ProductTagComp /> */}
-        <ProductTagComponent laptop={['18%','40%']} tab={['15%','40%']} mob={['12%','40%']} title={'Product 1'} price={'100'} />
-        <ProductTagComponent laptop={['30%','52%']} tab={['23%','45%']} mob={['18%','50%']} title={'Product 2'} price={'1200'} />
-        <ProductTagComponent laptop={['13%','80%']} tab={['13%','72%']} mob={['12%','80%']} title={'Product 3'} price={'999'} />
+        <ProductTagComponent
+          laptop={['18%', '40%']}
+          tab={['15%', '40%']}
+          mob={['12%', '40%']}
+          title={'Product 1'}
+          price={'100'}
+        />
+        <ProductTagComponent
+          laptop={['30%', '52%']}
+          tab={['23%', '45%']}
+          mob={['18%', '50%']}
+          title={'Product 2'}
+          price={'1200'}
+        />
+        <ProductTagComponent
+          laptop={['13%', '80%']}
+          tab={['13%', '72%']}
+          mob={['12%', '80%']}
+          title={'Product 3'}
+          price={'999'}
+        />
       </div>
       <Container>
         <HomeScreenBags />
@@ -151,27 +169,24 @@ function TestComp(){
   )
 }
 
-
-function ProductTagComp(){
-  return(
+function ProductTagComp() {
+  return (
     <>
-    {/* <div className='hover_box' /> */}
-    <div className='product_tag'>
-      <div className='product_detail'>
-        <p>Product Title kisudyerhq asioudyaoiws </p>
-        <Link
-          to={'/product/5fe18171a384156e680756fe'}
-        >
-        <div>&#x20B9; 99</div>
-        <div className='view-product-tag-btn'>View Product &#10095;</div>
-        </Link>
+      {/* <div className='hover_box' /> */}
+      <div className='product_tag'>
+        <div className='product_detail'>
+          <p>Product Title kisudyerhq asioudyaoiws </p>
+          <Link to={'/product/5fe18171a384156e680756fe'}>
+            <div>&#x20B9; 99</div>
+            <div className='view-product-tag-btn'>View Product &#10095;</div>
+          </Link>
+        </div>
       </div>
-    </div>
-    {/* <div className='product_tag_detail_box'>
+      {/* <div className='product_tag_detail_box'>
       price - 99
     </div> */}
     </>
-  );
+  )
 }
 
 export default TestScreen

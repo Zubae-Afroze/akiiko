@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { HashLink as Link } from 'react-router-hash-link'
+import JournalComp from '../JournalComp/JournalComp'
 import './Footer.css'
 import './footerNewStyle.css'
 
@@ -468,7 +469,9 @@ function FooterBottomOld(){
                 <li>
                   <Link to={'/Refund'}>REFUND POLICY</Link>
                 </li>
-                {/* <li><Link to={'/'}>FAQs</Link></li> */}
+                <li>
+                  <Link to={'/ShippingPolicy'}>SHIPPING POLICY</Link>
+                </li>
                 <li>
                   <Link to={'./TermsofService'}>TERMS OF SERVICE</Link>
                 </li>

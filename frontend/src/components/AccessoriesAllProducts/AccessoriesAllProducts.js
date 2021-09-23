@@ -179,7 +179,10 @@ const AccessoriesAllProducts = () => {
                         <Link to={`/product/${product._id}`}>
                           <div className='product-list-image'>
                             <div>
-                              <img src={product.heroImage} alt='home_1' />
+                              <img
+                                src={product.heroImage}
+                                alt={product.productName}
+                              />
                               {product.bestSeller ? (
                                 <span className='label-best'>
                                   {product.bestSeller}
@@ -240,7 +243,7 @@ const AccessoriesAllProducts = () => {
                             <img
                               id={product.productId}
                               src={product.heroImage}
-                              alt='home_1'
+                              alt={product.productName}
                             />
                             {product.bestSeller ? (
                               <span className='pl-label-best'>

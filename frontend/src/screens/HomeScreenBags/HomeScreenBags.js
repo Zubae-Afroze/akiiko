@@ -144,7 +144,7 @@ const HomeScreenBags = () => {
                           <img
                             id={product.productId}
                             src={product.heroImage}
-                            alt='women_1'
+                            alt={product.productName}
                           />
                           {product.bestSeller ? (
                             <span className='label-best'>

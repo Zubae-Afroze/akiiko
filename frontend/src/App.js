@@ -40,6 +40,7 @@ import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
 
 import ProductTestScreen from './components/Shimmers/ProductTestScreen'
 import TestScreen from './screens/TestScreen/TestScreen'
+import ShippingPolicy from './components/ShippingPolicy/ShippingPolicy'
 
 import ModalTestScreen from './screens/TestScreen/modalTestScreen/modalTestScreen'
 import ContactUsScreen from './screens/ContactUs/ContactUsScreen'
@@ -141,6 +142,7 @@ const App = () => {
         <Route path='/TermsofService' render={() => <Terms />} />
         <Route path='/Refund' render={() => <RefundPolicy />} />
         <Route path='/PrivacyStatement' render={() => <PrivacyStatement />} />
+        <Route path='/ShippingPolicy' render={() => <ShippingPolicy />} />
         <Route path='/testscreen' render={() => <TestScreen />} />
 
         <Route path='/' component={HomeScreen} exact />
