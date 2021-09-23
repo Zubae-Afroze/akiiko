@@ -17,7 +17,6 @@ import HomeScreenCarouselSlide from './HomeScreenCarousel/HomeScreenCarouselSlid
 import './HomeScreen.css'
 import { Helmet } from 'react-helmet'
 
-
 import linenBagDS from './HomeScreenCarousel/assets/Hemp pouch desktop.jpg'
 import linenBagLP from './HomeScreenCarousel/assets/Linen bag laptop.jpg'
 import linenBagTB from './HomeScreenCarousel/assets/Linen bag ipad.jpg'
@@ -100,11 +99,11 @@ const HomeScreen = () => {
             content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
           ></meta>
         </Helmet>
-        <NewCarouselComp />
         <Container>
-        <HomeScreenBags />
-        <HomeScreenHome />
-        <HomeScreenStorage />
+          <OldCarouselComp />
+          <HomeScreenBags />
+          <HomeScreenHome />
+          <HomeScreenStorage />
         </Container>
 
         <div className='floating-chat-icon'>
@@ -132,103 +131,97 @@ const HomeScreen = () => {
     </React.Fragment>
   )
 
+  // function NewCarouselComp(){
+  //   return(
+  //     <>
+  //       <Carousel className='carousel-fade' pause={false} controls={false}>
+  //             <Carousel.Item interval={4000}>
+  //               {/* <Link to='/productlist/bags/tote'> */}
+  //                 <HomeScreenCarouselSlide urls={[linenBagDS,linenBagLP,linenBagTB,linenBagMB]} />
+  //               {/* </Link> */}
+  //             </Carousel.Item>
+  //             <Carousel.Item interval={4000}>
+  //               {/* <Link to='/productlist/home/dining'> */}
+  //                 <HomeScreenCarouselSlide urls={[linenBagDS,linenBagLP,linenBagTB,linenBagMB]} />
+  //               {/* </Link> */}
+  //               <Carousel.Caption className='carousel-slide-2'></Carousel.Caption>
+  //             </Carousel.Item>
+  //         </Carousel>
+  //     </>
+  //   );
+  // }
 
-  function NewCarouselComp(){
-    return(
-      <>
-        <Carousel className='carousel-fade' pause={false} controls={false}>
-              <Carousel.Item interval={4000}>
-                {/* <Link to='/productlist/bags/tote'> */}
-                  <HomeScreenCarouselSlide urls={[linenBagDS,linenBagLP,linenBagTB,linenBagMB]} />
-                {/* </Link> */}
-              </Carousel.Item>
-              <Carousel.Item interval={4000}>
-                {/* <Link to='/productlist/home/dining'> */}
-                  <HomeScreenCarouselSlide urls={[linenBagDS,linenBagLP,linenBagTB,linenBagMB]} />
-                {/* </Link> */}
-                <Carousel.Caption className='carousel-slide-2'></Carousel.Caption>
-              </Carousel.Item>
-          </Carousel>
-      </>
-    );
-  }
-
-
-  function OldCarouselComp(){
-    return(
+  function OldCarouselComp() {
+    return (
       <Row className='home-screen-container'>
-          <Col sm={4}>
-            <div className='hero-container'>
-              <div className='empty-div'></div>
-              <div className='hero-logo'>akiiko</div>
-              <h1 className='hero-text'>
-                eco-friendly
-                <br />
-                utilitarian
-                <br />
-                vegan
-              </h1>
-              <div className='hero-sub-text'></div>
-              <div className='hero-button'>
-                <Link to='/search'>
-                  <button>Shop Now</button>
-                </Link>
-              </div>
+        <Col sm={4}>
+          <div className='hero-container'>
+            <div className='empty-div'></div>
+            <div className='hero-logo'>akiiko</div>
+            <h1 className='hero-text'>
+              eco-friendly
+              <br />
+              utilitarian
+              <br />
+              vegan
+            </h1>
+            <div className='hero-sub-text'></div>
+            <div className='hero-button'>
+              <Link to='/search'>
+                <button>Shop Now</button>
+              </Link>
             </div>
-          </Col>
-          <Col
-            sm={8}
-            className='carousel-wrapper'
-            style={{ marginBottom: '80px', zIndex: '0' }}
-          >
-            <Carousel className='carousel-fade' pause={false} controls={false}>
-              <Carousel.Item interval={4000}>
-                <Link to='/productlist/bags/tote'>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_1.jpg'}
-                    alt='the bindle bag collection'
-                  />
-                </Link>
-              </Carousel.Item>
-              <Carousel.Item interval={4000}>
-                <Link to='/productlist/home/dining'>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_2.jpg'}
-                    alt='tableware collection'
-                  />
-                </Link>
-                <Carousel.Caption className='carousel-slide-2'></Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item interval={4000}>
-                <Link to='/product/60f945fa8df1a30d9f0ac75e'>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_3.jpg'}
-                    alt='Box Puches made with woven cotton'
-                  />
-                </Link>
-                <Carousel.Caption className='carousel-slide-3'></Carousel.Caption>
-              </Carousel.Item>
-              <Carousel.Item interval={4000}>
-                <Link to='product/60f945748df1a30d9f0ac75d'>
-                  <img
-                    className='d-block w-100'
-                    src={'/images/carousel_images/carousel_4.jpg'}
-                    alt='Trianble hemp pouches'
-                  />
-                </Link>
-              </Carousel.Item>
-            </Carousel>
-          </Col>
-        </Row>
-    );
+          </div>
+        </Col>
+        <Col
+          sm={8}
+          className='carousel-wrapper'
+          style={{ marginBottom: '80px', zIndex: '0' }}
+        >
+          <Carousel className='carousel-fade' pause={false} controls={false}>
+            <Carousel.Item interval={4000}>
+              <Link to='/productlist/bags/tote'>
+                <img
+                  className='d-block w-100'
+                  src={'/images/carousel_images/carousel_1.jpg'}
+                  alt='the bindle bag collection'
+                />
+              </Link>
+            </Carousel.Item>
+            <Carousel.Item interval={4000}>
+              <Link to='/productlist/home/dining'>
+                <img
+                  className='d-block w-100'
+                  src={'/images/carousel_images/carousel_2.jpg'}
+                  alt='tableware collection'
+                />
+              </Link>
+              <Carousel.Caption className='carousel-slide-2'></Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item interval={4000}>
+              <Link to='/product/60f945fa8df1a30d9f0ac75e'>
+                <img
+                  className='d-block w-100'
+                  src={'/images/carousel_images/carousel_3.jpg'}
+                  alt='Box Puches made with woven cotton'
+                />
+              </Link>
+              <Carousel.Caption className='carousel-slide-3'></Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item interval={4000}>
+              <Link to='product/60f945748df1a30d9f0ac75d'>
+                <img
+                  className='d-block w-100'
+                  src={'/images/carousel_images/carousel_4.jpg'}
+                  alt='Trianble hemp pouches'
+                />
+              </Link>
+            </Carousel.Item>
+          </Carousel>
+        </Col>
+      </Row>
+    )
   }
 }
 
 export default HomeScreen
-
-
-
-
