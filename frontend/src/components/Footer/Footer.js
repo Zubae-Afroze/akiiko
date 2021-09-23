@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { HashLink as Link } from 'react-router-hash-link'
 import './Footer.css'
+import './footerNewStyle.css'
 
 export default class Footer extends Component {
   render() {
@@ -10,7 +11,276 @@ export default class Footer extends Component {
     //  }
     return (
       <>
-        <div className='footer-brand-wrapper'>
+        <FooterTop />
+        <FooterBottom />
+        
+      </>
+    )
+  }
+}
+
+function FooterBottom(){
+
+  const SocialIconsCMP = () => {
+    return(
+      <div className='footer-bottom-icons-wrapper'>
+
+          <div>
+            <a
+              href='https://www.instagram.com/akiiko_india/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <i className='lni lni-instagram-filled'></i>
+            </a>
+
+
+            <a
+              href='https://www.facebook.com/akiikoindia/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <i className='lni lni-facebook-filled'></i>
+            </a>
+
+
+            <a
+              href='https://www.linkedin.com/company/akiiko-india/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <i className='lni lni-linkedin-original'></i>
+            </a>
+
+
+            <a
+              href='https://in.pinterest.com/akiiko_india/'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <i className='lni lni-pinterest'></i>
+            </a>
+
+
+            <a
+              href='https://twitter.com/AkiikoIndia'
+              target='_blank'
+              rel='noreferrer'
+            >
+              <i className='lni lni-twitter-original'></i>
+            </a>
+          </div>
+
+        </div>
+    );
+  }
+
+
+  const NewsLetterSuscribeCMP = () => {
+    return(
+      <div className='footer-news-letter-comp-wrapper'>
+
+      </div>
+    );
+  }
+
+
+  const ContentSubTitle = ({title,link}) => {
+    return(
+      <div className='footer-bottom-main-contents-subtitle'>
+      {
+        link === '' ?
+        <>{title}</>
+        : <Link to={link}>{title}</Link>
+      }
+      </div>
+    );
+  }
+
+  const ContentTitle = ({title,link}) => {
+    return(
+      <div className='footer-bottom-main-contents-title'>
+      {
+        link === '' ?
+        <>{title}</>
+        : <Link to={link}>{title}</Link>
+      }
+      </div>
+    );
+  }
+
+  const ContentSubSubTitle = ({title}) => {
+    return(
+      <div className='footer-bottom-main-contents-sub-sub-title'>
+        {title}
+      </div>
+    );
+  }
+
+
+
+  const BlogsAndOthersCMP = () => {
+    return(
+      <div className='footer-bottom-main-content-comp'>
+
+        <ContentTitle title={'CLICK BLOG'} link={'dummy'} />
+
+        <ContentTitle title={'ABOUT US'} link={'dummy'} />
+
+        <ContentTitle title={'CLICK BLOG'} link={'dummy'} />
+
+      </div>
+    );
+  }
+
+
+  const ShopCMP = () => {
+    return(
+      <div className='footer-bottom-main-content-comp'>
+
+        <ContentTitle title={'SHOP'} link={''} />
+
+        <ContentSubTitle title={'Bags'} link={'/allproducts/productlist/bags'} />
+
+        <ContentSubTitle title={'Home'} link={'/allproducts/productlist/home'} />
+
+        <ContentSubTitle title={'Lifestyle'} link={'/allproducts/productlist/lifestyle'} />
+
+        <ContentSubTitle title={'Gift'} link={'/allproducts/productlist/gift'} />
+
+        <ContentSubTitle title={'Storage'} link={'/allproducts/productlist/storage'} />
+
+        <ContentSubTitle title={'Accessories'} link={'/allproducts/productlist/accessories'} />
+
+      </div>
+    );
+  }
+
+  const SupportCMP = () => {
+    return(
+      <div className='footer-bottom-main-content-comp'>
+
+        <ContentTitle title={'SUPPORT'} link={''} />
+
+        <ContentSubTitle title={'Shipping & Return'} link={'/Refund'} />
+
+        <ContentSubTitle title={'Privacy Policy'} link={'./PrivacyStatement'} />
+
+        <ContentSubTitle title={'Terms & Condition'} link={'./TermsofService'} />
+
+        <ContentSubTitle title={'Contact us'} link={'/contactus'} />
+
+      </div>
+    );
+  }
+  const GernalsCMP = () => {
+    return(
+      <div className='footer-bottom-main-content-comp'>
+
+        <ContentTitle title={'Home'} link={'/'} />
+
+
+        {/* <ContentTitle title={'Journal'} link={''} /> */}
+
+        <ContentTitle title={'Our Story'} link={'/AboutUs'} />
+
+        {/* <ContentTitle title={'FAQs'} link={''} /> */}
+
+      </div>
+    );
+  }
+
+  const ContactCMP = () => {
+    return(
+      <div className='footer-bottom-main-content-comp'>
+
+        <ContentTitle title={'CONTACT'} link={'/contactus'} />
+
+        <ContentSubTitle title={'+9192719278'} link={''} />
+
+        <ContentSubTitle title={'@gmail.com'} link={''} />
+
+        <ContentSubSubTitle title={'For corprate orders:'} />
+
+        <ContentSubTitle title={'corprate@'} link={''} />
+
+        <ContentSubTitle title={'97286716'} link={''} />
+
+        <ContentSubSubTitle title={'International Bulk enquiry:'} />
+
+        <ContentSubTitle title={'interewt@kahsgd'} link={''} />
+
+      </div>
+    );
+  }
+
+  const SuscribeNewLetterCMP = () => {
+    return(
+      <div className='footer-bottom-main-content-comp'>
+
+        <ContentTitle title={'BE THE FIRST TO KNOW'} link={''} />
+
+        {/* <div style={{ padding: '10px', width: '90%' }}> */}
+          <input
+            placeholder='Enter your email address'
+            type='text'
+            name='name'
+            className='footer-bottom-suscribe-news-letter-input'
+            onChange={(e) => {
+              // props.setName(e.target.value)
+            }}
+          />
+        {/* </div> */}
+
+        <p>Please enter your email</p>
+
+        <button>
+          SUBSCRIBE
+        </button>
+        
+        <SocialIconsCMP />
+      </div>
+    );
+  }
+
+
+  const FotterBottomMainConentCMP = () => {
+    return(
+      // <div>
+        <div  className='footer-bottom-main-content-wrapper'>
+
+          <GernalsCMP />
+
+          <SupportCMP />
+
+          <ShopCMP />
+
+          {/* <ContactCMP /> */}
+
+          <SuscribeNewLetterCMP />
+
+        </div>
+      // </div>
+    );
+  }
+
+  return(
+    <>
+      <div className='footer-bottom-wrapper'>
+
+        {/* <SocialIconsCMP /> */}
+
+        <FotterBottomMainConentCMP />
+
+      </div>
+    </>
+  );
+}
+
+function FooterTop(){
+  return(
+    <>
+<div className='footer-brand-wrapper'>
           <Container className='footer-brand-container'>
             <Row className='footer-brand'>
               <Col sm={5} className='footer-brand-section-one'>
@@ -101,7 +371,14 @@ export default class Footer extends Component {
             </Row>
           </Container>
         </div>
-        <div className='footer-main-wrapper'>
+    </>
+  )
+}
+
+function FooterBottomOld(){
+  return(
+    <>
+<div className='footer-main-wrapper'>
           <Container>
             <Row className='footer-main'>
               <Col sm={5}>
@@ -208,7 +485,6 @@ export default class Footer extends Component {
             </div>
           </Container>
         </div>
-      </>
-    )
-  }
+    </>
+  )
 }

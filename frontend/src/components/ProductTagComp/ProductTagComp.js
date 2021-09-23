@@ -97,8 +97,8 @@ const ProductTag = styled.div`
     height: 14px;
     width: 14px;
     background-color: white;
-    top: ${props => props.laptop[0]};
-    left: ${props => props.laptop[1]};
+    top: ${props => props.desktop[0]};
+    left: ${props => props.desktop[1]};
     border-radius: 50%;
     transition: 0.5s;
     animation: ${pulseAnimation} 0.8s infinite alternate;
@@ -119,7 +119,8 @@ const ProductTag = styled.div`
     }
     
     &:hover > ${ProductDetail},
-    :active > ${ProductDetail}{
+    :active > ${ProductDetail},
+    :focus > ${ProductDetail}{
         transition-delay: 0.5s;
         opacity: 0.85;
     }
@@ -135,17 +136,45 @@ const ProductTag = styled.div`
         transform: scaleY(1);
     }
 
-    /* IPAD LandScape 
-    @media (max-width: 1024px) {
-        background-color: red;
+    
+    /* LAPTOP */
+    @media (max-width: 1280px) {
+        top: ${props => props.laptop[0]};
+        left: ${props => props.laptop[1]};
     }
-    */
 
+    /* @media (max-width: 1280px) and (max-height: 800px) {
+        background-color: red;
+        top: ${(props) => {
+            const elementHeight = (( 85 / 100 ) * 800);
+            const detachedFromPercentage = parseFloat(props.laptop[0]) / 100;
+            return detachedFromPercentage * elementHeight + 'px';
+        }};
+    }
+
+    @media (max-width: 1280px) and (min-height: 800px) {
+        background-color: pink;
+        top: ${(props) => {
+            const elementHeight = (( 85 / 100 ) * 800);
+            const detachedFromPercentage = parseFloat(props.laptop[0]) / 100;
+            return detachedFromPercentage * elementHeight + 'px';
+        }};
+    } */
+
+    
+
+    /* IPAD Landscaped */
+    @media (max-width: 1024px) {
+        top: ${props => props.tabLS[0]};
+        left: ${props => props.tabLS[1]};
+    }
+    
     /* IPAD Portraite */
     @media (max-width: 768px) {
         top: ${props => props.tab[0]};
         left: ${props => props.tab[1]};
     }
+
 
     /* MOBILE */
     @media (max-width: 440px) {
@@ -164,7 +193,7 @@ const ProductTag = styled.div`
 export default function ProductTagComponent(props) {
     
     return (
-        <ProductTag laptop={props.laptop} tab={props.tab} mob={props.mob} >
+        <ProductTag desktop={props.desktop} laptop={props.laptop} tab={props.tab} tabLS={props.tabLS} mob={props.mob} >
         <Pointer />
             <ProductDetail>
                 <p>{props.title}</p>

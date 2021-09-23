@@ -82,8 +82,8 @@
 }
 
 .feedback-form-pop-up-wrapper {
-  height: 400px;
-  width: 280px;
+  height: 355px;
+  width: 270px;
   font-family: 'rutanLight';
   font-size: 13px;
   color: #977257;
@@ -127,8 +127,8 @@
 }
 
 .feedback-form-ratting-container {
-  width: 280px;
-  height: 150px;
+  width: 270px;
+  height: 110px;
   padding: 15px;
   text-align: center;
 }
@@ -168,18 +168,18 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 9px;
+  gap: 10px;
   padding: 15px;
 }
 
 .rating-stars img {
   /* flex-basis: 10%; */
-  width: 20px;
+  width: 35px;
   transition: 0.2s ease-in-out;
 }
 
 .rating-stars img:hover {
-  transform: scale(1.3);
+  transform: scale(1.2);
   /* -webkit-box-shadow: 2px 2px 8px 0px rgba(163, 129, 103, 0.68);
   -moz-box-shadow: 2px 2px 8px 0px rgba(163, 129, 103, 0.68);
   box-shadow: 2px 2px 8px 0px rgba(163, 129, 103, 0.68); */
@@ -198,6 +198,7 @@
   resize: none;
   overflow: auto;
   margin: 15px;
+  margin-bottom: 0;
   padding: 10px;
   width: 89%;
   background-color: transparent;
@@ -235,8 +236,8 @@
   position: absolute;
   bottom: -500px;
   transition: all 0.5s;
-  height: 400px;
-  width: 280px;
+  height: 355px;
+  width: 270px;
   display: flex;
   padding: 20px;
   justify-content: center;

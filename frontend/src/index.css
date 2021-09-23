@@ -70,6 +70,15 @@
   font-size: normal;
 }
 
+:root {
+  --dark: #101315;
+  --light: #eeeeee;
+  --gradient: linear-gradient(10deg, #ffaa00, #ff6a00);
+  --gradient2: linear-gradient(15deg, #04ea00, #00d17d);
+  --gradient3: linear-gradient(15deg, #b648ff, #ef5dff);
+  font-size: 1rem;
+}
+
 /* Global settings */
 * {
   margin: 0;
