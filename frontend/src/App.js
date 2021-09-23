@@ -42,6 +42,9 @@ import ProductTestScreen from './components/Shimmers/ProductTestScreen'
 import TestScreen from './screens/TestScreen/TestScreen'
 import ShippingPolicy from './components/ShippingPolicy/ShippingPolicy'
 
+import ModalTestScreen from './screens/TestScreen/modalTestScreen/modalTestScreen'
+import ContactUsScreen from './screens/ContactUs/ContactUsScreen'
+
 // import ReactGa from 'react-ga'
 // import { getUserDetails } from './actions/actionUsers'
 // import { useSelector, useDispatch } from 'react-redux'
@@ -52,7 +55,11 @@ const App = () => {
       <ScrollToTop />
       <Header />
       <Switch>
+      
         <Route path='/producttest' render={() => <ProductTestScreen />} />
+
+        <Route path='/modaltest' render={() => <ModalTestScreen />} />
+        <Route path='/contactus' render={() => <ContactUsScreen />} />
 
         <Route path='/orders/:orderId' render={() => <OrderSummaryScreen />} />
 

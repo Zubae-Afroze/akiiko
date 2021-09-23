@@ -1,6 +1,7 @@
-import React from 'react'
+import React , {useState,useEffect} from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { motion } from 'framer-motion'
+import { storage } from '../../index'
 
 const containerVariants = {
   hidden: {
@@ -277,6 +278,42 @@ export default function ProductRowComp({ orderDetails, index }) {
   }
 
   function OrderListCompnent({ itemDetail }) {
+
+    const [ imageURL, setImageURL ] = useState("")
+
+    useEffect(() => {
+      
+      const getProperImageFromStorage = async () => {
+        let rawImagePath = "";
+        
+        if( itemDetail.imagePath === undefined || itemDetail.imagePath === null ){
+          rawImagePath = itemDetail.image;
+        }else{
+          rawImagePath = itemDetail.imagePath;
+        }
+        
+        if(rawImagePath.search("p_images") !== -1){
+          rawImagePath = rawImagePath.replace("images/p_images","images_web")
+          rawImagePath = await storage 
+          .ref(rawImagePath)
+          .getDownloadURL();
+        }else if(rawImagePath.search("firebasestorage") !== -1 ){
+          rawImagePath = await storage 
+          .ref(rawImagePath)
+          .getDownloadURL();
+        }
+        setImageURL(rawImagePath);
+      }
+
+      getProperImageFromStorage()
+
+      return () => {
+        
+      }
+    }, [itemDetail.image,itemDetail.imagePath,setImageURL])
+
+
+
     return (
       <div
         style={{
@@ -305,7 +342,7 @@ export default function ProductRowComp({ orderDetails, index }) {
                                 style={{ height: '65%', width: '100%', backgroundColor: '#6B584C' }}
                                 > */}
               <img
-                src={itemDetail.image}
+                src={imageURL}
                 alt='Girl in a jacket'
                 width='100%'
                 height='100%'

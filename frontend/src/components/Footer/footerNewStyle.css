@@ -1,0 +1,200 @@
+.footer-bottom-wrapper {
+  --title-font-size: 14px;
+  --sub-title-font-size: 14px;
+  background-color: #e1d5bf;
+  min-height: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 40px 0;
+  /* flex-direction: column; */
+}
+
+/* Icons Comp  */
+.footer-bottom-icons-wrapper {
+  /* width: 100vw; */
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+  /* margin-bottom: 20px; */
+}
+
+.footer-bottom-icons-wrapper > div {
+  margin: 10px 0;
+  /* margin-top: 20px; */
+  /* width: 400px; */
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-bottom-icons-wrapper > div a {
+  color: #3a2f2d;
+  /* float: right; */
+  /* font-size: 25px; */
+  font-size: 20px;
+}
+
+/* Fotter bottom main content */
+.footer-bottom-main-content-wrapper {
+  width: 90%;
+  max-width: 1266px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-bottom-main-content-comp {
+  flex-basis: 18%;
+  margin-top: 10px;
+}
+
+.footer-bottom-main-content-comp:nth-child(1) {
+  order: 1;
+}
+.footer-bottom-main-content-comp:nth-child(2) {
+  order: 2;
+}
+.footer-bottom-main-content-comp:nth-child(3) {
+  order: 3;
+}
+.footer-bottom-main-content-comp:nth-child(4) {
+  order: 4;
+}
+.footer-bottom-main-content-comp:nth-child(5) {
+  order: 5;
+}
+
+.footer-bottom-main-contents-title {
+  margin: 8px 0;
+  margin-bottom: 10px;
+  color: #2c2221;
+  font-family: 'rutanMedium';
+  font-size: var(--title-font-size);
+}
+.footer-bottom-main-contents-title a {
+  font-size: 15px;
+  color: #2c2221;
+  font-family: 'rutanMedium';
+  font-size: var(--title-font-size);
+}
+
+.footer-bottom-main-contents-subtitle {
+  margin: 6px 0;
+  font-family: 'rutan';
+  color: #3e3331;
+  font-size: var(--sub-title-font-size);
+  transition: 0.2s;
+}
+
+.footer-bottom-main-contents-subtitle a {
+  font-family: 'rutan';
+  color: #3e3331;
+  transition: 0.1s;
+  font-size: var(--sub-title-font-size);
+}
+
+.footer-bottom-main-contents-sub-sub-title {
+  color: #2c2221;
+  font-family: 'rutanMedium';
+  font-size: 14px;
+}
+
+/* NEW Lettr Suscribe */
+.show-only-on-mobile {
+  display: none;
+}
+
+.show-only-on-web {
+  display: block;
+}
+
+.footer-bottom-suscribe-news-letter-input {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #3e3331;
+  background-color: transparent;
+  width: 100%;
+  /* padding: 5px; */
+  padding-left: 0;
+  font-size: calc(var(--sub-title-font-size) - 1px);
+  font-family: 'rutan';
+}
+.footer-bottom-suscribe-news-letter-input:focus {
+  border-color: #2c2221;
+  background-color: transparent;
+}
+
+.footer-bottom-main-content-comp p {
+  margin-top: 5px;
+  font-size: calc(var(--sub-title-font-size) - 2px);
+  font-family: 'rutan';
+}
+
+.footer-bottom-main-content-comp button {
+  width: 100%;
+  background-color: #3e3331;
+  color: #ffff;
+  font-family: 'rutan';
+  letter-spacing: 0.5px;
+  border: none;
+  padding: 6px;
+  font-size: calc(var(--sub-title-font-size) - 1px);
+  padding-top: 8px;
+}
+
+/* textarea {
+    outline: none;
+    border: 1px solid;
+    border-color: lightgrey;
+    background-color: transparent;
+    font-size: 15px;
+    font-family: 'robotoRegular';
+  }
+  textarea:focus {
+    outline: none;
+    border: 1px solid;
+    border-color: #543f2c8e;
+    background-color: transparent;
+  } */
+
+.footer-bottom-suscribe-news-letter-input:focus::placeholder {
+  color: grey;
+}
+
+/* news Letter comp */
+.footer-news-letter-comp-wrapper {
+}
+
+@media (max-width: 450px) {
+  .footer-bottom-main-content-comp {
+    flex-basis: 100%;
+  }
+  .show-only-on-mobile {
+    display: block;
+  }
+  .show-only-on-web {
+    display: none;
+  }
+
+  .footer-bottom-main-content-comp:nth-child(1) {
+    order: 4;
+  }
+  .footer-bottom-main-content-comp:nth-child(2) {
+    order: 2;
+    margin-top: 0;
+  }
+  .footer-bottom-main-content-comp:nth-child(3) {
+    order: 3;
+  }
+  .footer-bottom-main-content-comp:nth-child(4) {
+    order: 1;
+    /* margin-bottom: 10px; */
+  }
+  .footer-bottom-main-content-comp:nth-child(5) {
+    order: 1;
+    margin-bottom: 10px;
+  }
+}

@@ -18,6 +18,22 @@ import fiveStar from './assets/5-star.svg'
 import defaultEmoji from './assets/default-emoji.svg'
 import { getUserProfileByUID } from '../../actions/actionProfile'
 
+import star1Filled from './starFilled/1-star-filled.svg';
+import star2Filled from './starFilled/2-star-filled.svg';
+import star3Filled from './starFilled/3-star-filled.svg';
+import star4Filled from './starFilled/4-star-filled.svg';
+import star5Filled from './starFilled/5-star-filled.svg';
+
+import star1UnFilled from './starUnFilled/1-star-unfilled.svg';
+import star2UnFilled from './starUnFilled/2-star-unfilled.svg';
+import star3UnFilled from './starUnFilled/3-star-unfilled.svg';
+import star4UnFilled from './starUnFilled/4-star-unfilled.svg';
+import star5UnFilled from './starUnFilled/5-star-unfilled.svg';
+
+
+
+
+
 export default function PostOrderScreen() {
   const dispatch = useDispatch()
 
@@ -122,8 +138,9 @@ export default function PostOrderScreen() {
               id='story'
               placeholder='Tell us more'
               name='message'
-              class='feedBackArea'
-              onChange={(e) => onEnterFeedBack(e)}
+              className='feedBackArea'
+              onChange={(e)=>onEnterFeedBack(e)}
+              rows={3}
             ></textarea>
           </div>
 
@@ -165,44 +182,55 @@ export default function PostOrderScreen() {
   )
 }
 
-function FeedBackFormRattingComp({ getStarRating }) {
+function FeedBackFormRattingComp({getStarRating}) {
+  const filledStarList = [star1Filled,star2Filled,star3Filled,star4Filled,star5Filled];
+  const unFilledStarList = [star1UnFilled,star2UnFilled,star3UnFilled,star4UnFilled,star5UnFilled];
   const [rating, setRating] = React.useState(-1)
-  const [stars, setStars] = React.useState([
-    unFilledstar,
-    unFilledstar,
-    unFilledstar,
-    unFilledstar,
-    unFilledstar,
-  ])
+  // const [stars, setStars] = React.useState([
+  //   unFilledstar,
+  //   unFilledstar,
+  //   unFilledstar,
+  //   unFilledstar,
+  //   unFilledstar,
+  // ])
+
+  const [stars, setStars] = React.useState([...unFilledStarList])
 
   const changeRating = (val) => {
     getStarRating(val)
     let newStars = []
     stars.forEach((_, index) => {
       if (index <= val) {
-        newStars.push(filledstar)
+        // newStars.push(filledstar)
+        newStars.push(filledStarList[index])
+        console.log('Filled: '+index)
       } else {
-        newStars.push(unFilledstar)
+        // newStars.push(unFilledstar)
+        newStars.push(unFilledStarList[index])
+        console.log('unFilled: '+index)
       }
     })
     setStars(newStars)
+    setRating(val)
 
-    const element = document.getElementById('rc')
-    element.classList.remove('reactions-container')
-    void element.offsetWidth
-    element.classList.add('reactions-container')
-    setTimeout(() => {
-      setRating(val)
-    }, 300)
+    // const element = document.getElementById('rc')
+    // element.classList.remove('reactions-container')
+    // void element.offsetWidth
+    // element.classList.add('reactions-container')
+    // setTimeout(() => {
+    //   setRating(val)
+    // }, 300)
   }
 
   const onHoverStar = (val) => {
     let newStars = []
     stars.forEach((_, index) => {
       if (index <= val) {
-        newStars.push(filledstar)
+        // newStars.push(filledstar)
+        newStars.push(filledStarList[index])
       } else {
-        newStars.push(unFilledstar)
+        // newStars.push(unFilledstar)
+        newStars.push(unFilledStarList[index])
       }
     })
     setStars(newStars)
@@ -213,22 +241,26 @@ function FeedBackFormRattingComp({ getStarRating }) {
       let newStars = []
       stars.forEach((_, index) => {
         if (index <= rating) {
-          newStars.push(filledstar)
+          // newStars.push(filledstar)
+        newStars.push(filledStarList[index])
         } else {
-          newStars.push(unFilledstar)
+          // newStars.push(unFilledstar)
+          newStars.push(unFilledStarList[index])
         }
       })
       setStars(newStars)
 
       // setStars([unFilledstar,unFilledstar,unFilledstar,unFilledstar,unFilledstar])
     } else {
-      setStars([
-        unFilledstar,
-        unFilledstar,
-        unFilledstar,
-        unFilledstar,
-        unFilledstar,
-      ])
+      // setStars([
+      //   unFilledstar,
+      //   unFilledstar,
+      //   unFilledstar,
+      //   unFilledstar,
+      //   unFilledstar,
+      // ])
+      setStars([...unFilledStarList])
+      console.log('on Leave Activated')
     }
   }
 
@@ -259,12 +291,12 @@ function FeedBackFormRattingComp({ getStarRating }) {
   return (
     <div className='feedback-form-ratting-container'>
       <div>How would you rate your experience from our site ?</div>
-      <div className='reactions-container-wrapper'>
+
+      {/* <div className='reactions-container-wrapper'>
         <div id='rc' className='reactions-container'>
-          <img src={returnEmojiSrc()} alt='1 star' />
-          {/* {rating + 1} */}
+        <img src={returnEmojiSrc()} alt='1 star' />
         </div>
-      </div>
+      </div> */}
 
       <div
         className='rating-stars'

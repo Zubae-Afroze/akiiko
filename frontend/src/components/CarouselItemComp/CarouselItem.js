@@ -4,29 +4,70 @@ import './carouselItemStyle.css'
 
 const BGImage = styled.div`
     position: relative;
-    background-image: url('${props => props.urls[1]}');
+    background-image: url('${props => props.urls[0]}');
     background-repeat: no-repeat;
     background-size: cover;
     width: 100vw;
     height: 85vh;
 
+    /* LAPTOP */
+    @media (max-width: 1280px) {
+        background-image: url('${props => props.urls[1]}');
+    }
+
     /* TAB */
-    @media (max-width: 768px) {
-        background-image: url(${props => props.urls[2]});
+    @media (max-width: 769px) {
+        background-image: url('${props => props.urls[2]}');
     }
 
     /* MOBILE */
     @media (max-width: 440px) {
-        background-image: url(${props => props.urls[3]});
+        background-image: url('${props => props.urls[3]}');
+    }
+  `
+
+
+const ProductImage = styled.div`
+    position: absolute;
+    background-image: url('${props => props.productImages[0]}');
+    background-repeat: no-repeat;
+    background-size: cover;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    /* z-index: 5; */
+    width: ${props => props.productImageWidth[0]};
+    height: ${props => props.productImageHeight[0]};
+
+    
+    /* LAPTOP */
+    @media (max-width: 1280px) {
+        width: ${props => props.productImageWidth[1]};
+        height: ${props => props.productImageHeight[1]};
+    }
+
+    /* TAB */
+    @media (max-width: 769px) {
+        width: ${props => props.productImageWidth[2]};
+        height: ${props => props.productImageHeight[2]};
+    }
+
+    /* MOBILE */
+    @media (max-width: 440px) {
+        width: ${props => props.productImageWidth[3]};
+        height: ${props => props.productImageHeight[3]};
     }
   `
 
 export default function CarouselItem(props) {
     return (
         <BGImage urls={props.urls}>
-            {
-                props.children
-            }
+            <ProductImage productImages={props.productImages} productImageWidth={props.productImageWidth} productImageHeight={props.productImageHeight} >
+                {
+                    props.children
+                }
+            </ProductImage>
             <div className='entrance-title'>
                 {/* <div> */}
                     <div className='carousel-big-text'> The Bindle Bag </div>

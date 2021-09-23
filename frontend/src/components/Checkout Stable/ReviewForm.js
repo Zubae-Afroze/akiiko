@@ -51,7 +51,8 @@ export default function ReviewFormT() {
           return {
             product: item.product,
             productName: item.productName,
-            image: item.image,
+            image: item.imagePath,
+            // image: item.image,
             price: item.price,
             qty: item.qty,
           }
