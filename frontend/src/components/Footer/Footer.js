@@ -131,7 +131,7 @@ function FooterBottom() {
       <div className='footer-bottom-main-content-comp'>
         <ContentTitle title={'SUPPORT'} link={''} />
 
-        <ContentSubTitle title={'Refund Policy'} link={'/Refund'} />
+        {/* <ContentSubTitle title={'Refund Policy'} link={'/Refund'} /> */}
 
         <ContentSubTitle title={'Shipping Policy'} link={'/ShippingPolicy'} />
 
