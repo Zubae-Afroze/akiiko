@@ -94,7 +94,7 @@
   color: #977257;
 } */
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
   .contactus-infoCard-wrapper {
     width: 90%;
     flex-direction: column;

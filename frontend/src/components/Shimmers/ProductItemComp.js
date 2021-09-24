@@ -110,11 +110,7 @@ export default function ProductItemComp(props) {
 
     async function getMasterProduct() {
       // console.log('Got product ID: '+ props.product.id)
-      const product = await axios.get(
-        `/api/product/${
-          props.isSimilarProducts ? props.product.id : props.product._id
-        }`
-      )
+      const product = await axios.get(`/api/product/${props.product.link}`)
       //images_web[0]
       masterProduct.current = product.data
       storage
@@ -180,11 +176,7 @@ export default function ProductItemComp(props) {
         className='product-item-card'
         key={props.isSimilarProducts ? props.product.id : props.product._id}
       >
-        <Link
-          to={`/product/${
-            props.isSimilarProducts ? props.product.id : props.product._id
-          }`}
-        >
+        <Link to={`/product/${props.product.link}`}>
           <div
             className={`product-item-card-img-wrapper  ${
               isImageLoaded ? '' : 'shimmer shimmer-img-size'
