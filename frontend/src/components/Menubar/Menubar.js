@@ -20,9 +20,7 @@ export default class Menubar extends Component {
   }
 
   handleScroll = () => {
-    const prevScrollPos = this.state.prevScrollPos;
-
-    console.log(prevScrollPos)
+    const prevScrollPos = this.state.prevScrollPos
 
     const currentScrollPos = window.pageYOffset
     const navFixed = prevScrollPos < currentScrollPos
@@ -32,7 +30,7 @@ export default class Menubar extends Component {
       navFixed,
     })
   }
- 
+
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
   }
