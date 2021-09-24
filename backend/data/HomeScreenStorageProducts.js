@@ -50,7 +50,7 @@ const HomeScreenStorageProducts = [
     group: 'Storage',
     subGroup: 'Home',
     mrpPrice: '1099',
-    link: 'broad-storage-bags',
+    link: 'broad-storage-bag',
   },
   {
     _id: '5fe18171a384156e680757dc',
@@ -64,7 +64,7 @@ const HomeScreenStorageProducts = [
     subGroup: 'Home',
     quickView: 'quick view',
     mrpPrice: '849',
-    link: 'hanging-organiser',
+    link: 'all-purpose-hanging-organiser',
   },
   {
     _id: '5fe18171a384156e680757e2',
@@ -76,7 +76,7 @@ const HomeScreenStorageProducts = [
     group: 'Storage',
     subGroup: 'Home',
     mrpPrice: '1049',
-    link: 'orginal-storage-boxes',
+    link: 'original-storage-boxes',
   },
 ]
 

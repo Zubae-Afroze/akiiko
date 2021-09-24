@@ -501,7 +501,7 @@ const ProductDetails = () => {
             <SimilarProducts />
             <div style={{height: '30px'}} /> */}
 
-            <SimilarProducts />
+            {/* <SimilarProducts /> */}
           </div>
           {product.reviews.length !== 0 ? (
             <div>
@@ -525,19 +525,19 @@ const ProductDetails = () => {
     </>
   )
 
-  function SimilarProducts() {
-    if (product.similarProducts) {
-      return (
-        <div className='similar-products-comp-wrapper'>
-          {product.similarProducts.map((product) => (
-            <ProductItemComp product={product} isSimilarProducts={true} />
-          ))}
-        </div>
-      )
-    } else {
-      return null
-    }
-  }
+  // function SimilarProducts() {
+  //   if (product.similarProducts) {
+  //     return (
+  //       <div className='similar-products-comp-wrapper'>
+  //         {product.similarProducts.map((product) => (
+  //           <ProductItemComp product={product} isSimilarProducts={true} />
+  //         ))}
+  //       </div>
+  //     )
+  //   } else {
+  //     return null
+  //   }
+  // }
 
   function OldComp() {
     if (product.similarProducts) {

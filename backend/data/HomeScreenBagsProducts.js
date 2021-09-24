@@ -25,7 +25,7 @@ const HomeScreenBagsProducts = [
     subGroup: 'Tote',
     quickView: 'quick view',
     mrpPrice: '899',
-    link: 'canvas-shopper',
+    link: 'classic-canvas-shopper',
   },
   {
     _id: '5fe18171a384156e6807570a',
@@ -37,7 +37,7 @@ const HomeScreenBagsProducts = [
     group: 'Bag',
     subGroup: 'Tote',
     mrpPrice: '849',
-    link: 'mini-canvas-shopper',
+    link: 'mini-classic-canvas-shopper',
   },
   {
     _id: '5fe18171a384156e6807572e',

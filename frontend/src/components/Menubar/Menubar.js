@@ -575,6 +575,9 @@ export default class Menubar extends Component {
                   </Collapse>
                 ) : null}
               </Nav.Item>
+              {/* <Nav.Item as='li' className='nav-test'>
+                <Nav className='navbar-li'>Essentials</Nav>
+              </Nav.Item> */}
             </Nav>
           </div>
         </Container>

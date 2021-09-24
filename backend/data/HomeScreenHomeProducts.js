@@ -53,7 +53,7 @@ const HomeScreenHomeProducts = [
     subGroup: 'Laundry',
     mrpPrice: '1199',
     price: '1079',
-    link: '3-part-laundry-organiser',
+    link: '3-part-laundry-organizer',
   },
   {
     _id: '5fe18171a384156e68075770',
