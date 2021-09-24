@@ -56,10 +56,7 @@ export default function ProductItemComp(props) {
 
   const isProductInCart = () => {
     let filteredList = cartItems.filter((value) => {
-      return (
-        value.product ===
-        (props.isSimilarProducts ? props.product.id : props.product._id)
-      )
+      return value.product === props.product.link
     })
 
     if (filteredList !== null && filteredList.length !== 0) {
@@ -79,12 +76,7 @@ export default function ProductItemComp(props) {
         setTimeout(() => {
           setAddToCartText('Remove from cart')
         }, 3000)
-        dispatch(
-          addToCart(
-            props.isSimilarProducts ? props.product.id : props.product._id,
-            1
-          )
-        )
+        dispatch(addToCart(props.product.link, 1))
       }
     } else {
       setAddToCartText('Item Removed from Cart')
@@ -92,11 +84,7 @@ export default function ProductItemComp(props) {
       setTimeout(() => {
         setAddToCartText('Add to Cart')
       }, 3000)
-      dispatch(
-        removeFromCart(
-          props.isSimilarProducts ? props.product.id : props.product._id
-        )
-      )
+      dispatch(removeFromCart(props.product.link))
     }
   }
 
@@ -248,13 +236,7 @@ export default function ProductItemComp(props) {
           className={`${
             isImageLoaded ? '' : 'shimmer shimmer-text-size'
           } product-item-card-title-wrapper`}
-          onClick={() =>
-            history.push(
-              `/product/${
-                props.isSimilarProducts ? props.product.id : props.product._id
-              }`
-            )
-          }
+          onClick={() => history.push(`/product/${props.product.link}`)}
         >
           <div style={{ display: isImageLoaded ? 'block' : 'none' }}>
             {isImageLoaded ? `${props.product.productName}` : ''}
