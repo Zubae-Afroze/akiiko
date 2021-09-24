@@ -7,3 +7,15 @@
   position: relative;
   z-index: 1;
 }
+
+@media (max-width: 500px) {
+  .Home-screen-carousel-slide-wrapper {
+    height: 560px;
+  }
+}
+
+@media (min-width: 1250px) {
+  .Home-screen-carousel-slide-wrapper {
+    height: 700px;
+  }
+}
