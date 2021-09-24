@@ -18,10 +18,33 @@ import './HomeScreen.css'
 import { Helmet } from 'react-helmet'
 
 
-import linenBagDS from './HomeScreenCarousel/assets/Hemp pouch desktop.jpg'
-import linenBagLP from './HomeScreenCarousel/assets/Linen bag laptop.jpg'
-import linenBagTB from './HomeScreenCarousel/assets/Linen bag ipad.jpg'
-import linenBagMB from './HomeScreenCarousel/assets/Linen bag mobile.jpg'
+// import linenBagDS from './HomeScreenCarousel/assets/Hemp pouch desktop.jpg'
+// import linenBagLP from './HomeScreenCarousel/assets/Linen bag laptop.jpg'
+// import linenBagTB from './HomeScreenCarousel/assets/Linen bag ipad.jpg'
+// import linenBagMB from './HomeScreenCarousel/assets/Linen bag mobile.jpg'
+
+import coasterDT from './HomeScreenCarousel/coasterAssets/coasterDT.jpg'
+import coasterLT from './HomeScreenCarousel/coasterAssets/coasterLT.jpg'
+import coasterTL from './HomeScreenCarousel/coasterAssets/coasterTL.jpg'
+import coasterMB from './HomeScreenCarousel/coasterAssets/coasterMB.jpg'
+
+import hempDT from './HomeScreenCarousel/hempAssets/hempDT.jpg'
+import hempLT from './HomeScreenCarousel/hempAssets/hempLT.jpg'
+import hempTL from './HomeScreenCarousel/hempAssets/hempTL.jpg'
+import hempMB from './HomeScreenCarousel/hempAssets/hempMB.jpg'
+
+import linenDT from './HomeScreenCarousel/linenAssets/linenDT.jpg'
+import linenLT from './HomeScreenCarousel/linenAssets/linenLT.jpg'
+import linenTL from './HomeScreenCarousel/linenAssets/linenTL.jpg'
+import linenMB from './HomeScreenCarousel/linenAssets/linenMB.jpg'
+
+import triangleDT from './HomeScreenCarousel/triangleAssets/trianglePouchDT.jpg'
+import triangleLT from './HomeScreenCarousel/triangleAssets/trianglePouchLT.jpg'
+import triangleTL from './HomeScreenCarousel/triangleAssets/trianglePouchTL.jpg'
+import triangleMB from './HomeScreenCarousel/triangleAssets/trianglePouchMB.jpg'
+
+
+
 
 // import UseSpinner from '../../components/Spinner/UseSpinner';
 
@@ -137,17 +160,41 @@ const HomeScreen = () => {
     return(
       <>
         <Carousel className='carousel-fade' pause={false} controls={false}>
-              <Carousel.Item interval={4000}>
-                {/* <Link to='/productlist/bags/tote'> */}
-                  <HomeScreenCarouselSlide urls={[linenBagDS,linenBagLP,linenBagTB,linenBagMB]} />
-                {/* </Link> */}
-              </Carousel.Item>
-              <Carousel.Item interval={4000}>
-                {/* <Link to='/productlist/home/dining'> */}
-                  <HomeScreenCarouselSlide urls={[linenBagDS,linenBagLP,linenBagTB,linenBagMB]} />
-                {/* </Link> */}
-                <Carousel.Caption className='carousel-slide-2'></Carousel.Caption>
-              </Carousel.Item>
+        <Carousel.Item interval={4000}>
+        <Link to='/productlist/bags/tote'>
+
+            <HomeScreenCarouselSlide urls={[coasterDT,coasterLT,coasterTL,coasterMB]} />
+
+        </Link>
+        </Carousel.Item>
+
+
+        <Carousel.Item interval={4000}>
+        <Link to='/productlist/bags/tote'>
+
+            <HomeScreenCarouselSlide urls={[hempDT,hempLT,hempTL,hempMB]} />
+
+        </Link>
+        </Carousel.Item>
+
+
+        <Carousel.Item interval={4000}>
+        <Link to='/productlist/bags/tote'>
+
+            <HomeScreenCarouselSlide urls={[linenDT,linenLT,linenTL,linenMB]} />
+
+        </Link>
+        </Carousel.Item>
+
+
+        <Carousel.Item interval={4000}>
+        <Link to='/productlist/bags/tote'>
+
+            <HomeScreenCarouselSlide urls={[triangleDT,triangleLT,triangleTL,triangleMB]} />
+
+        </Link>
+        </Carousel.Item>
+
           </Carousel>
       </>
     );

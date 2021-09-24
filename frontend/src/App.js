@@ -44,6 +44,7 @@ import ShippingPolicy from './components/ShippingPolicy/ShippingPolicy'
 
 import ModalTestScreen from './screens/TestScreen/modalTestScreen/modalTestScreen'
 import ContactUsScreen from './screens/ContactUs/ContactUsScreen'
+import ProductcomponentTestScreen from './components/ProductCardComponent/ProductcomponentTestScreen'
 
 // import ReactGa from 'react-ga'
 // import { getUserDetails } from './actions/actionUsers'
@@ -57,7 +58,8 @@ const App = () => {
       <Switch>
       
         <Route path='/producttest' render={() => <ProductTestScreen />} />
-
+        <Route path='/pcts' render={() => <ProductcomponentTestScreen />} />
+        
         <Route path='/modaltest' render={() => <ModalTestScreen />} />
         <Route path='/contactus' render={() => <ContactUsScreen />} />
 

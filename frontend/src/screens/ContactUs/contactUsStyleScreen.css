@@ -82,12 +82,17 @@
   margin-top: 35px;
   color: #977257;
   font-family: 'rutan';
+  font-size: 12px;
 }
 .info-form-address-wrapper > span {
   color: #977257;
-  font-size: 12px;
+  font-size: 11px;
   display: block;
 }
+/* 
+.info-form-address-wrapper i {
+  color: #977257;
+} */
 
 @media (max-width: 450px) {
   .contactus-infoCard-wrapper {

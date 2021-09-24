@@ -140,7 +140,9 @@ const gifYouUp = {
   },
 };
 
-const Modal = ({ handleClose, text, type }) => {
+const Modal = (props
+  // { handleClose, text, type }
+  ) => {
   // Log state
   useEffect(() => {
     stateLogger("Modal", true);
@@ -148,8 +150,8 @@ const Modal = ({ handleClose, text, type }) => {
   }, []);
 
   return (
-    <Backdrop onClick={handleClose}>
-      {type === "dropIn" && (
+    <Backdrop onClick={props.handleClose}>
+      {props.type === "dropIn" && (
         <motion.div
           onClick={(e) => e.stopPropagation()}  // Prevent click from closing modal
           className="modal-cm orange-gradient"
@@ -158,12 +160,12 @@ const Modal = ({ handleClose, text, type }) => {
           animate="visible"
           exit="exit"
         >
-          <ModalText text={text} />
-          <ModalButton onClick={handleClose} label="Close" />
+          <ModalText text={props.text} />
+          <ModalButton onClick={props.handleClose} label="Close" />
         </motion.div>
       )}
 
-      {type === "scaleUp" && (
+      {props.type === "scaleUp" && (
         <motion.div
           onClick={(e) => e.stopPropagation()}  // Prevent click from closing modal
           className="modal-cm orange-gradient"
@@ -172,14 +174,16 @@ const Modal = ({ handleClose, text, type }) => {
           animate="visible"
           exit="exit"
         >
-          <ModalText text={text} />
-          <ModalButton onClick={handleClose} label="Close" />
+          {
+            props.children
+          }
+
         </motion.div>
       )}
 
       
 
-      {type === "flip" && (
+      {props.type === "flip" && (
         <motion.div
           onClick={(e) => e.stopPropagation()}   
           className="modal-cm  orange-gradient"
@@ -188,12 +192,12 @@ const Modal = ({ handleClose, text, type }) => {
           animate="visible"
           exit="exit"
         >
-          <ModalText text={text} />
-          <ModalButton onClick={handleClose} label="Close" />
+          <ModalText text={props.text} />
+          <ModalButton onClick={props.handleClose} label="Close" />
         </motion.div>
       )}
 
-      {type === "newspaper" && (
+      {props.type === "newspaper" && (
         <motion.div
           onClick={(e) => e.stopPropagation()}   
           className="modal-cm orange-gradient"
@@ -202,12 +206,12 @@ const Modal = ({ handleClose, text, type }) => {
           animate="visible"
           exit="exit"
         >
-          <ModalText text={text} />
-          <ModalButton onClick={handleClose} label="Close" />
+          <ModalText text={props.text} />
+          <ModalButton onClick={props.handleClose} label="Close" />
         </motion.div>
       )}
 
-      {type === "badSuspension" && (
+      {props.type === "badSuspension" && (
         <motion.div
           onClick={(e) => e.stopPropagation()}   
           className="modal-cm orange-gradient"
@@ -216,13 +220,13 @@ const Modal = ({ handleClose, text, type }) => {
           animate="visible"
           exit="exit"
         >
-          <ModalText text={text} />
+          <ModalText text={props.text} />
 
-          <ModalButton onClick={handleClose} label="Close" />
+          <ModalButton onClick={props.handleClose} label="Close" />
         </motion.div>
       )}
 
-      {type === "gifYouUp" && (
+      {props.type === "gifYouUp" && (
         <motion.div
           className="modal-cm"
           onClick={(e) => e.stopPropagation()}
@@ -252,7 +256,7 @@ const Modal = ({ handleClose, text, type }) => {
           </h3>
           <motion.img
             alt=""
-            onDoubleClick={handleClose}
+            onDoubleClick={props.handleClose}
             drag
             // src="https://i.giphy.com/media/O5ac76MtFGPHG/giphy.gif"
             // src="https://i.giphy.com/media/jmS6YojdAaYw5z1LHi/giphy.gif"

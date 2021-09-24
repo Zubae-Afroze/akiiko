@@ -1,0 +1,55 @@
+.product-card-component-wrapper {
+  --bg-color: green;
+  min-height: 300px;
+  background-color: var(--bg-color);
+}
+
+.product-card-component-display-image-wrapper {
+  height: 70%;
+  background-color: grey;
+}
+
+.product-card-component-product-title-wrapper {
+  height: 15%;
+  background-color: cyan;
+}
+
+.product-card-component-product-price-wrapper {
+  height: 15%;
+  background-color: burlywood;
+}
+
+.product-card-shimmer {
+  margin-block: 10px;
+  animation-duration: 2.2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: product-card-shimmer-anime;
+  animation-timing-function: linear;
+  background: rgb(238, 238, 238);
+  background: linear-gradient(
+    72deg,
+    rgba(238, 238, 238, 0.9821564749385534) 8%,
+    rgba(252, 252, 252, 0.9653025423542837) 18%,
+    rgba(240, 238, 238, 0.9681115311183286) 33%
+  );
+  background-size: 1200px 100%;
+}
+
+@-webkit-keyframes product-card-shimmer-anime {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes product-card-shimmer-anime {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}

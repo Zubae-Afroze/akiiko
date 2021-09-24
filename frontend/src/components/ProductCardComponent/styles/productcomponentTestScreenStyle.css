@@ -1,0 +1,19 @@
+.product-component-test-screen-flex {
+  display: flex;
+  gap: 10px;
+}
+
+.product-component-test-screen-flex > .product-card-component-wrapper {
+  --bg-color: red;
+  flex-basis: 20%;
+}
+
+.product-component-test-screen-flex2 {
+  display: flex;
+  gap: 10px;
+}
+
+.product-component-test-screen-flex2 > .product-card-component-wrapper {
+  --bg-color: yellow;
+  flex-basis: 20%;
+}

@@ -93,7 +93,12 @@ function ModalTestScreen() {
 
       <ModalContainer>
         {modalOpen && (
-          <Modal modalOpen={modalOpen} text={modalType} type={modalType} handleClose={close} />
+          <Modal modalOpen={modalOpen} text={modalType} type={'scaleUp'} handleClose={close}>
+            <div>
+              <h3>This Is a Text</h3>
+              <button> This is a Button</button>
+            </div>
+          </Modal>
         )}
       </ModalContainer>
 
