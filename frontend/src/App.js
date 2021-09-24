@@ -56,7 +56,6 @@ const App = () => {
       <ScrollToTop />
       <Header />
       <Switch>
-      
         <Route path='/producttest' render={() => <ProductTestScreen />} />
         <Route path='/pcts' render={() => <ProductcomponentTestScreen />} />
         
@@ -93,6 +92,8 @@ const App = () => {
         <Route path='/profile' render={() => <ProfileScreen />} />
 
         <Route path='/cart/:id?' render={() => <CartScreen />} />
+        {/* All Products */}
+        <Route path='/product/:id' component={ProductDetails} />
         {/* Product Listing */}
         <Route path='/:group/:subGroup' render={() => <ProductList />} />
 
@@ -113,9 +114,6 @@ const App = () => {
 
         {/* Accessories View All */}
         <Route path='/accessories' render={() => <AccessoriesAllProducts />} />
-
-        {/* All Products */}
-        <Route path='/:group/:subGroup/:id' render={() => <ProductDetails />} />
 
         <Route path='/FooterLinks' render={() => <FooterLinks />} />
         <Route path='/AboutUs/' render={() => <AboutUs />} />

@@ -256,7 +256,13 @@ export default function ProductItemComp(props) {
           className={`${
             isImageLoaded ? '' : 'shimmer shimmer-text-size'
           } product-item-card-title-wrapper`}
-          onClick={()=> history.push(`/product/${props.isSimilarProducts ? props.product.id : props.product._id }`)}
+          onClick={() =>
+            history.push(
+              `/product/${
+                props.isSimilarProducts ? props.product.id : props.product._id
+              }`
+            )
+          }
         >
           <div style={{ display: isImageLoaded ? 'block' : 'none' }}>
             {isImageLoaded ? `${props.product.productName}` : ''}
