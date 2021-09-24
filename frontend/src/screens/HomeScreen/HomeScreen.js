@@ -38,12 +38,17 @@ import linenLT from './HomeScreenCarousel/linenAssets/linenLT.jpg'
 import linenTL from './HomeScreenCarousel/linenAssets/linenTL.jpg'
 import linenMB from './HomeScreenCarousel/linenAssets/linenMB.jpg'
 
-import triangleDT from './HomeScreenCarousel/triangleAssets/trianglePouchDT.jpg'
-import triangleLT from './HomeScreenCarousel/triangleAssets/trianglePouchLT.jpg'
-import triangleTL from './HomeScreenCarousel/triangleAssets/trianglePouchTL.jpg'
-import triangleMB from './HomeScreenCarousel/triangleAssets/trianglePouchMB.jpg'
+// import triangleDT from './HomeScreenCarousel/triangleAssets/trianglePouchDT.jpg'
+// import triangleLT from './HomeScreenCarousel/triangleAssets/trianglePouchLT.jpg'
+// import triangleTL from './HomeScreenCarousel/triangleAssets/trianglePouchTL.jpg'
+// import triangleMB from './HomeScreenCarousel/triangleAssets/trianglePouchMB.jpg'
 
+import triangleDT from './HomeScreenCarousel/trianglePouch/HempTriangleDT.jpg'
+import triangleLT from './HomeScreenCarousel/trianglePouch/HempTriangleLT.jpg'
+import triangleTL from './HomeScreenCarousel/trianglePouch/HempTriangleTL.jpg'
+import triangleMB from './HomeScreenCarousel/trianglePouch/HempTriangleMB.jpg'
 
+import useMedia from './HomeScreenCarousel/useMediaHook'
 
 
 // import UseSpinner from '../../components/Spinner/UseSpinner';
@@ -123,8 +128,9 @@ const HomeScreen = () => {
             content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
           ></meta>
         </Helmet>
+        <NewCarouselComp />
         <Container>
-          <OldCarouselComp />
+          {/* <OldCarouselComp /> */}
           <HomeScreenBags />
           <HomeScreenHome />
           <HomeScreenStorage />
@@ -179,7 +185,7 @@ const HomeScreen = () => {
     return(
       <>
         <Carousel className='carousel-fade' pause={false} controls={false}>
-        <Carousel.Item interval={4000}>
+        {/* <Carousel.Item interval={4000}>
         <Link to='/productlist/bags/tote'>
 
             <HomeScreenCarouselSlide urls={[coasterDT,coasterLT,coasterTL,coasterMB]} />
@@ -203,15 +209,17 @@ const HomeScreen = () => {
             <HomeScreenCarouselSlide urls={[linenDT,linenLT,linenTL,linenMB]} />
 
         </Link>
-        </Carousel.Item>
+        </Carousel.Item> */}
 
 
         <Carousel.Item interval={4000}>
-        <Link to='/productlist/bags/tote'>
+        {/* <Link to='/productlist/bags/tote'> */}
 
-            <HomeScreenCarouselSlide urls={[triangleDT,triangleLT,triangleTL,triangleMB]} />
+            {/* <HomeScreenCarouselSlide urls={[triangleDT,triangleLT,triangleTL,triangleMB]} /> */}
+            {/* <img src={triangleDT} alt='' style={{objectFit:'cover',width:'100vw'}} width={'100vw'} /> */}
+            <ImageCmp />
 
-        </Link>
+        {/* </Link> */}
         </Carousel.Item>
 
           </Carousel>
@@ -291,6 +299,53 @@ const HomeScreen = () => {
       </Row>
     )
   }
+}
+
+
+function ImageCmp(){
+
+  const isMob = useMedia('(max-width: 500px)');
+
+  const isIpad = useMedia('(min-width: 700px)');
+
+  const isLaptop = useMedia('(min-width: 1200px)');
+
+  const isDesktop = useMedia('(min-width: 1500px)');
+
+
+  let imgSrc = triangleDT;
+
+  if(isMob){
+    imgSrc = triangleMB
+  }
+
+  if(isIpad){
+    imgSrc = triangleLT
+    console.log('Its IPAD')
+  }
+
+  if(isLaptop) {
+    imgSrc = triangleLT
+  }
+
+  if(isDesktop) {
+    imgSrc = triangleDT
+  }
+
+  function returnHeight(){
+    if(isMob){
+      return '500px'
+    }
+    if(isLaptop){
+      return '700px'
+    }else{
+      return 'auto'
+    }
+  }
+
+  return(
+    <img src={imgSrc} alt='' style={{objectFit:'cover',width:'100vw', height:`${returnHeight()}`}} width={'100vw'} />
+  )
 }
 
 export default HomeScreen

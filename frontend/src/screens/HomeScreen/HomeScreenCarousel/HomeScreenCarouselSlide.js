@@ -103,7 +103,7 @@ export default function HomeScreenCarouselSlide(props) {
             <div className='Home-screen-carousel-slide-wrapper'>
                 <CarouselProductImage urls={props.urls}>
 
-                    <ProductIntroTitle>
+                    {/* <ProductIntroTitle>
                         <div>
 
                             <ProductArrivalTag>
@@ -125,7 +125,7 @@ export default function HomeScreenCarouselSlide(props) {
                             </CarouselProductShopBtn>
 
                         </div>
-                    </ProductIntroTitle>
+                    </ProductIntroTitle> */}
 
                 </CarouselProductImage>
             </div>
