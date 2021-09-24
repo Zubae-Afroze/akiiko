@@ -17,7 +17,6 @@ import HomeScreenCarouselSlide from './HomeScreenCarousel/HomeScreenCarouselSlid
 import './HomeScreen.css'
 import { Helmet } from 'react-helmet'
 
-
 // import linenBagDS from './HomeScreenCarousel/assets/Hemp pouch desktop.jpg'
 // import linenBagLP from './HomeScreenCarousel/assets/Linen bag laptop.jpg'
 // import linenBagTB from './HomeScreenCarousel/assets/Linen bag ipad.jpg'
@@ -49,7 +48,6 @@ import triangleTL from './HomeScreenCarousel/trianglePouch/HempTriangleTL.jpg'
 import triangleMB from './HomeScreenCarousel/trianglePouch/HempTriangleMB.jpg'
 
 import useMedia from './HomeScreenCarousel/useMediaHook'
-
 
 // import UseSpinner from '../../components/Spinner/UseSpinner';
 
@@ -128,9 +126,9 @@ const HomeScreen = () => {
             content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
           ></meta>
         </Helmet>
-        <NewCarouselComp />
+        {/* <NewCarouselComp /> */}
         <Container>
-          {/* <OldCarouselComp /> */}
+          <OldCarouselComp />
           <HomeScreenBags />
           <HomeScreenHome />
           <HomeScreenStorage />
@@ -181,11 +179,11 @@ const HomeScreen = () => {
   //   );
   // }
 
-  function NewCarouselComp(){
-    return(
+  function NewCarouselComp() {
+    return (
       <>
         <Carousel className='carousel-fade' pause={false} controls={false}>
-        {/* <Carousel.Item interval={4000}>
+          {/* <Carousel.Item interval={4000}>
         <Link to='/productlist/bags/tote'>
 
             <HomeScreenCarouselSlide urls={[coasterDT,coasterLT,coasterTL,coasterMB]} />
@@ -211,25 +209,22 @@ const HomeScreen = () => {
         </Link>
         </Carousel.Item> */}
 
-
-        <Carousel.Item interval={4000}>
-        {/* <Link to='/productlist/bags/tote'> */}
+          <Carousel.Item interval={4000}>
+            {/* <Link to='/productlist/bags/tote'> */}
 
             {/* <HomeScreenCarouselSlide urls={[triangleDT,triangleLT,triangleTL,triangleMB]} /> */}
             {/* <img src={triangleDT} alt='' style={{objectFit:'cover',width:'100vw'}} width={'100vw'} /> */}
             <ImageCmp />
 
-        {/* </Link> */}
-        </Carousel.Item>
-
-          </Carousel>
+            {/* </Link> */}
+          </Carousel.Item>
+        </Carousel>
       </>
-    );
+    )
   }
 
-
-  function OldCarouselComp(){
-    return(
+  function OldCarouselComp() {
+    return (
       <Row className='home-screen-container'>
         <Col sm={4}>
           <div className='hero-container'>
@@ -301,50 +296,56 @@ const HomeScreen = () => {
   }
 }
 
+function ImageCmp() {
+  const isMob = useMedia('(max-width: 500px)')
 
-function ImageCmp(){
+  const isIpad = useMedia('(min-width: 700px)')
 
-  const isMob = useMedia('(max-width: 500px)');
+  const isLaptop = useMedia('(min-width: 1200px)')
 
-  const isIpad = useMedia('(min-width: 700px)');
+  const isDesktop = useMedia('(min-width: 1500px)')
 
-  const isLaptop = useMedia('(min-width: 1200px)');
+  let imgSrc = triangleDT
 
-  const isDesktop = useMedia('(min-width: 1500px)');
-
-
-  let imgSrc = triangleDT;
-
-  if(isMob){
+  if (isMob) {
     imgSrc = triangleMB
   }
 
-  if(isIpad){
+  if (isIpad) {
     imgSrc = triangleLT
     console.log('Its IPAD')
   }
 
-  if(isLaptop) {
+  if (isLaptop) {
     imgSrc = triangleLT
   }
 
-  if(isDesktop) {
+  if (isDesktop) {
     imgSrc = triangleDT
   }
 
-  function returnHeight(){
-    if(isMob){
+  function returnHeight() {
+    if (isMob) {
       return '500px'
     }
-    if(isLaptop){
+    if (isLaptop) {
       return '700px'
-    }else{
+    } else {
       return 'auto'
     }
   }
 
-  return(
-    <img src={imgSrc} alt='' style={{objectFit:'cover',width:'100vw', height:`${returnHeight()}`}} width={'100vw'} />
+  return (
+    <img
+      src={imgSrc}
+      alt=''
+      style={{
+        objectFit: 'cover',
+        width: '100vw',
+        height: `${returnHeight()}`,
+      }}
+      width={'100vw'}
+    />
   )
 }
 
