@@ -68,7 +68,7 @@ const HomeScreenHome = () => {
           <button
             className='home-header-shop-btn'
             onClick={() => {
-              history.push('/allproducts/productlist/home')
+              history.push('/home')
             }}
           >
             SHOP ALL
@@ -106,7 +106,7 @@ const HomeScreenHome = () => {
         <div className='home-footer-shop-btn'>
           <button
             onClick={() => {
-              history.push('/allproducts/productlist/home')
+              history.push('/home')
             }}
           >
             SHOP ALL

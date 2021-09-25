@@ -29,6 +29,9 @@ export default class MobileNav extends Component {
               <li className='mobile-nav-test'>
                 <Link to='/accessories'>ACCESSORIES</Link>
               </li>
+              <li>
+                <Link to='/essentials/general'>ESSENTIALS</Link>
+              </li>
             </ul>
           </div>
         </Container>
