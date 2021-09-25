@@ -147,6 +147,19 @@ export default function SideBarComp() {
             }
           />
         </li>
+        <li>
+          <Accordion
+            title='ESSENTIALS'
+            content={
+              <>
+                <AccordianSubItemsComp
+                  link={'/essentials/general'}
+                  title={'General'}
+                />
+              </>
+            }
+          />
+        </li>
       </ul>
     </div>
   )

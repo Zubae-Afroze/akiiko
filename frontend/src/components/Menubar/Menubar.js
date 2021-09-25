@@ -577,7 +577,7 @@ export default class Menubar extends Component {
               </Nav.Item>
               <Nav.Item as='li' className='nav-test'>
                 <Nav className='navbar-li'>
-                  <Link to='/essentials/general'>ESSENTAILS</Link>
+                  <Link to='/essentials/general'>ESSENTIALS</Link>
                 </Nav>
               </Nav.Item>
             </Nav>
