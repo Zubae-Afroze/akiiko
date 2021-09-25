@@ -112,3 +112,31 @@
   padding: 10px 30px;
   border-radius: 30px;
 }
+
+.all-categories-wrapper {
+  margin-bottom: 34px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.categories-card-journal {
+  flex-basis: 15%;
+  background-color: #e6dac4;
+  color: #977257;
+  text-align: center;
+}
+
+.categories-card-journal p {
+  color: #977257;
+  text-align: center;
+  margin-block: 0.5rem;
+}
+
+@media (max-width: 450px) {
+  .categories-card-journal {
+    flex-basis: 48%;
+  }
+}
