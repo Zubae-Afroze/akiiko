@@ -9,11 +9,11 @@ import { Container } from 'react-bootstrap'
 import ProductTagComponent from '../../components/ProductTagComp/ProductTagComp'
 import CarouselItem from '../../components/CarouselItemComp/CarouselItem'
 
-import desktopImg from './assets/product_desktop_BG.jpg';
-import laptopImg from './assets/product_laptop_BG.jpg';
-import ipadImg from './assets/product_ipad_BG.jpg';
-import mobileImg from './assets/product_mobile_BG.jpg';
-import productImg from './assets/productImg.png';
+// import desktopImg from './assets/product_desktop_BG.jpg';
+// import laptopImg from './assets/product_laptop_BG.jpg';
+// import ipadImg from './assets/product_ipad_BG.jpg';
+// import mobileImg from './assets/product_mobile_BG.jpg';
+// import productImg from './assets/productImg.png';
 
 
 // import desktopImg from './Linen bag desktop.jpg';
@@ -44,8 +44,8 @@ const TestScreen = () => {
   return (
     <>
     <CarouselItem 
-      urls={[desktopImg,laptopImg,ipadImg,mobileImg]} 
-      productImages={[productImg]} 
+      // urls={[desktopImg,laptopImg,ipadImg,mobileImg]} 
+      // productImages={[productImg]} 
       productImageWidth={['25vw','40vw','70vw','80vw']} 
       productImageHeight={['25vw','40vw','70vw','80vw']} 
     >

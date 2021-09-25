@@ -23,20 +23,20 @@ import { Helmet } from 'react-helmet'
 // import linenBagTB from './HomeScreenCarousel/assets/Linen bag ipad.jpg'
 // import linenBagMB from './HomeScreenCarousel/assets/Linen bag mobile.jpg'
 
-import coasterDT from './HomeScreenCarousel/coasterAssets/coasterDT.jpg'
-import coasterLT from './HomeScreenCarousel/coasterAssets/coasterLT.jpg'
-import coasterTL from './HomeScreenCarousel/coasterAssets/coasterTL.jpg'
-import coasterMB from './HomeScreenCarousel/coasterAssets/coasterMB.jpg'
+// import coasterDT from './HomeScreenCarousel/coasterAssets/coasterDT.jpg'
+// import coasterLT from './HomeScreenCarousel/coasterAssets/coasterLT.jpg'
+// import coasterTL from './HomeScreenCarousel/coasterAssets/coasterTL.jpg'
+// import coasterMB from './HomeScreenCarousel/coasterAssets/coasterMB.jpg'
 
-import hempDT from './HomeScreenCarousel/hempAssets/hempDT.jpg'
-import hempLT from './HomeScreenCarousel/hempAssets/hempLT.jpg'
-import hempTL from './HomeScreenCarousel/hempAssets/hempTL.jpg'
-import hempMB from './HomeScreenCarousel/hempAssets/hempMB.jpg'
+// import hempDT from './HomeScreenCarousel/hempAssets/hempDT.jpg'
+// import hempLT from './HomeScreenCarousel/hempAssets/hempLT.jpg'
+// import hempTL from './HomeScreenCarousel/hempAssets/hempTL.jpg'
+// import hempMB from './HomeScreenCarousel/hempAssets/hempMB.jpg'
 
-import linenDT from './HomeScreenCarousel/linenAssets/linenDT.jpg'
-import linenLT from './HomeScreenCarousel/linenAssets/linenLT.jpg'
-import linenTL from './HomeScreenCarousel/linenAssets/linenTL.jpg'
-import linenMB from './HomeScreenCarousel/linenAssets/linenMB.jpg'
+// import linenDT from './HomeScreenCarousel/linenAssets/linenDT.jpg'
+// import linenLT from './HomeScreenCarousel/linenAssets/linenLT.jpg'
+// import linenTL from './HomeScreenCarousel/linenAssets/linenTL.jpg'
+// import linenMB from './HomeScreenCarousel/linenAssets/linenMB.jpg'
 
 // import triangleDT from './HomeScreenCarousel/triangleAssets/trianglePouchDT.jpg'
 // import triangleLT from './HomeScreenCarousel/triangleAssets/trianglePouchLT.jpg'
@@ -128,9 +128,9 @@ const HomeScreen = () => {
             content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
           ></meta>
         </Helmet>
-        <NewCarouselComp />
+        {/* <NewCarouselComp /> */}
         <Container>
-          {/* <OldCarouselComp /> */}
+          <OldCarouselComp />
           <HomeScreenBags />
           <HomeScreenHome />
           <HomeScreenStorage />

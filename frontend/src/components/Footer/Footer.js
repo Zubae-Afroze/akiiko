@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { HashLink as Link } from 'react-router-hash-link'
-import JournalComp from '../JournalComp/JournalComp'
+import JournalComp from '../Journal/Journal'
 import './Footer.css'
 import './footerNewStyle.css'
 
@@ -13,6 +13,7 @@ export default class Footer extends Component {
     return (
       <>
         <FooterTop />
+        <JournalComp />
         <FooterBottom />
       </>
     )

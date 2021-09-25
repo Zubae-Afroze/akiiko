@@ -1,6 +1,6 @@
 .test__banner-image {
   position: relative;
-  background-image: url('./Desktop.jpg');
+  /* background-image: url('./Desktop.jpg'); */
   background-repeat: no-repeat;
   background-size: cover;
   /* background-size: 100% 100%; */
@@ -11,7 +11,7 @@
 /* TAB */
 @media (max-width: 768px) {
   .test__banner-image {
-    background-image: url('./Ipad.jpg');
+    /* background-image: url('./Ipad.jpg'); */
     background-size: cover;
   }
 }
@@ -19,7 +19,7 @@
 /* MOBILE */
 @media (max-width: 440px) {
   .test__banner-image {
-    background-image: url('./Mobile.jpg');
+    /* background-image: url('./Mobile.jpg'); */
     background-size: cover;
   }
 }

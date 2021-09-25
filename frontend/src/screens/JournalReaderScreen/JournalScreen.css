@@ -1,0 +1,114 @@
+.jone_wrap {
+  max-width: 1140px;
+  margin-right: auto;
+  margin-left: auto;
+  letter-spacing: 1px;
+  font-size: 14px;
+}
+
+.jone_alt h2 {
+  font-family: 'caudex' !important;
+  color: #000 !important;
+}
+
+.jone_link {
+  font-family: 'rutanLight';
+  margin-top: 90px;
+  margin-bottom: 30px;
+}
+
+.alt_color {
+  color: #977257;
+}
+
+.jone_main h2 {
+  font-family: 'rutan';
+  margin-bottom: 30px;
+  color: #977257;
+}
+
+.jone_author-div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.jone_author-img {
+  margin-right: 10px;
+}
+
+.jone_author-img img {
+  height: 50px;
+  width: 50px;
+  border: #e1d5bf 4px solid;
+  border-radius: 50px;
+}
+
+.jone_author-name {
+  font-size: 12px;
+  margin-right: 30px;
+}
+
+.jone_author-date {
+  font-size: 12px;
+  margin-right: 30px;
+}
+
+.jone_author-read {
+  font-size: 12px;
+}
+
+.jone_img {
+  display: flex;
+  justify-content: space-between;
+}
+
+.jone_img img {
+  width: 550px;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.jone_banner-img {
+  margin-bottom: 30px;
+}
+
+.jone_banner-img img {
+  width: 1140px;
+}
+
+.jone_div-wrap {
+  margin-bottom: 30px;
+}
+
+.jone_div-wrap h3 {
+  margin-bottom: 30px;
+  font-family: 'rutan';
+  font-size: 30px;
+  color: #977257;
+}
+
+.jone_div-wrap p {
+  font-size: 18px;
+  word-spacing: 0.2px;
+}
+
+/* .jone_div-wrap {
+  font-size: 18px;
+  text-align: justify;
+} */
+
+.jone__key {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px;
+}
+
+.jone__key span {
+  border: 1px solid #977257;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  font-size: 10px;
+  padding: 10px 30px;
+  border-radius: 30px;
+}
