@@ -46,7 +46,7 @@ import linenMB from './HomeScreenCarousel/linenAssets/linenMB.jpg'
 import triangleDT from './HomeScreenCarousel/trianglePouch/HempTriangleDT.jpg'
 import triangleLT from './HomeScreenCarousel/trianglePouch/HempTriangleLT.jpg'
 import triangleTL from './HomeScreenCarousel/trianglePouch/HempTriangleTL.jpg'
-import triangleMB from './HomeScreenCarousel/trianglePouch/HempTriangleMB.jpg'
+import triangleMB from './HomeScreenCarousel/trianglePouch/Untitled1.jpg'
 
 import useMedia from './HomeScreenCarousel/useMediaHook'
 
@@ -344,7 +344,15 @@ function ImageCmp(){
   }
 
   return(
-    <img src={imgSrc} alt='' style={{objectFit:'cover',width:'100vw', height:`${returnHeight()}`}} width={'100vw'} />
+    <Link to='product/60f945748df1a30d9f0ac75d'>
+    {/* <picture>
+      <source srcSet={triangleMB} media={"(max-width: 500px)"} />
+      <source srcSet={triangleDT} media={"(min-width: 1500px)"} />
+      <source srcSet={hempLT} media={"(min-width: 1200px)"} />
+      <source srcSet={coasterLT} media={"(min-width: 700px)"} />
+    </picture> */}
+      <img src={imgSrc} alt='' style={{objectFit:'cover',width:'100vw', height:`${returnHeight()}`}} width={'100vw'}/>
+      </Link>
   )
 }
 
