@@ -18,21 +18,17 @@ import fiveStar from './assets/5-star.svg'
 import defaultEmoji from './assets/default-emoji.svg'
 import { getUserProfileByUID } from '../../actions/actionProfile'
 
-import star1Filled from './starFilled/1-star-filled.svg';
-import star2Filled from './starFilled/2-star-filled.svg';
-import star3Filled from './starFilled/3-star-filled.svg';
-import star4Filled from './starFilled/4-star-filled.svg';
-import star5Filled from './starFilled/5-star-filled.svg';
+import star1Filled from './starFilled/1-star-filled.svg'
+import star2Filled from './starFilled/2-star-filled.svg'
+import star3Filled from './starFilled/3-star-filled.svg'
+import star4Filled from './starFilled/4-star-filled.svg'
+import star5Filled from './starFilled/5-star-filled.svg'
 
-import star1UnFilled from './starUnFilled/1-star-unfilled.svg';
-import star2UnFilled from './starUnFilled/2-star-unfilled.svg';
-import star3UnFilled from './starUnFilled/3-star-unfilled.svg';
-import star4UnFilled from './starUnFilled/4-star-unfilled.svg';
-import star5UnFilled from './starUnFilled/5-star-unfilled.svg';
-
-
-
-
+import star1UnFilled from './starUnFilled/1-star-unfilled.svg'
+import star2UnFilled from './starUnFilled/2-star-unfilled.svg'
+import star3UnFilled from './starUnFilled/3-star-unfilled.svg'
+import star4UnFilled from './starUnFilled/4-star-unfilled.svg'
+import star5UnFilled from './starUnFilled/5-star-unfilled.svg'
 
 export default function PostOrderScreen() {
   const dispatch = useDispatch()
@@ -105,10 +101,36 @@ export default function PostOrderScreen() {
       <Helmet>
         <title>akiiko - Order Success</title>
         <script>
+          {`
+          <!-- Global site tag (gtag.js) - Google Ads: 322846655 -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-322846655"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'AW-322846655');
+            </script>
+          `}
+        </script>
+        <script>
           {`gtag('event', 'conversion', {
             'send_to': 'AW-322846655/C6vzCMCjzPQCEL__-JkB',
             'transaction_id': ${finalOrder._id}
           });`}
+        </script>
+        <script>
+          {`
+          <!-- Event snippet for Purchase - Circle Bread Basket - Sep 25 2021 conversion page -->
+              <script>
+                gtag('event', 'conversion', {
+                    'send_to': 'AW-322846655/aH3jCLG7n_cCEL__-JkB',
+                    'transaction_id': ${finalOrder._id}
+                });
+              'Value': 799,
+              'Currency': 'INR'
+              </script>
+          `}
         </script>
       </Helmet>
 
@@ -139,7 +161,7 @@ export default function PostOrderScreen() {
               placeholder='Tell us more'
               name='message'
               className='feedBackArea'
-              onChange={(e)=>onEnterFeedBack(e)}
+              onChange={(e) => onEnterFeedBack(e)}
               rows={3}
             ></textarea>
           </div>
@@ -182,9 +204,21 @@ export default function PostOrderScreen() {
   )
 }
 
-function FeedBackFormRattingComp({getStarRating}) {
-  const filledStarList = [star1Filled,star2Filled,star3Filled,star4Filled,star5Filled];
-  const unFilledStarList = [star1UnFilled,star2UnFilled,star3UnFilled,star4UnFilled,star5UnFilled];
+function FeedBackFormRattingComp({ getStarRating }) {
+  const filledStarList = [
+    star1Filled,
+    star2Filled,
+    star3Filled,
+    star4Filled,
+    star5Filled,
+  ]
+  const unFilledStarList = [
+    star1UnFilled,
+    star2UnFilled,
+    star3UnFilled,
+    star4UnFilled,
+    star5UnFilled,
+  ]
   const [rating, setRating] = React.useState(-1)
   // const [stars, setStars] = React.useState([
   //   unFilledstar,
@@ -203,11 +237,11 @@ function FeedBackFormRattingComp({getStarRating}) {
       if (index <= val) {
         // newStars.push(filledstar)
         newStars.push(filledStarList[index])
-        console.log('Filled: '+index)
+        console.log('Filled: ' + index)
       } else {
         // newStars.push(unFilledstar)
         newStars.push(unFilledStarList[index])
-        console.log('unFilled: '+index)
+        console.log('unFilled: ' + index)
       }
     })
     setStars(newStars)
@@ -242,7 +276,7 @@ function FeedBackFormRattingComp({getStarRating}) {
       stars.forEach((_, index) => {
         if (index <= rating) {
           // newStars.push(filledstar)
-        newStars.push(filledStarList[index])
+          newStars.push(filledStarList[index])
         } else {
           // newStars.push(unFilledstar)
           newStars.push(unFilledStarList[index])
