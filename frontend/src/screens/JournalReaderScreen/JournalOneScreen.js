@@ -2,6 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../../components/Footer/Footer'
 import './JournalScreen.css'
+import accessories from './assets/accessories.jpg'
+import bags from './assets/bags.jpg'
+import gift from './assets/gift.jpg'
+import home from './assets/home.jpg'
+import lifestyle from './assets/lifestyle.jpg'
+import storage from './assets/storage.jpg'
 
 const JournalScreen = () => {
   return (
@@ -122,6 +128,18 @@ const JournalScreen = () => {
                 for your breads.
               </p>
             </div>
+
+            <div className='all-categories-wrapper'>
+
+              <CategoriesCardJournalCMP title={'Bags'} src={bags} link={'/bags'} />
+              <CategoriesCardJournalCMP title={'Home'} src={home} link={'/home'} />
+              <CategoriesCardJournalCMP title={'Lifestyle'} src={lifestyle} link={'/lifestyle'} />
+              <CategoriesCardJournalCMP title={'Gift'} src={gift} link={'/gift'} />
+              <CategoriesCardJournalCMP title={'Storage'} src={storage} link={'/storage'} />
+              <CategoriesCardJournalCMP title={'Accessories'} src={accessories} link={'/accessories'} />
+
+            </div>
+
             <div>
               <h2>
                 Such is the objective behind our designs: To come up with
@@ -147,6 +165,17 @@ const JournalScreen = () => {
       <Footer />
     </>
   )
+
+  function CategoriesCardJournalCMP(props){
+    return(
+      <div className='categories-card-journal'>
+        <Link to={props.link}>
+          <img src={props.src} alt='' width={'100%'} />
+          <p>{props.title}</p>
+        </Link>
+      </div>
+    );
+  }
 }
 
 export default JournalScreen
