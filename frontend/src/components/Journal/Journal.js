@@ -9,10 +9,7 @@ const JournalCard = (props) => {
       <Link to={props.link}>
         <div className='journal-card'>
           <div className='journal-card-image'>
-            <img
-              src={props.src}
-              alt='blog_display_image'
-            />
+            <img src={props.src} alt='blog_display_image' />
           </div>
           <div className='card-attr'>
             <p>{props.date}</p>
@@ -33,15 +30,15 @@ const Journal = () => {
       <Container>
         <div className='journal-main'>
           {/* <div className='journal-header-text'> */}
-            <h3>Journal</h3>
-            {/* <h5> View More &#187;</h5> */}
+          <h3>Journal</h3>
+          {/* <h5> View More &#187;</h5> */}
           {/* </div> */}
           <div className='journal-wrap'>
             <JournalCard
               title='Japanese Aesthetic Sensibilities: akiiko’s approach to design'
               content='Influenced by the Japanese way of thinking, akiiko’s inspiration has
             been sought [...]'
-            src='/images/blog_images_1/2.jpeg'
+              src='/images/blog_images_1/2.jpeg'
               link='/journal/japanese_aesthetic_sensibilities'
               date='13 September 2021'
               read='2 mins'
@@ -52,7 +49,7 @@ const Journal = () => {
             <JournalCard
               title='HOW TO: Set up a Nature Inspired Table'
               content='If the heart of a house lies in the kitchen, the soul may definitely reside on the dining [...]'
-            src='/images/blog_images_2/Thumbnail.jpg'
+              src='/images/blog_images_2/thumb.jpg'
               link='/journal/set-up-a-nature-inspired-table'
               date='13 September 2021'
               read='2 mins'
