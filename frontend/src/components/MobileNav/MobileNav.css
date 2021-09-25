@@ -11,7 +11,7 @@
   flex-direction: row;
   list-style: none;
   overflow: scroll;
-  font-size: 11px;
+  font-size: 12px;
   width: 100%;
   font-family: 'rutan';
   justify-content: space-between;
@@ -56,6 +56,6 @@
 
 @media (max-width: 414px) {
   .mobile-nav-test {
-    margin-right: 6px;
+    margin-right: 10px;
   }
 }

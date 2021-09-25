@@ -70,7 +70,7 @@ const HomeScreenWorkout = () => {
           </span>
           <button
             onClick={() => {
-              history.push('/allproducts/productlist/storage')
+              history.push('/storage')
             }}
             className='storage-header-shop-btn'
           >
@@ -98,7 +98,7 @@ const HomeScreenWorkout = () => {
         <div className='storage-footer-shop-btn'>
           <button
             onClick={() => {
-              history.push('/allproducts/productlist/storage')
+              history.push('/storage')
             }}
           >
             SHOP ALL

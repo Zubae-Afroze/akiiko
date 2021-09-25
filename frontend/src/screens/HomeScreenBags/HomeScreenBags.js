@@ -72,7 +72,7 @@ const HomeScreenBags = () => {
           </span>
           <button
             onClick={() => {
-              history.push('/allproducts/productlist/bags')
+              history.push('/bags')
             }}
             className='bags-header-shop-btn'
           >
@@ -91,7 +91,7 @@ const HomeScreenBags = () => {
         <div className='bags-footer-shop-btn'>
           <button
             onClick={() => {
-              history.push('/allproducts/productlist/bags')
+              history.push('/bags')
             }}
           >
             SHOP AL
