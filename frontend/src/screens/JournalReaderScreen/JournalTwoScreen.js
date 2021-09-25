@@ -10,8 +10,8 @@ const JournalTwoScreen = () => {
         <div>
           <div className='jone_link'>
             <Link to='/journal'>Journal </Link>
-            <Link to='/journal/japanses_aesthetic_sensibilities'>
-              / Japanese Aesthetic Sensibilities
+            <Link to='/journal/set-up-a-nature-inspired-table'>
+              / Set up a Nature Inspired Table
             </Link>
           </div>
           <div className='jone_main'>
