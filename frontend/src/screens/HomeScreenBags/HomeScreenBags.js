@@ -94,7 +94,7 @@ const HomeScreenBags = () => {
               history.push('/bags')
             }}
           >
-            SHOP AL
+            SHOP ALL
           </button>
         </div>
       </>

@@ -14,25 +14,33 @@
 
 .contactus-infoCard-wrapper {
   margin-top: 10px;
-  width: 80%;
-  max-width: 1000px;
+  width: 90%;
+  max-width: 1300px;
   display: flex;
   flex-direction: row;
 }
 
-.contactus-infoCard-wrapper h1 {
-  flex-basis: 20%;
+.contactus-infoCard-wrapper > h1 {
+  flex-basis: 15%;
   font-family: 'caudex';
-  color: #3e3331;
+  font-size: 2.8rem;
+  color: #6a584c;
   margin-block: 0;
   order: 1;
+  word-wrap: break-word;
+  text-overflow: clip;
+}
+
+.contactus-infoCard-wrapper > h1::after {
+  content: ' Touch\00a0!';
+  font-family: 'caudex';
 }
 
 /* Contact US */
 .contactus-form-wrapper {
-  flex-basis: 40%;
-  border: 1px solid #3e3331;
-  padding: 20px;
+  flex-basis: 42%;
+  border: 1px solid #6a584c;
+  padding: 70px 0;
   /* padding-bottom: 0; */
   margin: 0 30px;
   order: 2;
@@ -43,11 +51,11 @@
   border-width: 0 0 0.2px;
   border-color: #53423fc0;
   background-color: transparent;
-  width: 80%;
+  width: 100%;
   padding-left: 0;
   font-size: calc(var(--sub-title-font-size) - 1px);
   font-family: 'rutan';
-  margin: 0 0 10px 0;
+  margin: 0 0 5px 0;
 }
 .input-form-field-wrapper input:focus {
   border-color: #2c2221;
@@ -55,22 +63,24 @@
 }
 
 .input-form-field-wrapper p {
-  color: #3e3331;
-  margin: 15px 0 0 0;
+  color: #6a584c;
+  margin: 8px 0 8px 15px;
 }
 
 .contactus-form-wrapper button {
-  margin-top: 10px;
+  margin-top: 30px;
+  margin-left: 15px;
   border: none;
   font-family: 'rutan';
   color: #3e3331;
   padding-block: 5px;
-  width: 40%;
+  width: 30%;
   background-color: #e6dac4;
 }
 
 .info-form-wrapper {
-  flex-basis: 40%;
+  --font-size: 1.2rem;
+  flex-basis: 42%;
   background-color: #e6dac4;
   display: flex;
   align-items: end;
@@ -80,21 +90,35 @@
 .info-form-address-wrapper {
   margin: 20px;
   margin-top: 35px;
-  color: #977257;
+  color: #6a584c;
   font-family: 'rutan';
   font-size: 12px;
 }
-.info-form-address-wrapper > span {
-  color: #977257;
-  font-size: 11px;
-  display: block;
+
+.info-form-address-wrapper span {
+  font-size: calc(var(--font-size) - 0.3rem);
+}
+
+.info-form-address-wrapper strong {
+  font-size: var(--font-size);
+}
+
+.info-form-address-wrapper > h6 {
+  margin-bottom: 0;
+}
+
+.info-form-address-wrapper > p {
+  font-size: calc(var(--font-size) - 0.3rem);
 }
 /* 
 .info-form-address-wrapper i {
   color: #977257;
 } */
 
-@media (max-width: 500px) {
+@media (max-width: 770px) {
+  .contactus-wrapper {
+    height: 100%;
+  }
   .contactus-infoCard-wrapper {
     width: 90%;
     flex-direction: column;
