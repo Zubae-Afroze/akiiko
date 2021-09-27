@@ -721,6 +721,8 @@ function SearchResult({ searchedProducts }) {
               return <SearchedProductThree product={product} key={index} />
             if (searchedProducts.length === 2)
               return <SearchedProductTwo product={product} key={index} />
+            if (searchedProducts.length === 1)
+              return <SearchedProductOne product={product} key={index} />
             return <SearchedProduct product={product} key={index} />
           })}
         </Row>
@@ -767,7 +769,7 @@ function SearchedProduct({ product }) {
 
   return (
     <Col xs={6} md={3} style={{ marginBottom: '20px' }}>
-      <ProductItemComp product={product}/>
+      <ProductItemComp product={product} />
 
       {/* <Link to={`/product/${product._id}`}>
         <div>
@@ -819,7 +821,7 @@ function SearchedProductThree({ product }) {
 
   return (
     <Col xs={6} md={4} style={{ marginBottom: '20px' }}>
-      <ProductItemComp product={product}/>
+      <ProductItemComp product={product} />
 
       {/* <Link to={`/product/${product._id}`}>
         <div>
@@ -871,7 +873,7 @@ function SearchedProductTwo({ product }) {
 
   return (
     <Col xs={6} style={{ marginBottom: '20px' }}>
-      <ProductItemComp product={product}/>
+      <ProductItemComp product={product} />
 
       {/* <Link to={`/product/${product._id}`}>
         <div>
@@ -908,6 +910,14 @@ function SearchedProductTwo({ product }) {
           </div>
         </div>
       </Link> */}
+    </Col>
+  )
+}
+
+function SearchedProductOne({ product }) {
+  return (
+    <Col xs={12} style={{ marginBottom: '20px' }}>
+      <ProductItemComp product={product} />
     </Col>
   )
 }
