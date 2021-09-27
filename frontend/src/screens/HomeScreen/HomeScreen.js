@@ -17,35 +17,40 @@ import HomeScreenCarouselSlide from './HomeScreenCarousel/HomeScreenCarouselSlid
 import './HomeScreen.css'
 import { Helmet } from 'react-helmet'
 
-// import linenBagDS from './HomeScreenCarousel/assets/Hemp pouch desktop.jpg'
-// import linenBagLP from './HomeScreenCarousel/assets/Linen bag laptop.jpg'
-// import linenBagTB from './HomeScreenCarousel/assets/Linen bag ipad.jpg'
-// import linenBagMB from './HomeScreenCarousel/assets/Linen bag mobile.jpg'
+import linenBagDT from './HomeScreenCarousel/linenBagAssets/linenBag_DT.jpg'
+import linenBagLT from './HomeScreenCarousel/linenBagAssets/linenBag_LT.jpg'
+import linenBagMB from './HomeScreenCarousel/linenBagAssets/linenBag_MB.jpg'
 
 // import coasterDT from './HomeScreenCarousel/coasterAssets/coasterDT.jpg'
 // import coasterLT from './HomeScreenCarousel/coasterAssets/coasterLT.jpg'
 // import coasterTL from './HomeScreenCarousel/coasterAssets/coasterTL.jpg'
 // import coasterMB from './HomeScreenCarousel/coasterAssets/coasterMB.jpg'
 
-// import hempDT from './HomeScreenCarousel/hempAssets/hempDT.jpg'
-// import hempLT from './HomeScreenCarousel/hempAssets/hempLT.jpg'
-// import hempTL from './HomeScreenCarousel/hempAssets/hempTL.jpg'
-// import hempMB from './HomeScreenCarousel/hempAssets/hempMB.jpg'
+import hempDT from './HomeScreenCarousel/hempPouchAssets/hempPouch_DT.jpg'
+import hempLT from './HomeScreenCarousel/hempPouchAssets/hempPouch_LT.jpg'
+// import hempTL from './HomeScreenCarousel/hempPouchAssets/hempPouch_TL.jpg'
+import hempMB from './HomeScreenCarousel/hempPouchAssets/hempPouch_MB.jpg'
 
-// import linenDT from './HomeScreenCarousel/linenAssets/linenDT.jpg'
-// import linenLT from './HomeScreenCarousel/linenAssets/linenLT.jpg'
-// import linenTL from './HomeScreenCarousel/linenAssets/linenTL.jpg'
-// import linenMB from './HomeScreenCarousel/linenAssets/linenMB.jpg'
-
+import linenDT from './HomeScreenCarousel/linenBagAssets/linenBag_DT.jpg'
+import linenLT from './HomeScreenCarousel/linenBagAssets/linenBag_LT.jpg'
+// import linenTL from './HomeScreenCarousel/linenBagAssets/linenBag_TL.jpg'
+import linenMB from './HomeScreenCarousel/linenBagAssets/linenBag_MB.jpg'
+ 
 // import triangleDT from './HomeScreenCarousel/triangleAssets/trianglePouchDT.jpg'
 // import triangleLT from './HomeScreenCarousel/triangleAssets/trianglePouchLT.jpg'
 // import triangleTL from './HomeScreenCarousel/triangleAssets/trianglePouchTL.jpg'
 // import triangleMB from './HomeScreenCarousel/triangleAssets/trianglePouchMB.jpg'
 
-import triangleDT from './HomeScreenCarousel/trianglePouch/HempTriangleDT.jpg'
-import triangleLT from './HomeScreenCarousel/trianglePouch/HempTriangleLT.jpg'
-import triangleTL from './HomeScreenCarousel/trianglePouch/HempTriangleTL.jpg'
-import triangleMB from './HomeScreenCarousel/trianglePouch/Untitled1.jpg'
+// import triangleDT from './HomeScreenCarousel/trianglePouch/HempTriangleDT.jpg'
+// import triangleLT from './HomeScreenCarousel/trianglePouch/HempTriangleLT.jpg'
+// import triangleTL from './HomeScreenCarousel/trianglePouch/HempTriangleTL.jpg'
+// import triangleMB from './HomeScreenCarousel/trianglePouch/Untitled1.jpg'
+
+
+import coasterDT from './HomeScreenCarousel/coasterAssets/coaster_DT.jpg'
+import coasterLT from './HomeScreenCarousel/coasterAssets/coaster_LT.jpg'
+// import coasterTL from './HomeScreenCarousel/coasterAssets/coaster_TL.jpg'
+import coasterMB from './HomeScreenCarousel/coasterAssets/coaster_MB.jpg'
 
 import useMedia from './HomeScreenCarousel/useMediaHook'
 
@@ -126,9 +131,9 @@ const HomeScreen = () => {
             content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
           ></meta>
         </Helmet>
-        {/* <NewCarouselComp /> */}
+        <NewCarouselComp />
         <Container>
-          <OldCarouselComp />
+          {/* <OldCarouselComp /> */}
           <HomeScreenBags />
           <HomeScreenHome />
           <HomeScreenStorage />
@@ -180,9 +185,10 @@ const HomeScreen = () => {
   // }
 
   function NewCarouselComp() {
+    const intervalVal = 6000
     return (
       <>
-        <Carousel className='carousel-fade' pause={false} controls={false}>
+        <Carousel pause={false} controls={false}>
           {/* <Carousel.Item interval={4000}>
         <Link to='/productlist/bags/tote'>
 
@@ -207,16 +213,18 @@ const HomeScreen = () => {
             <HomeScreenCarouselSlide urls={[linenDT,linenLT,linenTL,linenMB]} />
 
         </Link>
-        </Carousel.Item> */}
+        </Carousel.Item> */} 
 
-          <Carousel.Item interval={4000}>
-            {/* <Link to='/productlist/bags/tote'> */}
+          <Carousel.Item interval={intervalVal}>
+            <ImageCmp desktop={coasterDT} laptop={coasterLT} mobile={coasterMB} link={'/product/circle-stripe-coasters'} />
+          </Carousel.Item>
+          
+          <Carousel.Item interval={intervalVal}>
+            <ImageCmp desktop={hempDT} laptop={hempLT} mobile={hempMB} link={'/product/multi-purpose-hemp-pouches'} />
+          </Carousel.Item>
 
-            {/* <HomeScreenCarouselSlide urls={[triangleDT,triangleLT,triangleTL,triangleMB]} /> */}
-            {/* <img src={triangleDT} alt='' style={{objectFit:'cover',width:'100vw'}} width={'100vw'} /> */}
-            <ImageCmp />
-
-            {/* </Link> */}
+          <Carousel.Item interval={intervalVal}>
+            <ImageCmp desktop={linenBagDT} laptop={linenBagLT} mobile={linenBagMB} link={'/product/brun-bindle-bag'} />
           </Carousel.Item>
         </Carousel>
       </>
@@ -296,7 +304,7 @@ const HomeScreen = () => {
   }
 }
 
-function ImageCmp() {
+function ImageCmp(props) {
   const isMob = useMedia('(max-width: 500px)')
 
   const isIpad = useMedia('(min-width: 700px)')
@@ -305,23 +313,23 @@ function ImageCmp() {
 
   const isDesktop = useMedia('(min-width: 1500px)')
 
-  let imgSrc = triangleDT
+  let imgSrc = props.desktop
 
   if (isMob) {
-    imgSrc = triangleMB
+    imgSrc = props.mobile
   }
 
   if (isIpad) {
-    imgSrc = triangleLT
+    imgSrc = props.laptop
     console.log('Its IPAD')
   }
 
   if (isLaptop) {
-    imgSrc = triangleLT
+    imgSrc = props.laptop
   }
 
   if (isDesktop) {
-    imgSrc = triangleDT
+    imgSrc = props.desktop
   }
 
   function returnHeight() {
@@ -336,7 +344,7 @@ function ImageCmp() {
   }
 
   return(
-    <Link to='product/60f945748df1a30d9f0ac75d'>
+    <Link to={`${props.link}`}>
     {/* <picture>
       <source srcSet={triangleMB} media={"(max-width: 500px)"} />
       <source srcSet={triangleDT} media={"(min-width: 1500px)"} />
