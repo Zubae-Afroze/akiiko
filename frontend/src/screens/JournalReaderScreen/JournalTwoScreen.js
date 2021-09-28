@@ -48,36 +48,55 @@ const JournalTwoScreen = () => {
                 ideas that are considered for a table. For example, Akiiko’s
                 Dining Range consists of items that a dining table of the modern
                 home needs. Equipped with a set of{' '}
-                <Link to='/product/circle-bread-baskets-with-wooden-stand'>
+                <Link
+                  to='/product/circle-bread-baskets-with-wooden-stand'
+                  target='_blank'
+                >
                   <span>
-                    <em>circle</em>
+                    <em>
+                      <u>circle</u>
+                    </em>
                   </span>
                 </Link>{' '}
                 and{' '}
-                <Link to='/product/square-bread-baskets-with-wooden-stand'>
-                  <em>square</em>
+                <Link
+                  to='/product/square-bread-baskets-with-wooden-stand'
+                  target='_blank'
+                >
+                  <em>
+                    <u>square</u>
+                  </em>
                 </Link>{' '}
                 trays with a detachable wooden stand,{' '}
-                <Link to='/product/biskk-placemats'>
-                  <em>placemats</em>
+                <Link to='/product/biskk-placemats' target='_blank'>
+                  <em>
+                    <u>placemats</u>
+                  </em>
                 </Link>
                 ,{' '}
-                <Link to='/product/square-stripe-coasters'>
-                  <em>striped coasters</em>{' '}
+                <Link to='/product/square-stripe-coasters' target='_blank'>
+                  <em>
+                    <u>striped coasters</u>
+                  </em>{' '}
                 </Link>
                 and{' '}
-                <Link to='/product/herra-tablerunner'>
-                  <em>table runners</em>
+                <Link to='/product/herra-tablerunner' target='_blank'>
+                  <em>
+                    <u>table runners</u>
+                  </em>
                 </Link>
                 , Akiiko’s idea towards dining ware is rather simplistic, but
                 great attention is given towards usability.
               </p>
               <br />
               <div className='jone_img'>
-                <Link to='/product/circle-bread-baskets-with-wooden-stand'>
+                <Link
+                  to='/product/circle-bread-baskets-with-wooden-stand'
+                  target='_blank'
+                >
                   <img src='/images/blog_images_2/1.jpg' alt='jone_banner' />
                 </Link>
-                <Link to='/product/circle-stripe-coasters'>
+                <Link to='/product/circle-stripe-coasters' target='_blank'>
                   <img src='/images/blog_images_2/2.jpg' alt='jone_banner' />
                 </Link>
               </div>
@@ -95,23 +114,30 @@ const JournalTwoScreen = () => {
               </p>
               <br />
               <div className='jone_img'>
-                <Link to='/product/biskk-coasters'>
+                <Link to='/product/biskk-coasters' target='_blank'>
                   <img src='/images/blog_images_2/3.jpg' alt='jone_banner' />
                 </Link>
-                <Link to='/product/circle-bread-baskets-with-wooden-stand'>
+                <Link
+                  to='/product/circle-bread-baskets-with-wooden-stand'
+                  target='_blank'
+                >
                   <img src='/images/blog_images_2/4.jpg' alt='jone_banner' />
                 </Link>
               </div>
               <p>
                 Akiiko’s{' '}
                 <Link to='/product/biskk-coasters'>
-                  <em>“Biskk Coasters”</em>
+                  <em>
+                    <u>“Biskk Coasters”</u>
+                  </em>
                 </Link>{' '}
                 come in light shades that compliment the space and make it look
                 appealing. It’s also important to consider the natural fabric
                 that is used on the table. Akiiko’s{' '}
                 <Link to='/product/fringe-hemp-tableRunner'>
-                  <em>Table Runners”</em>
+                  <em>
+                    <u>Table Runners”</u>
+                  </em>
                 </Link>{' '}
                 are crafted out of three major fabrics; Woven cotton, Juco and
                 Hemp. These fabrics are extremely airy and durable.
@@ -128,8 +154,13 @@ const JournalTwoScreen = () => {
               <div className='jone_banner-img'></div>
               <p>
                 Akiiko has introduced{' '}
-                <Link to='/product/circle-bread-baskets-with-wooden-stand'>
-                  <em>“Circle Bread Baskets"</em>
+                <Link
+                  to='/product/circle-bread-baskets-with-wooden-stand'
+                  target='_blank'
+                >
+                  <em>
+                    <u>“Circle Bread Baskets"</u>
+                  </em>
                 </Link>{' '}
                 which come with a detachable wooden stand. These baskets can be
                 used to keep bread or some other forms of grub on the table.
@@ -160,10 +191,10 @@ const JournalTwoScreen = () => {
               </p>
               <br />
               <div className='jone_img'>
-                <Link to='/product/bread-basket'>
+                <Link to='/product/bread-basket' target='_blank'>
                   <img src='/images/blog_images_2/5.jpg' alt='jone_banner' />
                 </Link>
-                <Link to='/product/herra-placemats'>
+                <Link to='/product/herra-placemats' target='_blank'>
                   <img src='/images/blog_images_2/6.jpg' alt='jone_banner' />
                 </Link>
               </div>
@@ -172,7 +203,9 @@ const JournalTwoScreen = () => {
                 going minimal with one’s food habits and monochrome with one’s
                 choice of style. The{' '}
                 <Link to='/product/herra-placemats'>
-                  <em>“Herra Placemats”</em>
+                  <em>
+                    <u>“Herra Placemats”</u>
+                  </em>
                 </Link>{' '}
                 ensures that you bid adieu to the temptation of overcrowding
                 your dining table and switch to something more calm, composed
