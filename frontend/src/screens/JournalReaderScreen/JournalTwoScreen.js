@@ -49,25 +49,37 @@ const JournalTwoScreen = () => {
                 Dining Range consists of items that a dining table of the modern
                 home needs. Equipped with a set of{' '}
                 <Link to='/product/circle-bread-baskets-with-wooden-stand'>
-                  circle
+                  <span>
+                    <em>circle</em>
+                  </span>
                 </Link>{' '}
                 and{' '}
                 <Link to='/product/square-bread-baskets-with-wooden-stand'>
-                  square
-                </Link>
+                  <em>square</em>
+                </Link>{' '}
                 trays with a detachable wooden stand,{' '}
-                <Link to='/product/biskk-placemats'>placemats</Link>,{' '}
-                <Link to='/product/square-stripe-coasters'>
-                  striped coasters
+                <Link to='/product/biskk-placemats'>
+                  <em>placemats</em>
                 </Link>
-                and <Link to='/product/herra-tablerunner'>table runners</Link>,
-                Akiiko’s idea towards dining ware is rather simplistic, but
+                ,{' '}
+                <Link to='/product/square-stripe-coasters'>
+                  <em>striped coasters</em>{' '}
+                </Link>
+                and{' '}
+                <Link to='/product/herra-tablerunner'>
+                  <em>table runners</em>
+                </Link>
+                , Akiiko’s idea towards dining ware is rather simplistic, but
                 great attention is given towards usability.
               </p>
               <br />
               <div className='jone_img'>
-                <img src='/images/blog_images_2/1.jpg' alt='jone_banner' />
-                <img src='/images/blog_images_2/2.jpg' alt='jone_banner' />
+                <Link to='/product/circle-bread-baskets-with-wooden-stand'>
+                  <img src='/images/blog_images_2/1.jpg' alt='jone_banner' />
+                </Link>
+                <Link to='/product/circle-stripe-coasters'>
+                  <img src='/images/blog_images_2/2.jpg' alt='jone_banner' />
+                </Link>
               </div>
               <p>
                 In order to understand how to incorporate simple eco-friendly
@@ -82,17 +94,24 @@ const JournalTwoScreen = () => {
                 be preferable.
               </p>
               <br />
-              <div className='jone_banner-img'>
-                <img src='/images/blog_images_2/3.jpg' alt='jone_banner' />
+              <div className='jone_img'>
+                <Link to='/product/biskk-coasters'>
+                  <img src='/images/blog_images_2/3.jpg' alt='jone_banner' />
+                </Link>
+                <Link to='/product/circle-bread-baskets-with-wooden-stand'>
+                  <img src='/images/blog_images_2/4.jpg' alt='jone_banner' />
+                </Link>
               </div>
               <p>
                 Akiiko’s{' '}
-                <Link to='/product/biskk-coasters'>“Biskk Coasters”</Link> come
-                in light shades that compliment the space and make it look
+                <Link to='/product/biskk-coasters'>
+                  <em>“Biskk Coasters”</em>
+                </Link>{' '}
+                come in light shades that compliment the space and make it look
                 appealing. It’s also important to consider the natural fabric
                 that is used on the table. Akiiko’s{' '}
                 <Link to='/product/fringe-hemp-tableRunner'>
-                  “Table Runners”
+                  <em>Table Runners”</em>
                 </Link>{' '}
                 are crafted out of three major fabrics; Woven cotton, Juco and
                 Hemp. These fabrics are extremely airy and durable.
@@ -106,13 +125,11 @@ const JournalTwoScreen = () => {
                 also enhance the overall appeal of the space.
               </p>
               <br />
-              <div className='jone_banner-img'>
-                <img src='/images/blog_images_2/4.jpg' alt='jone_banner' />
-              </div>
+              <div className='jone_banner-img'></div>
               <p>
                 Akiiko has introduced{' '}
                 <Link to='/product/circle-bread-baskets-with-wooden-stand'>
-                  “Circle Bread Baskets"
+                  <em>“Circle Bread Baskets"</em>
                 </Link>{' '}
                 which come with a detachable wooden stand. These baskets can be
                 used to keep bread or some other forms of grub on the table.
@@ -143,17 +160,38 @@ const JournalTwoScreen = () => {
               </p>
               <br />
               <div className='jone_img'>
-                <img src='/images/blog_images_2/5.jpg' alt='jone_banner' />
-                <img src='/images/blog_images_2/6.jpg' alt='jone_banner' />
+                <Link to='/product/bread-basket'>
+                  <img src='/images/blog_images_2/5.jpg' alt='jone_banner' />
+                </Link>
+                <Link to='/product/herra-placemats'>
+                  <img src='/images/blog_images_2/6.jpg' alt='jone_banner' />
+                </Link>
               </div>
               <p>
                 Akiiko’s inspiration for kitchen decor has always been aimed at
                 going minimal with one’s food habits and monochrome with one’s
                 choice of style. The{' '}
-                <Link to='/product/herra-placemats'>“Herra Placemats”</Link>{' '}
+                <Link to='/product/herra-placemats'>
+                  <em>“Herra Placemats”</em>
+                </Link>{' '}
                 ensures that you bid adieu to the temptation of overcrowding
                 your dining table and switch to something more calm, composed
                 and neutral.
+              </p>
+            </div>
+            <div className='jone_div-wrap'>
+              <p>
+                The Akiiko dining collection adds character to your table
+                setting with raw natural fibres, along with enhanced utility. It
+                has never been easier to set up a gorgeous table, impress your
+                guests with something new, beautiful & thoughtful. To compliment
+                your table, you can also shop the stunning akiiko home
+                collection from our website,{' '}
+                <Link to='/'>
+                  <strong>
+                    <em>www.akiiko.com.</em>
+                  </strong>
+                </Link>
               </p>
             </div>
           </div>
