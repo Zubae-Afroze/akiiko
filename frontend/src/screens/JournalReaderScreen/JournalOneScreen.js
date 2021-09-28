@@ -130,14 +130,36 @@ const JournalScreen = () => {
             </div>
 
             <div className='all-categories-wrapper'>
-
-              <CategoriesCardJournalCMP title={'Bags'} src={bags} link={'/bags'} />
-              <CategoriesCardJournalCMP title={'Home'} src={home} link={'/home'} />
-              <CategoriesCardJournalCMP title={'Lifestyle'} src={lifestyle} link={'/lifestyle'} />
-              <CategoriesCardJournalCMP title={'Gift'} src={gift} link={'/gift'} />
-              <CategoriesCardJournalCMP title={'Storage'} src={storage} link={'/storage'} />
-              <CategoriesCardJournalCMP title={'Accessories'} src={accessories} link={'/accessories'} />
-
+              <CategoriesCardJournalCMP
+                title={'Bags'}
+                src={bags}
+                link={'/bags'}
+              />
+              <CategoriesCardJournalCMP
+                title={'Home'}
+                src={home}
+                link={'/home'}
+              />
+              <CategoriesCardJournalCMP
+                title={'Lifestyle'}
+                src={lifestyle}
+                link={'/lifestyle'}
+              />
+              <CategoriesCardJournalCMP
+                title={'Gift'}
+                src={gift}
+                link={'/gift'}
+              />
+              <CategoriesCardJournalCMP
+                title={'Storage'}
+                src={storage}
+                link={'/storage'}
+              />
+              <CategoriesCardJournalCMP
+                title={'Accessories'}
+                src={accessories}
+                link={'/accessories'}
+              />
             </div>
 
             <div>
@@ -152,7 +174,6 @@ const JournalScreen = () => {
           <div className='jone__key'>
             <span>Functional</span>
             <span>Sustainable</span>
-            <span>Keywordsmall</span>
             <span>Gifts</span>
             <span>Contemporary</span>
             <span>Bamboo</span>
@@ -166,15 +187,15 @@ const JournalScreen = () => {
     </>
   )
 
-  function CategoriesCardJournalCMP(props){
-    return(
+  function CategoriesCardJournalCMP(props) {
+    return (
       <div className='categories-card-journal'>
         <Link to={props.link}>
           <img src={props.src} alt='' width={'100%'} />
           <p>{props.title}</p>
         </Link>
       </div>
-    );
+    )
   }
 }
 

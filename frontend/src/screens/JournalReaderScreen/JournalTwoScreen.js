@@ -198,7 +198,6 @@ const JournalTwoScreen = () => {
           <div className='jone__key'>
             <span>Functional</span>
             <span>Sustainable</span>
-            <span>Keywordsmall</span>
             <span>Gifts</span>
             <span>Contemporary</span>
             <span>Bamboo</span>
