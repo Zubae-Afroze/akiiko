@@ -152,9 +152,9 @@ const Header = () => {
                         <div className='head-cart-prodn'>
                           {items.productName}
                           <img
-                            src='/images/font_images/times.svg'
+                            src='/images/font_images/times.svg' 
                             alt='trash_icon'
-                            onClick={() => removeFromCartHandler(items.product)}
+                            onClick={() => removeFromCartHandler(items.link)}
                           />
                         </div>
                         <div className='head-cart-root'>

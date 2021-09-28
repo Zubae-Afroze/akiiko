@@ -112,7 +112,6 @@ export default function ProductItemComp(props) {
         .then((url) => {
           if(isMounted){
             setImageRef(url)
-            console.log('Set State Called')
           }
         })
     }
@@ -125,7 +124,6 @@ export default function ProductItemComp(props) {
         .then((url) => {
           if(isMounted){
             setImageRef(url)
-            console.log('Set State Called')
           }
         })
     } else {
