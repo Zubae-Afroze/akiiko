@@ -1,6 +1,9 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 export default function JournalCardCMP(props) {
+
+    const history = useHistory()
 
     const JournalCardImageComp = () => {
         return(
@@ -40,18 +43,18 @@ export default function JournalCardCMP(props) {
 
 
     return (
-        <div className='journal-card-cmp-wrapper'>
+        <div className='journal-card-cmp-wrapper' onClick={() => history.push(`${props.link}`)}>
+
             <JournalCardImageComp />
 
-            <div className='journal-card-details-cmp'>
-                <JournalCardDateAndReadMinsComp />
+            <JournalCardDateAndReadMinsComp />
 
-                <JournalCardTitleComp />
-                
-                <JournalCardSampleContents />
+            <JournalCardTitleComp />
+            
+            <JournalCardSampleContents />
 
-                <JournalCardReadMoreButton />
-            </div>
+            <JournalCardReadMoreButton />
+
         </div>
     )
 }

@@ -26,6 +26,7 @@ export const addToCart = (id, qty) => async (dispatch, getState) => {
       price: data.price ? data.price : data.mrpPrice,
       group: data.group,
       subGroup: data.subGroup,
+      link: data.link,
       qty,
     },
   })
