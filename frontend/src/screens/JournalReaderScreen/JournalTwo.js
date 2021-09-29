@@ -102,9 +102,15 @@ const JournalTwo = () => {
               rel='noreferrer'
             >
               <img src={Img1} alt='blog_image_one' />
+              <span className='blog-image_caption'>Square Bread Baskets</span>
             </Link>
-            <Link to='/product/biskk-coasters' target='_blank' rel='noreferrer'>
+            <Link
+              to='/product/circle-stripe-coasters'
+              target='_blank'
+              rel='noreferrer'
+            >
               <img src={Img2} alt='blog_image_one' />
+              <span className='blog-image_caption'>Circle Stripe Coasters</span>
             </Link>
           </div>
           <div className='blog-content__wrap'>
@@ -138,15 +144,17 @@ const JournalTwo = () => {
             </p>
           </div>
           <div className='blog-display_image'>
+            <Link to='/product/biskk-coasters' target='_blank' rel='noreferrer'>
+              <img src={Img3} alt='blog_image_one' />
+              <span className='blog-image_caption'>Biskk Coaster</span>
+            </Link>
             <Link
               to='/product/square-bread-baskets-with-wooden-stand'
               target='_blank'
               rel='noreferrer'
             >
-              <img src={Img3} alt='blog_image_one' />
-            </Link>
-            <Link to='/product/biskk-coasters' target='_blank' rel='noreferrer'>
               <img src={Img4} alt='blog_image_one' />
+              <span className='blog-image_caption'>Square Bread Baskets</span>
             </Link>
           </div>
           <div className='blog-content__wrap'>
@@ -179,15 +187,17 @@ const JournalTwo = () => {
             </p>
           </div>
           <div className='blog-display_image'>
+            <Link to='/product/bread-basket' target='_blank' rel='noreferrer'>
+              <img src={Img5} alt='blog_image_one' />
+              <span className='blog-image_caption'>Bread Basket</span>
+            </Link>
             <Link
-              to='/product/square-bread-baskets-with-wooden-stand'
+              to='/product/herra-tablerunner'
               target='_blank'
               rel='noreferrer'
             >
-              <img src={Img5} alt='blog_image_one' />
-            </Link>
-            <Link to='/product/biskk-coasters' target='_blank' rel='noreferrer'>
               <img src={Img6} alt='blog_image_one' />
+              <span className='blog-image_caption'>Herra Tablerunner</span>
             </Link>
           </div>
           <div className='blog-content__wrap'>
@@ -232,11 +242,11 @@ const JournalTwo = () => {
             <span>Functional</span>
             <span>Sustainable</span>
             <span>Gifts</span>
-            <span>Contemporary</span>
             <span>Bamboo</span>
-            <span>Cotton</span>
             <span>Essentials</span>
+            <span>Contemporary</span>
             <span>Inspiration</span>
+            <span>Cotton</span>
           </div>
         </div>
       </Container>

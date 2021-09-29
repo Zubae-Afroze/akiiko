@@ -115,7 +115,7 @@ const JournalOne = () => {
               <img src={ImageThree} alt='blog_image_one' />
             </Link>
           </div>
-          <div className='blog-content__wrap'>
+          {/* <div className='blog-content__wrap'>
             <h3>Art of simple, decluttered and functional living</h3>
             <p>
               Using cotton and bamboo in our self-care products like the facial
@@ -131,15 +131,7 @@ const JournalOne = () => {
               designing eco-conscious products. A one stop solution for the
               needs of a <em>modern home</em> & minimalistic lifestyle.
             </h4>
-          </div>
-          <div className='blog-display_image'>
-            <Link>
-              <img src={ImageFour} alt='blog_image_one' />
-            </Link>
-            <Link>
-              <img src={ImageFive} alt='blog_image_one' />
-            </Link>
-          </div>
+          </div> */}
           <div className='blog-content__wrap'>
             <h3>Eco-conscious mindset</h3>
             <p>
@@ -154,6 +146,14 @@ const JournalOne = () => {
               from using animal skin in any of our products. We are committed to
               ensuring that our collections are vegan and cruelty-free.
             </p>
+          </div>
+          <div className='blog-display_image'>
+            <Link>
+              <img src={ImageFour} alt='blog_image_one' />
+            </Link>
+            <Link>
+              <img src={ImageFive} alt='blog_image_one' />
+            </Link>
           </div>
           <div className='blog-content__wrap'>
             <h3>Product range</h3>
@@ -204,11 +204,11 @@ const JournalOne = () => {
             <span>Functional</span>
             <span>Sustainable</span>
             <span>Gifts</span>
-            <span>Contemporary</span>
             <span>Bamboo</span>
-            <span>Cotton</span>
             <span>Essentials</span>
+            <span>Contemporary</span>
             <span>Inspiration</span>
+            <span>Cotton</span>
           </div>
         </div>
       </Container>

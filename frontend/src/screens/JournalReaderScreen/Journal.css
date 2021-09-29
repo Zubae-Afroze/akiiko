@@ -61,7 +61,6 @@
 .blog-content__wrap p {
   font-size: 18px;
   font-family: 'rutanLight';
-  text-align: justify;
 }
 
 .blog-banner_img {
@@ -124,11 +123,21 @@
   margin-bottom: 30px;
   font-size: 10px;
   padding: 10px 30px;
-  border-radius: 30px;
+  border-radius: 50px;
 }
 
 @media (max-width: 450px) {
   .blog-cat_card {
     flex-basis: 48%;
+  }
+  .blog-image_caption {
+    font-size: 10px;
+  }
+
+  .blog-key span {
+    margin-right: 15px;
+    margin-bottom: 15px;
+    padding: 4px 15px;
+    font-size: 8px;
   }
 }
