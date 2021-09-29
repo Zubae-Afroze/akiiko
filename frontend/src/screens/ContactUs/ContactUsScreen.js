@@ -1,22 +1,26 @@
 import React, { useState, useRef } from 'react'
 import emailjs from 'emailjs-com'
 import './contactUsStyleScreen.css'
+import Footer from '../../components/Footer/Footer'
 
 export default function ContactUsScreen() {
   return (
-    <div className='contactus-wrapper'>
-      {/* <h2>Reach out to us</h2> */}
+    <>
+      <div className='contactus-wrapper'>
+        {/* <h2>Reach out to us</h2> */}
 
-      {/* <h2>Get in Touch</h2> */}
+        {/* <h2>Get in Touch</h2> */}
 
-      <div className='contactus-infoCard-wrapper'>
-        <h1>Get in</h1>
+        <div className='contactus-infoCard-wrapper'>
+          <h1>Get in</h1>
 
-        <ContactUsFormComp />
+          <ContactUsFormComp />
 
-        <InfoCardComp />
+          <InfoCardComp />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   )
 }
 

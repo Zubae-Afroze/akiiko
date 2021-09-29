@@ -1,6 +1,7 @@
 import React from 'react'
 import '../Terms/Terms.css'
 import { Container } from 'react-bootstrap'
+import Footer from '../Footer/Footer'
 
 const returnPolicy = () => {
   return (
@@ -61,6 +62,7 @@ const returnPolicy = () => {
           </div>
         </div>
       </Container>
+      <Footer />
     </>
   )
 }

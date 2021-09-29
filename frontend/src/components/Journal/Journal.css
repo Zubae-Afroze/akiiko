@@ -97,6 +97,11 @@
   width: 100%;
 }
 
+.journals-component-header-wrapper h3 {
+  font-family: 'rutanLight';
+  text-transform: uppercase;
+}
+
 .journals-body-component-wrapper {
   display: flex;
   /* justify-content: space-between; */

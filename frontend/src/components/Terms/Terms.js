@@ -1,5 +1,6 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
+import Footer from '../Footer/Footer'
 import './Terms.css'
 
 const Terms = () => {
@@ -386,6 +387,7 @@ const Terms = () => {
           </div>
         </div>
       </Container>
+      <Footer />
     </>
   )
 }
