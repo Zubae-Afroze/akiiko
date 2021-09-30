@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component , useRef } from 'react'
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { HashLink as Link } from 'react-router-hash-link'
 import JournalComp from '../Journal/Journal'
 import './Footer.css'
 import './footerNewStyle.css'
+import axios from 'axios'
 
 export default class Footer extends Component {
   render() {
@@ -184,25 +185,67 @@ function FooterBottom() {
   }
 
   const SuscribeNewLetterCMP = () => {
+
+    const nameRef = useRef('')
+    const emailRef = useRef('')
+
+
+    const onSubscribe = async () => {
+      if(emailRef.current.trim() !== '' && nameRef.current.trim() !== ''){
+        console.log('SUBSCRIBED')
+
+        const config = {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+
+        const data = {
+          name: nameRef.current,
+          email: emailRef.current
+        }
+  
+        const { result } = await axios.post(
+          `/api/newsletter/usersubscribe`,
+          data,
+          config
+        )
+
+        if(!result){
+          console.log(result)
+        }
+      }
+    }
+
     return (
       <div className='footer-bottom-main-content-comp'>
         <ContentTitle title={'BE THE FIRST TO KNOW'} link={''} />
 
-        {/* <div style={{ padding: '10px', width: '90%' }}> */}
         <input
-          placeholder='Enter your email address'
+          placeholder='Enter your name'
           type='text'
           name='name'
           className='footer-bottom-suscribe-news-letter-input'
           onChange={(e) => {
-            // props.setName(e.target.value)
+            nameRef.current = e.target.value
           }}
         />
-        {/* </div> */}
 
-        <p>Please enter your email</p>
+        {/* <p>Please enter your name</p> */}
 
-        <button>SUBSCRIBE</button>
+        <input
+          placeholder='Enter your email address'
+          type='text'
+          name='email'
+          className='footer-bottom-suscribe-news-letter-input'
+          onChange={(e) => {
+            emailRef.current = e.target.value
+          }}
+        />
+
+        {/* <p>Please enter your email</p> */}
+
+        <button onClick={onSubscribe}>SUBSCRIBE</button>
 
         <SocialIconsCMP />
       </div>

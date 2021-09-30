@@ -287,12 +287,14 @@ export default function ProductRowComp({ orderDetails, index }) {
         if (
           itemDetail.imagePath === undefined ||
           itemDetail.imagePath === null
-        ) {
-          rawImagePath = itemDetail.image
-        } else {
-          rawImagePath = itemDetail.imagePath
-        }
-
+          ) {
+            rawImagePath = itemDetail.image
+            console.log('image: '+ rawImagePath)
+          } else {
+            rawImagePath = itemDetail.imagePath
+            console.log('imagePath'+ rawImagePath)
+          }
+          
         if (rawImagePath.search('p_images') !== -1) {
           rawImagePath = rawImagePath.replace('images/p_images', 'images_web')
           rawImagePath = await storage.ref(rawImagePath).getDownloadURL()

@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Container, Row, Col, Carousel } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
@@ -53,6 +54,10 @@ import coasterLT from './HomeScreenCarousel/coasterAssets/coaster_LT.jpg'
 import coasterMB from './HomeScreenCarousel/coasterAssets/coaster_MB.jpg'
 
 import useMedia from './HomeScreenCarousel/useMediaHook'
+import { getUserProfileByUID } from '../../actions/actionProfile'
+import useOneTimeEffect from '../../components/CustomHooks/useOneTimeEffect'
+import NewsLetterPopUpCmp from './NewsLetterPopUp/NewsLetterPopUpCmp'
+import axios from 'axios'
 
 // import UseSpinner from '../../components/Spinner/UseSpinner';
 
@@ -61,7 +66,12 @@ const options = {
   debug: false, // enable logs
 }
 
+let isNewLetterPopUpShown = false;
+const isRegisteredUser = true;
+
 const HomeScreen = () => {
+
+  const isNewLetterPopUpShownRef = useRef(false)
   // constructor(props) {
   //   super(props)
   //   this.state = {
@@ -104,11 +114,113 @@ const HomeScreen = () => {
   //   this.setState({ showLoader: !this.state.showLoader })
   // }
 
+  const dispatch = useDispatch()
+
+  // const is = useDispatch()
+
+  const uid = useSelector((state) => state.firebase.auth.uid)
+
+  const profileDetails = useSelector((state) => state.profile.userProfile)
+
+  const [showNewsLetterPopUp, setShowNewsLetterPopUp] = useState(false)
+
+  
   useEffect(() => {
+    // history.push('/login?redirect=/')
+    dispatch(getUserProfileByUID(uid)) 
+    
+    // if(!isRegisteredUser){
+      //   console.log('Un Registered User')
+      //   setShowNewsLetterPopUp(true)
+      // }
+      
+    }, [dispatch, uid])
+    
+    
+    useEffect(() => {
+      
+      console.log('GET profile called ')
+    async function checkToShowNewsLetterPopUp(){
+  
+      setShowNewsLetterPopUp(false);
+  
+      const config = {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+  
+      const { data } = await axios.get(`/api/profile/${uid}`, config)
+  
+      if(data){
+        const email = data.email;
+
+        try {
+          const { newsLetterUser } = await axios.get(`/api/newsletter/newsletteruser/${email}`)
+          console.log('GOT user Profile' + newsLetterUser) 
+          
+        } catch (error) {
+          setShowNewsLetterPopUp(true)
+           
+        }
+         
+        
+      }else{
+        console.log('didnt get user Profile')
+        setShowNewsLetterPopUp(true)
+  
+      }
+  
+    }
+
+    checkToShowNewsLetterPopUp()
+    // return () => {
+    //   cleanup
+    // }
+  }, [])
+  
+
+
+
+  // useOneTimeEffect(() => {
+
+  //   console.log('Use One Effect Called '+profileDetails)
+
+  //   if(profileDetails){
+  //     console.log('Has Profile')
+  //     const email = profileDetails.email;
+  //     setShowNewsLetterPopUp(true)
+  //     isNewLetterPopUpShown = true;
+  //   }else{
+  //     console.log('didnt get user Profile')
+  //     isRegisteredUser = false;
+  //     setShowNewsLetterPopUp(true)
+  //   }
+  // },[])
+
+  
+
+  useEffect(() => {
+    
     ReactPixel.init('545518393387265', options)
     ReactPixel.pageView()
   }, [])
+  
+  
 
+    // if(!uid){
+    //   const config = {
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   }
+    //   console.log(uid)
+
+    // }else{
+    //   console.log("disnt receive propfile")
+    // }
+
+    
   return (
     <React.Fragment>
       <TopPopUpComp />
@@ -161,6 +273,7 @@ const HomeScreen = () => {
       {/* <button onClick={()=>{showTopPopUp('Hyy it Worked')}}> Click Button </button>
         <button onClick={()=>{showTopPopUp('Hyy it Worked 2')}}> Click Button </button> */}
       <Footer />
+      <NewsLetterPopUpCmp showPopUp={showNewsLetterPopUp} />
     </React.Fragment>
   )
 

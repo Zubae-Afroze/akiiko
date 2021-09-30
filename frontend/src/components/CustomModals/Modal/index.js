@@ -168,7 +168,7 @@ const Modal = (props
       {props.type === "scaleUp" && (
         <motion.div
           onClick={(e) => e.stopPropagation()}  // Prevent click from closing modal
-          className="modal-cm orange-gradient"
+          className="modal-cm"
           variants={scaleUp}
           initial="hidden"
           animate="visible"

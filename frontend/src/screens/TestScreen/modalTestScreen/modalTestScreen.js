@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import useModal from "../../../components/CustomModals/hooks/useModal";
 import { framerLogger } from "../../../components/CustomModals/hooks/stateLogger";
@@ -7,6 +7,7 @@ import Input from "../../../components/CustomModals/Input/index";
 import Modal from "../../../components/CustomModals/Modal/index";
 import { add } from "../../../components/CustomModals/hooks/arr-utils";
 import '../../../components/CustomModals/customModalStyles.css'
+
 function ModalTestScreen() {
   // Modal state
   const { modalOpen, close, open } = useModal();
@@ -81,26 +82,28 @@ function ModalTestScreen() {
           <option value="top">☝🏼 Top</option>
         </motion.select> */}
 
-        <motion.button
+        {/* <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }}
           className="add-button"
           onClick={() => setNotifications(add(notifications, text, style))}
         >
           + Stack em up
-        </motion.button>
+        </motion.button> */}
       </motion.main>
+      
+      <SubscribeToNewsLetterModal modalOpen={modalOpen} text={modalType} type={'scaleUp'} handleClose={close} />
 
-      <ModalContainer>
+      {/* <ModalContainer>
         {modalOpen && (
           <Modal modalOpen={modalOpen} text={modalType} type={'scaleUp'} handleClose={close}>
             <div>
-              <h3>This Is a Text</h3>
-              <button> This is a Button</button>
+              <h3>Text title</h3>
+              <button onClick={close}> Close </button>
             </div>
           </Modal>
         )}
-      </ModalContainer>
+      </ModalContainer> */}
 
       <NotificationContainer position={position}>
         {notifications &&
@@ -115,6 +118,61 @@ function ModalTestScreen() {
       </NotificationContainer>
     </>
   );
+}
+
+
+function SubscribeToNewsLetterModal(props){
+
+  const nameRef = useRef('')
+  const emailRef = useRef('')
+
+  const [buttonText, setButtonText] = useState('SUSCRIBE')
+
+  const TextFieldArea = () => {
+    return(
+      <div >
+        <h3>Text title</h3>
+
+        <input
+          placeholder='Enter your name'
+          type='text'
+          name='name'
+          onChange={(e) => {
+            nameRef.current = e.target.value
+          }}
+        />
+
+
+        <input
+          placeholder='Enter your email address'
+          type='text'
+          name='email'
+          onChange={(e) => {
+            emailRef.current = e.target.value
+          }}
+        />
+
+        <button onClick={ () => {
+          console.log('Name: '+nameRef.current + ' Email: ' + emailRef.current)
+          setButtonText('SUBSCRIBED')
+          setTimeout(()=>{
+            props.handleClose()
+          },2000)
+        }}> {buttonText} </button>
+      </div>
+    )
+  }
+
+
+  return(
+    <ModalContainer>
+        {props.modalOpen && (
+          <Modal modalOpen={props.modalOpen} text={props.text} type={'scaleUp'} handleClose={props.handleClose}>
+            <TextFieldArea />
+          </Modal>
+        )}
+      </ModalContainer>
+  )
 }
 
 // const Header = () => (

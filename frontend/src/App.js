@@ -47,6 +47,7 @@ import ContactUsScreen from './screens/ContactUs/ContactUsScreen'
 
 import JournalScreen from './screens/JournalReaderScreen/JournalOneScreen'
 import JournalTwoScreen from './screens/JournalReaderScreen/JournalTwoScreen'
+import GoodieBagInfoScreen from './screens/GoodieBagInfo/GoodieBagInfoScreen'
 // import ProductcomponentTestScreen from './components/ProductCardComponent/ProductcomponentTestScreen'
 
 // import ReactGa from 'react-ga'
@@ -64,6 +65,8 @@ const App = () => {
         
         <Route path='/modaltest' render={() => <ModalTestScreen />} />
         <Route path='/contactus' render={() => <ContactUsScreen />} />
+        <Route path='/goodiebaginfo' render={() => <GoodieBagInfoScreen />} />
+
 
         <Route path='/journal/japanese_aesthetic_sensibilities' render={() => <JournalScreen />} />
         <Route path='/journal/set-up-a-nature-inspired-table' render={() => <JournalTwoScreen />} />

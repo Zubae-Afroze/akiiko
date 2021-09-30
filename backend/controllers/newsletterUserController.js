@@ -3,26 +3,65 @@ import asyncHandler from 'express-async-handler'
 
 
 
+// @desc Fetch single user by email
+// @route GET /api/newsletter/newsletteruser
+// @access Public Route
+export const getNewsletterUser = asyncHandler(async (req, res) => {
+  
+  console.log(req.params.email)
+
+  const email = req.params.email
+
+
+  const newsLetterUser = await NewsletterUserModel.findOne({ email : email })
+
+  if (newsLetterUser) {
+    res.json(newsLetterUser)
+  } else {
+    res.status(404)
+    throw new Error('user not subscribed')
+  }
+})
+
+
+
 //@desc subscribe user
 //@route POST /api/newsletter/usersubscribe
 //@access Private
 export const subcribeUser = asyncHandler(async (req, res) => {
 
     const { name, email } = req.body
+
   
-    const profileExist = await NewsletterUserModel.findOneAndUpdate(
-      { name, email },
-      { upsert: true }
-    )
+    const profileExist = await NewsletterUserModel.findOne({ email : email })
+
   
-    if (profileExist) {
+    if (profileExist && profileExist.isSubscribed) {
       res.status(201).json({
-        name: profile.name,
-        email: profile.email
+        name: name,
+        email: email,
+        isSubscribed: true
       })
+    } else if(profileExist && !profileExist.isSubscribed) {
+      profileExist.isSubscribed = true;
+        const result = await profileExist.save()
+
+        res.json({
+          result: result,
+        })
     } else {
-        const newsLetter = req.body 
-        await newsLetter.save()
+
+      const newsLetter = new NewsletterUserModel({
+        name: name,
+        email: email,
+        isSubscribed: true
+      })
+  
+      const result = await newsLetter.save()
+
+      res.json({
+        result: result,
+      })
     }
 })
   
@@ -33,22 +72,21 @@ export const subcribeUser = asyncHandler(async (req, res) => {
 //@access Private
 export const unSubcribeUser = asyncHandler(async (req, res) => {
 
-    const { name, email } = req.body
-  
-    const profileExist = await NewsletterUserModel.findOneAndUpdate(
-      { name, email },
-      { upsert: true }
-    )
+    const { email } = req.body
+   
+    const profileExist = await NewsletterUserModel.findOne({ email: email })
   
     if (profileExist) {
-      res.status(201).json({
-        name: profile.name,
-        email: profile.email,
-        isSubscribed: false
-      })
+
+      profileExist.isSubscribed = false
+  
+      const result = await profileExist.save()
+
+      res.status(201).json({...result})
+
     } else {
-        const newsLetter = req.body 
-        await newsLetter.save()
+      res.status(404)
+      throw new Error('user does not exist')
     }
 })
   

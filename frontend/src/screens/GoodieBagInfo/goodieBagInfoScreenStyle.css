@@ -1,0 +1,37 @@
+.goodie-bag-info-screen-wrapper {
+  --font-size: 1rem;
+  height: 86vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  font-family: 'rutan';
+}
+
+.goodie-bag-info-screen-wrapper h5 {
+  font-size: calc(var(--font-size) + 8px);
+  font-weight: bold;
+  margin-bottom: calc(var(--font-size) + 3px);
+}
+
+.goodie-bag-info-screen-wrapper h6 {
+  font-size: calc(var(--font-size));
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.goodie-bag-info-screen-wrapper p {
+  font-size: calc(var(--font-size) - 1px);
+  margin-bottom: 2px;
+}
+
+.goodie-bag-info-screen-wrapper a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.goodie-bag-info-screen-wrapper span {
+  font-size: calc(var(--font-size) - 5px);
+  display: block;
+  margin-bottom: calc(var(--font-size) + 3px);
+  font-style: italic;
+}

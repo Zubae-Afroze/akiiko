@@ -121,6 +121,7 @@
   padding-left: 0;
   font-size: calc(var(--sub-title-font-size) - 1px);
   font-family: 'rutan';
+  margin-block: 10px;
 }
 .footer-bottom-suscribe-news-letter-input:focus {
   border-color: #2c2221;
