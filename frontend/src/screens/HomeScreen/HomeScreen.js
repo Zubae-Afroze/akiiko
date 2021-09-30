@@ -139,7 +139,6 @@ const HomeScreen = () => {
     
     useEffect(() => {
       
-      console.log('GET profile called ')
     async function checkToShowNewsLetterPopUp(){
   
       setShowNewsLetterPopUp(false);
@@ -164,9 +163,7 @@ const HomeScreen = () => {
            
         }
          
-        
       }else{
-        console.log('didnt get user Profile')
         setShowNewsLetterPopUp(true)
   
       }
