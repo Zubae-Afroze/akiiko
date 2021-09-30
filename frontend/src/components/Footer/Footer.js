@@ -376,118 +376,118 @@ function FooterTop() {
   )
 }
 
-function FooterBottomOld() {
-  return (
-    <>
-      <div className='footer-main-wrapper'>
-        <Container>
-          <Row className='footer-main'>
-            <Col sm={5}>
-              <div className='footer-main-label'>Available At</div>
-              <div className='footer-main-text'>
-                <div className='footer-bind'>
-                  <strong>PRECISO FASHION</strong>
-                  <br />
-                  <span className='footer-sub-sub'>Corporate Office</span>
-                </div>
-                9.2.2, Cenotoph 2nd Lane, <br />
-                Austin Nagar, Teynampet, <br />
-                Chennai 600018 <br />
-                India.
-              </div>
-            </Col>
-            <Col sm={7} className='enquire col-sm-6'>
-              <div className='footer-main-label-2'>Enquire At</div>
-              <Form inline>
-                <input
-                  type='text'
-                  placeholder='Your email ID'
-                  className='footer-main-form'
-                />
-                <button className='footer-main-button'>Send</button>
-              </Form>
-            </Col>
-            <div className='footer-social-icons-wrapper'>
-              <ul className='footer-social-icons'>
-                <li>
-                  <a
-                    href='https://www.instagram.com/akiiko_india/'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <i className='lni lni-instagram-filled'></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='https://www.facebook.com/akiikoindia/'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <i className='lni lni-facebook-filled'></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='https://www.linkedin.com/company/akiiko-india/'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <i className='lni lni-linkedin-original'></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='https://in.pinterest.com/akiiko_india/'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <i className='lni lni-pinterest'></i>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href='https://twitter.com/AkiikoIndia'
-                    target='_blank'
-                    rel='noreferrer'
-                  >
-                    <i className='lni lni-twitter-original'></i>
-                  </a>
-                </li>
-                {/* <li><a href='/'><i className="lni lni-youtube"></i></a></li> */}
-              </ul>
-            </div>
-          </Row>
-          <div className='very-end-blyat'>
-            <ul className='very-end-blyat-list'>
-              <li>
-                <Link to={'/AboutUs'}>ABOUT US</Link>
-              </li>
-              <li>
-                <Link to={'/Careers'}>CAREERS</Link>
-              </li>
-              <li>
-                <Link to={'/Refund'}>REFUND POLICY</Link>
-              </li>
-              <li>
-                <Link to={'/ShippingPolicy'}>SHIPPING POLICY</Link>
-              </li>
-              <li>
-                <Link to={'./TermsofService'}>TERMS OF SERVICE</Link>
-              </li>
-              <li>
-                <Link to={'./PrivacyStatement'}>PRIVACY STATEMENT</Link>
-              </li>
-            </ul>
-            {/* <div
-                className='d-flex justify-content-end align-items-end'
-                style={{ marginTop: '20px' }}
-              >
-                All rights reserved &copy; Akiiko 2020
-              </div> */}
-          </div>
-        </Container>
-      </div>
-    </>
-  )
-}
+// function FooterBottomOld() {
+//   return (
+//     <>
+//       <div className='footer-main-wrapper'>
+//         <Container>
+//           <Row className='footer-main'>
+//             <Col sm={5}>
+//               <div className='footer-main-label'>Available At</div>
+//               <div className='footer-main-text'>
+//                 <div className='footer-bind'>
+//                   <strong>PRECISO FASHION</strong>
+//                   <br />
+//                   <span className='footer-sub-sub'>Corporate Office</span>
+//                 </div>
+//                 9.2.2, Cenotoph 2nd Lane, <br />
+//                 Austin Nagar, Teynampet, <br />
+//                 Chennai 600018 <br />
+//                 India.
+//               </div>
+//             </Col>
+//             <Col sm={7} className='enquire col-sm-6'>
+//               <div className='footer-main-label-2'>Enquire At</div>
+//               <Form inline>
+//                 <input
+//                   type='text'
+//                   placeholder='Your email ID'
+//                   className='footer-main-form'
+//                 />
+//                 <button className='footer-main-button'>Send</button>
+//               </Form>
+//             </Col>
+//             <div className='footer-social-icons-wrapper'>
+//               <ul className='footer-social-icons'>
+//                 <li>
+//                   <a
+//                     href='https://www.instagram.com/akiiko_india/'
+//                     target='_blank'
+//                     rel='noreferrer'
+//                   >
+//                     <i className='lni lni-instagram-filled'></i>
+//                   </a>
+//                 </li>
+//                 <li>
+//                   <a
+//                     href='https://www.facebook.com/akiikoindia/'
+//                     target='_blank'
+//                     rel='noreferrer'
+//                   >
+//                     <i className='lni lni-facebook-filled'></i>
+//                   </a>
+//                 </li>
+//                 <li>
+//                   <a
+//                     href='https://www.linkedin.com/company/akiiko-india/'
+//                     target='_blank'
+//                     rel='noreferrer'
+//                   >
+//                     <i className='lni lni-linkedin-original'></i>
+//                   </a>
+//                 </li>
+//                 <li>
+//                   <a
+//                     href='https://in.pinterest.com/akiiko_india/'
+//                     target='_blank'
+//                     rel='noreferrer'
+//                   >
+//                     <i className='lni lni-pinterest'></i>
+//                   </a>
+//                 </li>
+//                 <li>
+//                   <a
+//                     href='https://twitter.com/AkiikoIndia'
+//                     target='_blank'
+//                     rel='noreferrer'
+//                   >
+//                     <i className='lni lni-twitter-original'></i>
+//                   </a>
+//                 </li>
+//                 {/* <li><a href='/'><i className="lni lni-youtube"></i></a></li> */}
+//               </ul>
+//             </div>
+//           </Row>
+//           <div className='very-end-blyat'>
+//             <ul className='very-end-blyat-list'>
+//               <li>
+//                 <Link to={'/AboutUs'}>ABOUT US</Link>
+//               </li>
+//               <li>
+//                 <Link to={'/Careers'}>CAREERS</Link>
+//               </li>
+//               <li>
+//                 <Link to={'/Refund'}>REFUND POLICY</Link>
+//               </li>
+//               <li>
+//                 <Link to={'/ShippingPolicy'}>SHIPPING POLICY</Link>
+//               </li>
+//               <li>
+//                 <Link to={'./TermsofService'}>TERMS OF SERVICE</Link>
+//               </li>
+//               <li>
+//                 <Link to={'./PrivacyStatement'}>PRIVACY STATEMENT</Link>
+//               </li>
+//             </ul>
+//             {/* <div
+//                 className='d-flex justify-content-end align-items-end'
+//                 style={{ marginTop: '20px' }}
+//               >
+//                 All rights reserved &copy; Akiiko 2020
+//               </div> */}
+//           </div>
+//         </Container>
+//       </div>
+//     </>
+//   )
+// }

@@ -9,6 +9,7 @@ import ProductItemComp from '../../components/Shimmers/ProductItemComp'
 import TopPopUpComp from '../../components/TopPopUp/TopPopUpComp'
 import '../HomeScreen/HomeScreen.css'
 import './searchScreenStyles.css'
+import Footer from '../../components/Footer/Footer'
 
 let filtersObj = {
   category: '',
@@ -635,6 +636,7 @@ export default function SearchScreen() {
           />
         )}
       </div>
+      <Footer />
     </>
   )
 

@@ -45,8 +45,9 @@ import ShippingPolicy from './components/ShippingPolicy/ShippingPolicy'
 import ModalTestScreen from './screens/TestScreen/modalTestScreen/modalTestScreen'
 import ContactUsScreen from './screens/ContactUs/ContactUsScreen'
 
-import JournalScreen from './screens/JournalReaderScreen/JournalOneScreen'
-import JournalTwoScreen from './screens/JournalReaderScreen/JournalTwoScreen'
+import JournalOne from './screens/JournalReaderScreen/JournalOne'
+import JournalTwo from './screens/JournalReaderScreen/JournalTwo'
+import AllJournal from './screens/AllJournal/AllJournal'
 import GoodieBagInfoScreen from './screens/GoodieBagInfo/GoodieBagInfoScreen'
 // import ProductcomponentTestScreen from './components/ProductCardComponent/ProductcomponentTestScreen'
 
@@ -62,14 +63,22 @@ const App = () => {
       <Switch>
         <Route path='/producttest' render={() => <ProductTestScreen />} />
         {/* <Route path='/pcts' render={() => <ProductcomponentTestScreen />} /> */}
-        
+
         <Route path='/modaltest' render={() => <ModalTestScreen />} />
         <Route path='/contactus' render={() => <ContactUsScreen />} />
         <Route path='/goodiebaginfo' render={() => <GoodieBagInfoScreen />} />
 
 
-        <Route path='/journal/japanese_aesthetic_sensibilities' render={() => <JournalScreen />} />
-        <Route path='/journal/set-up-a-nature-inspired-table' render={() => <JournalTwoScreen />} />
+        <Route
+          path='/journal/japanese_aesthetic_sensibilities'
+          render={() => <JournalOne />}
+        />
+        <Route
+          path='/journal/set-up-a-nature-inspired-table'
+          render={() => <JournalTwo />}
+        />
+
+        <Route path='/journal' render={() => <AllJournal />} />
 
         <Route path='/orders/:orderId' render={() => <OrderSummaryScreen />} />
 
