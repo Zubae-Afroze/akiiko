@@ -298,6 +298,8 @@ export default function ProductRowComp({ orderDetails, index }) {
           rawImagePath = await storage.ref(rawImagePath).getDownloadURL()
         } else if (rawImagePath.search('firebasestorage') !== -1) {
           rawImagePath = itemDetail.image
+        } else if (rawImagePath.search('display_images') !== -1) {
+          rawImagePath = await storage.ref(rawImagePath).getDownloadURL()
         }
         setImageURL(rawImagePath)
       }

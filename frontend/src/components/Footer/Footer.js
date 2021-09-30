@@ -200,7 +200,7 @@ function FooterBottom() {
         />
         {/* </div> */}
 
-        <p>Please enter your email</p>
+        {/* <p>Please enter your email</p> */}
 
         <button>SUBSCRIBE</button>
 
