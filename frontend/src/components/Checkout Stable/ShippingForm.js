@@ -340,7 +340,7 @@ function EnterNewAddressComp({
       <div className='forms-height'>
         <Row className='p-0 m-0'>
           <Col xs={12} className='p-0 m-0'>
-            <h6>Where this order going ?</h6>
+            <h6>Where is this order going ?</h6>
           </Col>
 
           <NameField
