@@ -4,9 +4,11 @@ import asyncHandler from 'express-async-handler'
 
 
 // @desc Fetch single user by email
-// @route GET /api/newsletter/newsletteruser
+// @route GET /api/newsletter/newsletteruser/:email
 // @access Public Route
 export const getNewsletterUser = asyncHandler(async (req, res) => {
+
+  console.log('API called')
   
   console.log(req.params.email)
 

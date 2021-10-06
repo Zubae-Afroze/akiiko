@@ -49,6 +49,7 @@ import JournalOne from './screens/JournalReaderScreen/JournalOne'
 import JournalTwo from './screens/JournalReaderScreen/JournalTwo'
 import AllJournal from './screens/AllJournal/AllJournal'
 import GoodieBagInfoScreen from './screens/GoodieBagInfo/GoodieBagInfoScreen'
+import ProductCardScreen from './screens/TestScreen/ProductCardScreen'
 // import ProductcomponentTestScreen from './components/ProductCardComponent/ProductcomponentTestScreen'
 
 // import ReactGa from 'react-ga'
@@ -61,7 +62,7 @@ const App = () => {
       <ScrollToTop />
       <Header />
       <Switch>
-        <Route path='/producttest' render={() => <ProductTestScreen />} />
+        <Route path='/productcard' render={() => <ProductCardScreen />} />
         {/* <Route path='/pcts' render={() => <ProductcomponentTestScreen />} /> */}
 
         <Route path='/modaltest' render={() => <ModalTestScreen />} />
