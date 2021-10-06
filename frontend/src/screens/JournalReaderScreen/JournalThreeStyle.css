@@ -74,7 +74,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   column-gap: 2%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .two_image_comp_wrapper > a {
@@ -103,8 +103,14 @@
     row-gap: 2px;
   }
 
-  .two_image_comp_wrapper > a {
+  .two_image_comp_wrapper p {
+    font-family: 'rutan';
+    font-size: calc(var(--font-size) - 0.2rem);
+    /* text-align: center; */
+  }
+
+  /* .two_image_comp_wrapper > a {
     flex-basis: 100%;
     width: 100%;
-  }
+  } */
 }

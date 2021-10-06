@@ -97,7 +97,14 @@ const masterProductsSchema = mongoose.Schema({
     },
     isOutOfStock: {
         type: Boolean,
-    }
+    },
+    metaTitle: {
+        type: String,
+    },
+    metaDesc: {
+        type: String,
+    },
+    keyWords: [],
 }, 
 {
     timestamps: true
