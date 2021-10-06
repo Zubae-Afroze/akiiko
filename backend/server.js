@@ -33,7 +33,7 @@ connectDb()
 
 const app = express()
 
-// app.use(enforce.HTTPS({ trustProtoHeader: true }))
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 app.use(express.json())
 
@@ -75,7 +75,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get('/', (req, res) => {
     res.send('API is running...')
   })
-
 }
 
 app.use(notFound)
