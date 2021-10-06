@@ -1,0 +1,110 @@
+.journal_screen_wrapper {
+  --font-size: 1rem;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.journal_comp_wrapper {
+  width: 100%;
+  max-width: 1200px;
+  /* border: 1px solid grey; */
+  padding: 10px;
+}
+
+.journal_comp_wrapper p {
+  font-family: 'rutanLight';
+  letter-spacing: calc(var(--font-size) - 0.94rem);
+  word-spacing: calc(var(--font-size) - 0.88rem);
+  margin-bottom: calc(var(--font-size) + 1rem);
+  color: #3e3331;
+}
+
+.journal_comp_wrapper h4 {
+  color: #977257;
+}
+
+.journal_title_comp_wrapper {
+  margin-bottom: calc(var(--font-size) + 1rem);
+}
+
+.journal-link {
+  font-family: 'rutanLight';
+  color: #3e3331;
+  font-size: calc(var(--font-size) - 0.2rem);
+  margin-bottom: calc(var(--font-size) + 0.2rem);
+}
+
+.journal_title {
+  font-family: 'caudex';
+  color: #3e3331;
+  font-size: calc(var(--font-size) + 1rem);
+  margin-bottom: calc(var(--font-size) + 0.2rem);
+}
+
+.journal_author_wrap img {
+  height: 50px;
+  width: 50px;
+  border: #e1d5bf 4px solid;
+  border-radius: 50px;
+  margin-right: calc(var(--font-size) - 0.2rem);
+}
+
+.journal_author_wrap span {
+  font-family: 'rutan';
+  font-size: calc(var(--font-size) - 0.2rem);
+  margin-right: calc(var(--font-size) + 0.2rem);
+}
+
+.one_image_comp_wrapper {
+  width: 100%;
+  max-width: 450px;
+  object-fit: cover;
+}
+
+.one_image_comp_wrapper img {
+  width: 100%;
+  max-width: 450px;
+  object-fit: cover;
+}
+
+.two_image_comp_wrapper {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 2%;
+  margin-bottom: 30px;
+}
+
+.two_image_comp_wrapper > a {
+  flex-basis: 49%;
+  width: 100%;
+}
+
+.two_image_comp_wrapper > a img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.two_image_comp_wrapper p {
+  margin-top: 8px;
+  margin-bottom: 15px;
+  font-family: 'rutan';
+  /* text-align: center; */
+}
+
+@media (max-width: 500px) {
+  .journal_author_wrap span {
+    font-size: calc(var(--font-size) - 0.3rem);
+    margin-right: calc(var(--font-size) - 0.1rem);
+  }
+  .two_image_comp_wrapper {
+    row-gap: 2px;
+  }
+
+  .two_image_comp_wrapper > a {
+    flex-basis: 100%;
+    width: 100%;
+  }
+}

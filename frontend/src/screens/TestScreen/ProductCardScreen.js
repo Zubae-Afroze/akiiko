@@ -11,7 +11,7 @@ import './ProductComponentStyle.css'
             title: '',
             imgSrc: '',
         }
-
+//https://firebasestorage.googleapis.com/v0/b/akiiko-auth.appspot.com/o/display_images%2FBags%2FTote%2FSS001.jpg?alt=media&token=835c57a1-f00f-4e55-92d0-406d61d110e9
 export default function ProductCardScreen() {
 
     const [selectedTemplate, setSelectedTemplate] = useState(0)
@@ -62,6 +62,11 @@ export default function ProductCardScreen() {
                     margin-bottom: 1rem;
                 }
 
+                .product_card_wrapper img {
+                    width: 100%;
+                    object-fit: cover;
+                }
+
                 .product_card_wrapper > p {
                     margin-left: 1rem;
                     margin-right: 1rem;
@@ -105,9 +110,9 @@ export default function ProductCardScreen() {
 
         const data = {
             email: 'ImTheNewEmail',
-            htmlBody: templateOne(cardsElementTemplate,titleSubtitleElementTemplate),
+            htmlBody: templateOne(),
         }
-    
+    //templateOne(cardsElementTemplate,titleSubtitleElementTemplate)
         try {
             
             await axios.post(

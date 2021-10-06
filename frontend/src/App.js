@@ -47,9 +47,11 @@ import ContactUsScreen from './screens/ContactUs/ContactUsScreen'
 
 import JournalOne from './screens/JournalReaderScreen/JournalOne'
 import JournalTwo from './screens/JournalReaderScreen/JournalTwo'
+import JournalThree from './screens/JournalReaderScreen/JournalThree'
 import AllJournal from './screens/AllJournal/AllJournal'
 import GoodieBagInfoScreen from './screens/GoodieBagInfo/GoodieBagInfoScreen'
 import ProductCardScreen from './screens/TestScreen/ProductCardScreen'
+import JournalFour from './screens/JournalReaderScreen/JournalFour'
 // import ProductcomponentTestScreen from './components/ProductCardComponent/ProductcomponentTestScreen'
 
 // import ReactGa from 'react-ga'
@@ -77,6 +79,14 @@ const App = () => {
         <Route
           path='/journal/set-up-a-nature-inspired-table'
           render={() => <JournalTwo />}
+        />
+        <Route
+          path='/journal/minimalist_dining_table'
+          render={() => <JournalThree />}
+        />
+        <Route
+          path='/journal/beautiful_display_bread'
+          render={() => <JournalFour />}
         />
 
         <Route path='/journal' render={() => <AllJournal />} />

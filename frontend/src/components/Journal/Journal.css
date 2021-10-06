@@ -116,8 +116,8 @@
   --font-size: 13px;
   /* border: 1px solid red; */
   /* width: 300px; */
-  /* flex-basis: 22%; */
-  flex-basis: 30%;
+  flex-basis: 22%;
+  /* flex-basis: 30%; */
   height: 100%;
   overflow: hidden;
   font-family: 'rutan';
