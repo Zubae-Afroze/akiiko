@@ -9,6 +9,7 @@ import axios from 'axios'
 import Footer from '../Footer/Footer'
 import AllProductsRowComp from '../AllProductsRowComp/AllProductRowComp'
 import TopPopUpComp from '../TopPopUp/TopPopUpComp'
+import SEO from '../SEO/SEO'
 
 //import axios from 'axios';
 
@@ -104,6 +105,12 @@ const GiftAllProducts = () => {
             {error && <h1>{error}</h1>}{' '}
             {box[Object.keys(box)[0]] && (
               <>
+                <SEO 
+                  title={'Buy gift boxes online | Shop for gift bags online | Eco friendly gift accessories | Akiiko'} 
+                  fallbackTitle={'akiiko - Products Gifts'}
+                  desc={['Buy 100% premium quality gift boxes. Shop online for Sustainable, shop for gift bags from Akiiko. Purchase Eco friendly, Multipurpose and Eye catching gift accessories for every occasion from Akiiko.']} 
+                  keywords={['gift boxes','gift bags','gift accessories','drawstring gift boxes, bags and pouches','Eco-friendly gift boxes']}
+                />  
                 {box[Object.keys(box)[0]] ? (
                   <>
                     <h2 className='product-list-label'>

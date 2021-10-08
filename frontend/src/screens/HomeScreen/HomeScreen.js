@@ -239,6 +239,7 @@ const HomeScreen = () => {
             name='description'
             content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
           ></meta>
+          
         </Helmet>
         <NewCarouselComp />
         <Container>

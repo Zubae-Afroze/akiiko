@@ -15,6 +15,7 @@ import AllProductsRowComp from '../AllProductsRowComp/AllProductRowComp'
 
 import axios from 'axios'
 import TopPopUpComp from '../TopPopUp/TopPopUpComp'
+import SEO from '../SEO/SEO'
 
 const StorageAllProducts = () => {
   // const [organisersAllProduct, setOraniserAllProduct] = useState({});
@@ -100,6 +101,12 @@ const StorageAllProducts = () => {
               <>
                 {organisers[Object.keys(organisers)[0]] ? (
                   <>
+                    <SEO 
+                      title={'Buy household storage items online | Get storage pouches for home decors  | Eco-friendly storage boxes online | Akiiko'} 
+                      fallbackTitle={'akiiko - Products Details'}
+                      desc={['Buy 100% premium quality storage items. Shop online for Sustainable, natural storage boxes from Akiiko. Purchase Eco friendly, Multipurpose and Eye catching storage pouches for every occasion from Akiiko.']} 
+                      keywords={['storage items','storage boxes','storage pouches','storage pouches for home decors','Eco-friendly storage items']}
+                    />
                     <h2 className='product-list-label'>
                       {organisers[Object.keys(organisers)[0]].subGroup}
                     </h2>
