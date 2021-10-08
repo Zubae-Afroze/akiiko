@@ -9,6 +9,7 @@ import axios from 'axios'
 import Footer from '../Footer/Footer'
 import AllProductsRowComp from '../AllProductsRowComp/AllProductRowComp'
 import TopPopUpComp from '../TopPopUp/TopPopUpComp'
+import SEO from '../SEO/SEO'
 
 const LifestyleAllProducts = () => {
   // const dispatch = useDispatch()
@@ -122,6 +123,12 @@ const LifestyleAllProducts = () => {
             {error && <h1>{error}</h1>}{' '}
             {hobby[Object.keys(hobby)[0]] && (
               <>
+                <SEO 
+                  title={'Buy lifestyle stationery sets online | Order lifestyle towels and masks online | Sustainable yoga bags for sale | Akiiko'} 
+                  fallbackTitle={'akiiko - Products Lifestyle'}
+                  desc={['Buy 100% premium quality lifestyle stationery sets online. Shop online for Sustainable, natural fabric cotton canvas premium quality, multipurpose cotton canvas lifestyle towels and masks from Akiiko. Purchase Eco friendly, Multipurpose and Eye catching yoga bags for everyday use from Akiiko.']} 
+                  keywords={['lifestyle stationery sets','lifestyle towels and masks','yoga bags','Eco-friendly lifestyle stationery sets','Handcrafted lifestyle stationery sets']}
+                />
                 {hobby[Object.keys(hobby)[0]] ? (
                   <>
                     <h2 className='product-list-label'>

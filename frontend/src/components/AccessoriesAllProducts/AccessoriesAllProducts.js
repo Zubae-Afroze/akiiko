@@ -12,6 +12,7 @@ import axios from 'axios'
 import Footer from '../Footer/Footer'
 import AllProductsRowComp from '../AllProductsRowComp/AllProductRowComp'
 import TopPopUpComp from '../TopPopUp/TopPopUpComp'
+import SEO from '../SEO/SEO'
 
 //import axios from 'axios';
 
@@ -99,6 +100,12 @@ const AccessoriesAllProducts = () => {
             {error && <h2>{error}</h2>}
             {go && (
               <>
+                <SEO 
+                  title={'Buy fashion accessories online | Buy house hold accessories online | Buy travel accessories online | Akiiko'} 
+                  fallbackTitle={'akiiko - Products Accessories'}
+                  desc={['Buy 100% premium quality fashion accessories for women online. Shop online for Sustainable, natural fabric cotton canvas house hold accessories from Akiiko. Purchase Eco friendly, Multipurpose and Eye catching travel accessories and pouches for every occassion from Akiiko.']} 
+                  keywords={['accessories','fashion accessories','house hold accessories','travel accessories','Eco-friendly accessories']}
+                />
                 {go[Object.keys(go)[0]] ? (
                   <>
                     <h2 className='product-list-label'>

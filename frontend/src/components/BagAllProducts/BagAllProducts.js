@@ -10,6 +10,7 @@ import axios from 'axios'
 import Footer from '../Footer/Footer'
 import './allProductsStyleGLOBAL.css'
 import TopPopUpComp from '../TopPopUp/TopPopUpComp'
+import SEO from '../SEO/SEO'
 
 const BagAllProducts = () => {
   // const [allProductList, setAllProductList] = useState({});
@@ -133,6 +134,12 @@ const BagAllProducts = () => {
             {error && <h2>{error}</h2>}
             {women && (
               <>
+                <SEO 
+                  title={'Buy Bags for woment online | Order Tote Bags for women online | Get eco-friendly shopping bags for women | Akiiko'} 
+                  fallbackTitle={'akiiko - Products Bags'}
+                  desc={['Buy 100% premium quality bags for Women online. Shop online for Sustainable, natural fabric tote bags from Akiiko. Purchase Eco friendly, Multipurpose and Eye catching bags collections for every occasion from Akiiko.']} 
+                  keywords={['bags for women','tote bags for women','shopping bags for women','office bags for women','travel bags for women']}
+                />
                 {women[Object.keys(women)[0]] ? (
                   <>
                     <h2 className='product-list-label'>

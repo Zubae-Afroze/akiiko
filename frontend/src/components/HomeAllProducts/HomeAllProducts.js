@@ -18,6 +18,7 @@ import AllProductsRowComp from '../AllProductsRowComp/AllProductRowComp'
 
 import axios from 'axios'
 import TopPopUpComp from '../TopPopUp/TopPopUpComp'
+import SEO from '../SEO/SEO'
 
 const HomeAllProducts = () => {
   // const [tablewareAllProducts, setTableWareAllProducts] = useState({});
@@ -148,6 +149,12 @@ const HomeAllProducts = () => {
             {error && <h1>{error}</h1>}
             {tableware[Object.keys(tableware)[0]] && (
               <>
+                <SEO 
+                  title={'Buy eco friendly home decors online | Buy Multi purpose home decors for sale online | Akiiko'} 
+                  fallbackTitle={'akiiko - Products Home'}
+                  desc={['Buy 100% premium quality dining table decors. Shop online for Sustainable, natural fabric home decors from Akiiko. Purchase Eco friendly, Multipurpose and Eye catching kitchen decors for every occasion from Akiiko.']} 
+                  keywords={['home decors','dining table decors','kitchen decors','laundry bags for homes','garden decors for homes']}
+                />
                 {tableware[Object.keys(tableware)[0]] ? (
                   <>
                     <h2 className='product-list-label'>

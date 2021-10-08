@@ -26,6 +26,7 @@ import axios from 'axios'
 import { Helmet } from 'react-helmet'
 
 import './ProductDetails.css'
+import SEO from '../SEO/SEO'
 
 const ProductDetails = () => {
   const { id } = useParams()
@@ -111,6 +112,39 @@ const ProductDetails = () => {
 
   const checkoutHandler = () => {
     history.push('/login?redirect=shipping')
+  }
+
+  const metaTitle = () => {
+    if(product.metaTitle){
+      // Has tag
+      return(product.metaTitle)
+    }else{
+      return('akiiko - Products Details')
+    }
+  }
+
+  const metaDesc = () => {
+    if(product.metaDesc){
+      // Has tag
+      return(product.metaDesc)
+    }else{
+      return('New Description tag tag a tag')
+    }
+  }
+
+  const metaKeywords = (index) => {
+    if(product.keywords){
+      // Has tag
+      if(product.keywords[index]){
+        console.log('Has that Index');
+        return(product.keywords[index])
+      }else{
+        console.log('Didnt Has that Index');
+        return('Didnt Has That Index')
+      }
+    }else{
+      return('Lifestyle products Lifestyle products online Utility Essentials Home Decor products Skin Care products Travel Bags eco-friendly products')
+    }
   }
 
   // function CartModal(props) {
@@ -229,9 +263,28 @@ const ProductDetails = () => {
         <h2>{error}</h2>
       ) : product.productId ? (
         <Container>
-          <Helmet>
-            <title>akiiko - Products Details</title>
-          </Helmet>
+            {/* <title>akiiko - Products Details</title> */}
+          
+          <SEO 
+            title={product.metaTitle} 
+            fallbackTitle={'akiiko - Products Details'}
+            desc={[product.metaDesc]} 
+            keywords={product.keywords}
+          />
+
+          {/* <Helmet>
+            <title>{metaTitle()}</title>
+            <meta
+            name='description'
+            content={metaDesc()}
+            data-react-helmet="true"
+          ></meta>
+          <meta 
+            name = "keywords" 
+            content={metaKeywords(0)}>
+          </meta>
+          </Helmet> */}
+            {/* <MetaElements /> */}
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>
