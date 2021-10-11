@@ -50,30 +50,25 @@ const ProductDetails = () => {
     setLoading(true)
     // dispatch(actionListProductDetails(id))
     async function getAllData() {
-      const prod = await axios.get(`/api/product/${id}`)
-      // console.log(prod.data)
-      const _product = prod.data
 
-      for (let i = 0; i < prod.data.images_web.length; i++) {
-        const url = await storage.ref(prod.data.images_web[i]).getDownloadURL()
-        // .then((url) => {
-        //   // setImageRef(url)
-        // })
-        _product.images_web[i] = url
-        // console.log(_product.images_web[i])
+      try{
+        const prod = await axios.get(`/api/product/${id}`)
+        // console.log(prod.data)
+        const _product = prod.data
+  
+        for (let i = 0; i < prod.data.images_web.length; i++) {
+          const url = await storage.ref(prod.data.images_web[i]).getDownloadURL()
+          _product.images_web[i] = url
+        }
+  
+        setProduct(_product)
+        setImageSrc(_product.images_web[0])
+        setLoading(false)
+        setError(null)
+
+      }catch(e){
+        history.replace('/404notfound')
       }
-      // console.log('firebase'+_product.images_web)
-
-      setProduct(_product)
-      setImageSrc(_product.images_web[0])
-      setLoading(false)
-      setError(null)
-      // console.log('Link: '+_product.images_web)
-      // prod.data.images_web.forEach((path,index) => {
-
-      // });
-
-      // setLoading(true);
     }
 
     getAllData()
@@ -114,38 +109,6 @@ const ProductDetails = () => {
     history.push('/login?redirect=shipping')
   }
 
-  const metaTitle = () => {
-    if(product.metaTitle){
-      // Has tag
-      return(product.metaTitle)
-    }else{
-      return('akiiko - Products Details')
-    }
-  }
-
-  const metaDesc = () => {
-    if(product.metaDesc){
-      // Has tag
-      return(product.metaDesc)
-    }else{
-      return('New Description tag tag a tag')
-    }
-  }
-
-  const metaKeywords = (index) => {
-    if(product.keywords){
-      // Has tag
-      if(product.keywords[index]){
-        console.log('Has that Index');
-        return(product.keywords[index])
-      }else{
-        console.log('Didnt Has that Index');
-        return('Didnt Has That Index')
-      }
-    }else{
-      return('Lifestyle products Lifestyle products online Utility Essentials Home Decor products Skin Care products Travel Bags eco-friendly products')
-    }
-  }
 
   // function CartModal(props) {
   //   return (

@@ -58,6 +58,7 @@ import { getUserProfileByUID } from '../../actions/actionProfile'
 import useOneTimeEffect from '../../components/CustomHooks/useOneTimeEffect'
 import NewsLetterPopUpCmp from './NewsLetterPopUp/NewsLetterPopUpCmp'
 import axios from 'axios'
+import SEO from '../../components/SEO/SEO'
 
 // import UseSpinner from '../../components/Spinner/UseSpinner';
 
@@ -233,14 +234,20 @@ const HomeScreen = () => {
           />
         ) : null} */}
       <div>
-        <Helmet>
+      <SEO 
+        title={'Buy eco-friendly home decor products online | Natural fabric modern Lifestyle accessories for sale online | Shop for Siample Handcrafted Multipurpose vegan products | Akiiko'} 
+        fallbackTitle={'Buy eco-friendly home decor products online | Natural fabric modern Lifestyle accessories for sale online | Shop for Siample Handcrafted Multipurpose vegan products | Akiiko'}
+        desc={["Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."]} 
+        keywords={["Daily use products","Daily use essentials"]}
+      />
+        {/* <Helmet>
           <title>akiiko: Natural Home Decor and Lifestyle Products</title>
           <meta
             name='description'
             content="Live a clutter-free lifestyle. Categorized as home decor, utility products, storage bags - this eco-friendly collection of lifestyle products are available on akiiko's website. Shop now at akiiko."
           ></meta>
           
-        </Helmet>
+        </Helmet> */}
         <NewCarouselComp />
         <Container>
           {/* <OldCarouselComp /> */}

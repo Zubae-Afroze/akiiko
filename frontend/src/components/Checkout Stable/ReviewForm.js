@@ -63,6 +63,10 @@ export default function ReviewFormT() {
           taxPrice: additionlaPriceTemp, //aditional Price
           shippingPrice: shippingPriceTemp,
           totalPrice: itemPriceTemp + additionlaPriceTemp + shippingPriceTemp,
+          // itemsPrice: itemPriceTemp,
+          // taxPrice: additionlaPriceTemp, //aditional Price
+          // shippingPrice: shippingPriceTemp,
+          // totalPrice: 1,
           isPaid: false,
           isDelivered: false,
           orderItems: orderItemsList,

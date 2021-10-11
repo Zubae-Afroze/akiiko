@@ -52,6 +52,7 @@ import AllJournal from './screens/AllJournal/AllJournal'
 import GoodieBagInfoScreen from './screens/GoodieBagInfo/GoodieBagInfoScreen'
 import ProductCardScreen from './screens/TestScreen/ProductCardScreen'
 import JournalFour from './screens/JournalReaderScreen/JournalFour'
+import Error404Screen from './screens/ErrorScreen/Error404Screen'
 // import ProductcomponentTestScreen from './components/ProductCardComponent/ProductcomponentTestScreen'
 
 // import ReactGa from 'react-ga'
@@ -65,6 +66,8 @@ const App = () => {
       <Header />
       <Switch>
         <Route path='/productcard' render={() => <ProductCardScreen />} />
+
+        <Route path='/404pagenotfound' render={() => <Error404Screen /> } />
         {/* <Route path='/pcts' render={() => <ProductcomponentTestScreen />} /> */}
 
         <Route path='/modaltest' render={() => <ModalTestScreen />} />

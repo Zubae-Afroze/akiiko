@@ -36,6 +36,7 @@ export const createOrder = (order, email, history) => async (dispatch) => {
     }
 
     const { data } = await axios.post(`/api/orders/`, order, config)
+    
 
     dispatch({
       type: ORDER_CREATE_SUCCESS,
@@ -50,14 +51,16 @@ export const createOrder = (order, email, history) => async (dispatch) => {
         },
       }
 
-      console.log('data: ' + data)
+      
 
       const { data: dataRazor } = await axios.get(
         `/api/orders/${data._id}/pay`,
         configF
       )
 
-      var options = {
+      
+
+      let options = {
         key: dataRazor.razor_key,
         amount: dataRazor.amount,
         currency: dataRazor.currency,
@@ -68,9 +71,7 @@ export const createOrder = (order, email, history) => async (dispatch) => {
         description: '',
         order_id: dataRazor.id,
         handler: async function (response) {
-          // alert(response.razorpay_payment_id);
-          // alert(response.razorpay_order_id);
-          // alert(response.razorpay_signature);
+          
           try {
             const res = await axios.post(
               `/api/orders/${data._id}/ordercomplete`,
@@ -82,6 +83,8 @@ export const createOrder = (order, email, history) => async (dispatch) => {
               config
             )
 
+            
+
             history.replace('/ordersuccess')
 
             axios.post(`/api/mail/orderplaced`, data, config)
@@ -90,9 +93,9 @@ export const createOrder = (order, email, history) => async (dispatch) => {
             dispatch(getOrderDetails(data._id))
             dispatch(resetCartItems())
 
-            console.log(res)
           } catch (error) {
-            console.log(error)
+            
+            // console.log(error)
           }
         },
         prefill: {
@@ -117,12 +120,22 @@ export const createOrder = (order, email, history) => async (dispatch) => {
       }
       var rzp1 = new window.Razorpay(options)
       rzp1.open()
+      // rzp1.on('payment.failed', function (response){
+      //   console.log(response.error.code);
+      //   console.log(response.error.description);
+      //   console.log(response.error.source);
+      //   console.log(response.error.step);
+      //   console.log(response.error.reason);
+      //   console.log(response.error.metadata.order_id);
+      //   console.log(response.error.metadata.payment_id);
+      // });
     } else {
       dispatch(resetCartItems())
       history.replace('/ordersuccess')
       axios.post(`/api/mail/orderplaced`, data, config)
     }
   } catch (error) {
+    
     dispatch({
       type: ORDER_CREATE_FAIL,
       payload:
@@ -157,6 +170,7 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
       payload: data,
     })
   } catch (error) {
+    
     dispatch({
       type: ORDER_DETAILS_FAIL,
       payload:
@@ -217,7 +231,6 @@ export const listMyOrders = () => async (dispatch, getState) => {
     // } = getState()
     const profile = getState().profile.userProfile._id
 
-    console.log('Profile: ' + profile)
 
     const config = {
       headers: {

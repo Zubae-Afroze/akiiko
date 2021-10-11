@@ -21,7 +21,7 @@ export default class Footer extends Component {
   }
 }
 
-function FooterBottom() {
+export function FooterBottom() {
   const SocialIconsCMP = () => {
     return (
       <div className='footer-bottom-icons-wrapper'>

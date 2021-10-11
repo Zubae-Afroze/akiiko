@@ -1,6 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { FooterBottom } from '../Footer/Footer'
 
 import '../Terms/Terms.css'
 
@@ -202,6 +203,7 @@ const ShippingPolicy = () => {
           </div>
         </div>
       </Container>
+      <FooterBottom />
     </>
   )
 }

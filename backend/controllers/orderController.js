@@ -67,6 +67,11 @@ const createRazorpayOrder = asyncHandler(async (req, res) => {
 
   const order = await Order.findById(req.params.id).populate('profile')
 
+    console.log('BE')
+    console.log(order)
+    console.log('------------- (createRazorpayOrder) Order Details successfully got from Backend ----------')
+    console.log('\n')
+
   if (!order) {
     res.status(404)
     throw new Error('Order not Found')
@@ -82,12 +87,21 @@ const createRazorpayOrder = asyncHandler(async (req, res) => {
     receipt,
   })
 
+  console.log('BE')
+  console.log(razorResponse)
+  console.log('------------- (createRazorpayOrder) Successfully generated RazarPay Response ----------')
+  console.log('\n')
+
   order.razorpayOrderId = razorResponse.id
 
   try {
     await order.save()
   } catch (error) {
     res.status(500)
+    console.log('BE')
+    console.log(error)
+    console.log('------------- (createRazorpayOrder) Error generating RazarPay Response ----------')
+    console.log('\n')
     throw new Error('Razorpay Order Id, Update failed')
   }
 
@@ -102,12 +116,16 @@ const createRazorpayOrder = asyncHandler(async (req, res) => {
 })
 
 // @desc UPDATE order if paid
-// @route GET /api/orders/:id/ordercomplete
+// @route POST /api/orders/:id/ordercomplete
 // @access Private Route
 const orderPaymentComplete = asyncHandler(async (req, res) => {
   const { payment_id, razorpay_order_id, signature } = req.body
 
+  
+
   const order = await Order.findOne({ razorpayOrderId: razorpay_order_id })
+
+  
 
   if (!order) {
     res.status(404)
@@ -121,7 +139,7 @@ const orderPaymentComplete = asyncHandler(async (req, res) => {
 
   //const genSign = hmac_sha256(razorpay_order_id + "|" + payment_id, process.env.RAZOR_PAY_SECRET)
 
-  console.log(generatedSignature)
+  console.log(generatedSignature + ' ' + signature)
 
   if (generatedSignature === signature) {
     order.isPaid = true
@@ -134,9 +152,12 @@ const orderPaymentComplete = asyncHandler(async (req, res) => {
 
     const updatedOrder = await order.save()
 
+    
+
     res.json(updatedOrder)
   } else {
     res.status(401)
+    
     throw new Error(generatedSignature)
   }
 })
