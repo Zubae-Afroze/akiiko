@@ -50,24 +50,24 @@ const ProductDetails = () => {
     setLoading(true)
     // dispatch(actionListProductDetails(id))
     async function getAllData() {
-
-      try{
+      try {
         const prod = await axios.get(`/api/product/${id}`)
         // console.log(prod.data)
         const _product = prod.data
-  
+
         for (let i = 0; i < prod.data.images_web.length; i++) {
-          const url = await storage.ref(prod.data.images_web[i]).getDownloadURL()
+          const url = await storage
+            .ref(prod.data.images_web[i])
+            .getDownloadURL()
           _product.images_web[i] = url
         }
-  
+
         setProduct(_product)
         setImageSrc(_product.images_web[0])
         setLoading(false)
         setError(null)
-
-      }catch(e){
-        history.replace('/404notfound')
+      } catch (e) {
+        history.replace('/404pagenotfound')
       }
     }
 
@@ -108,7 +108,6 @@ const ProductDetails = () => {
   const checkoutHandler = () => {
     history.push('/login?redirect=shipping')
   }
-
 
   // function CartModal(props) {
   //   return (
@@ -226,12 +225,12 @@ const ProductDetails = () => {
         <h2>{error}</h2>
       ) : product.productId ? (
         <Container>
-            {/* <title>akiiko - Products Details</title> */}
-          
-          <SEO 
-            title={product.metaTitle} 
+          {/* <title>akiiko - Products Details</title> */}
+
+          <SEO
+            title={product.metaTitle}
             fallbackTitle={'akiiko - Products Details'}
-            desc={[product.metaDesc]} 
+            desc={[product.metaDesc]}
             keywords={product.keywords}
           />
 
@@ -247,7 +246,7 @@ const ProductDetails = () => {
             content={metaKeywords(0)}>
           </meta>
           </Helmet> */}
-            {/* <MetaElements /> */}
+          {/* <MetaElements /> */}
           <div className='product-details-wrapper'>
             <Col sm={12} className='carousel-wrapper product-details-carousel'>
               <Carousel controls={false}>
