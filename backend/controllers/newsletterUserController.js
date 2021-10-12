@@ -2,6 +2,22 @@ import NewsletterUserModel from "../models/newsletterUser.js"
 import asyncHandler from 'express-async-handler'
 
 
+// @desc Fetch All users by email
+// @route GET /api/newsletter/newsletterusers/
+// @access Public Route
+export const getNewsletterUsers = asyncHandler(async (req, res) => {
+
+  
+  const newsLetterUsers = await NewsletterUserModel.find({})
+
+  if (newsLetterUsers) {
+    res.json(newsLetterUsers)
+  } else {
+    res.status(404)
+    throw new Error('user not subscribed')
+  }
+})
+
 
 // @desc Fetch single user by email
 // @route GET /api/newsletter/newsletteruser/:email

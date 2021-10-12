@@ -21,6 +21,21 @@ const getProductsById = asyncHandler(async (req, res) => {
   }
 })
 
+
+// @desc Fetch single Product by id
+// @route GET /api/product/redirect/:prodId
+// @access Public Route
+const getProductsByProductid = asyncHandler(async (req, res) => {
+  const product = await masterProductsModel.findOne({ _id: req.params.prodId })
+
+  if (product) {
+    res.json(product)
+  } else {
+    res.status(404)
+    throw new Error('Product Not Found')
+  }
+})
+
 // @desc Fetch Product Lists by subGroups
 // @route GET /api/productlist/:group/:subGroup
 // @acess Public Route
@@ -32,4 +47,4 @@ const getProductLists = asyncHandler(async (req, res) => {
   return res.json(productList)
 })
 
-export { getAllProducts, getProductsById, getProductLists }
+export { getAllProducts, getProductsById, getProductLists, getProductsByProductid }

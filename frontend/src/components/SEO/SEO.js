@@ -36,8 +36,6 @@ export default function SEO({title, desc = [], keywords=[], fallbackTitle}) {
             })
         }
 
-        console.log([...meta])
-
         setMetaTags(meta)
     }, [])
 

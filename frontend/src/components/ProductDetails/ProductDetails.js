@@ -29,7 +29,7 @@ import './ProductDetails.css'
 import SEO from '../SEO/SEO'
 
 const ProductDetails = () => {
-  const { id } = useParams()
+  let { id } = useParams()
 
   const history = useHistory()
 
@@ -51,23 +51,26 @@ const ProductDetails = () => {
     // dispatch(actionListProductDetails(id))
     async function getAllData() {
       try {
-        const prod = await axios.get(`/api/product/${id}`)
-        // console.log(prod.data)
-        const _product = prod.data
+        // getProduct(`/api/product/redirect/${id}`);
+        await getProductByLink(`/api/product/${id}`);
+        // const prod = await axios.get(`/api/product/${id}`)
+        // const _product = prod.data
 
-        for (let i = 0; i < prod.data.images_web.length; i++) {
-          const url = await storage
-            .ref(prod.data.images_web[i])
-            .getDownloadURL()
-          _product.images_web[i] = url
-        }
+        // for (let i = 0; i < prod.data.images_web.length; i++) {
+        //   const url = await storage
+        //     .ref(prod.data.images_web[i])
+        //     .getDownloadURL()
+        //   _product.images_web[i] = url
+        // }
 
-        setProduct(_product)
-        setImageSrc(_product.images_web[0])
-        setLoading(false)
-        setError(null)
+        // setProduct(_product)
+        // setImageSrc(_product.images_web[0])
+        // setLoading(false)
+        // setError(null)
       } catch (e) {
-        history.replace('/404pagenotfound')
+        // console.log(e)
+        await getProductById(`/api/product/redirect/${id}`);
+        // history.replace('/404pagenotfound')
       }
     }
 
@@ -75,6 +78,38 @@ const ProductDetails = () => {
 
     console.log('Product Detail page Rendered')
   }, [id])
+
+
+  async function getProductById(){
+    const prod = await axios.get(`/api/product/redirect/${id}`)
+
+    const _product = prod.data
+
+    history.replace(`/product/${_product.link}`)
+
+    return prod;
+  }
+
+  async function getProductByLink(){
+    console.log('API aclled')
+    const prod = await axios.get(`/api/product/${id}`)
+    // console.log(prod.data)
+    const _product = prod.data
+
+    for (let i = 0; i < prod.data.images_web.length; i++) {
+      const url = await storage
+        .ref(prod.data.images_web[i])
+        .getDownloadURL()
+      _product.images_web[i] = url
+    }
+
+    setProduct(_product)
+    setImageSrc(_product.images_web[0])
+    setLoading(false)
+    setError(null)
+
+    return prod;
+  }
 
   // useEffect(() => {
   //   setImageSrc(product.heroImage)

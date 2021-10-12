@@ -37,6 +37,15 @@ export const getProfileByUid = asyncHandler(async (req, res) => {
   return res.json(profile)
 })
 
+
+//@desc Get User profile with using ID
+//@route GET /api/profile/id/:id
+//@acess Private
+export const getProfileById = asyncHandler(async (req, res) => {
+  const profile = await Profile.findOne({ _id: req.params.id })
+  return res.json(profile)
+})
+
 //@desc add new sipping addres for specific User
 //@route POST /api/profile/addshipping/:uid
 //@acess Private
