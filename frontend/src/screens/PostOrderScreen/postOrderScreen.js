@@ -58,7 +58,7 @@ export default function PostOrderScreen() {
       value: finalOrder.totalPrice,
     })
     dispatch(getUserProfileByUID(uid))
-  }, [finalOrder])
+  }, [])
 
   const sendFeedBackToDataBase = async () => {
     const config = {
@@ -78,12 +78,12 @@ export default function PostOrderScreen() {
 
   const submitFeedBack = () => {
     if (givenRating.current < 0 && givenFeedBack.current.trim() === '') {
-      history.push('/')
+      history.replace('/')
     } else {
       setOpenThanksNote(true)
       sendFeedBackToDataBase()
       setTimeout(() => {
-        history.push('/')
+        history.replace('/')
       }, 2000)
     }
   }
@@ -100,37 +100,26 @@ export default function PostOrderScreen() {
     <>
       <Helmet>
         <title>akiiko - Order Success</title>
-        <script>
-          {`
-          <!-- Global site tag (gtag.js) - Google Ads: 322846655 -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=AW-322846655"></script>
-            <script>
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
 
-              gtag('config', 'AW-322846655');
-            </script>
-          `}
-        </script>
+        <script
+          async
+          src='https://www.googletagmanager.com/gtag/js?id=AW-322846655'
+        ></script>
         <script>
-          {`gtag('event', 'conversion', {
-            'send_to': 'AW-322846655/C6vzCMCjzPQCEL__-JkB',
-            'transaction_id': ${finalOrder._id}
-          });`}
+          {` window.dataLayer = window.dataLayer || []; function gtag()
+          {window.dataLayer.push(arguments)}
+          gtag('js', new Date()); gtag('config', 'AW-322846655'); `}
         </script>
+
         <script>
-          {`
-          <!-- Event snippet for Purchase - Circle Bread Basket - Sep 25 2021 conversion page -->
-              <script>
-                gtag('event', 'conversion', {
-                    'send_to': 'AW-322846655/aH3jCLG7n_cCEL__-JkB',
-                    'transaction_id': ${finalOrder._id}
-                });
-              'Value': 799,
-              'Currency': 'INR'
-              </script>
-          `}
+          {` gtag('event', 'conversion',
+            {
+              send_to: 'AW-322846655/uhDnCIayoPsCEL__-JkB',
+              value: ${order.totalPrice},
+              currency: 'INR',
+              transaction_id: '${order._id}',
+            }
+          ); `}
         </script>
       </Helmet>
 
@@ -404,3 +393,74 @@ function FeedBackFormRattingComp({ getStarRating }) {
     </div>
   )
 }
+
+// eslint-disable-next-line no-undef
+
+// {/* <!-- Global site tag (gtag.js) - Google Ads: 322846655 --> */}
+// <script async src="https://www.googletagmanager.com/gtag/js?id=AW-322846655"></script>
+// <script>
+//   window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments)}
+//   gtag('js', new Date());
+
+//   gtag('config', 'AW-322846655');
+// </script>
+
+// <script>
+// window.gtag('event', 'conversion', {
+//   'send_to' : 'AW-322846655/uhDnCIayoPsCEL__-JkB',
+//   'value': `${finalOrder.totalPrice}`,
+//   'currency': 'INR',
+//   'transaction_id': `${finalOrder._id}`,
+// });
+// </script>
+
+// <script>
+//         window.addEventListener('load', function() {
+//           if(window.location.pathname.indexOf("ordersuccess") != -1)
+//         {
+//         var orderid = document.getElementsByClassName("orderid")[0].innerHTML;
+//         var price = document.getElementsByClassName("totalamount")[0].innerHTML.replace("₹","");;
+
+//           gtag('event', 'conversion', {
+//               'send_to': 'AW-322846655/uhDnCIayoPsCEL__-JkB',
+//               'value': price,
+//               'currency': 'INR',
+//               'transaction_id': orderid
+//           });
+//         }
+//         });
+//         </script>
+
+// <script>
+//           {`
+//           <!-- Global site tag (gtag.js) - Google Ads: 322846655 -->
+//             <script async src="https://www.googletagmanager.com/gtag/js?id=AW-322846655"></script>
+//             <script>
+//               window.dataLayer = window.dataLayer || [];
+//               function gtag(){dataLayer.push(arguments);}
+//               gtag('js', new Date());
+
+//               gtag('config', 'AW-322846655');
+//             </script>
+//           `}
+//         </script>
+//         <script>
+//           {`gtag('event', 'conversion', {
+//             'send_to': 'AW-322846655/C6vzCMCjzPQCEL__-JkB',
+//             'transaction_id': ${finalOrder._id}
+//           });`}
+//         </script>
+//         <script>
+//           {`
+//           <!-- Event snippet for Purchase - Circle Bread Basket - Sep 25 2021 conversion page -->
+//               <script>
+//                 gtag('event', 'conversion', {
+//                     'send_to': 'AW-322846655/aH3jCLG7n_cCEL__-JkB',
+//                     'transaction_id': ${finalOrder._id}
+//                 });
+//               'Value': 799,
+//               'Currency': 'INR'
+//               </script>
+//           `}
+//         </script>

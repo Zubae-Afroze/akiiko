@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Route, Switch, BrowserRouter as Router } from 'react-router-dom'
 import Header from './components/Header/Header'
 import HomeScreen from './screens/HomeScreen/HomeScreen'
@@ -38,7 +38,7 @@ import StableCheckOutScreen from './screens/Stable Checkout Screen/CheckOutIndex
 import SearchScreen from './screens/SearchScreen/SearchScreen'
 import ForgotPasswordScreen from './screens/LoginScreen/ForgotPasswordScreen'
 
-import ProductTestScreen from './components/Shimmers/ProductTestScreen'
+// import ProductTestScreen from './components/Shimmers/ProductTestScreen'
 import TestScreen from './screens/TestScreen/TestScreen'
 import ShippingPolicy from './components/ShippingPolicy/ShippingPolicy'
 
@@ -67,13 +67,12 @@ const App = () => {
       <Switch>
         <Route path='/productcard' render={() => <ProductCardScreen />} />
 
-        <Route path='/404pagenotfound' render={() => <Error404Screen /> } />
+        <Route path='/404pagenotfound' render={() => <Error404Screen />} />
         {/* <Route path='/pcts' render={() => <ProductcomponentTestScreen />} /> */}
 
         <Route path='/modaltest' render={() => <ModalTestScreen />} />
         <Route path='/contactus' render={() => <ContactUsScreen />} />
         <Route path='/goodiebaginfo' render={() => <GoodieBagInfoScreen />} />
-
 
         <Route
           path='/journal/japanese_aesthetic_sensibilities'
