@@ -96,6 +96,24 @@ export default function PostOrderScreen() {
     givenFeedBack.current = e.target.value
   }
 
+  const gtagString = () => {
+    const priceString = `${order.totalPrice}`
+
+    const cmptString = `
+      gtag('event', 'conversion',
+        {
+          send_to: 'AW-322846655/uhDnCIayoPsCEL__-JkB',
+          value: ${priceString},
+          currency: 'INR',
+          transaction_id: '${order._id}'
+        }
+      );
+    `
+
+    console.log(cmptString)
+    return cmptString
+  }
+
   return (
     <>
       <Helmet>
@@ -111,16 +129,7 @@ export default function PostOrderScreen() {
           gtag('js', new Date()); gtag('config', 'AW-322846655'); `}
         </script>
 
-        <script>
-          {` gtag('event', 'conversion',
-            {
-              send_to: 'AW-322846655/uhDnCIayoPsCEL__-JkB',
-              value: ${order.totalPrice},
-              currency: 'INR',
-              transaction_id: '${order._id}',
-            }
-          ); `}
-        </script>
+        <script>{gtagString()}</script>
       </Helmet>
 
       <div className='successBGimage'>
