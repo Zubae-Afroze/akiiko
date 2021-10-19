@@ -110,7 +110,7 @@ export default function PostOrderScreen() {
       );
     `
 
-    console.log(cmptString)
+    // console.log(cmptString)
     return cmptString
   }
 
