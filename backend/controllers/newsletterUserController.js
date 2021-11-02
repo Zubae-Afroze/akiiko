@@ -24,9 +24,9 @@ export const getNewsletterUsers = asyncHandler(async (req, res) => {
 // @access Public Route
 export const getNewsletterUser = asyncHandler(async (req, res) => {
 
-  console.log('API called')
+  // console.log('API called')
   
-  console.log(req.params.email)
+  // console.log(req.params.email)
 
   const email = req.params.email
 
